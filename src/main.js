@@ -110,7 +110,11 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [
-  makePoster("./assets/pug.jpg", "Optimism", "Keep a joyful heart!")
+  makePoster(
+    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+    "Optimism",
+    "Keep a joyful heart!"
+  )
 ];
 var currentPoster;
 
