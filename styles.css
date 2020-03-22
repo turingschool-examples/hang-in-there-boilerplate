@@ -1,0 +1,146 @@
+/* ~~~~~ GLOBAL RULES ~~~~~ */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  font-family: "EB Garamond", serif;
+  margin: auto;
+  text-align: center;
+}
+
+body {
+  background: ghostwhite;
+}
+
+button,
+input {
+  font-size: 20px;
+  padding: 10px 20px;
+}
+
+button {
+  background: black;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+button:hover {
+  background: darkslateblue;
+}
+
+.hidden {
+  display: none!important;
+}
+
+/* ~~~~~ MAIN POSTER SECTION ~~~~~ */
+.main-poster {
+  height: 100vh;
+}
+
+.poster {
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 20px;
+  margin: 20px auto;
+  width: 70%;
+}
+
+.poster-img {
+  background-size: cover;
+  border: 2px solid white;
+  height: 450px;
+  width: 800px;
+}
+
+.poster-title,
+.poster-quote {
+  color: white;
+  line-height: 1;
+  width: 90%;
+}
+
+.poster-title {
+  font-size: 60px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 20px;
+  margin-bottom: 10px;
+}
+
+.main-poster button {
+  margin: 10px;
+}
+
+/* ~~~~~ POSTER FORM SECTION ~~~~~ */
+.poster-form {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.poster-form h2 {
+  margin-bottom: 30px;
+}
+
+.poster-form form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 40%;
+}
+
+.poster-form input {
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.poster-form .divider {
+  width: 400px;
+  border-bottom: 1px solid black;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+/* ~~~~~ SAVED POSTER SECTION ~~~~~ */
+.saved-posters {
+  padding: 40px;
+}
+
+.saved-posters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.mini-poster {
+  background: black;
+  color: white;
+  padding: 25px;
+  width: 425px;
+  height: 340px;
+}
+
+.mini-poster img {
+  height:200px;
+  width: 300px;
+}
+
+.mini-poster h2,
+.mini-poster h4 {
+  color: white;
+  line-height: 1;
+  width: 90%;
+}
+
+.mini-poster h2 {
+  font-size: 30px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+}
