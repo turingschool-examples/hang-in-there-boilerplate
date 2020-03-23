@@ -43,8 +43,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 50px 20px;
   margin: 20px auto;
+  padding: 50px 20px;
   width: 70%;
 }
 
@@ -65,9 +65,9 @@ button:hover {
 .poster-title {
   font-size: 60px;
   font-weight: normal;
-  text-transform: uppercase;
   letter-spacing: 20px;
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .main-poster button {
@@ -76,9 +76,9 @@ button:hover {
 
 /* ~~~~~ POSTER FORM SECTION ~~~~~ */
 .poster-form {
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .poster-form h2 {
@@ -86,9 +86,9 @@ button:hover {
 }
 
 .poster-form form {
+  align-content: center;
   display: flex;
   flex-direction: column;
-  align-content: center;
   width: 40%;
 }
 
@@ -99,10 +99,10 @@ button:hover {
 }
 
 .poster-form .divider {
-  width: 400px;
   border-bottom: 1px solid black;
   margin: auto;
   margin-bottom: 20px;
+  width: 400px;
 }
 
 /* ~~~~~ SAVED POSTER SECTION ~~~~~ */
@@ -120,9 +120,9 @@ button:hover {
 .mini-poster {
   background: black;
   color: white;
+  height: 340px;
   padding: 25px;
   width: 425px;
-  height: 340px;
 }
 
 .mini-poster img {
@@ -131,7 +131,8 @@ button:hover {
 }
 
 .mini-poster h2,
-.mini-poster h4 {
+.mini-poster h4,
+.delete {
   color: white;
   line-height: 1;
   width: 90%;
@@ -140,7 +141,7 @@ button:hover {
 .mini-poster h2 {
   font-size: 30px;
   font-weight: normal;
-  text-transform: uppercase;
   letter-spacing: 5px;
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
