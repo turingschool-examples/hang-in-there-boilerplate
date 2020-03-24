@@ -110,12 +110,8 @@ var currentPoster;
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
-// (we've provided a couple for you to get you started)!
+// (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
-
-function makePoster(imageURL, title, quote) {
-  return new Poster(imageURL, title, quote);
 }
 
