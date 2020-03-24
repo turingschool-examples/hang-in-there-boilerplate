@@ -20,10 +20,6 @@ A boilerplate repo.
 
 ### Iteration 1 - Switching Views
 
-Main page (once working):
-![screenshot of main page showing poster](/readme-imgs/homepage.png)
-
-
 Form page:
 ![screenshot of form](/readme-imgs/form.png)
 
