@@ -1,4 +1,7 @@
-// query selector variables go here 👇
+var savePoster = document.querySelector(".save-poster");
+var showSaved = document.querySelector(".show-saved");
+var showRandom = document.querySelector(".show-random");
+var makeOwn = document.querySelector(".show-form");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -114,4 +117,3 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
