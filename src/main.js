@@ -1,5 +1,13 @@
 // query selector variables go here 👇
 
+// Create a query selector for "save this poster button"
+var savePoster = document.querySelector('.save-poster');
+// Create a query selector for "show saved Posters button"
+var showSaved = document.querySelector('.show-saved');
+// Create a query selector for "show another random poster button"
+var showRandom = document.querySelector('.show-random');
+// Create a query selector for "Make your own poster button"
+var showForm = document.querySelector('.show-form');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -111,6 +119,13 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+// on page load the poster, image, title and quote are random.
+// will need to use window.onload = getRandomIndex(array);
+// will need to access the images array.
+// will need to access the titles array.
+// will need to access the quotes array.
+// 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
