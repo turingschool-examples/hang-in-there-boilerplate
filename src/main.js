@@ -114,6 +114,20 @@ var currentPoster;
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
+function makeOwnPoster() {
+  document.querySelector('.main-poster').classList.toggle('hidden');
+  document.querySelector('.poster-form').classList.toggle('hidden');
+}
+function viewSaved() {
+  document.querySelector('.saved-posters').classList.toggle('hidden');
+  document.querySelector('.main-poster').classList.toggle('hidden');
+}
+function takeMeBack() {
+  document.querySelector('.main-poster').classList.remove('hidden');
+  document.querySelector('.saved-posters').classList.add('hidden');
+  document.querySelector('.poster-form').classList.add('hidden');
+}
+
 targetTitle.innerText = titles[getRandomIndex(titles)];
 targetImage.src = images[getRandomIndex(images)];
 targetQuote.innerText = quotes[getRandomIndex(quotes)];
