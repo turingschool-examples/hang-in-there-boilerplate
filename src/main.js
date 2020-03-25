@@ -1,4 +1,24 @@
+// on page load the poster, image, title and quote are random.
+// will need to use window.onload = getRandomIndex(array);
+// will need to access the images array.
+// will need to access the titles array.
+// will need to access the quotes array.
+
+
 // query selector variables go here 👇
+
+// Create a query selector for "save this poster button"
+var savePoster = document.querySelector('.save-poster');
+// Create a query selector for "show saved Posters button"
+var showSaved = document.querySelector('.show-saved');
+// Create a query selector for "show another random poster button"
+var showRandom = document.querySelector('.show-random');
+// Create a query selector for "Make your own poster button"
+var showForm = document.querySelector('.show-form');
+// Create a query selector for the parent of all page1 buttons.
+var mainButtonParent = document.querySelector('.main-poster');
+// Create a query selector for the create your own poster page.
+var posterForm = document.querySelector('.poster-form');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -99,18 +119,32 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
+  // makePoster(
+  //   "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+  //   "Optimism",
+  //   "Keep a joyful heart!"
+  // )
 ];
 var currentPoster;
 
 // event listeners go here 👇
-
+mainButtonParent.addEventListener('click', buttonHandler)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+//Displays form page and hides main page.
+function buttonHandler(event) {
+  if (event.target === showForm) {
+    displayPosterForm()
+    // console.log(event);
+    return 
+  }
+}
+
+function displayPosterForm() {
+  posterForm.classList.remove('hidden');
+  mainButtonParent.classList.add('hidden');
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
