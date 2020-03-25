@@ -135,7 +135,7 @@ mainButtonParent.addEventListener('click', buttonHandler)
 function buttonHandler(event) {
   if (event.target === showForm) {
     displayPosterForm()
-    console.log(event);
+    // console.log(event);
     return 
   }
 }
