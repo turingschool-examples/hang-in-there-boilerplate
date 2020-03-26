@@ -2,6 +2,15 @@
 var posterImg = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
+var showForm = document.querySelector('.show-form')
+var mainPoster = document.querySelector('.main-poster')
+var posterForm = document.querySelector('.poster-form')
+var showSaved = document.querySelector('.show-saved')
+var savedPosters = document.querySelector('.saved-posters')
+var backToMain = document.querySelector('.back-to-main')
+var showMain = document.querySelector('.show-main')
+var showRandom = document.querySelector('.show-random')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -110,7 +119,11 @@ var quotes = [
 var currentPoster;
 document.onload = randomPoster()
 // event listeners go here 👇
-
+showForm.addEventListener("click",showFormPage)
+showSaved.addEventListener("click",showSavedPage)
+backToMain.addEventListener("click",backToMainPage)
+showMain.addEventListener("click",showMainPage)
+showRandom.addEventListener("click",showRandomPage)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -135,4 +148,23 @@ function randomPoster(){
 randomImg();
 randomTitle();
 randomQuote();
+}
+function showFormPage(){
+  mainPoster.classList.add('hidden')
+  posterForm.classList.remove('hidden')
+}
+function showSavedPage(){
+  mainPoster.classList.add('hidden')
+  savedPosters.classList.remove('hidden')
+}
+function backToMainPage(){
+  savedPosters.classList.add('hidden')
+  mainPoster.classList.remove('hidden')
+}
+function showMainPage(){
+  mainPoster.classList.remove('hidden')
+  posterForm.classList.add('hidden')
+}
+function showRandomPage(){
+  randomPoster()
 }
