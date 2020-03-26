@@ -1,7 +1,7 @@
 // query selector variables go here 👇
 var imageWrapper = document.querySelector('.poster');
-var newTitle = document.querySelector('.poster-title');
-var newQuote = document.querySelector('.poster-quote');
+var mainTitle = document.querySelector('.poster-title');
+var mainQuote = document.querySelector('.poster-quote');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -110,23 +110,17 @@ var savedPosters = [
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener("load", getImage)
+window.addEventListener("load", getImage);
 
 // functions and event handlers go here 👇
-function getImage() {
-  imageWrapper.insertAdjacentHTML('afterbegin', `<img class="poster-img" src="${images[0]}" alt="nothin to see here">)
-}
-
-newTitle.innerHTML = `
-  <h1>believe</h1>
-`;
-
-newQuote.innerHTML = `
-  <h3>You must do the things you think you cannot do.</h3>
-`;
-
-
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+function getImage() {
+  imageWrapper.insertAdjacentHTML('afterbegin', `<img class="poster-img" src="${images[0]}" alt="nothin to see here"/>`);
+}
+
+mainTitle.innerText = "believe";
+mainQuote.innerText = "You must do the things you think you cannot do.";
