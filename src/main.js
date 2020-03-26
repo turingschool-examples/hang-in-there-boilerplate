@@ -2,7 +2,9 @@
 var mainPosterImg = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
-
+var showFormBtn = document.querySelector('.show-form')
+var mainPoster = document.querySelector('.main-poster')
+var posterForm = document.querySelector('.poster-form')
 /* ---
 Iteration 1:
 Part A: Get querySelector for 'Make Poster' button
@@ -132,7 +134,7 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', mainPage)
-
+showFormBtn.addEventListener('click', newPoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -156,4 +158,9 @@ function setQuote() {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function newPoster() {
+  mainPoster.classList.add('hidden')
+  posterForm.classList.remove('hidden')
 }
