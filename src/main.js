@@ -1,9 +1,17 @@
-// document.querySelector(".poster").innerHTML = `<img class="poster-img" src="${images[getRandomIndex(images)]}" alt="random img">
-// <h1 class="poster-title">Title</h1>
-// <h3 class="poster-quote">Quote</h3>`;
-// document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)];
-// document.querySelector(".poster-quote").innerText = quotes[getRandomIndex(quotes)];
+
 // query selector variables go here 👇
+var saveButton = document.querySelector('.save-poster');
+// show saved button
+var savedPosterButton = document.querySelector('.show-saved');
+// show random button
+var randomButton = document.querySelector('.show-random');
+// show form button
+var formButton = document.querySelector('.show-form');
+
+var posterForm = document.querySelector('.poster-form')
+
+var mainPoster = document.querySelector('.main-poster')
+
 // we've provided you with some data to work with 👇
 var images = [
 "./assets/bees.jpg",
@@ -116,11 +124,10 @@ formButton.addEventListener('click', showPosterForm)
 // functions and event handlers go here 👇
 function makePoster(img, title, quote) {};
 function showPosterForm() {
-  posterFormHidden.class = "poster-form";
-  mainPoster.class = "main-poster hidden";
-
+  posterForm.className = "poster-form";
+  mainPoster.className = "main-poster hidden"
 }
-// posterButton.addEventListener('click',)
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
 return Math.floor(Math.random() * array.length);
@@ -133,16 +140,3 @@ document.querySelector("img").src = images[getRandomIndex(images)];
 document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)];
 
 document.querySelector(".poster-quote").innerText = quotes[getRandomIndex(quotes)];
-
-// save button
-var saveButton = document.querySelector('.save-poster');
-// show saved button
-var savedPosterButton = document.querySelector('.show-saved');
-// show random button
-var randomButton = document.querySelector('.show-random');
-// show form button
-var formButton = document.querySelector('.show-form');
-
-var posterFormHidden = document.querySelector('.poster-form hidden')
-
-var mainPoster = document.querySelector('.main-poster')
