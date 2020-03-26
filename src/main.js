@@ -21,7 +21,6 @@ var backToMainButton = document.querySelector('.back-to-main');
 
 var randomButton = document.querySelector('.show-random');
 
-
 // we've provided you with some data to work with 👇
 var images = [
 "./assets/bees.jpg",
@@ -43,6 +42,7 @@ var images = [
 "./assets/tiger.jpg",
 "./assets/turtle.jpg"
 ];
+
 var titles = [
 "determination",
 "success",
@@ -80,6 +80,7 @@ var titles = [
 "understanding",
 "wisdom"
 ];
+
 var quotes = [
 "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
 "You are braver than you believe, stronger than you seem and smarter than you think.",
@@ -127,6 +128,7 @@ makePoster(
   "Keep a joyful heart!"
 )
 ];
+
 var currentPoster;
 
 // event listeners go here 👇
@@ -142,18 +144,22 @@ function showPosterForm() {
   posterForm.className = "poster-form";
   mainPoster.className = "main-poster hidden";
 }
+
 function showSaved() {
   savedPoster.className = "saved-posters";
   mainPoster.className = "main-poster hidden";
 }
+
 function takeMeBack() {
   mainPoster.className = "main-poster";
   posterForm.className = "poster-form hidden";
 }
+
 function backToMain() {
   mainPoster.className = "main-poster";
   savedPoster.className = "saved-posters hidden";
 }
+
 function randomize() {
   document.querySelector("img").src = images[getRandomIndex(images)];
   document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)];
@@ -164,8 +170,6 @@ function randomize() {
 function getRandomIndex(array) {
 return Math.floor(Math.random() * array.length);
 }
-
-
 
 document.querySelector("img").src = images[getRandomIndex(images)];
 
