@@ -2,16 +2,17 @@
 var targetTitle = document.querySelector('.poster-title');
 var targetImage = document.querySelector('.poster-img');
 var targetQuote = document.querySelector('.poster-quote');
+
+var posterForm = document.querySelector('.poster-form');
+var mainPoster = document.querySelector('.main-poster');
+var savedPoster = document.querySelector('.saved-posters');
+
 var showFormBtn = document.querySelector('.show-form');
-var formPage = document.querySelector('.poster-form');
-var mainPage = document.querySelector('.main-poster');
 var showSavedBtn = document.querySelector('.show-saved');
-var savedPage = document.querySelector('.saved-posters');
 var nevermindBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
-var mainPoster =  document.querySelector('.main-poster');
-var posterForm = document.querySelector('.poster-form');
-var savedPoster = document.querySelector('.saved-posters');
+var randomBtn = document.querySelector('.show-random');
+
 var ownTitle = document.getElementById('poster-title');
 var ownImage = document.getElementById('poster-image-url');
 var ownQuote = document.getElementById('poster-quote');
@@ -128,10 +129,11 @@ var currentPoster;
 
 
 // event listeners go here 👇
-showFormBtn.addEventListener('click', createOwnPoster);
-showSavedBtn.addEventListener('click', seeSavedPoster);
-nevermindBtn.addEventListener('click', nevermindToMain);
-backToMainBtn.addEventListener('click', backToMain);
+showFormBtn.addEventListener('click', makeOwnPoster);
+showSavedBtn.addEventListener('click', viewSaved);
+nevermindBtn.addEventListener('click', takeMeBack);
+backToMainBtn.addEventListener('click', takeMeBack);
+randomBtn.addEventListener('click', randomPoster)
 
 // functions and event handlers go here 👇
 var newPoster;
@@ -162,32 +164,37 @@ function takeMeBack() {
   posterForm.classList.add('hidden');
 };
 
-function createOwnPoster() {
-  mainPage.classList.add('hidden');
-  formPage.classList.remove('hidden');
+// function createOwnPoster() {
+//   mainPoster.classList.add('hidden');
+//   posterForm.classList.remove('hidden');
+// };
+//
+// function seeSavedPoster() {
+//   mainPoster.classList.add('hidden');
+//   savedPoster.classList.remove('hidden');
+// };
+//
+// function nevermindToMain() {
+//   posterForm.classList.add('hidden');
+//   mainPoster.classList.remove('hidden');
+// };
+//
+// function backToMain() {
+//   savedPoster.classList.add('hidden');
+//   mainPoster.classList.remove('hidden');
+// };
+
+
+function randomPoster() {
+  targetTitle.innerText = titles[getRandomIndex(titles)];
+  targetImage.src = images[getRandomIndex(images)];
+  targetQuote.innerText = quotes[getRandomIndex(quotes)];
 };
 
-function seeSavedPoster() {
-  mainPage.classList.add('hidden');
-  savedPage.classList.remove('hidden');
-};
-
-function nevermindToMain() {
-  formPage.classList.add('hidden');
-  mainPage.classList.remove('hidden');
-};
-
-function backToMain() {
-  savedPage.classList.add('hidden');
-  mainPage.classList.remove('hidden');
-};
-
-targetTitle.innerText = titles[getRandomIndex(titles)];
-targetImage.src = images[getRandomIndex(images)];
-targetQuote.innerText = quotes[getRandomIndex(quotes)];
+randomPoster();
 
 //poster.src = 'https://fr.cdn.v5.futura-sciences.com/builds/images/thumbs/4/4e1f8098cf_Chilesaurus_diegosuarezi_2__University_of_Birmingham.jpg';
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
