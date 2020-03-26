@@ -1,4 +1,8 @@
 // query selector variables go here 👇
+var currentImage = document.querySelector('.poster-img');
+var currentTitle = document.querySelector('.poster-title');
+var currentQuote = document.querySelector('.poster-quote');
+//var showRandomButton = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -98,20 +102,32 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
-];
-var currentPoster;
+// var savedPosters = [
+//   makePoster(
+//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+//     "Optimism",
+//     "Keep a joyful heart!"
+//   )
+// ];
+var currentPoster = new Poster(currentImage, currentTitle, currentQuote);
+
 
 // event listeners go here 👇
+//showRandomButton.addEventListener('click', getRandomImage);
 
 // functions and event handlers go here 👇
+currentImage.src = images[getRandomIndex(images)];
+currentTitle.innerText = titles[getRandomIndex(titles)];
+currentQuote.innerText = quotes[getRandomIndex(quotes)];
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// function getRandomImage() {
+//   var randomIndex = getRandomIndex(images); //gets randomIndex for image array
+//   var randomImage = images[randomIndex]; //gets random value from image array
+//   console.log(currentImage);
+//   currentImage.src = randomImage; //setting currentImage to this randomImage
+// }
