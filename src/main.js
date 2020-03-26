@@ -2,10 +2,15 @@ var updateImg = document.querySelector(".poster-img");
 var updateTitle = document.querySelector(".poster-title");
 var updateQuote = document.querySelector(".poster-quote");
 // var savePoster = document.querySelector(".save-poster");
-// var showSaved = document.querySelector(".show-saved");
+var showSaved = document.querySelector(".show-saved");
 // var showRandom = document.querySelector(".show-random");
-// var makeOwn = document.querySelector(".show-form");
-
+var makeOwn = document.querySelector(".show-form");
+var backToMain = document.querySelector(".back-to-main");
+var showMain = document.querySelector(".show-main");
+// var makePoster = document.querySelector(".make-poster");
+var posterForm = document.querySelector(".poster-form");
+var mainPoster = document.querySelector(".main-poster");
+var savedPosters = document.querySelector(".saved-posters");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -112,11 +117,13 @@ var quotes = [
 //     "Keep a joyful heart!"
 //   )
 // ];
-var currentPoster;
+// var currentPoster;
 
 // event listeners go here 👇
-
-
+makeOwn.addEventListener('click', createOwnPoster);
+showSaved.addEventListener('click', displaySavedPosters);
+backToMain.addEventListener('click', returnToMain);
+showMain.addEventListener('click', returnToMain);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -126,4 +133,20 @@ updateImg.src = images[getRandomIndex(images)];
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
+
+function createOwnPoster() {
+  posterForm.classList.remove("hidden");
+  mainPoster.classList.add("hidden");
+};
+
+function displaySavedPosters() {
+  savedPosters.classList.remove("hidden");
+  mainPoster.classList.add("hidden");
+};
+
+function returnToMain() {
+  savedPosters.classList.add("hidden");
+  posterForm.classList.add("hidden");
+  mainPoster.classList.remove("hidden");
+};
