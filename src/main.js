@@ -2,6 +2,13 @@
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+var savePosterButton = document.querySelector(".save-poster");
+var showSavedButton = document.querySelector(".show-saved");
+var showRandomButton = document.querySelector(".show-random");
+var showFormButton = document.querySelector(".show-form");
+var makeMyPosterButton = document.querySelector(".make-poster");
+var showMainButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back");
 
 // var Poster = require('../src/poster');
 
