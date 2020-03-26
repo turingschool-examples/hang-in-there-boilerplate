@@ -27,6 +27,12 @@ var mainButtonParent = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 // Create a query selector for the poster image source.
 var posterImg = document.querySelector('.poster-img');
+//Create query selector for the main page title.
+var posterTitle = document.querySelector('.poster-title');
+//Create query selector for the main page quote
+var posterQuote = document.querySelector('.poster-quote');
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -163,4 +169,15 @@ function randomPoster() {
   posterImg.src = images[randomImage]
   
 }
-window.onload = randomPoster();
+
+function randomTitle() {
+  var randomWord = getRandomIndex(titles);
+  posterTitle.innerText = titles[randomWord];
+};
+
+function randomQuote() {
+  var randomPhrase = getRandomIndex(quotes);
+  posterQuote.innerText = quotes[randomPhrase];
+};
+
+window.onload = randomPoster(), randomTitle(), randomQuote();
