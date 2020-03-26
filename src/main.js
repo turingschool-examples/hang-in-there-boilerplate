@@ -2,6 +2,13 @@
 var mainPosterImg = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
+var showFormBtn = document.querySelector('.show-form')
+var mainPoster = document.querySelector('.main-poster')
+var posterForm = document.querySelector('.poster-form')
+var showSaved = document.querySelector('.show-saved')
+var savedPosterPage = document.querySelector('.saved-posters')
+var backToMain = document.querySelector('.back-to-main')
+var showMain = document.querySelector('.show-main')
 
 /* ---
 Iteration 1:
@@ -132,6 +139,10 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', mainPage)
+showFormBtn.addEventListener('click', newPoster)
+showSaved.addEventListener('click', displaySavedPoster)
+backToMain.addEventListener('click', returnToMain)
+showMain.addEventListener('click' returnToMain)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -156,4 +167,20 @@ function setQuote() {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function newPoster() {
+  mainPoster.classList.add('hidden')
+  posterForm.classList.remove('hidden')
+}
+
+function displaySavedPoster() {
+  mainPoster.classList.add('hidden')
+  savedPosterPage.classList.remove('hidden')
+}
+
+function returnToMain() {
+  savedPosterPage.classList.add('hidden')
+  posterForm.classList.add('hidden')
+  mainPoster.classList.remove('hidden')
 }
