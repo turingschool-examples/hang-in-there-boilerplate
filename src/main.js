@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-
+var imageWrapper = document.querySelector('.poster');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -108,10 +108,13 @@ var savedPosters = [
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener("load", getImage)
 
 // functions and event handlers go here 👇
+function getImage() {
+  imageWrapper.insertAdjacentHTML('afterbegin', `<img class="poster-img" src="${images[0]}" alt="nothin' to see here">`);
+}
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
