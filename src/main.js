@@ -32,7 +32,11 @@ var posterTitle = document.querySelector('.poster-title');
 //Create query selector for the main page quote
 var posterQuote = document.querySelector('.poster-quote');
 //Create query selector for the saved poster page
-var savedPosterPage = document.querySelector('.saved-posters')
+var savedPosterPage = document.querySelector('.saved-posters');
+//Creater query selector for the back to main button
+var backToMain = document.querySelector('.back-to-main');
+//Creater query selector for the show main button
+var showMain = document.querySelector('.show-main');
 
 
 
@@ -144,47 +148,64 @@ var savedPosters = [
 var currentPoster;
 
 // event listeners go here 👇
-mainButtonParent.addEventListener('click', buttonHandler)
+mainButtonParent.addEventListener('click', buttonHandler);
+savedPosterPage.addEventListener('click', savedPosterButtonHandler);
+posterForm.addEventListener('click', posterFormButtonHandler);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 //Displays form page and hides main page.
 function buttonHandler(event) {
   if (event.target === showForm) {
     displayPosterForm();
-    return;
   } else if (event.target === showSaved) {
     displayMakeMyPoster();
   } else if (event.target === showRandom) {
     createRandomPoster();
-  }
+  };
 };
+
+function savedPosterButtonHandler(event) {
+  if (event.target === backToMain) {
+    savedPosterPage.classList.add('hidden');
+    mainButtonParent.classList.remove('hidden');
+  };
+};
+
+function posterFormButtonHandler(event) {
+  if (event.target === showMain) {
+    posterForm.classList.add('hidden');
+    mainButtonParent.classList.remove('hidden');
+    console.log(event);
+  }
+}
 
 function displayPosterForm() {
   posterForm.classList.remove('hidden');
   mainButtonParent.classList.add('hidden');
-}
+};
 
 function displayMakeMyPoster() {
   savedPosterPage.classList.remove('hidden');
   mainButtonParent.classList.add('hidden');
-}
+};
 
 function getRandomIndex(array) {
   for (var i = 0; i< array.length; i++) {
     return Math.floor(Math.random() * array.length);
-  }
-}
+  };
+};
+
 
 function createRandomPoster() {
   randomPoster();
   randomQuote();
   randomTitle();
-}
+};
 
 function randomPoster() {
   var randomImage = getRandomIndex(images);
-  posterImg.src = images[randomImage]
-}
+  posterImg.src = images[randomImage];
+};
 
 function randomTitle() {
   var randomWord = getRandomIndex(titles);
