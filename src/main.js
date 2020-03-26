@@ -9,7 +9,15 @@ var showSavedBtn = document.querySelector('.show-saved');
 var savedPage = document.querySelector('.saved-posters');
 var nevermindBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
+var mainPoster =  document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
+var savedPoster = document.querySelector('.saved-posters');
+var ownTitle = document.getElementById('poster-title');
+var ownImage = document.getElementById('poster-image-url');
+var ownQuote = document.getElementById('poster-quote');
 
+var TrialPoster = require('..src/poster');
+var newPoster = new TrialPoster('Practice Image', 'Practice Title', 'Practice Quote');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -117,6 +125,7 @@ var quotes = [
 // ];
 var currentPoster;
 
+
 // event listeners go here 👇
 showFormBtn.addEventListener('click', createOwnPoster);
 showSavedBtn.addEventListener('click', seeSavedPoster);
@@ -124,20 +133,27 @@ nevermindBtn.addEventListener('click', nevermindToMain);
 backToMainBtn.addEventListener('click', backToMain);
 
 // functions and event handlers go here 👇
+
+function showPoster() {
+  titles.push(ownTitle.value);
+  images.push(ownImage.value);
+  quotes.push(ownQuote.value);
+};
+
 function makeOwnPoster() {
-  document.querySelector('.main-poster').classList.toggle('hidden');
-  document.querySelector('.poster-form').classList.toggle('hidden');
+  mainPoster.classList.toggle('hidden');
+  posterForm.classList.toggle('hidden');
 };
 
 function viewSaved() {
-  document.querySelector('.saved-posters').classList.toggle('hidden');
-  document.querySelector('.main-poster').classList.toggle('hidden');
+  savedPoster.classList.toggle('hidden');
+  mainPoster.classList.toggle('hidden');
 };
 
 function takeMeBack() {
-  document.querySelector('.main-poster').classList.remove('hidden');
-  document.querySelector('.saved-posters').classList.add('hidden');
-  document.querySelector('.poster-form').classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+  savedPoster.classList.add('hidden');
+  posterForm.classList.add('hidden');
 };
 
 function createOwnPoster() {
