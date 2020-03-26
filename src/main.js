@@ -1,9 +1,15 @@
 // query selector variables go here 👇
-
-
 var targetTitle = document.querySelector('.poster-title');
 var targetImage = document.querySelector('.poster-img');
 var targetQuote = document.querySelector('.poster-quote');
+var showFormBtn = document.querySelector('.show-form');
+var formPage = document.querySelector('.poster-form');
+var mainPage = document.querySelector('.main-poster');
+var showSavedBtn = document.querySelector('.show-saved');
+var savedPage = document.querySelector('.saved-posters');
+var nevermindBtn = document.querySelector('.show-main');
+var backToMainBtn = document.querySelector('.back-to-main');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -112,21 +118,47 @@ var quotes = [
 var currentPoster;
 
 // event listeners go here 👇
+showFormBtn.addEventListener('click', createOwnPoster);
+showSavedBtn.addEventListener('click', seeSavedPoster);
+nevermindBtn.addEventListener('click', nevermindToMain);
+backToMainBtn.addEventListener('click', backToMain);
 
 // functions and event handlers go here 👇
 function makeOwnPoster() {
   document.querySelector('.main-poster').classList.toggle('hidden');
   document.querySelector('.poster-form').classList.toggle('hidden');
-}
+};
+
 function viewSaved() {
   document.querySelector('.saved-posters').classList.toggle('hidden');
   document.querySelector('.main-poster').classList.toggle('hidden');
-}
+};
+
 function takeMeBack() {
   document.querySelector('.main-poster').classList.remove('hidden');
   document.querySelector('.saved-posters').classList.add('hidden');
   document.querySelector('.poster-form').classList.add('hidden');
-}
+};
+
+function createOwnPoster() {
+  mainPage.classList.add('hidden');
+  formPage.classList.remove('hidden');
+};
+
+function seeSavedPoster() {
+  mainPage.classList.add('hidden');
+  savedPage.classList.remove('hidden');
+};
+
+function nevermindToMain() {
+  formPage.classList.add('hidden');
+  mainPage.classList.remove('hidden');
+};
+
+function backToMain() {
+  savedPage.classList.add('hidden');
+  mainPage.classList.remove('hidden');
+};
 
 targetTitle.innerText = titles[getRandomIndex(titles)];
 targetImage.src = images[getRandomIndex(images)];
