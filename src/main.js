@@ -1,6 +1,29 @@
 // query selector variables go here 👇
+var mainPosterImg = document.querySelector('.poster-img')
+var posterTitle = document.querySelector('.poster-title')
+var posterQuote = document.querySelector('.poster-quote')
+
+/* ---
+Iteration 1:
+Part A: Get querySelector for 'Make Poster' button
+Add click event for 'Make Poster' button
+Add hidden class to section.main-poster
+Create function to remove hidden class from poster-form
+
+Part B: Get querySelector for show-saved button
+Add click event for show-saved button
+Add hidden class to section.main-poster
+Create function to remove hidden class from saved-posters section
+
+Part C: Create a variable to querySelect back-to-main button
+Create a variable to querySelect show-main button
+Add click event for show-main and back-to-main buttons
+Create function to add hidden class to poster-form or saved-posters section
+Remove hidden class from section.main-poster
+*/
 
 // we've provided you with some data to work with 👇
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -98,20 +121,39 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
-];
+// var savedPosters = [
+//   makePoster(
+//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+//     "Optimism",
+//     "Keep a joyful heart!"
+//   )
+// ];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener('load', mainPage)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+function mainPage() {
+  setImgSource()
+  setTitle()
+  setQuote()
+}
+
+function setImgSource() {
+  mainPosterImg.setAttribute('src', images[getRandomIndex(images)]);
+}
+
+function setTitle() {
+  posterTitle.innerHTML = titles[getRandomIndex(titles)];
+}
+
+function setQuote() {
+  posterQuote.innerHTML = quotes[getRandomIndex(quotes)];
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
