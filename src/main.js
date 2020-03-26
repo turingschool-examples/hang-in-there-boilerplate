@@ -27,6 +27,9 @@ var mainButtonParent = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 // Create a query selector for the poster image source.
 var posterImg = document.querySelector('.poster-img');
+//Create query selector for the main page title.
+var posterTitle = document.querySelector('.poster-title')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -163,4 +166,11 @@ function randomPoster() {
   posterImg.src = images[randomImage]
   
 }
+
+function randomTitle() {
+  var randomWord = getRandomIndex(titles);
+  posterTitle.innerText = titles[randomWord];
+};
+
 window.onload = randomPoster();
+window.onload = randomTitle();
