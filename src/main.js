@@ -141,9 +141,9 @@ function showPoster() {
   images.push(ownImage.value);
   quotes.push(ownQuote.value);
   newPoster = new Poster(ownImage.value, ownTitle.value, ownQuote.value);
-  targetTitle.innerText = titles[titles.length -1];
-  targetImage.src = images[images.length -1];
-  targetQuote.innerText = quotes[quotes.length -1];
+  targetTitle.innerText = newPoster.title;
+  targetImage.src = newPoster.imageURL;
+  targetQuote.innerText = newPoster.quote;
 };
 
 function makeOwnPoster() {
