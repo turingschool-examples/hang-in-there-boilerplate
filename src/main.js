@@ -28,7 +28,10 @@ var posterForm = document.querySelector('.poster-form');
 // Create a query selector for the poster image source.
 var posterImg = document.querySelector('.poster-img');
 //Create query selector for the main page title.
-var posterTitle = document.querySelector('.poster-title')
+var posterTitle = document.querySelector('.poster-title');
+//Create query selector for the main page quote
+var posterQuote = document.querySelector('.poster-quote');
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -172,5 +175,9 @@ function randomTitle() {
   posterTitle.innerText = titles[randomWord];
 };
 
-window.onload = randomPoster();
-window.onload = randomTitle();
+function randomQuote() {
+  var randomPhrase = getRandomIndex(quotes);
+  posterQuote.innerText = quotes[randomPhrase];
+};
+
+window.onload = randomPoster(), randomTitle(), randomQuote();
