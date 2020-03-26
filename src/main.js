@@ -16,8 +16,9 @@ var ownTitle = document.getElementById('poster-title');
 var ownImage = document.getElementById('poster-image-url');
 var ownQuote = document.getElementById('poster-quote');
 
-var TrialPoster = require('..src/poster');
-var newPoster = new TrialPoster('Practice Image', 'Practice Title', 'Practice Quote');
+
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -133,11 +134,16 @@ nevermindBtn.addEventListener('click', nevermindToMain);
 backToMainBtn.addEventListener('click', backToMain);
 
 // functions and event handlers go here 👇
+var newPoster;
 
 function showPoster() {
   titles.push(ownTitle.value);
   images.push(ownImage.value);
   quotes.push(ownQuote.value);
+  newPoster = new Poster(ownImage.value, ownTitle.value, ownQuote.value);
+  targetTitle.innerText = titles[titles.length -1];
+  targetImage.src = images[images.length -1];
+  targetQuote.innerText = quotes[quotes.length -1];
 };
 
 function makeOwnPoster() {
