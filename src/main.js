@@ -1,18 +1,21 @@
 // on page load the poster, image, title and quote are random.
-// will need to use window.onload = getRandomIndex(array);
-
-// window.onload = randomPoster();
 // will need to access the images array.
   // will need to access the src in poster-img class and interpolate the random image url.
-
 // will need to access the titles array.
   // will need to access the innerText of poster-title interpolate the random title.
-
 // will need to access the quotes array.
   // will need to access the innerText of poster-quote and interpolate the random quote.
 
-// query selector variables go here 👇
+//Iteration 2
+//On the new poster form view, users should be able to fill out the three input fields and then hit the save button.
 
+//Need to target the Image url input and access the input data
+  //Create querySelector for url element #poster-image-url
+  // Access the input value of the url image
+
+var posterImageUrl = document.querySelector('#poster-image-url');
+// query selector variables go here 👇
+var makePoster = document.querySelector('.make-poster');
 // Create a query selector for "save this poster button"
 var savePoster = document.querySelector('.save-poster');
 // Create a query selector for "show saved Posters button"
@@ -175,10 +178,11 @@ function posterFormButtonHandler(event) {
   if (event.target === showMain) {
     posterForm.classList.add('hidden');
     mainButtonParent.classList.remove('hidden');
-    console.log(event);
-  }
+} else if(event.target === makePoster) {
+  posterForm.classList.add('hidden');
+  mainButtonParent.classList.remove('hidden');
 }
-
+}
 function displayPosterForm() {
   posterForm.classList.remove('hidden');
   mainButtonParent.classList.add('hidden');
