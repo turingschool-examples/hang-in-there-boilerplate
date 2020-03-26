@@ -119,10 +119,17 @@ document.addEventListener("DOMContentLoaded",(event) => {
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
+// need to use the random number function to extract
+// an index identifier from each of the arrays
+
+// retrieve the associated element of the index number
+// and insert it into the poster
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
 
 function getRandomPoster(images, titles, quotes) {
 
