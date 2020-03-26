@@ -7,10 +7,16 @@ var savedPosterButton = document.querySelector('.show-saved');
 var randomButton = document.querySelector('.show-random');
 // show form button
 var formButton = document.querySelector('.show-form');
+// take me back button
+var showMainButton = document.querySelector('.show-main');
 
-var posterForm = document.querySelector('.poster-form')
+// query for pages
+var posterForm = document.querySelector('.poster-form');
 
-var mainPoster = document.querySelector('.main-poster')
+var mainPoster = document.querySelector('.main-poster');
+
+var savedPoster = document.querySelector('.saved-posters');
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -120,12 +126,23 @@ makePoster(
 var currentPoster;
 
 // event listeners go here 👇
-formButton.addEventListener('click', showPosterForm)
+formButton.addEventListener('click', showPosterForm);
+savedPosterButton.addEventListener('click', showSaved);
+showMainButton.addEventListener('click', takeMeBack);
+
 // functions and event handlers go here 👇
 function makePoster(img, title, quote) {};
 function showPosterForm() {
   posterForm.className = "poster-form";
-  mainPoster.className = "main-poster hidden"
+  mainPoster.className = "main-poster hidden";
+}
+function showSaved() {
+  savedPoster.className = "saved-posters";
+  mainPoster.className = "main-poster hidden";
+}
+function takeMeBack() {
+  mainPoster.className = "main-poster";
+  posterForm.className = "poster-form hidden";
 }
 
 // (we've provided one for you to get you started)!
