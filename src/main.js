@@ -1,5 +1,4 @@
 // query selector variables go here 👇
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -110,8 +109,17 @@ var currentPoster;
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
+function makePoster(img, title, quote) {};
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// images[getRandomIndex(images)];
+// document.querySelector('.poster-img')
+// // document.querySelector("img[src='']")
+document.querySelector(".poster").innerHTML = `<img class="poster-img" src="${images[getRandomIndex(images)]}" alt="random img">
+<h1 class="poster-title">Title</h1>
+<h3 class="poster-quote">Quote</h3>`;
+document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)];
+document.querySelector(".poster-quote").innerText = quotes[getRandomIndex(quotes)];
