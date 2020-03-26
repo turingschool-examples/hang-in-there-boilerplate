@@ -112,18 +112,22 @@ makePoster(
 var currentPoster;
 
 // event listeners go here 👇
-
+formButton.addEventListener('click', showPosterForm)
 // functions and event handlers go here 👇
 function makePoster(img, title, quote) {};
+function showPosterForm() {
+  posterFormHidden.class = "poster-form";
+  mainPoster.class = "main-poster hidden";
+
+}
 // posterButton.addEventListener('click',)
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
 return Math.floor(Math.random() * array.length);
 }
-//
-// var posterButton = document.querySelector('.show-form');
-//
-// var posterForm = document.querySelector('poster-form hidden');
+
+
+
 document.querySelector("img").src = images[getRandomIndex(images)];
 
 document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)];
@@ -138,3 +142,7 @@ var savedPosterButton = document.querySelector('.show-saved');
 var randomButton = document.querySelector('.show-random');
 // show form button
 var formButton = document.querySelector('.show-form');
+
+var posterFormHidden = document.querySelector('.poster-form hidden')
+
+var mainPoster = document.querySelector('.main-poster')
