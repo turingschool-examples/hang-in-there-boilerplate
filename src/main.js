@@ -154,7 +154,9 @@ function buttonHandler(event) {
     return;
   } else if (event.target === showSaved) {
     displayMakeMyPoster();
-  };
+  } else if (event.target === showRandom) {
+    createRandomPoster();
+  }
 };
 
 function displayPosterForm() {
@@ -171,6 +173,12 @@ function getRandomIndex(array) {
   for (var i = 0; i< array.length; i++) {
     return Math.floor(Math.random() * array.length);
   }
+}
+
+function createRandomPoster() {
+  randomPoster();
+  randomQuote();
+  randomTitle();
 }
 
 function randomPoster() {
