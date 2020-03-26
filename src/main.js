@@ -1,5 +1,6 @@
-// query selector variables go here 👇
-
+var image = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -98,20 +99,35 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
-];
-var currentPoster;
-
+// var savedPosters = [
+//   makePoster(
+//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+//     "Optimism",
+//     "Keep a joyful heart!"
+//   )
+// ];
+// var currentPoster;
 // event listeners go here 👇
-
+image.addEventListener('load', getImage(images));
+title.addEventListener('load', getTitle(titles));
+quote.addEventListener('load', getQuote(quotes));
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
+function getImage(array) {
+  var indexHolder = getRandomIndex(array);
+  var newImage = array[indexHolder];
+  image.setAttribute('src', newImage);
+}
+function getTitle(array) {
+  var indexHolder = getRandomIndex(array);
+  var newTitle = array[indexHolder];
+  title.innerText = newTitle;
+}
+function getQuote(array) {
+  var indexHolder = getRandomIndex(array);
+  var newQuote = array[indexHolder];
+  quote.innerText = newQuote;
+}
