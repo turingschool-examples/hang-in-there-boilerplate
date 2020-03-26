@@ -142,7 +142,7 @@ window.addEventListener('load', mainPage)
 showFormBtn.addEventListener('click', newPoster)
 showSaved.addEventListener('click', displaySavedPoster)
 backToMain.addEventListener('click', returnToMain)
-showMain.addEventListener('click' returnToMain)
+showMain.addEventListener('click', returnToMain)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
