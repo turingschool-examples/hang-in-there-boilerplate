@@ -35,6 +35,7 @@ var posterQuote = document.querySelector('.poster-quote');
 var savedPosterPage = document.querySelector('.saved-posters')
 
 
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -151,7 +152,7 @@ function buttonHandler(event) {
   if (event.target === showForm) {
     displayPosterForm();
     return;
-  } else if (event.target === savedPosterPage) {
+  } else if (event.target === showSaved) {
     displayMakeMyPoster();
   };
 };
