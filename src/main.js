@@ -1,7 +1,11 @@
-var savePoster = document.querySelector(".save-poster");
-var showSaved = document.querySelector(".show-saved");
-var showRandom = document.querySelector(".show-random");
-var makeOwn = document.querySelector(".show-form");
+var updateImg = document.querySelector(".poster-img");
+var updateTitle = document.querySelector(".poster-title");
+var updateQuote = document.querySelector(".poster-quote");
+// var savePoster = document.querySelector(".save-poster");
+// var showSaved = document.querySelector(".show-saved");
+// var showRandom = document.querySelector(".show-random");
+// var makeOwn = document.querySelector(".show-form");
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -101,19 +105,25 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
-];
+// var savedPosters = [
+//   makePoster(
+//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+//     "Optimism",
+//     "Keep a joyful heart!"
+//   )
+// ];
 var currentPoster;
 
 // event listeners go here 👇
 
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+updateTitle.innerText = titles[getRandomIndex(titles)];
+updateQuote.innerText = quotes[getRandomIndex(quotes)];
+updateImg.src = images[getRandomIndex(images)];
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
