@@ -129,3 +129,12 @@ document.querySelector("img").src = images[getRandomIndex(images)];
 document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)];
 
 document.querySelector(".poster-quote").innerText = quotes[getRandomIndex(quotes)];
+
+// save button
+var saveButton = document.querySelector('.save-poster');
+// show saved button
+var savedPosterButton = document.querySelector('.show-saved');
+// show random button
+var randomButton = document.querySelector('.show-random');
+// show form button
+var formButton = document.querySelector('.show-form');
