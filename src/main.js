@@ -1,8 +1,14 @@
 // query selector variables go here 👇
-var mainPhoto = document.querySelector('img');
-var mainTitle = document.querySelector('.poster-title');
-var mainQuote = document.querySelector('.poster-quote');
+
+var targetImage = document.querySelector('.poster-img');
+
+var targetTitle = document.querySelector('.poster-title');
+
+var targetQuote = document.querySelector('.poster-quote');
+
+
 // we've provided you with some data to work with 👇
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -23,6 +29,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+
 var titles = [
   "determination",
   "success",
@@ -60,6 +67,7 @@ var titles = [
   "understanding",
   "wisdom"
 ];
+
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
@@ -107,9 +115,13 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-mainTitle.innerText = titles[getRandomIndex(titles)];
-mainQuote.innerText = quotes[getRandomIndex(quotes)];
-mainPhoto.src = images[getRandomIndex(images)];
+
+targetImage.src = images[getRandomIndex(images)];
+
+targetTitle.innerText = titles[getRandomIndex(titles)];
+
+targetQuote.innerText = quotes[getRandomIndex(quotes)];
