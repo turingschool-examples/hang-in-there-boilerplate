@@ -1,6 +1,6 @@
 // on page load the poster, image, title and quote are random.
-
 // will need to use window.onload = getRandomIndex(array);
+
 // window.onload = randomPoster();
 // will need to access the images array.
   // will need to access the src in poster-img class and interpolate the random image url.
@@ -158,11 +158,9 @@ function getRandomIndex(array) {
   }
 }
 
-
-
 function randomPoster() {
  var randomImage = getRandomIndex(images);
   posterImg.src = images[randomImage]
   
 }
-randomPoster();
+window.onload = randomPoster();
