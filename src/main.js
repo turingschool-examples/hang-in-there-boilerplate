@@ -31,6 +31,8 @@ var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 //Create query selector for the main page quote
 var posterQuote = document.querySelector('.poster-quote');
+//Create query selector for the saved poster page
+var savedPosterPage = document.querySelector('.saved-posters')
 
 
 // we've provided you with some data to work with 👇
@@ -147,14 +149,20 @@ mainButtonParent.addEventListener('click', buttonHandler)
 //Displays form page and hides main page.
 function buttonHandler(event) {
   if (event.target === showForm) {
-    displayPosterForm()
-    // console.log(event);
-    return 
-  }
-}
+    displayPosterForm();
+    return;
+  } else if (event.target === savedPosterPage) {
+    displayMakeMyPoster();
+  };
+};
 
 function displayPosterForm() {
   posterForm.classList.remove('hidden');
+  mainButtonParent.classList.add('hidden');
+}
+
+function displayMakeMyPoster() {
+  savedPosterPage.classList.remove('hidden');
   mainButtonParent.classList.add('hidden');
 }
 
@@ -165,9 +173,8 @@ function getRandomIndex(array) {
 }
 
 function randomPoster() {
- var randomImage = getRandomIndex(images);
+  var randomImage = getRandomIndex(images);
   posterImg.src = images[randomImage]
-  
 }
 
 function randomTitle() {
