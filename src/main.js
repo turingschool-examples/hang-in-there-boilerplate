@@ -3,7 +3,7 @@ var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 
-var Poster = require('../src/poster');
+// var Poster = require('../src/poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -103,21 +103,18 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
-];
+// var savedPosters = [
+//   makePoster(
+//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+//     "Optimism",
+//     "Keep a joyful heart!"
+//   )
+// ];
 var currentPoster;
 
 // event listeners go here 👇
-document.addEventListener("DOMContentLoaded",(event) => {
-  // random function
-})
+
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 
 // need to use the random number function to extract
 // an index identifier from each of the arrays
@@ -129,11 +126,25 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
-
-function getRandomPoster(images, titles, quotes) {
-
+function randomTitle() {
+  var indexNumber = getRandomIndex(titles);
+  posterTitle.innerText = titles[indexNumber];
 }
 
+randomTitle();
 
-// afd
+function randomQuote() {
+  var indexNumber = getRandomIndex(quotes);
+  posterQuote.innerText = quotes[indexNumber];
+}
+
+randomQuote();
+
+function randomImage() {
+  var indexNumber = getRandomIndex(images);
+  posterImage.setAttribute("src", images[indexNumber]);
+}
+
+randomImage();
+
+// end
