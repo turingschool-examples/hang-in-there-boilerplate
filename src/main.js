@@ -1,9 +1,15 @@
 // on page load the poster, image, title and quote are random.
-// will need to use window.onload = getRandomIndex(array);
-// will need to access the images array.
-// will need to access the titles array.
-// will need to access the quotes array.
 
+// will need to use window.onload = getRandomIndex(array);
+// window.onload = randomPoster();
+// will need to access the images array.
+  // will need to access the src in poster-img class and interpolate the random image url.
+
+// will need to access the titles array.
+  // will need to access the innerText of poster-title interpolate the random title.
+
+// will need to access the quotes array.
+  // will need to access the innerText of poster-quote and interpolate the random quote.
 
 // query selector variables go here 👇
 
@@ -19,7 +25,8 @@ var showForm = document.querySelector('.show-form');
 var mainButtonParent = document.querySelector('.main-poster');
 // Create a query selector for the create your own poster page.
 var posterForm = document.querySelector('.poster-form');
-
+// Create a query selector for the poster image source.
+var posterImg = document.querySelector('.poster-img');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -146,6 +153,16 @@ function displayPosterForm() {
 }
 
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  for (var i = 0; i< array.length; i++) {
+    return Math.floor(Math.random() * array.length);
+  }
 }
 
+
+
+function randomPoster() {
+ var randomImage = getRandomIndex(images);
+  posterImg.src = images[randomImage]
+  
+}
+randomPoster();
