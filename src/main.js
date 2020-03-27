@@ -231,15 +231,15 @@ function randomQuote() {
 function customPosterData() {
   event.preventDefault();
   var customPoster = new Poster ()
-  customPoster.imageURL = customPosterImageUrl.value;
-  customPoster.title = customPosterTitle.value;
-  customPoster.quote = customPosterQuote.value;
+  customPoster.imageURL = posterImg.src = customPosterImageUrl.value;
+  customPoster.title = posterTitle.innerText = customPosterTitle.value;
+  customPoster.quote = posterQuote.innerText = customPosterQuote.value;
   images.push(customPoster.imageURL);
   titles.push(customPoster.title);
   quotes.push(customPoster.quote);
   currentPoster = customPoster
 }
-
+// posterImg.src = currentPoster.imageURL
 
 window.onload = currentPoster;
 
