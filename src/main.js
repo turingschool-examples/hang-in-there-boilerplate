@@ -1,4 +1,14 @@
 // query selector variables go here 👇
+var image = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
+var formButton = document.querySelector('.show-form');
+var makePoster = document.querySelector('.poster-form');
+var mainPage = document.querySelector('.main-poster');
+var mainButton = document.querySelector('.show-main');
+var saveButton = document.querySelector('.show-saved');
+var savePage = document.querySelector('.saved-posters');
+var backToMainButton = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,6 +118,13 @@ var savedPosters = [
 var currentPoster;
 
 // event listeners go here 👇
+image.addEventListener('load', getImage(images));
+title.addEventListener('load', getTitle(titles));
+quote.addEventListener('load', getQuote(quotes));
+formButton.addEventListener('click', formPoster);
+mainButton.addEventListener('click', takeMeBack);
+saveButton.addEventListener('click', showSaved);
+backToMainButton.addEventListener('click', showMain);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -115,3 +132,40 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function getImage(array) {
+  var indexHolder = getRandomIndex(array);
+  var newImage = array[indexHolder];
+  image.setAttribute('src', newImage);
+}
+
+function getTitle(array) {
+  var indexHolder = getRandomIndex(array);
+  var newTitle = array[indexHolder];
+  title.innerText = newTitle;
+}
+
+function getQuote(array) {
+  var indexHolder = getRandomIndex(array);
+  var newQuote = array[indexHolder];
+  quote.innerText = newQuote;
+}
+
+function formPoster() {
+  mainPage.classList.add('hidden');
+  makePoster.classList.remove('hidden');
+}
+
+function takeMeBack() {
+  makePoster.classList.add('hidden');
+  mainPage.classList.remove('hidden');
+}
+
+function showSaved() {
+  mainPage.classList.add('hidden');
+  savePage.classList.remove('hidden');
+}
+
+function showMain() {
+  savePage.classList.add('hidden');
+  mainPage.classList.remove('hidden');
+}
