@@ -112,6 +112,9 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
+var savedPosters = [
+  
+];
 // event listeners go here 👇
 formButton.addEventListener('click', switchToFormPage);
 
