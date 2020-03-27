@@ -1,18 +1,29 @@
 // on page load the poster, image, title and quote are random.
-// will need to use window.onload = getRandomIndex(array);
-
-// window.onload = randomPoster();
 // will need to access the images array.
   // will need to access the src in poster-img class and interpolate the random image url.
-
 // will need to access the titles array.
   // will need to access the innerText of poster-title interpolate the random title.
-
 // will need to access the quotes array.
   // will need to access the innerText of poster-quote and interpolate the random quote.
 
-// query selector variables go here 👇
+//Iteration 2
+//On the new poster form view, users should be able to fill out the three input fields and then hit the save button.
 
+//Need to target the Image url input and access the input data
+  //Create querySelector for url element #poster-image-url
+  // Access the input value of the url image
+  // Save the image url input data to the images array
+
+
+// query selector variables go here 👇
+// Create query selector for poster image input
+var customPosterImageUrl = document.querySelector('#poster-image-url');
+// Create query selector for poster title input
+var customPosterTitle = document.querySelector('#poster-title');
+// Create query selector for poster quote input
+var customPosterQuote = document.querySelector('#poster-quote');
+
+var makePoster = document.querySelector('.make-poster');
 // Create a query selector for "save this poster button"
 var savePoster = document.querySelector('.save-poster');
 // Create a query selector for "show saved Posters button"
@@ -33,9 +44,9 @@ var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 //Create query selector for the saved poster page
 var savedPosterPage = document.querySelector('.saved-posters');
-//Creater query selector for the back to main button
+//Create query selector for the back to main button
 var backToMain = document.querySelector('.back-to-main');
-//Creater query selector for the show main button
+//Create query selector for the show main button
 var showMain = document.querySelector('.show-main');
 
 
@@ -152,6 +163,7 @@ var currentPoster;
 mainButtonParent.addEventListener('click', buttonHandler);
 savedPosterPage.addEventListener('click', savedPosterButtonHandler);
 posterForm.addEventListener('click', posterFormButtonHandler);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 //Displays form page and hides main page.
@@ -176,6 +188,12 @@ function posterFormButtonHandler(event) {
   if (event.target === showMain) {
     posterForm.classList.add('hidden');
     mainButtonParent.classList.remove('hidden');
+
+  } else if(event.target === makePoster) {
+    posterForm.classList.add('hidden');
+    mainButtonParent.classList.remove('hidden');
+    customPosterData();
+
   }
 }
 
@@ -192,12 +210,6 @@ function displayMakeMyPoster() {
 function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
 };
-
-// function createRandomPoster() {
-//   randomPoster();
-//   randomQuote();
-//   randomTitle();
-// };
 
 currentPoster = new Poster (randomPosterImage(), randomTitle(), randomQuote())
 
@@ -219,11 +231,29 @@ function randomQuote() {
   return Poster.quote = posterQuote.innerText
 };
 
+
+function customPosterData() {
+  event.preventDefault();
+  var customPosterImageUrlData = customPosterImageUrl.value;
+  var customPosterTitleData = customPosterTitle.value;
+  var customPosterQuoteData = customPosterQuote.value;
+  images.push(customPosterImageUrlData);
+  titles.push(customPosterTitleData);
+  quotes.push(customPosterQuoteData)
+
+
+  console.log(customPosterImageUrlData);
+  console.log(customPosterTitleData)
+  console.log(customPosterQuoteData);
+  }
+
+
 window.onload = currentPoster;
 
 function updateCurrentPoster() {
   var newCurrentPoster = new Poster (randomPosterImage(), randomTitle(), randomQuote())
   currentPoster = newCurrentPoster
 }
+
 
 
