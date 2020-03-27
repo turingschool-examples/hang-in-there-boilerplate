@@ -236,6 +236,11 @@ function customPosterData() {
   var customPosterImageUrlData = customPosterImageUrl.value;
   var customPosterTitleData = customPosterTitle.value;
   var customPosterQuoteData = customPosterQuote.value;
+  images.push(customPosterImageUrlData);
+  titles.push(customPosterTitleData);
+  quotes.push(customPosterQuoteData)
+
+
   console.log(customPosterImageUrlData);
   console.log(customPosterTitleData)
   console.log(customPosterQuoteData);
