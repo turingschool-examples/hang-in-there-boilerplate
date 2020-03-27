@@ -199,27 +199,30 @@ function getRandomIndex(array) {
 //   randomTitle();
 // };
 
-currentPoster = new Poster (randomPoster(), randomTitle(), randomQuote())
+currentPoster = new Poster (randomPosterImage(), randomTitle(), randomQuote())
 
-function randomPoster() {
+function randomPosterImage() {
   var randomImage = getRandomIndex(images);
   posterImg.src = images[randomImage];
+  return Poster.imageURL = posterImg.src
 };
 
 function randomTitle() {
   var randomWord = getRandomIndex(titles);
   posterTitle.innerText = titles[randomWord];
+  return Poster.title = posterTitle.innerText
 };
 
 function randomQuote() {
   var randomPhrase = getRandomIndex(quotes);
   posterQuote.innerText = quotes[randomPhrase];
+  return Poster.quote = posterQuote.innerText
 };
 
 window.onload = currentPoster;
 
 function updateCurrentPoster() {
-  var newCurrentPoster = new Poster (randomPoster(), randomTitle(), randomQuote())
+  var newCurrentPoster = new Poster (randomPosterImage(), randomTitle(), randomQuote())
   currentPoster = newCurrentPoster
 }
 
