@@ -19,16 +19,16 @@ A boilerplate repo.
 
 ### Iteration 0 - Main Page
 
-![screenshot of main page showing poster](/Iteration_0_Screenshot.jpg)
+![screenshot of main page showing poster](/readme-imgs/mainJL.png)
 
 - When the page loads, we should see a poster with a randomly selected image, title, and quote
 * Completed 3/25/2020. Driver- Jenna/navigator-Leigh.
-* Demonstrated understanding of randomizing function with arrays, querySelector, EventListener.  
+* Demonstrated understanding of randomizing function with querySelector, EventListener.  
 
 ### Iteration 1 - Switching Views
 
 Form page:
-![screenshot of form](/Iteration_1_Form_Screenshot.jpg)
+![screenshot of form](/readme-imgs/blankFormJL.png)
 
 Saved posters page (once working with extra saved posters):
 ![screenshot of saved posters page](/readme-imgs/saved.png)
@@ -43,13 +43,17 @@ Saved posters page (once working with extra saved posters):
 
 _Hint: go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place_
 
+
 ## Iteration 2 - Creating a New Poster
 
 Form being filled out:
-![screenshot of form](/readme-imgs/form.png)
+![screenshot of form](/readme-imgs/formJL.png)
 
 Once poster is saved:
-![screenshot of result](/readme-imgs/form-result.png)
+![screenshot of result](/readme-imgs/form-resultJL.png)
+
+* Completed 3/27/2020. Driver- Leigh / Navigator- Jenna
+* Demonstrated saving and displaying user inputs
 
 - On the new poster form view, users should be able to fill out the three input fields and then hit the save button
 - When the save button is clicked, several things will happen:
