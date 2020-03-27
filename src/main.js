@@ -103,18 +103,16 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-// var currentPoster = new Poster(currentImage, currentTitle, currentQuote);
+// var currentPoster = new Poster(posterImage, posterTitle, posterQuote);
 
 
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
-var title = titles[getRandomIndex(titles)]
-posterTitle.innerText = title
-var quote = quotes[getRandomIndex(quotes)]
-posterQuote.innerText = quote
-var image = images[getRandomIndex(images)]
-posterImage.src = image
+posterImage.src = images[getRandomIndex(images)];
+posterTitle.innerText = titles[getRandomIndex(titles)];
+posterQuote.innerText = quotes[getRandomIndex(quotes)];
+
 // new code
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
