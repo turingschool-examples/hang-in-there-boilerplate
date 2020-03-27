@@ -33,7 +33,7 @@ var showRandom = document.querySelector('.show-random');
 // Create a query selector for "Make your own poster button"
 var showForm = document.querySelector('.show-form');
 // Create a query selector for the parent of all page1 buttons.
-var mainButtonParent = document.querySelector('.main-poster');
+var mainPosterPage = document.querySelector('.main-poster');
 // Create a query selector for the create your own poster page.
 var posterForm = document.querySelector('.poster-form');
 // Create a query selector for the poster image source.
@@ -150,17 +150,13 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [
-  // makePoster(
-  //   "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-  //   "Optimism",
-  //   "Keep a joyful heart!"
-  // )
+ 
 ];
 
 var currentPoster;
 
 // event listeners go here 👇
-mainButtonParent.addEventListener('click', buttonHandler);
+mainPosterPage.addEventListener('click', buttonHandler);
 savedPosterPage.addEventListener('click', savedPosterButtonHandler);
 posterForm.addEventListener('click', posterFormButtonHandler);
 
@@ -180,18 +176,18 @@ function buttonHandler(event) {
 function savedPosterButtonHandler(event) {
   if (event.target === backToMain) {
     savedPosterPage.classList.add('hidden');
-    mainButtonParent.classList.remove('hidden');
+    mainPosterPage.classList.remove('hidden');
   };
 };
 
 function posterFormButtonHandler(event) {
   if (event.target === showMain) {
     posterForm.classList.add('hidden');
-    mainButtonParent.classList.remove('hidden');
+    mainPosterPage.classList.remove('hidden');
 
   } else if(event.target === makePoster) {
     posterForm.classList.add('hidden');
-    mainButtonParent.classList.remove('hidden');
+    mainPosterPage.classList.remove('hidden');
     customPosterData();
 
   }
@@ -199,12 +195,12 @@ function posterFormButtonHandler(event) {
 
 function displayPosterForm() {
   posterForm.classList.remove('hidden');
-  mainButtonParent.classList.add('hidden');
+  mainPosterPage.classList.add('hidden');
 };
 
 function displayMakeMyPoster() {
   savedPosterPage.classList.remove('hidden');
-  mainButtonParent.classList.add('hidden');
+  mainPosterPage.classList.add('hidden');
 };
 
 function getRandomIndex(array) {
@@ -234,18 +230,15 @@ function randomQuote() {
 
 function customPosterData() {
   event.preventDefault();
-  var customPosterImageUrlData = customPosterImageUrl.value;
-  var customPosterTitleData = customPosterTitle.value;
-  var customPosterQuoteData = customPosterQuote.value;
-  images.push(customPosterImageUrlData);
-  titles.push(customPosterTitleData);
-  quotes.push(customPosterQuoteData)
-
-
-  console.log(customPosterImageUrlData);
-  console.log(customPosterTitleData)
-  console.log(customPosterQuoteData);
-  }
+  var customPoster = new Poster ()
+  customPoster.imageURL = customPosterImageUrl.value;
+  customPoster.title = customPosterTitle.value;
+  customPoster.quote = customPosterQuote.value;
+  images.push(customPoster.imageURL);
+  titles.push(customPoster.title);
+  quotes.push(customPoster.quote);
+  currentPoster = customPoster
+}
 
 
 window.onload = currentPoster;
