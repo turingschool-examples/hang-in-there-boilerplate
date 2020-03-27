@@ -13,6 +13,7 @@ var nevermindBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
 var randomBtn = document.querySelector('.show-random');
 var showMyPosterBtn = document.querySelector('.make-poster');
+var savePosterBtn = document.querySelector('.save-poster');
 
 var ownTitle = document.getElementById('poster-title');
 var ownImage = document.getElementById('poster-image-url');
@@ -119,13 +120,9 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-// var savedPosters = [
-//   makePoster(
-//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-//     "Optimism",
-//     "Keep a joyful heart!"
-//   )
-// ];
+
+var savedPosters = [];
+
 var currentPoster;
 
 
@@ -136,24 +133,25 @@ nevermindBtn.addEventListener('click', takeMeBack);
 backToMainBtn.addEventListener('click', takeMeBack);
 randomBtn.addEventListener('click', randomPoster);
 showMyPosterBtn.addEventListener('click', savePoster);
+savePosterBtn.addEventListener('click', addToArray);
 
 // functions and event handlers go here 👇
-var newPoster;
+
 
 function savePoster(event) {
   event.preventDefault();
   titles.push(ownTitle.value);
   images.push(ownImage.value);
   quotes.push(ownQuote.value);
-  newPoster = new Poster(ownImage.value, ownTitle.value, ownQuote.value);
+  currentPoster = new Poster(ownImage.value, ownTitle.value, ownQuote.value);
   updatePoster();
   takeMeBack();
 };
 
 function updatePoster() {
-  targetTitle.innerText = newPoster.title;
-  targetImage.src = newPoster.imageURL;
-  targetQuote.innerText = newPoster.quote;
+  targetTitle.innerText = currentPoster.title;
+  targetImage.src = currentPoster.imageURL;
+  targetQuote.innerText = currentPoster.quote;
 }
 function makeOwnPoster() {
   mainPoster.classList.toggle('hidden');
@@ -171,26 +169,13 @@ function takeMeBack() {
   posterForm.classList.add('hidden');
 };
 
-// function createOwnPoster() {
-//   mainPoster.classList.add('hidden');
-//   posterForm.classList.remove('hidden');
-// };
-//
-// function seeSavedPoster() {
-//   mainPoster.classList.add('hidden');
-//   savedPoster.classList.remove('hidden');
-// };
-//
-// function nevermindToMain() {
-//   posterForm.classList.add('hidden');
-//   mainPoster.classList.remove('hidden');
-// };
-//
-// function backToMain() {
-//   savedPoster.classList.add('hidden');
-//   mainPoster.classList.remove('hidden');
-// };
-
+function addToArray() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (currentPoster != savedPosters[i]) {
+      savedPosters.push(currentPoster);
+    }
+  };
+};
 
 function randomPoster() {
   targetTitle.innerText = titles[getRandomIndex(titles)];
