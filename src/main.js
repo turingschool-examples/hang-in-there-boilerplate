@@ -140,7 +140,8 @@ showMyPosterBtn.addEventListener('click', showPoster);
 // functions and event handlers go here 👇
 var newPoster;
 
-function showPoster() {
+function showPoster(event) {
+  event.preventDefault();
   titles.push(ownTitle.value);
   images.push(ownImage.value);
   quotes.push(ownQuote.value);
