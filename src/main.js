@@ -170,11 +170,10 @@ function takeMeBack() {
 };
 
 function addToArray() {
-  for (var i = 0; i < savedPosters.length; i++) {
-    if (currentPoster != savedPosters[i]) {
-      savedPosters.push(currentPoster);
-    }
+  if (!savedPosters.includes(currentPoster)){
+    savedPosters.push(currentPoster);
   };
+
 };
 
 function randomPoster() {
