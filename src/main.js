@@ -156,6 +156,7 @@ var savedPosters = [
   //   "Keep a joyful heart!"
   // )
 ];
+
 var currentPoster;
 
 // event listeners go here 👇
@@ -172,7 +173,7 @@ function buttonHandler(event) {
   } else if (event.target === showSaved) {
     displayMakeMyPoster();
   } else if (event.target === showRandom) {
-    createRandomPoster();
+    updateCurrentPoster();
   };
 };
 
@@ -187,13 +188,15 @@ function posterFormButtonHandler(event) {
   if (event.target === showMain) {
     posterForm.classList.add('hidden');
     mainButtonParent.classList.remove('hidden');
-} else if(event.target === makePoster) {
-  posterForm.classList.add('hidden');
-  mainButtonParent.classList.remove('hidden');
-  customPosterData();
+
+  } else if(event.target === makePoster) {
+    posterForm.classList.add('hidden');
+    mainButtonParent.classList.remove('hidden');
+    customPosterData();
+
+  }
 }
 
-}
 function displayPosterForm() {
   posterForm.classList.remove('hidden');
   mainButtonParent.classList.add('hidden');
@@ -205,31 +208,29 @@ function displayMakeMyPoster() {
 };
 
 function getRandomIndex(array) {
-  for (var i = 0; i< array.length; i++) {
     return Math.floor(Math.random() * array.length);
-  };
 };
 
-function createRandomPoster() {
-  randomPoster();
-  randomQuote();
-  randomTitle();
-};
+currentPoster = new Poster (randomPosterImage(), randomTitle(), randomQuote())
 
-function randomPoster() {
+function randomPosterImage() {
   var randomImage = getRandomIndex(images);
   posterImg.src = images[randomImage];
+  return Poster.imageURL = posterImg.src
 };
 
 function randomTitle() {
   var randomWord = getRandomIndex(titles);
   posterTitle.innerText = titles[randomWord];
+  return Poster.title = posterTitle.innerText
 };
 
 function randomQuote() {
   var randomPhrase = getRandomIndex(quotes);
   posterQuote.innerText = quotes[randomPhrase];
+  return Poster.quote = posterQuote.innerText
 };
+
 
 function customPosterData() {
   event.preventDefault();
@@ -246,4 +247,13 @@ function customPosterData() {
   console.log(customPosterQuoteData);
   }
 
-window.onload = randomPoster(), randomTitle(), randomQuote();
+
+window.onload = currentPoster;
+
+function updateCurrentPoster() {
+  var newCurrentPoster = new Poster (randomPosterImage(), randomTitle(), randomQuote())
+  currentPoster = newCurrentPoster
+}
+
+
+
