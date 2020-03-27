@@ -1,16 +1,19 @@
 var updateImg = document.querySelector(".poster-img");
 var updateTitle = document.querySelector(".poster-title");
 var updateQuote = document.querySelector(".poster-quote");
-// var savePoster = document.querySelector(".save-poster");
+var savePoster = document.querySelector(".save-poster");
 var showSaved = document.querySelector(".show-saved");
-// var showRandom = document.querySelector(".show-random");
-var makeOwn = document.querySelector(".show-form");
+var showRandom = document.querySelector(".show-random");
+var makeOwnForm = document.querySelector(".show-form");
 var backToMain = document.querySelector(".back-to-main");
 var showMain = document.querySelector(".show-main");
-// var makePoster = document.querySelector(".make-poster");
+var makePoster = document.querySelector(".make-poster");
 var posterForm = document.querySelector(".poster-form");
 var mainPoster = document.querySelector(".main-poster");
 var savedPosters = document.querySelector(".saved-posters");
+var ownImage = document.querySelector("#poster-image-url");
+var ownTitle = document.querySelector("#poster-title");
+var ownQuote = document.querySelector("#poster-quote");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,32 +113,35 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-// var savedPosters = [
-//   makePoster(
-//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-//     "Optimism",
-//     "Keep a joyful heart!"
-//   )
-// ];
-// var currentPoster;
+
+var savedPosters = [];
+
+var currentPoster;
 
 // event listeners go here 👇
-makeOwn.addEventListener('click', createOwnPoster);
+window.addEventListener('DOMContentLoaded', randomizePoster);
+makeOwnForm.addEventListener('click', createOwnPosterForm);
 showSaved.addEventListener('click', displaySavedPosters);
 backToMain.addEventListener('click', returnToMain);
 showMain.addEventListener('click', returnToMain);
+showRandom.addEventListener('click', randomizePoster);
+makePoster.addEventListener('click', showNewPoster);
+savePoster.addEventListener('click', storePoster);
+
 
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
-updateTitle.innerText = titles[getRandomIndex(titles)];
-updateQuote.innerText = quotes[getRandomIndex(quotes)];
-updateImg.src = images[getRandomIndex(images)];
-
+// (we've provided one for you to get you started)
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function createOwnPoster() {
+function randomizePoster() {
+updateTitle.innerText = titles[getRandomIndex(titles)];
+updateQuote.innerText = quotes[getRandomIndex(quotes)];
+updateImg.src = images[getRandomIndex(images)];
+};
+
+function createOwnPosterForm() {
   posterForm.classList.remove("hidden");
   mainPoster.classList.add("hidden");
 };
@@ -146,7 +152,23 @@ function displaySavedPosters() {
 };
 
 function returnToMain() {
-  savedPosters.classList.add("hidden");
   posterForm.classList.add("hidden");
   mainPoster.classList.remove("hidden");
+};
+
+function showNewPoster(event) {
+  event.preventDefault();
+  currentPoster = new Poster(ownImage.value, ownTitle.value, ownQuote.value);
+  posterForm.classList.add("hidden");
+  mainPoster.classList.remove("hidden");
+  updateImg.src = ownImage.value;
+  updateQuote.innerText = ownQuote.value;
+  updateTitle.innerText = ownTitle.value;
+};
+
+function storePoster() {
+  images.push(ownImage).value;
+  titles.push(ownTitle).value;
+  quotes.push(ownQuote).value;
+  savedPosters.push(currentPoster);
 };
