@@ -1,5 +1,15 @@
 // query selector variables go here 👇
-
+var mainPoster = document.querySelector('.main-poster');
+var getImage = document.querySelector('.poster-img');
+var getTitle = document.querySelector('.poster-title');
+var getQuote = document.querySelector('.poster-quote');
+var showFormButton = document.querySelector('.show-form');
+var posterForm = document.querySelector('.poster-form');
+var showSavedButton = document.querySelector('.show-saved');
+var savedPostersSection = document.querySelector('.saved-posters');
+var mainNvmdButton = document.querySelector('.show-main');
+var toMainButton = document.querySelector('.back-to-main');
+// var showdocument.querySelector('.show-saved')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -99,19 +109,46 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
 ];
-var currentPoster;
+// var currentPoster;
+
+getImage.src = images[getRandomIndex(images)];
+getTitle.innerText = titles[getRandomIndex(titles)];
+getQuote.innerText = quotes[getRandomIndex(quotes)];
+
+
+// hide main poster when view saved poster clicked
 
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
+// event handeler, handle the outcome of the event
+showFormButton.addEventListener('click', showForm);
+showSavedButton.addEventListener('click', showSaved);
+mainNvmdButton.addEventListener('click', showMainPoster);
+toMainButton.addEventListener('click', showMainPoster);
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+function showForm() {
+  posterForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+}
 
+function showSaved() {
+  mainPoster.classList.add('hidden');
+  savedPostersSection.classList.remove('hidden');
+}
+
+function showMainPoster() {
+  mainPoster.classList.remove('hidden');
+  posterForm.classList.add('hidden');
+  savedPostersSection.classList.add('hidden');
+}
+
+// function backToMainPoster() {
+//   savedPosterSection.classList.add('hidden');
+//   mainPoster.classList.remove('hidden');
+//   posterForm.classList.add('hidden');
+// }
