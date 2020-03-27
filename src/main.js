@@ -12,6 +12,7 @@ var showSavedBtn = document.querySelector('.show-saved');
 var nevermindBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
 var randomBtn = document.querySelector('.show-random');
+var showMyPosterBtn = document.querySelector('.make-poster');
 
 var ownTitle = document.getElementById('poster-title');
 var ownImage = document.getElementById('poster-image-url');
@@ -133,7 +134,8 @@ showFormBtn.addEventListener('click', makeOwnPoster);
 showSavedBtn.addEventListener('click', viewSaved);
 nevermindBtn.addEventListener('click', takeMeBack);
 backToMainBtn.addEventListener('click', takeMeBack);
-randomBtn.addEventListener('click', randomPoster)
+randomBtn.addEventListener('click', randomPoster);
+showMyPosterBtn.addEventListener('click', showPoster);
 
 // functions and event handlers go here 👇
 var newPoster;
@@ -146,6 +148,7 @@ function showPoster() {
   targetTitle.innerText = newPoster.title;
   targetImage.src = newPoster.imageURL;
   targetQuote.innerText = newPoster.quote;
+  posterForm.classList.remove('hidden');
 };
 
 function makeOwnPoster() {
