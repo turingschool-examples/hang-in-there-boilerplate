@@ -19,7 +19,7 @@ var savedPoster = document.querySelector('.saved-posters');
 
 // query for elements
 var posterImg = document.querySelector(".poster-img");
-var posterTitle =   document.querySelector(".poster-title");
+var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 
 // var randomButton = document.querySelector('.show-random');
@@ -148,12 +148,11 @@ function makePosterForm(event) {
   var titleInput = document.getElementById('poster-title').value;
   var quoteInput = document.getElementById('poster-quote').value;
    if(imageInput === "" || titleInput === "" || quoteInput === "") {
-    posterImg.src = document.getElementbyId('poster-image-url').placeholder;
-    posterTitle.innerText = document.getElementbyId('poster-title').placeholder;
-    posterQuote.innerText = document.getElementById('poster-quote').placeholder;
-    event.preventDefault();
+    posterImg = document.getElementbyId('poster-image-url').placeholder;
+    posterTitle = document.getElementbyId('poster-title').placeholder;
+    posterQuote = document.getElementById('poster-quote').placeholder;
     takeMeBack();
-
+    event.preventDefault();
   } else {
     posterImg.src = imageInput;
     posterTitle.innerText = titleInput;
@@ -163,6 +162,13 @@ function makePosterForm(event) {
     }
 }
 
+function currentPosterText(array) {
+  for(var i = 0; i < array.length; i++) {
+    if (array.includes) {
+
+    }
+  }
+}
 function showPosterForm() {
   posterForm.className = "poster-form";
   mainPoster.className = "main-poster hidden";
