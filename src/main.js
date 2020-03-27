@@ -12,9 +12,17 @@
 //Need to target the Image url input and access the input data
   //Create querySelector for url element #poster-image-url
   // Access the input value of the url image
+  // Save the image url input data to the images array
 
-var posterImageUrl = document.querySelector('#poster-image-url');
+
 // query selector variables go here 👇
+// Create query selector for poster image input
+var customPosterImageUrl = document.querySelector('#poster-image-url');
+// Create query selector for poster title input
+var customPosterTitle = document.querySelector('#poster-title');
+// Create query selector for poster quote input
+var customPosterQuote = document.querySelector('#poster-quote');
+
 var makePoster = document.querySelector('.make-poster');
 // Create a query selector for "save this poster button"
 var savePoster = document.querySelector('.save-poster');
@@ -36,9 +44,9 @@ var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 //Create query selector for the saved poster page
 var savedPosterPage = document.querySelector('.saved-posters');
-//Creater query selector for the back to main button
+//Create query selector for the back to main button
 var backToMain = document.querySelector('.back-to-main');
-//Creater query selector for the show main button
+//Create query selector for the show main button
 var showMain = document.querySelector('.show-main');
 
 
@@ -154,6 +162,7 @@ var currentPoster;
 mainButtonParent.addEventListener('click', buttonHandler);
 savedPosterPage.addEventListener('click', savedPosterButtonHandler);
 posterForm.addEventListener('click', posterFormButtonHandler);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 //Displays form page and hides main page.
@@ -181,7 +190,9 @@ function posterFormButtonHandler(event) {
 } else if(event.target === makePoster) {
   posterForm.classList.add('hidden');
   mainButtonParent.classList.remove('hidden');
+  customPosterData();
 }
+
 }
 function displayPosterForm() {
   posterForm.classList.remove('hidden');
@@ -198,7 +209,6 @@ function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
   };
 };
-
 
 function createRandomPoster() {
   randomPoster();
@@ -220,5 +230,15 @@ function randomQuote() {
   var randomPhrase = getRandomIndex(quotes);
   posterQuote.innerText = quotes[randomPhrase];
 };
+
+function customPosterData() {
+  event.preventDefault();
+  var customPosterImageUrlData = customPosterImageUrl.value;
+  var customPosterTitleData = customPosterTitle.value;
+  var customPosterQuoteData = customPosterQuote.value;
+  console.log(customPosterImageUrlData);
+  console.log(customPosterTitleData)
+  console.log(customPosterQuoteData);
+  }
 
 window.onload = randomPoster(), randomTitle(), randomQuote();
