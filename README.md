@@ -1,6 +1,6 @@
 # Hang In There
 
-A boilerplate repo. 
+A boilerplate repo.
 
 ## Set Up
 
@@ -10,21 +10,31 @@ A boilerplate repo.
 4. `cd` into the repository
 5. Run `open index.html` to view it in the browser
 
+* Contact info:
+   - Jenna's GitHub: https://github.com/jennadilullo8     
+   - Leigh's GitHub: https://github.com/leighlars
+* Deployed link: https://leighlars.github.io/hang-in-there-boilerplate/
+
 ## Progression
 
 ### Iteration 0 - Main Page
 
-![screenshot of main page showing poster](/readme-imgs/homepage.png)
+![screenshot of main page showing poster](/Iteration_0_Screenshot.jpg)
 
 - When the page loads, we should see a poster with a randomly selected image, title, and quote
+* Completed 3/25/2020. Driver- Jenna/navigator-Leigh.
+* Demonstrated understanding of randomizing function with arrays, querySelector, EventListener.  
 
 ### Iteration 1 - Switching Views
 
 Form page:
-![screenshot of form](/readme-imgs/form.png)
+![screenshot of form](/Iteration_1_Form_Screenshot.jpg)
 
 Saved posters page (once working with extra saved posters):
 ![screenshot of saved posters page](/readme-imgs/saved.png)
+
+* Completed 3/26/2020. Driver- Leigh/ navigator- Jenna.
+* Demonstrated understanding of switching and displaying page views, and activating buttons.
 
 - When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
 - When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
