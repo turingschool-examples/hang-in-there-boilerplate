@@ -135,23 +135,26 @@ showSavedBtn.addEventListener('click', viewSaved);
 nevermindBtn.addEventListener('click', takeMeBack);
 backToMainBtn.addEventListener('click', takeMeBack);
 randomBtn.addEventListener('click', randomPoster);
-showMyPosterBtn.addEventListener('click', showPoster);
+showMyPosterBtn.addEventListener('click', savePoster);
 
 // functions and event handlers go here 👇
 var newPoster;
 
-function showPoster(event) {
+function savePoster(event) {
   event.preventDefault();
   titles.push(ownTitle.value);
   images.push(ownImage.value);
   quotes.push(ownQuote.value);
   newPoster = new Poster(ownImage.value, ownTitle.value, ownQuote.value);
+  updatePoster();
+  takeMeBack();
+};
+
+function updatePoster() {
   targetTitle.innerText = newPoster.title;
   targetImage.src = newPoster.imageURL;
   targetQuote.innerText = newPoster.quote;
-  posterForm.classList.remove('hidden');
-};
-
+}
 function makeOwnPoster() {
   mainPoster.classList.toggle('hidden');
   posterForm.classList.toggle('hidden');
