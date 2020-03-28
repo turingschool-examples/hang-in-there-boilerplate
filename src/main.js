@@ -190,29 +190,3 @@ function createPoster(){
   posterImageUrl.value = posterTitleInput.value = posterQuoteInput.value = ''
   displayPoster(userUrl, userTitle, userQuote)
 }
-function savePoster(){
-  var userUrl = posterImg.src
-  var userTitle = posterTitle.innerText
-  var userQuote = posterQuote.innerText
-  images.push(userUrl)
-  titles.push(userTitle)
-  quotes.push(userQuote)
-  var newPoster = new Poster(userUrl, userTitle, userQuote)
-  savedPostersArray.push(newPoster)
-}
-
-function displaySaved(){
-  console.log(savedPostersArray);
-  for (var i = 0; i<savedPostersArray.length; i++){
-    var currentPoster = savedPostersArray[i]
-    console.log(currentPoster);
-    var posterHTML = `
-      <div id='${currentPoster.id}'>
-        <img class="card-img" src="${currentPoster.imageURL}" alt="nothin' to see here">
-        <h1 class="card-title">${currentPoster.title}</h1>
-        <h3 class="card-quote">${currentPoster.quote}</h3>
-      </div>
-    `
-    savedPostersGrid.insertAdjacentHTML('afterbegin', posterHTML)
-  }
-}
