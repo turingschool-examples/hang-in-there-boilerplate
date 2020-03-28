@@ -2,7 +2,13 @@
 var posterTitle = document.querySelector("h1.poster-title");
 var posterQuote = document.querySelector("h3.poster-quote");
 var posterImage = document.querySelector("img.poster-img");
-
+var makeYourOwnButton = document.querySelector('.show-form');
+var makePosterForm = document.querySelector('.poster-form');
+var mainPage = document.querySelector('.main-poster');
+var savedPostersButton = document.querySelector('.show-saved');
+var savedPostersArea = document.querySelector('.saved-posters');
+var takeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,13 +114,40 @@ var quotes = [
 
 // event listeners go here 👇
 
+makeYourOwnButton.addEventListener('click', showForm);
+savedPostersButton.addEventListener('click', showSavedPosters);
+takeMeBackButton.addEventListener('click', takeMeBack);
+backToMainButton.addEventListener('click', backToMain);
+
 // functions and event handlers go here 👇
+
 posterImage.src = images[getRandomIndex(images)];
 posterTitle.innerText = titles[getRandomIndex(titles)];
 posterQuote.innerText = quotes[getRandomIndex(quotes)];
 
 // new code
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function showForm() {
+  mainPage.classList.add('hidden');
+  makePosterForm.classList.remove('hidden');
+}
+
+function showSavedPosters() {
+  mainPage.classList.add('hidden');
+  savedPostersArea.classList.remove('hidden');
+}
+
+function takeMeBack() {
+  mainPage.classList.remove('hidden');
+  makePosterForm.classList.add('hidden');
+}
+
+function backToMain() {
+  mainPage.classList.remove('hidden');
+  savedPostersArea.classList.add('hidden');
 }
