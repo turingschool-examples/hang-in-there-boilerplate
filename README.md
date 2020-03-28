@@ -65,7 +65,10 @@ Once poster is saved:
 ## Iteration 3 - Saving & Viewing Posters
 
 Saved posters view:
-![screenshot of saved posters section](/readme-imgs/saved.png)
+![screenshot of saved posters section](/readme-imgs/saved-poster-pageJL.png)
+
+* Completed 3/27/2020. Driver- Jenna / Navigator- Leigh. Sought mentorship from Turing Alums, Ryan/Melvin.
+* We demonstrated that we can display saved posters, and we can prevent duplication of saved posters.
 
 - When a user clicks the "Save This Poster" button, the current main poster will be added to the `savedPosters` array.
 - If a user clicks the "Save This Poster" more than once on a single poster, it will still only be saved once (no duplicates)
