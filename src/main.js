@@ -150,7 +150,7 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', mainPage)
-showFormBtn.addEventListener('click', newPoster)
+showFormBtn.addEventListener('click', displayPosterForm)
 showSaved.addEventListener('click', displaySavedPosterPage)
 backToMain.addEventListener('click', returnToMain)
 showMain.addEventListener('click', returnToMain)
@@ -162,28 +162,28 @@ savedPosterGrid.addEventListener('dblclick', deleteSavedPoster)
 // (we've provided one for you to get you started)!
 
 function mainPage() {
-  setImgSource()
-  setTitle()
-  setQuote()
+  var imgSrc = images[getRandomIndex(images)]
+  var title = titles[getRandomIndex(titles)]
+  var quote = quotes[getRandomIndex(quotes)]
+  currentPoster = new Poster(imgSrc, title, quote)
+  // setImgSource()
+  // setTitle()
+  // setQuote()
+  setPoster()
 }
 
-function setImgSource() {
-  mainPosterImg.setAttribute('src', images[getRandomIndex(images)]);
-}
-
-function setTitle() {
-  posterTitle.innerHTML = titles[getRandomIndex(titles)];
-}
-
-function setQuote() {
-  posterQuote.innerHTML = quotes[getRandomIndex(quotes)];
+/* setPoster() Allows the first randomly generated poster to be saved into the Saved Posters array*/
+function setPoster() {
+  mainPosterImg.src = currentPoster.imageURL
+  posterTitle.innerHTML = currentPoster.title
+  posterQuote.innerHTML = currentPoster.quote
 }
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function newPoster() {
+function displayPosterForm() {
   mainPoster.classList.add('hidden')
   posterForm.classList.remove('hidden')
 }
@@ -211,10 +211,10 @@ function createAPoster(imgSrc, title, quote) {
   posterQuote.innerText = quote
   mainPosterImg.setAttribute('src', imgSrc)
   returnToMain()
-  clearInputs()
+  clearFormInputs()
 }
 
-function clearInputs () {
+function clearFormInputs() {
 	posterImgInput.value = ''
 	posterTitleInput.value = ''
 	posterQuoteInput.value = ''
