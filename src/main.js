@@ -15,6 +15,8 @@ var makePoster = document.querySelector('.make-poster');
 var showMain = document.querySelector('.show-main');
 var savedPosterPage = document.querySelector('.saved-posters');
 var backToMain = document.querySelector('.back-to-main');
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
+var miniPoster = document.querySelector('.mini-poster')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -191,6 +193,13 @@ function displayRandomPoster() {
 function saveCurrentPoster() {
   if (!(savedPosters.includes(currentPoster))) {
     savedPosters.push(currentPoster);
+    savedPostersGrid.insertAdjacentHTML('beforeend',  
+    `<section class='mini-poster'>
+    <img src=${currentPoster.imageURL} />
+    <h2>${currentPoster.title}</h2>
+    <h4>${currentPoster.quote}</h4>
+    </section>`
+    );
   }
 }
 
@@ -201,6 +210,7 @@ function savedPosterButtonHandler(event) {
 };
 
 function navBackToMain() {
+  event.preventDefault();
   savedPosterPage.classList.add('hidden');
   mainPosterPage.classList.remove('hidden');
 }
@@ -230,74 +240,3 @@ function customPosterData() {
   quotes.push(customPoster.quote);
   currentPoster = customPoster
 }
-
-//Iteration 3
-// When a user clicks the “Save This Poster” button, the current main poster will be added to the savedPosters array.
-
-// If a user clicks the “Save This Poster” more than once on a single poster, it will still only be saved once (no duplicates)
-
-// When a user clicks the “Show Saved Posters” button, we should see the saved posters section
-
-// All the posters in the savedPosters array should be displayed in the saved posters grid section
-// This will be tricky, so let's break it down:
-//   first some observations: 
-//     The HTML code for the main Page poster our template for the mini poster:
-//        <article class="poster">
-//           <img class="poster-img" src="" alt="nothin' to see here">
-//           <h1 class="poster-title">Title</h1>
-//           <h3 class="poster-quote">Quote</h3>
-//        </article>
-//     The respective section of CSS script:
-//       .poster { 
-//         content omitted for readability
-//       }
-//       .poster-img {
-//         more omitted content
-//       }
-//       .poster-title,
-//       .poster-quote {
-//         even more
-//       }
-//       .poster-title {
-//         yet another case
-//       }
-// This are the templetes for our mini poster. This means we have to correlate the CSS 
-//  selectors given to us with the class names of the repective HTML elements that will create 
-//  our mini-Poster. Let's take a look at what our HTML and CSS script look for that section:
-//    HTML:
-        {/* <section class="saved-posters hidden">
-        <h2>Saved Posters</h2>
-        <article class="saved-posters-grid"></article>
-        <button class="back-to-main">Back to Main</button>
-        </section> */}
-// Not much there, we do see however that there is an article element without anything. 
-// Our main poster also exist within an article element within a larger section  element. 
-// Hence, we can deduce the structure we will use for the mini poster, and that we will
-// use .innerHTML in some fashion. 
-//    Lets look at our CSS: 
-//        .saved-posters-grid {
-  //          our grid structure
-  //      }
-  //      .mini-poster {
-  //          basic layout of each mini-poster
-  //      }
-  //      .mini-poster img {
-  //          this I imagine defines the size of the picture within the saved mini-poster
-  //      }
-  //      .mini-poster h2,
-  //      .mini-poster h4,
-  //      .delete {
-  //          this I imagine controls the text within our mini-posters
-  //      }
-  //      .mini-poster h2 {
-  //          this probaly helps identity the title from the quote by further specifying 
-  //          how it should look different. 
-//  Using this information as a reference we can start building what our addition to the DOM migth
-//  look like. Note that the selectors are using element names within a parent class of .mini-poster. 
-//  In our example above the class name directly referenced the object property it held. Not yet 
-//  sure of the implications, but here's some ideas:
-//      within our article element using .innerHTML we can add something like:
-//          add using innerHTML: <img class="mini-poster" src=currentPoster.imageURL />
-//                               <h2 class="mini-poster"> currentPoster.title </h2>
-//                               <h4 class="mini-poster"> currentPoster.quote </h4>
-//  It seems we may also need to use innerText some, or could we pass the values as is. We will have to see. 
