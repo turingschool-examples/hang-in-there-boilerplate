@@ -156,6 +156,7 @@ backToMain.addEventListener('click', returnToMain)
 showMain.addEventListener('click', returnToMain)
 makePosterBtn.addEventListener('click', makePosterHandler)
 savePosterBtn.addEventListener('click', savePoster)
+savedPosterGrid.addEventListener('dblclick', deleteSavedPoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -188,7 +189,6 @@ function newPoster() {
 }
 
 function displaySavedPosterPage() {
-  savedPosterGrid.innerText = ''
   mainPoster.classList.add('hidden')
   savedPosterPage.classList.remove('hidden')
   displaySavedPoster()
@@ -211,7 +211,15 @@ function createAPoster(imgSrc, title, quote) {
   posterQuote.innerText = quote
   mainPosterImg.setAttribute('src', imgSrc)
   returnToMain()
+  clearInputs()
 }
+
+function clearInputs () {
+	posterImgInput.value = ''
+	posterTitleInput.value = ''
+	posterQuoteInput.value = ''
+}
+
 
 function makePosterHandler(e) {
   var imgInput = posterImgInput.value
@@ -244,11 +252,18 @@ function makePoster(imgSrc, title, quote) {
 }
 
 function displaySavedPoster() {
+  savedPosterGrid.innerText = ''
   for (var i = 0; i < savedPosters.length; i++) {
-    savedPosterGrid.insertAdjacentHTML('beforeend', `<div class="mini-poster">
+    savedPosterGrid.insertAdjacentHTML('beforeend', `<div class="mini-poster" data-id="${savedPosters[i].id}">
       <img src= "${savedPosters[i].imageURL}">
       <h2>${savedPosters[i].title}</h2>
       <h4>${savedPosters[i].quote}</h4>
     </div>`)
   }
+}
+
+function deleteSavedPoster(e) {
+  var posterToDelete = e.target.closest('.mini-poster')
+  savedPosters = savedPosters.filter(poster => poster.id != posterToDelete.dataset.id)
+  displaySavedPoster()
 }
