@@ -21,10 +21,6 @@ var savedPoster = document.querySelector('.saved-posters');
 var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
-
-// var randomButton = document.querySelector('.show-random');
-
-
 var showMyPoster = document.querySelector('.make-poster');
 
 
@@ -130,7 +126,7 @@ var quotes = [
 ];
 var savedPosters = [];
 
-var currentPoster = [posterImg.src, posterTitle.innerText, posterQuote.innerText];
+ var currentPoster = [posterImg.src, posterTitle.innerText, posterQuote.innerText];
 
 // event listeners go here 👇
 formButton.addEventListener('click', showPosterForm);
@@ -138,37 +134,47 @@ showSavedPosterButton.addEventListener('click', showSaved);
 showMainButton.addEventListener('click', takeMeBack);
 backToMainButton.addEventListener('click', backToMain)
 randomButton.addEventListener('click', randomize);
-var test = showMyPoster.addEventListener('click', makePosterForm);
-savePosterButton.addEventListener('click', saveThisPoster);
+showMyPoster.addEventListener('click', makePosterForm);
+savePosterButton.addEventListener('click', saveThisPoster, checkSavedPosters);
 
 // functions and event handlers go here 👇
 
 function makePosterForm(event) {
+  event.preventDefault();
   var imageInput = document.getElementById('poster-image-url').value;
   var titleInput = document.getElementById('poster-title').value;
   var quoteInput = document.getElementById('poster-quote').value;
-   if(imageInput === "" || titleInput === "" || quoteInput === "") {
-    posterImg = document.getElementbyId('poster-image-url').placeholder;
-    posterTitle = document.getElementbyId('poster-title').placeholder;
-    posterQuote = document.getElementById('poster-quote').placeholder;
-    takeMeBack();
-    event.preventDefault();
-  } else {
-    posterImg.src = imageInput;
-    posterTitle.innerText = titleInput;
-    posterQuote.innerText = quoteInput;
-    takeMeBack();
-    event.preventDefault();
-    }
+  var createdPoster = new Poster(`${imageInput}`, `${titleInput}`, `${quoteInput}`);
+  // savedPosters.push(createdPoster);
+  images.push(createdPoster.imageURL);
+  titles.push(createdPoster.title);
+  quotes.push(createdPoster.quote);
+  posterImg.src = imageInput;
+  posterTitle.innerText = titleInput;
+  posterQuote.innerText = quoteInput;
+  takeMeBack();
+  
 }
-
-function currentPosterText(array) {
-  for(var i = 0; i < array.length; i++) {
-    if (array.includes) {
-
+// error: cannot ready property image url need to fix 
+function checkSavedPosters() {
+  for(var i = savedPosters.length; i >= 0; i--) {
+    var previousPoster = savedPosters[i - 1];
+    var presentPoster = savedPosters[i];
+    if(savedPosters[i].imageURL === savedPosters[i - 1].imageURL && presentPoster[title] === previousPoster[title] && presentPoster[quote] === previousPoster[quote]){
+      savedPosters.pop(presentPoster);
     }
   }
 }
+  
+function saveThisPoster() {
+  var link = posterImg.src
+  var title = posterTitle.innerText
+  var quote = posterQuote.innerText
+  var saveCreatedPoster = new Poster(link, title, quote);
+  savedPosters.push(saveCreatedPoster);
+  checkSavedPosters();
+}
+
 function showPosterForm() {
   posterForm.className = "poster-form";
   mainPoster.className = "main-poster hidden";
@@ -193,13 +199,6 @@ function randomize() {
   posterImg.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
-}
-
-function saveThisPoster() {
-  currentPoster.push(posterImg);
-  currentPoster.push(posterTitle);
-  currentPoster.push(posterQuote);
-  savedPosters.push(currentPoster);
 }
 
 // (we've provided one for you to get you started)!
