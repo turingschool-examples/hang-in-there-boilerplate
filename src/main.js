@@ -9,7 +9,12 @@ var showSaved = document.querySelector('.show-saved')
 var savedPosterPage = document.querySelector('.saved-posters')
 var backToMain = document.querySelector('.back-to-main')
 var showMain = document.querySelector('.show-main')
-
+var posterImgInput = document.querySelector('#poster-image-url')
+var posterTitleInput = document.querySelector('#poster-title')
+var posterQuoteInput = document.querySelector('#poster-quote')
+var makePosterBtn = document.querySelector('.make-poster')
+var savePosterBtn = document.querySelector('.save-poster')
+var savedPosterGrid = document.querySelector('.saved-posters-grid')
 /* ---
 Iteration 1:
 Part A: Get querySelector for 'Make Poster' button
@@ -27,6 +32,12 @@ Create a variable to querySelect show-main button
 Add click event for show-main and back-to-main buttons
 Create function to add hidden class to poster-form or saved-posters section
 Remove hidden class from section.main-poster
+*/
+
+/*
+Iteration 2:
+Part A:
+
 */
 
 // we've provided you with some data to work with 👇
@@ -128,21 +139,23 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-// var savedPosters = [
-//   makePoster(
-//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-//     "Optimism",
-//     "Keep a joyful heart!"
-//   )
-// ];
+var savedPosters = [
+  makePoster(
+    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+    "Optimism",
+    "Keep a joyful heart!"
+  )
+];
 var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', mainPage)
 showFormBtn.addEventListener('click', newPoster)
-showSaved.addEventListener('click', displaySavedPoster)
+showSaved.addEventListener('click', displaySavedPosterPage)
 backToMain.addEventListener('click', returnToMain)
 showMain.addEventListener('click', returnToMain)
+makePosterBtn.addEventListener('click', makePosterHandler)
+savePosterBtn.addEventListener('click', savePoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -174,13 +187,68 @@ function newPoster() {
   posterForm.classList.remove('hidden')
 }
 
-function displaySavedPoster() {
+function displaySavedPosterPage() {
+  savedPosterGrid.innerText = ''
   mainPoster.classList.add('hidden')
   savedPosterPage.classList.remove('hidden')
+  displaySavedPoster()
 }
 
 function returnToMain() {
   savedPosterPage.classList.add('hidden')
   posterForm.classList.add('hidden')
   mainPoster.classList.remove('hidden')
+}
+
+function createAPoster(imgSrc, title, quote) {
+  var poster = new Poster(imgSrc, title, quote)
+  currentPoster = poster
+  images.push(imgSrc)
+  titles.push(title)
+  quotes.push(quote)
+
+  posterTitle.innerText = title
+  posterQuote.innerText = quote
+  mainPosterImg.setAttribute('src', imgSrc)
+  returnToMain()
+}
+
+function makePosterHandler(e) {
+  var imgInput = posterImgInput.value
+  var titleInput = posterTitleInput.value
+  var quoteInput = posterQuoteInput.value
+
+  e.preventDefault()
+  createAPoster(imgInput, titleInput, quoteInput)
+}
+
+function savePoster() {
+  if (noDuplicatePoster()) {
+    savedPosters.push(currentPoster)
+  }
+}
+
+function noDuplicatePoster() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id === currentPoster.id) {
+      return false
+    }
+  }
+  return true
+  /* ALTERNATIVE STYLE FOR READABILITY */
+  // return !Boolean(savedPosters.find(poster => poster.id === currentPoster.id))
+}
+
+function makePoster(imgSrc, title, quote) {
+  return new Poster(imgSrc, title, quote)
+}
+
+function displaySavedPoster() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPosterGrid.insertAdjacentHTML('beforeend', `<div class="mini-poster">
+      <img src= "${savedPosters[i].imageURL}">
+      <h2>${savedPosters[i].title}</h2>
+      <h4>${savedPosters[i].quote}</h4>
+    </div>`)
+  }
 }
