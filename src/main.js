@@ -159,41 +159,64 @@ window.onload = currentPoster;
 
 function buttonHandler(event) {
   if (event.target === showForm) {
-    posterForm.classList.remove('hidden');
-    mainPosterPage.classList.add('hidden');
+    displayPosterForm();
   } else if (event.target === showSaved) {
-    savedPosterPage.classList.remove('hidden');
-    mainPosterPage.classList.add('hidden');;
+    displaySavedPosterPage();
   } else if (event.target === showRandom) {
-    var newCurrentPoster = new Poster(
-      randomPosterImage(), 
-      randomTitle(), 
-      randomQuote()
-    );
-    currentPoster = newCurrentPoster;
+    displayRandomPoster();
   } else if (event.target === savePoster) {
-    if (!(savedPosters.includes(currentPoster))) {
-      savedPosters.push(currentPoster);
-    }
+    saveCurrentPoster();
   }
 };
+
+function displayPosterForm() {
+  posterForm.classList.remove('hidden');
+  mainPosterPage.classList.add('hidden');
+}
+
+function displaySavedPosterPage() {
+  savedPosterPage.classList.remove('hidden');
+  mainPosterPage.classList.add('hidden');
+}
+
+function displayRandomPoster() {
+  var newCurrentPoster = new Poster(
+    randomPosterImage(), 
+    randomTitle(), 
+    randomQuote()
+  );
+  currentPoster = newCurrentPoster;
+}
+
+function saveCurrentPoster() {
+  if (!(savedPosters.includes(currentPoster))) {
+    savedPosters.push(currentPoster);
+  }
+}
 
 function savedPosterButtonHandler(event) {
   if (event.target === backToMain) {
-    savedPosterPage.classList.add('hidden');
-    mainPosterPage.classList.remove('hidden');
+    navBackToMain();
   };
 };
 
+function navBackToMain() {
+  savedPosterPage.classList.add('hidden');
+  mainPosterPage.classList.remove('hidden');
+}
+
 function posterFormButtonHandler(event) {
   if (event.target === showMain) {
-    posterForm.classList.add('hidden');
-    mainPosterPage.classList.remove('hidden');
+    navShowMain();
   } else if (event.target === makePoster) {
-    posterForm.classList.add('hidden');
-    mainPosterPage.classList.remove('hidden');
+    navShowMain();
     customPosterData();
   }
+}
+
+function navShowMain() {
+  posterForm.classList.add('hidden');
+  mainPosterPage.classList.remove('hidden');
 }
 
 function customPosterData() {
