@@ -168,6 +168,7 @@ function buttonHandler(event) {
     displayRandomPoster();
   } else if (event.target === savePoster) {
     saveCurrentPoster();
+    createMiniPosterId();
   }
 };
 
@@ -194,13 +195,22 @@ function saveCurrentPoster() {
   if (!(savedPosters.includes(currentPoster))) {
     savedPosters.push(currentPoster);
     savedPostersGrid.insertAdjacentHTML('beforeend',  
-    `<section class='mini-poster'>
-    <img src=${currentPoster.imageURL} />
-    <h2>${currentPoster.title}</h2>
-    <h4>${currentPoster.quote}</h4>
-    </section>`
+      `<section class='mini-poster' id=${currentPoster.id}>
+      <img src=${currentPoster.imageURL} />
+      <h2>${currentPoster.title}</h2>
+      <h4>${currentPoster.quote}</h4>
+      </section>`
     );
   }
+}
+
+function createMiniPosterId() {
+  var miniPosterId = document.getElementById(currentPoster.id)
+  miniPosterId.addEventListener('dblclick', deleteMiniPoster)
+}
+
+function deleteMiniPoster(event) {
+  console.log(this.id)
 }
 
 function savedPosterButtonHandler(event) {
