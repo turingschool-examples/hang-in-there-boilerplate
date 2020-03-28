@@ -15,6 +15,7 @@ var posterQuoteInput = document.querySelector('#poster-quote')
 var makePosterBtn = document.querySelector('.make-poster')
 var savePosterBtn = document.querySelector('.save-poster')
 var savedPosterGrid = document.querySelector('.saved-posters-grid')
+var showRandomBtn = document.querySelector('.show-random')
 /* ---
 Iteration 1:
 Part A: Get querySelector for 'Make Poster' button
@@ -149,7 +150,7 @@ var savedPosters = [
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', mainPage)
+window.addEventListener('load', initialRandomPoster)
 showFormBtn.addEventListener('click', displayPosterForm)
 showSaved.addEventListener('click', displaySavedPosterPage)
 backToMain.addEventListener('click', returnToMain)
@@ -157,11 +158,12 @@ showMain.addEventListener('click', returnToMain)
 makePosterBtn.addEventListener('click', makePosterHandler)
 savePosterBtn.addEventListener('click', savePoster)
 savedPosterGrid.addEventListener('dblclick', deleteSavedPoster)
+showRandomBtn.addEventListener('click', initialRandomPoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
-function mainPage() {
+function initialRandomPoster() {
   var imgSrc = images[getRandomIndex(images)]
   var title = titles[getRandomIndex(titles)]
   var quote = quotes[getRandomIndex(quotes)]
