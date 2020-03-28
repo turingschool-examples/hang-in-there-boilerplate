@@ -169,12 +169,29 @@ function takeMeBack() {
   posterForm.classList.add('hidden');
 };
 
-function addToArray() {
-  if (!savedPosters.includes(currentPoster)){
-    savedPosters.push(currentPoster);
-  };
+// function addToArray() {
+//   if (!savedPosters.includes(currentPoster)){
+//     savedPosters.push(currentPoster);
+//   };
+//
+// };
 
-};
+function addToArray() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (isEquivalent(currentPoster, savedPosters[i])) {
+    return;
+    }
+  }
+  savedPosters.push(currentPoster);
+}
+
+function isEquivalent(a, b) {
+  if (a.imageURL == b.imageURL && a.title == b.title && a.quote == b.quote) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 function randomPoster() {
   targetTitle.innerText = titles[getRandomIndex(titles)];
