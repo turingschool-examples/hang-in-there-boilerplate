@@ -10,6 +10,13 @@ var savedPosters = document.querySelector('.saved-posters')
 var backToMain = document.querySelector('.back-to-main')
 var showMain = document.querySelector('.show-main')
 var showRandom = document.querySelector('.show-random')
+var posterImageUrl = document.querySelector('#poster-image-url')
+var posterTitleInput = document.querySelector('#poster-title')
+var posterQuoteInput = document.querySelector('#poster-quote')
+var makePosterButton = document.querySelector('#make-poster-button2')
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
+var savePosterBtn = document.querySelector('.save-poster')
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -109,21 +116,21 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-// var savedPosters = [
-//   makePoster(
-//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-//     "Optimism",
-//     "Keep a joyful heart!"
-  // )
-// ];
-var currentPoster;
+var savedPostersArray = []
+
+
 document.onload = randomPoster()
 // event listeners go here 👇
 showForm.addEventListener("click",showFormPage)
-showSaved.addEventListener("click",showSavedPage)
+showSaved.addEventListener("click",function(){
+  showSavedPage()
+  displaySaved()
+})
 backToMain.addEventListener("click",backToMainPage)
 showMain.addEventListener("click",showMainPage)
 showRandom.addEventListener("click",showRandomPage)
+makePosterButton.addEventListener("click",createPoster)
+savePosterBtn.addEventListener("click", savePoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -167,4 +174,19 @@ function showMainPage(){
 }
 function showRandomPage(){
   randomPoster()
+}
+
+function displayPoster(imageUrl, title, quote){
+  posterImg.src = imageUrl;
+  posterTitle.innerText = title
+  posterQuote.innerText = quote
+  showMainPage()
+}
+
+function createPoster(){
+  var userUrl = posterImageUrl.value
+  var userTitle = posterTitleInput.value
+  var userQuote = posterQuoteInput.value
+  posterImageUrl.value = posterTitleInput.value = posterQuoteInput.value = ''
+  displayPoster(userUrl, userTitle, userQuote)
 }
