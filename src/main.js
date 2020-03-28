@@ -1,20 +1,20 @@
 // query selector variables go here 👇
-var customPosterImageUrl = document.querySelector('#poster-image-url');
-var customPosterTitle = document.querySelector('#poster-title');
-var customPosterQuote = document.querySelector('#poster-quote');
-var makePoster = document.querySelector('.make-poster');
+var mainPosterPage = document.querySelector('.main-poster');
+var posterImg = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
 var savePoster = document.querySelector('.save-poster');
 var showSaved = document.querySelector('.show-saved');
 var showRandom = document.querySelector('.show-random');
 var showForm = document.querySelector('.show-form');
-var mainPosterPage = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
-var posterImg = document.querySelector('.poster-img');
-var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querySelector('.poster-quote');
+var customPosterImageUrl = document.querySelector('#poster-image-url');
+var customPosterTitle = document.querySelector('#poster-title');
+var customPosterQuote = document.querySelector('#poster-quote');
+var makePoster = document.querySelector('.make-poster');
+var showMain = document.querySelector('.show-main');
 var savedPosterPage = document.querySelector('.saved-posters');
 var backToMain = document.querySelector('.back-to-main');
-var showMain = document.querySelector('.show-main');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -216,3 +216,13 @@ function customPosterData() {
 // When a user clicks the “Show Saved Posters” button, we should see the saved posters section
 
 // All the posters in the savedPosters array should be displayed in the saved posters grid section
+// This will be tricky, so let's break it down:
+//   first some observations: 
+//     The HTML code for the main Page poster our template for the mini poster:
+//        <article class="poster">
+//           <img class="poster-img" src="" alt="nothin' to see here">
+//           <h1 class="poster-title">Title</h1>
+//           <h3 class="poster-quote">Quote</h3>
+//        </article>
+//     The respective section of CSS script:
+//        
