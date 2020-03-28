@@ -6,6 +6,7 @@ var targetQuote = document.querySelector('.poster-quote');
 var posterForm = document.querySelector('.poster-form');
 var mainPoster = document.querySelector('.main-poster');
 var savedPoster = document.querySelector('.saved-posters');
+var savedPosterGrid = document.querySelector('.saved-posters-grid');
 
 var showFormBtn = document.querySelector('.show-form');
 var showSavedBtn = document.querySelector('.show-saved');
@@ -19,6 +20,7 @@ var ownTitle = document.getElementById('poster-title');
 var ownImage = document.getElementById('poster-image-url');
 var ownQuote = document.getElementById('poster-quote');
 
+var count = 0;
 
 
 
@@ -159,6 +161,7 @@ function makeOwnPoster() {
 };
 
 function viewSaved() {
+  displaySavedPosters();
   savedPoster.classList.toggle('hidden');
   mainPoster.classList.toggle('hidden');
 };
@@ -185,6 +188,17 @@ function addToArray() {
   savedPosters.push(currentPoster);
 }
 
+function displaySavedPosters() {
+  for(var i = count; i < savedPosters.length; i++){
+    savedPosterGrid.innerHTML +=
+    `<section class = "mini-poster">
+      <img class="img" src="${savedPosters[i].imageURL}">
+      <h2 class="title">${savedPosters[i].title}</h1>
+      <h3 class="quote">${savedPosters[i].quote}</h3>
+     </section>`
+     count++;
+    }
+}
 function isEquivalent(a, b) {
   if (a.imageURL == b.imageURL && a.title == b.title && a.quote == b.quote) {
     return true;
