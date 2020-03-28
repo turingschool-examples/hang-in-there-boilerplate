@@ -1,13 +1,3 @@
-//Iteration 3
-// When a user clicks the “Save This Poster” button, the current main poster will be added to the savedPosters array.
-
-// If a user clicks the “Save This Poster” more than once on a single poster, it will still only be saved once (no duplicates)
-
-// When a user clicks the “Show Saved Posters” button, we should see the saved posters section
-
-// All the posters in the savedPosters array should be displayed in the saved posters grid section
-
-
 // query selector variables go here 👇
 var customPosterImageUrl = document.querySelector('#poster-image-url');
 var customPosterTitle = document.querySelector('#poster-title');
@@ -137,50 +127,15 @@ posterForm.addEventListener('click', posterFormButtonHandler);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 //Displays form page and hides main page.
-function buttonHandler(event) {
-  if (event.target === showForm) {
-    displayPosterForm();
-  } else if (event.target === showSaved) {
-    displayMakeMyPoster();
-  } else if (event.target === showRandom) {
-    updateCurrentPoster();
-  };
-};
-
-function savedPosterButtonHandler(event) {
-  if (event.target === backToMain) {
-    savedPosterPage.classList.add('hidden');
-    mainPosterPage.classList.remove('hidden');
-  };
-};
-
-function posterFormButtonHandler(event) {
-  if (event.target === showMain) {
-    posterForm.classList.add('hidden');
-    mainPosterPage.classList.remove('hidden');
-
-  } else if (event.target === makePoster) {
-    posterForm.classList.add('hidden');
-    mainPosterPage.classList.remove('hidden');
-    customPosterData();
-  }
-}
-
-function displayPosterForm() {
-  posterForm.classList.remove('hidden');
-  mainPosterPage.classList.add('hidden');
-};
-
-function displayMakeMyPoster() {
-  savedPosterPage.classList.remove('hidden');
-  mainPosterPage.classList.add('hidden');
-};
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-currentPoster = new Poster(randomPosterImage(), randomTitle(), randomQuote())
+currentPoster = new Poster(
+  randomPosterImage(), 
+  randomTitle(), 
+  randomQuote()
+)
 
 function randomPosterImage() {
   var randomImage = getRandomIndex(images);
@@ -200,6 +155,47 @@ function randomQuote() {
   return Poster.quote = posterQuote.innerText
 };
 
+window.onload = currentPoster;
+
+function buttonHandler(event) {
+  if (event.target === showForm) {
+    posterForm.classList.remove('hidden');
+    mainPosterPage.classList.add('hidden');
+  } else if (event.target === showSaved) {
+    savedPosterPage.classList.remove('hidden');
+    mainPosterPage.classList.add('hidden');;
+  } else if (event.target === showRandom) {
+    var newCurrentPoster = new Poster(
+      randomPosterImage(), 
+      randomTitle(), 
+      randomQuote()
+    );
+    currentPoster = newCurrentPoster;
+  } else if (event.target === savePoster) {
+    if (!(savedPosters.includes(currentPoster))) {
+      savedPosters.push(currentPoster);
+    }
+  }
+};
+
+function savedPosterButtonHandler(event) {
+  if (event.target === backToMain) {
+    savedPosterPage.classList.add('hidden');
+    mainPosterPage.classList.remove('hidden');
+  };
+};
+
+function posterFormButtonHandler(event) {
+  if (event.target === showMain) {
+    posterForm.classList.add('hidden');
+    mainPosterPage.classList.remove('hidden');
+  } else if (event.target === makePoster) {
+    posterForm.classList.add('hidden');
+    mainPosterPage.classList.remove('hidden');
+    customPosterData();
+  }
+}
+
 function customPosterData() {
   event.preventDefault();
   var customPoster = new Poster()
@@ -212,9 +208,11 @@ function customPosterData() {
   currentPoster = customPoster
 }
 
-window.onload = currentPoster;
+//Iteration 3
+// When a user clicks the “Save This Poster” button, the current main poster will be added to the savedPosters array.
 
-function updateCurrentPoster() {
-  var newCurrentPoster = new Poster(randomPosterImage(), randomTitle(), randomQuote())
-  currentPoster = newCurrentPoster
-}
+// If a user clicks the “Save This Poster” more than once on a single poster, it will still only be saved once (no duplicates)
+
+// When a user clicks the “Show Saved Posters” button, we should see the saved posters section
+
+// All the posters in the savedPosters array should be displayed in the saved posters grid section
