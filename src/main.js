@@ -1,3 +1,4 @@
+
 // query selector variables go here 👇
 var image = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
@@ -9,7 +10,6 @@ var mainButton = document.querySelector('.show-main');
 var saveButton = document.querySelector('.show-saved');
 var savePage = document.querySelector('.saved-posters');
 var backToMainButton = document.querySelector('.back-to-main');
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -108,15 +108,14 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
-];
-var currentPoster;
-
+// var savedPosters = [
+//   makePoster(
+//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+//     "Optimism",
+//     "Keep a joyful heart!"
+//   )
+// ];
+// var currentPoster;
 // event listeners go here 👇
 image.addEventListener('load', getImage(images));
 title.addEventListener('load', getTitle(titles));
