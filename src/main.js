@@ -209,8 +209,9 @@ function createMiniPosterId() {
   miniPosterId.addEventListener('dblclick', deleteMiniPoster)
 }
 
-function deleteMiniPoster(event) {
-  console.log(this.id)
+function deleteMiniPoster() {
+  let savedMiniPosterId = document.getElementById(this.id)
+  savedMiniPosterId.remove();
 }
 
 function savedPosterButtonHandler(event) {
