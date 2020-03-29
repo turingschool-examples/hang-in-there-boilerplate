@@ -23,7 +23,6 @@ var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 var showMyPoster = document.querySelector('.make-poster');
 
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -124,9 +123,10 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 
- var currentPoster = [posterImg.src, posterTitle.innerText, posterQuote.innerText];
+var currentPoster = [posterImg.src, posterTitle.innerText, posterQuote.innerText];
 
 // event listeners go here 👇
 formButton.addEventListener('click', showPosterForm);
@@ -135,7 +135,7 @@ showMainButton.addEventListener('click', takeMeBack);
 backToMainButton.addEventListener('click', backToMain)
 randomButton.addEventListener('click', randomize);
 showMyPoster.addEventListener('click', makePosterForm);
-savePosterButton.addEventListener('click', saveThisPoster, checkSavedPosters);
+savePosterButton.addEventListener('click', saveThisPoster);
 
 // functions and event handlers go here 👇
 
@@ -153,26 +153,14 @@ function makePosterForm(event) {
   posterTitle.innerText = titleInput;
   posterQuote.innerText = quoteInput;
   takeMeBack();
-  
 }
-// error: cannot ready property image url need to fix 
-function checkSavedPosters() {
-  for(var i = savedPosters.length; i >= 0; i--) {
-    var previousPoster = savedPosters[i - 1];
-    var presentPoster = savedPosters[i];
-    if(savedPosters[i].imageURL === savedPosters[i - 1].imageURL && presentPoster[title] === previousPoster[title] && presentPoster[quote] === previousPoster[quote]){
-      savedPosters.pop(presentPoster);
-    }
-  }
-}
-  
+
 function saveThisPoster() {
   var link = posterImg.src
   var title = posterTitle.innerText
   var quote = posterQuote.innerText
   var saveCreatedPoster = new Poster(link, title, quote);
   savedPosters.push(saveCreatedPoster);
-  checkSavedPosters();
 }
 
 function showPosterForm() {
@@ -201,14 +189,16 @@ function randomize() {
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 }
 
+function addSaveListener() {
+  savePosterButton.addEventListener('click', saveThisPoster);
+}
+
+function removeSaveListener() {
+  savePosterButton.removeEventListener('click', saveThisPoster);
+}
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// document.querySelector("img").src = images[getRandomIndex(images)];
-
-// document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)];
-
-// document.querySelector(".poster-quote").innerText = quotes[getRandomIndex(quotes)];
 randomize();
