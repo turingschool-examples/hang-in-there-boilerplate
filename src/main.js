@@ -152,6 +152,7 @@ function makePosterForm(event) {
   posterImg.src = imageInput;
   posterTitle.innerText = titleInput;
   posterQuote.innerText = quoteInput;
+  addSaveListener();
   takeMeBack();
 }
 
@@ -161,6 +162,7 @@ function saveThisPoster() {
   var quote = posterQuote.innerText
   var saveCreatedPoster = new Poster(link, title, quote);
   savedPosters.push(saveCreatedPoster);
+  removeSaveListener();
 }
 
 function showPosterForm() {
@@ -176,17 +178,20 @@ function showSaved() {
 function takeMeBack() {
   mainPoster.className = "main-poster";
   posterForm.className = "poster-form hidden";
+  addSaveListener();
 }
 
 function backToMain() {
   mainPoster.className = "main-poster";
   savedPoster.className = "saved-posters hidden";
+  addSaveListener();
 }
 
 function randomize() {
   posterImg.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
+  addSaveListener();
 }
 
 function addSaveListener() {
