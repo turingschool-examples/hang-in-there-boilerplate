@@ -9,6 +9,12 @@ var savedPostersButton = document.querySelector('.show-saved');
 var savedPostersArea = document.querySelector('.saved-posters');
 var takeMeBackButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+var showPosterButton = document.querySelector('.make-poster');
+var titleInput = document.getElementById("poster-title");
+var quoteInput = document.getElementById("poster-quote");
+var imageInput = document.getElementById("poster-image-url");
+
+// var makePosterButton = document.querySelector('.save-button');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,8 +114,9 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+var savedPosters = [];
 
-// var currentPoster = new Poster(posterImage, posterTitle, posterQuote);
+var currentPoster = new Poster(posterImage, posterTitle, posterQuote);
 
 
 // event listeners go here 👇
@@ -118,7 +125,8 @@ makeYourOwnButton.addEventListener('click', showForm);
 savedPostersButton.addEventListener('click', showSavedPosters);
 takeMeBackButton.addEventListener('click', takeMeBack);
 backToMainButton.addEventListener('click', backToMain);
-
+// makePosterButton.addEventListener('click', makePoster);
+showPosterButton.addEventListener('click', showPoster);
 // functions and event handlers go here 👇
 
 posterImage.src = images[getRandomIndex(images)];
@@ -127,6 +135,11 @@ posterQuote.innerText = quotes[getRandomIndex(quotes)];
 
 // new code
 // (we've provided one for you to get you started)!
+
+// * capture user input and push values into the arrays
+// * use those values and create a new poster class instance
+// * go back to main poster view
+// * the new user input will show on the main page
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -150,4 +163,24 @@ function takeMeBack() {
 function backToMain() {
   mainPage.classList.remove('hidden');
   savedPostersArea.classList.add('hidden');
+}
+
+function showPoster(event) {
+  event.preventDefault();
+  var createdImage = imageInput.value;
+  var createdTitle = titleInput.value;
+  var createdQuote = quoteInput.value;
+
+  titles.push(createdTitle);
+  quotes.push(createdQuote);
+  images.push(createdImage);
+
+  var createdPoster = new Poster(createdImage, createdTitle, createdQuote);
+
+  makePosterForm.classList.add('hidden');
+  mainPage.classList.remove('hidden');
+
+  posterImage.src = createdPoster.imageURL;
+  posterTitle.innerText = createdPoster.title;
+  posterQuote.innerText = createdPoster.quote;
 }
