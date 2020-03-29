@@ -16,30 +16,6 @@ var makePosterBtn = document.querySelector('.make-poster')
 var savePosterBtn = document.querySelector('.save-poster')
 var savedPosterGrid = document.querySelector('.saved-posters-grid')
 var showRandomBtn = document.querySelector('.show-random')
-/* ---
-Iteration 1:
-Part A: Get querySelector for 'Make Poster' button
-Add click event for 'Make Poster' button
-Add hidden class to section.main-poster
-Create function to remove hidden class from poster-form
-
-Part B: Get querySelector for show-saved button
-Add click event for show-saved button
-Add hidden class to section.main-poster
-Create function to remove hidden class from saved-posters section
-
-Part C: Create a variable to querySelect back-to-main button
-Create a variable to querySelect show-main button
-Add click event for show-main and back-to-main buttons
-Create function to add hidden class to poster-form or saved-posters section
-Remove hidden class from section.main-poster
-*/
-
-/*
-Iteration 2:
-Part A:
-
-*/
 
 // we've provided you with some data to work with 👇
 
@@ -168,13 +144,9 @@ function initialRandomPoster() {
   var title = titles[getRandomIndex(titles)]
   var quote = quotes[getRandomIndex(quotes)]
   currentPoster = new Poster(imgSrc, title, quote)
-  // setImgSource()
-  // setTitle()
-  // setQuote()
   setPoster()
 }
 
-/* setPoster() Allows the first randomly generated poster to be saved into the Saved Posters array*/
 function setPoster() {
   mainPosterImg.src = currentPoster.imageURL
   posterTitle.innerHTML = currentPoster.title
@@ -208,7 +180,6 @@ function createAPoster(imgSrc, title, quote) {
   images.push(imgSrc)
   titles.push(title)
   quotes.push(quote)
-
   posterTitle.innerText = title
   posterQuote.innerText = quote
   mainPosterImg.setAttribute('src', imgSrc)
@@ -227,7 +198,6 @@ function makePosterHandler(e) {
   var imgInput = posterImgInput.value
   var titleInput = posterTitleInput.value
   var quoteInput = posterQuoteInput.value
-
   e.preventDefault()
   createAPoster(imgInput, titleInput, quoteInput)
 }
@@ -245,8 +215,6 @@ function noDuplicatePoster() {
     }
   }
   return true
-  /* ALTERNATIVE STYLE FOR READABILITY */
-  // return !Boolean(savedPosters.find(poster => poster.id === currentPoster.id))
 }
 
 function makePoster(imgSrc, title, quote) {
