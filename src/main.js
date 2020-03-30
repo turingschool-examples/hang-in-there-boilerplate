@@ -181,6 +181,10 @@ function showPosterForm() {
 }
 
 function showSaved() {
+  for (var currentPoster of savedPosters) {
+    var posterElement = createPosterHtml(currentPoster);
+    savedPosterGrid.innerHTML += posterElement;
+  }
   savedPoster.className = "saved-posters";
   mainPoster.className = "main-poster hidden";
 }
@@ -227,4 +231,8 @@ function createPosterHtml(posterObj) {
       <h4>${posterObj.quote}</h4>
     </div>`;
 }
-
+//
+// for (var currentPoster of savedPosters) {
+//   var posterElement = createPosterHtml(currentPoster);
+//   savedPostersGrid.innerHTML += posterElement;
+// }
