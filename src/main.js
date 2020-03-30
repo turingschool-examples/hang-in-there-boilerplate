@@ -22,6 +22,10 @@ var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 var showMyPoster = document.querySelector('.make-poster');
+var miniPosterImg = document.querySelector('.mini-poster img');
+var miniPosterHeading = document.querySelector('.mini-poster h2');
+var miniPosterQuote = document.querySelector('.mini-poster h4');
+var savedPosterGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -138,6 +142,10 @@ showMyPoster.addEventListener('click', makePosterForm);
 savePosterButton.addEventListener('click', saveThisPoster);
 
 // functions and event handlers go here 👇
+
+function arrangeGrid(savedPosters) {
+
+}
 
 function makePosterForm(event) {
   event.preventDefault();
