@@ -13,6 +13,8 @@ var inputImageUrl = document.querySelector('#poster-image-url');
 var inputTitle = document.querySelector('#poster-title');
 var inputQuote = document.querySelector('#poster-quote');
 var showMakePosterButton = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector('.save-poster');
+var currentPoster;
 // var showdocument.querySelector('.show-saved')
 // we've provided you with some data to work with 👇
 var images = [
@@ -112,6 +114,8 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+// When a user clicks the “Save This Poster” button, the current main poster will be added to the savedPosters array.
 var savedPosters = [
 ];
 
@@ -132,6 +136,7 @@ showSavedButton.addEventListener('click', showSaved);
 mainNvmdButton.addEventListener('click', showMainPoster);
 toMainButton.addEventListener('click', showMainPoster);
 showMakePosterButton.addEventListener('click', saveUserInput);
+saveThisPosterButton.addEventListener('click', saveThisPoster);
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -154,21 +159,25 @@ function showMainPoster() {
 
 function saveUserInput(event) {
   event.preventDefault();
-  var currentPoster = showNewPoster();
   showMainPoster();
+  showNewPoster();
 
-  images.push(currentPoster.imgageURL);
+  images.push(currentPoster.imageURL);
   titles.push(currentPoster.title);
   quotes.push(currentPoster.quote);
-
 }
 
 function showNewPoster()  {
-  var currentPoster = new Poster(inputImageUrl.value, inputTitle.value, inputQuote.value);
-
+  currentPoster = new Poster(inputImageUrl.value, inputTitle.value, inputQuote.value);
   getTitle.innerText = currentPoster.title;
   getImage.src = currentPoster.imageURL;
   getQuote.innerText = currentPoster.quote;
+}
 
-  return currentPoster;
+function saveThisPoster() {
+  var saveThisPoster  = new Poster(getTitle.innerText, getImage.src, getQuote.innerText);
+  savedPosters.push(saveThisPoster);
+  showSaved();
+
+
 }
