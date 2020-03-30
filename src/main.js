@@ -130,7 +130,9 @@ var quotes = [
 
 var savedPosters = [];
 
-var currentPoster = [posterImg.src, posterTitle.innerText, posterQuote.innerText];
+//var currentPoster = [posterImg.src, posterTitle.innerText, posterQuote.innerText];
+//var currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
+
 
 // event listeners go here 👇
 formButton.addEventListener('click', showPosterForm);
@@ -215,3 +217,14 @@ function getRandomIndex(array) {
 }
 
 randomize();
+
+var currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
+
+function createPosterHtml(posterObj) {
+  return `<div class="mini-poster">
+      <img src="${posterObj.imageURL}" />
+      <h2>${posterObj.title}</h2>
+      <h4>${posterObj.quote}</h4>
+    </div>`;
+}
+
