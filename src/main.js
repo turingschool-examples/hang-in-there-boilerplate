@@ -213,3 +213,11 @@ function displaySaved(){
     savedPostersGrid.insertAdjacentHTML('afterbegin', posterHTML)
   }
 }
+
+function noDuplicates(names){
+  for (var i=0;i < savedPostersArray.length; i++) {
+    var currentPoster = savedPostersArray[i]
+if(currentPoster.title === names.title && currentPoster.imageURL === names.imageUrl && currentPoster.quote === names.quote){
+  // remove names
+}
+}
