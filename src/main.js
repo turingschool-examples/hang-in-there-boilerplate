@@ -9,6 +9,10 @@ var showSavedButton = document.querySelector('.show-saved');
 var savedPostersSection = document.querySelector('.saved-posters');
 var mainNvmdButton = document.querySelector('.show-main');
 var toMainButton = document.querySelector('.back-to-main');
+var inputImageUrl = document.querySelector('#poster-image-url');
+var inputTitle = document.querySelector('#poster-title');
+var inputQuote = document.querySelector('#poster-quote');
+var showMakePosterButton = document.querySelector('.make-poster');
 // var showdocument.querySelector('.show-saved')
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,7 +114,7 @@ var quotes = [
 ];
 var savedPosters = [
 ];
-// var currentPoster;
+
 
 getImage.src = images[getRandomIndex(images)];
 getTitle.innerText = titles[getRandomIndex(titles)];
@@ -127,6 +131,7 @@ showFormButton.addEventListener('click', showForm);
 showSavedButton.addEventListener('click', showSaved);
 mainNvmdButton.addEventListener('click', showMainPoster);
 toMainButton.addEventListener('click', showMainPoster);
+showMakePosterButton.addEventListener('click', saveUserInput);
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -147,8 +152,23 @@ function showMainPoster() {
   savedPostersSection.classList.add('hidden');
 }
 
-// function backToMainPoster() {
-//   savedPosterSection.classList.add('hidden');
-//   mainPoster.classList.remove('hidden');
-//   posterForm.classList.add('hidden');
-// }
+function saveUserInput(event) {
+  event.preventDefault();
+  var currentPoster = showNewPoster();
+  showMainPoster();
+
+  images.push(currentPoster.imgageURL);
+  titles.push(currentPoster.title);
+  quotes.push(currentPoster.quote);
+
+}
+
+function showNewPoster()  {
+  var currentPoster = new Poster(inputImageUrl.value, inputTitle.value, inputQuote.value);
+
+  getTitle.innerText = currentPoster.title;
+  getImage.src = currentPoster.imageURL;
+  getQuote.innerText = currentPoster.quote;
+
+  return currentPoster;
+}
