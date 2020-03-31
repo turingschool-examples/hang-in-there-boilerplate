@@ -131,15 +131,11 @@ var quotes = [
 
 var savedPosters = [];
 
-//var currentPoster = [posterImg.src, posterTitle.innerText, posterQuote.innerText];
-//var currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
-
-
 // event listeners go here 👇
 formButton.addEventListener('click', showPosterForm);
 showSavedPosterButton.addEventListener('click', showSaved);
 showMainButton.addEventListener('click', takeMeBack);
-backToMainButton.addEventListener('click', backAndClear)
+backToMainButton.addEventListener('click', homeHandler)
 randomButton.addEventListener('click', randomize);
 showMyPoster.addEventListener('click', makePosterForm);
 savePosterButton.addEventListener('click', saveThisPoster);
@@ -150,15 +146,13 @@ function makePosterForm(event) {
   var imageInput = document.getElementById('poster-image-url').value;
   var titleInput = document.getElementById('poster-title').value;
   var quoteInput = document.getElementById('poster-quote').value;
-  var createdPoster = new Poster(`${imageInput}`, `${titleInput}`, `${quoteInput}`);
-  // savedPosters.push(createdPoster);
+  var createdPoster = new Poster(imageInput, titleInput, quoteInput);
   images.push(createdPoster.imageURL);
   titles.push(createdPoster.title);
   quotes.push(createdPoster.quote);
   posterImg.src = imageInput;
   posterTitle.innerText = titleInput;
   posterQuote.innerText = quoteInput;
-  addSaveListener();
   takeMeBack();
 }
 
@@ -167,8 +161,17 @@ function saveThisPoster() {
   var title = posterTitle.innerText
   var quote = posterQuote.innerText
   var saveCreatedPoster = new Poster(link, title, quote);
+  if(!savedPosters.some(function(element) {
+    //todo: make into its own function to dry it up
+    // find out how to pass save created poster out side this scope
+    var isSame = (
+      element.imageURL === saveCreatedPoster.imageURL
+      && element.title === saveCreatedPoster.title
+      && element.quote === saveCreatedPoster.quote
+    );
+    return isSame;
+  })) 
   savedPosters.push(saveCreatedPoster);
-  removeSaveListener();
 }
 
 function showPosterForm() {
@@ -188,13 +191,11 @@ function showSaved() {
 function takeMeBack() {
   mainPoster.className = "main-poster";
   posterForm.className = "poster-form hidden";
-  addSaveListener();
 }
 
-function backAndClear() {
+function homeHandler() {
   clearHTML();
   backToMain();
-  removeSaveListener();
 }
 
 function clearHTML() {
@@ -204,24 +205,14 @@ function clearHTML() {
 function backToMain() {
   mainPoster.className = "main-poster";
   savedPoster.className = "saved-posters hidden";
-  addSaveListener();
 }
 
 function randomize() {
   posterImg.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
-  addSaveListener();
 }
 
-function addSaveListener() {
-  savePosterButton.addEventListener('click', saveThisPoster);
-}
-
-function removeSaveListener() {
-  savePosterButton.removeEventListener('click', saveThisPoster);
-}
-// (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
