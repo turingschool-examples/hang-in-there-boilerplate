@@ -1,28 +1,25 @@
 
 // query selector variables go here 👇
-// query for buttons
-var savePosterButton = document.querySelector('.save-poster');
-var showSavedPosterButton = document.querySelector('.show-saved');
-var randomButton = document.querySelector('.show-random');
-var formButton = document.querySelector('.show-form');
-var showMainButton = document.querySelector('.show-main');
+  // query for buttons
+var savePosterButton = document.querySelector(".save-poster");
+var showSavedPosterButton = document.querySelector(".show-saved");
+var randomButton = document.querySelector(".show-random");
+var formButton = document.querySelector(".show-form");
+var showMainButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector('.back-to-main');
 
-// query for pages
-var posterForm = document.querySelector('.poster-form');
-var mainPoster = document.querySelector('.main-poster');
-var savedPoster = document.querySelector('.saved-posters');
+  // query for pages
+var posterForm = document.querySelector(".poster-form");
+var mainPoster = document.querySelector(".main-poster");
+var savedPoster = document.querySelector(".saved-posters");
 
-// query for elements
+  // query for elements
 var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
-var showMyPoster = document.querySelector('.make-poster');
-var miniPosterImg = document.querySelector('.mini-poster img');
-var miniPosterHeading = document.querySelector('.mini-poster h2');
-var miniPosterQuote = document.querySelector('.mini-poster h4');
-var savedPosterGrid = document.querySelector('.saved-posters-grid');
-var miniPosterArray = document.querySelectorAll('.mini-poster');
+var showMyPoster = document.querySelector(".make-poster");
+var savedPosterGrid = document.querySelector(".saved-posters-grid");
+var miniPosterArray = document.querySelectorAll(".mini-poster");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -128,20 +125,21 @@ var quotes = [
 var savedPosters = [];
 
 // event listeners go here 👇
-formButton.addEventListener('click', showPosterForm);
-showSavedPosterButton.addEventListener('click', showSaved);
-showMainButton.addEventListener('click', takeMeBack);
-backToMainButton.addEventListener('click', homeHandler)
-randomButton.addEventListener('click', randomize);
-showMyPoster.addEventListener('click', makePosterForm);
-savePosterButton.addEventListener('click', saveThisPoster);
+formButton.addEventListener("click", showPosterForm);
+showSavedPosterButton.addEventListener("click", showSaved);
+showMainButton.addEventListener("click", takeMeBack);
+backToMainButton.addEventListener("click", homeHandler)
+randomButton.addEventListener("click", randomize);
+showMyPoster.addEventListener("click", makePosterForm);
+savePosterButton.addEventListener("click", saveThisPoster);
+savedPosterGrid.addEventListener("dblclick", deleteMiniPoster);
 
 // functions and event handlers go here 👇
 function makePosterForm(event) {
   event.preventDefault();
-  var imageInput = document.getElementById('poster-image-url').value;
-  var titleInput = document.getElementById('poster-title').value;
-  var quoteInput = document.getElementById('poster-quote').value;
+  var imageInput = document.getElementById("poster-image-url").value;
+  var titleInput = document.getElementById("poster-title").value;
+  var quoteInput = document.getElementById("poster-quote").value;
   var createdPoster = new Poster(imageInput, titleInput, quoteInput);
   images.push(createdPoster.imageURL);
   titles.push(createdPoster.title);
@@ -219,6 +217,17 @@ function createPosterHtml(posterObj) {
   <h2>${posterObj.title}</h2>
   <h4>${posterObj.quote}</h4>
   </div>`;
+}
+
+function deleteMiniPoster() {
+  var deletedPosters = [];
+  var mini = document.querySelector(".mini-poster");
+  var closestElement = mini.closest("article > div");
+  deletedPosters.push(closestElement);
+  savedPosters = savedPosters.filter(function(poster) {
+    return deletedPosters[0].lastChild.previousElementSibling.innerText !== poster.quote;
+  });
+  closestElement.remove();
 }
 
 randomize();
