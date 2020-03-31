@@ -26,6 +26,7 @@ var miniPosterImg = document.querySelector('.mini-poster img');
 var miniPosterHeading = document.querySelector('.mini-poster h2');
 var miniPosterQuote = document.querySelector('.mini-poster h4');
 var savedPosterGrid = document.querySelector('.saved-posters-grid');
+var miniPosterArray = document.querySelectorAll('.mini-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -130,39 +131,28 @@ var quotes = [
 
 var savedPosters = [];
 
-//var currentPoster = [posterImg.src, posterTitle.innerText, posterQuote.innerText];
-//var currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
-
-
 // event listeners go here 👇
 formButton.addEventListener('click', showPosterForm);
 showSavedPosterButton.addEventListener('click', showSaved);
 showMainButton.addEventListener('click', takeMeBack);
-backToMainButton.addEventListener('click', backToMain)
+backToMainButton.addEventListener('click', homeHandler)
 randomButton.addEventListener('click', randomize);
 showMyPoster.addEventListener('click', makePosterForm);
 savePosterButton.addEventListener('click', saveThisPoster);
 
 // functions and event handlers go here 👇
-
-function arrangeGrid(savedPosters) {
-
-}
-
 function makePosterForm(event) {
   event.preventDefault();
   var imageInput = document.getElementById('poster-image-url').value;
   var titleInput = document.getElementById('poster-title').value;
   var quoteInput = document.getElementById('poster-quote').value;
-  var createdPoster = new Poster(`${imageInput}`, `${titleInput}`, `${quoteInput}`);
-  // savedPosters.push(createdPoster);
+  var createdPoster = new Poster(imageInput, titleInput, quoteInput);
   images.push(createdPoster.imageURL);
   titles.push(createdPoster.title);
   quotes.push(createdPoster.quote);
   posterImg.src = imageInput;
   posterTitle.innerText = titleInput;
   posterQuote.innerText = quoteInput;
-  addSaveListener();
   takeMeBack();
 }
 
@@ -171,8 +161,17 @@ function saveThisPoster() {
   var title = posterTitle.innerText
   var quote = posterQuote.innerText
   var saveCreatedPoster = new Poster(link, title, quote);
+  if(!savedPosters.some(function(element) {
+    //todo: make into its own function to dry it up
+    // find out how to pass save created poster out side this scope
+    var isSame = (
+      element.imageURL === saveCreatedPoster.imageURL
+      && element.title === saveCreatedPoster.title
+      && element.quote === saveCreatedPoster.quote
+    );
+    return isSame;
+  })) 
   savedPosters.push(saveCreatedPoster);
-  removeSaveListener();
 }
 
 function showPosterForm() {
@@ -192,47 +191,40 @@ function showSaved() {
 function takeMeBack() {
   mainPoster.className = "main-poster";
   posterForm.className = "poster-form hidden";
-  addSaveListener();
+}
+
+function homeHandler() {
+  clearHTML();
+  backToMain();
+}
+
+function clearHTML() {
+  savedPosterGrid.innerHTML = '';
 }
 
 function backToMain() {
   mainPoster.className = "main-poster";
   savedPoster.className = "saved-posters hidden";
-  addSaveListener();
 }
 
 function randomize() {
   posterImg.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
-  addSaveListener();
 }
 
-function addSaveListener() {
-  savePosterButton.addEventListener('click', saveThisPoster);
-}
-
-function removeSaveListener() {
-  savePosterButton.removeEventListener('click', saveThisPoster);
-}
-// (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function createPosterHtml(posterObj) {
+  return `<div class="mini-poster">
+  <img src="${posterObj.imageURL}" />
+  <h2>${posterObj.title}</h2>
+  <h4>${posterObj.quote}</h4>
+  </div>`;
 }
 
 randomize();
 
 var currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
-
-function createPosterHtml(posterObj) {
-  return `<div class="mini-poster">
-      <img src="${posterObj.imageURL}" />
-      <h2>${posterObj.title}</h2>
-      <h4>${posterObj.quote}</h4>
-    </div>`;
-}
-//
-// for (var currentPoster of savedPosters) {
-//   var posterElement = createPosterHtml(currentPoster);
-//   savedPostersGrid.innerHTML += posterElement;
-// }
