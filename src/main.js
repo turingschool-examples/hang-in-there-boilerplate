@@ -1,15 +1,11 @@
 
 // query selector variables go here 👇
+// query for buttons
 var savePosterButton = document.querySelector('.save-poster');
-// show saved button
 var showSavedPosterButton = document.querySelector('.show-saved');
-// show random button
 var randomButton = document.querySelector('.show-random');
-// show form button
 var formButton = document.querySelector('.show-form');
-// take me back button
 var showMainButton = document.querySelector('.show-main');
-// back to main button
 var backToMainButton = document.querySelector('.back-to-main');
 
 // query for pages
@@ -170,7 +166,7 @@ function saveThisPoster() {
       && element.quote === saveCreatedPoster.quote
     );
     return isSame;
-  })) 
+  }))
   savedPosters.push(saveCreatedPoster);
 }
 
