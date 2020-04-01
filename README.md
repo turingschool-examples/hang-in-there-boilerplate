@@ -18,6 +18,8 @@ A boilerplate repo.
 
 - When the page loads, we should see a poster with a randomly selected image, title, and quote
 
+- When the page loads, we call the randomize function. The randomize function uses the getRandomIndex function to bring back an image, title, and quote for the main page.
+
 ### Iteration 1 - Switching Views
 
 Form page:
@@ -27,9 +29,8 @@ Saved posters page (once working with extra saved posters):
 ![Screen-Shot-2020-04-01-at-12-54-14-PM.png](https://i.postimg.cc/BtWyVPz9/Screen-Shot-2020-04-01-at-12-54-14-PM.png)
 
 - When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
-- When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
-- When a user clicks the "Nevermind, take me back!" or "Back to Main" buttons, we should only see the main poster section
-- In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
+
+- We added an event listener for the click on the make my own poster button, a function is called that reassigns the hidden class to the main poster class and off the poster form class. We applied this same idea to the rest of the buttons on the app
 
 _Hint: go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place_
 
