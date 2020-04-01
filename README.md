@@ -1,6 +1,6 @@
 # Hang In There
 
-A boilerplate repo. 
+A boilerplate repo.
 
 ## Set Up
 
@@ -14,17 +14,17 @@ A boilerplate repo.
 
 ### Iteration 0 - Main Page
 
-![screenshot of main page showing poster](/readme-imgs/homepage.png)
+![Screen-Shot-2020-04-01-at-2-52-36-PM.png](https://i.postimg.cc/dV78HSYC/Screen-Shot-2020-04-01-at-2-52-36-PM.png)
 
 - When the page loads, we should see a poster with a randomly selected image, title, and quote
 
 ### Iteration 1 - Switching Views
 
 Form page:
-![screenshot of form](/readme-imgs/form.png)
+![Screen-Shot-2020-04-01-at-12-53-21-PM.png](https://i.postimg.cc/25zpYvSC/Screen-Shot-2020-04-01-at-12-53-21-PM.png)
 
 Saved posters page (once working with extra saved posters):
-![screenshot of saved posters page](/readme-imgs/saved.png)
+![Screen-Shot-2020-04-01-at-12-54-14-PM.png](https://i.postimg.cc/BtWyVPz9/Screen-Shot-2020-04-01-at-12-54-14-PM.png)
 
 - When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
 - When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
@@ -36,10 +36,10 @@ _Hint: go check out the HTML and CSS files to see how the form and saved posters
 ## Iteration 2 - Creating a New Poster
 
 Form being filled out:
-![screenshot of form](/readme-imgs/form.png)
+![Screen-Shot-2020-04-01-at-12-51-59-PM.png](https://i.postimg.cc/d0nbV1hr/Screen-Shot-2020-04-01-at-12-51-59-PM.png)
 
 Once poster is saved:
-![screenshot of result](/readme-imgs/form-result.png)
+![Screen-Shot-2020-04-01-at-12-52-14-PM.png](https://i.postimg.cc/sXNb5N92/Screen-Shot-2020-04-01-at-12-52-14-PM.png)
 
 - On the new poster form view, users should be able to fill out the three input fields and then hit the save button
 - When the save button is clicked, several things will happen:
@@ -51,7 +51,7 @@ Once poster is saved:
 ## Iteration 3 - Saving & Viewing Posters
 
 Saved posters view:
-![screenshot of saved posters section](/readme-imgs/saved.png)
+![Screen-Shot-2020-04-01-at-2-52-36-PM.png](https://i.postimg.cc/dV78HSYC/Screen-Shot-2020-04-01-at-2-52-36-PM.png)
 
 - When a user clicks the "Save This Poster" button, the current main poster will be added to the `savedPosters` array.
 - If a user clicks the "Save This Poster" more than once on a single poster, it will still only be saved once (no duplicates)
