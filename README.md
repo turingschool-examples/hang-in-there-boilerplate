@@ -1,19 +1,21 @@
-Hang In There
+#Hang In There
 
-A tool for making motivational posters.
+  A tool for making motivational posters.
 
-Learning Goals
+##Learning Goals
+
   - Gain a better understanding of events.
   - Become more familiar with the DOM.
   - Develop skills in collaborative development.
   - Gain more experience with query selectors.
 
-Project Overview
+##Project Overview
+
   In this project we provided the functionality for a tool that will allow a user to create a motivational poster. The user can generate a random poster from a pre-provided list of images, titles, and quotes.
 
 ![First Poster](https://user-images.githubusercontent.com/61127453/78163852-2950ac00-7406-11ea-93ac-942df449d683.png)
 
-  The user can also create a custom poster by providing and image url, a title, and a quote.
+  The user can also create a custom poster by providing an image url, a title, and a quote.
 
 ![Poster Form](https://user-images.githubusercontent.com/61127453/78163898-35d50480-7406-11ea-81b1-fd492f245807.png)
 
@@ -29,11 +31,11 @@ Project Overview
 
 ![Change Poster Elements](https://user-images.githubusercontent.com/61127453/78163956-49806b00-7406-11ea-95db-afaf21758c6b.png)
 
-Technologies Used
+##Technologies Used
 
-  JavaScript
-  HTML/CSS
+  - JavaScript
+  - HTML/CSS
 
-Systems/Practices
+##Systems/Practices
 
-  git/Version Control
+  - git/Version Control
