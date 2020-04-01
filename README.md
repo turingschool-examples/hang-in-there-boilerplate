@@ -1,79 +1,39 @@
-# Hang In There
+Hang In There
 
-A boilerplate repo. 
+A tool for making motivational posters.
 
-## Set Up
+Learning Goals
+  - Gain a better understanding of events.
+  - Become more familiar with the DOM.
+  - Develop skills in collaborative development.
+  - Gain more experience with query selectors.
 
-1. One teammate: fork this repository
-2. Go to settings and turn on GitHub Pages for this repository
-3. All teammates: clone down this repository
-4. `cd` into the repository
-5. Run `open index.html` to view it in the browser
+Project Overview
+  In this project we provided the functionality for a tool that will allow a user to create a motivational poster. The user can generate a random poster from a pre-provided list of images, titles, and quotes.
 
-## Progression
+![First Poster](https://user-images.githubusercontent.com/61127453/78163852-2950ac00-7406-11ea-93ac-942df449d683.png)
 
-### Iteration 0 - Main Page
+  The user can also create a custom poster by providing and image url, a title, and a quote.
 
-![screenshot of main page showing poster](/readme-imgs/homepage.png)
+![Poster Form](https://user-images.githubusercontent.com/61127453/78163898-35d50480-7406-11ea-81b1-fd492f245807.png)
 
-- When the page loads, we should see a poster with a randomly selected image, title, and quote
+  This new custom poster will be displayed on the main page.
 
-### Iteration 1 - Switching Views
+![Custom Poster](https://user-images.githubusercontent.com/61127453/78163928-3f5e6c80-7406-11ea-91bf-2297147d0685.png)
 
-Form page:
-![screenshot of form](/readme-imgs/form.png)
+  It is also possible to save a poster to a gallery by clicking on the 'Save Poster' button. If the poster already exists in the gallery, a duplicate poster will not be saved. Double-clicking on a poster in the gallery will delete it.
 
-Saved posters page (once working with extra saved posters):
-![screenshot of saved posters page](/readme-imgs/saved.png)
+![Poster Gallery](https://user-images.githubusercontent.com/61127453/78163945-46857a80-7406-11ea-8d46-c6dc0d1f1471.png)
 
-- When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
-- When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
-- When a user clicks the "Nevermind, take me back!" or "Back to Main" buttons, we should only see the main poster section
-- In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
+  As an added touch the user can click one of the three sections of the poster and change that part while leaving the rest of the poster the same. This means that you can click the image to select a new random image, while the title and quote remain as-is.
 
-_Hint: go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place_
+![Change Poster Elements](https://user-images.githubusercontent.com/61127453/78163956-49806b00-7406-11ea-95db-afaf21758c6b.png)
 
-## Iteration 2 - Creating a New Poster
+Technologies Used
 
-Form being filled out:
-![screenshot of form](/readme-imgs/form.png)
+  JavaScript
+  HTML/CSS
 
-Once poster is saved:
-![screenshot of result](/readme-imgs/form-result.png)
+Systems/Practices
 
-- On the new poster form view, users should be able to fill out the three input fields and then hit the save button
-- When the save button is clicked, several things will happen:
-  - Save the submitted data into the respective arrays (image URL into the images array, etc) so that future random posters can use the user-created data
-  - Use the values from the inputs to create a new instance of our Poster class
-  - Change back to the main poster view (hiding the form view again)
-  - Display the newly created poster image, title, and quote in the main view
-
-## Iteration 3 - Saving & Viewing Posters
-
-Saved posters view:
-![screenshot of saved posters section](/readme-imgs/saved.png)
-
-- When a user clicks the "Save This Poster" button, the current main poster will be added to the `savedPosters` array.
-- If a user clicks the "Save This Poster" more than once on a single poster, it will still only be saved once (no duplicates)
-- When a user clicks the "Show Saved Posters" button, we should see the saved posters section
-- All the posters in the `savedPosters` array should be displayed in the saved posters grid section
-
-## Iteration 4 - Deleting Saved Posters
-
-- From the saved posters view, if a user double clicks a saved poster, it will be deleted
-
-_Hint: How will you update the data model to achieve this?_
-
-## Optional Extensions - Gettin' fancy
-
-Here's a list of possible extensions to implement - but **ONLY IF** your team has completed all the previous iterations **AND** have cleaned up your code to make it DRYer and more readable.
-
-You are welcome to add your own extensions. Be sure they are thoughtful in terms of UX/UI, and that they do not break any prior functionality.
-
-- Implement data validation and error handling into the form (disable button, provide error messages if data entered is not correct, etc)
-- In the main poster view, allow users to click each piece of the poster (image, title, quote) to update just that piece with another random item from the appropriate array
-- When a user single clicks a saved poster, create a modal to view it larger
-- Allow users to drag and drop saved posters into whatever order they want them to appear
-
-
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
+  git/Version Control
