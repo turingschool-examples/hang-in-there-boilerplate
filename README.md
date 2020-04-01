@@ -2,6 +2,10 @@
 
   A tool for making motivational posters.
 
+###Contributors:
+  - Carlyle Douglas (GitHub: [DougieDev](https://github.com/DougieDev) )
+  - Charles Wefso (GitHub: [CWefso](https://github.com/cwefso))
+
 ##Learning Goals
 
   - Gain a better understanding of events.
