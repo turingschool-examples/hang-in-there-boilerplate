@@ -6,7 +6,7 @@ var showSavedPosterButton = document.querySelector(".show-saved");
 var randomButton = document.querySelector(".show-random");
 var formButton = document.querySelector(".show-form");
 var showMainButton = document.querySelector(".show-main");
-var backToMainButton = document.querySelector('.back-to-main');
+var backToMainButton = document.querySelector(".back-to-main");
 
   // query for pages
 var posterForm = document.querySelector(".poster-form");
@@ -219,10 +219,10 @@ function createPosterHtml(posterObj) {
   </div>`;
 }
 
-function deleteMiniPoster() {
+function deleteMiniPoster(event) {
   var deletedPosters = [];
   var mini = document.querySelector(".mini-poster");
-  var closestElement = mini.closest("article > div");
+  var closestElement = event.target.closest('.mini-poster')
   deletedPosters.push(closestElement);
   savedPosters = savedPosters.filter(function(poster) {
     return deletedPosters[0].lastChild.previousElementSibling.innerText !== poster.quote;
