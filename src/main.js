@@ -219,7 +219,7 @@ function createPosterHtml(posterObj) {
 
 function deleteMiniPoster(event) {
   var deletedPosters = [];
-  var closestElement = event.target.closest('.mini-poster')
+  var closestElement = event.target.closest(".mini-poster")
   deletedPosters.push(closestElement);
   savedPosters = savedPosters.filter(function(poster) {
     return deletedPosters[0].lastChild.previousElementSibling.innerText !== poster.quote;
