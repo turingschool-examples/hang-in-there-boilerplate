@@ -1,4 +1,3 @@
-// query selector variables go here 👇
 var mainPoster = document.querySelector('.main-poster');
 var getImage = document.querySelector('.poster-img');
 var getTitle = document.querySelector('.poster-title');
@@ -14,9 +13,7 @@ var inputTitle = document.querySelector('#poster-title');
 var inputQuote = document.querySelector('#poster-quote');
 var showMakePosterButton = document.querySelector('.make-poster');
 var saveThisPosterButton = document.querySelector('.save-poster');
-var currentPoster;
-// var showdocument.querySelector('.show-saved')
-// we've provided you with some data to work with 👇
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -115,32 +112,23 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-// When a user clicks the “Save This Poster” button, the current main poster will be added to the savedPosters array.
-var savedPosters = [
-];
-
+var savedPosters = [];
 
 getImage.src = images[getRandomIndex(images)];
 getTitle.innerText = titles[getRandomIndex(titles)];
 getQuote.innerText = quotes[getRandomIndex(quotes)];
 
-
-// hide main poster when view saved poster clicked
-
-// event listeners go here 👇
-
-// functions and event handlers go here 👇
-// event handeler, handle the outcome of the event
 showFormButton.addEventListener('click', showForm);
 showSavedButton.addEventListener('click', showSaved);
 mainNvmdButton.addEventListener('click', showMainPoster);
 toMainButton.addEventListener('click', showMainPoster);
 showMakePosterButton.addEventListener('click', saveUserInput);
 saveThisPosterButton.addEventListener('click', saveThisPoster);
-// (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 function showForm() {
   posterForm.classList.remove('hidden');
   mainPoster.classList.add('hidden');
@@ -177,7 +165,4 @@ function showNewPoster()  {
 function saveThisPoster() {
   var saveThisPoster  = new Poster(getTitle.innerText, getImage.src, getQuote.innerText);
   savedPosters.push(saveThisPoster);
-  showSaved();
-
-
 }
