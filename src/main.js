@@ -156,8 +156,6 @@ function saveThisPoster() {
   var quote = posterQuote.innerText
   var saveCreatedPoster = new Poster(link, title, quote);
   if(!savedPosters.some(function(element) {
-    //todo: make into its own function to dry it up
-    // find out how to pass save created poster out side this scope
     var isSame = (
       element.imageURL === saveCreatedPoster.imageURL
       && element.title === saveCreatedPoster.title
@@ -221,7 +219,6 @@ function createPosterHtml(posterObj) {
 
 function deleteMiniPoster(event) {
   var deletedPosters = [];
-  var mini = document.querySelector(".mini-poster");
   var closestElement = event.target.closest('.mini-poster')
   deletedPosters.push(closestElement);
   savedPosters = savedPosters.filter(function(poster) {
