@@ -1,19 +1,12 @@
-
-// query selector variables go here 👇
-  // query for buttons
 var savePosterButton = document.querySelector(".save-poster");
 var showSavedPosterButton = document.querySelector(".show-saved");
 var randomButton = document.querySelector(".show-random");
 var formButton = document.querySelector(".show-form");
 var showMainButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
-
-  // query for pages
 var posterForm = document.querySelector(".poster-form");
 var mainPoster = document.querySelector(".main-poster");
 var savedPoster = document.querySelector(".saved-posters");
-
-  // query for elements
 var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
@@ -21,7 +14,6 @@ var showMyPoster = document.querySelector(".make-poster");
 var savedPosterGrid = document.querySelector(".saved-posters-grid");
 var miniPosterArray = document.querySelectorAll(".mini-poster");
 
-// we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -124,7 +116,6 @@ var quotes = [
 
 var savedPosters = [];
 
-// event listeners go here 👇
 formButton.addEventListener("click", showPosterForm);
 showSavedPosterButton.addEventListener("click", showSaved);
 showMainButton.addEventListener("click", takeMeBack);
@@ -134,7 +125,6 @@ showMyPoster.addEventListener("click", makePosterForm);
 savePosterButton.addEventListener("click", saveThisPoster);
 savedPosterGrid.addEventListener("dblclick", deleteMiniPoster);
 
-// functions and event handlers go here 👇
 function makePosterForm(event) {
   event.preventDefault();
   var imageInput = document.getElementById("poster-image-url").value;
@@ -155,16 +145,15 @@ function saveThisPoster() {
   var title = posterTitle.innerText
   var quote = posterQuote.innerText
   var saveCreatedPoster = new Poster(link, title, quote);
-  // savedPosters.push(saveCreatedPoster);
-    for(var i = 0; i < savedPosters.length; i++) {
-      // if (!(currentPoster.imageURL === savedPosters[i].imageURL && currentPoster.title === savedPosters[i].title && currentPoster.quote === savedPosters[i].quote)) {
-      if(savedPosters[i].includes(currentPoster)) {
-        console.log(savedPosters.includes(currentPoster))
-        savedPosters.pop(i)
-      } else {
-        savedPosters.push(saveCreatedPoster);
-      }
+  savedPosters.push(saveCreatedPoster);
+  for (var i = 1; i < savedPosters.length; i++) {
+    var previousIteratedPoster = savedPosters[i - 1];
+    if(savedPosters[i].imageURL === previousIteratedPoster.imageURL
+      && savedPosters[i].title === previousIteratedPoster.title
+      && savedPosters[i].quote === previousIteratedPoster.quote) {
+        savedPosters.pop();
     }
+  }
 }
 
 
@@ -176,6 +165,7 @@ function showPosterForm() {
 }
 
 function showSaved() {
+  // todo turn into an incrementing i-loop
   for (var currentPoster of savedPosters) {
     var posterElement = createPosterHtml(currentPoster);
     savedPosterGrid.innerHTML += posterElement;
@@ -222,8 +212,13 @@ function createPosterHtml(posterObj) {
 }
 
 function deleteMiniPoster(event) {
+  // todo: use loop instead of .filter
   var deletedPosters = [];
+<<<<<<< HEAD
   var closestElement = event.target.closest('.mini-poster')
+=======
+  var closestElement = event.target.closest(".mini-poster")
+>>>>>>> 119d04e108988a8735b95236f03960437c4447d5
   deletedPosters.push(closestElement);
   savedPosters = savedPosters.filter(function(poster) {
     return deletedPosters[0].lastChild.previousElementSibling.innerText !== poster.quote;
