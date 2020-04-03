@@ -162,8 +162,6 @@ function showPosterForm() {
 }
 
 function showSaved() {
-  // todo turn into an incrementing i-loop
-  // for (var currentPoster of savedPosters) {
   for (var i = 0; i < savedPosters.length; i++) {
     var posterElement = createPosterHtml(savedPosters[i]);
     savedPosterGrid.innerHTML += posterElement;
