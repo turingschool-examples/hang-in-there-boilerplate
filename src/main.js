@@ -155,18 +155,20 @@ function saveThisPoster() {
   var title = posterTitle.innerText
   var quote = posterQuote.innerText
   var saveCreatedPoster = new Poster(link, title, quote);
-  if(!savedPosters.some(function(element) {
-    //todo: make into its own function to dry it up
-    // find out how to pass save created poster out side this scope
-    var isSame = (
-      element.imageURL === saveCreatedPoster.imageURL
-      && element.title === saveCreatedPoster.title
-      && element.quote === saveCreatedPoster.quote
-    );
-    return isSame;
-  }))
-  savedPosters.push(saveCreatedPoster);
+  // savedPosters.push(saveCreatedPoster);
+    for(var i = 0; i < savedPosters.length; i++) {
+      // if (!(currentPoster.imageURL === savedPosters[i].imageURL && currentPoster.title === savedPosters[i].title && currentPoster.quote === savedPosters[i].quote)) {
+      if(savedPosters[i].includes(currentPoster)) {
+        console.log(savedPosters.includes(currentPoster))
+        savedPosters.pop(i)
+      } else {
+        savedPosters.push(saveCreatedPoster);
+      }
+    }
 }
+
+
+
 
 function showPosterForm() {
   posterForm.className = "poster-form";
@@ -221,7 +223,6 @@ function createPosterHtml(posterObj) {
 
 function deleteMiniPoster(event) {
   var deletedPosters = [];
-  var mini = document.querySelector(".mini-poster");
   var closestElement = event.target.closest('.mini-poster')
   deletedPosters.push(closestElement);
   savedPosters = savedPosters.filter(function(poster) {
