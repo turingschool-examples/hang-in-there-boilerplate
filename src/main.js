@@ -156,9 +156,6 @@ function saveThisPoster() {
   }
 }
 
-
-
-
 function showPosterForm() {
   posterForm.className = "poster-form";
   mainPoster.className = "main-poster hidden";
@@ -166,8 +163,9 @@ function showPosterForm() {
 
 function showSaved() {
   // todo turn into an incrementing i-loop
-  for (var currentPoster of savedPosters) {
-    var posterElement = createPosterHtml(currentPoster);
+  // for (var currentPoster of savedPosters) {
+  for (var i = 0; i < savedPosters.length; i++) {
+    var posterElement = createPosterHtml(savedPosters[i]);
     savedPosterGrid.innerHTML += posterElement;
   }
   savedPoster.className = "saved-posters";
@@ -212,13 +210,8 @@ function createPosterHtml(posterObj) {
 }
 
 function deleteMiniPoster(event) {
-  // todo: use loop instead of .filter
   var deletedPosters = [];
-<<<<<<< HEAD
-  var closestElement = event.target.closest('.mini-poster')
-=======
   var closestElement = event.target.closest(".mini-poster")
->>>>>>> 119d04e108988a8735b95236f03960437c4447d5
   deletedPosters.push(closestElement);
   savedPosters = savedPosters.filter(function(poster) {
     return deletedPosters[0].lastChild.previousElementSibling.innerText !== poster.quote;
