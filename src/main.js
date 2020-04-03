@@ -148,8 +148,8 @@ function saveThisPoster() {
   savedPosters.push(saveCreatedPoster);
   for (var i = 1; i < savedPosters.length; i++) {
     var previousIteratedPoster = savedPosters[i - 1];
-    if(savedPosters[i].imageURL === previousIteratedPoster.imageURL 
-      && savedPosters[i].title === previousIteratedPoster.title 
+    if(savedPosters[i].imageURL === previousIteratedPoster.imageURL
+      && savedPosters[i].title === previousIteratedPoster.title
       && savedPosters[i].quote === previousIteratedPoster.quote) {
         savedPosters.pop();
     }
@@ -163,8 +163,9 @@ function showPosterForm() {
 
 function showSaved() {
   // todo turn into an incrementing i-loop
-  for (var currentPoster of savedPosters) {
-    var posterElement = createPosterHtml(currentPoster);
+  // for (var currentPoster of savedPosters) {
+  for (var i = 0; i < savedPosters.length; i++) {
+    var posterElement = createPosterHtml(savedPosters[i]);
     savedPosterGrid.innerHTML += posterElement;
   }
   savedPoster.className = "saved-posters";
@@ -209,7 +210,6 @@ function createPosterHtml(posterObj) {
 }
 
 function deleteMiniPoster(event) {
-  // todo: use loop instead of .filter
   var deletedPosters = [];
   var closestElement = event.target.closest(".mini-poster")
   deletedPosters.push(closestElement);
