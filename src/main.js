@@ -162,8 +162,6 @@ function showPosterForm() {
 }
 
 function showSaved() {
-  // todo turn into an incrementing i-loop
-  // for (var currentPoster of savedPosters) {
   for (var i = 0; i < savedPosters.length; i++) {
     var posterElement = createPosterHtml(savedPosters[i]);
     savedPosterGrid.innerHTML += posterElement;
@@ -213,9 +211,10 @@ function deleteMiniPoster(event) {
   var deletedPosters = [];
   var closestElement = event.target.closest(".mini-poster")
   deletedPosters.push(closestElement);
-  savedPosters = savedPosters.filter(function(poster) {
-    return deletedPosters[0].lastChild.previousElementSibling.innerText !== poster.quote;
-  });
+  for(var i = 0; i < savedPosters.length; i++) {
+    deletedPosters[0].lastChild.previousElementSibling.innerText === savedPosters[i].quote;
+    savedPosters.splice(i, 1);
+  }
   closestElement.remove();
 }
 
