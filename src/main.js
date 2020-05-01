@@ -5,8 +5,11 @@ var posterTitle = document.querySelector('.poster-title');
 
 
 var makeOwnPosterBtn = document.querySelector('.show-form')
+var showSavedBtn = document.querySelector('.show-saved')
+
 var formSection = document.querySelector('.poster-form')
 var mainSection = document.querySelector('.main-poster')
+var savedSection = document.querySelector('.saved-posters')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -111,6 +114,7 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('onload', randomizePoster());
 makeOwnPosterBtn.addEventListener('click', showForm)
+showSavedBtn.addEventListener('click', showSaved)
 
 // functions and event handlers go here 👇
 
