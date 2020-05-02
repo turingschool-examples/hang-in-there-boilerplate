@@ -6,6 +6,7 @@ var posterTitle = document.querySelector('.poster-title');
 
 var makeOwnPosterBtn = document.querySelector('.show-form')
 var showSavedBtn = document.querySelector('.show-saved')
+var nvmBtn = document.querySelector('.show-main')
 
 var formSection = document.querySelector('.poster-form')
 var mainSection = document.querySelector('.main-poster')
@@ -113,18 +114,18 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('onload', randomizePoster());
-makeOwnPosterBtn.addEventListener('click', showForm)
+makeOwnPosterBtn.addEventListener('click', toggleForm)
 showSavedBtn.addEventListener('click', showSaved)
+nvmBtn.addEventListener('click', toggleForm)
 
 // functions and event handlers go here 👇
+
 function showSaved() {
-  debugger
   mainSection.classList.toggle('hidden')
-  debugger
   savedSection.classList.toggle('hidden')
 }
 
-function showForm() {
+function toggleForm() {
   formSection.classList.toggle('hidden')
   mainSection.classList.toggle('hidden')
 }
