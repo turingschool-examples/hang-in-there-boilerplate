@@ -117,6 +117,12 @@ makeOwnPosterBtn.addEventListener('click', showForm)
 showSavedBtn.addEventListener('click', showSaved)
 
 // functions and event handlers go here 👇
+function showSaved() {
+  debugger
+  mainSection.classList.toggle('hidden')
+  debugger
+  savedSection.classList.toggle('hidden')
+}
 
 function showForm() {
   formSection.classList.toggle('hidden')
