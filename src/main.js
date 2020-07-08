@@ -1,5 +1,8 @@
 // query selector variables go here 👇
-
+var showRandom = document.querySelector(".show-random")
+var image = document.querySelector(".poster-img")
+var title = document.querySelector(".poster-title")
+var quote = document.querySelector(".poster-quote")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -99,19 +102,30 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
 ];
 var currentPoster;
 
+
 // event listeners go here 👇
+showRandom.addEventListener('click',function(){
+
+  var randomImageIndex = getRandomIndex(images)
+
+  var randomTitleIndex = getRandomIndex(titles)
+
+  var randomQuoteIndex = getRandomIndex(quotes)
+
+  var classInstance = new Poster(images[randomImageIndex],titles[randomTitleIndex],quotes[randomQuoteIndex])
+
+  image.src = classInstance.imageURL
+  title.innerText = classInstance.title
+  quote.innerText = classInstance.quote
+
+})
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
