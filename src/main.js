@@ -99,23 +99,37 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-var currentPoster ={
-  posterImg: posterImg,
-  posterTitle: posterTitle,
-  posterQuote: posterQuote
-}
+var currentPoster = randomizePoster();
 
 var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 
-
 // event listeners go here 👇
 
-
+window.onLoad = displayPoster(currentPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function randomizePoster() {
+  var randomPoster = new Poster(
+    images[getRandomIndex(images)],
+    titles[getRandomIndex(titles)],
+    quotes[getRandomeQuotes(quotes)]
+  );
+}
+
+// function displayRandomPoster() {
+//   var currentPoster = randomizePoster();
+//   displayPoster(currentPoster);
+// }
+
+function displayPoster(posterObject) {
+  posterImg.src = posterObject.posterImg;
+  posterTitle.innerText = posterObject.posterTitle;
+  posterQuote.innerText = posterObject.posterQuote;
 }
