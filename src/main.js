@@ -1,5 +1,7 @@
 // query selector variables go here 👇
-
+var posterImg = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -116,6 +118,12 @@ function randPoster() {
   var randQuote = quotes[getRandomIndex(quotes)];
   currentPoster = new Poster(randImg, randTitle, randQuote);
   displayPoster(currentPoster);
+}
+
+function displayPoster(poster) {
+  posterImg.setAttribute('src', poster.image);
+  posterTitle = poster.title;
+  posterQuote = poster.quote
 }
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
