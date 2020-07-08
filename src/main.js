@@ -108,10 +108,24 @@ var savedPosters = [
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener("load", randPoster);
 
 // functions and event handlers go here 👇
+
+function randPoster() {
+  var randImg = image[getRandomIndex(image)];
+  var randTitle = title[getRandomIndex(title)];
+  var randQuote = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(randImg, randTitle, randQuote);
+  displayPoster(currentPoster);
+}
+
+
+
+
+
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
