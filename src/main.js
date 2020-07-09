@@ -1,4 +1,7 @@
 // query selector variables go here 👇
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -98,20 +101,25 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
-];
-var currentPoster;
 
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+function randomPoster() {
+  //var randomImage = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+
+  var currentPoster = new Poster(randomImage, randomTitle, randomQuote);
+
+  
+  posterTitle.innerText = randomTitle;
+  posterQuote.innerText = randomQuote;
+
+};
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
