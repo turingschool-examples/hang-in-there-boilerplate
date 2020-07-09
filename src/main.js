@@ -1,7 +1,7 @@
 // query selector variables go here 👇
-var poster = document.querySelector('.poster-img')
-var title = document.querySelector('.poster-title')
-var quote = document.querySelector('.poster-quote')
+var poster = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
 // show-random
 // show-form
 // show-saved
@@ -127,6 +127,7 @@ function getRandomIndex(array) {
 function loadRandom(){
   title.innerText = "title.value";
   quote.innerText = "quote.value";
+  poster.src = "./assets/bees.jpg";
   //poster.setAttribute("src", ./assets/turtle.jpg)
   //poster.setAttribute("src", poster[0]);
 }

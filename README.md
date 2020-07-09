@@ -1,6 +1,6 @@
 # Hang In There
 
-A boilerplate repo. 
+A boilerplate repo.
 
 ## Set Up
 
@@ -16,7 +16,15 @@ A boilerplate repo.
 
 ![screenshot of main page showing poster](/readme-imgs/homepage.png)
 
-- When the page loads, we should see a poster with a randomly selected image, title, and quote
+- When the page loads, we should see a poster with a randomly selected image, title, and quote.
+  - Pseudocode `querySelecting` the HTML classes for quote, title, and poster. Pseudocode the `Math.random` function. Pseudocode the `eventListeners` for the class, quote, and title `load` actions.
+  - Add the three `querySelectors` for `.poster-img`, `.poster-tile`, and `poster-quote` and assigned them to variables `poster`, `titles`, and `quote` respectively.
+  - create a `loadRandom` function that changes `innerText` of `title` and `quote` and `src` of `poster`.
+  - add `eventListeners` for each variable on `load` that takes in a second argument of the `loadRandom` function.
+
+
+- Every time the user clicks the Show Random Poster button, a new random poster is displayed.
+
 
 ### Iteration 1 - Switching Views
 
