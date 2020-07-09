@@ -1,11 +1,12 @@
 // query selector variables go here 👇
-var poster = document.querySelector('.poster-img');
+var image = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
-// show-random
-// show-form
-// show-saved
-// save-poster
+var showRandom = document.querySelector('show-random');
+var showForm = document.querySelector('show-form');
+var showSaved = document.querySelector('show-saved');
+var sabePoster = document.querySelector('save-poster');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -115,24 +116,22 @@ var quotes = [
 
 // event listeners go here 👇
 
-poster.addEventListener('load',loadRandom);
-title.addEventListener('load',loadRandom);
-quote.addEventListener('load',loadRandom);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
-function loadRandom(){
-  title.innerText = "title.value";
-  quote.innerText = "quote.value";
-  poster.src = "./assets/bees.jpg";
-  //poster.setAttribute("src", ./assets/turtle.jpg)
-  //poster.setAttribute("src", poster[0]);
-}
+};
 
-loadRandom(images, titles);
+function loadRandom() {
+  title.innerText = titles[getRandomIndex(titles)];
+  quote.innerText = quotes[getRandomIndex(quotes)];
+  image.src = images[getRandomIndex(images)];
+};
+
+loadRandom(titles, quotes, images);
+
+
 //create variables for each class
 //
 //select a random image
