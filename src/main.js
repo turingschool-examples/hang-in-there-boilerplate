@@ -1,12 +1,15 @@
-// query selector variables go here 👇
+// ************************************************ query selector variables go here 👇
 
+// --> 1. Main Page
 var posterImage = document.querySelector('.poster-img')
-
 var posterTitle = document.querySelector('.poster-title')
-
 var posterQuote = document.querySelector('.poster-quote')
+// --> 2. Show Form
+var posterForm = document.querySelector('.poster-form hidden');
+var showFormButton = document.querySelector('.show-form');
+var mainPage = document.querySelector('.main-poster')
 
-// we've provided you with some data to work with 👇
+// ************************************************ we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -107,14 +110,30 @@ var quotes = [
 
 var currentPoster;
 
-// event listeners go here 👇
+// ************************************************ event listeners go here 👇
 
-// functions and event handlers go here 👇
+// 2. --> Show Form
+showFormButton.addEventListener('click', showPosterForm);
+
+// ************************************************ functions and event handlers go here 👇
+
+// 1. --> Main Page
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-// code here 👇
+// 2. --> Show Form
+function showPosterForm() {
+  posterForm.style.visibility = "visible";
+  mainPage.style.visibility = "hidden";
+}
 
+// ************************************************ code here 👇
+
+// 1. --> Main Page
 posterImage.src = images[getRandomIndex(images)]
 posterTitle.innerText = titles[getRandomIndex(titles)]
 posterQuote.innerText = quotes[getRandomIndex(quotes)]
+
+// 2. --> Show Form
+
+showPosterForm();
