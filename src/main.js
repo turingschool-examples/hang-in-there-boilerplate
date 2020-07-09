@@ -122,10 +122,15 @@ function makeRandomPoster(){
 
   var classInstance = new Poster(images[randomImageIndex],titles[randomTitleIndex],quotes[randomQuoteIndex])
 
+  //function makePostertoHtml(classInstance){
+  // image.src = classInstance.imageURL
+  // title.innerText = classInstance.title
+  // quote.innerText = classInstance.quote
+.//}
+
   image.src = classInstance.imageURL
   title.innerText = classInstance.title
   quote.innerText = classInstance.quote
-}
 
 function toggleHiddenHtmlElement (htmlElement){
  htmlElement.classList.toggle('hidden')  
@@ -151,11 +156,12 @@ window.addEventListener('load', makeRandomPoster) 
     backFromSave.addEventListener('click', function (){ 
       toggleHiddenHtmlElement (mainPoster) 
       toggleHiddenHtmlElement (savePosterSection)
- }
-)
+ })
 // event listeners go here 👇
 
+//button.addEventListener('click',function(){
 
+// })
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
