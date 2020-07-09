@@ -109,28 +109,29 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 
-function makeRandomPoster(){
-
+function makeRandomPoster() {
   var randomImageIndex = getRandomIndex(images)
 
-  var randomTitleIndex = getRandomIndex(titles)
+  var randomTitleIndex = getRandomIndex (titles)
 
-  var randomQuoteIndex = getRandomIndex(quotes)
+  var randomQuoteIndex = getRandomIndex (quotes)
 
-  var classInstance = new Poster(images[randomImageIndex],titles[randomTitleIndex],quotes[randomQuoteIndex])
+  var classInstance = new Poster(images[randomImageIndex], titles[randomTitleIndex], quotes[randomQuoteIndex])
+image.src = classInstance.imageURL
+title.innerText = classInstance.title
+quote.innerText = classInstance.quote
 
-  //function makePostertoHtml(classInstance){
-  // image.src = classInstance.imageURL
-  // title.innerText = classInstance.title
-  // quote.innerText = classInstance.quote
-.//}
+}
 
-  image.src = classInstance.imageURL
-  title.innerText = classInstance.title
-  quote.innerText = classInstance.quote
+
+
+
+
+
 
 function toggleHiddenHtmlElement (htmlElement){
  htmlElement.classList.toggle('hidden')  
@@ -158,6 +159,11 @@ window.addEventListener('load', makeRandomPoster) 
       toggleHiddenHtmlElement (savePosterSection)
  })
 // event listeners go here 👇
+showRandom.addEventListener ('click', makeRandomPoster)
+window.addEventListener('load', makeRandomPoster)
+
+
+
 
 //button.addEventListener('click',function(){
 
