@@ -1,5 +1,11 @@
 // query selector variables go here 👇
-
+var poster = document.querySelector('.poster-img')
+var title = document.querySelector('.poster-title')
+var quote = document.querySelector('.poster-quote')
+// show-random
+// show-form
+// show-saved
+// save-poster
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -98,20 +104,45 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
-];
-var currentPoster;
+// var savedPosters = [
+//   makePoster(
+//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+//     "Optimism",
+//     "Keep a joyful heart!"
+//   )
+// ];
+
 
 // event listeners go here 👇
+
+poster.addEventListener('load',loadRandom);
+title.addEventListener('load',loadRandom);
+quote.addEventListener('load',loadRandom);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+function loadRandom(){
+  title.innerText = "title.value";
+  quote.innerText = "quote.value";
+  //poster.setAttribute("src", ./assets/turtle.jpg)
+  //poster.setAttribute("src", poster[0]);
+}
 
+loadRandom(images, titles);
+//create variables for each class
+//
+//select a random image
+//select a random titles
+//select a random quote
+//display on html file
+//use inner text on html element to change quote and title
+// title.innerText = ;
+// quote.innerText = ;
+//use inner html to change the image
+// poster.setAttribute("src", );
+//add event listen "click" to be show random button
+//when botton is clicked run a funtion
+//display a random image title and quote
