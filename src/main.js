@@ -105,10 +105,14 @@ var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 
+var makeYourPosterButton = document.querySelector(".show-form");
+var mainView = document.querySelector(".main-poster");
+var formView = document.querySelector(".poster-form");
+
 // event listeners go here 👇
 
 window.onLoad = displayPoster(currentPoster);
-
+makeYourPosterButton.addEventListener("click", viewForm);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -124,13 +128,13 @@ function randomizePoster() {
   return randomPoster;
 }
 
-// function displayRandomPoster() {
-//   var currentPoster = randomizePoster();
-//   displayPoster(currentPoster);
-// }
-
 function displayPoster(posterObject) {
   posterImg.src = posterObject.imageURL;
   posterTitle.innerText = posterObject.title;
   posterQuote.innerText = posterObject.quote;
+}
+
+function viewForm() {
+  mainView.classList.add("hidden");
+  formView.classList.remove("hidden");
 }
