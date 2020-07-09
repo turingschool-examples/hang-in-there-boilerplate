@@ -2,21 +2,14 @@
 
 A boilerplate repo. 
 
-## Set Up
-
-1. One teammate: fork this repository
-2. Go to settings and turn on GitHub Pages for this repository
-3. All teammates: clone down this repository
-4. `cd` into the repository
-5. Run `open index.html` to view it in the browser
 
 ## Progression
 
 ### Iteration 0 - Main Page
 
-![screenshot of main page showing poster](/readme-imgs/homepage.png)
+- On July 8, 2020 and July 9, 2020 we completed iteration 0 by creating variables, functions, and an event listener in order to get the Poster image, title, and quote to display randomly on load of page.
 
-- When the page loads, we should see a poster with a randomly selected image, title, and quote
+![gif of main page poster upon load](/ReadMeGifs/PageLoad.gif)
 
 ### Iteration 1 - Switching Views
 
