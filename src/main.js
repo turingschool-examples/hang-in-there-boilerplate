@@ -103,17 +103,18 @@ var quotes = [
 ];
 
 // event listeners go here 👇
+window.onload = randomPoster;
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function randomPoster() {
-  //var randomImage = images[getRandomIndex(images)];
+  var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
 
   var currentPoster = new Poster(randomImage, randomTitle, randomQuote);
 
-  
+  posterImage.setAttribute("src", randomImage);
   posterTitle.innerText = randomTitle;
   posterQuote.innerText = randomQuote;
 
