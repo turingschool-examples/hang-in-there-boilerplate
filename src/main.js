@@ -3,6 +3,14 @@ var showRandom = document.querySelector(".show-random")
 var image = document.querySelector(".poster-img")
 var title = document.querySelector(".poster-title")
 var quote = document.querySelector(".poster-quote")
+var makeYourOwnPoster = document.querySelector('.poster-form')
+ var makePosterButton = document.querySelector('.show-form') 
+var mainPoster = document.querySelector('.main-poster') 
+var takeMeBack = document.querySelector('.show-main')
+ var savePosterSection = document.querySelector('.saved-posters')
+ var savedPosterButton = document.querySelector('.show-saved')
+ var backFromSave = document.querySelector('.back-to-main')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -101,13 +109,10 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-];
+var savedPosters = [];
 var currentPoster;
 
-
-// event listeners go here 👇
-showRandom.addEventListener('click',function(){
+function makeRandomPoster(){
 
   var randomImageIndex = getRandomIndex(images)
 
@@ -120,8 +125,36 @@ showRandom.addEventListener('click',function(){
   image.src = classInstance.imageURL
   title.innerText = classInstance.title
   quote.innerText = classInstance.quote
+}
 
-})
+function toggleHiddenHtmlElement (htmlElement){
+ htmlElement.classList.toggle('hidden')  
+}
+
+ showRandom.addEventListener ('click', makeRandomPoster)  
+window.addEventListener('load', makeRandomPoster) 
+
+ makePosterButton.addEventListener('click', function () { 
+   toggleHiddenHtmlElement (mainPoster) 
+  toggleHiddenHtmlElement (makeYourOwnPoster)
+  })
+
+  takeMeBack.addEventListener('click', function () { 
+    toggleHiddenHtmlElement (mainPoster) 
+    toggleHiddenHtmlElement (makeYourOwnPoster)
+ })  
+
+    savedPosterButton.addEventListener('click', function (){
+      toggleHiddenHtmlElement (mainPoster)
+      toggleHiddenHtmlElement (savePosterSection)
+ })  
+    backFromSave.addEventListener('click', function (){ 
+      toggleHiddenHtmlElement (mainPoster) 
+      toggleHiddenHtmlElement (savePosterSection)
+ }
+)
+// event listeners go here 👇
+
 
 
 // functions and event handlers go here 👇
