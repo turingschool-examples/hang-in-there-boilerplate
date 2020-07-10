@@ -22,13 +22,12 @@ A boilerplate repo.
   - Create a `loadRandom` function that changes `innerText` of `title` and `quote` and `src` of `image`.
   - Add `eventListeners` for each variable on `load` that takes in a second argument of the `loadRandom` function.
   - Create `loadRandom` function to pass `titles`, `quotes`, and `images` arrays through the `getRandomIndex` function.
-  <!-- - Result: (https://giphy.com/gifs/llrPijEOL6KzZY0vqJ/fullscreen) -->
-  - ![Onload random](//media.giphy.com/media/llrPijEOL6KzZY0vqJ/giphy.gif)
-
+  - ![On load random](//media.giphy.com/media/llrPijEOL6KzZY0vqJ/giphy.gif)
 
 - Every time the user clicks the Show Random Poster button, a new random poster is displayed.
   - Create an  `eventListener` on click for the `ShowRandom` variable.
-  - Create a function that shows the the form by removing the `hidden` class from `form` and adding the `hidden` class on `poster`. 
+  - Create a function that shows the the form by removing the `hidden` class from `form` and adding the `hidden` class on `poster`.
+  - ![On click random](https://giphy.com/gifs/QXPiCJKnGTuTVqSDl6/fullscreen)
 
 
 ### Iteration 1 - Switching Views
@@ -40,7 +39,9 @@ Saved posters page (once working with extra saved posters):
 ![screenshot of saved posters page](/readme-imgs/saved.png)
 
 - When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
+- ![On click form](https://giphy.com/gifs/dyXjIjgfMfh2H32XO4/fullscreen)
 - When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
+- ![On click saved](https://giphy.com/gifs/hr3GBPAXmiTJLg5EzJ/fullscreen)
 - When a user clicks the "Nevermind, take me back!" or "Back to Main" buttons, we should only see the main poster section
 - In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
 
