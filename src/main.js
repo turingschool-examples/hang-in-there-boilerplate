@@ -5,10 +5,10 @@ var posterQuotes = document.querySelector(".poster-quote");
 var randomButton = document.querySelector(".show-random");
 var formButton = document.querySelector(".show-form");
 var formView = document.querySelector(".poster-form");
-var hideMain = document.querySelector(".main-poster");
+var hideMain = document.querySelector("section");
 console.log(posterImage);
 console.log(formView);
-console.log(hideMain);
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -112,12 +112,12 @@ var quotes = [
 var currentPoster;
 
 
-// event listeners go here 👇
+// event listeners go here 👇 revise with onClick etc
 window.addEventListener("load", function(){posterImage.src = getRandomIndex(images)});
 
 formButton.addEventListener("click", function(){
-  hideMain.class = "main-poster hidden";
-  formView.class = "poster-form";
+  hideMain.className = "main-poster hidden";
+ formView.className = "poster-form";
 });
 
 
@@ -129,7 +129,7 @@ randomButton.addEventListener("click", function(){
 });
 
 
-// functions and event handlers go here 👇
+// functions and event handlers go here 👇 
 function getRandomIndex(images) {
   var results = Math.floor(Math.random() * images.length);
   return images[results];
