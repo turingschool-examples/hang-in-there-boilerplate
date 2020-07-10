@@ -22,10 +22,13 @@ A boilerplate repo.
   - Create a `loadRandom` function that changes `innerText` of `title` and `quote` and `src` of `image`.
   - Add `eventListeners` for each variable on `load` that takes in a second argument of the `loadRandom` function.
   - Create `loadRandom` function to pass `titles`, `quotes`, and `images` arrays through the `getRandomIndex` function.
-  - Result: (https://giphy.com/gifs/llrPijEOL6KzZY0vqJ/fullscreen)
+  <!-- - Result: (https://giphy.com/gifs/llrPijEOL6KzZY0vqJ/fullscreen) -->
+  - ![Onload random](//media.giphy.com/media/llrPijEOL6KzZY0vqJ/giphy.gif)
 
 
 - Every time the user clicks the Show Random Poster button, a new random poster is displayed.
+  - Create an  `eventListener` on click for the `ShowRandom` variable.
+  - Create a function that shows the the form by removing the `hidden` class from `form` and adding the `hidden` class on `poster`. 
 
 
 ### Iteration 1 - Switching Views

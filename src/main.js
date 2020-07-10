@@ -6,8 +6,10 @@ var showRandom = document.querySelector('.show-random');
 var showForm = document.querySelector('.show-form');
 var form = document.querySelector('.poster-form');
 var poster = document.querySelector('.main-poster');
-var showSaved = document.querySelector('.show-saved');
-var sabePoster = document.querySelector('.save-poster');
+var showSaved = document.querySelector(`.show-saved`)
+var savedPoster = document.querySelector('.saved-posters');
+  console.log(showSaved);
+var savePoster = document.querySelector('.save-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -120,6 +122,7 @@ var quotes = [
 
 showRandom.addEventListener('click', loadRandom);
 showForm.addEventListener('click', loadForm);
+showSaved.addEventListener('click', loadSaved);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -141,6 +144,10 @@ function loadForm() {
   poster.classList.add(`hidden`);
 };
 
+function loadSaved() {
+  savedPoster.classList.remove(`hidden`);
+  poster.classList.add(`hidden`);
+};
 
 
 //add new event listener to showForm on click
