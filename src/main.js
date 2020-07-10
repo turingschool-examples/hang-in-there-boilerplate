@@ -8,7 +8,6 @@ var form = document.querySelector('.poster-form');
 var poster = document.querySelector('.main-poster');
 var showSaved = document.querySelector(`.show-saved`)
 var savedPoster = document.querySelector('.saved-posters');
-var backToMain = document.querySelector('.back-to-main');
 var showMain = document.querySelector('.show-main');
 var savePoster = document.querySelector('.save-poster');
 
@@ -144,18 +143,19 @@ loadRandom();
 
 
 function loadForm() {
-  form.classList.remove(`hidden`);
-  poster.classList.add(`hidden`);
+  form.classList.remove('hidden');
+  poster.classList.add('hidden');
 };
 
 function loadSaved() {
-  savedPoster.classList.remove(`hidden`);
-  poster.classList.add(`hidden`);
+  savedPoster.classList.remove('hidden');
+  poster.classList.add('hidden');
+  form.classList.add('hidden');
 };
 
 function loadMain() {
-  backToMain.classList.add(`hidden`);
-
+  savedPoster.classList.add('hidden');
+  poster.classList.remove('hidden');
 };
 
 function nvmTakeMeBack() {
