@@ -116,6 +116,10 @@ var currentPoster = {
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
+title.innerText = currentPoster.title
+quote.innerText = currentPoster.quote
+image.src = currentPoster.image
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
