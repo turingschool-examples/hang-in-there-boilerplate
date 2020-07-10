@@ -1,4 +1,10 @@
+//Iteration 1 pseudocode: Create button variables for the different button options in this iteration. Assign them to document.querySelector(). The parameter should be the corresponding HTML class:"show-form", "show-saved", or "show-main". Create a button event listener that responds to a user's click by switching to the make your own poster page. Create a button event listener that responds to a user's click by switching to the saved posters area. Create a button event listener that responds to a user's click by taking them back to the main page. The first parameter in each event listener should be "click." The second should complete the action of switching the page. (Check that a new poster loads when this happens.)
+
 // query selector variables go here 👇
+var posterImage = document.querySelector(".poster-img");
+var posterTitle = document.querySelector(".poster-title");
+var posterQuote = document.querySelector(".poster-quote");
+var button = document.querySelector(".show-random");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -98,20 +104,23 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
-];
-var currentPoster;
+var savedPosters = [];
+
+posterImage.src = getRandomIndex(images);
+posterTitle.innerText = getRandomIndex(titles);
+posterQuote.innerText = getRandomIndex(quotes);
 
 // event listeners go here 👇
 
+button.addEventListener("click", randomPoster);
+
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  return array[Math.floor(Math.random() * array.length)];
 }
 
+function randomPoster() {
+  posterImage.src = getRandomIndex(images);
+  posterTitle.innerText = getRandomIndex(titles);
+  posterQuote.innerText = getRandomIndex(quotes);
+}
