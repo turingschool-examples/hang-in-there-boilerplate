@@ -104,6 +104,13 @@ var quotes = [
 ];
 var savedPosters = [];
 
+var currentPoster = {
+  image: images[getRandomIndex(images)],
+  title: titles[getRandomIndex(titles)],
+  quote: quotes[getRandomIndex(quotes)]
+};
+
+
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
