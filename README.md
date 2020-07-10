@@ -1,6 +1,6 @@
 # Hang In There
 
-A boilerplate repo. 
+A boilerplate repo.
 
 
 ## Progression
@@ -14,17 +14,24 @@ A boilerplate repo.
 ### Iteration 1 - Switching Views
 
 Form page:
-![screenshot of form](/readme-imgs/form.png)
 
-Saved posters page (once working with extra saved posters):
-![screenshot of saved posters page](/readme-imgs/saved.png)
+- On July 9, 2020 we completed iteration 1 by creating variables, functions, and event listeners that targeted buttons to change page views by being clicked.
 
-- When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
-- When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
-- When a user clicks the "Nevermind, take me back!" or "Back to Main" buttons, we should only see the main poster section
-- In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
+![gif of Make Your Own Poster Button being clicked](/ReadMeGifs/viewForm.gif)
 
-_Hint: go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place_
+- Here we click the Make Your Own Poster button, which takes the user from the main page view to the form view.
+
+![gif of View Saved Posters button being clicked](/ReadMeGifs/showSavedPostersButton.gif)
+
+- Here we click the View Saved Posters button, which takes the user from the main page view to the saved posters view.
+
+![gif of Nevermind, take me back! button being clicked](/ReadMeGifs/takeMeBack.gif)
+
+- Here we click the Nevermind, take me back! button, which takes the user from the form view to the main page view.
+
+![gif of Back to Main button being clicked](/ReadMeGifs/backToMainButton.gif)
+
+- Here we click the Back to Main button, which takes the user from the saved posters view to the main page view.
 
 ## Iteration 2 - Creating a New Poster
 
