@@ -18,9 +18,11 @@ A boilerplate repo.
 
 - When the page loads, we should see a poster with a randomly selected image, title, and quote.
   - Pseudocode `querySelecting` the HTML classes for quote, title, and poster. Pseudocode the `Math.random` function. Pseudocode the `eventListeners` for the class, quote, and title `load` actions.
-  - Add the three `querySelectors` for `.poster-img`, `.poster-tile`, and `poster-quote` and assigned them to variables `image`, `titles`, and `quote` respectively.
-  - create a `loadRandom` function that changes `innerText` of `title` and `quote` and `src` of `image`.
-  - add `eventListeners` for each variable on `load` that takes in a second argument of the `loadRandom` function.
+  - Add `querySelectors` for all classes on `index.html`.
+  - Create a `loadRandom` function that changes `innerText` of `title` and `quote` and `src` of `image`.
+  - Add `eventListeners` for each variable on `load` that takes in a second argument of the `loadRandom` function.
+  - Create `loadRandom` function to pass `titles`, `quotes`, and `images` arrays through the `getRandomIndex` function.
+  - Result: (https://giphy.com/gifs/llrPijEOL6KzZY0vqJ/fullscreen)
 
 
 - Every time the user clicks the Show Random Poster button, a new random poster is displayed.

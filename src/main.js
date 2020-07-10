@@ -2,10 +2,12 @@
 var image = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
-var showRandom = document.querySelector('show-random');
-var showForm = document.querySelector('show-form');
-var showSaved = document.querySelector('show-saved');
-var sabePoster = document.querySelector('save-poster');
+var showRandom = document.querySelector('.show-random');
+var showForm = document.querySelector('.show-form');
+var form = document.querySelector('.poster-form');
+var poster =
+var showSaved = document.querySelector('.show-saved');
+var sabePoster = document.querySelector('.save-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -116,6 +118,8 @@ var quotes = [
 
 // event listeners go here 👇
 
+showRandom.addEventListener('click', loadRandom);
+showForm.addEventListener('click', loadForm);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -129,20 +133,16 @@ function loadRandom() {
   image.src = images[getRandomIndex(images)];
 };
 
-loadRandom(titles, quotes, images);
+loadRandom();
 
 
-//create variables for each class
-//
-//select a random image
-//select a random titles
-//select a random quote
-//display on html file
-//use inner text on html element to change quote and title
-// title.innerText = ;
-// quote.innerText = ;
-//use inner html to change the image
-// poster.setAttribute("src", );
-//add event listen "click" to be show random button
-//when botton is clicked run a funtion
-//display a random image title and quote
+function loadForm() {
+  form.classList.remove(`hidden`);
+};
+
+
+//add new event listener to showForm on click
+//add querySelector for poster-hidden-showForm
+// to show - document.getElementById("element").style.display = "block";
+// to hide - document.getElementById("element").style.display = "none";
+//main-poster querySelector
