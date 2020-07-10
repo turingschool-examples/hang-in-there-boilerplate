@@ -5,7 +5,7 @@ var quote = document.querySelector('.poster-quote');
 var showRandom = document.querySelector('.show-random');
 var showForm = document.querySelector('.show-form');
 var form = document.querySelector('.poster-form');
-var poster =
+var poster = document.querySelector('.main-poster');
 var showSaved = document.querySelector('.show-saved');
 var sabePoster = document.querySelector('.save-poster');
 
@@ -138,7 +138,9 @@ loadRandom();
 
 function loadForm() {
   form.classList.remove(`hidden`);
+  poster.classList.add(`hidden`);
 };
+
 
 
 //add new event listener to showForm on click
