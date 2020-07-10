@@ -106,6 +106,7 @@ var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 
 var makeYourPosterButton = document.querySelector(".show-form");
+var takeMeBackButton = document.querySelector(".show-main");
 var mainView = document.querySelector(".main-poster");
 var formView = document.querySelector(".poster-form");
 
@@ -113,6 +114,7 @@ var formView = document.querySelector(".poster-form");
 
 window.onLoad = displayPoster(currentPoster);
 makeYourPosterButton.addEventListener("click", viewForm);
+takeMeBackButton.addEventListener("click", takeMeBack);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -137,4 +139,9 @@ function displayPoster(posterObject) {
 function viewForm() {
   mainView.classList.add("hidden");
   formView.classList.remove("hidden");
+}
+
+function takeMeBack() {
+  mainView.classList.remove("hidden");
+  formView.classList.add("hidden");
 }
