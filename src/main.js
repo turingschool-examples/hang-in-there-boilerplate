@@ -1,11 +1,7 @@
-// query selector variables go here 👇
 var showRandom = document.querySelector(".show-random")
 var image = document.querySelector(".poster-img")
 var title = document.querySelector(".poster-title")
 var quote = document.querySelector(".poster-quote")
-<<<<<<< HEAD
-var image = document.querySelector(".poster-img")
-
 var makeYourOwnPoster = document.querySelector('.poster-form')
 var makePosterButton = document.querySelector('.show-form')
 var mainPoster = document.querySelector('.main-poster')
@@ -13,17 +9,11 @@ var takeMeBack = document.querySelector('.show-main')
 var savePosterSection = document.querySelector('.saved-posters')
 var savedPosterButton = document.querySelector('.show-saved')
 var backFromSave = document.querySelector('.back-to-main')
-=======
-var makeYourOwnPoster = document.querySelector('.poster-form')
- var makePosterButton = document.querySelector('.show-form') 
-var mainPoster = document.querySelector('.main-poster') 
-var takeMeBack = document.querySelector('.show-main')
- var savePosterSection = document.querySelector('.saved-posters')
- var savedPosterButton = document.querySelector('.show-saved')
- var backFromSave = document.querySelector('.back-to-main')
-
->>>>>>> b8eede91757680a3276f789345b50f18e72b132f
-// we've provided you with some data to work with 👇
+var userImageInput = document.querySelector('#poster-image-url')
+var userPosterInput = document.querySelector('#poster-title')
+var userQuoteInput = document.querySelector('#poster-quote')
+var activateUserPoster = document.querySelector('.make-poster')
+// we've provided you with some data to work with
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -121,76 +111,72 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-
 var savedPosters = [];
 var currentPoster;
 
-
-
-
-
-
-
-
-
-
-
-function toggleHiddenHtmlElement (htmlElement){
- htmlElement.classList.toggle('hidden')  
+function makeRandomPoster() {
+  var randomImageIndex = getRandomIndex(images)
+  var randomTitleIndex = getRandomIndex (titles)
+  var randomQuoteIndex = getRandomIndex (quotes)
+  makePoster(images[randomImageIndex], titles[randomTitleIndex], quotes[randomQuoteIndex])
 }
+
 function toggleHiddenHtmlElement (htmlElement){
 htmlElement.classList.toggle('hidden')
-
 }
 
- showRandom.addEventListener ('click', makeRandomPoster)  
-window.addEventListener('load', makeRandomPoster) 
+function makePoster (url, userTitle, userQuote){
+  var classInstance = new Poster(url, userTitle, userQuote)
+image.src = classInstance.imageURL
+title.innerText = classInstance.title
+quote.innerText = classInstance.quote
+console.log (image.src, 'Expected Value')
+}
 
- makePosterButton.addEventListener('click', function () { 
-   toggleHiddenHtmlElement (mainPoster) 
-  toggleHiddenHtmlElement (makeYourOwnPoster)
-  })
 
-  takeMeBack.addEventListener('click', function () { 
-    toggleHiddenHtmlElement (mainPoster) 
-    toggleHiddenHtmlElement (makeYourOwnPoster)
- })  
-
-    savedPosterButton.addEventListener('click', function (){
-      toggleHiddenHtmlElement (mainPoster)
-      toggleHiddenHtmlElement (savePosterSection)
- })  
-    backFromSave.addEventListener('click', function (){ 
-      toggleHiddenHtmlElement (mainPoster) 
-      toggleHiddenHtmlElement (savePosterSection)
- })
-// event listeners go here 👇
+// event listeners go here :point_down:
 showRandom.addEventListener ('click', makeRandomPoster)
-
 window.addEventListener('load', makeRandomPoster)
 
 
+
+
+
+
+
+
 makePosterButton.addEventListener('click', function () {
-  toggleHiddenHtmlElement (mainPoster)
+   toggleHiddenHtmlElement (mainPoster)
   toggleHiddenHtmlElement (makeYourOwnPoster)
-
 })
-
 takeMeBack.addEventListener('click', function () {
-  toggleHiddenHtmlElement (mainPoster)
-  toggleHiddenHtmlElement (makeYourOwnPoster)
+    toggleHiddenHtmlElement (mainPoster)
+    toggleHiddenHtmlElement (makeYourOwnPoster)
 })
-console.log("heyoooooooooooooooooo")
-savedPosterButton.addEventListener('click', function (){
-toggleHiddenHtmlElement (mainPoster)
-toggleHiddenHtmlElement (savePosterSection)
+    savedPosterButton.addEventListener('click', function (){
+     toggleHiddenHtmlElement (mainPoster)
+     toggleHiddenHtmlElement (savePosterSection)
+})
+    backFromSave.addEventListener('click', function (){
+      toggleHiddenHtmlElement (mainPoster)
+      toggleHiddenHtmlElement (savePosterSection)
 })
 
-backFromSave.addEventListener('click', function (){
-  toggleHiddenHtmlElement (mainPoster)
-  toggleHiddenHtmlElement (savePosterSection)
-})
-// functions and event handlers go here 👇
+// activateUserPoster.addEventListener('click', function (){
+//   window.removeEventListener('load', makeRandomPoster)
+//   makePoster(
+//     userImageInput.value ,
+//     userTitle.value ,
+//     userQuote.value
+//   )
+//   toggleHiddenHtmlElement (mainPoster)
+//   toggleHiddenHtmlElement (savePosterSection)
+//
+// })
+
+//button.addEventListener('click',function(){
+// })
+// functions and event handlers go here :point_down:
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
