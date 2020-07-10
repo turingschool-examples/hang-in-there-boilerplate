@@ -107,14 +107,24 @@ var posterQuote = document.querySelector(".poster-quote");
 
 var makeYourPosterButton = document.querySelector(".show-form");
 var takeMeBackButton = document.querySelector(".show-main");
+var showSavedButton = document.querySelector(".show-saved");
+var backToMainButton = document.querySelector(".back-to-main");
+
 var mainView = document.querySelector(".main-poster");
 var formView = document.querySelector(".poster-form");
+var savedView  = document.querySelector(".saved-posters");
+
+console.log(showSavedButton);
+console.log(savedView);
 
 // event listeners go here 👇
 
 window.onLoad = displayPoster(currentPoster);
 makeYourPosterButton.addEventListener("click", viewForm);
 takeMeBackButton.addEventListener("click", takeMeBack);
+showSavedButton.addEventListener("click", showSaved);
+backToMainButton.addEventListener("click", backToMain);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -144,4 +154,14 @@ function viewForm() {
 function takeMeBack() {
   mainView.classList.remove("hidden");
   formView.classList.add("hidden");
+}
+
+function showSaved() {
+  mainView.classList.add("hidden");
+  savedView.classList.remove("hidden");
+}
+
+function backToMain() {
+  mainView.classList.remove("hidden");
+  savedView.classList.add("hidden");
 }
