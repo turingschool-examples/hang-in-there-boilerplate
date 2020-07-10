@@ -8,7 +8,8 @@ var form = document.querySelector('.poster-form');
 var poster = document.querySelector('.main-poster');
 var showSaved = document.querySelector(`.show-saved`)
 var savedPoster = document.querySelector('.saved-posters');
-  console.log(showSaved);
+var backToMain = document.querySelector('.back-to-main');
+var showMain = document.querySelector('.show-main');
 var savePoster = document.querySelector('.save-poster');
 
 // we've provided you with some data to work with 👇
@@ -123,6 +124,9 @@ var quotes = [
 showRandom.addEventListener('click', loadRandom);
 showForm.addEventListener('click', loadForm);
 showSaved.addEventListener('click', loadSaved);
+backToMain.addEventListener('click', loadMain);
+showMain.addEventListener('click', nvmTakeMeBack);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -148,6 +152,18 @@ function loadSaved() {
   savedPoster.classList.remove(`hidden`);
   poster.classList.add(`hidden`);
 };
+
+function loadMain() {
+  backToMain.classList.add(`hidden`);
+
+};
+
+function nvmTakeMeBack() {
+  showMain.classList.add('remove');
+  poster.classList.remove('hidden');
+};
+
+
 
 
 //add new event listener to showForm on click

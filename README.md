@@ -26,7 +26,6 @@ A boilerplate repo.
 
 - Every time the user clicks the Show Random Poster button, a new random poster is displayed.
   - Create an  `eventListener` on click for the `ShowRandom` variable.
-  - Create a function that shows the the form by removing the `hidden` class from `form` and adding the `hidden` class on `poster`.
   - ![On click random](https://giphy.com/gifs/QXPiCJKnGTuTVqSDl6/fullscreen)
 
 
@@ -39,11 +38,15 @@ Saved posters page (once working with extra saved posters):
 ![screenshot of saved posters page](/readme-imgs/saved.png)
 
 - When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
-- ![On click form](https://giphy.com/gifs/dyXjIjgfMfh2H32XO4/fullscreen)
+  - Create a function that shows the the form by removing the `hidden` class from `form` and adding the `hidden` class on `poster`.
+  - ![On click form](https://giphy.com/gifs/dyXjIjgfMfh2H32XO4/fullscreen)
 - When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
-- ![On click saved](https://giphy.com/gifs/hr3GBPAXmiTJLg5EzJ/fullscreen)
+  - Create a function that shows the saved poster page by removing the `hidden` class from `savedPosters` and adding the `hidden` class on `poster`.
+  - ![On click saved](https://giphy.com/gifs/hr3GBPAXmiTJLg5EzJ/fullscreen)
 - When a user clicks the "Nevermind, take me back!" or "Back to Main" buttons, we should only see the main poster section
+  - Create a function that returns back to the main page from the saved page by adding the `hidden` class from `savedPoster` and removing the `hidden` class on `poster`. Then Create another function that does the same thing from the form page but this time adding the `hidden` class to `showMain`.
 - In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
+  - ![On click saved](https://giphy.com/gifs/WRiLrR4odmtOfzEs1l)
 
 _Hint: go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place_
 
