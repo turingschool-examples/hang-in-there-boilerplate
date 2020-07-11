@@ -6,6 +6,10 @@ var randomButton = document.querySelector(".show-random");
 var formButton = document.querySelector(".show-form");
 var formView = document.querySelector(".poster-form");
 var hideMain = document.querySelector("section");
+var savedButton = document.querySelector(".show-saved");
+var savedPosters = document.querySelector(".saved-posters");
+
+
 console.log(posterImage);
 console.log(formView);
 
@@ -129,7 +133,15 @@ randomButton.addEventListener("click", function(){
 });
 
 
-// functions and event handlers go here 👇 
+
+savedButton.addEventListener("click", function(){
+  hideMain.className = "main-poster hidden";
+  savedPosters.className = "savedPosters";
+
+});
+
+
+// functions and event handlers go here 👇
 function getRandomIndex(images) {
   var results = Math.floor(Math.random() * images.length);
   return images[results];
