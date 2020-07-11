@@ -4,6 +4,7 @@ var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote");
 
 var showFormButton = document.querySelector(".show-form");
+var savePosterButton = document.querySelector(".show-saved");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -122,7 +123,33 @@ image.src = currentPoster.image;
 
 
 // functions and event handlers go here 👇
+function handleShowFormClick(event){
+  event.preventDefault()
+  hidePosterPage()
+  showForm()
+};
 
+function handleShowSaveClick(event){
+  event.preventDefault()
+  hidePosterPage()
+  showSaved()
+
+}
+
+function hidePosterPage(){
+  var mainPosterSection = document.querySelector(".main-poster")
+  mainPosterSection.classList.add("hidden");
+}
+
+function showForm() {
+  var posterFormSection = document.querySelector(".poster-form")
+  posterFormSection.classList.remove("hidden")
+}
+
+function showSaved() {
+  var savedPosterSection = document.querySelector(".saved-posters")
+  savedPosterSection.classList.remove("hidden")
+}
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
