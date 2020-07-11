@@ -11,6 +11,7 @@ var savedPoster = document.querySelector('.saved-posters');
 var backToMain = document.querySelector('.back-to-main');
 var showMain = document.querySelector('.show-main');
 var savePoster = document.querySelector('.save-poster');
+var makePoster = document.querySelector('.make-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -126,7 +127,7 @@ showForm.addEventListener('click', loadForm);
 showSaved.addEventListener('click', loadSaved);
 backToMain.addEventListener('click', loadMain);
 showMain.addEventListener('click', nvmTakeMeBack);
-
+// makePoster.addEventListener('click',)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -160,7 +161,7 @@ function loadMain() {
 };
 
 function nvmTakeMeBack() {
-  showMain.classList.add('remove');
+  form.classList.add('hidden');
   poster.classList.remove('hidden');
 };
 
