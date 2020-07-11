@@ -30,6 +30,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+
 var titles = [
   "determination",
   "success",
@@ -126,7 +127,7 @@ image.src = currentPoster.image;
 showFormButton.addEventListener("click", handleShowFormClick);
 savePosterButton.addEventListener("click", handleShowSaveClick);
 takeMeBackButton.addEventListener("click", handleTakeBackClick);
-backToMainButton.addEventListener("click", handleBackToMainClick); 
+backToMainButton.addEventListener("click", handleBackToMainClick);
 
 
 // functions and event handlers go here 👇
@@ -190,4 +191,35 @@ function hideSaved() {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-};
+}
+
+
+
+
+//Iteration 2 Pseudocode
+//User fills out 3 input fields: image url, title, quote
+//User clicks save
+//When save button clicked
+  //image url added to images array
+  //title added to titles array
+  //quote added to quotes array
+//values from user inputs create new instance of poster class
+
+var urlInput = document.querySelector("#poster-image-url") //access value from url box
+var titleInput = document.querySelector("#poster-title") //access value from title box
+var quoteInput = document.querySelector("#poster-quote") //access value from quote box
+
+function handleUrlInput(event) {
+  event.preventDefault()
+  return.images.unshift(urlInput.value)
+}
+
+function handleTitleInput(event) {
+  event.preventDefault()
+  return titles.unshift(titleInput.value)
+}
+
+function handleQuoteInput(event) {
+  event.preventDefault()
+  return quotes.unshift(quoteInput.value)
+}
