@@ -12,6 +12,9 @@ var backToMain = document.querySelector('.back-to-main');
 var showMain = document.querySelector('.show-main');
 var savePoster = document.querySelector('.save-poster');
 var makePoster = document.querySelector('.make-poster');
+var inputPosterImg = document.querySelector('#poster-image-url');
+var inputPosterTitle = document.querySelector('#poster-title');
+var inputPosterQuote = document.querySelector('#poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -122,12 +125,16 @@ var quotes = [
 
 // event listeners go here 👇
 
+// showRandom.addEventListener('load', )
 showRandom.addEventListener('click', loadRandom);
 showForm.addEventListener('click', loadForm);
 showSaved.addEventListener('click', loadSaved);
 backToMain.addEventListener('click', loadMain);
 showMain.addEventListener('click', nvmTakeMeBack);
-// makePoster.addEventListener('click',)
+makePoster.addEventListener('click', showMyPoster);
+
+//add event listern to showRandom poster on load
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -135,14 +142,25 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
+function inputIndex(){
+  images.unshift(inputPosterImg.value);
+  titles.unshift(inputPosterTitle.value);
+  quotes.unshift(inputPosterQuote.value);
+  console.log(quotes);
+}
+
+// make funtion that will add a new image tile an quote to the arrays at index [0]
+//we need to take in the value and then
+//then
+//load random event lisner
+
 function loadRandom() {
   title.innerText = titles[getRandomIndex(titles)];
   quote.innerText = quotes[getRandomIndex(quotes)];
   image.src = images[getRandomIndex(images)];
 };
 
-loadRandom();
-
+ loadRandom();
 
 function loadForm() {
   form.classList.remove('hidden');
@@ -165,8 +183,21 @@ function nvmTakeMeBack() {
   poster.classList.remove('hidden');
 };
 
+function showMyPoster(event) {
+  event.preventDefault();
+  inputIndex()
+  form.classList.add('hidden');
+  poster.classList.remove('hidden');
+  title.innerText = titles[0];
+  quote.innerText = quotes[0];
+  image.src = images[0];
+};
 
 
+
+var jp = new Poster(images, titles, quotes)
+
+console.log(jp)
 
 //add new event listener to showForm on click
 //add querySelector for poster-hidden-showForm
