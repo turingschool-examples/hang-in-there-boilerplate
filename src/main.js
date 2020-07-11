@@ -2,8 +2,14 @@
 var image = document.querySelector(".poster-img")
 var title = document.querySelector(".poster-title")
 var quote = document.querySelector(".poster-quote")
+var makePosterButton = document.querySelector(".show-form")
 
+makePosterButton.addEventListener("click", makePoster)
 
+function makePoster() {
+  title.classList.add("purple")
+  console.log("Made the Poster!")
+}
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
