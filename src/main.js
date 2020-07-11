@@ -1,8 +1,15 @@
 // query selector variables go here 👇
 var image = document.querySelector(".poster-img")
 var title = document.querySelector(".poster-title")
-var quote = document.querySelector(".poster-quote")  
+var quote = document.querySelector(".poster-quote")
+var makePosterButton = document.querySelector(".show-form")
 
+makePosterButton.addEventListener("click", makePoster)
+
+function makePoster() {
+  title.classList.add("purple")
+  console.log("Made the Poster!")
+}
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -60,7 +67,7 @@ var titles = [
   "trust",
   "understanding",
   "wisdom"
-];  
+];
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
@@ -100,15 +107,21 @@ var quotes = [
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
-];   
-var savedPosters = [];  
+  
+var savedPosters = [];
+
 
 var currentPoster = {
   image: images[getRandomIndex(images)],
   title: titles[getRandomIndex(titles)],
   quote: quotes[getRandomIndex(quotes)]
 };
-  
+
+var currentPoster = {
+  image: images[getRandomIndex(images)],
+  title: titles[getRandomIndex(titles)],
+  quote: quotes[getRandomIndex(quotes)]
+};
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
