@@ -7,6 +7,7 @@ var quote = document.querySelector(".poster-quote");
 var showFormButton = document.querySelector(".show-form");
 var savePosterButton = document.querySelector(".show-saved");
 var takeMeBackButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -124,13 +125,21 @@ image.src = currentPoster.image;
 
 showFormButton.addEventListener("click", handleShowFormClick);
 savePosterButton.addEventListener("click", handleShowSaveClick);
-takeMeBackButton.addEventListener("click", handleTakeBackClick); 
+takeMeBackButton.addEventListener("click", handleTakeBackClick);
+backToMainButton.addEventListener("click", handleBackToMainClick); 
+
 
 // functions and event handlers go here 👇
 function handleTakeBackClick(event) {
   event.preventDefault()
   showMainPage()
   hideForm()
+}
+
+function handleBackToMainClick(event) {
+  event.preventDefault()
+  showMainPage()
+  hideSaved()
 }
 
 function showMainPage() {
@@ -168,6 +177,11 @@ function hideForm() {
 function showSaved() {
   var savedPosterSection = document.querySelector(".saved-posters")
   savedPosterSection.classList.remove("hidden")
+}
+
+function hideSaved() {
+  var savedPosterSection = document.querySelector(".saved-posters")
+  savedPosterSection.classList.add("hidden")
 }
 
 
