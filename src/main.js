@@ -119,6 +119,9 @@ image.src = currentPoster.image;
 
 // event listeners go here 👇
 
+showFormButton.addEventListener("click", handleShowFormClick);
+savePosterButton.addEventListener("click", handleShowSaveClick);
+
 
 
 
