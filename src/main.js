@@ -1,15 +1,12 @@
 // query selector variables go here 👇
-var image = document.querySelector(".poster-img")
-var title = document.querySelector(".poster-title")
-var quote = document.querySelector(".poster-quote")
-var makePosterButton = document.querySelector(".show-form")
 
-makePosterButton.addEventListener("click", makePoster)
+var image = document.querySelector(".poster-img");
+var title = document.querySelector(".poster-title");
+var quote = document.querySelector(".poster-quote");
 
-function makePoster() {
-  title.classList.add("purple")
-  console.log("Made the Poster!")
-}
+var showFormButton = document.querySelector(".show-form");
+var savePosterButton = document.querySelector(".show-saved");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -107,31 +104,59 @@ var quotes = [
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
-  
+];
+
 var savedPosters = [];
 
-
 var currentPoster = {
   image: images[getRandomIndex(images)],
   title: titles[getRandomIndex(titles)],
   quote: quotes[getRandomIndex(quotes)]
 };
 
-var currentPoster = {
-  image: images[getRandomIndex(images)],
-  title: titles[getRandomIndex(titles)],
-  quote: quotes[getRandomIndex(quotes)]
-};
+title.innerText = currentPoster.title;
+quote.innerText = currentPoster.quote;
+image.src = currentPoster.image;
+
+
 // event listeners go here 👇
 
+showFormButton.addEventListener("click", handleShowFormClick);
+savePosterButton.addEventListener("click", handleShowSaveClick);
+
+
 // functions and event handlers go here 👇
+function handleShowFormClick(event){
+  event.preventDefault()
+  hidePosterPage()
+  showForm()
+};
+
+function handleShowSaveClick(event){
+  event.preventDefault()
+  hidePosterPage()
+  showSaved()
+
+}
+
+function hidePosterPage(){
+  var mainPosterSection = document.querySelector(".main-poster")
+  mainPosterSection.classList.add("hidden");
+}
+
+function showForm() {
+  var posterFormSection = document.querySelector(".poster-form")
+  posterFormSection.classList.remove("hidden");
+}
+
+function showSaved() {
+  var savedPosterSection = document.querySelector(".saved-posters")
+  savedPosterSection.classList.remove("hidden")
+}
+
 // (we've provided one for you to get you started)!
-
-title.innerText = currentPoster.title
-quote.innerText = currentPoster.quote
-image.src = currentPoster.image
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
+
