@@ -114,13 +114,9 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-// var savedPosters = [
-//   makePoster(
-//     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-//     "Optimism",
-//     "Keep a joyful heart!"
-//   )
-// ];
+
+var currentPoster;
+var savedPosters = [];
 
 
 // event listeners go here 👇
@@ -146,7 +142,6 @@ function inputIndex(){
   images.unshift(inputPosterImg.value);
   titles.unshift(inputPosterTitle.value);
   quotes.unshift(inputPosterQuote.value);
-  console.log(quotes);
 }
 
 // make funtion that will add a new image tile an quote to the arrays at index [0]
@@ -155,6 +150,7 @@ function inputIndex(){
 //load random event lisner
 
 function loadRandom() {
+  var randomImage = images[getRandomIndex(images)];
   title.innerText = titles[getRandomIndex(titles)];
   quote.innerText = quotes[getRandomIndex(quotes)];
   image.src = images[getRandomIndex(images)];
@@ -191,13 +187,9 @@ function showMyPoster(event) {
   title.innerText = titles[0];
   quote.innerText = quotes[0];
   image.src = images[0];
+  var id = new Poster(images[0], titles[0], quotes[0])
 };
 
-
-
-var jp = new Poster(images, titles, quotes)
-
-console.log(jp)
 
 //add new event listener to showForm on click
 //add querySelector for poster-hidden-showForm
