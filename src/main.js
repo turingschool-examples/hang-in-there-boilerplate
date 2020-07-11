@@ -121,7 +121,6 @@ var savedPosters = [];
 
 // event listeners go here 👇
 
-// showRandom.addEventListener('load', )
 showRandom.addEventListener('click', loadRandom);
 showForm.addEventListener('click', loadForm);
 showSaved.addEventListener('click', loadSaved);
@@ -129,25 +128,17 @@ backToMain.addEventListener('click', loadMain);
 showMain.addEventListener('click', nvmTakeMeBack);
 makePoster.addEventListener('click', showMyPoster);
 
-//add event listern to showRandom poster on load
-
-
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function inputIndex(){
+function inputIndex() {
   images.unshift(inputPosterImg.value);
   titles.unshift(inputPosterTitle.value);
   quotes.unshift(inputPosterQuote.value);
 }
-
-// make funtion that will add a new image tile an quote to the arrays at index [0]
-//we need to take in the value and then
-//then
-//load random event lisner
 
 function loadRandom() {
   var randomImage = images[getRandomIndex(images)];
@@ -157,7 +148,6 @@ function loadRandom() {
   title.innerText = randomTitle;
   quote.innerText = randomQuote;
   image.src = randomImage;
-  console.log(currentPoster);
 };
 
  loadRandom();
@@ -192,12 +182,4 @@ function showMyPoster(event) {
   quote.innerText = quotes[0];
   image.src = images[0];
   madePoster = new Poster(images[0], titles[0], quotes[0]);
-  console.log(madePoster)
 };
-
-
-//add new event listener to showForm on click
-//add querySelector for poster-hidden-showForm
-// to show - document.getElementById("element").style.display = "block";
-// to hide - document.getElementById("element").style.display = "none";
-//main-poster querySelector
