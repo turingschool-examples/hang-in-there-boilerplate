@@ -5,10 +5,16 @@ var posterQuotes = document.querySelector(".poster-quote");
 var randomButton = document.querySelector(".show-random");
 var formButton = document.querySelector(".show-form");
 var formView = document.querySelector(".poster-form");
-var hideMain = document.querySelector(".main-poster");
+var mainPage = document.querySelector("section");
+var savedButton = document.querySelector(".show-saved");
+var savedPosters = document.querySelector(".saved-posters");
+var showMainButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
+
+
 console.log(posterImage);
 console.log(formView);
-console.log(hideMain);
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -112,12 +118,12 @@ var quotes = [
 var currentPoster;
 
 
-// event listeners go here 👇
+// event listeners go here 👇 revise with onClick etc
 window.addEventListener("load", function(){posterImage.src = getRandomIndex(images)});
 
 formButton.addEventListener("click", function(){
-  hideMain.class = "main-poster hidden";
-  formView.class = "poster-form";
+  mainPage.className = "main-poster hidden";
+ formView.className = "poster-form";
 });
 
 
@@ -127,6 +133,28 @@ randomButton.addEventListener("click", function(){
   posterTitles.innerText = getRandomTitles(titles);
   posterQuotes.innerText = getRandomQuotes(quotes);
 });
+
+
+
+savedButton.addEventListener("click", function(){
+  mainPage.className = "main-poster hidden";
+  savedPosters.className = "savedPosters";
+
+});
+
+
+
+showMainButton.addEventListener("click", function(){
+formView.className = "poster-form hidden";
+mainPage.className = "main-poster";
+});
+
+
+backToMainButton.addEventListener("click", function(){
+savedPosters.className = "savedPosters hidden";
+mainPage.className = "main-poster";
+});
+
 
 
 // functions and event handlers go here 👇
