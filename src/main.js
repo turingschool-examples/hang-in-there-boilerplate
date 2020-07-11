@@ -1,4 +1,5 @@
 // query selector variables go here 👇
+
 var image = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote");
@@ -104,13 +105,14 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster = {
-  title: titles[getRandomIndex(titles)],
-  quote: quotes[getRandomIndex(quotes)],
-  image: images[getRandomIndex(images)],
-};
 
+var savedPosters = [];
+
+var currentPoster = {
+  image: images[getRandomIndex(images)],
+  title: titles[getRandomIndex(titles)],
+  quote: quotes[getRandomIndex(quotes)]
+};
 
 title.innerText = currentPoster.title;
 quote.innerText = currentPoster.quote;
@@ -121,8 +123,6 @@ image.src = currentPoster.image;
 
 showFormButton.addEventListener("click", handleShowFormClick);
 savePosterButton.addEventListener("click", handleShowSaveClick);
-
-
 
 
 // functions and event handlers go here 👇
@@ -146,7 +146,7 @@ function hidePosterPage(){
 
 function showForm() {
   var posterFormSection = document.querySelector(".poster-form")
-  posterFormSection.classList.remove("hidden")
+  posterFormSection.classList.remove("hidden");
 }
 
 function showSaved() {
@@ -155,6 +155,8 @@ function showSaved() {
 }
 
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
+
