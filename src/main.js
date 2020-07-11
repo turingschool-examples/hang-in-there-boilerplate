@@ -6,6 +6,7 @@ var quote = document.querySelector(".poster-quote");
 
 var showFormButton = document.querySelector(".show-form");
 var savePosterButton = document.querySelector(".show-saved");
+var takeMeBackButton = document.querySelector(".show-main");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -123,9 +124,20 @@ image.src = currentPoster.image;
 
 showFormButton.addEventListener("click", handleShowFormClick);
 savePosterButton.addEventListener("click", handleShowSaveClick);
-
+takeMeBackButton.addEventListener("click", handleTakeBackClick); 
 
 // functions and event handlers go here 👇
+function handleTakeBackClick(event) {
+  event.preventDefault()
+  showMainPage()
+  hideForm()
+}
+
+function showMainPage() {
+  var mainPosterSection = document.querySelector(".main-poster")
+  mainPosterSection.classList.remove("hidden")
+}
+
 function handleShowFormClick(event){
   event.preventDefault()
   hidePosterPage()
@@ -136,7 +148,6 @@ function handleShowSaveClick(event){
   event.preventDefault()
   hidePosterPage()
   showSaved()
-
 }
 
 function hidePosterPage(){
@@ -149,14 +160,20 @@ function showForm() {
   posterFormSection.classList.remove("hidden");
 }
 
+function hideForm() {
+  var posterFormSection = document.querySelector(".poster-form")
+  posterFormSection.classList.add("hidden");
+}
+
 function showSaved() {
   var savedPosterSection = document.querySelector(".saved-posters")
   savedPosterSection.classList.remove("hidden")
 }
+
+
 
 // (we've provided one for you to get you started)!
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
-
