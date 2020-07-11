@@ -153,10 +153,11 @@ function loadRandom() {
   var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
-  currentPoster = new Poster(randomImage, randomTitle, randomQuote);
+  randomPoster = new Poster(randomImage, randomTitle, randomQuote);
   title.innerText = randomTitle;
   quote.innerText = randomQuote;
   image.src = randomImage;
+  console.log(currentPoster);
 };
 
  loadRandom();
@@ -190,7 +191,8 @@ function showMyPoster(event) {
   title.innerText = titles[0];
   quote.innerText = quotes[0];
   image.src = images[0];
-  var id = new Poster(images[0], titles[0], quotes[0])
+  madePoster = new Poster(images[0], titles[0], quotes[0]);
+  console.log(madePoster)
 };
 
 
