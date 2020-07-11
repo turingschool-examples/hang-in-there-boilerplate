@@ -151,9 +151,12 @@ function inputIndex(){
 
 function loadRandom() {
   var randomImage = images[getRandomIndex(images)];
-  title.innerText = titles[getRandomIndex(titles)];
-  quote.innerText = quotes[getRandomIndex(quotes)];
-  image.src = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(randomImage, randomTitle, randomQuote);
+  title.innerText = randomTitle;
+  quote.innerText = randomQuote;
+  image.src = randomImage;
 };
 
  loadRandom();
