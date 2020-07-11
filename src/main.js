@@ -107,7 +107,7 @@ var quotes = [
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
-];
+  
 var savedPosters = [];
 
 
@@ -117,6 +117,11 @@ var currentPoster = {
   quote: quotes[getRandomIndex(quotes)]
 };
 
+var currentPoster = {
+  image: images[getRandomIndex(images)],
+  title: titles[getRandomIndex(titles)],
+  quote: quotes[getRandomIndex(quotes)]
+};
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
@@ -125,6 +130,7 @@ var currentPoster = {
 title.innerText = currentPoster.title
 quote.innerText = currentPoster.quote
 image.src = currentPoster.image
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
