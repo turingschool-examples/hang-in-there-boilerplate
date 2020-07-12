@@ -10,12 +10,14 @@ var posterForm = document.querySelector('.poster-form'); // Make a poster page
 var mainPage = document.querySelector('.main-poster') // Main Page
 var savedPosters = document.querySelector('.saved-posters') // Main Page
 
-// ----> Buttons
+//////// Buttons
 // Main
-var showFormButton = document.querySelector('.show-form'); // Make a poster page button
-var saveAPosterButton = document.querySelector('.save-poster') // Save poster button
-var showSavedPostersButton = document.querySelector('.show-saved') // show saved posters button
-var showRandomPosterButton = document.querySelector('.show-random') // show random poster
+var showFormButton = document.querySelector('.show-form'); // Go to the make a poster page
+var saveAPosterButton = document.querySelector('.save-poster') // Save a poster
+var showSavedPostersButton = document.querySelector('.show-saved') // View saved posters
+var showRandomPosterButton = document.querySelector('.show-random') // New random poster
+var customPoster = document.querySelector('.make-poster') // Custom poster
+
 // Back to main
 var backToMain = document.querySelector('.back-to-main') // Back to Main button
 // Nevermind take me back button
@@ -133,6 +135,8 @@ showRandomPosterButton.addEventListener('click', showAnotherRandom);
 showSavedPostersButton.addEventListener('click', showSavedFunction);
 // Back to Main
 backToMain.addEventListener('click', backtoMainFunction);
+// Custom Poster
+customPoster.addEventListener('click', customPoster);
 
 // ************************************************ functions and event handlers 👇
 
@@ -170,6 +174,15 @@ function backtoMainFunction(){
   mainPage.classList.remove("hidden");
   savedPosters.classList.add("hidden");
 }
+// custom poster
+function customPoster(){
+  event.preventDefault();
+  posterImage.src = "#poster-image-url".innerText.value;
+  posterTitle.innerText = "#poster-title".innerText.value;
+  posterQuote.innerText = "#poster-quote".innerText.value;
+  mainPage.classList.remove("hidden");
+  posterForm.classList.add("hidden");
+}
 
 // ************************************************ code 👇
 
@@ -177,3 +190,24 @@ function backtoMainFunction(){
 posterImage.src = images[getRandomIndex(images)]
 posterTitle.innerText = titles[getRandomIndex(titles)]
 posterQuote.innerText = quotes[getRandomIndex(quotes)]
+
+////// 
+
+var savedPosterArray = [];
+
+class posterSaves {
+  constructor(images, titles, quotes) {
+    this.images = images;
+    this.titles = titles;
+    this.quotes = quotes;
+  }
+}
+
+// var pizza2 = new Pizza("thin", "red", ["cheese", "pepperoni", "black olives"]);
+
+/* To-do list 
+
+Need a function that pushes the current poster to the array
+The custom poster function (above) does not work
+
+*/
