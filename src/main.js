@@ -24,22 +24,22 @@ var takeMeBack = document.querySelector('.show-main') // Nevermind take me back 
 
 // ************************************************ we've provided you with some data to work with 👇
 var images = [
-  "./assets/bees.jpg",
+  // "./assets/bees.jpg",
+  // "./assets/frog.jpg",
+  // "./assets/puffins.jpg",
+  // "./assets/pug.jpg",
+  // "./assets/squirrel.jpg",
+  // "./assets/butterfly.jpg",
   "./assets/bridge.jpg",
-  "./assets/butterfly.jpg",
   "./assets/cliff.jpg",
   "./assets/elephant.jpg",
   "./assets/flock.jpg",
   "./assets/fox.jpg",
-  "./assets/frog.jpg",
   "./assets/horse.jpg",
   "./assets/lion.jpg",
   "./assets/mountain.jpg",
   "./assets/pier.jpg",
-  "./assets/puffins.jpg",
-  "./assets/pug.jpg",
   "./assets/runner.jpg",
-  "./assets/squirrel.jpg",
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
