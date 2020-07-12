@@ -3,11 +3,15 @@
 var image = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote");
-
 var showFormButton = document.querySelector(".show-form");
 var savePosterButton = document.querySelector(".show-saved");
 var takeMeBackButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+var urlInput = document.querySelector("#poster-image-url");
+var titleInput = document.querySelector("#poster-title");
+var quoteInput = document.querySelector("#poster-quote");
+
+var showPosterButton = document.querySelector(".make-poster");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -30,6 +34,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+
 var titles = [
   "determination",
   "success",
@@ -109,27 +114,24 @@ var quotes = [
 ];
 
 var savedPosters = [];
-
-var currentPoster = {
-  image: images[getRandomIndex(images)],
-  title: titles[getRandomIndex(titles)],
-  quote: quotes[getRandomIndex(quotes)]
-};
-
-title.innerText = currentPoster.title;
-quote.innerText = currentPoster.quote;
-image.src = currentPoster.image;
-
+var currentPoster;
 
 // event listeners go here 👇
-
+window.addEventListener("load", randomizePoster);
+showPosterButton.addEventListener("click", handleShowPosterClick);
 showFormButton.addEventListener("click", handleShowFormClick);
 savePosterButton.addEventListener("click", handleShowSaveClick);
 takeMeBackButton.addEventListener("click", handleTakeBackClick);
-backToMainButton.addEventListener("click", handleBackToMainClick); 
+backToMainButton.addEventListener("click", handleBackToMainClick);
 
 
 // functions and event handlers go here 👇
+function randomizePoster() {
+    image.src = images[getRandomIndex(images)],
+    title.innerText = titles[getRandomIndex(titles)],
+    quote.innerText = quotes[getRandomIndex(quotes)]
+}
+
 function handleTakeBackClick(event) {
   event.preventDefault()
   showMainPage()
@@ -183,11 +185,25 @@ function hideSaved() {
   var savedPosterSection = document.querySelector(".saved-posters")
   savedPosterSection.classList.add("hidden")
 }
+function handleShowPosterClick() {
+  event.preventDefault();
+  getUserInput();
+  image.src = images[0];
+  title.innerText = titles[0];
+  quote.innerText = quotes[0];
+  hideForm();
+  showMainPage();
+  customPoster = new Poster(image[0], title[0], quotes[0]);
+}
 
-
+function getUserInput() {
+  images.unshift(urlInput.value);
+  titles.unshift(titleInput.value);
+  quotes.unshift(quoteInput.value);
+}
 
 // (we've provided one for you to get you started)!
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-};
+}
