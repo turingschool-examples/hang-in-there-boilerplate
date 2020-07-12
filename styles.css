@@ -3,13 +3,15 @@
 *:before,
 *:after {
   box-sizing: border-box;
-  font-family: "EB Garamond", serif;
+  /* font-family: "EB Garamond", serif; */
+  font-family: 'Bangers', cursive;
+  font-weight: lighter;
   margin: auto;
   text-align: center;
 }
 
 body {
-  background: ghostwhite;
+  background: rgb(213, 236, 233);
 }
 
 button,

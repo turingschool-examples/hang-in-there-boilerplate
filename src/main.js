@@ -1,13 +1,26 @@
 // ************************************************ query selector variables go here 👇
 
-// --> 1. Main Page
+// Main page elements
 var posterImage = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
-// --> 2. Show Form
-var posterForm = document.querySelector('.poster-form hidden');
-var showFormButton = document.querySelector('.show-form');
-var mainPage = document.querySelector('.main-poster')
+
+// Pages
+var posterForm = document.querySelector('.poster-form'); // Make a poster page
+var mainPage = document.querySelector('.main-poster') // Main Page
+var savedPosters = document.querySelector('.saved-posters') // Main Page
+
+// ----> Buttons
+// Main
+var showFormButton = document.querySelector('.show-form'); // Make a poster page button
+var saveAPosterButton = document.querySelector('.save-poster') // Save poster button
+var showSavedPostersButton = document.querySelector('.show-saved') // show saved posters button
+var showRandomPosterButton = document.querySelector('.show-random') // show random poster
+// Back to main
+var backToMain = document.querySelector('.back-to-main') // Back to Main button
+// Nevermind take me back button
+var takeMeBack = document.querySelector('.show-main') // Nevermind take me back button
+
 
 // ************************************************ we've provided you with some data to work with 👇
 var images = [
@@ -108,32 +121,59 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-var currentPoster;
+// ************************************************ event listeners 👇
 
-// ************************************************ event listeners go here 👇
-
-// 2. --> Show Form
+// Show Form
 showFormButton.addEventListener('click', showPosterForm);
+// Nevermind take me back
+takeMeBack.addEventListener('click', takeMeBackFunction);
+// Show Another Random Poster
+showRandomPosterButton.addEventListener('click', showAnotherRandom);
+// Show saved posters
+showSavedPostersButton.addEventListener('click', showSavedFunction);
+// Back to Main
+backToMain.addEventListener('click', backtoMainFunction);
 
-// ************************************************ functions and event handlers go here 👇
+// ************************************************ functions and event handlers 👇
 
-// 1. --> Main Page
+////// Main Page
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-// 2. --> Show Form
-function showPosterForm() {
-  posterForm.style.visibility = "visible";
-  mainPage.style.visibility = "hidden";
+// Show another random poster
+function showAnotherRandom() {
+  posterImage.src = images[getRandomIndex(images)];
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)]
 }
 
-// ************************************************ code here 👇
+////// Switchng Pages
+function showPosterForm() {
+  event.preventDefault()
+  posterForm.classList.remove("hidden");
+  mainPage.classList.add("hidden");
+}
+// Nevermind take me back
+function takeMeBackFunction(){
+  event.preventDefault()
+  mainPage.classList.remove("hidden");
+  posterForm.classList.add("hidden");
+}
+// Show saved
+function showSavedFunction(){
+  event.preventDefault()
+  mainPage.classList.add("hidden");
+  savedPosters.classList.remove("hidden");
+}
+// backtoMainFunction
+function backtoMainFunction(){
+  mainPage.classList.remove("hidden");
+  savedPosters.classList.add("hidden");
+}
 
-// 1. --> Main Page
+// ************************************************ code 👇
+
+////// Main Page
 posterImage.src = images[getRandomIndex(images)]
 posterTitle.innerText = titles[getRandomIndex(titles)]
 posterQuote.innerText = quotes[getRandomIndex(quotes)]
-
-// 2. --> Show Form
-
-showPosterForm();
