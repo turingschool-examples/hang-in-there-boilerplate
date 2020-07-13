@@ -188,70 +188,32 @@ function newPoster(imgURL, imgTitle, imgQuote) {
 // set saved poster as current
 function posterToCurrent(savedPosterObject) {
   console.log(savedPosterObject);
-  posterImage.src = savedPosterObject.image;
+  posterImage.src = savedPosterObject.imageURL;
   posterTitle.innerText = savedPosterObject.title;
   posterQuote.innerText = savedPosterObject.quote;
 }
 
-
 // custom poster
 function customPoster(ev){
   ev.preventDefault()
-  console.log(savedPosterArray)
   var customPoster = {
-    image: imageUrlInputField.value,
+    imageURL: imageUrlInputField.value,
     title: imageTitleInputField.value,
     quote: imageQuoteInputField.value
   }
-  savedPosterArray.unshift(customPoster)
-  console.log(savedPosterArray)
-  posterToCurrent(savedPosterArray[0]);
+  posterToCurrent(customPoster);
   takeMeBackFunction()
 }
-
-
-
-
 
 // ************************************************ code 👇
 
 ////// Main Page
 
+var savedPosterArray = [];
 
-var firstRandomPoster = {
-  image: images[getRandomIndex(images)],
-  title: titles[getRandomIndex(titles)],
-  quote: quotes[getRandomIndex(quotes)]
-}
-
-var savedPosterArray = [firstRandomPoster];
-
-var currentPoster = {
-  currentImageURL: savedPosterArray[0].image,
-  currentTitle: savedPosterArray[0].title,
-  currentQuote: savedPosterArray[0].quote,
-  changeCurrentPoster: function (newURL, newTitle, newQuote) {
-    this.currentImageURL = newURL;
-    this.currentTitle = newTitle;
-    this.currentQuote = newQuote;
-  }
-}
-
-posterImage.src = currentPoster.currentImageURL
-posterTitle.innerText = currentPoster.currentTitle
-posterQuote.innerText = currentPoster.currentQuote
-
-//////
-
-
-class posterSave {
-  constructor(image, title, quote) {
-    this.image = image;
-    this.title = title;
-    this.quote = quote;
-  }
-}
-
+posterImage.src = images[getRandomIndex(images)]
+posterTitle.innerText = titles[getRandomIndex(titles)]
+posterQuote.innerText = quotes[getRandomIndex(quotes)]
 
 
 // var pizza2 = new Pizza("thin", "red", ["cheese", "pepperoni", "black olives"]);
@@ -262,6 +224,3 @@ Need a function that pushes the current poster to the array
 The custom poster function (above) does not work
 
 */
-
-
-/* Caleb's experiment code */
