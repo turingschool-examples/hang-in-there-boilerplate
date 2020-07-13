@@ -13,7 +13,13 @@ var quoteInput = document.querySelector("#poster-quote");
 
 var showPosterButton = document.querySelector(".make-poster");
 
+var savedPostersPage = document.querySelector(".saved-posters");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
+var posterFormSection = document.querySelector(".poster-form");
+var mainPosterSection = document.querySelector(".main-poster");
+var showSavedPostersButton = document.querySelector(".save-poster");
 // we've provided you with some data to work with 👇
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -34,7 +40,6 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
-
 var titles = [
   "determination",
   "success",
@@ -124,8 +129,87 @@ savePosterButton.addEventListener("click", handleShowSaveClick);
 takeMeBackButton.addEventListener("click", handleTakeBackClick);
 backToMainButton.addEventListener("click", handleBackToMainClick);
 
+savePosterButton.addEventListener("click", savePoster);
+showSavedPostersButton.addEventListener("click", showPosterGrid);
 
 // functions and event handlers go here 👇
+
+function showSavedPosters(){
+  savedPostersGrid.innerHTML = "";
+  savedPostersPage.classList.remove("hidden");
+  mainPosterSection.classList.add("hidden");
+  showPosterGrid()
+}
+
+function noDuplicates(){
+//  event.preventDefault();
+  for (var i = 0; i < savedPosters.length; i++){
+    if(savedPosters[i] === currentPoster){
+      return false;
+    }
+    return true;
+  }
+}
+
+function savePoster(){
+//  event.preventDefault();
+  // var imageURL = image.src
+  // var title = title.innerText
+  // var quote = quote.innerText
+  // var saveThisPoster = new Poster(imageURL, title, quote)
+  if(noDuplicates()) {
+    // savedPosters.unshift(urlInput.value);
+    // savedPosters.unshift(titleInput.value);
+    // savedPosters.unshift(quoteInput.value);
+    savedPosters.unshift(currentPoster);
+  }
+}
+
+        // on the main page we want to be able to
+        // save the current poster as an object.
+        // object will have 3 properties (image, title, quote).
+        //
+        // when the save this poster button is clicked
+
+        // we want to insert that object into the saved posters array.
+        //
+        // want to display the object from the saved posters array
+
+        // on the show saved posters page
+        //
+        // and only save non-duplicated posters.
+
+
+// function showPosterGrid() {
+//   if(savedPosters.length != 0){
+//     for (var i = 0; i < savedPosters.length; i++){
+//       var posterElement = createPosterHTML(savedPosters[i]);
+//       savedPostersGrid.innerHTML += posterElement;
+//     }
+//     savedPoster.className = "saved-posters";
+//     mainPoster.className = "main-poster hidden";
+//
+//     savedPostersGrid.insertAdjacentHTML("afterbegin", `
+//     <div class="mini-poster">
+//       <img src=${savedPosters[i].imageURL}>
+//       <h2>${savedPosters[i].title}</h2>
+//       <h4>${savedPosters[i].quote}</h4>
+//     </div>}`);
+//   } else {
+//
+//   }
+//   }
+//
+// function createPosterHTML(newPoster){
+//   return `<div class="mini-poster">
+//     <img src=${newPoster[i].imageURL}>
+//     <h2>${newPoster[i].title}</h2>
+//     <h4>${newPoster[i].quote}</h4>
+//   </div>}`
+// }
+
+
+
 function randomizePoster() {
     image.src = images[getRandomIndex(images)],
     title.innerText = titles[getRandomIndex(titles)],
@@ -153,7 +237,7 @@ function handleShowFormClick(event){
   event.preventDefault()
   hidePosterPage()
   showForm()
-};
+}
 
 function handleShowSaveClick(event){
   event.preventDefault()
@@ -193,7 +277,7 @@ function handleShowPosterClick() {
   quote.innerText = quotes[0];
   hideForm();
   showMainPage();
-  customPoster = new Poster(image[0], title[0], quotes[0]);
+  currentPoster = new Poster(image[0], title[0], quote[0]);
 }
 
 function getUserInput() {
