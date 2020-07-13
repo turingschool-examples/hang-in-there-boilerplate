@@ -141,18 +141,21 @@ savedButton.addEventListener("click", function(){
   changePage(mainPage,savedPosters)
 });
 showMainButton.addEventListener("click", function(){
-  changePage(formview,mainPage)
+  changePage(formView,mainPage)
 });
-showMainButton.addEventListener("click", function(){
+backToMainButton.addEventListener("click", function(){
   changePage(savedPosters,mainPage)
 });
     showMyPoster.addEventListener("click", function(){   //check out preventDefault()
      posterImage.src = imageUrl.value;
-     posterTitles.innerText = title.value;;
-     posterQuotes.innerText = quote.value;;
+     images.push(imageUrl.value);
+     posterTitles.innerText = title.value;
+     titles.push(title.value);
+     posterQuotes.innerText = quote.value;
+     quotes.push(quote.value);
      changePage(mainPage,formView)
  });
-
+console.log("images");
 
 
 // functions and event handlers go here 👇
