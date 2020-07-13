@@ -1,18 +1,21 @@
 // query selector variables go here 👇
+var mainPage = document.querySelector(".main-poster");
+var formView = document.querySelector(".poster-form");
+var savedPosters = document.querySelector(".saved-posters");
 var posterImage = document.querySelector(".poster-img");
 var posterTitles = document.querySelector(".poster-title");
 var posterQuotes = document.querySelector(".poster-quote");
-var randomButton = document.querySelector(".show-random");
-var formButton = document.querySelector(".show-form");
-var formView = document.querySelector(".poster-form");
-var mainPage = document.querySelector("section");
-var savedButton = document.querySelector(".show-saved");
-var savedPosters = document.querySelector(".saved-posters");
 var showMainButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+var randomButton = document.querySelector(".show-random");
+var formButton = document.querySelector(".show-form");
+var savedButton = document.querySelector(".show-saved");
+var showMyPoster = document.querySelector(".make-poster")
+var imageUrl = document.querySelector("#poster-image-url")
+var title = document.querySelector("#poster-title")
+var quote = document.querySelector("#poster-quote")
 
-
-console.log(posterImage);
+console.log(mainPage)
 console.log(formView);
 
 
@@ -115,61 +118,57 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-var currentPoster;
-
+// var currentPoster = new Poster
 
 // event listeners go here 👇 revise with onClick etc
-window.addEventListener("load", function(){posterImage.src = getRandomIndex(images)});
-
-formButton.addEventListener("click", function(){
-  mainPage.className = "main-poster hidden";
- formView.className = "poster-form";
+window.addEventListener("load", function(){
+  posterImage.src = getRandomIndex(images)
+  posterTitles.innerText = getRandomIndex(titles);
+  posterQuotes.innerText = getRandomIndex(quotes);
+  showMyPoster.type = "button";
 });
 
-
-
+formButton.addEventListener("click", function(){ //.onClick
+    mainPage.className = "main-poster hidden";
+    formView.className = "poster-form";
+});
 randomButton.addEventListener("click", function(){
-  posterImage.src = getRandomIndex(images);
-  posterTitles.innerText = getRandomTitles(titles);
-  posterQuotes.innerText = getRandomQuotes(quotes);
+    posterImage.src = getRandomIndex(images);
+    posterTitles.innerText = getRandomIndex(titles);
+    posterQuotes.innerText = getRandomIndex(quotes);
 });
-
-
-
 savedButton.addEventListener("click", function(){
-  mainPage.className = "main-poster hidden";
-  savedPosters.className = "savedPosters";
-
+    mainPage.className = "main-poster hidden";
+    savedPosters.className = "savedPosters";
 });
-
-
-
-showMainButton.addEventListener("click", function(){
-formView.className = "poster-form hidden";
-mainPage.className = "main-poster";
+  showMainButton.addEventListener("click", function(){ //className.toggle(hidden)
+    formView.className = "poster-form hidden";
+    mainPage.className = "main-poster";
 });
-
-
-backToMainButton.addEventListener("click", function(){
-savedPosters.className = "savedPosters hidden";
-mainPage.className = "main-poster";
+  backToMainButton.addEventListener("click", function(){
+    savedPosters.className = "savedPosters hidden";
+    mainPage.className = "main-poster";
 });
+    showMyPoster.addEventListener("click", function(){   //check out preventDefault()
+     posterImage.src = imageUrl.value;
+     posterTitles.innerText = title.value;;
+     posterQuotes.innerText = quote.value;;
+     formView.className = "poster-form hidden";
+     mainPage.className = "main-poster";
+    console.log('imageUrl.value');
+    console.log('title.value');
+    console.log('quote.value');
+ });
 
 
 
 // functions and event handlers go here 👇
-function getRandomIndex(images) {
-  var results = Math.floor(Math.random() * images.length);
-  return images[results];
-}
-function getRandomTitles(titles) {
-  var results = Math.floor(Math.random() * titles.length);
-  return titles[results];
+function getRandomIndex(array) {
+  var results = Math.floor(Math.random() * array.length);
+  return array[results];
 }
 
-function getRandomQuotes(quotes) {
-  var results = Math.floor(Math.random() * quotes.length);
-  return quotes[results];
-}
-posterTitles.innerText = getRandomTitles(titles);
-posterQuotes.innerText = getRandomQuotes(quotes);
+
+
+
+// makePosterButton.addEventListener("click", function(){
