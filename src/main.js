@@ -16,12 +16,17 @@ var showFormButton = document.querySelector('.show-form'); // Go to the make a p
 var saveAPosterButton = document.querySelector('.save-poster') // Save a poster
 var showSavedPostersButton = document.querySelector('.show-saved') // View saved posters
 var showRandomPosterButton = document.querySelector('.show-random') // New random poster
-var customPoster = document.querySelector('.make-poster') // Custom poster
+var makePoster = document.querySelector('.make-poster') // Custom poster
 
 // Back to main
 var backToMain = document.querySelector('.back-to-main') // Back to Main button
 // Nevermind take me back button
 var takeMeBack = document.querySelector('.show-main') // Nevermind take me back button
+// Form Fields
+var imageUrlInputField = document.querySelector('#poster-image-url') //Image Url Input Field
+var imageTitleInputField = document.querySelector('#poster-title') //Image title input Field
+var imageQuoteInputField = document.querySelector('#poster-quote') // Image quote input Field
+
 
 
 // ************************************************ we've provided you with some data to work with 👇
@@ -136,7 +141,8 @@ showSavedPostersButton.addEventListener('click', showSavedFunction);
 // Back to Main
 backToMain.addEventListener('click', backtoMainFunction);
 // Custom Poster
-customPoster.addEventListener('click', customPoster);
+makePoster.addEventListener('click', customPoster);
+
 
 // ************************************************ functions and event handlers 👇
 
@@ -171,43 +177,91 @@ function showSavedFunction(){
 }
 // backtoMainFunction
 function backtoMainFunction(){
+  event.preventDefault()
   mainPage.classList.remove("hidden");
   savedPosters.classList.add("hidden");
 }
-// custom poster
-function customPoster(){
-  event.preventDefault();
-  posterImage.src = "#poster-image-url".innerText.value;
-  posterTitle.innerText = "#poster-title".innerText.value;
-  posterQuote.innerText = "#poster-quote".innerText.value;
-  mainPage.classList.remove("hidden");
-  posterForm.classList.add("hidden");
+// make new poster item
+function newPoster(imgURL, imgTitle, imgQuote) {
+  return new posterSave(imgURL, imgTitle, imgQuote)
 }
+// set saved poster as current
+function posterToCurrent(savedPosterObject) {
+  console.log(savedPosterObject);
+  posterImage.src = savedPosterObject.image;
+  posterTitle.innerText = savedPosterObject.title;
+  posterQuote.innerText = savedPosterObject.quote;
+}
+
+
+// custom poster
+function customPoster(ev){
+  ev.preventDefault()
+  console.log(savedPosterArray)
+  var customPoster = {
+    image: imageUrlInputField.value,
+    title: imageTitleInputField.value,
+    quote: imageQuoteInputField.value
+  }
+  savedPosterArray.unshift(customPoster)
+  console.log(savedPosterArray)
+  posterToCurrent(savedPosterArray[0]);
+  takeMeBackFunction()
+}
+
+
+
+
 
 // ************************************************ code 👇
 
 ////// Main Page
-posterImage.src = images[getRandomIndex(images)]
-posterTitle.innerText = titles[getRandomIndex(titles)]
-posterQuote.innerText = quotes[getRandomIndex(quotes)]
 
-////// 
 
-var savedPosterArray = [];
+var firstRandomPoster = {
+  image: images[getRandomIndex(images)],
+  title: titles[getRandomIndex(titles)],
+  quote: quotes[getRandomIndex(quotes)]
+}
 
-class posterSaves {
-  constructor(images, titles, quotes) {
-    this.images = images;
-    this.titles = titles;
-    this.quotes = quotes;
+var savedPosterArray = [firstRandomPoster];
+
+var currentPoster = {
+  currentImageURL: savedPosterArray[0].image,
+  currentTitle: savedPosterArray[0].title,
+  currentQuote: savedPosterArray[0].quote,
+  changeCurrentPoster: function (newURL, newTitle, newQuote) {
+    this.currentImageURL = newURL;
+    this.currentTitle = newTitle;
+    this.currentQuote = newQuote;
   }
 }
 
+posterImage.src = currentPoster.currentImageURL
+posterTitle.innerText = currentPoster.currentTitle
+posterQuote.innerText = currentPoster.currentQuote
+
+//////
+
+
+class posterSave {
+  constructor(image, title, quote) {
+    this.image = image;
+    this.title = title;
+    this.quote = quote;
+  }
+}
+
+
+
 // var pizza2 = new Pizza("thin", "red", ["cheese", "pepperoni", "black olives"]);
 
-/* To-do list 
+/* To-do list
 
 Need a function that pushes the current poster to the array
 The custom poster function (above) does not work
 
 */
+
+
+/* Caleb's experiment code */
