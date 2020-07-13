@@ -128,36 +128,29 @@ window.addEventListener("load", function(){
   showMyPoster.type = "button";
 });
 
-formButton.addEventListener("click", function(){ //.onClick
-    mainPage.className = "main-poster hidden";
-    formView.className = "poster-form";
-});
-randomButton.addEventListener("click", function(){
+  formButton.addEventListener("click", function(){
+    changePage(mainPage,formView)
+  });
+ //.onClick
+  randomButton.addEventListener("click", function(){
     posterImage.src = getRandomIndex(images);
     posterTitles.innerText = getRandomIndex(titles);
     posterQuotes.innerText = getRandomIndex(quotes);
 });
 savedButton.addEventListener("click", function(){
-    mainPage.className = "main-poster hidden";
-    savedPosters.className = "savedPosters";
+  changePage(mainPage,savedPosters)
 });
-  showMainButton.addEventListener("click", function(){ //className.toggle(hidden)
-    formView.className = "poster-form hidden";
-    mainPage.className = "main-poster";
+showMainButton.addEventListener("click", function(){
+  changePage(formview,mainPage)
 });
-  backToMainButton.addEventListener("click", function(){
-    savedPosters.className = "savedPosters hidden";
-    mainPage.className = "main-poster";
+showMainButton.addEventListener("click", function(){
+  changePage(savedPosters,mainPage)
 });
     showMyPoster.addEventListener("click", function(){   //check out preventDefault()
      posterImage.src = imageUrl.value;
      posterTitles.innerText = title.value;;
      posterQuotes.innerText = quote.value;;
-     formView.className = "poster-form hidden";
-     mainPage.className = "main-poster";
-    console.log('imageUrl.value');
-    console.log('title.value');
-    console.log('quote.value');
+     changePage(mainPage,formView)
  });
 
 
@@ -168,7 +161,10 @@ function getRandomIndex(array) {
   return array[results];
 }
 
-
+function changePage(hide, show) {
+  show.classList.toggle("hidden");
+  hide.classList.toggle("hidden");
+};
 
 
 // makePosterButton.addEventListener("click", function(){
