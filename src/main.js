@@ -4,7 +4,7 @@ var image = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote");
 var showFormButton = document.querySelector(".show-form");
-var savePosterButton = document.querySelector(".show-saved");
+var savePosterButton = document.querySelector(".save-poster"); // should this be .save-poster instead of .show-saved
 var takeMeBackButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 var urlInput = document.querySelector("#poster-image-url");
@@ -17,7 +17,7 @@ var savedPostersPage = document.querySelector(".saved-posters");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var posterFormSection = document.querySelector(".poster-form");
 var mainPosterSection = document.querySelector(".main-poster");
-var showSavedPostersButton = document.querySelector(".save-poster");
+var showSavedPostersButton = document.querySelector(".show-saved");
 // we've provided you with some data to work with 👇
 
 var images = [
@@ -125,12 +125,12 @@ var currentPoster;
 window.addEventListener("load", randomizePoster);
 showPosterButton.addEventListener("click", handleShowPosterClick);
 showFormButton.addEventListener("click", handleShowFormClick);
-savePosterButton.addEventListener("click", handleShowSaveClick);
+//savePosterButton.addEventListener("click", handleShowSaveClick);
 takeMeBackButton.addEventListener("click", handleTakeBackClick);
 backToMainButton.addEventListener("click", handleBackToMainClick);
 
 savePosterButton.addEventListener("click", savePoster);
-showSavedPostersButton.addEventListener("click", showPosterGrid);
+showSavedPostersButton.addEventListener("click", showSavedPosters);
 
 // functions and event handlers go here 👇
 
@@ -141,72 +141,45 @@ function showSavedPosters(){
   showPosterGrid()
 }
 
-function noDuplicates(){
-//  event.preventDefault();
-  for (var i = 0; i < savedPosters.length; i++){
-    if(savedPosters[i] === currentPoster){
-      return false;
-    }
+function noDuplicates() {
+  var duplicates;
+  if(savedPosters.length == 0){
     return true;
+  } else {
+    for (var i = 0; i < savedPosters.length; i++){
+      if(savedPosters[i] === currentPoster){
+        duplicates = true;
+      }
+      duplicates = false;
+  } return duplicates;
   }
 }
 
 function savePoster(){
-//  event.preventDefault();
-  // var imageURL = image.src
-  // var title = title.innerText
-  // var quote = quote.innerText
-  // var saveThisPoster = new Poster(imageURL, title, quote)
+  var imageURL = image.src
+  var currentTitle = title.innerText
+  var currentQuote = quote.innerText
+  var currentPoster = new Poster(imageURL, currentTitle, currentQuote)
+  console.log(noDuplicates());
   if(noDuplicates()) {
-    // savedPosters.unshift(urlInput.value);
-    // savedPosters.unshift(titleInput.value);
-    // savedPosters.unshift(quoteInput.value);
     savedPosters.unshift(currentPoster);
   }
 }
 
-        // on the main page we want to be able to
-        // save the current poster as an object.
-        // object will have 3 properties (image, title, quote).
-        //
-        // when the save this poster button is clicked
+function showPosterGrid() {
+  if(savedPosters.length != 0) {
+    for (var i = 0; i < savedPosters.length; i++){
+      savedPostersGrid.insertAdjacentHTML("afterbegin", `
+      <div class="mini-poster">
+        <img src="${savedPosters[i].imageURL}">
+        <h2>${savedPosters[i].title}</h2>
+        <h4>${savedPosters[i].quote}</h4>
+      </div>`)
+    }
+  }
+}
 
-        // we want to insert that object into the saved posters array.
-        //
-        // want to display the object from the saved posters array
 
-        // on the show saved posters page
-        //
-        // and only save non-duplicated posters.
-
-
-// function showPosterGrid() {
-//   if(savedPosters.length != 0){
-//     for (var i = 0; i < savedPosters.length; i++){
-//       var posterElement = createPosterHTML(savedPosters[i]);
-//       savedPostersGrid.innerHTML += posterElement;
-//     }
-//     savedPoster.className = "saved-posters";
-//     mainPoster.className = "main-poster hidden";
-//
-//     savedPostersGrid.insertAdjacentHTML("afterbegin", `
-//     <div class="mini-poster">
-//       <img src=${savedPosters[i].imageURL}>
-//       <h2>${savedPosters[i].title}</h2>
-//       <h4>${savedPosters[i].quote}</h4>
-//     </div>}`);
-//   } else {
-//
-//   }
-//   }
-//
-// function createPosterHTML(newPoster){
-//   return `<div class="mini-poster">
-//     <img src=${newPoster[i].imageURL}>
-//     <h2>${newPoster[i].title}</h2>
-//     <h4>${newPoster[i].quote}</h4>
-//   </div>}`
-// }
 
 
 
@@ -239,11 +212,11 @@ function handleShowFormClick(event){
   showForm()
 }
 
-function handleShowSaveClick(event){
-  event.preventDefault()
-  hidePosterPage()
-  showSaved()
-}
+// function handleShowSaveClick(event){
+//   event.preventDefault()
+//   hidePosterPage()
+//   showSaved()
+// }
 
 function hidePosterPage(){
   var mainPosterSection = document.querySelector(".main-poster")
