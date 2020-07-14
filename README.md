@@ -22,7 +22,7 @@ Complete through Iteration 3 of 4.
 ## Project Screen Shots
 
 Main Page:
-![screenshot of main page](/readme-imgs/main page.png)
+![screenshot of main page](/readme-imgs/main-page.png)
 
 
 Make A Poster Page:
