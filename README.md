@@ -1,6 +1,37 @@
 # Hang In There
+by: Ashley McDonald & Demaceo Howard
 
-A boilerplate repo. 
+A website built with JavaScript, HTML and CSS that allows a user to display a random motivational poster, create a unique poster and save their favorite posters.
+
+## Project Status
+Complete through Iteration 3 of 4.
+
+## Description of User Features
+
+  Users can generate a random poster by reloading the page or by clicking the "Show Another Random Poster" button
+
+  Users can save a poster by clicking the "Save This Poster" button & can view saved posters by clicking the "Show Saved Posters" button
+
+  Users can make a custom poster by clicking the "Make Your Own Poster" button & fill out the text fields for image url, motivational title & quote. Then the user can display their custom poster by clicking the "Show My Poster" button to view their custom poster on the main page.
+
+## Project Screen Shots
+
+
+
+## 
+
+
+
+
+
+
+
+
+
+
+# Hang In There
+
+A boilerplate repo.
 
 ## Set Up
 
