@@ -36,5 +36,5 @@ Saved Posters Page:
 ## Reflection
 
   This was a 6 day pair-project during the second week of Module 1 at Turing School of Software and Design.
-  Our project goals included using technologies that we have learned thus far and familiarizing ourselves with the Git work flow in a team atmosphere.
+  Our project goals included using technologies that we have learned thus far & familiarizing ourselves with the Git work flow in a team atmosphere.
   Initially the git work flow was incredibly challenging for both of us. While we acknowledge the improvements that we have made, we both agree that we need to work on making more atomic commits, commenting on pull requests, and merge etiquette. We also learned a tremendous amount in regards to the dynamics of collaborative coding and teamwork. We also refined our technical communication skills and acknowledged areas that we can both improve upon in terms of post-pseudocode review.
