@@ -1,7 +1,7 @@
 // query selector variables go here 👇
 var mainPage = document.querySelector(".main-poster");
 var formView = document.querySelector(".poster-form");
-var savedPosters = document.querySelector(".saved-posters");
+var savedPosterView = document.querySelector(".saved-posters");
 var posterImage = document.querySelector(".poster-img");
 var posterTitles = document.querySelector(".poster-title");
 var posterQuotes = document.querySelector(".poster-quote");
@@ -10,15 +10,12 @@ var backToMainButton = document.querySelector(".back-to-main");
 var randomButton = document.querySelector(".show-random");
 var formButton = document.querySelector(".show-form");
 var savedButton = document.querySelector(".show-saved");
+var savePosterButton = document.querySelector(".save-poster")
 var showMyPoster = document.querySelector(".make-poster")
 var imageUrl = document.querySelector("#poster-image-url")
 var title = document.querySelector("#poster-title")
 var quote = document.querySelector("#poster-quote")
-
-console.log(mainPage)
-console.log(formView);
-
-
+var savedGrid = document.querySelector(".saved-posters-grid")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -117,54 +114,73 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-
-// var currentPoster = new Poster
-
+var savedPosters = [];
+var currentPoster = '';
 // event listeners go here 👇 revise with onClick etc
 window.addEventListener("load", function(){
   posterImage.src = getRandomIndex(images)
   posterTitles.innerText = getRandomIndex(titles);
   posterQuotes.innerText = getRandomIndex(quotes);
   showMyPoster.type = "button";
+  instantiateCurrentPoster();
 });
-
-  formButton.addEventListener("click", function(){
-    changePage(mainPage,formView)
-  });
- //.onClick
-  randomButton.addEventListener("click", function(){
-    posterImage.src = getRandomIndex(images);
-    posterTitles.innerText = getRandomIndex(titles);
-    posterQuotes.innerText = getRandomIndex(quotes);
+formButton.addEventListener("click", function(){  //.onClick
+  changePage(mainPage,formView)
+});
+randomButton.addEventListener("click", function(){
+  posterImage.src = getRandomIndex(images);
+  posterTitles.innerText = getRandomIndex(titles);
+  posterQuotes.innerText = getRandomIndex(quotes);
+  instantiateCurrentPoster();
 });
 savedButton.addEventListener("click", function(){
-  changePage(mainPage,savedPosters)
+  changePage(mainPage,savedPosterView)
 });
 showMainButton.addEventListener("click", function(){
-  changePage(formview,mainPage)
+  changePage(formView,mainPage)
 });
-showMainButton.addEventListener("click", function(){
-  changePage(savedPosters,mainPage)
+backToMainButton.addEventListener("click", function(){
+  changePage(savedPosterView,mainPage)
 });
-    showMyPoster.addEventListener("click", function(){   //check out preventDefault()
-     posterImage.src = imageUrl.value;
-     posterTitles.innerText = title.value;;
-     posterQuotes.innerText = quote.value;;
-     changePage(mainPage,formView)
+showMyPoster.addEventListener("click", function(){   //check out preventDefault()
+  changeMainPoster();
+  instantiateMyPoster();
+  changePage(mainPage,formView);
+  addToArray();
  });
-
-
-
+savePosterButton.addEventListener("click", addToSaved);
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
   var results = Math.floor(Math.random() * array.length);
   return array[results];
-}
-
+};
 function changePage(hide, show) {
   show.classList.toggle("hidden");
   hide.classList.toggle("hidden");
 };
+function changeMainPoster(){
+  posterImage.src = imageUrl.value;           // this is bad practice, DOM to DOM
+  posterTitles.innerText = title.value;;      // want DOM to Data Model To Dom
+  posterQuotes.innerText = quote.value;;
+};
+function instantiateCurrentPoster(){
+  currentPoster = new Poster(posterImage.src, posterTitles.innerText, posterQuotes.innerText);
+};
+function instantiateMyPoster(){
+  currentPoster = new Poster(imageUrl.value, title.value, quote.value);
+};
+function addToArray(){
+  images.push(imageUrl.value);  // can we use class?
+  titles.push(title.value);
+  quotes.push(quote.value);
+};
+function addToSaved(){
+  var newLength = savedPosters.length - 1;
+  if (savedPosters.length >= 1 && savedPosters[newLength].title === currentPoster.title && savedPosters[newLength].imageURL === currentPoster.imageURL && savedPosters[newLength].quote === currentPoster.quote){
+    return
+  }
+    savedPosters.push(currentPoster);
+};
+function addElement(){
 
-
-// makePosterButton.addEventListener("click", function(){
+}
