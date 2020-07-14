@@ -4,7 +4,7 @@ var image = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote");
 var showFormButton = document.querySelector(".show-form");
-var savePosterButton = document.querySelector(".save-poster"); // should this be .save-poster instead of .show-saved
+var savePosterButton = document.querySelector(".save-poster");
 var takeMeBackButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 var urlInput = document.querySelector("#poster-image-url");
@@ -175,7 +175,7 @@ function savePoster() {
 
 function showPosterGrid() {
   if (savedPosters.length !== 0) {
-    for (var i = 0; i < savedPosters.length; i++){
+    for (var i = 0; i < savedPosters.length; i++) {
       savedPostersGrid.insertAdjacentHTML("afterbegin", `
       <div class="mini-poster">
         <img src="${savedPosters[i].imageURL}">
@@ -193,20 +193,20 @@ function randomizePoster() {
 }
 
 function handleTakeBackClick(event) {
-  event.preventDefault()
-  showMainPage()
-  hideForm()
+    event.preventDefault()
+    showMainPage()
+    hideForm()
 }
 
 function handleBackToMainClick(event) {
-  event.preventDefault()
-  showMainPage()
-  hideSaved()
+    event.preventDefault()
+    showMainPage()
+    hideSaved()
 }
 
 function showMainPage() {
-  var mainPosterSection = document.querySelector(".main-poster")
-  mainPosterSection.classList.remove("hidden")
+    var mainPosterSection = document.querySelector(".main-poster")
+    mainPosterSection.classList.remove("hidden")
 }
 
 function handleShowFormClick(event) {
@@ -214,12 +214,6 @@ function handleShowFormClick(event) {
   hidePosterPage()
   showForm()
 }
-
-// function handleShowSaveClick(event){
-//   event.preventDefault()
-//   hidePosterPage()
-//   showSaved()
-// }
 
 function hidePosterPage() {
   var mainPosterSection = document.querySelector(".main-poster")
