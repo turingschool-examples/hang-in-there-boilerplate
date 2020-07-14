@@ -118,7 +118,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-// var currentPoster = new Poster
+var currentPoster = "";
 
 // event listeners go here 👇 revise with onClick etc
 window.addEventListener("load", function(){
@@ -154,6 +154,7 @@ backToMainButton.addEventListener("click", function(){
      posterQuotes.innerText = quote.value;
      quotes.push(quote.value);
      changePage(mainPage,formView)
+     currentPoster = new Poster(imageUrl.value, title.value, quote.value);
  });
 console.log("images");
 
