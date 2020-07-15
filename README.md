@@ -10,7 +10,7 @@ Hang-in-there is a project about learning the basics of **JavaScript**, **HTML**
 
 The first step in the development process was to have the poster load with a randomly selected image, title, and quote. This was done by utilizing an event listener with the load event. Once the load event was triggered, the assignRandomPoster function was triggered. This function reassigned the image source, title text, and quote text with a random element pulled from their respective arrays.
 
-![Screen Shot 2020-07-14 at 8.03.22 PM](/Users/bdizzle/Desktop/Screen Shot 2020-07-14 at 8.03.22 PM.png)
+![Alt Text](https://i.imgur.com/Frt8rIm.png)
 
 The Second Step was to enable functionality on the "Show another Random Poster" button, which would, as hinted, show a poster with a randomly selected image source, title, and quote. This was done by adding an event listener to the button, with the "Click" event tied to it. When the button was clicked, it would run the same assignRandomPoster function to alter the currently displayed poster.
 
@@ -22,7 +22,7 @@ ___
 
 This step of the development process focused on switching between the different views of the webpage. The View Saved Posters page, the Make Your Own Poster page, and the Main page should all be easily traversed. We targeted the CSS style of .hidden and created the changePagefunction to toggle this style in and out of the class attribute as needed. We then applied eventListeners with the "click" event to run this function, this eventListener was applied to the page, back, and create poster buttons.
 
-![Screen Shot 2020-07-14 at 8.29.54 PM](/Users/bdizzle/Desktop/Screen Shot 2020-07-14 at 8.29.54 PM.png)
+![Alt Text](https://i.imgur.com/AOYS4OB.png)
 
 ![Alt Text](https://i.imgur.com/Pn1zgGN.gif)
 
