@@ -1,9 +1,12 @@
 # Hang In There
 
-by: Ashley McDonald & Demaceo Howard
+by: Ashley McDonald  & Demaceo Howard
 
 A website built with JavaScript, HTML and CSS that allows a user to display a random motivational poster, create a unique poster and save their favorite posters.
 
+Ashley's GitHub: https://github.com/aemcdonald
+Demaceo's GitHub: https://github.com/hdemaceo
+Hang In There GitHub Link: https://github.com/Hdemaceo/hang-in-there-boilerplate 
 
 ## Project Status
 
