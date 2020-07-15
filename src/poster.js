@@ -6,3 +6,6 @@ class Poster {
     this.quote = quote;
   }
 }
+
+// var posterInstance = new Poster();
+// document = posterInstance.imageURL
