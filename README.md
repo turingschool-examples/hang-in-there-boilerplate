@@ -17,7 +17,7 @@ Here is our completed program: https://taylorjohnson141.github.io/hang-in-there-
 ## After The links
 
 
-![image](///Users/rastapheonix/Desktop/mainPage.png)
+![image](readme-imgs/mainPage.png)
 
   After you arrive to the webpage, you are presented with a variety of options. You initially see a motivational poster with an image, a title, and a quote.
 
@@ -34,7 +34,7 @@ Here is our completed program: https://taylorjohnson141.github.io/hang-in-there-
 
  # Save This Poster
 
- ![image](///Users/rastapheonix/Desktop/savedPostersSection.png)
+ ![image](readme-imgs/savedPostersSection.png)
 
  If you decide that you like a poster, you can make a decision to save the poster. Don't worry though, these changes aren't permanent. If you find yourself unhappy with a saved selection or for whatever motives, you can double click anywhere on the picture and it will be deleted from your saved photos.
 
@@ -42,7 +42,7 @@ Here is our completed program: https://taylorjohnson141.github.io/hang-in-there-
 
  When saving a poster, you don't have to be bothered by any annoying duplications because you hit the save button too many times.
 
- ![image](///Users/rastapheonix/Desktop/deletedPicture.png)
+ ![image](readme-imgs/deletedPicture.png)
 
  # Build Your Own
 
@@ -50,7 +50,7 @@ Here is our completed program: https://taylorjohnson141.github.io/hang-in-there-
 
  By clicking the Make Your Own Poster button, you will be brought to a little section with a few inputs for the user.
 
- ![image](///Users/rastapheonix/Desktop/userSection.png)
+ ![image](readme-imgs/userSection.png)
 
  After arriving at your new page, you can see three new text boxes.
 
@@ -62,4 +62,4 @@ Here is our completed program: https://taylorjohnson141.github.io/hang-in-there-
 
  Enjoy your custom poster, here's one of ours..
 
- ![image](///Users/rastapheonix/Desktop/Screen%20Shot%202020-07-14%20at%208.45.43%20PM.png)
+ ![image](readme-imgs/dwight.png)
