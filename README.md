@@ -1,5 +1,15 @@
 # Hang-In-There-Boilerplate
 
+
+[	Deployed site](https://blakedonn.github.io/hang-in-there-boilerplate/)
+
+### Blake Donnelly
+
+  https://github.com/BlakeDonn
+
+### Dennis Clark
+
+  https://github.com/DennClark
 ---
 
 Hang-in-there is a project about learning the basics of **JavaScript**, **HTML**, and **CSS** interaction. The webpage itself if a very basic, template based, poster generation tool. The idea behind this tool is that users can filter through randomly generated combinations of inspirational Posters, Titles, and Quotes. The user can also choose to make their own poster, which is done by providing a user-selected URL, Title, and Quote; Once the user has input these three items into their respective fields, they will click a button to store the poster for future inspiration-seekers. Users have the option of saving their favorite posters, and even have a separate part of the website where they can view a gallery of their favorites. The Integration of Event Listeners, QuerySelectors, Class Instantiation, and dynamic Array Manipulation are the key focuses for creating this unique tool. This must all be done while trying to implement the DRY'est version of javascript and following professional git-collaboration.
