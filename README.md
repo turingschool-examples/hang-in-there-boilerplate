@@ -1,79 +1,61 @@
-# Hang In There
+# Hang-In-There-Boilerplate
 
-A boilerplate repo. 
+---
 
-## Set Up
+Hang-in-there is a project about learning the basics of **JavaScript**, **HTML**, and **CSS** interaction. The webpage itself if a very basic, template based, poster generation tool. The idea behind this tool is that users can filter through randomly generated combinations of inspirational Posters, Titles, and Quotes. The user can also choose to make their own poster, which is done by providing a user-selected URL, Title, and Quote; Once the user has input these three items into their respective fields, they will click a button to store the poster for future inspiration-seekers. Users have the option of saving their favorite posters, and even have a separate part of the website where they can view a gallery of their favorites. The Integration of Event Listeners, QuerySelectors, Class Instantiation, and dynamic Array Manipulation are the key focuses for creating this unique tool. This must all be done while trying to implement the DRY'est version of javascript and following professional git-collaboration.
 
-1. One teammate: fork this repository
-2. Go to settings and turn on GitHub Pages for this repository
-3. All teammates: clone down this repository
-4. `cd` into the repository
-5. Run `open index.html` to view it in the browser
+---
 
-## Progression
+## Main Page
 
-### Iteration 0 - Main Page
+The first step in the development process was to have the poster load with a randomly selected image, title, and quote. This was done by utilizing an event listener with the load event. Once the load event was triggered, the assignRandomPoster function was triggered. This function reassigned the image source, title text, and quote text with a random element pulled from their respective arrays.
 
-![screenshot of main page showing poster](/readme-imgs/homepage.png)
+![Screen Shot 2020-07-14 at 8.03.22 PM](/Users/bdizzle/Desktop/Screen Shot 2020-07-14 at 8.03.22 PM.png)
 
-- When the page loads, we should see a poster with a randomly selected image, title, and quote
+The Second Step was to enable functionality on the "Show another Random Poster" button, which would, as hinted, show a poster with a randomly selected image source, title, and quote. This was done by adding an event listener to the button, with the "Click" event tied to it. When the button was clicked, it would run the same assignRandomPoster function to alter the currently displayed poster.
 
-### Iteration 1 - Switching Views
+![Alt Text](https://i.imgur.com/0JR1o0W.gif)
 
-Form page:
-![screenshot of form](/readme-imgs/form.png)
+___
 
-Saved posters page (once working with extra saved posters):
-![screenshot of saved posters page](/readme-imgs/saved.png)
+## Switching Views
 
-- When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
-- When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
-- When a user clicks the "Nevermind, take me back!" or "Back to Main" buttons, we should only see the main poster section
-- In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
+This step of the development process focused on switching between the different views of the webpage. The View Saved Posters page, the Make Your Own Poster page, and the Main page should all be easily traversed. We targeted the CSS style of .hidden and created the changePagefunction to toggle this style in and out of the class attribute as needed. We then applied eventListeners with the "click" event to run this function, this eventListener was applied to the page, back, and create poster buttons.
 
-_Hint: go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place_
+![Screen Shot 2020-07-14 at 8.29.54 PM](/Users/bdizzle/Desktop/Screen Shot 2020-07-14 at 8.29.54 PM.png)
 
-## Iteration 2 - Creating a New Poster
+![Alt Text](https://i.imgur.com/Pn1zgGN.gif)
 
-Form being filled out:
-![screenshot of form](/readme-imgs/form.png)
+---
 
-Once poster is saved:
-![screenshot of result](/readme-imgs/form-result.png)
+## Creating a New Poster
 
-- On the new poster form view, users should be able to fill out the three input fields and then hit the save button
-- When the save button is clicked, several things will happen:
-  - Save the submitted data into the respective arrays (image URL into the images array, etc) so that future random posters can use the user-created data
-  - Use the values from the inputs to create a new instance of our Poster class
-  - Change back to the main poster view (hiding the form view again)
-  - Display the newly created poster image, title, and quote in the main view
+This step in the development process focused on targeting user-inputted values to do a number of tasks with. The first task was to add the user-data to their respective arrays, image, title, and quotes. The second task was to use these inputs to create a new instance of the Poster class. The third task was to hide the current page and show the main page with the user-created poster on display. This would require an eventListener being attached to the showMyPoster button that fires a number of functions.
 
-## Iteration 3 - Saving & Viewing Posters
+1. `changeMainPoster()` to alter the poster that will be displayed on the main page
+2. `instantiateMyPoster()` to create a new instance of the Poster class
+3. `changePage()` to toggle the CSS class attribute on both pages
+4. `addToArray()` to add the captured values to their respective arrays
 
-Saved posters view:
-![screenshot of saved posters section](/readme-imgs/saved.png)
+![Alt Text](https://i.imgur.com/u2VKMg4.gif)
 
-- When a user clicks the "Save This Poster" button, the current main poster will be added to the `savedPosters` array.
-- If a user clicks the "Save This Poster" more than once on a single poster, it will still only be saved once (no duplicates)
-- When a user clicks the "Show Saved Posters" button, we should see the saved posters section
-- All the posters in the `savedPosters` array should be displayed in the saved posters grid section
+___
 
-## Iteration 4 - Deleting Saved Posters
+## Saving & Viewing Posters
 
-- From the saved posters view, if a user double clicks a saved poster, it will be deleted
+This step in the development process focused on adding functionality to the Save This Poster, and Show Saved Posters buttons. These buttons needed to do a few things to function correctly. The Save This Poster button would need to add an instantiation of the Poster class to a newly created savedPosters array, this button would also need to assure that no duplicate posters are being saved. The Show Saved Posters button needed to move the user to the saved posters area of the tool. The saved posters area should have the savePosters array displayed in its grid section.
 
-_Hint: How will you update the data model to achieve this?_
+* Save This Poster
+  1. `addToSaved()` to push the current Instace of the Poster class to the savedPosters array only if it does not exist in the array
+  2. `addToSaved()` to run the `saveToGrid()` function to be added and displayed on the savedPosters grid
 
-## Optional Extensions - Gettin' fancy
+* Show Saved Posters
+  1. `changePage()` to move to the Saved Posters area and display the grid with the users saved posters
 
-Here's a list of possible extensions to implement - but **ONLY IF** your team has completed all the previous iterations **AND** have cleaned up your code to make it DRYer and more readable.
+![Alt Text](https://i.imgur.com/S8kwNNj.gif)
 
-You are welcome to add your own extensions. Be sure they are thoughtful in terms of UX/UI, and that they do not break any prior functionality.
+___
 
-- Implement data validation and error handling into the form (disable button, provide error messages if data entered is not correct, etc)
-- In the main poster view, allow users to click each piece of the poster (image, title, quote) to update just that piece with another random item from the appropriate array
-- When a user single clicks a saved poster, create a modal to view it larger
-- Allow users to drag and drop saved posters into whatever order they want them to appear
+## Deleting Saved Posters
 
-
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
+This step in the development process focused on adding and eventListener with the doubleclick event tied to it. This event listener would delete the targeted Poster from the savedPosters array and remove it from the Saved Posters grid.
