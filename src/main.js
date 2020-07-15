@@ -1,4 +1,4 @@
-var showRandom = document.querySelector(".show-random")
+var showRandomButton = document.querySelector(".show-random")
 var image = document.querySelector(".poster-img")
 var title = document.querySelector(".poster-title")
 var quote = document.querySelector(".poster-quote")
@@ -8,13 +8,14 @@ var mainPoster = document.querySelector('.main-poster')
 var takeMeBack = document.querySelector('.show-main')
 var savePosterSection = document.querySelector('.saved-posters')
 var savedPosterButton = document.querySelector('.show-saved')
-var backFromSave = document.querySelector('.back-to-main')
+var goBackFromSaveButton = document.querySelector('.back-to-main')
 var userImageInput = document.querySelector('#poster-image-url')
 var userPosterInput = document.querySelector('#poster-title')
 var userQuoteInput = document.querySelector('#poster-quote')
 var activateUserPoster = document.querySelector('.make-poster')
 var saveThePoster = document.querySelector('.save-poster')
 var ourSavedPosters = document.querySelector('.saved-posters-grid')
+
 // we've provided you with some data to work with
 var images = [
   "./assets/bees.jpg",
@@ -114,30 +115,34 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster
 
 function makeRandomPoster() {
-  var randomImageIndex = getRandomIndex(images)
+  var randomimageIndex = getRandomIndex(images)
   var randomTitleIndex = getRandomIndex (titles)
   var randomQuoteIndex = getRandomIndex (quotes)
-  makePoster(images[randomImageIndex], titles[randomTitleIndex], quotes[randomQuoteIndex])
+  makePoster(images[randomimageIndex], titles[randomTitleIndex], quotes[randomQuoteIndex])
 }
 
 function toggleHiddenHtmlElement (htmlElement){
 htmlElement.classList.toggle('hidden')
 }
-
 function makePoster (url, userTitle, userQuote){
-  var classInstance = new Poster(url, userTitle, userQuote)
-image.src = classInstance.imageURL
-title.innerText = classInstance.title
-quote.innerText = classInstance.quote
-return classInstance
+  currentPoster = new Poster(url, userTitle, userQuote)
+
+  console.log(currentPoster)
+  //forPosterId.id = currentPoster[0].id
+  // var currentImage = currentPoster.imageURL
+image.src = currentPoster.imageURL
+title.innerText = currentPoster.title
+quote.innerText = currentPoster.quote
+console.log(image.src)
+console.log(currentPoster.imageURL)
 }
 
 
 // event listeners go here :point_down:
-showRandom.addEventListener ('click', makeRandomPoster)
+showRandomButton.addEventListener ('click', makeRandomPoster)
 window.addEventListener('load', makeRandomPoster)
 
 
@@ -158,14 +163,18 @@ takeMeBack.addEventListener('click', function () {
     savedPosterButton.addEventListener('click', function (){
      toggleHiddenHtmlElement (mainPoster)
      toggleHiddenHtmlElement (savePosterSection)
+
+
+     displaySavedPosters ()
+
 })
-    backFromSave.addEventListener('click', function (){
+    goBackFromSaveButton.addEventListener('click', function (){
       toggleHiddenHtmlElement (mainPoster)
       toggleHiddenHtmlElement (savePosterSection)
 })
 
 activateUserPoster.addEventListener('click', function (){
-  window.removeEventListener('load', makeRandomPoster)
+  //window.removeEventListener('load', makeRandomPoster)
   makePoster(
     userImageInput.value ,
     userPosterInput.value ,
@@ -178,21 +187,22 @@ activateUserPoster.addEventListener('click', function (){
 
 saveThePoster.addEventListener('click',function(){
 
+// var currentPoster = makePoster ()
+if(savedPosters[0] === undefined ){
+  savedPosters.push(currentPoster)
+} else {
+console.log(savedPosters, 'savedPostersArray')
 
-  var poster = `<article class = "mini-poster">
+ for(var i = 0; i < savedPosters.length; i++){
+   console.log(savedPosters[i], "works")
+   if( savedPosters[i].id !== currentPoster.id){
 
-  <img src="${image.src}" alt="nothin' to see here">
+     savedPosters.push(currentPoster)
 
-  <h2>${title.innerText}</h2>
+   }
 
-  <h4 >${quote.innerText}</h4>
-  </article>`
 
-if(!savedPosters.includes(poster)){
-
-  savedPosters.push(poster)
-
-  ourSavedPosters.innerHTML += poster
+}
 
   console.log(ourSavedPosters.innerHTML)
 
@@ -213,14 +223,34 @@ else{
 }
 
 }
-// ourSavedPosters.addEventListener('dblclick',function(){
-//   console.log('Something is happining')
-//  ourSavedPosters.parentNode.child.removeChild(event.target)
-// })
+ourSavedPosters.addEventListener('dblclick',function(){
+ for (var i = 0; i < savedPosters.length; i++){
+   if(event.target.id == savedPosters[i].id || event.target.classList[0] == savedPosters[i].id){
+     // console.log('hello darkness')
+   savedPosters.splice(i, 1)
+ }
+ }
+displaySavedPosters()
+})
+function displaySavedPosters(){
+ourSavedPosters.innerHTML = ''
+var poster = ""
+  for (var i = 0; i < savedPosters.length; i++){
+console.log(savedPosters[i])
 
+  poster = `<article id = ${savedPosters[i].id} class = "mini-poster">
 
-//button.addEventListener('click',function(){
-// })
+  <img class = ${savedPosters[i].id} src= ${savedPosters[i].imageURL} alt="nothin' to see here">
+
+  <h2 class = ${savedPosters[i].id}> ${savedPosters[i].title} </h2>
+
+  <h4 class = ${savedPosters[i].id} > ${savedPosters[i].quote} </h4>
+  </article>`
+  ourSavedPosters.innerHTML += poster
+
+  }
+}
+
 // functions and event handlers go here :point_down:
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
