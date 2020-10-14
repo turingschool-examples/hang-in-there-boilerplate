@@ -105,7 +105,9 @@ var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var showRandom = document.querySelector('.show-random');
 // event listeners go here 👇
+window.addEventListener('load', showPoster)
 
+showRandom.addEventListener('click', showPoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
