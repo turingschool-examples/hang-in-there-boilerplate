@@ -132,3 +132,8 @@ function showForm() {
   posterForm.classList.remove('hidden');
   homePoster.classList.add('hidden');
 }
+
+function showStored() {
+  storedPosters.classList.remove('hidden');
+  homePoster.classList.add('hidden')
+}
