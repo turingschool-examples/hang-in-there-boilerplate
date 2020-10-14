@@ -98,6 +98,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 
@@ -107,5 +108,25 @@ var currentPoster;
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
+function getRandomImage() {
+  var randomImageIndex = getRandomIndex(images);
+  var randomImage = images[randomImageIndex];
+
+  return randomImage;
+};
+
+function getRandomTitle() {
+  var randomTitleIndex = getRandomIndex(titles);
+  var randomTitle = titles[randomTitleIndex];
+
+  return randomTitle;
+};
+
+function getRandomQuote() {
+  var randomQuoteIndex = getRandomIndex(quotes);
+  var randomQuote = quotes[randomQuoteIndex];
+
+  return randomQuote;
+};
