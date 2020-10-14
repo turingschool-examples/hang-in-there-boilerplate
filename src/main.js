@@ -125,7 +125,6 @@ function getRandomIndex(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-
 window.onload = function() {
   var newTitle = getRandomIndex(titles);
   testTitle.innerText = newTitle;
@@ -134,6 +133,3 @@ window.onload = function() {
   var newImage = getRandomIndex(images);
   testImage.src = newImage;
 }
-
-
-//
