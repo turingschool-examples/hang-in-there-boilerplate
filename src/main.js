@@ -115,4 +115,4 @@ function getRandomIndex(array) {
 
 title.innerText = titles[getRandomIndex(titles)];
 quote.innerText = quotes[getRandomIndex(quotes)];
-image.src = images[2];
+image.src = images[getRandomIndex(images)];
