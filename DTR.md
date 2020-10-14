@@ -9,6 +9,7 @@ Goals and Expectations for the Project (What does each group member hope to get 
   * Did you feel left behind during work today?
   * Were there any aspects of the code written today that you didn't understand?
   * How are you feeling about the project (the application, our collaboration, our goals)?
+  * What goals do we want to accomplish during next meet time? 
 	
 Team strengths & collaboration styles (consider discussing your Pairin qualities here):
 * Drew: Exploratory and excited to try new things
@@ -52,7 +53,7 @@ Project management tools we will use (GitHub projects or Trello are popular tool
 * Tuple
 
 Day 1 Agenda: 
-* [ ] Set up Tuple
+* [x] Set up Tuple
 * [ ] Practice Tuple
 * [ ] Review kanban
 * [ ] Apply kanban to project
