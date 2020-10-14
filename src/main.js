@@ -5,7 +5,9 @@ var quote = document.querySelector('.poster-quote')
 var image = document.querySelector('img')
 var showFormButton = document.querySelector('.show-form')
 var posterForm = document.querySelector('.poster-form')
-var savePosters = document.querySelector('.saved-posters')
+var savedPosters = document.querySelector('.saved-posters')
+var mainPoster = document.querySelector('.main-poster')
+var showSavedButton = document.querySelector('.show-saved')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -109,15 +111,18 @@ var savedPosters = [];
 var currentPoster;
 
 posterForm.style.display = "none"
-savePosters.style.display = "none"
+savedPosters.style.display = "none"
 
 // event listeners go here 👇
 
-function openForm() {
-  posterForm.style.display =
+function openPage(page) {
+  page.style.display = "block"
+  mainPoster.style.display = "none"
 }
 
-showFormButton.addEventListener('click', openForm);
+
+showFormButton.addEventListener('click', openPage(posterForm));
+showSavedButton.addEventListener('click', openPage(savedPosters));
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
