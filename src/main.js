@@ -109,12 +109,14 @@ var homePoster = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 var viewSaved = document.querySelector('.show-saved');
 var storedPosters = document.querySelector('.saved-posters');
+var nevermind = document.querySelector('.show-main');
 // event listeners go here 👇
-window.addEventListener('load', showPoster)
+window.addEventListener('load', showPoster);
 
 showRandom.addEventListener('click', showPoster);
 makePoster.addEventListener('click', showForm);
 viewSaved.addEventListener('click', showStored);
+nevermind.addEventListener('click', goHome);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -136,4 +138,8 @@ function showForm() {
 function showStored() {
   storedPosters.classList.remove('hidden');
   homePoster.classList.add('hidden')
+}
+function goHome() {
+  posterForm.classList.add('hidden');
+  homePoster.classList.remove('hidden');
 }
