@@ -104,10 +104,14 @@ var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var showRandom = document.querySelector('.show-random');
+var makePoster = document.querySelector('.show-form');
+var homePoster = document.querySelector('.main-poster')
+var posterForm = document.querySelector('.poster-form')
 // event listeners go here 👇
 window.addEventListener('load', showPoster)
 
 showRandom.addEventListener('click', showPoster);
+makePoster.addEventListener('click', showForm)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -119,4 +123,9 @@ function showPoster() {
   posterImage.src = images[getRandomIndex(images)];
   posterTitle.innerHTML = titles[getRandomIndex(titles)];
   posterQuote.innerHTML = quotes[getRandomIndex(quotes)];
+}
+
+function showForm() {
+  posterForm.classList.remove('hidden');
+  homePoster.classList.add('hidden');
 }
