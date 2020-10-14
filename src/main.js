@@ -105,13 +105,16 @@ var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var showRandom = document.querySelector('.show-random');
 var makePoster = document.querySelector('.show-form');
-var homePoster = document.querySelector('.main-poster')
-var posterForm = document.querySelector('.poster-form')
+var homePoster = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
+var viewSaved = document.querySelector('.show-saved');
+var storedPosters = document.querySelector('.saved-posters');
 // event listeners go here 👇
 window.addEventListener('load', showPoster)
 
 showRandom.addEventListener('click', showPoster);
-makePoster.addEventListener('click', showForm)
+makePoster.addEventListener('click', showForm);
+viewSaved.addEventListener('click', showStored);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
