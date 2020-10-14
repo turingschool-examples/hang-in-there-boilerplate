@@ -100,12 +100,23 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var showRandom = document.querySelector('.show-random');
 // event listeners go here 👇
+window.addEventListener('load', showPoster)
 
+showRandom.addEventListener('click', showPoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
+// functions and event handlers go here 👇
+// (we've provided one for you to get you started)!
+function showPoster() {
+  posterImage.src = images[getRandomIndex(images)];
+  posterTitle.innerHTML = titles[getRandomIndex(titles)];
+  posterQuote.innerHTML = quotes[getRandomIndex(quotes)];
+}
