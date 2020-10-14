@@ -100,7 +100,10 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var showRandom = document.querySelector('.show-random');
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
@@ -108,4 +111,3 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
