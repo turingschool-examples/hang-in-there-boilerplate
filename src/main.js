@@ -109,3 +109,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+
+var randomImage = getRandomIndex(images);
+
+console.log(randomImage);
