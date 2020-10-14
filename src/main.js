@@ -109,7 +109,8 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
+function createRandomImage() {
+var poster = document.querySelector('.poster');
 var randomImage = images[getRandomIndex(images)];
-
-console.log(randomImage);
+poster.innerHTML = `<img src="${randomImage}">`
+}
