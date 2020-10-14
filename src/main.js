@@ -3,6 +3,9 @@
 var title = document.querySelector('.poster-title')
 var quote = document.querySelector('.poster-quote')
 var image = document.querySelector('img')
+var showFormButton = document.querySelector('.show-form')
+var posterForm = document.querySelector('.poster-form')
+var savePosters = document.querySelector('.saved-posters')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -105,7 +108,16 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+posterForm.style.display = "none"
+savePosters.style.display = "none"
+
 // event listeners go here 👇
+
+function openForm() {
+  posterForm.style.display =
+}
+
+showFormButton.addEventListener('click', openForm);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
