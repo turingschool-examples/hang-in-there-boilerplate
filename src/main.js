@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-
+var title = document.querySelector(".poster-title");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -109,3 +109,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+titleIndex = getRandomIndex(titles);
+
+title.innerText = titles[titleIndex];
+ 
