@@ -5,9 +5,11 @@ var quote = document.querySelector('.poster-quote')
 var image = document.querySelector('img')
 var showFormButton = document.querySelector('.show-form')
 var posterForm = document.querySelector('.poster-form')
-var savedPosters = document.querySelector('.saved-posters')
+var savedPostersPage = document.querySelector('.saved-posters')
 var mainPoster = document.querySelector('.main-poster')
 var showSavedButton = document.querySelector('.show-saved')
+var showMainButton = document.querySelector('.show-main')
+var backToMainButton = document.querySelector('.back-to-main')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,19 +112,17 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+savedPostersPage.style.display = "none"
 posterForm.style.display = "none"
-savedPosters.style.display = "none"
+
 
 // event listeners go here 👇
 
-function openPage(page) {
-  page.style.display = "block"
-  mainPoster.style.display = "none"
-}
 
-
-showFormButton.addEventListener('click', openPage(posterForm));
-showSavedButton.addEventListener('click', openPage(savedPosters));
+showFormButton.addEventListener('click', openForm);
+showSavedButton.addEventListener('click', openSavedPosters);
+showMainButton.addEventListener('click', showMainPoster);
+backToMainButton.addEventListener('click', showMainPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -133,3 +133,19 @@ function getRandomIndex(array) {
 title.innerText = titles[getRandomIndex(titles)];
 quote.innerText = quotes[getRandomIndex(quotes)];
 image.src = images[getRandomIndex(images)];
+
+function openForm() {
+  posterForm.style.display = "block"
+  mainPoster.style.display = "none"
+}
+
+function openSavedPosters() {
+  savedPostersPage.style.display = "block"
+  mainPoster.style.display = "none"
+}
+
+function showMainPoster() {
+  mainPoster.style.display = "block"
+  posterForm.style.display = "none"
+  savedPostersPage.style.display = "none"
+}
