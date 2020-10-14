@@ -110,6 +110,6 @@ function getRandomIndex(array) {
 }
 
 
-var randomImage = getRandomIndex(images);
+var randomImage = images[getRandomIndex(images)];
 
 console.log(randomImage);
