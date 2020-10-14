@@ -1,15 +1,12 @@
 // query selector variables go here 👇
-document.queryselector("title")
 
-class Poster {
-  constructor(imageURL, title, quote) {
-    this.id = Date.now();
-    this.imageURL = imageURL;
-    this.title = title;
-    this.quote = quote;
-  }
-}
+// create an variable to enable the querySelector to draw upon
+// the CSS selector
+var image = document.querySelector(".poster-img");
+var title = document.querySelector(".poster-title");
+var quote = document.querySelector(".poster-quote");
 
+// premade variables
 var savedPosters = [];
 var currentPoster
 
@@ -18,13 +15,9 @@ var currentPoster
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
+  console.log(array);
   return Math.floor(Math.random() * array.length);
 }
-
-var randomImage = images[getRandomIndex(images)]
-var randomTitle = titles[getRandomIndex(titles)]
-var randomQuote = quotes[getRandomIndex(quotes)]
-
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -124,3 +117,44 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+// Iteration Zero
+// When a page loads, we should see a poster
+// with a randomly selected image, title, and quote
+
+// Every time the user clicks the Show Randowm Poster button, a new
+// random poster is displayed
+
+//create new randomized instances of our image, title, and quote arrays
+var randomImage = images[getRandomIndex(images)]
+var randomTitle = titles[getRandomIndex(titles)]
+var randomQuote = quotes[getRandomIndex(quotes)]
+
+//assigns the referenced image, title, and quote variables
+//to randomized instance variables
+//and displays them in the HTML
+// image.src = randomImage;
+// title.innerText = randomTitle;
+// quote.innerText = randomQuote;
+
+
+currentPoster = new Poster(randomImage, randomTitle, randomQuote)
+//console.log(currentPoster)
+
+// write a function to display currentPoster
+ function displayPoster(poster) {
+   image.src = poster.imageURL;
+   title.innerText = poster.title;
+   quote.innerText = poster.quote;
+ }
+
+displayPoster(currentPoster)
+
+// class Poster {
+//   constructor(imageURL, title, quote) {
+//     this.id = Date.now();
+//     this.imageURL = imageURL;
+//     this.title = title;
+//     this.quote = quote;
+//   }
+// }
