@@ -106,6 +106,17 @@ var currentPoster;
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  return array[Math.floor(Math.random() * array.length)];
 }
 
+window.onload = function() {
+  var getTitleClass = document.querySelector('.poster-title');
+  var randomTitle = getRandomIndex(titles);
+  getTitleClass.innerText = randomTitle;
+  var getQuoteClass = document.querySelector('.poster-quote');
+  var randomQuote = getRandomIndex(quotes);
+  getQuoteClass.innerText = randomQuote;
+  var getImageClass = document.querySelector('.poster-img');
+  var randomImage = getRandomIndex(images);
+  getImageClass.src = randomImage;
+}
