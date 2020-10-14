@@ -113,3 +113,10 @@ showRandom.addEventListener('click', showPoster);
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+// functions and event handlers go here 👇
+// (we've provided one for you to get you started)!
+function showPoster() {
+  posterImage.src = images[getRandomIndex(images)];
+  posterTitle.innerHTML = titles[getRandomIndex(titles)];
+  posterQuote.innerHTML = quotes[getRandomIndex(quotes)];
+}
