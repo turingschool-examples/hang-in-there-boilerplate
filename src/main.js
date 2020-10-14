@@ -1,10 +1,12 @@
 // query selector variables go here 👇
 
-var title = document.querySelector(".poster-title");
+var title = document.querySelector('.poster-title');
 
 var quote = document.querySelector('.poster-quote');
 
 var image = document.querySelector('.poster-img');
+
+var buttonRandom = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -116,7 +118,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
+function reloadPoster() {
 titleIndex = getRandomIndex(titles);
 title.innerText = titles[titleIndex];
 
@@ -125,4 +127,10 @@ quote.innerText = quotes[quoteIndex];
  
 pictureIndex = getRandomIndex(images);
 image.src = images[pictureIndex];
+}
+reloadPoster();
+
+buttonRandom.addEventListener('click', reloadPoster);
+
+
 
