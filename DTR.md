@@ -52,12 +52,12 @@ Project management tools we will use (GitHub projects or Trello are popular tool
 * Tuple
 
 Day 1 Agenda: 
-* Set up Tuple
-* Practice Tuple
-* Review kanban
-* Apply kanban to project
-* Review schedule
-* Review commit message norms
+* [ ] Set up Tuple
+* [ ] Practice Tuple
+* [ ] Review kanban
+* [ ] Apply kanban to project
+* [ ] Review schedule
+* [ ] Review commit message norms
 
 * Write code
 
