@@ -110,7 +110,10 @@ function getRandomIndex(array) {
 }
 
 function createRandomImage() {
-var poster = document.querySelector('.poster');
-var randomImage = images[getRandomIndex(images)];
-poster.innerHTML = `<img src="${randomImage}">`
+  var poster = document.querySelector('.poster');
+  var randomImage = images[getRandomIndex(images)];
+  poster.innerHTML = `<img class="poster-img" src="${randomImage}" alt="${randomImage}">`
+  // is the full img element necessary?
 }
+
+createRandomImage();
