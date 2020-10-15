@@ -172,15 +172,19 @@ function showMainPoster() {
 }
 
 function storeNewPoster() {
-  return new Poster(inputImage.value, inputTitle.value, inputQuote.value)
+  images.push(inputImage.value);
+  titles.push(inputTitle.value);
+  quotes.push(inputQuote.value);
+  return new Poster(inputImage.value, inputTitle.value, inputQuote.value);
 }
 
 function showMyPoster() {
-  var newPoster = storeNewPoster()
+  var newPoster = storeNewPoster();
   title.innerText = newPoster.title;
   image.src = newPoster.imageURL;
   quote.innerText = newPoster.quote;
   mainPoster.style.display = "block";
   posterForm.style.display = "none";
   console.log(newPoster);
+  console.log(images, titles, quotes);
 }
