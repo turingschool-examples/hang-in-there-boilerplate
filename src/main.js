@@ -10,6 +10,10 @@ var mainPoster = document.querySelector('.main-poster')
 var showSavedButton = document.querySelector('.show-saved')
 var showMainButton = document.querySelector('.show-main')
 var backToMainButton = document.querySelector('.back-to-main')
+var showMyPosterButton = document.querySelector('.make-poster')
+var inputImage = document.querySelector('#poster-image-url')
+var inputTitle = document.querySelector('#poster-title')
+var inputQuote = document.querySelector('#poster-quote')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -123,6 +127,8 @@ showFormButton.addEventListener('click', openForm);
 showSavedButton.addEventListener('click', openSavedPosters);
 showMainButton.addEventListener('click', showMainPoster);
 backToMainButton.addEventListener('click', showMainPoster);
+showMyPosterButton.addEventListener('click', showMyPoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -133,6 +139,7 @@ function getRandomIndex(array) {
 title.innerText = titles[getRandomIndex(titles)];
 quote.innerText = quotes[getRandomIndex(quotes)];
 image.src = images[getRandomIndex(images)];
+
 
 function openForm() {
   posterForm.style.display = "block"
@@ -148,4 +155,10 @@ function showMainPoster() {
   mainPoster.style.display = "block"
   posterForm.style.display = "none"
   savedPostersPage.style.display = "none"
+}
+
+function showMyPoster() {
+  title.innerText = inputTitle.value
+  image.src = inputImage.value
+  quote.innerText = inputQuote.value
 }
