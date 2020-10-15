@@ -116,6 +116,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-  mainPageTitle.src = currentPoster.images;
+  mainPageImage.src = currentPoster.images;
   mainPageTitle.innerText = currentPoster.titles;
   mainPageQuote.innerText = currentPoster.quotes;
