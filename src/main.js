@@ -109,34 +109,16 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// function createRandomTitle() {
-//   var title = document.querySelector('.poster-title');
-//   var randomTitle = titles[getRandomIndex(titles)];
-//   title.innerHTML = "<h1 class="
-//   poster - title "> "
-//   PHARSHI < /h1>";
-// }
-
-// toggle?
-// change innerText to innerHTML
-// .querySelector too specific? Not specific enough?
-//
-
-
-
-
 function createRandomImage() {
   var poster = document.querySelector('.poster');
   var randomImage = images[getRandomIndex(images)];
-  var title = document.querySelector('.poster-title');
   var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
   poster.innerHTML = `
   <img class="poster-img" src="${randomImage}" alt="${randomImage}">
   <h1 class="poster-title">${randomTitle}</h1>
-  <h3 class="poster-quote">This is where random quote will go</h3>
+  <h3 class="poster-quote">${randomQuote}</h3>
   `
-  // is the full img element necessary?
 }
 
 createRandomImage();
-// createRandomTitle();
