@@ -161,7 +161,6 @@ function storePoster() {
   titles.push(titleInput.value);
   quotes.push(quoteInput.value);
   var newPoster = new Poster(imageInput, titleInput, quoteInput);
-
-
+  showPoster(imageInput.value, titleInput.value, quoteInput.value)
   goHome();
 }
