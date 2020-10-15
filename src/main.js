@@ -1,19 +1,27 @@
 // query selector variables go here 👇
+//poster attributes
 
 var title = document.querySelector('.poster-title')
 var quote = document.querySelector('.poster-quote')
 var image = document.querySelector('img')
-var showFormButton = document.querySelector('.show-form')
+
+//pages
 var posterForm = document.querySelector('.poster-form')
 var savedPostersPage = document.querySelector('.saved-posters')
 var mainPoster = document.querySelector('.main-poster')
+
+//buttons
+var showFormButton = document.querySelector('.show-form')
 var showSavedButton = document.querySelector('.show-saved')
 var showMainButton = document.querySelector('.show-main')
 var backToMainButton = document.querySelector('.back-to-main')
 var showMyPosterButton = document.querySelector('.make-poster')
+
+//inputs
 var inputImage = document.querySelector('#poster-image-url')
 var inputTitle = document.querySelector('#poster-title')
 var inputQuote = document.querySelector('#poster-quote')
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -127,7 +135,13 @@ showFormButton.addEventListener('click', openForm);
 showSavedButton.addEventListener('click', openSavedPosters);
 showMainButton.addEventListener('click', showMainPoster);
 backToMainButton.addEventListener('click', showMainPoster);
+
 showMyPosterButton.addEventListener('click', showMyPoster)
+
+// showMyPosterButton.addEventListener('click', () => {
+//   storeNewPoster();
+//   showMyPoster();
+// })
 
 
 // functions and event handlers go here 👇
@@ -157,8 +171,16 @@ function showMainPoster() {
   savedPostersPage.style.display = "none"
 }
 
+function storeNewPoster() {
+  return new Poster(inputImage.value, inputTitle.value, inputQuote.value)
+}
+
 function showMyPoster() {
-  title.innerText = inputTitle.value
-  image.src = inputImage.value
-  quote.innerText = inputQuote.value
+  var newPoster = storeNewPoster()
+  title.innerText = newPoster.title;
+  image.src = newPoster.imageURL;
+  quote.innerText = newPoster.quote;
+  mainPoster.style.display = "block";
+  posterForm.style.display = "none";
+  console.log(newPoster);
 }
