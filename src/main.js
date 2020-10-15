@@ -103,10 +103,6 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-  /*images: images[getRandomIndex(images)],
-  titles: titles[getRandomIndex(titles)],
-  quotes: quotes[getRandomIndex(quotes)],*/
-//};
 
 // event listeners go here 👇
 
