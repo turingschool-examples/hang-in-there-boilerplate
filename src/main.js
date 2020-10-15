@@ -1,4 +1,5 @@
 // query selector variables go here 👇
+var mainPageQuote = document.querySelector(".poster-quote");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -99,7 +100,10 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {
+  quotes: quotes[getRandomIndex(quotes)],
+  
+};
 
 // event listeners go here 👇
 
@@ -109,3 +113,5 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+
+  mainPageQuote.innerText = currentPoster.quotes;
