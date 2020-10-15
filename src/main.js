@@ -8,6 +8,12 @@ var image = document.querySelector('.poster-img');
 
 var buttonRandom = document.querySelector('.show-random');
 
+var makePosterButton = document.querySelector('.show-form');
+
+var posterForm = document.querySelector('.poster-form');
+
+var mainPoster = document.querySelector('.main-poster');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -111,6 +117,9 @@ var currentPoster;
 
 // event listeners go here 👇
 
+buttonRandom.addEventListener('click', reloadPoster);
+makePosterButton.addEventListener('click', openForm);
+
 // functions and event handlers go here 👇
 
 // (we've provided one for you to get you started)!
@@ -124,13 +133,14 @@ title.innerText = titles[titleIndex];
 
 quoteIndex = getRandomIndex(quotes);
 quote.innerText = quotes[quoteIndex];
- 
+
 pictureIndex = getRandomIndex(images);
 image.src = images[pictureIndex];
 }
 reloadPoster();
 
-buttonRandom.addEventListener('click', reloadPoster);
 
-
-
+ function openForm() {
+     posterForm.style.setProperty('display', 'flex', 'important');
+     mainPoster.style.setProperty('display', 'none', 'important');
+ }
