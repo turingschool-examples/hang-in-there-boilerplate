@@ -14,6 +14,10 @@ var posterForm = document.querySelector('.poster-form');
 
 var mainPoster = document.querySelector('.main-poster');
 
+var savedPosters = document.querySelector('.saved-posters');
+
+var buttonSavedPosters = document.querySelector('.show-saved');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -112,13 +116,14 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
+var savedPostersArray = [];
 var currentPoster;
 
 // event listeners go here 👇
 
 buttonRandom.addEventListener('click', reloadPoster);
 makePosterButton.addEventListener('click', openForm);
+buttonSavedPosters.addEventListener('click', openSavedPosters)
 
 // functions and event handlers go here 👇
 
@@ -139,8 +144,12 @@ image.src = images[pictureIndex];
 }
 reloadPoster();
 
+function openForm() {
+  posterForm.style.setProperty('display', 'flex', 'important');
+  mainPoster.style.setProperty('display', 'none', 'important');
+}
 
- function openForm() {
-     posterForm.style.setProperty('display', 'flex', 'important');
-     mainPoster.style.setProperty('display', 'none', 'important');
- }
+function openSavedPosters() {
+  savedPosters.style.setProperty('display', 'flex', 'important');
+  mainPoster.style.setProperty('display', 'none', 'important');
+}
