@@ -108,14 +108,10 @@ var currentPoster;
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
-function getRandom(arrayName) {
-return arrayName[Math.floor(Math.random() * arrayName.length)]
+function getRandomIndex(array) {
+  return array[Math.floor(Math.random() * array.length)];
 };
-getRandom(titles);
-getRandom(quotes);
-getRandom(images);
 
-randomTitle.innerHTML = getRandom(titles);
-randomQuote.innerHTML = getRandom(quotes);
-randomImage.innerHTML = getRandom(images);
-// randomImage not working.
+randomImage.src = getRandomIndex(images);
+randomTitle.innerHTML = getRandomIndex(titles);
+randomQuote.innerHTML = getRandomIndex(quotes);
