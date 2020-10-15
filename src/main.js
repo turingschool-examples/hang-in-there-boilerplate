@@ -116,7 +116,7 @@ var imageInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
 // event listeners go here 👇
-window.addEventListener('load', showPoster);
+window.addEventListener('load',  showPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]));
 
 showRandom.addEventListener('click', showPoster);
 makePoster.addEventListener('click', showForm);
@@ -131,10 +131,11 @@ function getRandomIndex(array) {
 }
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function showPoster() {
-  posterImage.src = images[getRandomIndex(images)];
-  posterTitle.innerHTML = titles[getRandomIndex(titles)];
-  posterQuote.innerHTML = quotes[getRandomIndex(quotes)];
+
+function showPoster(image, title, quote) {
+  posterImage.src = image;
+  posterTitle.innerHTML = title;
+  posterQuote.innerHTML = quote;
 }
 
 function showForm() {
@@ -159,4 +160,8 @@ function storePoster() {
   images.push(imageInput.value);
   titles.push(titleInput.value);
   quotes.push(quoteInput.value);
+  var newPoster = new Poster(imageInput, titleInput, quoteInput);
+
+
+  goHome();
 }
