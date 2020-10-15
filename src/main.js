@@ -111,15 +111,22 @@ var viewSaved = document.querySelector('.show-saved');
 var storedPosters = document.querySelector('.saved-posters');
 var nevermind = document.querySelector('.show-main');
 var back = document.querySelector('.back-to-main');
-
+var savePoster = document.querySelector('.create-poster');
+var imageInput = document.querySelector('#poster-image-url');
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
 // event listeners go here 👇
-window.addEventListener('load', showPoster);
+window.addEventListener('load',  makeRandomCover);
+
+
+
 
 showRandom.addEventListener('click', showPoster);
 makePoster.addEventListener('click', showForm);
 viewSaved.addEventListener('click', showStored);
 nevermind.addEventListener('click', goHome);
 back.addEventListener('click', backHome);
+savePoster.addEventListener('click', storePoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -127,10 +134,17 @@ function getRandomIndex(array) {
 }
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function showPoster() {
+
+function makeRandomCover() {
   posterImage.src = images[getRandomIndex(images)];
-  posterTitle.innerHTML = titles[getRandomIndex(titles)];
+  posterTitle.innerHTML = titles[getRandomIndex(titles)]
   posterQuote.innerHTML = quotes[getRandomIndex(quotes)];
+}
+
+function showPoster(obj) {
+  posterImage.src = obj.imageURL;
+  posterTitle.innerHTML = obj.title;
+  posterQuote.innerHTML = obj.quote;
 }
 
 function showForm() {
@@ -149,4 +163,13 @@ function goHome() {
 function backHome() {
   storedPosters.classList.add('hidden');
   homePoster.classList.remove('hidden');
+}
+function storePoster() {
+  event.preventDefault();
+  images.push(imageInput.value);
+  titles.push(titleInput.value);
+  quotes.push(quoteInput.value);
+  var newPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
+  showPoster(newPoster)
+  goHome();
 }
