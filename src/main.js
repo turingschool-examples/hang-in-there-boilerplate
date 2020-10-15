@@ -20,6 +20,8 @@ var savedPosters = document.querySelector('.saved-posters');
 
 var buttonSavedPosters = document.querySelector('.show-saved');
 
+var backToMainButton = document.querySelector('.back-to-main');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -130,6 +132,8 @@ buttonMain.addEventListener('click', backToMain);
 
 buttonSavedPosters.addEventListener('click', openSavedPosters);
 
+backToMainButton.addEventListener('click', backToMainFromSaved)
+
 // functions and event handlers go here 👇
 
 // (we've provided one for you to get you started)!
@@ -167,4 +171,8 @@ function openForm() {
 function openSavedPosters() {
   savedPosters.style.setProperty('display', 'flex', 'important');
   mainPoster.style.setProperty('display', 'none', 'important');
+}
+function backToMainFromSaved() {
+  mainPoster.style.setProperty('display', 'inline', 'important')
+  savedPosters.style.setProperty('display', 'none', 'important')
 }
