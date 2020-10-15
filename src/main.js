@@ -121,7 +121,7 @@ window.addEventListener('load',  makeRandomCover);
 
 
 
-showRandom.addEventListener('click', showPoster);
+showRandom.addEventListener('click', makeRandomCover);
 makePoster.addEventListener('click', showForm);
 viewSaved.addEventListener('click', showStored);
 nevermind.addEventListener('click', goHome);
