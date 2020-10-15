@@ -102,8 +102,14 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+document.getElementById ("show-random").addEventListener("click" function(event) {
+
+})
 
 // functions and event handlers go here 👇
+
+document.querySelector("button").onclick = function(event) { … }.
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
