@@ -112,6 +112,9 @@ var storedPosters = document.querySelector('.saved-posters');
 var nevermind = document.querySelector('.show-main');
 var back = document.querySelector('.back-to-main');
 var savePoster = document.querySelector('.create-poster');
+var imageInput = document.querySelector('#poster-image-url');
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
 // event listeners go here 👇
 window.addEventListener('load', showPoster);
 
@@ -153,7 +156,7 @@ function backHome() {
 }
 function storePoster() {
   event.preventDefault();
-  images.push(document.querySelector('#poster-image-url').value);
-  titles.push(document.querySelector('#poster-title').value);
-  quotes.push(document.querySelector('#poster-quote').value);
+  images.push(imageInput.value);
+  titles.push(titleInput.value);
+  quotes.push(quoteInput.value);
 }
