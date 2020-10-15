@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-
+var box = document.querySelector('.main-poster');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -109,3 +109,15 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function indexValue(titles) {
+  var indexNum = getRandomIndex(titles);
+  return indexNum;
+}
+
+
+// function to return the value of the index from the getRandomIndex()
+
+box.innerHTML = `
+ <img>${images(indexNum)}</img>
+ <h1>${titles(indexNum)}</h1>
+`;`
