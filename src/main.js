@@ -1,4 +1,7 @@
 // query selector variables go here 👇
+var mainPageImage = document.querySelector(".poster-img");
+var mainPageTitle = document.querySelector(".poster-title");
+var mainPageQuote = document.querySelector(".poster-quote");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -99,7 +102,11 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {
+  images: images[getRandomIndex(images)],
+  titles: titles[getRandomIndex(titles)],
+  quotes: quotes[getRandomIndex(quotes)],
+};
 
 // event listeners go here 👇
 
@@ -109,3 +116,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+  mainPageImage.src = currentPoster.images;
+  mainPageTitle.innerText = currentPoster.titles;
+  mainPageQuote.innerText = currentPoster.quotes;
