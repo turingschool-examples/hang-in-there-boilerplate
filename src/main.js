@@ -109,7 +109,12 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-var randomTitle = titles[getRandomIndex(titles)];
+function createRandomTitle(){
+  var title = document.querySelector('.poster-title');
+  var randomTitle = titles[getRandomIndex(titles)];
+  title.innerText = `${randomTitle}`;
+}
+
 
 function createRandomImage() {
   var poster = document.querySelector('.poster');
@@ -118,6 +123,5 @@ function createRandomImage() {
   // is the full img element necessary?
 }
 
-// createRandomImage();
-
-randomTitle;
+createRandomImage();
+createRandomTitle();
