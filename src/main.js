@@ -1,5 +1,7 @@
 // query selector variables go here 👇
-
+var randomImage = document.querySelector("img");
+var randomTitle = document.querySelector("h1");
+var randomQuote = document.querySelector("h3");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -105,7 +107,15 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
 
+function getRandom(arrayName) {
+return arrayName[Math.floor(Math.random() * arrayName.length)]
+};
+getRandom(titles);
+getRandom(quotes);
+getRandom(images);
+
+randomTitle.innerHTML = getRandom(titles);
+randomQuote.innerHTML = getRandom(quotes);
+randomImage.innerHTML = getRandom(images);
+// randomImage not working.
