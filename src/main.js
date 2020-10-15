@@ -22,6 +22,8 @@ var buttonSavedPosters = document.querySelector('.show-saved');
 
 var backToMainButton = document.querySelector('.back-to-main');
 
+var showSavedPosters = document.querySelector('.saved-posters-grid');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -142,37 +144,33 @@ function getRandomIndex(array) {
 }
 
 function reloadPoster() {
-titleIndex = getRandomIndex(titles);
-title.innerText = titles[titleIndex];
+  titleIndex = getRandomIndex(titles);
+  title.innerText = titles[titleIndex];
 
-quoteIndex = getRandomIndex(quotes);
-quote.innerText = quotes[quoteIndex];
+  quoteIndex = getRandomIndex(quotes);
+  quote.innerText = quotes[quoteIndex];
 
-pictureIndex = getRandomIndex(images);
-image.src = images[pictureIndex];
+  pictureIndex = getRandomIndex(images);
+  image.src = images[pictureIndex];
 }
 reloadPoster();
 
 function openForm() {
-  posterForm.style.setProperty('display', 'flex', 'important');
-  mainPoster.style.setProperty('display', 'none', 'important');
+  mainPoster.classList.toggle('hidden');
+  posterForm.classList.toggle('hidden');
 }
 
- function openForm() {
-     posterForm.style.setProperty('display', 'flex', 'important');
-     mainPoster.style.setProperty('display', 'none', 'important');
- }
-
- function backToMain() {
-    mainPoster.style.setProperty('display', 'inline', 'important');
-    posterForm.style.setProperty('display', 'none', 'important');
- }
+function backToMain() {
+  mainPoster.classList.toggle('hidden');
+  posterForm.classList.toggle('hidden');
+}
 
 function openSavedPosters() {
-  savedPosters.style.setProperty('display', 'flex', 'important');
-  mainPoster.style.setProperty('display', 'none', 'important');
+  mainPoster.classList.toggle('hidden');
+  savedPosters.classList.toggle('hidden');
 }
+
 function backToMainFromSaved() {
-  mainPoster.style.setProperty('display', 'inline', 'important')
-  savedPosters.style.setProperty('display', 'none', 'important')
+  mainPoster.classList.toggle('hidden');
+  posterForm.classList.toggle('hidden');
 }
