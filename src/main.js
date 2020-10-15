@@ -154,4 +154,6 @@ function backHome() {
 function storePoster() {
   event.preventDefault();
   images.push(document.querySelector('#poster-image-url').value);
+  titles.push(document.querySelector('#poster-title').value);
+  quotes.push(document.querySelector('#poster-quote').value);
 }
