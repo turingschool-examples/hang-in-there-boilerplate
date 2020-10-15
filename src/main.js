@@ -14,6 +14,8 @@ var posterForm = document.querySelector('.poster-form');
 
 var mainPoster = document.querySelector('.main-poster');
 
+var buttonMain = document.querySelector('.show-main');
+
 var savedPosters = document.querySelector('.saved-posters');
 
 var buttonSavedPosters = document.querySelector('.show-saved');
@@ -123,7 +125,10 @@ var currentPoster;
 
 buttonRandom.addEventListener('click', reloadPoster);
 makePosterButton.addEventListener('click', openForm);
-buttonSavedPosters.addEventListener('click', openSavedPosters)
+
+buttonMain.addEventListener('click', backToMain);
+
+buttonSavedPosters.addEventListener('click', openSavedPosters);
 
 // functions and event handlers go here 👇
 
@@ -148,6 +153,16 @@ function openForm() {
   posterForm.style.setProperty('display', 'flex', 'important');
   mainPoster.style.setProperty('display', 'none', 'important');
 }
+
+ function openForm() {
+     posterForm.style.setProperty('display', 'flex', 'important');
+     mainPoster.style.setProperty('display', 'none', 'important');
+ }
+
+ function backToMain() {
+    mainPoster.style.setProperty('display', 'inline', 'important');
+    posterForm.style.setProperty('display', 'none', 'important');
+ }
 
 function openSavedPosters() {
   savedPosters.style.setProperty('display', 'flex', 'important');
