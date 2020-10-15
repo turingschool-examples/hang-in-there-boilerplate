@@ -106,6 +106,8 @@ document.getElementById ("show-random").addEventListener("click" function(event)
 
 })
 
+//Adding text 
+
 // functions and event handlers go here 👇
 
 document.querySelector("button").onclick = function(event) { … }.
