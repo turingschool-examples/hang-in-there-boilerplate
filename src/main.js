@@ -1,6 +1,5 @@
 // query selector variables go here 👇
 //poster attributes
-
 var title = document.querySelector('.poster-title')
 var quote = document.querySelector('.poster-quote')
 var image = document.querySelector('img')
@@ -16,6 +15,7 @@ var showSavedButton = document.querySelector('.show-saved')
 var showMainButton = document.querySelector('.show-main')
 var backToMainButton = document.querySelector('.back-to-main')
 var showMyPosterButton = document.querySelector('.make-poster')
+var saveThisPosterButton = document.querySelector('.save-poster')
 
 //inputs
 var inputImage = document.querySelector('#poster-image-url')
@@ -122,21 +122,20 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {};
 
 savedPostersPage.style.display = "none"
 posterForm.style.display = "none"
 
 
 // event listeners go here 👇
-
-
 showFormButton.addEventListener('click', openForm);
 showSavedButton.addEventListener('click', openSavedPosters);
 showMainButton.addEventListener('click', showMainPoster);
 backToMainButton.addEventListener('click', showMainPoster);
+showMyPosterButton.addEventListener('click', showMyPoster);
 
-showMyPosterButton.addEventListener('click', showMyPoster)
+saveThisPosterButton.addEventListener('click', saveThisPoster);
 
 // showMyPosterButton.addEventListener('click', () => {
 //   storeNewPoster();
@@ -185,6 +184,9 @@ function showMyPoster() {
   quote.innerText = newPoster.quote;
   mainPoster.style.display = "block";
   posterForm.style.display = "none";
-  console.log(newPoster);
-  console.log(images, titles, quotes);
+}
+
+function saveThisPoster() {
+  savedPosters.push(storeNewPoster());
+  console.log(savedPosters);
 }
