@@ -114,4 +114,4 @@ function getRandomIndex(array) {
 
 randomImage.src = getRandomIndex(images);
 randomTitle.innerHTML = getRandomIndex(titles);
-randomQuote.innerHTML = getRandomIndex(quotes);
+randomQuote.innerHTML = getRandomIndex(quotes); 
