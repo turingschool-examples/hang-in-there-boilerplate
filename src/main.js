@@ -106,6 +106,9 @@ var randomButton = document.querySelector('.show-random');
 randomButton.addEventListener('click', createRandomImage);
 var savePosterButton = document.querySelector('.save-poster');
 savePosterButton.addEventListener('click', createRandomImage);
+var showSavedButton = document.querySelector('.show-saved');
+showSavedButton.addEventListener('click', createRandomImage);
+// pass in the correct function/parameters
 
 
 // functions and event handlers go here 👇
