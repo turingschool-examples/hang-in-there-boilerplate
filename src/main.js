@@ -114,6 +114,15 @@ showRandomPosterBtn.addEventListener('click', showRandomPoster);
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+function randomizePoster() {
+  currentPoster = new Poster(
+    images[getRandomIndex(images)],
+    titles[getRandomIndex(titles)],
+    quotes[getRandomIndex(quotes)]
+  );
+  }
+}
 function showRandomPoster() {
-  
+
 }
