@@ -2,6 +2,8 @@
 var randomImage = document.querySelector("img");
 var randomTitle = document.querySelector("h1");
 var randomQuote = document.querySelector("h3");
+var buttonStart = document.querySelector(".show-random");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -104,23 +106,20 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+buttonStart.addEventListener("click", newPoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-// function getRandomIndex(images) {
-//   return Math.floor(Math.random() * images.length);
-// }
 
+function getRandomIndex(array) {
+  return array[Math.floor(Math.random() * array.length)]
+};
 
-
-
-var buttonStart = document.querySelector('.show-random');
-
-buttonStart.addEventListener('click', newPoster)
-
+randomImage.src = getRandomIndex(images);
+randomTitle.innerHTML = getRandomIndex(titles);
+randomQuote.innerHTML = getRandomIndex(quotes);
 
 function newPoster(){
-  randomQuote.innerHTML = getRandom(quotes);
-  randomTitle.innerHTML = getRandom(titles);
-  randomImage.src = getRandom(image);
-}
+  randomQuote.innerHTML = getRandomIndex(quotes);
+  randomTitle.innerHTML = getRandomIndex(titles);
+  randomImage.src = getRandomIndex(images);
+};
