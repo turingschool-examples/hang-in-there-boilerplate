@@ -104,6 +104,9 @@ var currentPoster;
 // event listeners go here 👇
 var randomButton = document.querySelector('.show-random');
 randomButton.addEventListener('click', createRandomImage);
+var savePosterButton = document.querySelector('.save-poster');
+savePosterButton.addEventListener('click', createRandomImage);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
