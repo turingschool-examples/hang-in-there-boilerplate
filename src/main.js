@@ -1,8 +1,20 @@
 // query selector variables go here 👇
-  var testTitle = document.querySelector(".poster-title");
-  var testQuote = document.querySelector(".poster-quote");
-  var testImage = document.querySelector(".poster-img");
-  var showRandomPosterButton = document.querySelector(".show-random");
+
+// Show Random Poster Query Selectors:
+var testTitle = document.querySelector(".poster-title");
+var testQuote = document.querySelector(".poster-quote");
+var testImage = document.querySelector(".poster-img");
+var showRandomPosterButton = document.querySelector(".show-random");
+
+// Show Saved Posters & Make Your Own Poster Query Selectors:
+var mainPoster = document.querySelector(".main-poster");
+var makeYourOwnButton = document.querySelector(".show-form");
+var showForm = document.querySelector(".poster-form");
+var showSavedButton = document.querySelector(".show-saved");
+var savedPosters = document.querySelector(".saved-posters");
+var nevermind = document.querySelector(".show-main");
+var backToMain = document.querySelector(".back-to-main");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -106,10 +118,12 @@ var currentPoster;
 
 // event listeners go here 👇
 showRandomPosterButton.addEventListener("click", randomPosterButton);
+showSavedButton.addEventListener("click", bringUpSaved);
+makeYourOwnButton.addEventListener("click", bringUpForm);
+nevermind.addEventListener("click", formBackToMain);
+backToMain.addEventListener("click", savedBackToMain);
 
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
-
 function randomPosterButton(array) {
   array[Math.floor(Math.random() * array.length)];
   var newTitle = getRandomIndex(titles);
@@ -119,7 +133,6 @@ function randomPosterButton(array) {
   var newImage = getRandomIndex(images);
   testImage.src = newImage;
 }
-
 
 function getRandomIndex(array) {
   return array[Math.floor(Math.random() * array.length)];
@@ -133,3 +146,23 @@ window.onload = function() {
   var newImage = getRandomIndex(images);
   testImage.src = newImage;
 }
+
+function bringUpSaved() {
+  mainPoster.classList.add("hidden");
+  savedPosters.classList.remove("hidden");
+};
+
+function bringUpForm() {
+  mainPoster.classList.add("hidden");
+  showForm.classList.remove("hidden");
+};
+
+function formBackToMain() {
+  mainPoster.classList.remove("hidden");
+  showForm.classList.add("hidden");
+};
+
+function savedBackToMain() {
+  mainPoster.classList.remove("hidden");
+  savedPosters.classList.add("hidden");
+};
