@@ -116,6 +116,7 @@ var imageInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
 var savePoster = document.querySelector('.save-poster');
+var imgGallery = document.querySelector('saved-posters-grid')
 // event listeners go here 👇
 window.addEventListener('load',  makeRandomCover);
 
@@ -128,7 +129,7 @@ viewSaved.addEventListener('click', showStored);
 nevermind.addEventListener('click', goHome);
 back.addEventListener('click', backHome);
 displayPoster.addEventListener('click', makeUserPoster);
-savePoster.addEventListener('click', storePoster)
+// savePoster.addEventListener('click', storePoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -147,6 +148,7 @@ function showPoster(obj) {
   posterImage.src = obj.imageURL;
   posterTitle.innerHTML = obj.title;
   posterQuote.innerHTML = obj.quote;
+  savedPosters.push(obj);
 }
 
 function showForm() {
@@ -175,3 +177,11 @@ function makeUserPoster() {
   showPoster(newPoster)
   goHome();
 }
+
+// function storePoster(homePoster) {
+// var homePoster {
+//
+//
+//   savedPosters.push();
+//   imgGallery.push();
+// };
