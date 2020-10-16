@@ -179,6 +179,9 @@ function makeUserPoster() {
 }
 
 function storePoster() {
-   savedPosters.push(currentPoster);
-
-};
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  } else{
+    alert('You already saved that poster!')
+  }
+  };
