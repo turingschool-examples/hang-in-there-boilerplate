@@ -6,6 +6,7 @@ var mainPageQuote = document.querySelector(".poster-quote");
 var showRandomButton = document.querySelector(".show-random");
 var makeOwnPosterForm = document.querySelector(".poster-form");
 var makeOwnPosterButton = document.querySelector(".show-form");
+var takeMeBackButton = document.querySelector(".show-main");
 
 
 // we've provided you with some data to work with 👇
