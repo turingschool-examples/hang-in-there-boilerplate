@@ -1,4 +1,8 @@
 // query selector variables go here 👇
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querSelector('.poster-quote');
+var randomButton = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,10 +106,47 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+randomButton.addEventListener("click" function(event) {
+
+})
+
+//Adding text
 
 // functions and event handlers go here 👇
+
+document.querySelector("button").onclick = function(event) { … }.
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function generateRandomPoster() {
+  var imageIndex = getRandomIndex(images);
+  var titleIndex = getRandomIndex(titles);
+  var quoteIndex = getRandomIndex(quotes);
+  generatePoster(images[imagesIndex], titles[titleIndex], quotes[quoteIndex]);
+}
+
+function generatePoster() {
+  currentPoster = new Poster(imageURL, title, quote);
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+}
+
+// function indexValue(titles) {
+//   var indexNum = getRandomIndex(titles);
+//   return indexNum;
+// }
+
+// imageURL.innerText = currentPoster.imageURL;
+// title.innerText = currentPoster.title;
+// quote.innerText = currentPoster.quote;
+
+// function to return the value of the index from the getRandomIndex()
+
+box.innerHTML = `
+ <img>${images(indexNum)}</img>
+ <h1>${titles(indexNum)}</h1>
+`;`
