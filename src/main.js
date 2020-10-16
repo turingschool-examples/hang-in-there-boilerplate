@@ -3,6 +3,7 @@ var mainPage = document.querySelector(".main-poster");
 var mainPageImage = document.querySelector(".poster-img");
 var mainPageTitle = document.querySelector(".poster-title");
 var mainPageQuote = document.querySelector(".poster-quote");
+var showRandomButton = document.querySelector(".show-random");
 
 
 // we've provided you with some data to work with 👇
