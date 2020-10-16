@@ -99,7 +99,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {};
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
@@ -116,7 +116,7 @@ var imageInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
 var savePoster = document.querySelector('.save-poster');
-var imgGallery = document.querySelector('saved-posters-grid')
+var imgGallery = document.querySelector('.saved-posters-grid')
 // event listeners go here 👇
 window.addEventListener('load',  makeRandomCover);
 
@@ -129,7 +129,7 @@ viewSaved.addEventListener('click', showStored);
 nevermind.addEventListener('click', goHome);
 back.addEventListener('click', backHome);
 displayPoster.addEventListener('click', makeUserPoster);
-// savePoster.addEventListener('click', storePoster)
+savePoster.addEventListener('click', storePoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -142,13 +142,13 @@ function makeRandomCover() {
   posterImage.src = images[getRandomIndex(images)];
   posterTitle.innerHTML = titles[getRandomIndex(titles)]
   posterQuote.innerHTML = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(posterImage.src, posterTitle.innerHTML, posterQuote.innerHTML);
 }
 
 function showPoster(obj) {
   posterImage.src = obj.imageURL;
   posterTitle.innerHTML = obj.title;
   posterQuote.innerHTML = obj.quote;
-  savedPosters.push(obj);
 }
 
 function showForm() {
@@ -173,15 +173,12 @@ function makeUserPoster() {
   images.push(imageInput.value);
   titles.push(titleInput.value);
   quotes.push(quoteInput.value);
-  var newPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
-  showPoster(newPoster)
+  currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
+  showPoster(currentPoster)
   goHome();
 }
 
-// function storePoster(homePoster) {
-// var homePoster {
-//
-//
-//   savedPosters.push();
-//   imgGallery.push();
-// };
+function storePoster() {
+   savedPosters.push(currentPoster);
+
+};
