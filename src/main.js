@@ -107,11 +107,20 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+// function getRandomIndex(images) {
+//   return Math.floor(Math.random() * images.length);
+// }
 
-function getRandomIndex(array) {
-  return array[Math.floor(Math.random() * array.length)];
-};
 
-randomImage.src = getRandomIndex(images);
-randomTitle.innerHTML = getRandomIndex(titles);
-randomQuote.innerHTML = getRandomIndex(quotes); 
+
+
+var buttonStart = document.querySelector('.show-random');
+
+buttonStart.addEventListener('click', newPoster)
+
+
+function newPoster(){
+  randomQuote.innerHTML = getRandom(quotes);
+  randomTitle.innerHTML = getRandom(titles);
+  randomImage.src = getRandom(image);
+}
