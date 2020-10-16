@@ -1,5 +1,7 @@
 // query selector variables go here 👇
-
+var randomImage = document.querySelector("img");
+var randomTitle = document.querySelector("h1");
+var randomQuote = document.querySelector("h3");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
