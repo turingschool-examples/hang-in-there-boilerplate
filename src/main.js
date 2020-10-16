@@ -110,19 +110,6 @@ var currentPoster;
 // }
 
 
-//
-// function getRandomIndex(array) {
-//   return Math.floor(Math.random() * array.length);
-// }
-//
-// function getRandomImages() {
-//   var randomImageIndex = getRandomIndex(images);
-//   var randomImage = images[getRandomImageIndex];
-//
-//   return randomImage
-// }
-
-
 
 
 var buttonStart = document.querySelector('.show-random');
@@ -135,20 +122,3 @@ function newPoster(){
   randomTitle.innerHTML = getRandom(titles);
   randomImage.src = getRandom(image);
 }
-
-
-
-
-
-
-
-//
-// var h1 = document.querySelector('h1');
-// var button = document.querySelector('.change-text');
-// var input = document.querySelector('.input');
-//
-// button.addEventListener('click', changeText);
-//
-// function changeText() {
-//   h1.innerText = input.value;
-// }
