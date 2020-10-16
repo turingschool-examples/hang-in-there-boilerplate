@@ -106,34 +106,41 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomButton.addEventListener("click" function(event) {
-
-})
-
-//Adding text
+randomButton.addEventListener("click", generateRandomPoster)
 
 // functions and event handlers go here 👇
 
-document.querySelector("button").onclick = function(event) { … }.
+// document.querySelector("button").onclick = function(event) { … }.
 
 // (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
+var randomImage =
+  images[Math.floor(Math.random() * images.length)];
+
+var randomTitle =
+  titles[Math.floor(Math.random() * titles.length)];
+
+var randomQuote =
+  quotes[Math.floor(Math.random() * quotes.length)];
+
 
 function generateRandomPoster() {
-  var imageIndex = getRandomIndex(images);
-  var titleIndex = getRandomIndex(titles);
-  var quoteIndex = getRandomIndex(quotes);
-  generatePoster(images[imagesIndex], titles[titleIndex], quotes[quoteIndex]);
+  // posterImage.innerText = randomImage.value;
+  posterTitle.innerText = randomTitle.value;
+  // posterQuote.innerText = randomQuote.value;
 }
-
-function generatePoster() {
-  currentPoster = new Poster(imageURL, title, quote);
-  posterImage.src = currentPoster.imageURL;
-  posterTitle.innerText = currentPoster.title;
-  posterQuote.innerText = currentPoster.quote;
-}
+// function generateRandomPoster() {
+//   var imageIndex = getRandomIndex(images);
+//   var titleIndex = getRandomIndex(titles);
+//   var quoteIndex = getRandomIndex(quotes);
+//   generatePoster( return images[imagesIndex], titles[titleIndex], quotes[quoteIndex]);
+// }
+//
+// function generatePoster() {
+//   currentPoster = new Poster(imageURL, title, quote);
+//   posterImage.src = currentPoster.imageURL;
+//   posterTitle.innerText = currentPoster.title;
+//   posterQuote.innerText = currentPoster.quote;
+// }
 
 // function indexValue(titles) {
 //   var indexNum = getRandomIndex(titles);
@@ -146,7 +153,7 @@ function generatePoster() {
 
 // function to return the value of the index from the getRandomIndex()
 
-box.innerHTML = `
- <img>${images(indexNum)}</img>
- <h1>${titles(indexNum)}</h1>
-`;`
+// box.innerHTML = `
+//  <img>${images(indexNum)}</img>
+//  <h1>${titles(indexNum)}</h1>
+// `;`
