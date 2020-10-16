@@ -108,6 +108,8 @@ var savePosterButton = document.querySelector('.save-poster');
 savePosterButton.addEventListener('click', createRandomImage);
 var showSavedButton = document.querySelector('.show-saved');
 showSavedButton.addEventListener('click', createRandomImage);
+var makePosterButton = document.querySelector('.show-form');
+makePosterButton.addEventListener('click', createRandomImage);
 // pass in the correct function/parameters
 
 
@@ -130,3 +132,17 @@ function createRandomImage() {
 }
 
 createRandomImage();
+
+
+
+//main-poster VISIBLE has 1 class set to main-poster
+//poster-form HIDDEN has 2 classes poster-form AND hidden
+//CSS .hidden is assigned to display NONE
+//doc.query poster-form assign to posterForm
+
+//MAKE 143 thru 148 A SINGLE FUNCTION 
+//add HIDDEN class to main-poster
+//remove HIDDEN class from poster-form
+//remove HIDDEN class from posterForm
+//classList remove HIDDEN on posterForm
+//classList add HIDDEN on main-poster
