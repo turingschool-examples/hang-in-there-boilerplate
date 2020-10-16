@@ -116,7 +116,7 @@ var currentPoster;
 
 var buttonStart = document.querySelector('.show-random');
 
-buttonStart.addEventListener('click', newPoster)
+buttonStart.addEventListener('click', newPoster);
 
 
 function newPoster(){
