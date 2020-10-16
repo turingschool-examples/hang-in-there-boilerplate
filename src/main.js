@@ -9,9 +9,9 @@ var showRandomPosterButton = document.querySelector(".show-random");
 // Show Saved Posters & Make Your Own Poster Query Selectors:
 var mainPoster = document.querySelector(".main-poster");
 var makeYourOwnButton = document.querySelector(".show-form");
-var showForm = document.querySelector(".poster-form");
+var showFormScreen = document.querySelector(".poster-form");
 var showSavedButton = document.querySelector(".show-saved");
-var savedPosters = document.querySelector(".saved-posters");
+var savedPostersScreen = document.querySelector(".saved-posters");
 var nevermind = document.querySelector(".show-main");
 var backToMain = document.querySelector(".back-to-main");
 
@@ -149,20 +149,20 @@ window.onload = function() {
 
 function bringUpSaved() {
   mainPoster.classList.add("hidden");
-  savedPosters.classList.remove("hidden");
+  savedPostersScreen.classList.remove("hidden");
 };
 
 function bringUpForm() {
   mainPoster.classList.add("hidden");
-  showForm.classList.remove("hidden");
+  showFormScreen.classList.remove("hidden");
 };
 
 function formBackToMain() {
   mainPoster.classList.remove("hidden");
-  showForm.classList.add("hidden");
+  showFormScreen.classList.add("hidden");
 };
 
 function savedBackToMain() {
   mainPoster.classList.remove("hidden");
-  savedPosters.classList.add("hidden");
+  savedPostersScreen.classList.add("hidden");
 };
