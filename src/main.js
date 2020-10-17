@@ -132,9 +132,9 @@ var currentPoster;
 // event listeners go here 👇
 showRandom.addEventListener('click', getThreeValues)
 // posterForm.addEventListener('click',) //expecting argument that will be a function which hides current view and brings up form
-// showMain.addEventListener('click',) //expecting argument that will be a function which hides current view and returns you to main page
-// backToMain.addEventListener('click',) //expecting the same argument for showMain button click
-showSaved.addEventListener('click', showSavedView); //expecting argument that will be a function that shows saved posters view and hides current view
+showMain.addEventListener('click', showMainView);
+backToMain.addEventListener('click', showMainView);
+showSaved.addEventListener('click', showSavedView);
 
 // functions and event handlers go here
 window.onload = getThreeValues();
@@ -155,4 +155,10 @@ function getThreeValues() {
 function showSavedView() {
   mainPoster.className = 'main-poster hidden';
   savedView.className = 'saved-posters';
+}
+
+function showMainView() {
+  mainPoster.className = 'main-poster';
+  savedView.className = 'saved-posters hidden';
+  posterForm.className = 'poster-form hidden';
 }
