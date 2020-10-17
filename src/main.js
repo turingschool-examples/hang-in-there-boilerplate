@@ -129,13 +129,14 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-window.onload = getThreeValues();
 // event listeners go here 👇
 showRandom.addEventListener('click', getThreeValues)
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started
+posterForm.addEventListener('click',) //expecting argument that will be a function which hides current view and brings up form
+showMain.addEventListener('click',) //expecting argument that will be a function which hides current view and returns you to main page
+backToMain.addEventListener('click',) //expecting the same argument for showMain button click
 
-
+// functions and event handlers go here
+window.onload = getThreeValues();
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
