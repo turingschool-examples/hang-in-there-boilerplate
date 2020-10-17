@@ -13,7 +13,9 @@ var backToMainButton = document.querySelector(".back-to-main");
 var inputImage = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
-//var showMyPosterButton = document.querySelector(".make-poster");
+var showMyPosterButton = document.querySelector(".make-poster");
+var savePosterButton = document.querySelector(".save-poster");
+var savedGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -123,7 +125,8 @@ makeOwnPosterButton.addEventListener('click', goToMakeOwnPosterForm);
 takeMeBackButton.addEventListener('click', goBackToMain);
 savedPosterButton.addEventListener('click', goToSavedPosters);
 backToMainButton.addEventListener('click', goBackToMain);
-//showMyPosterButton.addEventListener('click', showMyPoster);
+showMyPosterButton.addEventListener('click', showMyPoster);
+savePosterButton.addEventListener('click', savePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -162,5 +165,18 @@ function showMyPoster() {
   mainPage.classList.remove("hidden");
 
 }
+
+function savePoster(){
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+}
+
+// //function createGrid() {
+//   savedGrid.innerHTML = '"";
+//   for (var i = 0; i < savedPosters.length; i++) {
+//     var miniPoster?? = `I want to insert information using imageURL, title, quote`
+//   }
+// }
 
 //getRandomPoster();
