@@ -1,8 +1,11 @@
 // query selector variables go here 👇
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querSelector('.poster-quote');
+var posterQuote = document.querySelector('.poster-quote');
 var randomButton = document.querySelector('.show-random');
+// var mainPosterPage = document.querySelector('.main-poster');
+// var posterForm = document.querySelector('.poster-form');
+// var currentPoster = document.querySelector('.poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -106,54 +109,34 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomButton.addEventListener("click", generateRandomPoster)
+
+window.addEventListener('load', showPoster)
+
+randomButton.addEventListener('click', showPoster)
 
 // functions and event handlers go here 👇
 
 // document.querySelector("button").onclick = function(event) { … }.
 
 // (we've provided one for you to get you started)!
-var randomImage =
-  images[Math.floor(Math.random() * images.length)];
-
-var randomTitle =
-  titles[Math.floor(Math.random() * titles.length)];
-
-var randomQuote =
-  quotes[Math.floor(Math.random() * quotes.length)];
-
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+};
 
 function generateRandomPoster() {
-  // posterImage.innerText = randomImage.value;
-  posterTitle.innerText = randomTitle.value;
-  // posterQuote.innerText = randomQuote.value;
-}
-// function generateRandomPoster() {
-//   var imageIndex = getRandomIndex(images);
-//   var titleIndex = getRandomIndex(titles);
-//   var quoteIndex = getRandomIndex(quotes);
-//   generatePoster( return images[imagesIndex], titles[titleIndex], quotes[quoteIndex]);
-// }
+  currentPoster = new Poster(images[getRandomIndex(images)],
+  titles[getRandomIndex(titles)],
+  quotes[getRandomIndex(quotes)]);
+};
+
+function showPoster() {
+  generateRandomPoster();
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+};
+
+// function openForm() {
+//   mainPosterPage.classList.toggle('hidden');
 //
-// function generatePoster() {
-//   currentPoster = new Poster(imageURL, title, quote);
-//   posterImage.src = currentPoster.imageURL;
-//   posterTitle.innerText = currentPoster.title;
-//   posterQuote.innerText = currentPoster.quote;
 // }
-
-// function indexValue(titles) {
-//   var indexNum = getRandomIndex(titles);
-//   return indexNum;
-// }
-
-// imageURL.innerText = currentPoster.imageURL;
-// title.innerText = currentPoster.title;
-// quote.innerText = currentPoster.quote;
-
-// function to return the value of the index from the getRandomIndex()
-
-// box.innerHTML = `
-//  <img>${images(indexNum)}</img>
-//  <h1>${titles(indexNum)}</h1>
-// `;`
