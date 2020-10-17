@@ -117,13 +117,15 @@ var currentPoster;
 // event listeners go here 👇
 
 window.addEventListener('load', showPoster)
+window.addEventListener('load', makeYourOwnPoster)
+//would we need this window function to load the new page for make your own?
 
 savePosterButton.addEventListener('click', savePoster)
 showSavedPostersButton.addEventListener('click', showSavedPosters)
 randomButton.addEventListener('click', showPoster)
-makeYourOwnPosterButton.addEventListener('click', makeYourOwnPoster)
+makeYourOwnPosterButton.addEventListener('click', showForm)
 showMyPosterButton.addEventListener('click', function)
-takeMeBackButton.addEventListener('click', function)
+takeMeBackButton.addEventListener('click', hideForm)
 
 // functions and event handlers go here 👇
 
@@ -148,17 +150,25 @@ function showPoster() { //why two functions here?
 };
 
 function savePoster() {
-
+  savedPosters.push('imageURL', 'title', 'quote');
 };
 
 function showSavedPosters() {
 
 };
 
+
+function showForm() {
+  document.getElementById('.poster-form').style.display="block";
+}
+
+function hideForm() {
+  document.getElementById('.poster-form').style.display="none";
+}
+
 function makeYourOwnPoster() {
-
+load form on window, hide main poster
 };
-
 // function openForm() {
 //   mainPosterPage.classList.toggle('hidden');
 //
