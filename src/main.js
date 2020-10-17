@@ -1,7 +1,15 @@
 // query selector variables go here 👇
+var form = document.querySelector(".poster-form");
+var mainPoster = document.querySelector(".main-poster");
+var savedPosters = document.querySelector(".saved-posters")
+
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+
+var formPosterImg = document.querySelector(".poster-image-url");
+var formTitle = document.querySelector(".poster-title");
+var formQuote = document.querySelector(".poster-quote");
 
 var showRandomBtn = document.querySelector(".show-random");
 var makePosterBtn = document.querySelector(".show-form");
@@ -11,9 +19,6 @@ var takeBackBtn = document.querySelector(".show-main");
 var backToMainBtn = document.querySelector(".back-to-main");
 var showMadePosterBtn = document.querySelector(".make-poster")
 
-var form = document.querySelector(".poster-form");
-var mainPoster = document.querySelector(".main-poster");
-var savedPosters = document.querySelector(".saved-posters")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -152,11 +157,17 @@ function makePoster() {
 function showMadePoster() {
   event.preventDefault();
   //save user input data into respective arrays (unshift)
+  //input.value = images(shift)
+  //input.value = titles(shift)
+  //input.value = qutoes(shift)
   //take user input for img, photo, quote for new Poster instance
-  //go to main poster view
-  //hide form view
+  form.classList.add("hidden");
+  mainPoster.classList.remove("hidden");
   //display user input poster (take array[0] for each )
   currentPoster = new Poster(images[0], titles[0], quotes[0]);
+  // posterImage.src = currentPoster.imageURL;
+  // posterTitle.innerText = currentPoster.title;
+  // posterQuote.innerText = currentPoster.quote
 }
 
 function showSavedPosters() {
@@ -171,3 +182,4 @@ function goToMain() {
   mainPoster.classList.remove("hidden"); 
   savedPosters.classList.add("hidden");
 }
+//refactor remove/add to toggle?
