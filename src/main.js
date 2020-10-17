@@ -3,6 +3,9 @@ var randomImage = document.querySelector("img");
 var randomTitle = document.querySelector("h1");
 var randomQuote = document.querySelector("h3");
 var buttonStart = document.querySelector(".show-random");
+var showFormButton = document.querySelector(".show-form");
+var mainPosterView = document.querySelector(".main-poster");
+var posterFormView = document.querySelector(".poster-form");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -106,7 +109,10 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-buttonStart.addEventListener("click", newPoster)
+buttonStart.addEventListener("click", newPoster);
+showFormButton.addEventListener("click",showForm);
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -122,4 +128,11 @@ function newPoster(){
   randomQuote.innerHTML = getRandomIndex(quotes);
   randomTitle.innerHTML = getRandomIndex(titles);
   randomImage.src = getRandomIndex(images);
+};
+
+function showForm() {
+  posterFormView.classList.remove("hidden");
+  mainPosterView.classList.add("hidden");
+
+  //.toggle will switch it back on and off like a light switch.
 };
