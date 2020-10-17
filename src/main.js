@@ -13,7 +13,8 @@ var backToMainButton = document.querySelector(".back-to-main");
 var inputImage = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
-//var showMyPosterButton = document.querySelector(".make-poster");
+var showMyPosterButton = document.querySelector(".make-poster");
+var savePosterButton = docunment.querySelector(".save-poster");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -123,7 +124,8 @@ makeOwnPosterButton.addEventListener('click', goToMakeOwnPosterForm);
 takeMeBackButton.addEventListener('click', goBackToMain);
 savedPosterButton.addEventListener('click', goToSavedPosters);
 backToMainButton.addEventListener('click', goBackToMain);
-//showMyPosterButton.addEventListener('click', showMyPoster);
+showMyPosterButton.addEventListener('click', showMyPoster);
+savePosterButton.addEventListener('click', savePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
