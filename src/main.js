@@ -100,22 +100,31 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+
+// main poster query selectors
 var mainPoster = document.querySelector('.main-poster');
 var poster = document.querySelector('.poster');
+var randomButton = document.querySelector('.show-random');
+var savePosterButton = document.querySelector('.save-poster');
+var showSavedButton = document.querySelector('.show-saved');
+var makePosterButton = document.querySelector('.show-form');
+
+// poster form query selectors
 var posterForm = document.querySelector('.poster-form');
+var showMain = document.querySelector('.show-main');
 
 //above will allow us to modify the DOM element section with the class poster-Form
 
 
 // event listeners go here 👇
-var randomButton = document.querySelector('.show-random');
+// main poster event listeners
 randomButton.addEventListener('click', createRandomImage);
-var savePosterButton = document.querySelector('.save-poster');
 savePosterButton.addEventListener('click', createRandomImage);
-var showSavedButton = document.querySelector('.show-saved');
 showSavedButton.addEventListener('click', createRandomImage);
-var makePosterButton = document.querySelector('.show-form');
 makePosterButton.addEventListener('click', showPosterForm);
+// poster form event listeners
+showMain.addEventListener('click', showMainPoster);
+
 // pass in the correct function/parameters
 
 
@@ -125,6 +134,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// main poster functions
 function createRandomImage() {
   var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
@@ -134,13 +144,20 @@ function createRandomImage() {
   <h1 class="poster-title">${randomTitle}</h1>
   <h3 class="poster-quote">${randomQuote}</h3>
   `
-}
+};
 
 function showPosterForm() {
   posterForm.classList.remove('hidden');
   mainPoster.classList.add('hidden');
-}
+};
 //above function is adding class to DOM element, allowing CSS to manipulate
+
+//poster form functions
+function showMainPoster() {
+  posterForm.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+};
+
 //!Remember: double-check nested elements!
 
 createRandomImage();
