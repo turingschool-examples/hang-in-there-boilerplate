@@ -10,6 +10,11 @@ var showSavedButton = document.querySelector(".show-saved");
 var savedPostersView = document.querySelector(".saved-posters");
 var showMainButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+var imageUrlInput = document.querySelector("#poster-image-url");
+var motivationalTitleInput = document.querySelector("#poster-title");
+var motivationalQuoteInput = document.querySelector("#poster-quote");
+var showPosterButton = document.querySelector(".make-poster");
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -118,6 +123,7 @@ showFormButton.addEventListener("click", showForm);
 showSavedButton.addEventListener("click", showSaved);
 showMainButton.addEventListener("click", goBackToMain);
 backToMainButton.addEventListener("click", goBackToMain);
+showPosterButton.addEventListener("click", userDataInput);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -149,3 +155,9 @@ function showSaved() {
 function goBackToMain() {
   mainPosterView.classList.remove("hidden");
 };
+
+function userDataInput() {
+  randomImage.innerHTML = imageUrlInput.value;
+  randomTitle.innerHTML = motivationalTitleInput.value;
+  randomQuote.innerHTML = motivationalQuoteInput.value;
+}
