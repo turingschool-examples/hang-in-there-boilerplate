@@ -28,7 +28,9 @@ var makePoster = document.querySelector('.make-poster');
 
 var titleInput = document.querySelector('#poster-title');
 
-var imageInput = document.getElementById('.poster-image-url');
+var quoteInput = document.querySelector('#poster-quote');
+
+var imageInput = document.querySelector('#poster-image-url');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -138,7 +140,10 @@ showForm.addEventListener('click', openForm);
 showMain.addEventListener('click', backToHome);
 showSaved.addEventListener('click', openSavedPosters);
 backToMain.addEventListener('click', backToHome);
-makePoster.addEventListener('click', makePoster);
+makePoster.addEventListener('click', function(event) {
+  event.preventDefault();
+  showMyPoster();
+});
 
 // functions and event handlers go here 👇
 
@@ -147,9 +152,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-window.onload = function() {
-  reloadPoster();
-}
+reloadPoster();
 
 function reloadPoster() {
   titlesIndex = getRandomIndex(titles);
@@ -161,29 +164,31 @@ function reloadPoster() {
   imagesIndex = getRandomIndex(images);
   posterImg.src = images[imagesIndex];
 
-  console.log(posterTitle.innerText);
-  console.log(posterQuote.innerText);
-  console.log(posterImg.src);
 }
 
 
 
 function openForm() {
-  mainPoster.classList.toggle('hidden');
-  posterForm.classList.toggle('hidden');
+  mainPoster.classList.add('hidden');
+  posterForm.classList.remove('hidden');
 }
 
 function backToHome() {
-  mainPoster.classList.toggle('hidden');
-  posterForm.classList.toggle('hidden');
+  mainPoster.classList.remove('hidden');
+  posterForm.classList.add('hidden');
 }
 
 function openSavedPosters() {
-  mainPoster.classList.toggle('hidden');
-  savedPosters.classList.toggle('hidden');
+  mainPoster.classList.add('hidden');
+  savedPosters.classList.remove('hidden');
 }
 
 function showMyPoster() {
+  debugger
+  console.log(imageInput);
+  
+    posterImg.src = imageInput.value;
     posterTitle.innerText = titleInput.value;
-    debugger
+    posterQuote.innerText = quoteInput.value
+    backToHome();
 }
