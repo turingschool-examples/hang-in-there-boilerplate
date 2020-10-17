@@ -1,7 +1,16 @@
 // query selector variables go here 👇
+var mainPage = document.querySelector(".main-poster");
 var mainPageImage = document.querySelector(".poster-img");
 var mainPageTitle = document.querySelector(".poster-title");
 var mainPageQuote = document.querySelector(".poster-quote");
+var showRandomButton = document.querySelector(".show-random");
+var makeOwnPosterForm = document.querySelector(".poster-form");
+var makeOwnPosterButton = document.querySelector(".show-form");
+var takeMeBackButton = document.querySelector(".show-main");
+var savedPostersPage = document.querySelector(".saved-posters");
+var savedPosterButton = document.querySelector(".show-saved");
+var backToMainButton = document.querySelector(".back-to-main");
+
 
 // we've provided you with some data to work with 👇
 var images = [
