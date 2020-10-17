@@ -1,9 +1,9 @@
 // query selector variables go here 👇
 
 // Show Random Poster Query Selectors:
-var testTitle = document.querySelector(".poster-title");
-var testQuote = document.querySelector(".poster-quote");
-var testImage = document.querySelector(".poster-img");
+var mainPosterTitle = document.querySelector(".poster-title");
+var mainPosterQuote = document.querySelector(".poster-quote");
+var mainPosterImage = document.querySelector(".poster-img");
 var showRandomPosterButton = document.querySelector(".show-random");
 
 // Show Saved Posters & Make Your Own Poster Query Selectors:
@@ -12,8 +12,14 @@ var makeYourOwnButton = document.querySelector(".show-form");
 var showFormScreen = document.querySelector(".poster-form");
 var showSavedButton = document.querySelector(".show-saved");
 var savedPostersScreen = document.querySelector(".saved-posters");
-var nevermind = document.querySelector(".show-main");
-var backToMain = document.querySelector(".back-to-main");
+var nevermindButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
+
+// Creating a new poster:
+var showMyPosterButton = document.querySelector(".make-poster");
+var posterImageUrlInput = document.querySelector("#poster-image-url");
+var posterTitleInput = document.querySelector("#poster-title"); // we have a class and an id of the same name
+var posterQuoteInput = document.querySelector("#poster-quote");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -117,35 +123,27 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-showRandomPosterButton.addEventListener("click", randomPosterButton);
+window.addEventListener("load", randomizePoster);
+showRandomPosterButton.addEventListener("click", randomizePoster);
 showSavedButton.addEventListener("click", bringUpSaved);
 makeYourOwnButton.addEventListener("click", bringUpForm);
-nevermind.addEventListener("click", formBackToMain);
-backToMain.addEventListener("click", savedBackToMain);
+nevermindButton.addEventListener("click", formBackToMain);
+backToMainButton.addEventListener("click", savedBackToMain);
+showMyPosterButton.addEventListener("click", saveAPoster);
 
 // functions and event handlers go here 👇
-function randomPosterButton(array) {
-  array[Math.floor(Math.random() * array.length)];
+function randomizePoster() {
   var newTitle = getRandomIndex(titles);
-  testTitle.innerText = newTitle;
+  mainPosterTitle.innerText = newTitle;
   var newQuote = getRandomIndex(quotes);
-  testQuote.innerText = newQuote;
+  mainPosterQuote.innerText = newQuote;
   var newImage = getRandomIndex(images);
-  testImage.src = newImage;
-}
+  mainPosterImage.src = newImage;
+};
 
 function getRandomIndex(array) {
   return array[Math.floor(Math.random() * array.length)];
-}
-
-window.onload = function() {
-  var newTitle = getRandomIndex(titles);
-  testTitle.innerText = newTitle;
-  var newQuote = getRandomIndex(quotes);
-  testQuote.innerText = newQuote;
-  var newImage = getRandomIndex(images);
-  testImage.src = newImage;
-}
+};
 
 function bringUpSaved() {
   mainPoster.classList.add("hidden");
@@ -165,4 +163,16 @@ function formBackToMain() {
 function savedBackToMain() {
   mainPoster.classList.remove("hidden");
   savedPostersScreen.classList.add("hidden");
+};
+
+function saveAPoster() {
+  event.preventDefault();
+  images.push(posterImageUrlInput.value);
+  titles.push(posterTitleInput.value);
+  quotes.push(posterQuoteInput.value);
+  currentPoster = new Poster(posterImageUrlInput.value, posterTitleInput.value, posterQuoteInput.value);
+  formBackToMain();
+  mainPosterTitle.innerText = currentPoster.title;
+  mainPosterQuote.innerText = currentPoster.quote;
+  mainPosterImage.src = currentPoster.imageURL;
 };
