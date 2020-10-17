@@ -119,6 +119,7 @@ showRandomButton.addEventListener('click', mainPagePoster);
 makeOwnPosterButton.addEventListener('click', goToMakeOwnPosterForm);
 takeMeBackButton.addEventListener('click', goBackToMain);
 savedPosterButton.addEventListener('click', goToSavedPosters);
+backToMainButton.addEventListener('click', goBackToMain);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
