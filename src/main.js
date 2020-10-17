@@ -10,7 +10,9 @@ var takeMeBackButton = document.querySelector(".show-main");
 var savedPostersPage = document.querySelector(".saved-posters");
 var savedPosterButton = document.querySelector(".show-saved");
 var backToMainButton = document.querySelector(".back-to-main");
-
+var inputImage = document.querySelector("#poster-image-url");
+var inputTitle = document.querySelector("#poster-title");
+var inputQuote = document.querySelector("#poster-quote");
 
 // we've provided you with some data to work with 👇
 var images = [
