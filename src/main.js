@@ -9,6 +9,7 @@ var makeOwnPosterButton = document.querySelector(".show-form");
 var takeMeBackButton = document.querySelector(".show-main");
 var savedPostersPage = document.querySelector(".saved-posters");
 var savedPosterButton = document.querySelector(".show-saved");
+var backToMainButton = document.querySelector(".back-to-main");
 
 
 // we've provided you with some data to work with 👇
