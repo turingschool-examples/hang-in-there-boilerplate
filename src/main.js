@@ -1,7 +1,7 @@
 // query selector variables go here 👇
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querSelector('.poster-quote');
+var posterQuote = document.querySelector('.poster-quote');
 var randomButton = document.querySelector('.show-random');
 // var mainPosterPage = document.querySelector('.main-poster');
 // var posterForm = document.querySelector('.poster-form');
@@ -110,17 +110,9 @@ var currentPoster;
 
 // event listeners go here 👇
 
-window.addEventListener('load', function() {
-  getRandomIndex()
-  generateRandomPoster()
-  showPoster()
-})
+window.addEventListener('load', showPoster)
 
-randomButton.addEventListener('click', function() {
-  getRandomIndex()
-  generateRandomPoster()
-  showPoster()
-})
+randomButton.addEventListener('click', showPoster)
 
 // functions and event handlers go here 👇
 
@@ -138,6 +130,7 @@ function generateRandomPoster() {
 };
 
 function showPoster() {
+  generateRandomPoster();
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
