@@ -114,7 +114,10 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+Window.onLoad = mainPagePoster();
+showRandomButton.addEventListener('click', mainPagePoster);
+makeOwnPosterButton.addEventListener('click', goToMakeOwnPosterForm);
+takeMeBackButton.addEventListener('click', goBackToMain);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -128,4 +131,14 @@ function mainPagePoster() {
   return currenPoster = new Poster(mainPageImage.src, mainPageTitle.innerText, mainPageQuote.innerText)
 };
 
-mainPagePoster();
+function goToMakeOwnPosterForm() {
+  mainPage.hidden = true;
+  makeOwnPosterForm.className = "poster-form";
+};
+
+function goBackToMain() {
+  makeOwnPosterForm.className += " hidden";
+  savedPostersPage.className += " hidden";
+  mainPage.hidden = false;
+  mainPagePoster();
+};
