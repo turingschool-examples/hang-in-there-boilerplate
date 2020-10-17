@@ -110,8 +110,7 @@ var currentPoster;
 
 // event listeners go here 👇
 buttonStart.addEventListener("click", newPoster);
-showFormButton.addEventListener("click",showForm);
-
+showFormButton.addEventListener("click", showForm);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -124,14 +123,7 @@ randomImage.src = getRandomIndex(images);
 randomTitle.innerHTML = getRandomIndex(titles);
 randomQuote.innerHTML = getRandomIndex(quotes);
 
-=======
-
-var buttonStart = document.querySelector('.show-random');
-
-buttonStart.addEventListener('click', newPoster);
-
-
-function newPoster(){
+function newPoster() {
   randomQuote.innerHTML = getRandomIndex(quotes);
   randomTitle.innerHTML = getRandomIndex(titles);
   randomImage.src = getRandomIndex(images);
@@ -140,6 +132,4 @@ function newPoster(){
 function showForm() {
   posterFormView.classList.remove("hidden");
   mainPosterView.classList.add("hidden");
-
-  //.toggle will switch it back on and off like a light switch.
 };
