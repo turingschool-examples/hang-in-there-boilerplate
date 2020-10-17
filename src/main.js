@@ -120,9 +120,12 @@ function randomizePoster() {
     images[getRandomIndex(images)],
     titles[getRandomIndex(titles)],
     quotes[getRandomIndex(quotes)]
-  );
-  }
-}
-function showRandomPoster() {
+  )
+};
 
-}
+function showRandomPoster() {
+  randomizePoster();
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote
+};
