@@ -5,7 +5,9 @@ var posterQuote = document.querySelector(".poster-quote");
 
 var showRandomPosterBtn = document.querySelector(".show-random");
 var makePosterBtn = document.querySelector(".show-form");
-
+var showSavedBtn = document.querySelector(".save-poster");
+var takeBackBtn = document.querySelector(".show-main");
+var backToMainBtn = document.querySelector(".back-to-main");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -111,7 +113,9 @@ var currentPoster;
 window.addEventListener('load', showRandomPoster);
 showRandomPosterBtn.addEventListener('click', showRandomPoster);
 makePosterBtn.addEventListener('click', makePoster);
-
+showSavedBtn.addEventListener('click', showSavedPosters);
+takeBackBtn.addEventListener('click', goToMain);
+backToMainBtn.addEventListener('click', goToMain);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -134,5 +138,17 @@ function showRandomPoster() {
 };
 
 function makePoster() {
+  //see FORM
+  //hide main poster
+}
 
+function showSavedPosters() {
+  //see saved Posters
+  //hide main poster
+}
+
+function goToMain() {
+  //only see main poster section
+  //hide saved posters
+  //hide form
 }
