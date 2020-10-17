@@ -129,7 +129,7 @@ viewSaved.addEventListener('click', showStored);
 nevermind.addEventListener('click', goHome);
 back.addEventListener('click', backHome);
 displayPoster.addEventListener('click', makeUserPoster);
-savePoster.addEventListener('click', storePoster)
+savePoster.addEventListener('click', storePoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -181,7 +181,14 @@ function makeUserPoster() {
 function storePoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
-  } else{
+    var littlePosters = `<article class="mini-poster">
+          <img class="mini-poster" src=${currentPoster.imageURL} alt="nothin' to see here">
+          <h2 class="poster-title">${currentPoster.title}</h2>
+          <h4 class="poster-quote">${currentPoster.quote}</h4>
+        </article>`;
+    imgGallery.innerHTML += littlePosters;
+  } else {
     alert('You already saved that poster!')
-  }
+  };
+
   };
