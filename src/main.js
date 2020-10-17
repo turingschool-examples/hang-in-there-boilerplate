@@ -4,7 +4,7 @@ var mainPageImage = document.querySelector(".poster-img");
 var mainPageTitle = document.querySelector(".poster-title");
 var mainPageQuote = document.querySelector(".poster-quote");
 var showRandomButton = document.querySelector(".show-random");
-var makeOwnPosterForm = document.querySelector("form");
+var makeOwnPosterForm = document.querySelector(".poster-form");
 var makeOwnPosterButton = document.querySelector(".show-form");
 var takeMeBackButton = document.querySelector(".show-main");
 var savedPostersPage = document.querySelector(".saved-posters");
@@ -14,8 +14,6 @@ var inputImage = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
 var showMyPosterButton = document.querySelector(".make-poster");
-var savePosterButton = document.querySelector(".save-poster");
-var savedGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -126,7 +124,6 @@ takeMeBackButton.addEventListener('click', goBackToMain);
 savedPosterButton.addEventListener('click', goToSavedPosters);
 backToMainButton.addEventListener('click', goBackToMain);
 showMyPosterButton.addEventListener('click', showMyPoster);
-savePosterButton.addEventListener('click', savePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -139,7 +136,7 @@ function getRandomPoster() {
   mainPageImage.src = images[getRandomIndex(images)];
   mainPageTitle.innerText = titles[getRandomIndex(titles)];
   mainPageQuote.innerText = quotes[getRandomIndex(quotes)];
-  currenPoster = new Poster(mainPageImage.src, mainPageTitle.innerText, mainPageQuote.innerText)
+  currentPoster = new Poster(mainPageImage.src, mainPageTitle.innerText, mainPageQuote.innerText)
 };
 
 function goToMakeOwnPosterForm() {
@@ -159,24 +156,18 @@ function goToSavedPosters() {
   savedPostersPage.classList.remove("hidden");
 };
 
-
+function createMyPoster() {
+  mainPageImage.src = inputImage.value;
+  mainPageTitle.innerText = inputTitle.value;
+  mainPageQuote.innerText = inputQuote.value;
+  return currentPoster = new Poster(mainPageImage.src, mainPageTitle.innerText, mainPageQuote.innerText);
+};
 
 function showMyPoster() {
+  event.preventDefault();
   mainPage.classList.remove("hidden");
+  createMyPoster();
+  makeOwnPosterForm.classList.add("hidden");
+};
 
-}
-
-function savePoster(){
-  if (!savedPosters.includes(currentPoster)) {
-    savedPosters.push(currentPoster);
-  }
-}
-
-// //function createGrid() {
-//   savedGrid.innerHTML = '"";
-//   for (var i = 0; i < savedPosters.length; i++) {
-//     var miniPoster?? = `I want to insert information using imageURL, title, quote`
-//   }
-// }
-
-//getRandomPoster();
+getRandomPoster();
