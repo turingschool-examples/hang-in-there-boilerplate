@@ -189,12 +189,11 @@ function showMyPoster() {
 
 function saveThisPoster() {
   savedPosters.push(storeNewPoster());
-  var i = savedPosters.length - 1
   savedPostersGrid.innerHTML += `
   <section class=mini-poster>
-    <img class="poster-img" src="${savedPosters[i].imageURL}">
-    <h1 class="poster-title">${savedPosters[i].title}</h1>
-    <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+    <img class="poster-img" src="${storeNewPoster().imageURL}">
+    <h1 class="poster-title">${storeNewPoster().title}</h1>
+    <h3 class="poster-quote">${storeNewPoster().quote}</h3>
   </section>
   `
 }
