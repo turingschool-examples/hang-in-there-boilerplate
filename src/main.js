@@ -15,7 +15,7 @@ var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
 var showMyPosterButton = document.querySelector(".make-poster");
 var savePosterButton = document.querySelector(".save-poster"); 
-
+var savedGrid = document.querySelector(".saved-poster-grid");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -155,8 +155,9 @@ function goBackToMain() {
 };
 
 function goToSavedPosters() {
-  mainPage.classList.add("hidden")
   savedPostersPage.classList.remove("hidden");
+  mainPage.classList.add("hidden");
+  createGrid();
 };
 
 function createMyPoster() {
@@ -179,12 +180,13 @@ function savePoster(){
   }
 }
 
-// //function createGrid() {
-//   savedGrid.innerHTML = '"";
-//   for (var i = 0; i < savedPosters.length; i++) {
-//     var miniPoster?? = `I want to insert information using imageURL, title, quote`
-//   }
-// }
+function createGrid() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    return savedGrid.innerHTML =
+            `<img class="mini-poster" src="${savedPosters[i].imageURL}" alt="saved poster">
+            <h2>${savedPosters[i].title}</h2>
+            <h4>${savedPosters[i].quote}</h4>`
+          }
+  };
 
 getRandomPoster();
->>>>>>> main
