@@ -7,6 +7,7 @@ var image = document.querySelector('img')
 //pages
 var posterForm = document.querySelector('.poster-form')
 var savedPostersPage = document.querySelector('.saved-posters')
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
 var mainPoster = document.querySelector('.main-poster')
 
 //buttons
@@ -16,6 +17,7 @@ var showMainButton = document.querySelector('.show-main')
 var backToMainButton = document.querySelector('.back-to-main')
 var showMyPosterButton = document.querySelector('.make-poster')
 var saveThisPosterButton = document.querySelector('.save-poster')
+var showAnotherRandomPosterButton = document.querySelector('.show-random')
 
 //CMC branch
 var showRandomPoster = document.querySelector('.show-random')
@@ -132,12 +134,12 @@ posterForm.style.display = "none"
 
 
 // event listeners go here 👇
+showAnotherRandomPosterButton.addEventListener('click', showRandomPoster);
 showFormButton.addEventListener('click', openForm);
 showSavedButton.addEventListener('click', openSavedPosters);
 showMainButton.addEventListener('click', showMainPoster);
 backToMainButton.addEventListener('click', showMainPoster);
 showMyPosterButton.addEventListener('click', showMyPoster);
-
 saveThisPosterButton.addEventListener('click', saveThisPoster);
 
 //CMC branch
@@ -155,10 +157,14 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-title.innerText = titles[getRandomIndex(titles)];
-quote.innerText = quotes[getRandomIndex(quotes)];
-image.src = images[getRandomIndex(images)];
+function showRandomPoster() {
+  var newPoster = new Poster(images[getRandomIndex(images)],titles[getRandomIndex(titles)],quotes[getRandomIndex(quotes)]);
+  title.innerText = newPoster.title;
+  image.src = newPoster.imageURL;
+  quote.innerText = newPoster.quote;
+}
 
+showRandomPoster()
 
 function openForm() {
   posterForm.style.display = "block"
@@ -176,7 +182,7 @@ function showMainPoster() {
   savedPostersPage.style.display = "none"
 }
 
-function storeNewPoster() {
+function storeCustomPoster() {
   images.push(inputImage.value);
   titles.push(inputTitle.value);
   quotes.push(inputQuote.value);
@@ -184,7 +190,7 @@ function storeNewPoster() {
 }
 
 function showMyPoster() {
-  var newPoster = storeNewPoster();
+  var newPoster = storeCustomPoster();
   title.innerText = newPoster.title;
   image.src = newPoster.imageURL;
   quote.innerText = newPoster.quote;
@@ -192,9 +198,15 @@ function showMyPoster() {
   posterForm.style.display = "none";
 }
 
-function saveThisPoster() {
-  savedPosters.push(storeNewPoster());
-  console.log(savedPosters);
+function saveCustomPoster() {
+  savedPosters.push(storeCustomPoster());
+  savedPostersGrid.innerHTML += `
+  <section class=mini-poster>
+    <img class="poster-img" src="${storeCustomPoster().imageURL}">
+    <h1 class="poster-title">${storeCustomPoster().title}</h1>
+    <h3 class="poster-quote">${storeCustomPoster().quote}</h3>
+  </section>
+  `
 }
 
 // CMC branch - Iteration 1 part 2
