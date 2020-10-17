@@ -14,6 +14,7 @@ var inputImage = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
 var showMyPosterButton = document.querySelector(".make-poster");
+var savePosterButton = document.querySelector(".save-poster"); 
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -124,6 +125,8 @@ takeMeBackButton.addEventListener('click', goBackToMain);
 savedPosterButton.addEventListener('click', goToSavedPosters);
 backToMainButton.addEventListener('click', goBackToMain);
 showMyPosterButton.addEventListener('click', showMyPoster);
+savePosterButton.addEventListener('click', savePoster); 
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -170,4 +173,18 @@ function showMyPoster() {
   makeOwnPosterForm.classList.add("hidden");
 };
 
+function savePoster(){
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+}
+
+// //function createGrid() {
+//   savedGrid.innerHTML = '"";
+//   for (var i = 0; i < savedPosters.length; i++) {
+//     var miniPoster?? = `I want to insert information using imageURL, title, quote`
+//   }
+// }
+
 getRandomPoster();
+>>>>>>> main
