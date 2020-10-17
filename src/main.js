@@ -190,5 +190,7 @@ function showMyPoster() {
     images.push(imageInput.value);
     titles.push(titleInput.value);
     quotes.push(quoteInput.value);
+    var newPoster = new Poster ('imageInput.value', 'titleInput.value', 'quoteInput.value');
+    savedPostersArray.push(newPoster);
     backToHome();
 }
