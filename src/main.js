@@ -5,7 +5,8 @@ var posterQuote = document.querySelector(".poster-quote");
 
 var showRandomPosterBtn = document.querySelector(".show-random");
 var makePosterBtn = document.querySelector(".show-form");
-var showSavedBtn = document.querySelector(".save-poster");
+var savePosterBtn = document.querySelector(".save-poster");
+var showSavedBtn = document.querySelector(".show-saved")
 var takeBackBtn = document.querySelector(".show-main");
 var backToMainBtn = document.querySelector(".back-to-main");
 
@@ -148,12 +149,14 @@ function makePoster() {
 }
 
 function showSavedPosters() {
-  savedPosters.classList.remove("hidden");
   mainPoster.classList.add("hidden"); 
+  form.classList.add("hidden");
+  savedPosters.classList.remove("hidden");
+
 }
 
 function goToMain() {
+  form.classList.add("hidden");
   mainPoster.classList.remove("hidden"); 
   savedPosters.classList.add("hidden");
-  form.classList.add("hidden");
 }
