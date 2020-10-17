@@ -155,6 +155,9 @@ function makePoster() {
 }
 
 function savePoster() {
+  images.unshift(formPosterImg.value);
+  titles.unshift(formTitle.value);
+  quotes.unshift(formQuote.value);
   savedPosters.unshift(currentPoster);
 }
 
@@ -183,7 +186,6 @@ function displaySavedPosters() {
   hideMainPoster(); 
   hideForm();
   showSavedPosters();
-
 }
 
 function goToMain() {
