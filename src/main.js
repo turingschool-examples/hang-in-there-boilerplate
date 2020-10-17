@@ -112,6 +112,7 @@ var makePosterButton = document.querySelector('.show-form');
 // poster form query selectors
 var posterForm = document.querySelector('.poster-form');
 var showMain = document.querySelector('.show-main');
+var savedPostersSection = document.querySelector('.saved-posters')
 
 //above will allow us to modify the DOM element section with the class poster-Form
 
@@ -120,7 +121,7 @@ var showMain = document.querySelector('.show-main');
 // main poster event listeners
 randomButton.addEventListener('click', createRandomImage);
 savePosterButton.addEventListener('click', createRandomImage);
-showSavedButton.addEventListener('click', createRandomImage);
+showSavedButton.addEventListener('click', showSavedPosters);
 makePosterButton.addEventListener('click', showPosterForm);
 // poster form event listeners
 showMain.addEventListener('click', showMainPoster);
@@ -149,6 +150,11 @@ function createRandomImage() {
 function showPosterForm() {
   posterForm.classList.remove('hidden');
   mainPoster.classList.add('hidden');
+};
+
+function showSavedPosters() {
+  mainPoster.classList.add('hidden');
+  savedPostersSection.classList.remove('hidden');
 };
 //above function is adding class to DOM element, allowing CSS to manipulate
 
