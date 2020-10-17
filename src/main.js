@@ -34,6 +34,10 @@ var imageInput = document.querySelector('#poster-image-url');
 
 var savePoster = document.querySelector('.save-poster');
 
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
+
+var poster = document.querySelector('.poster');
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -145,7 +149,7 @@ showSaved.addEventListener('click', openSavedPosters);
 backToMain.addEventListener('click', backToHome);
 makePoster.addEventListener('click', function(event) {
   event.preventDefault();
-  showMyPoster();
+  createMyPoster();
 });
 savePoster.addEventListener('click', saveCurrentPoster);
 
@@ -160,14 +164,10 @@ reloadPoster();
 
 function reloadPoster() {
   titlesIndex = getRandomIndex(titles);
-  posterTitle.innerText = titles[titlesIndex];
-
   quotesIndex = getRandomIndex(quotes);
-  posterQuote.innerText = quotes[quotesIndex];
-
   imagesIndex = getRandomIndex(images);
-  posterImg.src = images[imagesIndex];
-
+  currentPoster = new Poster (images[imagesIndex], titles[titlesIndex], quotes[quotesIndex]);
+  showMyPoster();
 }
 
 
@@ -183,19 +183,38 @@ function backToHome() {
 }
 
 function openSavedPosters() {
+  savedPostersGrid.innerHTML = '';
+  for (i = 0; i < savedPostersArray.length; i++) {
+  savedPostersGrid.innerHTML += `
+  <section class="mini-poster">
+    <article class="poster">
+      <img class="poster-img" src=${savedPostersArray[i].imageURL}>
+      <h2 class="poster-title">${savedPostersArray[i].title}</h2>
+      <h4 class="poster-quote">${savedPostersArray[i].quote}</h4>
+    </article>
+  </section>`
+
+}
   mainPoster.classList.add('hidden');
   savedPosters.classList.remove('hidden');
 }
 
-function showMyPoster() {
-    posterImg.src = imageInput.value;
-    posterTitle.innerText = titleInput.value;
-    posterQuote.innerText = quoteInput.value
+function createMyPoster() {
+  currentPoster = new Poster (imageInput.value, titleInput.value, quoteInput.value);
     images.push(imageInput.value);
     titles.push(titleInput.value);
     quotes.push(quoteInput.value);
-    currentPoster = new Poster ('imageInput.value', 'titleInput.value', 'quoteInput.value');
+    
+    showMyPoster();
     backToHome();
+}
+
+function showMyPoster() {
+  poster.innerHTML = `
+      <img class="poster-img" src=${currentPoster.imageURL}>
+      <h1 class="poster-title">${currentPoster.title}</h1>
+      <h3 class="poster-quote">${currentPoster.quote}</h3>
+      `;
 }
 
 function saveCurrentPoster(){
