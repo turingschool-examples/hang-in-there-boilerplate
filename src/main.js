@@ -112,7 +112,8 @@ var makePosterButton = document.querySelector('.show-form');
 // poster form query selectors
 var posterForm = document.querySelector('.poster-form');
 var showMain = document.querySelector('.show-main');
-var savedPostersSection = document.querySelector('.saved-posters')
+var savedPostersSection = document.querySelector('.saved-posters');
+var backToMain = document.querySelector('.back-to-main');
 
 //above will allow us to modify the DOM element section with the class poster-Form
 
@@ -125,7 +126,7 @@ showSavedButton.addEventListener('click', showSavedPosters);
 makePosterButton.addEventListener('click', showPosterForm);
 // poster form event listeners
 showMain.addEventListener('click', showMainPoster);
-
+backToMain.addEventListener('click', showMainPoster);
 // pass in the correct function/parameters
 
 
@@ -162,6 +163,7 @@ function showSavedPosters() {
 function showMainPoster() {
   posterForm.classList.add('hidden');
   mainPoster.classList.remove('hidden');
+  savedPostersSection.classList.add('hidden');
 };
 
 //!Remember: double-check nested elements!
