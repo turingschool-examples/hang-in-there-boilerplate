@@ -17,6 +17,7 @@ var showMainButton = document.querySelector('.show-main')
 var backToMainButton = document.querySelector('.back-to-main')
 var showMyPosterButton = document.querySelector('.make-poster')
 var saveThisPosterButton = document.querySelector('.save-poster')
+var showAnotherRandomPosterButton = document.querySelector('.show-random')
 
 //inputs
 var inputImage = document.querySelector('#poster-image-url')
@@ -130,12 +131,12 @@ posterForm.style.display = "none"
 
 
 // event listeners go here 👇
+showAnotherRandomPosterButton.addEventListener('click', showRandomPoster);
 showFormButton.addEventListener('click', openForm);
 showSavedButton.addEventListener('click', openSavedPosters);
 showMainButton.addEventListener('click', showMainPoster);
 backToMainButton.addEventListener('click', showMainPoster);
 showMyPosterButton.addEventListener('click', showMyPoster);
-
 saveThisPosterButton.addEventListener('click', saveThisPoster);
 
 // showMyPosterButton.addEventListener('click', () => {
@@ -150,10 +151,14 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-title.innerText = titles[getRandomIndex(titles)];
-quote.innerText = quotes[getRandomIndex(quotes)];
-image.src = images[getRandomIndex(images)];
+function showRandomPoster() {
+  var newPoster = new Poster(images[getRandomIndex(images)],titles[getRandomIndex(titles)],quotes[getRandomIndex(quotes)]);
+  title.innerText = newPoster.title;
+  image.src = newPoster.imageURL;
+  quote.innerText = newPoster.quote;
+}
 
+showRandomPoster()
 
 function openForm() {
   posterForm.style.display = "block"
@@ -171,7 +176,7 @@ function showMainPoster() {
   savedPostersPage.style.display = "none"
 }
 
-function storeNewPoster() {
+function storeCustomPoster() {
   images.push(inputImage.value);
   titles.push(inputTitle.value);
   quotes.push(inputQuote.value);
@@ -179,7 +184,7 @@ function storeNewPoster() {
 }
 
 function showMyPoster() {
-  var newPoster = storeNewPoster();
+  var newPoster = storeCustomPoster();
   title.innerText = newPoster.title;
   image.src = newPoster.imageURL;
   quote.innerText = newPoster.quote;
@@ -187,13 +192,13 @@ function showMyPoster() {
   posterForm.style.display = "none";
 }
 
-function saveThisPoster() {
-  savedPosters.push(storeNewPoster());
+function saveCustomPoster() {
+  savedPosters.push(storeCustomPoster());
   savedPostersGrid.innerHTML += `
   <section class=mini-poster>
-    <img class="poster-img" src="${storeNewPoster().imageURL}">
-    <h1 class="poster-title">${storeNewPoster().title}</h1>
-    <h3 class="poster-quote">${storeNewPoster().quote}</h3>
+    <img class="poster-img" src="${storeCustomPoster().imageURL}">
+    <h1 class="poster-title">${storeCustomPoster().title}</h1>
+    <h3 class="poster-quote">${storeCustomPoster().quote}</h3>
   </section>
   `
 }
