@@ -7,6 +7,7 @@ var image = document.querySelector('img')
 //pages
 var posterForm = document.querySelector('.poster-form')
 var savedPostersPage = document.querySelector('.saved-posters')
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
 var mainPoster = document.querySelector('.main-poster')
 
 //buttons
@@ -188,5 +189,12 @@ function showMyPoster() {
 
 function saveThisPoster() {
   savedPosters.push(storeNewPoster());
-  console.log(savedPosters);
+  var i = savedPosters.length - 1
+  savedPostersGrid.innerHTML += `
+  <section class=mini-poster>
+    <img class="poster-img" src="${savedPosters[i].imageURL}">
+    <h1 class="poster-title">${savedPosters[i].title}</h1>
+    <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+  </section>
+  `
 }
