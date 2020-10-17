@@ -1,18 +1,24 @@
 // query selector variables go here 👇
+var form = document.querySelector(".poster-form");
+var mainPoster = document.querySelector(".main-poster");
+var savedPosters = document.querySelector(".saved-posters")
+
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 
-var showRandomPosterBtn = document.querySelector(".show-random");
+var formPosterImg = document.querySelector("#poster-image-url");
+var formTitle = document.querySelector("#poster-title");
+var formQuote = document.querySelector("#poster-quote");
+
+var showRandomBtn = document.querySelector(".show-random");
 var makePosterBtn = document.querySelector(".show-form");
 var savePosterBtn = document.querySelector(".save-poster");
 var showSavedBtn = document.querySelector(".show-saved")
 var takeBackBtn = document.querySelector(".show-main");
 var backToMainBtn = document.querySelector(".back-to-main");
+var showMadePosterBtn = document.querySelector(".make-poster")
 
-var form = document.querySelector(".poster-form");
-var mainPoster = document.querySelector(".main-poster");
-var savedPosters = document.querySelector(".saved-posters")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -115,15 +121,15 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', showRandomPoster);
-showRandomPosterBtn.addEventListener('click', showRandomPoster);
-makePosterBtn.addEventListener('click', makePoster);
-showSavedBtn.addEventListener('click', showSavedPosters);
-takeBackBtn.addEventListener('click', goToMain);
-backToMainBtn.addEventListener('click', goToMain);
+window.addEventListener("load", displayRandomPoster);
+showRandomBtn.addEventListener("click", displayRandomPoster);
+makePosterBtn.addEventListener("click", makePoster);
+showSavedBtn.addEventListener("click", displaySavedPosters);
+takeBackBtn.addEventListener("click", goToMain);
+backToMainBtn.addEventListener("click", goToMain);
+showMadePosterBtn.addEventListener("click", displayMadePoster)
 
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -136,27 +142,71 @@ function randomizePoster() {
   )
 };
 
-function showRandomPoster() {
-  randomizePoster();
+function displayPoster() {
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote
+}
+function displayRandomPoster() {
+  randomizePoster();
+  displayPoster();
 };
 
 function makePoster() {
-  form.classList.remove("hidden");
-  mainPoster.classList.add("hidden"); 
+  showForm();
+  hideMainPoster(); 
 }
 
-function showSavedPosters() {
-  mainPoster.classList.add("hidden"); 
-  form.classList.add("hidden");
-  savedPosters.classList.remove("hidden");
+function savePoster() {
+  savedPosters.unshift(currentPoster);
+}
+function saveUserInput() {
+  images.unshift(formPosterImg.value);
+  titles.unshift(formTitle.value);
+  quotes.unshift(formQuote.value);
+}
+function displayMadePoster() {
+  event.preventDefault();
+  currentPoster = new Poster(
+    formPosterImg.value,
+    formTitle.value,
+    formQuote.value
+  );
+  saveUserInput();
+  savePoster();
+  displayPoster();
+  showMainPoster();
+  hideForm();
+  //clear input fields function?
+}
 
+function displaySavedPosters() {
+  hideMainPoster(); 
+  hideForm();
+  showSavedPosters();
 }
 
 function goToMain() {
+  hideForm();
+  showMainPoster();
+  hideSavedPosters();
+}
+//refactor remove/add to toggle?
+function showForm() {
+  form.classList.remove("hidden");
+}
+function hideForm() {
   form.classList.add("hidden");
-  mainPoster.classList.remove("hidden"); 
+}
+function showMainPoster() {
+  mainPoster.classList.remove("hidden");
+}
+function hideMainPoster() {
+  mainPoster.classList.add("hidden"); 
+}
+function showSavedPosters() {
+  savedPosters.classList.remove("hidden");
+}
+function hideSavedPosters() {
   savedPosters.classList.add("hidden");
 }
