@@ -3,12 +3,13 @@ var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 
-var showRandomPosterBtn = document.querySelector(".show-random");
+var showRandomBtn = document.querySelector(".show-random");
 var makePosterBtn = document.querySelector(".show-form");
 var savePosterBtn = document.querySelector(".save-poster");
 var showSavedBtn = document.querySelector(".show-saved")
 var takeBackBtn = document.querySelector(".show-main");
 var backToMainBtn = document.querySelector(".back-to-main");
+var showMadePosterBtn = document.querySelector(".make-poster")
 
 var form = document.querySelector(".poster-form");
 var mainPoster = document.querySelector(".main-poster");
@@ -115,15 +116,15 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', showRandomPoster);
-showRandomPosterBtn.addEventListener('click', showRandomPoster);
-makePosterBtn.addEventListener('click', makePoster);
-showSavedBtn.addEventListener('click', showSavedPosters);
-takeBackBtn.addEventListener('click', goToMain);
-backToMainBtn.addEventListener('click', goToMain);
+window.addEventListener("load", showRandomPoster);
+showRandomBtn.addEventListener("click", showRandomPoster);
+makePosterBtn.addEventListener("click", makePoster);
+showSavedBtn.addEventListener("click", showSavedPosters);
+takeBackBtn.addEventListener("click", goToMain);
+backToMainBtn.addEventListener("click", goToMain);
+showMadePosterBtn.addEventListener("click", showMadePoster)
 
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -146,6 +147,16 @@ function showRandomPoster() {
 function makePoster() {
   form.classList.remove("hidden");
   mainPoster.classList.add("hidden"); 
+}
+
+function showMadePoster() {
+  event.preventDefault();
+  //save user input data into respective arrays (unshift)
+  //take user input for img, photo, quote for new Poster instance
+  //go to main poster view
+  //hide form view
+  //display user input poster (take array[0] for each )
+  currentPoster = new Poster(images[0], titles[0], quotes[0]);
 }
 
 function showSavedPosters() {
