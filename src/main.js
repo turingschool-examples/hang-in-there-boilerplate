@@ -123,6 +123,7 @@ makeOwnPosterButton.addEventListener('click', goToMakeOwnPosterForm);
 takeMeBackButton.addEventListener('click', goBackToMain);
 savedPosterButton.addEventListener('click', goToSavedPosters);
 backToMainButton.addEventListener('click', goBackToMain);
+showMyPosterButton.addEventListener('click', showMyPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
