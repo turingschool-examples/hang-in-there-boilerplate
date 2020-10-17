@@ -7,7 +7,8 @@ var showRandomButton = document.querySelector(".show-random");
 var makeOwnPosterForm = document.querySelector(".poster-form");
 var makeOwnPosterButton = document.querySelector(".show-form");
 var takeMeBackButton = document.querySelector(".show-main");
-var savedPostersPage = document.querySelector(".saved-posters")
+var savedPostersPage = document.querySelector(".saved-posters");
+var savedPosterButton = document.querySelector(".show-saved");
 
 
 // we've provided you with some data to work with 👇
