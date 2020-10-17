@@ -154,6 +154,10 @@ function makePoster() {
   hideMainPoster(); 
 }
 
+function savePoster() {
+  savedPosters.unshift(currentPoster);
+}
+
 function displayMadePoster() {
   event.preventDefault();
 
@@ -163,7 +167,7 @@ function displayMadePoster() {
     formQuote.value
   );
 
-  savedPosters.unshift(currentPoster);
+  savePoster();
 
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
@@ -171,6 +175,7 @@ function displayMadePoster() {
 
   showMainPoster();
   hideForm();
+  //clear input fields function?
 
 }
 
