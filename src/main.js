@@ -184,11 +184,11 @@ function openSavedPosters() {
 }
 
 function showMyPoster() {
-  debugger
-  console.log(imageInput);
-  
     posterImg.src = imageInput.value;
     posterTitle.innerText = titleInput.value;
     posterQuote.innerText = quoteInput.value
+    images.push(imageInput.value);
+    titles.push(titleInput.value);
+    quotes.push(quoteInput.value);
     backToHome();
 }
