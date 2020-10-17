@@ -1,7 +1,7 @@
 // query selector variables go here 👇
-var randomImage = document.querySelector("img");
-var randomTitle = document.querySelector("h1");
-var randomQuote = document.querySelector("h3");
+var displayedImage = document.querySelector("img");
+var displayedTitle = document.querySelector("h1");
+var displayedQuote = document.querySelector("h3");
 var buttonStart = document.querySelector(".show-random");
 var showFormButton = document.querySelector(".show-form");
 var mainPosterView = document.querySelector(".main-poster");
@@ -15,20 +15,17 @@ var motivationalTitleInput = document.querySelector("#poster-title");
 var motivationalQuoteInput = document.querySelector("#poster-quote");
 var showPosterButton = document.querySelector(".make-poster");
 var saveMyPosterButton = document.querySelector(".save-poster");
-// var newUserPoster = new Poster (imageURL, title, quote);
+
 
 //Variabels we created for poster form function(?)
-function makeNewUserPoster() {
-var inputImage = imageUrlInput.value;
-var inputTitle = motivationalTitleInput.value;
-var inputQuote = motivationalQuoteInput.value;
 
-images.push = inputImage
-titles.push = inputTitle
-quote.push = inputQuote
+
+// images.push = inputImage
+// titles.push = inputTitle
+// quote.push = inputQuote
 //innerHTML?
 
-}
+
 
 
 
@@ -139,7 +136,7 @@ showFormButton.addEventListener("click", showForm);
 showSavedButton.addEventListener("click", showSaved);
 showMainButton.addEventListener("click", goBackToMain);
 backToMainButton.addEventListener("click", goBackToMain);
-showPosterButton.addEventListener("click", testForUsage);
+showPosterButton.addEventListener("click", userDataInput);
 // saveMyPoster.addEventListener("click", savesCurrentPoster);
 
 // functions and event handlers go here 👇
@@ -149,14 +146,14 @@ function getRandomIndex(array) {
   return array[Math.floor(Math.random() * array.length)]
 };
 
-randomImage.src = getRandomIndex(images);
-randomTitle.innerHTML = getRandomIndex(titles);
-randomQuote.innerHTML = getRandomIndex(quotes);
+displayedImage.src = getRandomIndex(images);
+displayedTitle.innerHTML = getRandomIndex(titles);
+displayedQuote.innerHTML = getRandomIndex(quotes);
 
 function newPoster() {
-  randomQuote.innerHTML = getRandomIndex(quotes);
-  randomTitle.innerHTML = getRandomIndex(titles);
-  randomImage.src = getRandomIndex(images);
+  displayedQuote.innerHTML = getRandomIndex(quotes);
+  displayedTitle.innerHTML = getRandomIndex(titles);
+  displayedImage.src = getRandomIndex(images);
 };
 
 function showForm() {
@@ -173,10 +170,35 @@ function goBackToMain() {
   mainPosterView.classList.remove("hidden");
 };
 
+function userDataInput() {
+  event.preventDefault()
+  var inputImage = imageUrlInput.value;
+  var inputTitle = motivationalTitleInput.value;
+  var inputQuote = motivationalQuoteInput.value;
+  var currentPoster = new Poster(inputImage, inputTitle, inputQuote);
+  mainPosterView.classList.remove("hidden");
+  posterFormView.classList.add("hidden");
+  console.log(currentPoster);
+  displayedImage.src = inputImage;
+  displayedTitle.innerHTML = inputTitle;
+  displayedQuote.innerHTML = inputQuote;
+};
+
+
+
+
+
+
+
+// function showCreatedPoster() {
+//   displayedImage.src =
+// }
+// displayedImage.src = userDataInput();
+
 // function userDataInput() {
-//   randomImage.innerHTML = imageUrlInput.value;
-//   randomTitle.innerHTML = motivationalTitleInput.value;
-//   randomQuote.innerHTML = motivationalQuoteInput.value;
+//   displayedImage.innerHTML = imageUrlInput.value;
+//   displayedTitle.innerHTML = motivationalTitleInput.value;
+//   displayedQuote.innerHTML = motivationalQuoteInput.value;
 // };
 
 // function showMyNewPoster() {
@@ -187,7 +209,7 @@ function goBackToMain() {
 //
 // }
 function testForUsage() {
-  console.log(motivationalTitleInput.innerHTML = randomTitle.value);
+  console.log(motivationalTitleInput.innerHTML = displayedTitle.value);
 }
 
 
