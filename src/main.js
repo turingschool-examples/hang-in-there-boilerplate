@@ -19,11 +19,11 @@ var posterQuote = document.querySelector('.poster-quote');
 
 var makePoster = document.querySelector('.make-poster');
 
-var savedPosters = document.querySelector('.saved-posters hidden');
+var savedPosters = document.querySelector('.saved-posters');
 
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
-var posterForm = document.querySelector('.poster-form hidden');
+var posterForm = document.querySelector('.poster-form');
 
 var posterImageURL = document.querySelector('.poster-image-url');
 
