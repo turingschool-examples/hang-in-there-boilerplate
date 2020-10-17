@@ -121,13 +121,13 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener("load", showRandomPoster);
-showRandomBtn.addEventListener("click", showRandomPoster);
+window.addEventListener("load", displayRandomPoster);
+showRandomBtn.addEventListener("click", displayRandomPoster);
 makePosterBtn.addEventListener("click", makePoster);
-showSavedBtn.addEventListener("click", showSavedPosters);
+showSavedBtn.addEventListener("click", displaySavedPosters);
 takeBackBtn.addEventListener("click", goToMain);
 backToMainBtn.addEventListener("click", goToMain);
-showMadePosterBtn.addEventListener("click", showMadePoster)
+showMadePosterBtn.addEventListener("click", displayMadePoster)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -142,7 +142,7 @@ function randomizePoster() {
   )
 };
 
-function showRandomPoster() {
+function displayRandomPoster() {
   randomizePoster();
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
@@ -150,11 +150,11 @@ function showRandomPoster() {
 };
 
 function makePoster() {
-  form.classList.remove("hidden");
-  mainPoster.classList.add("hidden"); 
+  showForm();
+  hideMainPoster(); 
 }
 
-function showMadePoster() {
+function displayMadePoster() {
   event.preventDefault();
 
   currentPoster = new Poster(
@@ -169,21 +169,39 @@ function showMadePoster() {
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote
 
-  mainPoster.classList.remove("hidden");
-  form.classList.add("hidden");
+  showMainPoster();
+  hideForm();
 
 }
 
-function showSavedPosters() {
-  mainPoster.classList.add("hidden"); 
-  form.classList.add("hidden");
-  savedPosters.classList.remove("hidden");
+function displaySavedPosters() {
+  hideMainPoster(); 
+  hideForm();
+  showSavedPosters();
 
 }
 
 function goToMain() {
-  form.classList.add("hidden");
-  mainPoster.classList.remove("hidden"); 
-  savedPosters.classList.add("hidden");
+  hideForm();
+  showMainPoster();
+  hideSavedPosters();
 }
 //refactor remove/add to toggle?
+function showForm() {
+  form.classList.remove("hidden");
+}
+function hideForm() {
+  form.classList.add("hidden");
+}
+function showMainPoster() {
+  mainPoster.classList.remove("hidden");
+}
+function hideMainPoster() {
+  mainPoster.classList.add("hidden"); 
+}
+function showSavedPosters() {
+  savedPosters.classList.remove("hidden");
+}
+function hideSavedPosters() {
+  savedPosters.classList.add("hidden");
+}
