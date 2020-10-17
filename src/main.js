@@ -19,9 +19,6 @@ var showMyPosterButton = document.querySelector('.make-poster')
 var saveThisPosterButton = document.querySelector('.save-poster')
 var showAnotherRandomPosterButton = document.querySelector('.show-random')
 
-//CMC branch
-var showRandomPoster = document.querySelector('.show-random')
-
 //inputs
 var inputImage = document.querySelector('#poster-image-url')
 var inputTitle = document.querySelector('#poster-title')
@@ -134,16 +131,14 @@ posterForm.style.display = "none"
 
 
 // event listeners go here 👇
-showAnotherRandomPosterButton.addEventListener('click', showRandomPoster);
+showAnotherRandomPosterButton.addEventListener('click', generateRandomPoster);
 showFormButton.addEventListener('click', openForm);
 showSavedButton.addEventListener('click', openSavedPosters);
 showMainButton.addEventListener('click', showMainPoster);
 backToMainButton.addEventListener('click', showMainPoster);
 showMyPosterButton.addEventListener('click', showMyPoster);
-saveThisPosterButton.addEventListener('click', saveThisPoster);
+saveThisPosterButton.addEventListener('click', saveMainPoster);
 
-//CMC branch
-showRandomPoster.addEventListener('click', generateRandomPoster)
 
 // showMyPosterButton.addEventListener('click', () => {
 //   storeNewPoster();
@@ -157,14 +152,14 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function showRandomPoster() {
-  var newPoster = new Poster(images[getRandomIndex(images)],titles[getRandomIndex(titles)],quotes[getRandomIndex(quotes)]);
-  title.innerText = newPoster.title;
-  image.src = newPoster.imageURL;
-  quote.innerText = newPoster.quote;
+
+function generateRandomPoster() {
+  title.innerText = titles[getRandomIndex(titles)];
+  quote.innerText = quotes[getRandomIndex(quotes)];
+  image.src = images[getRandomIndex(images)];
 }
 
-showRandomPoster()
+generateRandomPoster()
 
 function openForm() {
   posterForm.style.display = "block"
@@ -198,20 +193,14 @@ function showMyPoster() {
   posterForm.style.display = "none";
 }
 
-function saveCustomPoster() {
-  savedPosters.push(storeCustomPoster());
+function saveMainPoster() {
+  var mainPoster = new Poster(image.src, title.innerText, quote.innerText)
+  savedPosters.push(mainPoster);
   savedPostersGrid.innerHTML += `
   <section class=mini-poster>
-    <img class="poster-img" src="${storeCustomPoster().imageURL}">
-    <h1 class="poster-title">${storeCustomPoster().title}</h1>
-    <h3 class="poster-quote">${storeCustomPoster().quote}</h3>
+    <img class="poster-img" src="${mainPoster.imageURL}">
+    <h1 class="poster-title">${mainPoster.title}</h1>
+    <h3 class="poster-quote">${mainPoster.quote}</h3>
   </section>
   `
-}
-
-// CMC branch - Iteration 1 part 2
-function generateRandomPoster() {
-  title.innerText = titles[getRandomIndex(titles)];
-  quote.innerText = quotes[getRandomIndex(quotes)];
-  image.src = images[getRandomIndex(images)];
 }
