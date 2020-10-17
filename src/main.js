@@ -7,9 +7,9 @@ var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 
-var formPosterImg = document.querySelector(".poster-image-url");
-var formTitle = document.querySelector(".poster-title");
-var formQuote = document.querySelector(".poster-quote");
+var formPosterImg = document.querySelector("#poster-image-url");
+var formTitle = document.querySelector("#poster-title");
+var formQuote = document.querySelector("#poster-quote");
 
 var showRandomBtn = document.querySelector(".show-random");
 var makePosterBtn = document.querySelector(".show-form");
@@ -156,18 +156,22 @@ function makePoster() {
 
 function showMadePoster() {
   event.preventDefault();
-  //save user input data into respective arrays (unshift)
-  //input.value = images(shift)
-  //input.value = titles(shift)
-  //input.value = qutoes(shift)
-  //take user input for img, photo, quote for new Poster instance
-  form.classList.add("hidden");
+
+  currentPoster = new Poster(
+    formPosterImg.value,
+    formTitle.value,
+    formQuote.value
+  );
+
+  savedPosters.unshift(currentPoster);
+
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote
+
   mainPoster.classList.remove("hidden");
-  //display user input poster (take array[0] for each )
-  currentPoster = new Poster(images[0], titles[0], quotes[0]);
-  // posterImage.src = currentPoster.imageURL;
-  // posterTitle.innerText = currentPoster.title;
-  // posterQuote.innerText = currentPoster.quote
+  form.classList.add("hidden");
+
 }
 
 function showSavedPosters() {
