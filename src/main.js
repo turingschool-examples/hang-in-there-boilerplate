@@ -32,6 +32,9 @@ var quoteInput = document.querySelector('#poster-quote');
 
 var imageInput = document.querySelector('#poster-image-url');
 
+var savePoster = document.querySelector('.save-poster');
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -144,6 +147,7 @@ makePoster.addEventListener('click', function(event) {
   event.preventDefault();
   showMyPoster();
 });
+savePoster.addEventListener('click', saveCurrentPoster);
 
 // functions and event handlers go here 👇
 
@@ -190,7 +194,13 @@ function showMyPoster() {
     images.push(imageInput.value);
     titles.push(titleInput.value);
     quotes.push(quoteInput.value);
-    var newPoster = new Poster ('imageInput.value', 'titleInput.value', 'quoteInput.value');
-    savedPostersArray.push(newPoster);
+    currentPoster = new Poster ('imageInput.value', 'titleInput.value', 'quoteInput.value');
     backToHome();
+}
+
+function saveCurrentPoster(){
+  if(savedPostersArray.includes(currentPoster)) {
+  } else {
+  savedPostersArray.push(currentPoster);
+  }
 }
