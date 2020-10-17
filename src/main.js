@@ -118,6 +118,7 @@ Window.onLoad = mainPagePoster();
 showRandomButton.addEventListener('click', mainPagePoster);
 makeOwnPosterButton.addEventListener('click', goToMakeOwnPosterForm);
 takeMeBackButton.addEventListener('click', goBackToMain);
+savedPosterButton.addEventListener('click', goToSavedPosters);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -141,4 +142,9 @@ function goBackToMain() {
   savedPostersPage.className += " hidden";
   mainPage.hidden = false;
   mainPagePoster();
+};
+
+function goToSavedPosters() {
+  mainPage.hidden = true;
+  savedPostersPage.className = "saved-posters";
 };
