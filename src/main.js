@@ -14,6 +14,22 @@ var imageUrlInput = document.querySelector("#poster-image-url");
 var motivationalTitleInput = document.querySelector("#poster-title");
 var motivationalQuoteInput = document.querySelector("#poster-quote");
 var showPosterButton = document.querySelector(".make-poster");
+var saveMyPosterButton = document.querySelector(".save-poster");
+// var newUserPoster = new Poster (imageURL, title, quote);
+
+//Variabels we created for poster form function(?)
+function makeNewUserPoster() {
+var inputImage = imageUrlInput.value;
+var inputTitle = motivationalTitleInput.value;
+var inputQuote = motivationalQuoteInput.value;
+
+images.push = inputImage
+titles.push = inputTitle
+quote.push = inputQuote
+//innerHTML?
+
+}
+
 
 
 // we've provided you with some data to work with 👇
@@ -123,7 +139,8 @@ showFormButton.addEventListener("click", showForm);
 showSavedButton.addEventListener("click", showSaved);
 showMainButton.addEventListener("click", goBackToMain);
 backToMainButton.addEventListener("click", goBackToMain);
-showPosterButton.addEventListener("click", userDataInput);
+showPosterButton.addEventListener("click", testForUsage);
+// saveMyPoster.addEventListener("click", savesCurrentPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -156,8 +173,25 @@ function goBackToMain() {
   mainPosterView.classList.remove("hidden");
 };
 
-function userDataInput() {
-  randomImage.innerHTML = imageUrlInput.value;
-  randomTitle.innerHTML = motivationalTitleInput.value;
-  randomQuote.innerHTML = motivationalQuoteInput.value;
+// function userDataInput() {
+//   randomImage.innerHTML = imageUrlInput.value;
+//   randomTitle.innerHTML = motivationalTitleInput.value;
+//   randomQuote.innerHTML = motivationalQuoteInput.value;
+// };
+
+// function showMyNewPoster() {
+//   //CALL TO POSTER CLASS
+// }
+//
+// function savesCurrentPoster() {
+//
+// }
+function testForUsage() {
+  console.log(motivationalTitleInput.innerHTML = randomTitle.value);
 }
+
+
+
+// function addCompliment() {
+//   complimentLocation.innerHTML = `${getRandomCompliment(compliments)} ${textInput.value} .`
+// }
