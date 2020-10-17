@@ -4,7 +4,7 @@ var mainPageImage = document.querySelector(".poster-img");
 var mainPageTitle = document.querySelector(".poster-title");
 var mainPageQuote = document.querySelector(".poster-quote");
 var showRandomButton = document.querySelector(".show-random");
-var makeOwnPosterForm = document.querySelector("form");
+var makeOwnPosterForm = document.querySelector(".poster-form");
 var makeOwnPosterButton = document.querySelector(".show-form");
 var takeMeBackButton = document.querySelector(".show-main");
 var savedPostersPage = document.querySelector(".saved-posters");
@@ -159,11 +159,15 @@ function goToSavedPosters() {
   savedPostersPage.classList.remove("hidden");
 };
 
-
+function createMyPoster() {
+  mainPageImage.src = inputImage.value;
+  mainPageTitle.innerText = inputTitle.value;
+  mainPageQuote.innerText = inputQuote.value;
+  return currentPoster = new Poster(mainPageImage.src, mainPageTitle.innerText, mainPageQuote.innerText);
+};
 
 function showMyPoster() {
   mainPage.classList.remove("hidden");
-
 }
 
 function savePoster(){
