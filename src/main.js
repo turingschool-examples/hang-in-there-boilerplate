@@ -100,9 +100,12 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+
 var mainPoster = document.querySelector('.main-poster');
 var poster = document.querySelector('.poster');
+
 var posterForm = document.querySelector('.poster-form');
+var showMain = document.querySelector('.show-main');
 
 //above will allow us to modify the DOM element section with the class poster-Form
 
@@ -116,6 +119,7 @@ var showSavedButton = document.querySelector('.show-saved');
 showSavedButton.addEventListener('click', createRandomImage);
 var makePosterButton = document.querySelector('.show-form');
 makePosterButton.addEventListener('click', showPosterForm);
+showMain.addEventListener('click', showMainPoster);
 // pass in the correct function/parameters
 
 
@@ -141,6 +145,11 @@ function showPosterForm() {
   mainPoster.classList.add('hidden');
 }
 //above function is adding class to DOM element, allowing CSS to manipulate
+function showMainPoster() {
+  posterForm.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+}
+
 //!Remember: double-check nested elements!
 
 createRandomImage();
