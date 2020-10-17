@@ -17,6 +17,9 @@ var backToMainButton = document.querySelector('.back-to-main')
 var showMyPosterButton = document.querySelector('.make-poster')
 var saveThisPosterButton = document.querySelector('.save-poster')
 
+//CMC branch
+var showRandomPoster = document.querySelector('.show-random')
+
 //inputs
 var inputImage = document.querySelector('#poster-image-url')
 var inputTitle = document.querySelector('#poster-title')
@@ -137,6 +140,9 @@ showMyPosterButton.addEventListener('click', showMyPoster);
 
 saveThisPosterButton.addEventListener('click', saveThisPoster);
 
+//CMC branch
+showRandomPoster.addEventListener('click', generateRandomPoster)
+
 // showMyPosterButton.addEventListener('click', () => {
 //   storeNewPoster();
 //   showMyPoster();
@@ -189,4 +195,11 @@ function showMyPoster() {
 function saveThisPoster() {
   savedPosters.push(storeNewPoster());
   console.log(savedPosters);
+}
+
+// CMC branch - Iteration 1 part 2
+function generateRandomPoster() {
+  title.innerText = titles[getRandomIndex(titles)];
+  quote.innerText = quotes[getRandomIndex(quotes)];
+  image.src = images[getRandomIndex(images)];
 }
