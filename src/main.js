@@ -100,6 +100,12 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var mainPoster = document.querySelector('.main-poster');
+var poster = document.querySelector('.poster');
+var posterForm = document.querySelector('.poster-form');
+
+//above will allow us to modify the DOM element section with the class poster-Form
+
 
 // event listeners go here 👇
 var randomButton = document.querySelector('.show-random');
@@ -109,7 +115,7 @@ savePosterButton.addEventListener('click', createRandomImage);
 var showSavedButton = document.querySelector('.show-saved');
 showSavedButton.addEventListener('click', createRandomImage);
 var makePosterButton = document.querySelector('.show-form');
-makePosterButton.addEventListener('click', createRandomImage);
+makePosterButton.addEventListener('click', showPosterForm);
 // pass in the correct function/parameters
 
 
@@ -120,7 +126,6 @@ function getRandomIndex(array) {
 }
 
 function createRandomImage() {
-  var poster = document.querySelector('.poster');
   var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
@@ -131,16 +136,23 @@ function createRandomImage() {
   `
 }
 
+function showPosterForm() {
+  posterForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+}
+//above function is adding class to DOM element, allowing CSS to manipulate
+//!Remember: double-check nested elements!
+
 createRandomImage();
 
 
-
+// move poser variable to global scope (done)
 //main-poster VISIBLE has 1 class set to main-poster
 //poster-form HIDDEN has 2 classes poster-form AND hidden
 //CSS .hidden is assigned to display NONE
 //doc.query poster-form assign to posterForm
 
-//MAKE 143 thru 148 A SINGLE FUNCTION 
+//MAKE 143 thru 148 A SINGLE FUNCTION
 //add HIDDEN class to main-poster
 //remove HIDDEN class from poster-form
 //remove HIDDEN class from posterForm
