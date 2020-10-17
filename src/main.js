@@ -142,11 +142,14 @@ function randomizePoster() {
   )
 };
 
-function displayRandomPoster() {
-  randomizePoster();
+function displayPoster() {
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote
+}
+function displayRandomPoster() {
+  randomizePoster();
+  displayPoster();
 };
 
 function makePoster() {
@@ -155,31 +158,26 @@ function makePoster() {
 }
 
 function savePoster() {
+  savedPosters.unshift(currentPoster);
+}
+function saveUserInput() {
   images.unshift(formPosterImg.value);
   titles.unshift(formTitle.value);
   quotes.unshift(formQuote.value);
-  savedPosters.unshift(currentPoster);
 }
-
 function displayMadePoster() {
   event.preventDefault();
-
   currentPoster = new Poster(
     formPosterImg.value,
     formTitle.value,
     formQuote.value
   );
-
+  saveUserInput();
   savePoster();
-
-  posterImage.src = currentPoster.imageURL;
-  posterTitle.innerText = currentPoster.title;
-  posterQuote.innerText = currentPoster.quote
-
+  displayPoster();
   showMainPoster();
   hideForm();
   //clear input fields function?
-
 }
 
 function displaySavedPosters() {
