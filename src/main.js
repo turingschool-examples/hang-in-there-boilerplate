@@ -14,7 +14,8 @@ var inputImage = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
 var showMyPosterButton = document.querySelector(".make-poster");
-var savePosterButton = docunment.querySelector(".save-poster");
+var savePosterButton = document.querySelector(".save-poster");
+var savedGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -164,5 +165,18 @@ function showMyPoster() {
   mainPage.classList.remove("hidden");
 
 }
+
+function savePoster(){
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+}
+
+// //function createGrid() {
+//   savedGrid.innerHTML = '"";
+//   for (var i = 0; i < savedPosters.length; i++) {
+//     var miniPoster?? = `I want to insert information using imageURL, title, quote`
+//   }
+// }
 
 //getRandomPoster();
