@@ -1,6 +1,27 @@
 // query selector variables go here 👇
 
+var savedPosters = [];
+var currentPoster = {};
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var showRandom = document.querySelector('.show-random');
+var showFormPage = document.querySelector('.show-form');
+var homePoster = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
+var viewSaved = document.querySelector('.show-saved');
+var storedPosters = document.querySelector('.saved-posters');
+var nevermind = document.querySelector('.show-main');
+var backToMain = document.querySelector('.back-to-main');
+var displayPoster = document.querySelector('.create-poster');
+var imageInput = document.querySelector('#poster-image-url');
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
+var savePoster = document.querySelector('.save-poster');
+var imgGallery = document.querySelector('.saved-posters-grid');
+
 // we've provided you with some data to work with 👇
+
 var images = [
     "./assets/bees.jpg",
     "./assets/bridge.jpg",
@@ -98,40 +119,19 @@ var quotes = [
     "Each person must live their life as a model for others.",
     "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster = {};
-var posterImage = document.querySelector('.poster-img');
-var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querySelector('.poster-quote');
-var showRandom = document.querySelector('.show-random');
-var makePoster = document.querySelector('.show-form');
-var homePoster = document.querySelector('.main-poster');
-var posterForm = document.querySelector('.poster-form');
-var viewSaved = document.querySelector('.show-saved');
-var storedPosters = document.querySelector('.saved-posters');
-var nevermind = document.querySelector('.show-main');
-var back = document.querySelector('.back-to-main');
-var displayPoster = document.querySelector('.create-poster');
-var imageInput = document.querySelector('#poster-image-url');
-var titleInput = document.querySelector('#poster-title');
-var quoteInput = document.querySelector('#poster-quote');
-var savePoster = document.querySelector('.save-poster');
-var imgGallery = document.querySelector('.saved-posters-grid')
-    // var miniPoster = document.querySelector('.mini-poster')
-    // event listeners go here 👇
+
+// event listeners go here 👇
+
 window.addEventListener('load', makeRandomCover);
-
-
-
-
 showRandom.addEventListener('click', makeRandomCover);
-makePoster.addEventListener('click', showForm);
+showFormPage.addEventListener('click', showForm);
 viewSaved.addEventListener('click', showStored);
 nevermind.addEventListener('click', goHome);
-back.addEventListener('click', backHome);
+backToMain.addEventListener('click', backHome);
 displayPoster.addEventListener('click', makeUserPoster);
 savePoster.addEventListener('click', storePoster);
 imgGallery.addEventListener('dblclick', removePoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
