@@ -133,19 +133,19 @@ var currentPoster;
 showRandom.addEventListener('click', getThreeValues)
 showForm.addEventListener('click', () => {
   showTargetView(posterForm, mainPoster, savedView);
-}); //expecting argument that will be a function which hides current view and brings up form
-// showMain.addEventListener('click', showMainView);
+});
+
 showMain.addEventListener('click', () => {
   showTargetView(mainPoster, savedView, posterForm);
 });
+
 backToMain.addEventListener('click', () => {
   showTargetView(mainPoster, savedView, posterForm);
 });
+
 showSaved.addEventListener('click', () => {
   showTargetView(savedView, mainPoster, posterForm);
 });
-// showSaved.addEventListener('click', showSavedView);
-
 
 // functions and event handlers go here
 window.onload = getThreeValues();
@@ -153,6 +153,7 @@ window.onload = getThreeValues();
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
+
 function getThreeValues() {
   var randomTitle = titles[getRandomIndex(titles)];
   var randomImage = images[getRandomIndex(images)];
