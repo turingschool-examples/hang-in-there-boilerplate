@@ -19,11 +19,11 @@ var posterQuote = document.querySelector('.poster-quote');
 
 var makePoster = document.querySelector('.make-poster');
 
-var savedPosters = document.querySelector('.saved-posters hidden');
+var savedView = document.querySelector('.saved-posters hidden');
 
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
-var posterForm = document.querySelector('.poster-form hidden');
+var posterForm = document.querySelector('.poster-form');
 
 var posterImageURL = document.querySelector('.poster-image-url');
 
@@ -131,11 +131,11 @@ var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
 showRandom.addEventListener('click', getThreeValues)
-posterForm.addEventListener('click',) //expecting argument that will be a function which hides current view and brings up form
-showMain.addEventListener('click',) //expecting argument that will be a function which hides current view and returns you to main page
-backToMain.addEventListener('click',) //expecting the same argument for showMain button click
-showSaved.addEventListener('click',) //expecting argument that will be a function that shows saved posters view and hides current view
-
+// posterForm.addEventListener('click',) //expecting argument that will be a function which hides current view and brings up form
+// showMain.addEventListener('click',) //expecting argument that will be a function which hides current view and returns you to main page
+// backToMain.addEventListener('click',) //expecting the same argument for showMain button click
+// showSaved.addEventListener('click',) //expecting argument that will be a function that shows saved posters area and hides current view
+showForm.addEventListener('click', viewPosterForm) //expecting argument of function that shows poster form and hides main view
 // functions and event handlers go here
 window.onload = getThreeValues();
 
@@ -150,4 +150,9 @@ function getThreeValues() {
   posterImage.src = currentPoster.imageURL
   posterTitle.innerText = currentPoster.title
   posterQuote.innerText = currentPoster.quote
+}
+
+function viewPosterForm() {
+mainPoster.className = "main-poster hidden";
+posterForm.className = "poster-form";
 }
