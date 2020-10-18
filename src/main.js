@@ -164,22 +164,10 @@ function getThreeValues() {
   posterQuote.innerText = currentPoster.quote
 }
 
-// function showSavedView() {
-//   mainPoster.className = 'main-poster hidden';
-//   savedView.className = 'saved-posters';
-// }
-//
-// function showMainView() {
-//   mainPoster.className = 'main-poster';
-//   savedView.className = 'saved-posters hidden';
-//   posterForm.className = 'poster-form hidden';
-// }
-
 function showTargetView(viewToShow, viewToHide1, viewToHide2) {
   var whereHiddenIs = viewToShow.className.indexOf(' hidden');
   var showSection = viewToShow.className.slice(0, whereHiddenIs);
   viewToShow.className = showSection;
   viewToHide1.className.indexOf(' hidden') > -1 ? viewToHide1.className : viewToHide1.className += ' hidden';
   viewToHide2.className.indexOf(' hidden') > -1 ? viewToHide2.className : viewToHide2.className += ' hidden';
-  console.log(viewToShow, viewToHide1, viewToHide2);
 }
