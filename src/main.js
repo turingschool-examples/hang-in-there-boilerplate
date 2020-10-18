@@ -163,6 +163,11 @@ function saveUserInput() {
   titles.unshift(formTitle.value);
   quotes.unshift(formQuote.value);
 }
+function clearUserInput() {
+  formPosterImg.value = "";
+  formTitle.value = "";
+  formQuote.value = "";
+}
 function displayMadePoster() {
   event.preventDefault();
   currentPoster = new Poster(
@@ -174,7 +179,7 @@ function displayMadePoster() {
   displayPoster();
   showMainPoster();
   hideForm();
-  //clear input fields function?
+  clearUserInput();
 }
 
 function displaySavedPosters() {
