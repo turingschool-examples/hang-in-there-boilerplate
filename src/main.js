@@ -15,7 +15,7 @@ var motivationalTitleInput = document.querySelector("#poster-title");
 var motivationalQuoteInput = document.querySelector("#poster-quote");
 var showPosterButton = document.querySelector(".make-poster");
 var savePosterButton = document.querySelector(".save-poster");
-
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,13 +119,15 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-buttonStart.addEventListener("click", newPoster);
+buttonStart.addEventListener("click", generatePoster);
 showFormButton.addEventListener("click", showForm);
-showSavedButton.addEventListener("click", showSaved);
+showSavedButton.addEventListener("click", showSavedPoster);
 showMainButton.addEventListener("click", goBackToMain);
 backToMainButton.addEventListener("click", goBackToMain);
 showPosterButton.addEventListener("click", userDataInput);
+savePosterButton.addEventListener("click", saveDisplayedPoster);
 
+window.addEventListener("load", generatePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -134,14 +136,12 @@ function getRandomIndex(array) {
   return array[Math.floor(Math.random() * array.length)]
 };
 
+function generatePoster() {
 displayedImage.src = getRandomIndex(images);
 displayedTitle.innerHTML = getRandomIndex(titles);
 displayedQuote.innerHTML = getRandomIndex(quotes);
 
-function newPoster() {
-  displayedQuote.innerHTML = getRandomIndex(quotes);
-  displayedTitle.innerHTML = getRandomIndex(titles);
-  displayedImage.src = getRandomIndex(images);
+currentPoster = new Poster(displayedImage.src, displayedTitle.innerHTML, displayedQuote.innerHTML)
 };
 
 function showForm() {
@@ -149,9 +149,21 @@ function showForm() {
   mainPosterView.classList.add("hidden");
 };
 
-function showSaved() {
+function showSavedPoster() {
+
   savedPostersView.classList.remove("hidden");
   mainPosterView.classList.add("hidden");
+
+  savedPostersGrid.innerHTML = "";
+
+  for (var i = 0; i < savedPosters.length; i++ ) {
+      savedPostersGrid.innerHTML +=
+        `<article class= "mini-poster" >
+            <img src = ${savedPosters[i].imageURL}>
+            <h2> ${savedPosters[i].title} </h2>
+            <h4> ${savedPosters[i].quote} </h4>
+        </article>`
+  };
 };
 
 function goBackToMain() {
@@ -164,27 +176,21 @@ function userDataInput(imageURL, title, quote) {
   imageURL = imageUrlInput.value;
   title = motivationalTitleInput.value;
   quote = motivationalQuoteInput.value;
+
   currentPoster = new Poster(imageURL, title, quote);
+
   displayedImage.src = imageURL;
   displayedTitle.innerHTML = title;
   displayedQuote.innerHTML = quote;
+
   images.push(imageURL);
   titles.push(title);
   quotes.push(quote);
+
   mainPosterView.classList.remove("hidden");
   posterFormView.classList.add("hidden");
-  console.log(currentPoster)
 };
 
-
-
-
-
-
-
-
-// function showMyNewPoster() {
-//   //CALL TO POSTER CLASS
-// }
-//
-// function savesCurrentPoster()
+function saveDisplayedPoster () {
+  if (savedPosters.includes(currentPoster) === false) savedPosters.push(currentPoster);
+};
