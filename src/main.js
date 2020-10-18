@@ -115,6 +115,12 @@ var showMain = document.querySelector('.show-main');
 var savedPostersSection = document.querySelector('.saved-posters');
 var backToMain = document.querySelector('.back-to-main');
 
+// user input query selector
+var userImage = document.querySelector('#poster-image-url');
+var userTitle = document.querySelector('#poster-title');
+var userQuote = document.querySelector('#poster-quote');
+var userButton = document.querySelector('.make-poster');
+
 //above will allow us to modify the DOM element section with the class poster-Form
 
 
@@ -128,6 +134,8 @@ makePosterButton.addEventListener('click', showPosterForm);
 showMain.addEventListener('click', showMainPoster);
 backToMain.addEventListener('click', showMainPoster);
 // pass in the correct function/parameters
+// user input event listeners
+userButton.addEventListener('click', userCreatedPoster)
 
 
 // functions and event handlers go here 👇
@@ -147,6 +155,7 @@ function createRandomImage() {
   <h3 class="poster-quote">${randomQuote}</h3>
   `
 };
+createRandomImage();
 
 function showPosterForm() {
   posterForm.classList.remove('hidden');
@@ -166,20 +175,30 @@ function showMainPoster() {
   savedPostersSection.classList.add('hidden');
 };
 
+function userCreatedPoster() {
+  poster.innerHTML = `
+  <img class="poster-img" src="${userImage.value}" alt="${userTitle.value}">
+  <h1 class="poster-title">${userTitle.value}</h1>
+  <h3 class="poster-quote">${userQuote.value}</h3>
+  `;
+  showMainPoster();
+}
+
 //!Remember: double-check nested elements!
 
-createRandomImage();
 
 
-// move poser variable to global scope (done)
+
+// move poster variable to global scope (done)
 //main-poster VISIBLE has 1 class set to main-poster
 //poster-form HIDDEN has 2 classes poster-form AND hidden
 //CSS .hidden is assigned to display NONE
 //doc.query poster-form assign to posterForm
 
-//MAKE 143 thru 148 A SINGLE FUNCTION
-//add HIDDEN class to main-poster
-//remove HIDDEN class from poster-form
-//remove HIDDEN class from posterForm
-//classList remove HIDDEN on posterForm
-//classList add HIDDEN on main-poster
+// create poster from poster form
+// poster form has inputs
+// capture inputs using queryselector
+// button is listening for user events addEventListener
+// pass input into function
+// reassign HTML DOM elements to input corresponding values
+// add and remove hidden class respectively (want to display user creation on page)
