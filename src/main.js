@@ -130,7 +130,6 @@ takeBackBtn.addEventListener("click", goToMain);
 backToMainBtn.addEventListener("click", goToMain);
 showMadePosterBtn.addEventListener("click", displayMadePoster);
 savePosterBtn.addEventListener("click", savePosterToGrid);
-
 savedPostersGrid.addEventListener("dblclick", deletePoster);
 
 // functions and event handlers go here 👇
@@ -218,9 +217,11 @@ function savePosterToGrid() {
 
 function deletePoster(event) {
   //poster will be deleted from grid
-  if (event.target.id === ${}) {
-    splice();
-  }
+  // if (event.target.className === )
+  // for (var i = 0; i < savedPosters.length; i++) {
+  //   if (event.target.id === savedPosters[i]){
+  //   splice();
+  // }
 }
 
 function goToMain() {
