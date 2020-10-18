@@ -134,38 +134,46 @@ imgGallery.addEventListener('dblclick', removePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
 }
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 
 function makeRandomCover() {
     posterImage.src = images[getRandomIndex(images)];
-    posterTitle.innerHTML = titles[getRandomIndex(titles)]
+    posterTitle.innerHTML = titles[getRandomIndex(titles)];
     posterQuote.innerHTML = quotes[getRandomIndex(quotes)];
     currentPoster = new Poster(posterImage.src, posterTitle.innerHTML, posterQuote.innerHTML);
+}
+
+function showPage(toSee) {
+    toSee.classList.remove('hidden');
+}
+
+function hidePage(toHide) {
+    toHide.classList.add('hidden');
+}
+
+function showForm() {
+    hidePage(homePoster);
+    showPage(posterForm);
+}
+
+function goHome() {
+    hidePage(posterForm);
+    showPage(homePoster);
+}
+
+function backHome() {
+    hidePage(storedPosters);
+    showPage(homePoster);
+
 }
 
 function showPoster(obj) {
     posterImage.src = obj.imageURL;
     posterTitle.innerHTML = obj.title;
     posterQuote.innerHTML = obj.quote;
-}
-
-function showForm() {
-    posterForm.classList.remove('hidden');
-    homePoster.classList.add('hidden');
-}
-
-function goHome() {
-    posterForm.classList.add('hidden');
-    homePoster.classList.remove('hidden');
-}
-
-function backHome() {
-    storedPosters.classList.add('hidden');
-    homePoster.classList.remove('hidden');
 }
 
 function makeUserPoster() {
