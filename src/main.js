@@ -188,17 +188,25 @@ function displaySavedPosters() {
   hideMainPoster(); 
   hideForm();
   showSavedPosters();
-  //posters in savedposters should be in grid
-  savedPostersGrid.insertAdjacentHTML("afterbegin", `
-    <img class="mini-poster" src"${currentPoster.imageURL}" alt="nothin' to see here">
-    <h2 class="mini-poster">${currentPoster.title}</h2>
-    <h4 class="mini-poster">${currentPoster.quote}</h4>
-    `)
+  displaySavedPostersGrid();
 }
 
 function savePoster(currentPoster) {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.unshift(currentPoster)
+  }
+}
+
+function displaySavedPostersGrid() {
+  savedPostersGrid.innerHTML = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersGrid.insertAdjacentHTML("afterbegin", `
+      <section class="mini-poster">
+        <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
+        <h2 class="poster-title">${savedPosters[i].title}</h2>
+        <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+      </section>
+    `)
   }
 }
 
