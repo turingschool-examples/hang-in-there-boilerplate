@@ -133,12 +133,8 @@ showSavedButton.addEventListener("click", bringUpSaved);
 makeYourOwnButton.addEventListener("click", bringUpForm);
 nevermindButton.addEventListener("click", formBackToMain);
 backToMainButton.addEventListener("click", savedBackToMain);
-<<<<<<< HEAD
 showMyPosterButton.addEventListener("click", showCreatedPoster);
 saveThisPosterButton.addEventListener("click", saveCurrentPoster);
-=======
-showMyPosterButton.addEventListener("click", saveAPoster);
->>>>>>> feature-iteration-2
 
 // functions and event handlers go here 👇
 function randomizePoster() {
@@ -148,10 +144,7 @@ function randomizePoster() {
   mainPosterQuote.innerText = newQuote;
   var newImage = getRandomIndex(images);
   mainPosterImage.src = newImage;
-<<<<<<< HEAD
   currentPoster = new Poster(newImage, newTitle, newQuote);
-=======
->>>>>>> feature-iteration-2
 };
 
 function getRandomIndex(array) {
@@ -178,11 +171,7 @@ function savedBackToMain() {
   savedPostersScreen.classList.add("hidden");
 };
 
-<<<<<<< HEAD
 function showCreatedPoster() {
-=======
-function saveAPoster() {
->>>>>>> feature-iteration-2
   event.preventDefault();
   images.push(posterImageUrlInput.value);
   titles.push(posterTitleInput.value);
@@ -193,7 +182,6 @@ function saveAPoster() {
   mainPosterQuote.innerText = currentPoster.quote;
   mainPosterImage.src = currentPoster.imageURL;
 };
-<<<<<<< HEAD
 
 function saveCurrentPoster() {
     savedPostersGrid.innerHTML= "";
@@ -234,5 +222,3 @@ function saveCurrentPoster() {
     //Access show saved posters screen
 // All the posters in the savedPosters array should be displayed in the saved posters grid section
     //Add saved posters array to the article
-=======
->>>>>>> feature-iteration-2
