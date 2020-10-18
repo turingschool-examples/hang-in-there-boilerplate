@@ -1,7 +1,8 @@
 // query selector variables go here 👇
 var form = document.querySelector(".poster-form");
 var mainPoster = document.querySelector(".main-poster");
-var savedPosters = document.querySelector(".saved-posters")
+var savedPostersDisplay = document.querySelector(".saved-posters");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
@@ -183,10 +184,16 @@ function displayMadePoster() {
 }
 
 function displaySavedPosters() {
+  event.preventDefault();
   hideMainPoster(); 
   hideForm();
   showSavedPosters();
   //posters in savedposters should be in grid
+  savedPostersGrid.insertAdjacentHTML("afterbegin", `
+    <img class="mini-poster" src"${currentPoster.imageURL}" alt="nothin' to see here">
+    <h2 class="mini-poster">${currentPoster.title}</h2>
+    <h4 class="mini-poster">${currentPoster.quote}</h4>
+    `)
 }
 
 function savePoster(currentPoster) {
@@ -218,8 +225,8 @@ function hideMainPoster() {
   mainPoster.classList.add("hidden"); 
 }
 function showSavedPosters() {
-  savedPosters.classList.remove("hidden");
+  savedPostersDisplay.classList.remove("hidden");
 }
 function hideSavedPosters() {
-  savedPosters.classList.add("hidden");
+  savedPostersDisplay.classList.add("hidden");
 }
