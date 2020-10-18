@@ -248,3 +248,9 @@ function showSavedPosters() {
 function hideSavedPosters() {
   savedPostersDisplay.classList.add("hidden");
 }
+function showView() {
+
+}
+function hideView() {
+  
+}
