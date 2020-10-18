@@ -104,6 +104,9 @@ var currentPoster;
 // main poster query selectors
 var mainPoster = document.querySelector('.main-poster');
 var poster = document.querySelector('.poster');
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
 var randomButton = document.querySelector('.show-random');
 var savePosterButton = document.querySelector('.save-poster');
 var showSavedButton = document.querySelector('.show-saved');
@@ -149,11 +152,15 @@ function createRandomImage() {
   var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
-  poster.innerHTML = `
-  <img class="poster-img" src="${randomImage}" alt="${randomImage}">
-  <h1 class="poster-title">${randomTitle}</h1>
-  <h3 class="poster-quote">${randomQuote}</h3>
-  `
+  // poster.innerHTML = `
+  // <img class="poster-img" src="${randomImage}" alt="${randomImage}">
+  // <h1 class="poster-title">${randomTitle}</h1>
+  // <h3 class="poster-quote">${randomQuote}</h3>
+  // `
+  posterImage.src = randomImage;
+  posterTitle.innerText = randomTitle;
+  posterQuote.innerText = randomQuote;
+  //alt?
 };
 createRandomImage();
 
@@ -176,12 +183,37 @@ function showMainPoster() {
 };
 
 function userCreatedPoster() {
-  poster.innerHTML = `
-  <img class="poster-img" src="${userImage.value}" alt="${userTitle.value}">
-  <h1 class="poster-title">${userTitle.value}</h1>
-  <h3 class="poster-quote">${userQuote.value}</h3>
-  `;
-  showMainPoster();
+  // poster.innerHTML = `
+  // <img class="poster-img" src="${userImage.value}" alt="${userTitle.value}">
+  // <h1 class="poster-title">${userTitle.value}</h1>
+  // <h3 class="poster-quote">${userQuote.value}</h3>
+  // `;
+  var userUrl = userImage.value;
+  var userTitleText = userTitle.value;
+  var userQuoteText = userQuote.value;
+
+  posterImage.src = userUrl;
+  posterTitle.innerText = userTitleText;
+  posterQuote.innerText = userQuoteText;
+  //do these values need to be stored in a variable? Object?
+  //declare a variable (locally?) for each input and pass
+  //user... have been declared globally
+  //call userCreatedPoster, we fail to access the value of user inputs.
+  //assign a variable the value of user Input
+  //need to include an input field
+  //need to manipulate the DOM elements to include an input
+  //declare
+
+  //input text of user inputs is *not* being accessed or stored.
+  //to access input text, store it as a variable
+  //reassign image.src to new variable (see above)
+
+
+  posterForm.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+  savedPostersSection.classList.add('hidden');
+  // showMainPoster();
+  console.log(userImage.value);
 }
 
 //!Remember: double-check nested elements!
