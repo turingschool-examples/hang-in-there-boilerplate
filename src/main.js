@@ -171,15 +171,16 @@ function showMainPoster() {
 createRandomImage();
 
 
-// move poser variable to global scope (done)
+// move poster variable to global scope (done)
 //main-poster VISIBLE has 1 class set to main-poster
 //poster-form HIDDEN has 2 classes poster-form AND hidden
 //CSS .hidden is assigned to display NONE
 //doc.query poster-form assign to posterForm
 
-//MAKE 143 thru 148 A SINGLE FUNCTION
-//add HIDDEN class to main-poster
-//remove HIDDEN class from poster-form
-//remove HIDDEN class from posterForm
-//classList remove HIDDEN on posterForm
-//classList add HIDDEN on main-poster
+// create poster from poster form
+// poster form has inputs
+// capture inputs using queryselector
+// button is listening for user events addEventListener
+// pass input into function
+// reassign HTML DOM elements to input corresponding values
+// add and remove hidden class respectively (want to display user creation on page)
