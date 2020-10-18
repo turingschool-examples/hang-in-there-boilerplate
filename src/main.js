@@ -115,6 +115,12 @@ var showMain = document.querySelector('.show-main');
 var savedPostersSection = document.querySelector('.saved-posters');
 var backToMain = document.querySelector('.back-to-main');
 
+// user input query selector
+var userImage = document.querySelector('#poster-image-url');
+var userTitle = document.querySelector('#poster-title');
+var userQuote = document.querySelector('#poster-quote');
+var userButton = document.querySelector('.make-poster');
+
 //above will allow us to modify the DOM element section with the class poster-Form
 
 
@@ -128,6 +134,8 @@ makePosterButton.addEventListener('click', showPosterForm);
 showMain.addEventListener('click', showMainPoster);
 backToMain.addEventListener('click', showMainPoster);
 // pass in the correct function/parameters
+// user input event listeners
+userButton.addEventListener('click', userCreatedPoster)
 
 
 // functions and event handlers go here 👇
@@ -147,6 +155,7 @@ function createRandomImage() {
   <h3 class="poster-quote">${randomQuote}</h3>
   `
 };
+createRandomImage();
 
 function showPosterForm() {
   posterForm.classList.remove('hidden');
@@ -166,9 +175,18 @@ function showMainPoster() {
   savedPostersSection.classList.add('hidden');
 };
 
+function userCreatedPoster() {
+  poster.innerHTML = `
+  <img class="poster-img" src="${userImage.value}" alt="${userTitle.value}">
+  <h1 class="poster-title">${userTitle.value}</h1>
+  <h3 class="poster-quote">${userQuote.value}</h3>
+  `;
+  showMainPoster();
+}
+
 //!Remember: double-check nested elements!
 
-createRandomImage();
+
 
 
 // move poster variable to global scope (done)
