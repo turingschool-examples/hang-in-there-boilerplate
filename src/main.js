@@ -152,7 +152,7 @@ makePoster.addEventListener('click', function(event) {
   createMyPoster();
 });
 savePoster.addEventListener('click', saveCurrentPoster);
-
+savedPostersGrid.addEventListener('dblclick', deletePoster);
 // functions and event handlers go here 👇
 
 // (we've provided one for you to get you started)!
@@ -186,12 +186,10 @@ function openSavedPosters() {
   savedPostersGrid.innerHTML = '';
   for (i = 0; i < savedPostersArray.length; i++) {
   savedPostersGrid.innerHTML += `
-  <section class="mini-poster">
-    <article class="poster">
+  <section id=${savedPostersArray[i].id} class="mini-poster">
       <img class="poster-img" src=${savedPostersArray[i].imageURL}>
       <h2 class="poster-title">${savedPostersArray[i].title}</h2>
       <h4 class="poster-quote">${savedPostersArray[i].quote}</h4>
-    </article>
   </section>`
 
 }
@@ -223,3 +221,18 @@ function saveCurrentPoster(){
   savedPostersArray.push(currentPoster);
   }
 }
+
+function deletePoster(event) {
+  for (i = 0; i < savedPostersArray.length; i++) {
+      var idCheck = savedPostersArray[i].id.toString();
+      if (event.target.closest('section').id === idCheck) {
+        savedPostersArray.splice(i, 1);
+      }
+  }
+  openSavedPosters();
+}
+
+//   if (event.target.closest('section').id === 'mini-poster') {
+//    savedPostersGrid.classlist.add('delete');  
+//     }
+// }
