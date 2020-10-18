@@ -131,10 +131,21 @@ var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
 showRandom.addEventListener('click', getThreeValues)
-// posterForm.addEventListener('click',) //expecting argument that will be a function which hides current view and brings up form
-showMain.addEventListener('click', showMainView);
-backToMain.addEventListener('click', showMainView);
-showSaved.addEventListener('click', showSavedView);
+showForm.addEventListener('click', () => {
+  showTargetView(posterForm, mainPoster, savedView);
+}); //expecting argument that will be a function which hides current view and brings up form
+// showMain.addEventListener('click', showMainView);
+showMain.addEventListener('click', () => {
+  showTargetView(mainPoster, savedView, posterForm);
+});
+backToMain.addEventListener('click', () => {
+  showTargetView(mainPoster, savedView, posterForm);
+});
+showSaved.addEventListener('click', () => {
+  showTargetView(savedView, mainPoster, posterForm);
+});
+// showSaved.addEventListener('click', showSavedView);
+
 
 // functions and event handlers go here
 window.onload = getThreeValues();
@@ -152,13 +163,22 @@ function getThreeValues() {
   posterQuote.innerText = currentPoster.quote
 }
 
-function showSavedView() {
-  mainPoster.className = 'main-poster hidden';
-  savedView.className = 'saved-posters';
-}
+// function showSavedView() {
+//   mainPoster.className = 'main-poster hidden';
+//   savedView.className = 'saved-posters';
+// }
+//
+// function showMainView() {
+//   mainPoster.className = 'main-poster';
+//   savedView.className = 'saved-posters hidden';
+//   posterForm.className = 'poster-form hidden';
+// }
 
-function showMainView() {
-  mainPoster.className = 'main-poster';
-  savedView.className = 'saved-posters hidden';
-  posterForm.className = 'poster-form hidden';
+function showTargetView(viewToShow, viewToHide1, viewToHide2) {
+  var whereHiddenIs = viewToShow.className.indexOf(' hidden');
+  var showSection = viewToShow.className.slice(0, whereHiddenIs);
+  viewToShow.className = showSection;
+  viewToHide1.className.indexOf(' hidden') > -1 ? viewToHide1.className : viewToHide1.className += ' hidden';
+  viewToHide2.className.indexOf(' hidden') > -1 ? viewToHide2.className : viewToHide2.className += ' hidden';
+  console.log(viewToShow, viewToHide1, viewToHide2);
 }
