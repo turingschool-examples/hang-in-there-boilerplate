@@ -21,9 +21,12 @@ var posterImageUrlInput = document.querySelector("#poster-image-url");
 var posterTitleInput = document.querySelector("#poster-title");
 var posterQuoteInput = document.querySelector("#poster-quote");
 
-//Save this poster to grid:
+// Save this poster to grid:
 var saveThisPosterButton = document.querySelector(".save-poster");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
+
+// Delete a poster from grid:
+var miniPoster = document.querySelector(".mini-poster");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -131,18 +134,19 @@ window.addEventListener("load", randomizePoster);
 showRandomPosterButton.addEventListener("click", randomizePoster);
 showSavedButton.addEventListener("click", bringUpSaved);
 makeYourOwnButton.addEventListener("click", bringUpForm);
-nevermindButton.addEventListener("click", formBackToMain);
-backToMainButton.addEventListener("click", savedBackToMain);
+nevermindButton.addEventListener("click", returnToMainFromForm);
+backToMainButton.addEventListener("click", returnToMainFromSaved);
 showMyPosterButton.addEventListener("click", showCreatedPoster);
 saveThisPosterButton.addEventListener("click", saveCurrentPoster);
+savedPostersGrid.addEventListener("dblclick", deleteMiniPoster);
 
 // functions and event handlers go here 👇
 function randomizePoster() {
   var newTitle = getRandomIndex(titles);
-  mainPosterTitle.innerText = newTitle;
   var newQuote = getRandomIndex(quotes);
-  mainPosterQuote.innerText = newQuote;
   var newImage = getRandomIndex(images);
+  mainPosterTitle.innerText = newTitle;
+  mainPosterQuote.innerText = newQuote;
   mainPosterImage.src = newImage;
   currentPoster = new Poster(newImage, newTitle, newQuote);
 };
@@ -161,12 +165,12 @@ function bringUpForm() {
   showFormScreen.classList.remove("hidden");
 };
 
-function formBackToMain() {
+function returnToMainFromForm() {
   mainPoster.classList.remove("hidden");
   showFormScreen.classList.add("hidden");
 };
 
-function savedBackToMain() {
+function returnToMainFromSaved() {
   mainPoster.classList.remove("hidden");
   savedPostersScreen.classList.add("hidden");
 };
@@ -177,48 +181,51 @@ function showCreatedPoster() {
   titles.push(posterTitleInput.value);
   quotes.push(posterQuoteInput.value);
   currentPoster = new Poster(posterImageUrlInput.value, posterTitleInput.value, posterQuoteInput.value);
-  formBackToMain();
+  returnToMainFromForm();
   mainPosterTitle.innerText = currentPoster.title;
   mainPosterQuote.innerText = currentPoster.quote;
   mainPosterImage.src = currentPoster.imageURL;
 };
 
 function saveCurrentPoster() {
-    savedPostersGrid.innerHTML= "";
-    if(!savedPosters.includes(currentPoster)) {
-      savedPosters.unshift(currentPoster);
-    };
-    for (var i = 0; i < savedPosters.length; i++) {
-      savedPostersGrid.innerHTML += `
+  savedPostersGrid.innerHTML = "";
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.unshift(currentPoster);
+  };
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersGrid.innerHTML += `
       <section class="mini-poster" id="currentPoster.id">
-        <img id="currentPoster.id" src=${savedPosters[i].imageURL} alt="does this show">
+        <img id="currentPoster.id" src=${savedPosters[i].imageURL} alt="">
         <h2 id="currentPoster.id">${savedPosters[i].title}</h2>
         <h4 id="currentPoster.id">${savedPosters[i].quote}</h4>
         </section>
       `;
-    }
   };
+};
 
-// function saveCurrentPoster() {
-//     currentPoster = new Poster(mainPosterImage, mainPosterTitle, mainPosterQuote);
-//     console.log(currentPoster);
-//     if(!savedPosters.includes(mainPosterImage && mainPosterTitle && mainPosterQuote)) {
-//       savedPosters.unshift(currentPoster);
-//     };
-//     for (var i = 0; i < savedPosters.length; i++) {
-//       savedPostersGrid.innerText += `
-//         ${savedPosters[i].imageURL}
-//         // <h2 class="mini-poster">${savedPosters[i].title}</h2>
-//         // <h4 class="mini-poster">${savedPosters[i].quote}</h4>
-//       `;
-//     }
-//   };
+function deleteMiniPoster() {
+  event.target.id;
+  savedPostersGrid.innerHTML = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPosters.splice(i, 1);
+    savedPostersGrid.innerHTML -= `
+    <section class="mini-poster" id="currentPoster.id">
+      <img id="currentPoster.id" src=${savedPosters[i].imageURL} alt="">
+      <h2 id="currentPoster.id">${savedPosters[i].title}</h2>
+      <h4 id="currentPoster.id">${savedPosters[i].quote}</h4>
+      </section>
+    `;
+    // miniPoster.classList.add("delete");
+  };
+};
 
-// When a user clicks the “Save This Poster” button, the current main poster will be added to the savedPosters array. ->
-    //Set up click event for save poster. We need to set the instance of the poster showed as current poster. Then push to the empty savedPosters array.
-// If a user clicks the “Save This Poster” more than once on a single poster, it will still only be saved once (no duplicates)
-    //add a conditional statement for if it includes all three parameters to not push, else push
-// When a user clicks the “Show Saved Posters” button, we should see the saved posters section
-    //Access show saved posters screen
-// All the posters in the savedPosters array should be displayed in the saved posters grid section
-    //Add saved posters array to the article
+// From the saved posters view, if a user double clicks a saved poster, it will be deleted
+// Hint: How will you update the data model to achieve this?
+// event listener for double clicks
+// function for removing entire poster instance via specific id
+// replace(?) with .delete class from CSS (similar to hidden from before)
+// what actually happens when you delete a poster instance? remove from savedPosters array
+// 1. create a for loop for savedPosters array
+// 2. event target id
+// 3. splice i, 1
+// 4. delete section class and children? replace with .delete class?
