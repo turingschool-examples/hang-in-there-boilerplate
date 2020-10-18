@@ -127,7 +127,8 @@ makePosterBtn.addEventListener("click", makePoster);
 showSavedBtn.addEventListener("click", displaySavedPosters);
 takeBackBtn.addEventListener("click", goToMain);
 backToMainBtn.addEventListener("click", goToMain);
-showMadePosterBtn.addEventListener("click", displayMadePoster)
+showMadePosterBtn.addEventListener("click", displayMadePoster);
+savePosterBtn.addEventListener("click", savePosterToGrid);
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -157,9 +158,6 @@ function makePoster() {
   hideMainPoster(); 
 }
 
-function savePoster() {
-  savedPosters.unshift(currentPoster);
-}
 function saveUserInput() {
   images.unshift(formPosterImg.value);
   titles.unshift(formTitle.value);
@@ -173,7 +171,6 @@ function displayMadePoster() {
     formQuote.value
   );
   saveUserInput();
-  savePoster();
   displayPoster();
   showMainPoster();
   hideForm();
@@ -184,6 +181,17 @@ function displaySavedPosters() {
   hideMainPoster(); 
   hideForm();
   showSavedPosters();
+  //posters in savedposters should be in grid
+}
+
+function savePoster(currentPoster) {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.unshift(currentPoster)
+  }
+}
+
+function savePosterToGrid() {
+  savePoster(currentPoster);
 }
 
 function goToMain() {
