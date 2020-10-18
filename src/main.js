@@ -14,19 +14,7 @@ var imageUrlInput = document.querySelector("#poster-image-url");
 var motivationalTitleInput = document.querySelector("#poster-title");
 var motivationalQuoteInput = document.querySelector("#poster-quote");
 var showPosterButton = document.querySelector(".make-poster");
-var saveMyPosterButton = document.querySelector(".save-poster");
-
-
-//Variabels we created for poster form function(?)
-
-
-// images.push = inputImage
-// titles.push = inputTitle
-// quote.push = inputQuote
-//innerHTML?
-
-
-
+var savePosterButton = document.querySelector(".save-poster");
 
 
 // we've provided you with some data to work with 👇
@@ -137,7 +125,7 @@ showSavedButton.addEventListener("click", showSaved);
 showMainButton.addEventListener("click", goBackToMain);
 backToMainButton.addEventListener("click", goBackToMain);
 showPosterButton.addEventListener("click", userDataInput);
-// saveMyPoster.addEventListener("click", savesCurrentPoster);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -168,20 +156,24 @@ function showSaved() {
 
 function goBackToMain() {
   mainPosterView.classList.remove("hidden");
+  savedPostersView.classList.add("hidden");
 };
 
-function userDataInput() {
+function userDataInput(imageURL, title, quote) {
   event.preventDefault()
-  var inputImage = imageUrlInput.value;
-  var inputTitle = motivationalTitleInput.value;
-  var inputQuote = motivationalQuoteInput.value;
-  var currentPoster = new Poster(inputImage, inputTitle, inputQuote);
+  imageURL = imageUrlInput.value;
+  title = motivationalTitleInput.value;
+  quote = motivationalQuoteInput.value;
+  currentPoster = new Poster(imageURL, title, quote);
+  displayedImage.src = imageURL;
+  displayedTitle.innerHTML = title;
+  displayedQuote.innerHTML = quote;
+  images.push(imageURL);
+  titles.push(title);
+  quotes.push(quote);
   mainPosterView.classList.remove("hidden");
   posterFormView.classList.add("hidden");
-  console.log(currentPoster);
-  displayedImage.src = inputImage;
-  displayedTitle.innerHTML = inputTitle;
-  displayedQuote.innerHTML = inputQuote;
+  console.log(currentPoster)
 };
 
 
@@ -190,30 +182,9 @@ function userDataInput() {
 
 
 
-// function showCreatedPoster() {
-//   displayedImage.src =
-// }
-// displayedImage.src = userDataInput();
-
-// function userDataInput() {
-//   displayedImage.innerHTML = imageUrlInput.value;
-//   displayedTitle.innerHTML = motivationalTitleInput.value;
-//   displayedQuote.innerHTML = motivationalQuoteInput.value;
-// };
 
 // function showMyNewPoster() {
 //   //CALL TO POSTER CLASS
 // }
 //
-// function savesCurrentPoster() {
-//
-// }
-function testForUsage() {
-  console.log(motivationalTitleInput.innerHTML = displayedTitle.value);
-}
-
-
-
-// function addCompliment() {
-//   complimentLocation.innerHTML = `${getRandomCompliment(compliments)} ${textInput.value} .`
-// }
+// function savesCurrentPoster()
