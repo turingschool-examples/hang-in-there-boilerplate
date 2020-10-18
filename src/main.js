@@ -29,6 +29,12 @@ var posterImageURL = document.querySelector('.poster-image-url');
 
 var mainPoster = document.querySelector('.main-poster');
 
+var userImage = document.querySelector("#poster-image-url");
+
+var userTitle = document.querySelector("#poster-title");
+
+var userQuote = document.querySelector("#poster-quote");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -147,8 +153,14 @@ showSaved.addEventListener('click', () => {
   showTargetView(savedView, mainPoster, posterForm);
 });
 
+makeUserPoster.addEventListener('click', createUserPoster);
+
 // functions and event handlers go here
 window.onload = getThreeValues();
+
+function createUserPoster() {
+  
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
