@@ -36,8 +36,6 @@ var userTitle = document.querySelector("#poster-title");
 
 var userQuote = document.querySelector("#poster-quote");
 
-var page = document.querySelector('body');
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
