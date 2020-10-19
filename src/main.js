@@ -185,37 +185,17 @@ function showMainPoster() {
 
 function userCreatedPoster() {
   event.preventDefault();
-  // poster.innerHTML = `
-  // <img class="poster-img" src="${userImage.value}" alt="${userTitle.value}">
-  // <h1 class="poster-title">${userTitle.value}</h1>
-  // <h3 class="poster-quote">${userQuote.value}</h3>
-  // `;
-  var userUrl = userImage.value;
-  var userTitleText = userTitle.value;
-  var userQuoteText = userQuote.value;
 
-  posterImage.src = userUrl;
-  posterTitle.innerText = userTitleText;
-  posterQuote.innerText = userQuoteText;
-  //do these values need to be stored in a variable? Object?
-  //declare a variable (locally?) for each input and pass
-  //user... have been declared globally
-  //call userCreatedPoster, we fail to access the value of user inputs.
-  //assign a variable the value of user Input
-  //need to include an input field
-  //need to manipulate the DOM elements to include an input
-  //declare
+  currentPoster.image = userImage.value;
+  currentPoster.title = userTitle.value;
+  currentPoster.quote = userQuote.value;
 
-  //input text of user inputs is *not* being accessed or stored.
-  //to access input text, store it as a variable
-  //reassign image.src to new variable (see above)
+  posterImage.src = currentPoster.image;
+  posterImage.alt = currentPoster.title;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
 
-
-  posterForm.classList.add('hidden');
-  mainPoster.classList.remove('hidden');
-  savedPostersSection.classList.add('hidden');
-  // showMainPoster();
-  console.log(userImage.value);
+  showMainPoster();
 }
 
 //!Remember: double-check nested elements!
