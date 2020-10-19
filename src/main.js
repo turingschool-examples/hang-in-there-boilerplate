@@ -136,7 +136,7 @@ var userButton = document.querySelector('.make-poster');
 // main poster event listeners
 window.addEventListener('load', createRandomPoster);
 randomButton.addEventListener('click', createRandomPoster);
-savePosterButton.addEventListener('click', createRandomPoster);
+savePosterButton.addEventListener('click', savePoster);
 showSavedButton.addEventListener('click', showSavedPosters);
 makePosterButton.addEventListener('click', showPosterForm);
 // poster form event listeners
@@ -196,6 +196,11 @@ function userCreatedPoster() {
   posterQuote.innerText = currentPoster.quote;
 
   showMainPoster();
+}
+
+function savePoster() {
+  savedPosters.push(currentPoster);
+  console.log(savedPosters);
 }
 
 //!Remember: double-check nested elements!
