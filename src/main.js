@@ -136,7 +136,7 @@ var userButton = document.querySelector('.make-poster');
 // main poster event listeners
 window.addEventListener('load', createRandomPoster);
 randomButton.addEventListener('click', createRandomPoster);
-savePosterButton.addEventListener('click', createRandomPoster);
+savePosterButton.addEventListener('click', savePoster);
 showSavedButton.addEventListener('click', showSavedPosters);
 makePosterButton.addEventListener('click', showPosterForm);
 // poster form event listeners
@@ -196,6 +196,23 @@ function userCreatedPoster() {
   posterQuote.innerText = currentPoster.quote;
 
   showMainPoster();
+}
+
+function savePoster() {
+  var save = {
+    image: posterImage.src,
+    title: posterTitle.innerText,
+    quote: posterQuote.innerText,
+  }
+  for (var i = 0; i < savedPosters.length; i++){
+    if (savedPosters.includes(save.image && save.title && save.quote) === false) {
+      savedPosters.push(save);
+    }
+  }
+  console.log(savedPosters);
+  //when tested object is pushed to savedPosters array
+  //multiples of specific object continue to be pushed
+  //but like, why though?
 }
 
 //!Remember: double-check nested elements!
