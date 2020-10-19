@@ -199,8 +199,20 @@ function userCreatedPoster() {
 }
 
 function savePoster() {
-  savedPosters.push(currentPoster);
+  var save = {
+    image: posterImage.src,
+    title: posterTitle.innerText,
+    quote: posterQuote.innerText,
+  }
+  for (var i = 0; i < savedPosters.length; i++){
+    if (savedPosters.includes(save.image && save.title && save.quote) === false) {
+      savedPosters.push(save);
+    }
+  }
   console.log(savedPosters);
+  //when tested object is pushed to savedPosters array
+  //multiples of specific object continue to be pushed
+  //but like, why though?
 }
 
 //!Remember: double-check nested elements!
