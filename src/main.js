@@ -99,7 +99,12 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {
+  image: "",
+  title: "",
+  quote: "",
+};
+//call currentPoster.img is placeholder for image (cont for title & quote)
 
 // main poster query selectors
 var mainPoster = document.querySelector('.main-poster');
@@ -129,8 +134,9 @@ var userButton = document.querySelector('.make-poster');
 
 // event listeners go here 👇
 // main poster event listeners
-randomButton.addEventListener('click', createRandomImage);
-savePosterButton.addEventListener('click', createRandomImage);
+window.addEventListener('load', createRandomPoster);
+randomButton.addEventListener('click', createRandomPoster);
+savePosterButton.addEventListener('click', createRandomPoster);
 showSavedButton.addEventListener('click', showSavedPosters);
 makePosterButton.addEventListener('click', showPosterForm);
 // poster form event listeners
@@ -138,7 +144,7 @@ showMain.addEventListener('click', showMainPoster);
 backToMain.addEventListener('click', showMainPoster);
 // pass in the correct function/parameters
 // user input event listeners
-userButton.addEventListener('click', userCreatedPoster)
+userButton.addEventListener('click', userCreatedPoster);
 
 
 // functions and event handlers go here 👇
@@ -148,21 +154,16 @@ function getRandomIndex(array) {
 }
 
 // main poster functions
-function createRandomImage() {
-  var randomImage = images[getRandomIndex(images)];
-  var randomTitle = titles[getRandomIndex(titles)];
-  var randomQuote = quotes[getRandomIndex(quotes)];
-  // poster.innerHTML = `
-  // <img class="poster-img" src="${randomImage}" alt="${randomImage}">
-  // <h1 class="poster-title">${randomTitle}</h1>
-  // <h3 class="poster-quote">${randomQuote}</h3>
-  // `
-  posterImage.src = randomImage;
-  posterTitle.innerText = randomTitle;
-  posterQuote.innerText = randomQuote;
-  //alt?
+function createRandomPoster() {
+  currentPoster.image = images[getRandomIndex(images)];
+  currentPoster.title = titles[getRandomIndex(titles)];
+  currentPoster.quote = quotes[getRandomIndex(quotes)];
+
+  posterImage.src = currentPoster.image;
+  posterImage.alt = currentPoster.title;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
 };
-createRandomImage();
 
 function showPosterForm() {
   posterForm.classList.remove('hidden');
@@ -183,6 +184,7 @@ function showMainPoster() {
 };
 
 function userCreatedPoster() {
+  event.preventDefault();
   // poster.innerHTML = `
   // <img class="poster-img" src="${userImage.value}" alt="${userTitle.value}">
   // <h1 class="poster-title">${userTitle.value}</h1>
