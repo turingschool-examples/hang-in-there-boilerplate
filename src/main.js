@@ -137,11 +137,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function viewShowHide(page1, page2) {
-  page1.classList.toggle("hidden");
-  page2.classList.toggle("hidden");
-}
-
 function randomizePoster() {
   currentPoster = new Poster(
     images[getRandomIndex(images)],
@@ -163,7 +158,7 @@ function displayRandomPoster() {
 function makePoster() {
   // showForm();
   // hideMainPoster(); 
-  viewShowHide(form, mainPoster)
+  viewShowHideTwo(form, mainPoster)
 }
 
 function saveUserInput() {
@@ -187,7 +182,7 @@ function displayMadePoster() {
   displayPoster();
   // showMainPoster();
   // hideForm();
-  viewShowHide(mainPoster, form);
+  viewShowHideTwo(form, mainPoster);
   clearUserInput();
 }
 
@@ -237,6 +232,14 @@ function goToMain() {
   hideSavedPosters();
 }
 
+function viewShowHideTwo(page1, page2) {
+  page1.classList.toggle("hidden");
+  page2.classList.toggle("hidden");
+}
+
+function viewShowHideThree(page1, page2, page3) {
+  
+}
 // function showForm() {
 //   form.classList.remove("hidden");
 // }
