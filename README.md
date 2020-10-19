@@ -30,23 +30,23 @@
 Sometimes you need a pick me up. Remember those motivational posters that were all over the place in classrooms and online? We’re going to make our own!
 
 ## Instructions For Running and Viewing
-**Visit the deploy link [here.](https://tashiad.github.io/hang-in-there-boilerplate/ "Hang In There Deployed Site")**
+**>>Visit the deploy link [here.](https://tashiad.github.io/hang-in-there-boilerplate/ "Hang In There Deployed Site")**
 
 Upon visiting the site, you will see a motivational poster generated from a random of a list of images, titles, and quotes. Click _"Show Another Random Poster"_ to view a different randomized motivational poster.
 
-![screenshot of landing page](/poster-landing.png)
+![screenshot of landing page](https://raw.githubusercontent.com/tashiad/hang-in-there-boilerplate/create-our-README.md/readme-imgs/poster-landing.png)
 
 If you like the poster shown and want to be able to view it later, click the _"Save This Poster"_ button. Then, click _"Show Saved Posters"_ to view a grid of the posters you've chosen to save. From there, the _"Back to Main"_ button will take you back to the main screen.
 
-![screenshot of landing page](/create-poster-form.png)
+![screenshot of create poster form](/create-poster-form.png)
 
 Once back on the main screen, you can make your own poster by clicking _"Make Your Own Poster"_. This will bring up the form, where you can enter an image link, title, and quote of your choosing. Click _"Show My Poster"_ to view it.
 
-![screenshot of landing page](/owl-poster.png)
+![screenshot of created poster](https://github.com/tashiad/hang-in-there-boilerplate/blob/create-our-README.md/readme-imgs/owl-poster.png)
 
 If you like it, you can repeat the steps from earlier to save it. Your inputs will also be stored for use in future randomized posters.
 
-![screenshot of landing page](/saved-posters.png)
+![screenshot of saved posters grid](/saved-posters.png)
 
 ## Future Features
 - From the saved posters view, if a user double clicks a saved poster, it will be deleted
