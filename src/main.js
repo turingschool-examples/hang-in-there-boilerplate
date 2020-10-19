@@ -156,8 +156,6 @@ function displayRandomPoster() {
 };
 
 function makePoster() {
-  // showForm();
-  // hideMainPoster(); 
   viewShowHideTwo(form, mainPoster)
 }
 
@@ -188,9 +186,10 @@ function displayMadePoster() {
 
 function displaySavedPosters() {
   event.preventDefault();
-  hideMainPoster(); 
-  hideForm();
-  showSavedPosters();
+  // hideMainPoster(); 
+  // hideForm();
+  viewShowHideTwo(mainPoster, savedPostersDisplay);
+  // showSavedPosters();
   displaySavedPostersGrid();
 }
 
@@ -227,9 +226,9 @@ function deletePoster(event) {
 }
 
 function goToMain() {
-  hideForm();
-  showMainPoster();
-  hideSavedPosters();
+  form.classList.add("hidden");
+  mainPoster.classList.remove("hidden");
+  savedPostersDisplay.classList.add("hidden")
 }
 
 function viewShowHideTwo(page1, page2) {
@@ -237,11 +236,7 @@ function viewShowHideTwo(page1, page2) {
   page2.classList.toggle("hidden");
 }
 
-function viewShowHideThree(page1, page2, page3) {
-  page1.classList.toggle("hidden");
-  page2.classList.toggle("hidden");
-  page3.classList.toggle("hidden");
-}
+
 // function showForm() {
 //   form.classList.remove("hidden");
 // }
