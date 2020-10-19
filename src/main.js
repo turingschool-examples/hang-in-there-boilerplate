@@ -156,7 +156,7 @@ function displayRandomPoster() {
 };
 
 function makePoster() {
-  viewShowHideTwo(form, mainPoster)
+  toggleView(form, mainPoster)
 }
 
 function saveUserInput() {
@@ -178,18 +178,13 @@ function displayMadePoster() {
   );
   saveUserInput();
   displayPoster();
-  // showMainPoster();
-  // hideForm();
-  viewShowHideTwo(form, mainPoster);
+  toggleView(form, mainPoster);
   clearUserInput();
 }
 
 function displaySavedPosters() {
   event.preventDefault();
-  // hideMainPoster(); 
-  // hideForm();
-  viewShowHideTwo(mainPoster, savedPostersDisplay);
-  // showSavedPosters();
+  toggleView(mainPoster, savedPostersDisplay);
   displaySavedPostersGrid();
 }
 
@@ -231,29 +226,7 @@ function goToMain() {
   savedPostersDisplay.classList.add("hidden")
 }
 
-function viewShowHideTwo(page1, page2) {
+function toggleView(page1, page2) {
   page1.classList.toggle("hidden");
   page2.classList.toggle("hidden");
 }
-
-
-// function showForm() {
-//   form.classList.remove("hidden");
-// }
-// function hideForm() {
-//   form.classList.add("hidden");
-// }
-// function showMainPoster() {
-//   mainPoster.classList.remove("hidden");
-// }
-// function hideMainPoster() {
-//   mainPoster.classList.add("hidden"); 
-// }
-// function showSavedPosters() {
-//   savedPostersDisplay.classList.remove("hidden");
-// }
-// function hideSavedPosters() {
-//   savedPostersDisplay.classList.add("hidden");
-// }
-
-//refactor?
