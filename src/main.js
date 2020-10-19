@@ -185,8 +185,9 @@ function displayMadePoster() {
   );
   saveUserInput();
   displayPoster();
-  showMainPoster();
-  hideForm();
+  // showMainPoster();
+  // hideForm();
+  viewShowHide(mainPoster, form);
   clearUserInput();
 }
 
