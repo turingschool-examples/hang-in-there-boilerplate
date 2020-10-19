@@ -15,7 +15,7 @@ var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
 var showMyPosterButton = document.querySelector(".make-poster");
 var savePosterButton = document.querySelector(".save-poster"); 
-var savedGrid = document.querySelector(".saved-poster-grid");
+var savedGrid = document.querySelector(".saved-posters-grid");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -157,7 +157,7 @@ function goBackToMain() {
 function goToSavedPosters() {
   savedPostersPage.classList.remove("hidden");
   mainPage.classList.add("hidden");
-  createGrid();
+  //createGrid();
 };
 
 function createMyPoster() {
@@ -178,14 +178,19 @@ function savePoster(){
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
-}
+  createGrid();
+};
 
 function createGrid() {
+   savedGrid.innerHTML = ""
   for (var i = 0; i < savedPosters.length; i++) {
-    return savedGrid.innerHTML =
-            `<img class="mini-poster" src="${savedPosters[i].imageURL}" alt="saved poster">
-            <h2>${savedPosters[i].title}</h2>
-            <h4>${savedPosters[i].quote}</h4>`
+    savedGrid.innerHTML +=
+            `<article class="mini-poster">
+              <img src="${savedPosters[i].imageURL}" alt="saved poster">
+              <h2>${savedPosters[i].title}</h2>
+              <h4>${savedPosters[i].quote}</h4>
+            </article>
+             `
           }
   };
 
