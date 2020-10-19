@@ -238,7 +238,9 @@ function viewShowHideTwo(page1, page2) {
 }
 
 function viewShowHideThree(page1, page2, page3) {
-  
+  page1.classList.toggle("hidden");
+  page2.classList.toggle("hidden");
+  page3.classList.toggle("hidden");
 }
 // function showForm() {
 //   form.classList.remove("hidden");
