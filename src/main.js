@@ -1,4 +1,5 @@
-// query selector variables go here 👇
+// query selector variables go here
+
 var savePoster = document.querySelector('.save-poster');
 
 var showSaved = document.querySelector('.show-saved');
@@ -17,7 +18,7 @@ var posterTitle = document.querySelector('.poster-title');
 
 var posterQuote = document.querySelector('.poster-quote');
 
-var makePoster = document.querySelector('.make-poster');
+var makeUserPoster = document.querySelector('.make-poster');
 
 var savedView = document.querySelector('.saved-posters');
 
@@ -34,6 +35,8 @@ var userImage = document.querySelector("#poster-image-url");
 var userTitle = document.querySelector("#poster-title");
 
 var userQuote = document.querySelector("#poster-quote");
+
+var page = document.querySelector('body');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -136,7 +139,8 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
-showRandom.addEventListener('click', getThreeValues)
+showRandom.addEventListener('click', getThreeValues);
+
 showForm.addEventListener('click', () => {
   showTargetView(posterForm, mainPoster, savedView);
 });
@@ -153,14 +157,39 @@ showSaved.addEventListener('click', () => {
   showTargetView(savedView, mainPoster, posterForm);
 });
 
-makeUserPoster.addEventListener('click', createUserPoster);
+makeUserPoster.addEventListener('click', function() {
+  createUserPoster(event, userImage, userQuote, userTitle);
+});
+
+makeUserPoster.addEventListener('click', function() {
+  showTargetView(mainPoster, savedView, posterForm);
+});
 
 // functions and event handlers go here
 window.onload = getThreeValues();
 
-function createUserPoster() {
-  
+function createUserPoster(event, inputImage, inputQuote, inputTitle) {
+  event.preventDefault();
+  saveUserInput(inputImage, inputQuote, inputTitle);
+  currentPoster = new Poster(userImage.value, userQuote.value, userTitle.value);
+  posterImage.src = currentPoster.imageURL;
+  posterQuote.innerText = currentPoster.quote;
+  posterTitle.innerText = currentPoster.title;
+  showTargetView(mainPoster, savedView, posterForm);
 }
+
+function saveUserInput(inputImage, inputQuote, inputTitle) {
+  if (!images.includes(inputImage.value)) {
+    images.push(userImage.value);
+  }
+  if (!quotes.includes(inputQuote.value)) {
+    quotes.push(userQuote.value);
+  }
+  if (!titles.includes(inputTitle.value)) {
+    titles.push(userTitle.value);
+  }
+}
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
