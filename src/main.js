@@ -137,7 +137,7 @@ makeYourOwnButton.addEventListener("click", bringUpForm);
 nevermindButton.addEventListener("click", returnToMainFromForm);
 backToMainButton.addEventListener("click", returnToMainFromSaved);
 showMyPosterButton.addEventListener("click", showCreatedPoster);
-saveThisPosterButton.addEventListener("click", saveCurrentPoster);
+saveThisPosterButton.addEventListener("click", createSavedPoster);
 savedPostersGrid.addEventListener("dblclick", deleteMiniPoster);
 
 // functions and event handlers go here 👇
@@ -187,38 +187,35 @@ function showCreatedPoster() {
   mainPosterImage.src = currentPoster.imageURL;
 };
 
-function saveCurrentPoster() {
-  savedPostersGrid.innerHTML = "";
+function savePosterPreventDuplicates() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.unshift(currentPoster);
   };
-  for (var i = 0; i < savedPosters.length; i++) {
-    savedPostersGrid.innerHTML += `
+};
+
+function addSavedPosterToGrid() {
+    savedPostersGrid.innerHTML = "";
+    for (var i = 0; i < savedPosters.length; i++) {
+      savedPostersGrid.innerHTML += `
       <section class="mini-poster" id=${savedPosters[i].id}>
-        <img id=${savedPosters[i].id} src=${savedPosters[i].imageURL} alt="">
+        <img id=${savedPosters[i].id} src=${savedPosters[i].imageURL} alt="does this show">
         <h2 id=${savedPosters[i].id}>${savedPosters[i].title}</h2>
         <h4 id=${savedPosters[i].id}>${savedPosters[i].quote}</h4>
         </section>
       `;
+   };
   };
+
+function createSavedPoster() {
+  savePosterPreventDuplicates();
+  addSavedPosterToGrid();
 };
 
 function deleteMiniPoster() {
-  event.target.classList = "hidden";
+  for (var i = 0; i < savedPosters.length; i++) {
+    if(event.target.id === `${savedPosters[i].id}`) {
+      savedPosters.splice(i, 1);
+    };
+  };
+  addSavedPosterToGrid();
 };
-
-// ITERATION 4 - OTHER IDEAS:
-// function deleteMiniPoster() {
-//   for (var i = 0; i < savedPosters.length; i++) {
-//     if (event.target.id == savedPosters[i].id) {
-//       savedPosters.splice(i, 1);
-//       savedPostersGrid.innerHTML -= `
-//           <section class="mini-poster" id=${savedPosters[i].id}>
-//             <img id=${savedPosters[i].id} src=${savedPosters[i].imageURL} alt="">
-//             <h2 id=${savedPosters[i].id}>${savedPosters[i].title}</h2>
-//             <h4 id=${savedPosters[i].id}>${savedPosters[i].quote}</h4>
-//             </section>
-//           `;
-//     }
-//   };
-// };
