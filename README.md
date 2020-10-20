@@ -2,7 +2,7 @@
 
 A web page displaying inspirational posters created with atom, GitHub, Node.js, javascript, HTML and CSS.
 
-[Hang In There] (https://rachelbuchta.github.io/hang-in-there-boilerplate/)
+[Hang In There](https://rachelbuchta.github.io/hang-in-there-boilerplate/)
 
 ### Introduction
 
@@ -53,3 +53,9 @@ This web page was created to help us build a deeper understanding of how javascr
 - Jahara Clark
 
 #### Assisted By:
+
+- JP Carey
+- Cooper Terrones
+- Theresa Marquis
+- Demaceo Vincent Howard
+- Hannah Hudson

@@ -161,6 +161,7 @@ function getRandomIndex(array) {
 function goBackToMain() {
   mainPosterView.classList.remove("hidden");
   savedPostersView.classList.add("hidden");
+  posterFormView.classList.add("hidden")
 };
 
 
