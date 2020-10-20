@@ -133,42 +133,16 @@ savePosterBtn.addEventListener("click", savePosterToGrid);
 savedPostersGrid.addEventListener("dblclick", deletePosterFromGrid);
 
 // functions and event handlers go here 👇
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-function randomizePoster() {
-  currentPoster = new Poster(
-    images[getRandomIndex(images)],
-    titles[getRandomIndex(titles)],
-    quotes[getRandomIndex(quotes)]
-  )
-};
-
-function displayPoster() {
-  posterImage.src = currentPoster.imageURL;
-  posterTitle.innerText = currentPoster.title;
-  posterQuote.innerText = currentPoster.quote
-}
 function displayRandomPoster() {
   randomizePoster();
   displayPoster();
 };
 
-function makePoster() {
-  toggleView(form, mainPoster)
+function displaySavedPosters() {
+  toggleView(mainPoster, savedPostersDisplay);
+  displaySavedPostersGrid();
 }
 
-function saveUserInput() {
-  images.unshift(formPosterImg.value);
-  titles.unshift(formTitle.value);
-  quotes.unshift(formQuote.value);
-}
-function clearUserInput() {
-  formPosterImg.value = "";
-  formTitle.value = "";
-  formQuote.value = "";
-}
 function displayMadePoster() {
   event.preventDefault();
   currentPoster = new Poster(
@@ -182,15 +156,10 @@ function displayMadePoster() {
   clearUserInput();
 }
 
-function displaySavedPosters() {
-  toggleView(mainPoster, savedPostersDisplay);
-  displaySavedPostersGrid();
-}
-
-function savePoster(currentPoster) {
-  if (!savedPosters.includes(currentPoster)) {
-    savedPosters.unshift(currentPoster)
-  }
+function displayPoster() {
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote
 }
 
 function displaySavedPostersGrid() {
@@ -198,11 +167,45 @@ function displaySavedPostersGrid() {
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.insertAdjacentHTML("afterbegin", `
       <section id="${savedPosters[i].id}" class="mini-poster">
-            <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
-            <h2 class="poster-title">${savedPosters[i].title}</h2>
-            <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+            <img id="${savedPosters[i].id}" class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
+            <h2 id="${savedPosters[i].id}" class="poster-title">${savedPosters[i].title}</h2>
+            <h4 id="${savedPosters[i].id}" ﬁclass="poster-quote">${savedPosters[i].quote}</h4>
       </section>
     `)
+  }
+}
+
+function makePoster() {
+  toggleView(form, mainPoster)
+}
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function randomizePoster() {
+  currentPoster = new Poster(
+    images[getRandomIndex(images)],
+    titles[getRandomIndex(titles)],
+    quotes[getRandomIndex(quotes)]
+  )
+};
+
+function clearUserInput() {
+  formPosterImg.value = "";
+  formTitle.value = "";
+  formQuote.value = "";
+}
+
+function saveUserInput() {
+  images.unshift(formPosterImg.value);
+  titles.unshift(formTitle.value);
+  quotes.unshift(formQuote.value);
+}
+
+function savePoster(currentPoster) {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.unshift(currentPoster)
   }
 }
 
