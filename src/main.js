@@ -126,6 +126,7 @@ savedPosterButton.addEventListener('click', goToSavedPosters);
 backToMainButton.addEventListener('click', goBackToMain);
 showMyPosterButton.addEventListener('click', showMyPoster);
 savePosterButton.addEventListener('click', savePoster); 
+//miniPoster.addEventListener('dblclick', deleteMiniPoster);
 
 
 // functions and event handlers go here 👇
@@ -157,7 +158,6 @@ function goBackToMain() {
 function goToSavedPosters() {
   savedPostersPage.classList.remove("hidden");
   mainPage.classList.add("hidden");
-  //createGrid();
 };
 
 function createMyPoster() {
@@ -174,7 +174,7 @@ function showMyPoster() {
   makeOwnPosterForm.classList.add("hidden");
 };
 
-function savePoster(){
+function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
@@ -185,13 +185,25 @@ function createGrid() {
    savedGrid.innerHTML = ""
   for (var i = 0; i < savedPosters.length; i++) {
     savedGrid.innerHTML +=
-            `<article class="mini-poster">
+            `<section class="mini-poster" data-id="${savedPosters[i].id}">
               <img src="${savedPosters[i].imageURL}" alt="saved poster">
               <h2>${savedPosters[i].title}</h2>
               <h4>${savedPosters[i].quote}</h4>
-            </article>
+            </section>
              `
-          }
+    };
+    var miniPoster = document.querySelectorAll("section");
   };
+
+
+
+function deleteMiniPoster() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (miniPoster.dataset.id === savedPosters[i].id) {
+      savedPosters.splice(i, 1);
+      return savedPosters;
+    }
+  }
+};
 
 getRandomPoster();
