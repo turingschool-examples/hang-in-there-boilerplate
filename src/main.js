@@ -213,7 +213,10 @@ function savePosterToGrid() {
   savePoster(currentPoster);
 }
 
-function deletePoster() {
+function deletePosterFromGrid() {
+  deleteMiniPoster(savedPosters);
+}
+function deleteMiniPoster(savedPosters) {
   //poster will be deleted from grid
   //target ---> savedPostersGrid
   //target class ---> "mini-poster"
@@ -223,7 +226,7 @@ function deletePoster() {
       savedPosters.splice(i, 1);
       }
     }
-  }
+  
 }
 
 function goToMain() {
