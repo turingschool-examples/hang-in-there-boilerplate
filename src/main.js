@@ -1,5 +1,4 @@
 // query selector variables go here
-
 var savePoster = document.querySelector('.save-poster');
 
 var showSaved = document.querySelector('.show-saved');
@@ -139,19 +138,19 @@ var currentPoster;
 // event listeners go here 👇
 showRandom.addEventListener('click', getThreeValues);
 
-showForm.addEventListener('click', () => {
+showForm.addEventListener('click', function() {
   showTargetView(posterForm, mainPoster);
 });
 
-showMain.addEventListener('click', () => {
+showMain.addEventListener('click', function() {
   showTargetView(mainPoster, posterForm);
 });
 
-backToMain.addEventListener('click', () => {
+backToMain.addEventListener('click', function() {
   showTargetView(mainPoster, savedView);
 });
 
-showSaved.addEventListener('click', () => {
+showSaved.addEventListener('click', function() {
   showTargetView(savedView, mainPoster);
 });
 
@@ -169,7 +168,7 @@ function createUserPoster(event, inputImage, inputQuote, inputTitle) {
   posterImage.src = currentPoster.imageURL;
   posterQuote.innerText = currentPoster.quote;
   posterTitle.innerText = currentPoster.title;
-  showTargetView(mainPoster, posterForm);  
+  showTargetView(mainPoster, posterForm);
 }
 
 function saveUserInput(inputImage, inputQuote, inputTitle) {
@@ -195,7 +194,7 @@ function getThreeValues() {
   currentPoster = new Poster(randomImage, randomTitle, randomQuote)
   posterImage.src = currentPoster.imageURL
   posterTitle.innerText = currentPoster.title
-  posterQuote.innerText = currentPoster.quote
+  posterQuote.innerText = currentPoster.quote  
 }
 
 function showTargetView(viewToShow, viewToHide) {
