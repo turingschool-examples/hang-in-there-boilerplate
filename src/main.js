@@ -19,6 +19,7 @@ var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
 var savePoster = document.querySelector('.save-poster');
 var imgGallery = document.querySelector('.saved-posters-grid');
+var miniPoster = document.querySelector('.mini-poster');
 
 // we've provided you with some data to work with 👇
 
@@ -131,6 +132,7 @@ backToMain.addEventListener('click', backHome);
 displayPoster.addEventListener('click', makeUserPoster);
 savePoster.addEventListener('click', storePoster);
 imgGallery.addEventListener('dblclick', removePoster);
+imgGallery.addEventListener('click', getBig);
 posterImage.addEventListener('click', swapImage)
 posterTitle.addEventListener('click', swapTitle)
 posterQuote.addEventListener('click', swapQuote)
