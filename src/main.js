@@ -136,6 +136,8 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
+savePoster.addEventListener('click', saveCurrentPoster);
+
 showRandom.addEventListener('click', getThreeValues);
 
 showForm.addEventListener('click', function() {
