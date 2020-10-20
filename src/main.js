@@ -211,13 +211,18 @@ function savePosterToGrid() {
   savePoster(currentPoster);
 }
 
-function deletePoster(event) {
+function deletePoster() {
   //poster will be deleted from grid
-  // if (event.target.className === )
-  // for (var i = 0; i < savedPosters.length; i++) {
-  //   if (event.target.id === savedPosters[i]){
-  //   splice();
-  // }
+  //target ---> savedPostersGrid
+  //target class ---> "mini-poster"
+  if (event.target.classList.contains("mini-poster")) {
+      console.log("pls work")
+    for (var i = 0; i < savedPosters.length; i++) {
+      if (event.target.id == savedPosters[i].id){
+      savedPosters.splice(i, 1);
+      }
+    }
+  }
 }
 
 function goToMain() {
