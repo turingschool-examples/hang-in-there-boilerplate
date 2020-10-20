@@ -199,9 +199,11 @@ function displaySavedPostersGrid() {
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.insertAdjacentHTML("afterbegin", `
       <section class="mini-poster">
-        <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
-        <h2 class="poster-title">${savedPosters[i].title}</h2>
-        <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+          <div id="${savedPosters[i].id}">
+            <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
+            <h2 class="poster-title">${savedPosters[i].title}</h2>
+            <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+          </div>
       </section>
     `)
   }
@@ -218,7 +220,8 @@ function deletePoster() {
   if (event.target.classList.contains("mini-poster")) {
       console.log("pls work")
     for (var i = 0; i < savedPosters.length; i++) {
-      if (event.target.id == savedPosters[i].id){
+      if (event.target.id === savedPosters[i].id){
+        console.log("yessss")
       savedPosters.splice(i, 1);
       }
     }
