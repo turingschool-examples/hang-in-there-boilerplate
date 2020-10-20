@@ -168,6 +168,7 @@ function createRandomPoster() {
 function showPosterForm() {
   posterForm.classList.remove('hidden');
   mainPoster.classList.add('hidden');
+
 };
 
 function showSavedPosters() {
@@ -199,27 +200,62 @@ function userCreatedPoster() {
 }
 
 function savePoster() {
-  var save = [posterImage.src, posterTitle.innerText, posterQuote.innerText];
 
-
-
-  // var save = {
-  //   image: posterImage.src,
-  //   title: posterTitle.innerText,
-  //   quote: posterQuote.innerText,
-  // }
-  //
-  if (savedPosters.includes(save) === false) {
-    savedPosters.push(save);
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].image === posterImage.src) {
+      if (savedPosters[i].title === posterTitle.innerText) {
+        if (savedPosters[i].quote === posterQuote.innerText) {
+          return;
+        }
+      }
+    }
   }
 
+  savedPosters.push(currentPoster);
   console.log(savedPosters);
-
-  //when tested object is pushed to savedPosters array
-  //multiples of specific object continue to be pushed
-  //but like, why though?
-  //are we misusing bang?
 }
+//tried currentPoster.key values
+
+//the current object is pushing to the array, BUT any previous objects in the array are being reassigned to the current object being pushed
+
+//where in our code/logic is savedPosters = currentPoster? 
+
+
+// var save = [posterImage.src, posterTitle.innerText, posterQuote.innerText];
+//
+//
+// //input is savedPosters, currentPoster
+// // currentPoster has image, title, quote
+// // savePosters is an array of objects (see currentPoster format)
+// //we want savePoster function to store currentPoster as an object in the savePosters array ONLY IF that currentPoster object doesn't already exist in the savePosters array
+// //but primitive =/= complex data types
+// //how do we tell javascrip is something is the same or not?
+// // if the image of currentPoster === image of the object inside of savePoster array && title of currentPoster === title of the object inside of savePoster array && quote of currentPoster === quote of the object inside of savePoster array, then don't duplicate/push
+//
+//
+// //for loop checking everything... in its own for loop.
+// //no short cuts :(
+// // []===
+//
+// // var save = {
+// //   image: posterImage.src,
+// //   title: posterTitle.innerText,
+// //   quote: posterQuote.innerText,
+// // }
+// //
+// if (savedPosters.includes(save)) {
+//   return;
+// } else {
+//   savedPosters.push(save);
+// }
+//
+// console.log(savedPosters);
+
+//when tested object is pushed to savedPosters array
+//multiples of specific object continue to be pushed
+//but like, why though?
+//are we misusing bang?
+
 
 //!Remember: double-check nested elements!
 
