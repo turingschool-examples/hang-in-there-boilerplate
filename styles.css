@@ -23,6 +23,7 @@ button {
   border: none;
   border-radius: 10px;
   color: white;
+  cursor: pointer;
 }
 
 button:hover {
@@ -53,6 +54,7 @@ button:hover {
   border: 2px solid white;
   height: 450px;
   width: 800px;
+  cursor: pointer;
 }
 
 .poster-title,
@@ -60,6 +62,8 @@ button:hover {
   color: white;
   line-height: 1;
   width: 90%;
+  user-select: none;
+  cursor: pointer;
 }
 
 .poster-title {
@@ -123,6 +127,7 @@ button:hover {
   height: 340px;
   padding: 25px;
   width: 425px;
+  cursor: pointer;
 }
 
 .mini-poster img {
