@@ -183,7 +183,6 @@ function displayMadePoster() {
 }
 
 function displaySavedPosters() {
-  event.preventDefault();
   toggleView(mainPoster, savedPostersDisplay);
   displaySavedPostersGrid();
 }
@@ -198,12 +197,10 @@ function displaySavedPostersGrid() {
   savedPostersGrid.innerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.insertAdjacentHTML("afterbegin", `
-      <section class="mini-poster">
-          <div id="${savedPosters[i].id}">
+      <section id="${savedPosters[i].id}" class="mini-poster">
             <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
             <h2 class="poster-title">${savedPosters[i].title}</h2>
             <h4 class="poster-quote">${savedPosters[i].quote}</h4>
-          </div>
       </section>
     `)
   }
@@ -217,12 +214,8 @@ function deletePosterFromGrid() {
   deleteMiniPoster(savedPosters);
 }
 function deleteMiniPoster(savedPosters) {
-  //poster will be deleted from grid
-  //target ---> savedPostersGrid
-  //target class ---> "mini-poster"
     for (var i = 0; i < savedPosters.length; i++) {
-      if (event.target.id === savedPosters[i].id){
-        console.log("yessss")
+      if (event.target.id === `${savedPosters[i].id}`){
       savedPosters.splice(i, 1);
       }
     }
