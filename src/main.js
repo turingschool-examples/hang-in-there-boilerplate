@@ -199,85 +199,25 @@ function userCreatedPoster() {
 }
 
 function savePoster() {
-  console.log('before', savedPosters);
-  savedPosters.push(currentPoster);
-  // for (var i = 1; i < savedPosters.length; i++) {
-  //   // console.log(savedPosters[i].image === currentPoster.image);
-  //   if (savedPosters[i].image === currentPoster.image) {
-  //     if (savedPosters[i].title === currentPoster.title) {
-  //       // console.log(savedPosters[i].title === currentPoster.title);
-  //       if (savedPosters[i].quote === currentPoster.quote) {
-  //         // console.log(savedPosters[i].quote === currentPoster.quote)
-  //         // console.log(currentPoster);
-  //         // console.log(savedPosters[i]);
-  //         savedPosters.pop();
-  //       }
-  //     }
-  //   }
-  // }
-
-  
-  console.log('after', savedPosters);
+  function passed(poster){
+    (poster.id === id)
+  }
+  if(savedPosters.some(passed)){
+    savedPosters.push(currentPoster);
+  }else{
+    return
+  }
+  console.log(savedPosters);
 }
-
-//tried currentPoster.key values
-
-//the current object is pushing to the array, BUT any previous objects in the array are being reassigned to the current object being pushed
-
-//where in our code/logic is savedPosters = currentPoster? 
-
-
-// var save = [posterImage.src, posterTitle.innerText, posterQuote.innerText];
-//
-//
-// //input is savedPosters, currentPoster
-// // currentPoster has image, title, quote
-// // savePosters is an array of objects (see currentPoster format)
-// //we want savePoster function to store currentPoster as an object in the savePosters array ONLY IF that currentPoster object doesn't already exist in the savePosters array
-// //but primitive =/= complex data types
-// //how do we tell javascrip is something is the same or not?
-// // if the image of currentPoster === image of the object inside of savePoster array && title of currentPoster === title of the object inside of savePoster array && quote of currentPoster === quote of the object inside of savePoster array, then don't duplicate/push
-//
-//
-// //for loop checking everything... in its own for loop.
-// //no short cuts :(
-// // []===
-//
-// // var save = {
-// //   image: posterImage.src,
-// //   title: posterTitle.innerText,
-// //   quote: posterQuote.innerText,
-// // }
-// //
-// if (savedPosters.includes(save)) {
-//   return;
-// } else {
-//   savedPosters.push(save);
-// }
-//
-// console.log(savedPosters);
-
-//when tested object is pushed to savedPosters array
-//multiples of specific object continue to be pushed
-//but like, why though?
-//are we misusing bang?
-
 
 //!Remember: double-check nested elements!
 
-
-
-
-// move poster variable to global scope (done)
-//main-poster VISIBLE has 1 class set to main-poster
-//poster-form HIDDEN has 2 classes poster-form AND hidden
-//CSS .hidden is assigned to display NONE
-//doc.query poster-form assign to posterForm
-
-// create poster from poster form
-// poster form has inputs
-// capture inputs using queryselector
-// button is listening for user events addEventListener
-// pass input into function
-// reassign HTML DOM elements to input corresponding values
-// add and remove hidden class respectively (want to display user creation on page)
+// function removeMenuItem(eateryName, name, meal){
+//   var passedItem = (food) => (food.name === name);
+//   if (eateryName.menus[meal].some(passedItem)){
+//   eateryName.menus[meal].splice(name, 1);
+//   return `No one is eating our ${name} - it has been removed from the ${meal} menu!`;
+//   }else{
+//    return `Sorry, we don't sell ${name}, try adding a new recipe!`
+//   };
+// };
