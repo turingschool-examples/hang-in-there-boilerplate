@@ -1,79 +1,56 @@
-# Hang In There
+# Hang In There: Paired Project
 
-A boilerplate repo. 
+## Contributors
+- Tashia Davis
+- Lucas Merchant
 
-## Set Up
+**Other contributors:**
+- Collin Kallery (mentor)
+- Melena Suliteanu (mentor)
+- EJ Ulery (outside mentor)
+- Hilary Lewis (outside mentor)
+- Sarah Osgood (rock)
+- Kayla Wood (project manager)
 
-1. One teammate: fork this repository
-2. Go to settings and turn on GitHub Pages for this repository
-3. All teammates: clone down this repository
-4. `cd` into the repository
-5. Run `open index.html` to view it in the browser
+## Technologies Used
+- Javascript
+- HTML
+- CSS
+- GitHub
+- Git
+- Atom
 
-## Progression
+## Project Goals
+- Write clean, DRY JavaScript to store our data.
+- Use a provided class by creating object instances using the new keyword.
+- Manipulate the page after it has loaded. Add, remove, and update elements on the DOM.
+- Begin to understand the connection between HTML, CSS and JavaScript.
 
-### Iteration 0 - Main Page
+## Overview
+Sometimes you need a pick me up. Remember those motivational posters that were all over the place in classrooms and online? We’re going to make our own!
 
-![screenshot of main page showing poster](/readme-imgs/homepage.png)
+## Instructions For Running and Viewing
+**>>Visit the deploy link [here.](https://tashiad.github.io/hang-in-there-boilerplate/ "Hang In There Deployed Site")**
 
-- When the page loads, we should see a poster with a randomly selected image, title, and quote
+Upon visiting the site, you will see a motivational poster generated from a random of a list of images, titles, and quotes. Click _"Show Another Random Poster"_ to view a different randomized motivational poster.
 
-### Iteration 1 - Switching Views
+![screenshot of landing page](https://github.com/tashiad/hang-in-there-boilerplate/blob/create-our-README.md/readme-imgs/poster-landing.png)
 
-Form page:
-![screenshot of form](/readme-imgs/form.png)
+If you like the poster shown and want to be able to view it later, click the _"Save This Poster"_ button. Then, click _"Show Saved Posters"_ to view a grid of the posters you've chosen to save. From there, the _"Back to Main"_ button will take you back to the main screen.
 
-Saved posters page (once working with extra saved posters):
-![screenshot of saved posters page](/readme-imgs/saved.png)
+![screenshot of create poster form](https://github.com/tashiad/hang-in-there-boilerplate/blob/create-our-README.md/readme-imgs/create-poster-form.png)
 
-- When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
-- When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
-- When a user clicks the "Nevermind, take me back!" or "Back to Main" buttons, we should only see the main poster section
-- In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
+Once back on the main screen, you can make your own poster by clicking _"Make Your Own Poster"_. This will bring up the form, where you can enter an image link, title, and quote of your choosing. Click _"Show My Poster"_ to view it.
 
-_Hint: go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place_
+![screenshot of created poster](https://github.com/tashiad/hang-in-there-boilerplate/blob/create-our-README.md/readme-imgs/owl-poster.png)
 
-## Iteration 2 - Creating a New Poster
+If you like it, you can repeat the steps from earlier to save it. Your inputs will also be stored for use in future randomized posters.
 
-Form being filled out:
-![screenshot of form](/readme-imgs/form.png)
+![screenshot of saved posters grid](https://github.com/tashiad/hang-in-there-boilerplate/blob/create-our-README.md/readme-imgs/saved-posters.png)
 
-Once poster is saved:
-![screenshot of result](/readme-imgs/form-result.png)
-
-- On the new poster form view, users should be able to fill out the three input fields and then hit the save button
-- When the save button is clicked, several things will happen:
-  - Save the submitted data into the respective arrays (image URL into the images array, etc) so that future random posters can use the user-created data
-  - Use the values from the inputs to create a new instance of our Poster class
-  - Change back to the main poster view (hiding the form view again)
-  - Display the newly created poster image, title, and quote in the main view
-
-## Iteration 3 - Saving & Viewing Posters
-
-Saved posters view:
-![screenshot of saved posters section](/readme-imgs/saved.png)
-
-- When a user clicks the "Save This Poster" button, the current main poster will be added to the `savedPosters` array.
-- If a user clicks the "Save This Poster" more than once on a single poster, it will still only be saved once (no duplicates)
-- When a user clicks the "Show Saved Posters" button, we should see the saved posters section
-- All the posters in the `savedPosters` array should be displayed in the saved posters grid section
-
-## Iteration 4 - Deleting Saved Posters
-
+## Future Features
 - From the saved posters view, if a user double clicks a saved poster, it will be deleted
-
-_Hint: How will you update the data model to achieve this?_
-
-## Optional Extensions - Gettin' fancy
-
-Here's a list of possible extensions to implement - but **ONLY IF** your team has completed all the previous iterations **AND** have cleaned up your code to make it DRYer and more readable.
-
-You are welcome to add your own extensions. Be sure they are thoughtful in terms of UX/UI, and that they do not break any prior functionality.
-
 - Implement data validation and error handling into the form (disable button, provide error messages if data entered is not correct, etc)
 - In the main poster view, allow users to click each piece of the poster (image, title, quote) to update just that piece with another random item from the appropriate array
 - When a user single clicks a saved poster, create a modal to view it larger
 - Allow users to drag and drop saved posters into whatever order they want them to appear
-
-
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
