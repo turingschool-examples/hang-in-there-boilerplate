@@ -1,4 +1,4 @@
-// query selector variables go here
+
 var savePoster = document.querySelector('.save-poster');
 
 var showSaved = document.querySelector('.show-saved');
@@ -25,17 +25,14 @@ var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 var posterForm = document.querySelector('.poster-form');
 
-var posterImageURL = document.querySelector('.poster-image-url');
-
 var mainPoster = document.querySelector('.main-poster');
 
-var userImage = document.querySelector("#poster-image-url");
+var userImage = document.querySelector('#poster-image-url');
 
-var userTitle = document.querySelector("#poster-title");
+var userTitle = document.querySelector('#poster-title');
 
-var userQuote = document.querySelector("#poster-quote");
+var userQuote = document.querySelector('#poster-quote');
 
-// we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -134,8 +131,9 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
+
 var currentPoster;
-// event listeners go here 👇
+
 savePoster.addEventListener('click', function() {
   saveCurrentPoster(currentPoster);
 });
@@ -164,7 +162,6 @@ makeUserPoster.addEventListener('click', function() {
   createUserPoster(event, userImage, userQuote, userTitle);
 });
 
-// functions and event handlers go here
 window.onload = getThreeValues();
 
 function createUserPoster(event, inputImage, inputQuote, inputTitle) {
@@ -214,6 +211,16 @@ function saveCurrentPoster(poster) {
   }
 }
 
-function displaySavedPosters() {
-  savedPostersGrid.innerHTML = savedPosters[0];
-}
+// function displaySavedPosters() {
+//   console.log(savedPosters[0]);
+//   savedPostersGrid.innerHTML = (`
+//     <article class="poster">
+// <img class="poster-img" src=${savedPosters.imageURL}>
+// <h1 class="poster-title">${savedPosters.title}</h1>
+// <h3 class="poster-quote">${savedPosters.quote}</h3>
+// </article>
+
+  //  `);
+  // savedPostersGrid.innerHTML = savedPosters.quote;
+  // savedPostersGrid.innerHTML = savedPosters.imageURL;
+//}
