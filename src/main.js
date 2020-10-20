@@ -136,7 +136,9 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
-savePoster.addEventListener('click', saveCurrentPoster);
+savePoster.addEventListener('click', function() {
+  saveCurrentPoster(currentPoster);
+});
 
 showRandom.addEventListener('click', getThreeValues);
 
@@ -196,10 +198,16 @@ function getThreeValues() {
   currentPoster = new Poster(randomImage, randomTitle, randomQuote)
   posterImage.src = currentPoster.imageURL
   posterTitle.innerText = currentPoster.title
-  posterQuote.innerText = currentPoster.quote  
+  posterQuote.innerText = currentPoster.quote
 }
 
 function showTargetView(viewToShow, viewToHide) {
   viewToShow.classList.toggle('hidden');
   viewToHide.classList.toggle('hidden');
+}
+
+function saveCurrentPoster(poster) {
+  if (!savedPosters.includes(poster)) {
+    savedPosters.push(poster);
+  }
 }
