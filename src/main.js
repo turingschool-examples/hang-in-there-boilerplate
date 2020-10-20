@@ -171,13 +171,23 @@ function showPoster(obj) {
 }
 
 function makeUserPoster() {
-    event.preventDefault();
+event.preventDefault();
+  if (imageInput.value === '') {
+    alert('You need to input an image address!')
+ } else if (!imageInput.value.endsWith('.jpg') && !imageInput.value.endsWith('.png')) {
+     alert('You need a valid image link! (.jpg or .png)')
+  } else if (titleInput.value === '') {
+    alert('You need to input a title!')
+  } else if (quoteInput.value === '') {
+    alert('You need to input a quote!')
+  } else {
     images.push(imageInput.value);
     titles.push(titleInput.value);
     quotes.push(quoteInput.value);
     currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
     showPoster(currentPoster)
     goHome();
+  };
 }
 
 function storePoster() {
