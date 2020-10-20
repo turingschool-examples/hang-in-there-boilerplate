@@ -130,7 +130,7 @@ takeBackBtn.addEventListener("click", goToMain);
 backToMainBtn.addEventListener("click", goToMain);
 showMadePosterBtn.addEventListener("click", displayMadePoster);
 savePosterBtn.addEventListener("click", savePosterToGrid);
-savedPostersGrid.addEventListener("dblclick", deletePoster);
+savedPostersGrid.addEventListener("dblclick", deletePosterFromGrid);
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -226,7 +226,7 @@ function deleteMiniPoster(savedPosters) {
       savedPosters.splice(i, 1);
       }
     }
-  
+  displaySavedPostersGrid();
 }
 
 function goToMain() {
