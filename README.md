@@ -1,8 +1,8 @@
 # Hang In There: Paired Project
 
 ## Contributors
-- Tashia Davis
-- Lucas Merchant
+- Tashia Davis [GitHub](https://github.com/tashiad)
+- Lucas Merchant [GitHub](https://github.com/lbmerchant93)
 
 **Other contributors:**
 - Collin Kallery (mentor)
@@ -44,12 +44,11 @@ Once back on the main screen, you can make your own poster by clicking _"Make Yo
 
 ![screenshot of created poster](https://github.com/tashiad/hang-in-there-boilerplate/blob/create-our-README.md/readme-imgs/owl-poster.png)
 
-If you like it, you can repeat the steps from earlier to save it. Your inputs will also be stored for use in future randomized posters.
+If you like it, you can repeat the steps from earlier to save it. Your inputs will also be stored for use in future randomized posters. If you decide you don't want a particular poster to be saved any longer, double click it and it will be deleted.
 
 ![screenshot of saved posters grid](https://github.com/tashiad/hang-in-there-boilerplate/blob/create-our-README.md/readme-imgs/saved-posters.png)
 
 ## Future Features
-- From the saved posters view, if a user double clicks a saved poster, it will be deleted
 - Implement data validation and error handling into the form (disable button, provide error messages if data entered is not correct, etc)
 - In the main poster view, allow users to click each piece of the poster (image, title, quote) to update just that piece with another random item from the appropriate array
 - When a user single clicks a saved poster, create a modal to view it larger
