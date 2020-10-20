@@ -125,7 +125,7 @@ savePosterButton.addEventListener("click", saveDisplayedPoster);
 savedPostersGrid.addEventListener("dblclick", deletePoster);
 showFormButton.addEventListener("click", showForm);
 showMainButton.addEventListener("click", goBackToMain);
-showPosterButton.addEventListener("click", userDataInput);
+showPosterButton.addEventListener("click", inputUserData);
 showRandomButton.addEventListener("click", generatePoster);
 showSavedButton.addEventListener("click", showSavedPoster);
 window.addEventListener("load", generatePoster);
@@ -134,31 +134,15 @@ window.addEventListener("load", generatePoster);
 // (we've provided one for you to get you started)!
 function deletePoster() {
   if (event.target.closest(".mini-poster")) {
-    //we want to target the element that is dbl clicked
     var clickedMiniPoster = event.target.closest(".mini-poster")
-    // and store it in a variable (clickedMiniPoster)
-    //then we want to run a for loop through the savedPosters array
     for (var i = 0; i < savedPosters.length; i++) {
       if (savedPosters[i].id === Number(clickedMiniPoster.id)) {
-        //console.log("clickedPoster", savedPosters[i])
-        savedPosters.splice(i, 1)
+        savedPosters.splice(i, 1);
       };
     };
     showSavedPoster();
   };
 };
-
-//within this forloop, we want to compare each index value within the savedposters array
-// to the the clickedMiniPoster variable
-//if savedPosters[i] === clickedPoster
-//then we will splice @ that index
-// and then display the new savedPosters array.
-
-
-/*identify poster by ID number
-remove poster from saved posters array
-return new array less poster that was removed
-also remove unique, user added image/title/quote (if there was one) from the array? */
 
 function generatePoster() {
   displayedImage.src = getRandomIndex(images);
@@ -210,8 +194,10 @@ function showSavedPoster() {
 };
 
 
-function userDataInput(imageURL, title, quote) {
-  event.preventDefault()
+function inputUserData(imageURL, title, quote) {
+  event.preventDefault();
+
+  window.alert("Congratulations! You've created a poster!");
 
   imageURL = imageUrlInput.value;
   title = titleInput.value;
