@@ -217,8 +217,6 @@ function deletePoster() {
   //poster will be deleted from grid
   //target ---> savedPostersGrid
   //target class ---> "mini-poster"
-  if (event.target.classList.contains("mini-poster")) {
-      console.log("pls work")
     for (var i = 0; i < savedPosters.length; i++) {
       if (event.target.id === savedPosters[i].id){
         console.log("yessss")
