@@ -131,6 +131,9 @@ backToMain.addEventListener('click', backHome);
 displayPoster.addEventListener('click', makeUserPoster);
 savePoster.addEventListener('click', storePoster);
 imgGallery.addEventListener('dblclick', removePoster);
+posterImage.addEventListener('click', swapImage)
+posterTitle.addEventListener('click', swapTitle)
+posterQuote.addEventListener('click', swapQuote)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -222,4 +225,17 @@ function removePoster() {
         };
     };
     showStored();
+};
+
+function swapImage() {
+  posterImage.src = images[getRandomIndex(images)];
+  currentPoster = new Poster(posterImage.src, posterTitle.innerHTML, posterQuote.innerHTML);
+};
+function swapTitle() {
+  posterTitle.innerHTML = titles[getRandomIndex(titles)];
+  currentPoster = new Poster(posterImage.src, posterTitle.innerHTML, posterQuote.innerHTML);
+};
+function swapQuote() {
+  posterQuote.innerHTML = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(posterImage.src, posterTitle.innerHTML, posterQuote.innerHTML);
 };
