@@ -1,5 +1,4 @@
 // query selector variables go here
-
 var savePoster = document.querySelector('.save-poster');
 
 var showSaved = document.querySelector('.show-saved');
@@ -141,28 +140,24 @@ savePoster.addEventListener('click', saveCurrentPoster);
 
 showRandom.addEventListener('click', getThreeValues);
 
-showForm.addEventListener('click', () => {
-  showTargetView(posterForm, mainPoster, savedView);
+showForm.addEventListener('click', function() {
+  showTargetView(posterForm, mainPoster);
 });
 
-showMain.addEventListener('click', () => {
-  showTargetView(mainPoster, savedView, posterForm);
+showMain.addEventListener('click', function() {
+  showTargetView(mainPoster, posterForm);
 });
 
-backToMain.addEventListener('click', () => {
-  showTargetView(mainPoster, savedView, posterForm);
+backToMain.addEventListener('click', function() {
+  showTargetView(mainPoster, savedView);
 });
 
-showSaved.addEventListener('click', () => {
-  showTargetView(savedView, mainPoster, posterForm);
+showSaved.addEventListener('click', function() {
+  showTargetView(savedView, mainPoster);
 });
 
 makeUserPoster.addEventListener('click', function() {
   createUserPoster(event, userImage, userQuote, userTitle);
-});
-
-makeUserPoster.addEventListener('click', function() {
-  showTargetView(mainPoster, savedView, posterForm);
 });
 
 // functions and event handlers go here
@@ -175,7 +170,7 @@ function createUserPoster(event, inputImage, inputQuote, inputTitle) {
   posterImage.src = currentPoster.imageURL;
   posterQuote.innerText = currentPoster.quote;
   posterTitle.innerText = currentPoster.title;
-  showTargetView(mainPoster, savedView, posterForm);
+  showTargetView(mainPoster, posterForm);
 }
 
 function saveUserInput(inputImage, inputQuote, inputTitle) {
@@ -190,7 +185,6 @@ function saveUserInput(inputImage, inputQuote, inputTitle) {
   }
 }
 
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
@@ -202,13 +196,10 @@ function getThreeValues() {
   currentPoster = new Poster(randomImage, randomTitle, randomQuote)
   posterImage.src = currentPoster.imageURL
   posterTitle.innerText = currentPoster.title
-  posterQuote.innerText = currentPoster.quote
+  posterQuote.innerText = currentPoster.quote  
 }
 
-function showTargetView(viewToShow, viewToHide1, viewToHide2) {
-  var whereHiddenIs = viewToShow.className.indexOf(' hidden');
-  var showSection = viewToShow.className.slice(0, whereHiddenIs);
-  viewToShow.className = showSection;
-  viewToHide1.className.indexOf(' hidden') > -1 ? viewToHide1.className : viewToHide1.className += ' hidden';
-  viewToHide2.className.indexOf(' hidden') > -1 ? viewToHide2.className : viewToHide2.className += ' hidden';
+function showTargetView(viewToShow, viewToHide) {
+  viewToShow.classList.toggle('hidden');
+  viewToHide.classList.toggle('hidden');
 }
