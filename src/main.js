@@ -100,9 +100,7 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster = {
-  image: "",
-  title: "",
-  quote: "",
+
 };
 //call currentPoster.img is placeholder for image (cont for title & quote)
 
@@ -200,20 +198,27 @@ function userCreatedPoster() {
 }
 
 function savePoster() {
-
-  for (var i = 0; i < savedPosters.length; i++) {
-    if (savedPosters[i].image === posterImage.src) {
-      if (savedPosters[i].title === posterTitle.innerText) {
-        if (savedPosters[i].quote === posterQuote.innerText) {
-          return;
-        }
-      }
-    }
-  }
-
+  console.log('before', savedPosters);
   savedPosters.push(currentPoster);
-  console.log(savedPosters);
+  // for (var i = 1; i < savedPosters.length; i++) {
+  //   // console.log(savedPosters[i].image === currentPoster.image);
+  //   if (savedPosters[i].image === currentPoster.image) {
+  //     if (savedPosters[i].title === currentPoster.title) {
+  //       // console.log(savedPosters[i].title === currentPoster.title);
+  //       if (savedPosters[i].quote === currentPoster.quote) {
+  //         // console.log(savedPosters[i].quote === currentPoster.quote)
+  //         // console.log(currentPoster);
+  //         // console.log(savedPosters[i]);
+  //         savedPosters.pop();
+  //       }
+  //     }
+  //   }
+  // }
+
+  
+  console.log('after', savedPosters);
 }
+
 //tried currentPoster.key values
 
 //the current object is pushing to the array, BUT any previous objects in the array are being reassigned to the current object being pushed
