@@ -140,6 +140,8 @@ savePoster.addEventListener('click', function() {
   saveCurrentPoster(currentPoster);
 });
 
+savePoster.addEventListener('click', displaySavedPosters);
+
 showRandom.addEventListener('click', getThreeValues);
 
 showForm.addEventListener('click', function() {
@@ -210,4 +212,8 @@ function saveCurrentPoster(poster) {
   if (!savedPosters.includes(poster)) {
     savedPosters.push(poster);
   }
+}
+
+function displaySavedPosters() {
+  savedPostersGrid.innerHTML = savedPosters[0];
 }
