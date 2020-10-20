@@ -146,29 +146,23 @@ function makeRandomCover() {
     currentPoster = new Poster(posterImage.src, posterTitle.innerHTML, posterQuote.innerHTML);
 }
 
-function showPage(toSee) {
-    toSee.classList.remove('hidden');
-}
 
-function hidePage(toHide) {
-    toHide.classList.add('hidden');
+function switchPage(hidePage, showPage){
+  hidePage.classList.add('hidden');
+  showPage.classList.remove('hidden');
 }
 
 function showForm() {
-    hidePage(homePoster);
-    showPage(posterForm);
-}
+    switchPage(homePoster, posterForm);
+};
 
 function goHome() {
-    hidePage(posterForm);
-    showPage(homePoster);
-}
+    switchPage(posterForm, homePoster);
+};
 
 function backHome() {
-    hidePage(storedPosters);
-    showPage(homePoster);
-
-}
+  switchPage(storedPosters, homePoster);
+};
 
 function showPoster(obj) {
     posterImage.src = obj.imageURL;
