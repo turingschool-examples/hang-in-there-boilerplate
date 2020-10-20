@@ -153,11 +153,12 @@ function getRandomIndex(array) {
 
 // main poster functions
 function createRandomPoster() {
-  currentPoster.image = images[getRandomIndex(images)];
+  currentPoster = new Poster();
+  currentPoster.imageURL = images[getRandomIndex(images)];
   currentPoster.title = titles[getRandomIndex(titles)];
   currentPoster.quote = quotes[getRandomIndex(quotes)];
 
-  posterImage.src = currentPoster.image;
+  posterImage.src = currentPoster.imageURL;
   posterImage.alt = currentPoster.title;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
@@ -184,12 +185,12 @@ function showMainPoster() {
 
 function userCreatedPoster() {
   event.preventDefault();
-
-  currentPoster.image = userImage.value;
+  currentPoster = new Poster();
+  currentPoster.imageURL = userImage.value;
   currentPoster.title = userTitle.value;
   currentPoster.quote = userQuote.value;
 
-  posterImage.src = currentPoster.image;
+  posterImage.src = currentPoster.imageURL;
   posterImage.alt = currentPoster.title;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
