@@ -194,38 +194,31 @@ function saveCurrentPoster() {
   };
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.innerHTML += `
-      <section class="mini-poster" id="currentPoster.id">
-        <img id="currentPoster.id" src=${savedPosters[i].imageURL} alt="">
-        <h2 id="currentPoster.id">${savedPosters[i].title}</h2>
-        <h4 id="currentPoster.id">${savedPosters[i].quote}</h4>
+      <section class="mini-poster" id=${savedPosters[i].id}>
+        <img id=${savedPosters[i].id} src=${savedPosters[i].imageURL} alt="">
+        <h2 id=${savedPosters[i].id}>${savedPosters[i].title}</h2>
+        <h4 id=${savedPosters[i].id}>${savedPosters[i].quote}</h4>
         </section>
       `;
   };
 };
 
 function deleteMiniPoster() {
-  event.target.id;
-  savedPostersGrid.innerHTML = "";
-  for (var i = 0; i < savedPosters.length; i++) {
-    savedPosters.splice(i, 1);
-    savedPostersGrid.innerHTML -= `
-    <section class="mini-poster" id="currentPoster.id">
-      <img id="currentPoster.id" src=${savedPosters[i].imageURL} alt="">
-      <h2 id="currentPoster.id">${savedPosters[i].title}</h2>
-      <h4 id="currentPoster.id">${savedPosters[i].quote}</h4>
-      </section>
-    `;
-    // miniPoster.classList.add("delete");
-  };
+  event.target.classList = "hidden";
 };
 
-// From the saved posters view, if a user double clicks a saved poster, it will be deleted
-// Hint: How will you update the data model to achieve this?
-// event listener for double clicks
-// function for removing entire poster instance via specific id
-// replace(?) with .delete class from CSS (similar to hidden from before)
-// what actually happens when you delete a poster instance? remove from savedPosters array
-// 1. create a for loop for savedPosters array
-// 2. event target id
-// 3. splice i, 1
-// 4. delete section class and children? replace with .delete class?
+// ITERATION 4 - OTHER IDEAS:
+// function deleteMiniPoster() {
+//   for (var i = 0; i < savedPosters.length; i++) {
+//     if (event.target.id == savedPosters[i].id) {
+//       savedPosters.splice(i, 1);
+//       savedPostersGrid.innerHTML -= `
+//           <section class="mini-poster" id=${savedPosters[i].id}>
+//             <img id=${savedPosters[i].id} src=${savedPosters[i].imageURL} alt="">
+//             <h2 id=${savedPosters[i].id}>${savedPosters[i].title}</h2>
+//             <h4 id=${savedPosters[i].id}>${savedPosters[i].quote}</h4>
+//             </section>
+//           `;
+//     }
+//   };
+// };
