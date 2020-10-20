@@ -1,5 +1,21 @@
 // query selector variables go here 👇
-
+var mainPage = document.querySelector(".main-poster");
+var mainPageImage = document.querySelector(".poster-img");
+var mainPageTitle = document.querySelector(".poster-title");
+var mainPageQuote = document.querySelector(".poster-quote");
+var showRandomButton = document.querySelector(".show-random");
+var makeOwnPosterForm = document.querySelector(".poster-form");
+var makeOwnPosterButton = document.querySelector(".show-form");
+var takeMeBackButton = document.querySelector(".show-main");
+var savedPostersPage = document.querySelector(".saved-posters");
+var savedPosterButton = document.querySelector(".show-saved");
+var backToMainButton = document.querySelector(".back-to-main");
+var inputImage = document.querySelector("#poster-image-url");
+var inputTitle = document.querySelector("#poster-title");
+var inputQuote = document.querySelector("#poster-quote");
+var showMyPosterButton = document.querySelector(".make-poster");
+var savePosterButton = document.querySelector(".save-poster"); 
+var savedGrid = document.querySelector(".saved-posters-grid");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -102,6 +118,16 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+//Window.onLoad = getRandomPoster();
+showRandomButton.addEventListener('click', getRandomPoster);
+makeOwnPosterButton.addEventListener('click', goToMakeOwnPosterForm);
+takeMeBackButton.addEventListener('click', goBackToMain);
+savedPosterButton.addEventListener('click', goToSavedPosters);
+backToMainButton.addEventListener('click', goBackToMain);
+showMyPosterButton.addEventListener('click', showMyPoster);
+savePosterButton.addEventListener('click', savePoster); 
+//miniPoster.addEventListener('dblclick', deleteMiniPoster);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -109,3 +135,75 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+
+function getRandomPoster() {
+  mainPageImage.src = images[getRandomIndex(images)];
+  mainPageTitle.innerText = titles[getRandomIndex(titles)];
+  mainPageQuote.innerText = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(mainPageImage.src, mainPageTitle.innerText, mainPageQuote.innerText)
+};
+
+function goToMakeOwnPosterForm() {
+  mainPage.classList.add("hidden");
+  makeOwnPosterForm.classList.remove("hidden");
+};
+
+function goBackToMain() {
+  makeOwnPosterForm.classList.add("hidden");
+  savedPostersPage.classList.add("hidden");
+  mainPage.classList.remove("hidden");
+  getRandomPoster();
+};
+
+function goToSavedPosters() {
+  savedPostersPage.classList.remove("hidden");
+  mainPage.classList.add("hidden");
+};
+
+function createMyPoster() {
+  mainPageImage.src = inputImage.value;
+  mainPageTitle.innerText = inputTitle.value;
+  mainPageQuote.innerText = inputQuote.value;
+  return currentPoster = new Poster(mainPageImage.src, mainPageTitle.innerText, mainPageQuote.innerText);
+};
+
+function showMyPoster() {
+  event.preventDefault();
+  mainPage.classList.remove("hidden");
+  createMyPoster();
+  makeOwnPosterForm.classList.add("hidden");
+};
+
+function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+  createGrid();
+};
+
+function createGrid() {
+   savedGrid.innerHTML = ""
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedGrid.innerHTML +=
+            `<section class="mini-poster" data-id="${savedPosters[i].id}">
+              <img src="${savedPosters[i].imageURL}" alt="saved poster">
+              <h2>${savedPosters[i].title}</h2>
+              <h4>${savedPosters[i].quote}</h4>
+            </section>
+             `
+    };
+    var miniPoster = document.querySelectorAll("section");
+  };
+
+
+
+function deleteMiniPoster() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (miniPoster.dataset.id === savedPosters[i].id) {
+      savedPosters.splice(i, 1);
+      return savedPosters;
+    }
+  }
+};
+
+getRandomPoster();
