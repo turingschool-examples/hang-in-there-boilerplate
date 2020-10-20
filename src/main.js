@@ -8,11 +8,12 @@ var savedPostersView = document.querySelector(".saved-posters");
 var imageUrlInput = document.querySelector("#poster-image-url");
 var titleInput = document.querySelector("#poster-title");
 var quoteInput = document.querySelector("#poster-quote");
+var backToMainButton = document.querySelector(".back-to-main");
+var form = document.querySelector("form")
 var showRandomButton = document.querySelector(".show-random");
 var showFormButton = document.querySelector(".show-form");
 var showSavedButton = document.querySelector(".show-saved");
 var showMainButton = document.querySelector(".show-main");
-var backToMainButton = document.querySelector(".back-to-main");
 var showPosterButton = document.querySelector(".make-poster");
 var savePosterButton = document.querySelector(".save-poster");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
@@ -187,6 +188,7 @@ function saveDisplayedPoster() {
 function showForm() {
   posterFormView.classList.remove("hidden");
   mainPosterView.classList.add("hidden");
+  form.reset();
 };
 
 
@@ -210,6 +212,7 @@ function showSavedPoster() {
 
 function userDataInput(imageURL, title, quote) {
   event.preventDefault()
+
   imageURL = imageUrlInput.value;
   title = titleInput.value;
   quote = quoteInput.value;
