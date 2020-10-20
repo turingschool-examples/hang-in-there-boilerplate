@@ -214,10 +214,10 @@ function saveCurrentPoster(poster) {
 
 function displaySavedPosters(poster) {
   var saved = (`
-    <article class="poster">
-    <img class="mini-poster" src=${poster.imageURL}>
-    <h1 class="mini-poster">${poster.title}</h1>
-    <h3 class="mini-poster">${poster.quote}</h3>
+    <article class="mini-poster">
+    <img src=${poster.imageURL}>
+    <h2>${poster.title}</h2>
+    <h4>${poster.quote}</h4>
     </article>
   `);
   console.log(saved);
