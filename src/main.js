@@ -199,20 +199,26 @@ function userCreatedPoster() {
 }
 
 function savePoster() {
-  var save = {
-    image: posterImage.src,
-    title: posterTitle.innerText,
-    quote: posterQuote.innerText,
+  var save = [posterImage.src, posterTitle.innerText, posterQuote.innerText];
+
+
+
+  // var save = {
+  //   image: posterImage.src,
+  //   title: posterTitle.innerText,
+  //   quote: posterQuote.innerText,
+  // }
+  //
+  if (savedPosters.includes(save) === false) {
+    savedPosters.push(save);
   }
-  for (var i = 0; i < savedPosters.length; i++){
-    if (savedPosters.includes(save.image && save.title && save.quote) === false) {
-      savedPosters.push(save);
-    }
-  }
+
   console.log(savedPosters);
+
   //when tested object is pushed to savedPosters array
   //multiples of specific object continue to be pushed
   //but like, why though?
+  //are we misusing bang?
 }
 
 //!Remember: double-check nested elements!
