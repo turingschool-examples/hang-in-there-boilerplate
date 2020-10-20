@@ -140,27 +140,23 @@ var currentPoster;
 showRandom.addEventListener('click', getThreeValues);
 
 showForm.addEventListener('click', () => {
-  showTargetView(posterForm, mainPoster, savedView);
+  showTargetView(posterForm, mainPoster);
 });
 
 showMain.addEventListener('click', () => {
-  showTargetView(mainPoster, savedView, posterForm);
+  showTargetView(mainPoster, posterForm);
 });
 
 backToMain.addEventListener('click', () => {
-  showTargetView(mainPoster, savedView, posterForm);
+  showTargetView(mainPoster, savedView);
 });
 
 showSaved.addEventListener('click', () => {
-  showTargetView(savedView, mainPoster, posterForm);
+  showTargetView(savedView, mainPoster);
 });
 
 makeUserPoster.addEventListener('click', function() {
   createUserPoster(event, userImage, userQuote, userTitle);
-});
-
-makeUserPoster.addEventListener('click', function() {
-  showTargetView(mainPoster, savedView, posterForm);
 });
 
 // functions and event handlers go here
@@ -173,7 +169,7 @@ function createUserPoster(event, inputImage, inputQuote, inputTitle) {
   posterImage.src = currentPoster.imageURL;
   posterQuote.innerText = currentPoster.quote;
   posterTitle.innerText = currentPoster.title;
-  showTargetView(mainPoster, savedView, posterForm);
+  showTargetView(mainPoster, posterForm);  
 }
 
 function saveUserInput(inputImage, inputQuote, inputTitle) {
@@ -187,7 +183,6 @@ function saveUserInput(inputImage, inputQuote, inputTitle) {
     titles.push(userTitle.value);
   }
 }
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
@@ -203,10 +198,7 @@ function getThreeValues() {
   posterQuote.innerText = currentPoster.quote
 }
 
-function showTargetView(viewToShow, viewToHide1, viewToHide2) {
-  var whereHiddenIs = viewToShow.className.indexOf(' hidden');
-  var showSection = viewToShow.className.slice(0, whereHiddenIs);
-  viewToShow.className = showSection;
-  viewToHide1.className.indexOf(' hidden') > -1 ? viewToHide1.className : viewToHide1.className += ' hidden';
-  viewToHide2.className.indexOf(' hidden') > -1 ? viewToHide2.className : viewToHide2.className += ' hidden';
+function showTargetView(viewToShow, viewToHide) {
+  viewToShow.classList.toggle('hidden');
+  viewToHide.classList.toggle('hidden');
 }
