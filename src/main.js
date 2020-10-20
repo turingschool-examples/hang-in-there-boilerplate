@@ -130,6 +130,7 @@ takeBackBtn.addEventListener("click", goToMain);
 backToMainBtn.addEventListener("click", goToMain);
 showMadePosterBtn.addEventListener("click", displayMadePoster);
 savePosterBtn.addEventListener("click", savePosterToGrid);
+savedPostersGrid.addEventListener("dblclick", deletePoster);
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -155,8 +156,7 @@ function displayRandomPoster() {
 };
 
 function makePoster() {
-  showForm();
-  hideMainPoster(); 
+  toggleView(form, mainPoster)
 }
 
 function saveUserInput() {
@@ -178,16 +178,13 @@ function displayMadePoster() {
   );
   saveUserInput();
   displayPoster();
-  showMainPoster();
-  hideForm();
+  toggleView(form, mainPoster);
   clearUserInput();
 }
 
 function displaySavedPosters() {
   event.preventDefault();
-  hideMainPoster(); 
-  hideForm();
-  showSavedPosters();
+  toggleView(mainPoster, savedPostersDisplay);
   displaySavedPostersGrid();
 }
 
@@ -202,9 +199,11 @@ function displaySavedPostersGrid() {
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.insertAdjacentHTML("afterbegin", `
       <section class="mini-poster">
-        <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
-        <h2 class="poster-title">${savedPosters[i].title}</h2>
-        <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+          <div id="${savedPosters[i].id}">
+            <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
+            <h2 class="poster-title">${savedPosters[i].title}</h2>
+            <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+          </div>
       </section>
     `)
   }
@@ -214,27 +213,28 @@ function savePosterToGrid() {
   savePoster(currentPoster);
 }
 
+function deletePoster() {
+  //poster will be deleted from grid
+  //target ---> savedPostersGrid
+  //target class ---> "mini-poster"
+  if (event.target.classList.contains("mini-poster")) {
+      console.log("pls work")
+    for (var i = 0; i < savedPosters.length; i++) {
+      if (event.target.id === savedPosters[i].id){
+        console.log("yessss")
+      savedPosters.splice(i, 1);
+      }
+    }
+  }
+}
+
 function goToMain() {
-  hideForm();
-  showMainPoster();
-  hideSavedPosters();
-}
-//refactor remove/add to toggle?
-function showForm() {
-  form.classList.remove("hidden");
-}
-function hideForm() {
   form.classList.add("hidden");
-}
-function showMainPoster() {
   mainPoster.classList.remove("hidden");
+  savedPostersDisplay.classList.add("hidden")
 }
-function hideMainPoster() {
-  mainPoster.classList.add("hidden"); 
-}
-function showSavedPosters() {
-  savedPostersDisplay.classList.remove("hidden");
-}
-function hideSavedPosters() {
-  savedPostersDisplay.classList.add("hidden");
+
+function toggleView(page1, page2) {
+  page1.classList.toggle("hidden");
+  page2.classList.toggle("hidden");
 }
