@@ -138,40 +138,37 @@ savePoster.addEventListener('click', function() {
   saveCurrentPoster(currentPoster);
 });
 
-savePoster.addEventListener('click', iterate);
+savePoster.addEventListener('click', displayPosters);
 
 showRandom.addEventListener('click', getThreeValues);
 
 showForm.addEventListener('click', function() {
-  showTargetView(posterForm, mainPoster);
+  showTargetView(posterForm);
 });
 
 showMain.addEventListener('click', function() {
-  showTargetView(mainPoster, posterForm);
+  showTargetView(posterForm);
 });
 
 backToMain.addEventListener('click', function() {
-  showTargetView(mainPoster, savedView);
+  showTargetView(savedView);
 });
 
 showSaved.addEventListener('click', function() {
-  showTargetView(savedView, mainPoster);
+  showTargetView(savedView);
 });
 
 makeUserPoster.addEventListener('click', function() {
-  createUserPoster(event, userImage, userQuote, userTitle);
+  createUserPoster(event, userImage, userTitle, userQuote);
 });
 
 window.onload = getThreeValues();
 
-function createUserPoster(event, inputImage, inputQuote, inputTitle) {
+function createUserPoster(event, inputImage, inputTitle, inputQuote) {
   event.preventDefault();
-  saveUserInput(inputImage, inputQuote, inputTitle);
-  currentPoster = new Poster(userImage.value, userQuote.value, userTitle.value);
-  posterImage.src = currentPoster.imageURL;
-  posterQuote.innerText = currentPoster.quote;
-  posterTitle.innerText = currentPoster.title;
-  showTargetView(mainPoster, posterForm);
+  saveUserInput(inputImage, inputTitle, inputQuote);
+  instantiate(userImage.value, userTitle.value, userQuote.value);
+  showTargetView(posterForm);
 }
 
 function saveUserInput(inputImage, inputQuote, inputTitle) {
@@ -194,25 +191,29 @@ function getThreeValues() {
   var randomTitle = titles[getRandomIndex(titles)];
   var randomImage = images[getRandomIndex(images)];
   var randomQuote = quotes[getRandomIndex(quotes)];
-  currentPoster = new Poster(randomImage, randomTitle, randomQuote)
-  posterImage.src = currentPoster.imageURL
-  posterTitle.innerText = currentPoster.title
-  posterQuote.innerText = currentPoster.quote
+  instantiate(randomImage, randomTitle, randomQuote);
 }
 
-function showTargetView(viewToShow, viewToHide) {
-  viewToShow.classList.toggle('hidden');
-  viewToHide.classList.toggle('hidden');
+function instantiate(image, title, quote) {
+  currentPoster = new Poster(image, title, quote);
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+}
+
+function showTargetView(view) {
+  view.classList.toggle('hidden');
+  mainPoster.classList.toggle('hidden');
 }
 
 function saveCurrentPoster(poster) {
   if (!savedPosters.includes(poster)) {
     savedPosters.push(poster);
-  }  
+  }
 }
 
-function displaySavedPosters(poster) {
-  var saved = (`
+function styleMiniPoster(poster) {
+  var styled = (`
     <article class="mini-poster">
     <img src=${poster.imageURL}>
     <h2>${poster.title}</h2>
@@ -220,15 +221,15 @@ function displaySavedPosters(poster) {
     </article>
   `);
 
-  return saved;
+  return styled;
 }
 
-function iterate() {
+function displayPosters() {
   var htmlElements = [];
 
   for (var i = 0; i < savedPosters.length; i++) {
-    var target = displaySavedPosters(savedPosters[i]);
-    htmlElements.push(target);
+    var formattedPoster = styleMiniPoster(savedPosters[i]);
+    htmlElements.push(formattedPoster);
   }
 
   savedPostersGrid.innerHTML = htmlElements.join('');
