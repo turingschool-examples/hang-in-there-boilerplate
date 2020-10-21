@@ -19,7 +19,7 @@ var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
 var savePoster = document.querySelector('.save-poster');
 var imgGallery = document.querySelector('.saved-posters-grid');
-var miniPoster = document.querySelector('.mini-poster');
+
 
 // we've provided you with some data to work with 👇
 
@@ -132,10 +132,9 @@ backToMain.addEventListener('click', backHome);
 displayPoster.addEventListener('click', makeUserPoster);
 savePoster.addEventListener('click', storePoster);
 imgGallery.addEventListener('dblclick', removePoster);
-imgGallery.addEventListener('click', getBig);
-posterImage.addEventListener('click', swapImage)
-posterTitle.addEventListener('click', swapTitle)
-posterQuote.addEventListener('click', swapQuote)
+posterImage.addEventListener('click', swapImage);
+posterTitle.addEventListener('click', swapTitle);
+posterQuote.addEventListener('click', swapQuote);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -178,36 +177,36 @@ function showPoster(obj) {
 function makeUserPoster() {
 event.preventDefault();
   if (imageInput.value === '') {
-    alert('You need to input an image address!')
- } else if (!imageInput.value.endsWith('.jpg') && !imageInput.value.endsWith('.png')) {
-     alert('You need a valid image link! (.jpg or .png)')
+    alert('You need to input an image address!');
+  } else if (!imageInput.value.endsWith('.jpg') && !imageInput.value.endsWith('.png')) {
+      alert('You need a valid image link! (.jpg or .png)');
   } else if (titleInput.value === '') {
-    alert('You need to input a title!')
+      alert('You need to input a title!');
   } else if (quoteInput.value === '') {
-    alert('You need to input a quote!')
+      alert('You need to input a quote!');
   } else {
-    images.push(imageInput.value);
-    titles.push(titleInput.value);
-    quotes.push(quoteInput.value);
-    currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
-    showPoster(currentPoster)
-    goHome();
+      images.push(imageInput.value);
+      titles.push(titleInput.value);
+      quotes.push(quoteInput.value);
+      currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
+      showPoster(currentPoster);
+      goHome();
   };
-}
+};
 
 function storePoster() {
-    if (!savedPosters.includes(currentPoster)) {
-        savedPosters.push(currentPoster);
-    } else {
-        alert('You already saved that poster!')
-    };
+  if (!savedPosters.includes(currentPoster)) {
+      savedPosters.push(currentPoster);
+  } else {
+      alert('You already saved that poster!');
+  };
 };
 
 function showStored() {
     var miniDisplay = '';
     for (var i = 0; i < savedPosters.length; i++) {
         var littlePoster =
-            `<div class="mini-poster" id=${savedPosters[i].id}>
+            `<div class="mini-poster" id=${savedPosters[i].id} draggable="true" ondragstart="drag(event)">
               <img class="mini-poster" id=${savedPosters[i].id} src=${savedPosters[i].imageURL} alt="nothin' to see here">
               <h2 class="poster-title" id=${savedPosters[i].id}>${savedPosters[i].title}</h2>
               <h4 class="poster-quote" id=${savedPosters[i].id}>${savedPosters[i].quote}</h4>
@@ -216,14 +215,14 @@ function showStored() {
     };
     imgGallery.innerHTML = miniDisplay;
     storedPosters.classList.remove('hidden');
-    homePoster.classList.add('hidden')
+    homePoster.classList.add('hidden');
 };
 
 function removePoster() {
     var delPoster = event.target.id;
     for (var i = 0; i < savedPosters.length; i++) {
         if (delPoster == savedPosters[i].id) {
-            savedPosters.splice(i, 1)
+            savedPosters.splice(i, 1);
         };
     };
     showStored();

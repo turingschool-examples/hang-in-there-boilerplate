@@ -150,12 +150,3 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
-
-.modal {
-  background: black;
-  color: white;
-  height: 680px;
-  padding: 50px;
-  width: 850px;
-  cursor: pointer;
-}
