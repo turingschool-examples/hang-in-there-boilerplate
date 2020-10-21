@@ -159,30 +159,30 @@ showSaved.addEventListener('click', function() {
 });
 
 makeUserPoster.addEventListener('click', function() {
-  createUserPoster(event, userImage, userQuote, userTitle);
+  createUserPoster(event, userImage, userTitle, userQuote);
 });
 
 window.onload = getThreeValues();
 
-function createUserPoster(event, inputImage, inputQuote, inputTitle) {
+function createUserPoster(event, inputImage, inputTitle, inputQuote) {
   event.preventDefault();
-  saveUserInput(inputImage, inputQuote, inputTitle);
-  currentPoster = new Poster(userImage.value, userQuote.value, userTitle.value);
+  saveUserInput(inputImage, inputTitle, inputQuote);
+  currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value);
   posterImage.src = currentPoster.imageURL;
-  posterQuote.innerText = currentPoster.quote;
   posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
   showTargetView(mainPoster, posterForm);
 }
 
-function saveUserInput(inputImage, inputQuote, inputTitle) {
+function saveUserInput(inputImage, inputTitle, inputQuote) {
   if (!images.includes(inputImage.value)) {
     images.push(userImage.value);
   }
-  if (!quotes.includes(inputQuote.value)) {
-    quotes.push(userQuote.value);
-  }
   if (!titles.includes(inputTitle.value)) {
     titles.push(userTitle.value);
+  }
+  if (!quotes.includes(inputQuote.value)) {
+    quotes.push(userQuote.value);
   }
 }
 
