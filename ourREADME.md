@@ -9,6 +9,11 @@ Our poster project allows users to create random posters. The user then can save
 
 - Access to the [repository](https://github.com/josharagon/hang-in-there-boilerplate)
 
+## Instructions
+- Clone the repository: git [clone](https://github.com/turingschool-examples/hang-in-there-boilerplate)
+- Move into that directory: cd into hang-in-there
+- run open index.html to run the app!
+
 ## Usage
 
  Upon page load the website will automatically show a random poster.
@@ -25,5 +30,9 @@ Our poster project allows users to create random posters. The user then can save
 ##  Contributors
 - Max Bregman
 - Josh Aragon
+
+## Website Demo
+![Site Use](https://media.giphy.com/media/X8nP2O10kJU8VWMuJ4/giphy.gif)
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
