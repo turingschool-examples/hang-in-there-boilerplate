@@ -171,15 +171,15 @@ function createUserPoster(event, inputImage, inputTitle, inputQuote) {
   showTargetView(posterForm);
 }
 
-function saveUserInput(inputImage, inputQuote, inputTitle) {
+function saveUserInput(inputImage, inputTitle, inputQuote) {
   if (!images.includes(inputImage.value)) {
     images.push(userImage.value);
   }
-  if (!quotes.includes(inputQuote.value)) {
-    quotes.push(userQuote.value);
-  }
   if (!titles.includes(inputTitle.value)) {
     titles.push(userTitle.value);
+  }
+  if (!quotes.includes(inputQuote.value)) {
+    quotes.push(userQuote.value);
   }
 }
 
