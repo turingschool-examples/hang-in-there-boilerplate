@@ -1,4 +1,3 @@
-
 var savePoster = document.querySelector('.save-poster');
 
 var showSaved = document.querySelector('.show-saved');
@@ -53,6 +52,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+
 var titles = [
   "determination",
   "success",
@@ -90,6 +90,7 @@ var titles = [
   "understanding",
   "wisdom"
 ];
+
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
@@ -130,6 +131,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 
 var currentPoster;
@@ -175,16 +177,19 @@ function saveUserInput(inputImage, inputTitle, inputQuote) {
   if (!images.includes(inputImage.value)) {
     images.push(userImage.value);
   }
+
   if (!titles.includes(inputTitle.value)) {
     titles.push(userTitle.value);
   }
+
   if (!quotes.includes(inputQuote.value)) {
     quotes.push(userQuote.value);
   }
+
 }
 
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length)
+  return Math.floor(Math.random() * array.length);
 }
 
 function getThreeValues() {
