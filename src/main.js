@@ -208,8 +208,7 @@ function showTargetView(viewToShow, viewToHide) {
 function saveCurrentPoster(poster) {
   if (!savedPosters.includes(poster)) {
     savedPosters.push(poster);
-  }
-  console.log(savedPosters);
+  }  
 }
 
 function displaySavedPosters(poster) {
@@ -220,17 +219,17 @@ function displaySavedPosters(poster) {
     <h4>${poster.quote}</h4>
     </article>
   `);
-  console.log(saved);
+
   return saved;
 }
 
 function iterate() {
-  console.log("iterate ran");
   var htmlElements = [];
+
   for (var i = 0; i < savedPosters.length; i++) {
     var target = displaySavedPosters(savedPosters[i]);
     htmlElements.push(target);
   }
-  console.log("htmlElements:", htmlElements);
+
   savedPostersGrid.innerHTML = htmlElements.join('');
 }
