@@ -1,79 +1,61 @@
 # Hang In There
 
-A boilerplate repo. 
+A web page displaying inspirational posters created with atom, GitHub, Node.js, javascript, HTML and CSS.
 
-## Set Up
+[Hang In There](https://rachelbuchta.github.io/hang-in-there-boilerplate/)
 
-1. One teammate: fork this repository
-2. Go to settings and turn on GitHub Pages for this repository
-3. All teammates: clone down this repository
-4. `cd` into the repository
-5. Run `open index.html` to view it in the browser
+### Introduction
 
-## Progression
+We have created a web page designed to generate random inspirational posters that include an image, a title and a quote. The user is able to create their own posters by uploading an image, a title and a quote of their own. If there is a poster the user would like to keep, they can click to save it in a separate area of the page and double click to delete as they feel ready!
 
-### Iteration 0 - Main Page
+This web page was created to help us build a deeper understanding of how javascript, HTML and CSS work together by manipulating the DOM to create an enjoyable experience for the user. This project helped familiarize us with event handlers, event handler functions and to begin putting the skills we have been cultivating into a real-life scenario.
+
+### Instructions
+
+#### Main View
 
 ![screenshot of main page showing poster](/readme-imgs/homepage.png)
 
-- When the page loads, we should see a poster with a randomly selected image, title, and quote
+- When the pages loads, the user is welcomed with a randomized poster that includes an inspirational image, a title and a quote.
+- When the user clicks the **Show Another Random Poster** button, a new random poster is displayed.
+- When the user clicks the **Save This Poster** button, it will save the poster in a grid in the Saved Posters view. The poster can be accessed when the user clicks the **Show Saved Posters** button. No duplicate posters can be saved.
+- When the user clicks the **Make Your Own Poster** button, it navigates them to a form where they are able to create their own poster.
 
-### Iteration 1 - Switching Views
 
-Form page:
+#### Form View
+
 ![screenshot of form](/readme-imgs/form.png)
 
-Saved posters page (once working with extra saved posters):
-![screenshot of saved posters page](/readme-imgs/saved.png)
+- After the user clicks the **Make Your Own Poster** button, they are brought to the Form View.
+- If they did not mean to navigate to the Form View, the user can click the **Nevermind, take me back!** button to be directed back to the Main View.
+- The user is met with three input fields that allow them to upload an image URL, a title and a quote of their choice.
+- These inputs are saved into the Saved Posters category which contains the rest of the random images, titles and quotes, so that users are able to access the content they previously stored.
+- When the user clicks the **Show My Poster** button, they are congratulated with an alert and then navigated back to the Main View which then displays a poster that has the image, title and quote they just entered.
+- If the user likes the poster they have created, they can then click the **Save This Poster** button to save it in the Saved Posters category with the rest of the posters they have saved to access later.
+- If the user would like to create a new poster, they can click the **Make Your Own Poster** button again and are met with a cleared form ready for new inputs!
 
-- When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden
-- When a user clicks the "View Saved Posters" button, we should see the saved posters area, and the main poster should be hidden
-- When a user clicks the "Nevermind, take me back!" or "Back to Main" buttons, we should only see the main poster section
-- In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
 
-_Hint: go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place_
-
-## Iteration 2 - Creating a New Poster
-
-Form being filled out:
-![screenshot of form](/readme-imgs/form.png)
-
-Once poster is saved:
 ![screenshot of result](/readme-imgs/form-result.png)
 
-- On the new poster form view, users should be able to fill out the three input fields and then hit the save button
-- When the save button is clicked, several things will happen:
-  - Save the submitted data into the respective arrays (image URL into the images array, etc) so that future random posters can use the user-created data
-  - Use the values from the inputs to create a new instance of our Poster class
-  - Change back to the main poster view (hiding the form view again)
-  - Display the newly created poster image, title, and quote in the main view
+#### Saved Posters View
 
-## Iteration 3 - Saving & Viewing Posters
+![screenshot of saved posters page](/readme-imgs/saved.png)
 
-Saved posters view:
-![screenshot of saved posters section](/readme-imgs/saved.png)
-
-- When a user clicks the "Save This Poster" button, the current main poster will be added to the `savedPosters` array.
-- If a user clicks the "Save This Poster" more than once on a single poster, it will still only be saved once (no duplicates)
-- When a user clicks the "Show Saved Posters" button, we should see the saved posters section
-- All the posters in the `savedPosters` array should be displayed in the saved posters grid section
-
-## Iteration 4 - Deleting Saved Posters
-
-- From the saved posters view, if a user double clicks a saved poster, it will be deleted
-
-_Hint: How will you update the data model to achieve this?_
-
-## Optional Extensions - Gettin' fancy
-
-Here's a list of possible extensions to implement - but **ONLY IF** your team has completed all the previous iterations **AND** have cleaned up your code to make it DRYer and more readable.
-
-You are welcome to add your own extensions. Be sure they are thoughtful in terms of UX/UI, and that they do not break any prior functionality.
-
-- Implement data validation and error handling into the form (disable button, provide error messages if data entered is not correct, etc)
-- In the main poster view, allow users to click each piece of the poster (image, title, quote) to update just that piece with another random item from the appropriate array
-- When a user single clicks a saved poster, create a modal to view it larger
-- Allow users to drag and drop saved posters into whatever order they want them to appear
+- When the **Show Saved Posters** button is clicked on the Main View page, they are brought to the Saved Posters page.
+- Here, they are able to see each poster they have saved in a grid view.
+- If the user decides they would like to discard the poster, they can delete that poster by double clicking on it.
+- When they are ready to go back to the Main View page they can click the **Back To Main** button.
 
 
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
+### Contributors
+
+- Rachel Buchta
+- Jahara Clark
+
+#### Assisted By:
+
+- JP Carey
+- Cooper Terrones
+- Theresa Marquis
+- Demaceo Vincent Howard
+- Hannah Hudson

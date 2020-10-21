@@ -1,4 +1,22 @@
 // query selector variables go here 👇
+var displayedImage = document.querySelector("img");
+var displayedTitle = document.querySelector("h1");
+var displayedQuote = document.querySelector("h3");
+var mainPosterView = document.querySelector(".main-poster");
+var posterFormView = document.querySelector(".poster-form");
+var savedPostersView = document.querySelector(".saved-posters");
+var imageUrlInput = document.querySelector("#poster-image-url");
+var titleInput = document.querySelector("#poster-title");
+var quoteInput = document.querySelector("#poster-quote");
+var backToMainButton = document.querySelector(".back-to-main");
+var form = document.querySelector("form")
+var showRandomButton = document.querySelector(".show-random");
+var showFormButton = document.querySelector(".show-form");
+var showSavedButton = document.querySelector(".show-saved");
+var showMainButton = document.querySelector(".show-main");
+var showPosterButton = document.querySelector(".make-poster");
+var savePosterButton = document.querySelector(".save-poster");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,10 +120,100 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+backToMainButton.addEventListener("click", goBackToMain);
+savePosterButton.addEventListener("click", saveDisplayedPoster);
+savedPostersGrid.addEventListener("dblclick", deletePoster);
+showFormButton.addEventListener("click", showForm);
+showMainButton.addEventListener("click", goBackToMain);
+showPosterButton.addEventListener("click", inputUserData);
+showRandomButton.addEventListener("click", generatePoster);
+showSavedButton.addEventListener("click", showSavedPoster);
+window.addEventListener("load", generatePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
+function deletePoster() {
+  if (event.target.closest(".mini-poster")) {
+    var clickedMiniPoster = event.target.closest(".mini-poster")
+    for (var i = 0; i < savedPosters.length; i++) {
+      if (savedPosters[i].id === Number(clickedMiniPoster.id)) {
+        savedPosters.splice(i, 1);
+      };
+    };
+    showSavedPoster();
+  };
+};
 
+function generatePoster() {
+  displayedImage.src = getRandomIndex(images);
+  displayedTitle.innerHTML = getRandomIndex(titles);
+  displayedQuote.innerHTML = getRandomIndex(quotes);
+
+  currentPoster = new Poster(displayedImage.src, displayedTitle.innerHTML, displayedQuote.innerHTML)
+};
+
+
+function getRandomIndex(array) {
+  return array[Math.floor(Math.random() * array.length)]
+};
+
+
+function goBackToMain() {
+  mainPosterView.classList.remove("hidden");
+  savedPostersView.classList.add("hidden");
+  posterFormView.classList.add("hidden")
+};
+
+
+function saveDisplayedPoster() {
+  if (savedPosters.includes(currentPoster) === false) savedPosters.push(currentPoster);
+};
+
+
+function showForm() {
+  posterFormView.classList.remove("hidden");
+  mainPosterView.classList.add("hidden");
+  form.reset();
+};
+
+
+function showSavedPoster() {
+
+  savedPostersView.classList.remove("hidden");
+  mainPosterView.classList.add("hidden");
+
+  savedPostersGrid.innerHTML = "";
+
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersGrid.innerHTML +=
+      `<article class= "mini-poster" id=${savedPosters[i].id} >
+            <img src = ${savedPosters[i].imageURL}>
+            <h2> ${savedPosters[i].title} </h2>
+            <h4> ${savedPosters[i].quote} </h4>
+        </article>`
+  };
+};
+
+
+function inputUserData(imageURL, title, quote) {
+  event.preventDefault();
+
+  window.alert("Congratulations! You've created a poster!");
+
+  imageURL = imageUrlInput.value;
+  title = titleInput.value;
+  quote = quoteInput.value;
+
+  currentPoster = new Poster(imageURL, title, quote);
+
+  displayedImage.src = imageURL;
+  displayedTitle.innerHTML = title;
+  displayedQuote.innerHTML = quote;
+
+  images.push(imageURL);
+  titles.push(title);
+  quotes.push(quote);
+
+  mainPosterView.classList.remove("hidden");
+  posterFormView.classList.add("hidden");
+};
