@@ -31,17 +31,17 @@ Find the repo [here!](https://github.com/mainlyetcetera/hang-in-there-boilerplat
 *change default font or coloring*
 
 ### Wins:
-**excellent teamwork and communication**
-**flexible with unexpected changes**
-**maintaining a level head when tackling roadblocks that required more focus and attention than expected**
+  * **excellent teamwork and communication**
+  * **flexible with unexpected changes**
+  * **maintaining a level head when tackling roadblocks that required more focus and attention than expected**
 
-**learned to properly access HTML elements and affect them with CSS styling**
-**event.preventDefault()**
-**successful refactoring of function using toggle method to add and remove the hidden class**
-**gained a strong proficiency writing query selector and event listeners**
+  * **learned to properly access HTML elements and affect them with CSS styling**
+  * **event.preventDefault()**
+  * **successful refactoring of function using toggle method to add and remove the hidden class**
+  * **gained a strong proficiency writing query selector and event listeners**
 
 ### Challenges:
-getting saved posters to display in grid with desired CSS styling
-asking for help when stumped for too long, such as with learning event.preventDefault()
-needed to reexamine DTR due to unexpected life events
-spending more time using Divide and Conquer method than our chosen method of pair programming
+  * getting saved posters to display in grid with desired CSS styling
+  * asking for help when stumped for too long, such as with learning event.preventDefault()
+  * needed to reexamine DTR due to unexpected life events
+  * spending more time using Divide and Conquer method than our chosen method of pair programming
