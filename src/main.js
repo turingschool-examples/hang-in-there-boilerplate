@@ -138,7 +138,7 @@ savePoster.addEventListener('click', function() {
   saveCurrentPoster(currentPoster);
 });
 
-savePoster.addEventListener('click', displaySavedPosters);
+savePoster.addEventListener('click', iterate);
 
 showRandom.addEventListener('click', getThreeValues);
 
@@ -209,18 +209,28 @@ function saveCurrentPoster(poster) {
   if (!savedPosters.includes(poster)) {
     savedPosters.push(poster);
   }
+  console.log(savedPosters);
 }
 
-// function displaySavedPosters() {
-//   console.log(savedPosters[0]);
-//   savedPostersGrid.innerHTML = (`
-//     <article class="poster">
-// <img class="poster-img" src=${savedPosters.imageURL}>
-// <h1 class="poster-title">${savedPosters.title}</h1>
-// <h3 class="poster-quote">${savedPosters.quote}</h3>
-// </article>
+function displaySavedPosters(poster) {
+  var saved = (`
+    <article class="mini-poster">
+    <img src=${poster.imageURL}>
+    <h2>${poster.title}</h2>
+    <h4>${poster.quote}</h4>
+    </article>
+  `);
+  console.log(saved);
+  return saved;
+}
 
-  //  `);
-  // savedPostersGrid.innerHTML = savedPosters.quote;
-  // savedPostersGrid.innerHTML = savedPosters.imageURL;
-//}
+function iterate() {
+  console.log("iterate ran");
+  var htmlElements = [];
+  for (var i = 0; i < savedPosters.length; i++) {
+    var target = displaySavedPosters(savedPosters[i]);
+    htmlElements.push(target);
+  }
+  console.log("htmlElements:", htmlElements);
+  savedPostersGrid.innerHTML = htmlElements.join('');
+}
