@@ -24,7 +24,7 @@ var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 var posterForm = document.querySelector('.poster-form');
 
-var mainPoster = document.querySelector('.main-poster');
+var mainView = document.querySelector('.main-poster');
 
 var userImage = document.querySelector('#poster-image-url');
 
@@ -164,6 +164,8 @@ makeUserPoster.addEventListener('click', function() {
   createUserPoster(event, userImage, userTitle, userQuote);
 });
 
+
+
 window.onload = getThreeValues();
 
 function createUserPoster(event, inputImage, inputTitle, inputQuote) {
@@ -208,7 +210,7 @@ function instantiate(image, title, quote) {
 
 function showTargetView(view) {
   view.classList.toggle('hidden');
-  mainPoster.classList.toggle('hidden');
+  mainView.classList.toggle('hidden');
 }
 
 function saveCurrentPoster(poster) {
