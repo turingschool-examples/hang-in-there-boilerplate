@@ -136,12 +136,6 @@ var savedPosters = [];
 
 var currentPoster;
 
-savePoster.addEventListener('click', function() {
-  saveCurrentPoster(currentPoster);
-});
-
-savePoster.addEventListener('click', displayPosters);
-
 showMain.addEventListener('click', function() {
   showTargetView(posterForm);
 });
@@ -161,7 +155,7 @@ makeUserPoster.addEventListener('click', function() {
 mainView.addEventListener('click', event => {
   event.target.className === 'show-random' ? getThreeValues() : event;
   event.target.className === 'show-form' ? showTargetView(posterForm) : event;
-  // event.target.className === 'save-poster'
+  event.target.className === 'save-poster' ? (saveCurrentPoster(currentPoster), displayPosters()) : event;
   // event.target.className === 'show-saved'
 });
 
