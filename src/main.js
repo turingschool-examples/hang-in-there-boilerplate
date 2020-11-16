@@ -165,7 +165,7 @@ makeUserPoster.addEventListener('click', function() {
 });
 
 mainView.addEventListener('click', event => {
-  // event.target.className === 'show-random' ? getThreeValues() : event;
+  event.target.className === 'show-random' ? getThreeValues() : event;
   // event.target.className === 'show-form'
   // event.target.className === 'save-poster'
   // event.target.className === 'show-saved'
