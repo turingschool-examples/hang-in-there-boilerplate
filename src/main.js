@@ -24,7 +24,7 @@ var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 var posterForm = document.querySelector('.poster-form');
 
-var mainView = document.querySelector('.main-poster');
+var mainPoster = document.querySelector('.main-poster');
 
 var userImage = document.querySelector('#poster-image-url');
 
@@ -136,6 +136,18 @@ var savedPosters = [];
 
 var currentPoster;
 
+savePoster.addEventListener('click', function() {
+  saveCurrentPoster(currentPoster);
+});
+
+savePoster.addEventListener('click', displayPosters);
+
+showRandom.addEventListener('click', getThreeValues);
+
+showForm.addEventListener('click', function() {
+  showTargetView(posterForm);
+});
+
 showMain.addEventListener('click', function() {
   showTargetView(posterForm);
 });
@@ -150,13 +162,6 @@ showSaved.addEventListener('click', function() {
 
 makeUserPoster.addEventListener('click', function() {
   createUserPoster(event, userImage, userTitle, userQuote);
-});
-
-mainView.addEventListener('click', event => {
-  event.target.className === 'show-random' ? getThreeValues() : event;
-  event.target.className === 'show-form' ? showTargetView(posterForm) : event;
-  event.target.className === 'save-poster' ? (saveCurrentPoster(currentPoster), displayPosters()) : event;
-  // event.target.className === 'show-saved'
 });
 
 window.onload = getThreeValues();
@@ -203,7 +208,7 @@ function instantiate(image, title, quote) {
 
 function showTargetView(view) {
   view.classList.toggle('hidden');
-  mainView.classList.toggle('hidden');
+  mainPoster.classList.toggle('hidden');
 }
 
 function saveCurrentPoster(poster) {
