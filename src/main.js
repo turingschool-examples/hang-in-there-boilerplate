@@ -107,7 +107,7 @@ var savedPosters = [
 var currentPoster;
 
 // event listeners go here 👇
-
+window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
 
 // functions and event handlers go here 👇
