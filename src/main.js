@@ -1,5 +1,8 @@
 // query selector variables go here 👇
-
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var showRandomButton = document.querySelector('.show-random');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -98,14 +101,33 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
+var savedPosters = [
+  // new Poster('./assets/turtle.jpg', "believe", "You are braver than you believe, stronger than you seem and smarter than you think.")
+];
 var currentPoster;
 
 // event listeners go here 👇
 
+showRandomButton.addEventListener('click', createRandomPoster);
+
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+function generateRandomPoster() {
+  var randomImage = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  var randomPoster = new Poster(randomImage, randomTitle, randomQuote);
+  return randomPoster;
+}
+
+function createRandomPoster() {
+  var randomPoster = generateRandomPoster();
+  posterImage.src = randomPoster.imageURL;
+  posterTitle.innerHTML = randomPoster.title;
+  posterQuote.innerHTML = randomPoster.quote;
+}
+
 
