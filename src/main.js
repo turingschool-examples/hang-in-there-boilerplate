@@ -3,6 +3,8 @@ var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var showRandomButton = document.querySelector('.show-random');
+var showFormButton = document.querySelector('.show-form');
+
 
 var savedPosters = [];
 var currentPoster;
@@ -10,6 +12,7 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
+showFormButton.addEventListener('click', switchScreens);
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -31,4 +34,9 @@ function createRandomPoster() {
   posterQuote.innerHTML = randomPoster.quote;
 }
 
-
+function switchScreens(){
+  var test = document.querySelector('.main-poster');
+  test.className = "main-poster hidden";
+  var test2 = document.querySelector('.poster-form');
+  test2.className = "poster-form";
+}
