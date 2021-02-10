@@ -1,6 +1,10 @@
 // query selector variables go here 👇
+<<<<<<< HEAD
 var randomQuote = document.querySelector('.poster-quote');
 var randomImage = document.querySelector('.poster-img');
+=======
+var randomTitle = document.querySelector('.poster-title');
+>>>>>>> feature/riley
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -110,6 +114,10 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function getRandomTitle() {
+   randomTitle.innerText = titles[getRandomIndex(titles)];
+}
+
 function getRandomQuote(){
   randomQuote.innerHTML = quotes[getRandomIndex(quotes)];
 }
@@ -117,5 +125,10 @@ function getRandomQuote(){
 function getRandomImage(){
   randomImage.src = images[getRandomIndex(images)];
 }
+
+
+
+getRandomTitle();
 getRandomQuote();
+getRandomImage();
 getRandomImage();
