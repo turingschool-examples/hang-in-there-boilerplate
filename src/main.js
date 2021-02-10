@@ -1,10 +1,9 @@
 // query selector variables go here 👇
-<<<<<<< HEAD
+
 var randomQuote = document.querySelector('.poster-quote');
 var randomImage = document.querySelector('.poster-img');
-=======
 var randomTitle = document.querySelector('.poster-title');
->>>>>>> feature/riley
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
