@@ -51,8 +51,7 @@ button:hover {
 .poster-img {
   background-size: cover;
   border: 2px solid white;
-  height: 450px;
-  width: 800px;
+  max-width: 80%;
 }
 
 .poster-title,
