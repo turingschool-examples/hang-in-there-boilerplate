@@ -4,6 +4,9 @@ var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var showRandomButton = document.querySelector('.show-random');
 var showFormButton = document.querySelector('.show-form');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var backToMainButton = document.querySelector('.back-to-main');
+var takeMeBackButton = document.querySelector('.show-main');
 
 
 var savedPosters = [];
@@ -12,7 +15,18 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
-showFormButton.addEventListener('click', switchScreens);
+showFormButton.addEventListener('click', function(){
+  switchScreens(".main-poster",".poster-form");
+}, false);
+showSavedPostersButton.addEventListener('click', function(){
+  switchScreens(".main-poster",".saved-posters");
+}, false);
+backToMainButton.addEventListener('click', function(){
+  switchScreens(".saved-posters",".main-poster");
+}, false);
+takeMeBackButton.addEventListener('click', function(){
+  switchScreens(".saved-posters",".main-poster");
+}, false);
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -34,9 +48,9 @@ function createRandomPoster() {
   posterQuote.innerHTML = randomPoster.quote;
 }
 
-function switchScreens(){
-  var test = document.querySelector('.main-poster');
-  test.className = "main-poster hidden";
-  var test2 = document.querySelector('.poster-form');
-  test2.className = "poster-form";
+function switchScreens(closingWindow, openingWindow){
+  var closing = document.querySelector(closingWindow);
+  closing.classList.toggle("hidden");
+  var opening = document.querySelector(openingWindow);
+  opening.classList.toggle("hidden");
 }
