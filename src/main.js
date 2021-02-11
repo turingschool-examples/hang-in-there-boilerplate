@@ -5,7 +5,8 @@ var randomQuote = document.querySelector('.poster-quote');
 var randomImage = document.querySelector('.poster-img');
 var randomPosterButton = document.querySelector('.show-random');
             //Iteration 1
-var makePoster = document.querySelector('.poster-form');
+var posterForm = document.querySelector('.poster-form');
+var makeYourPosterButton = document.querySelector('.show-form');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -116,7 +117,7 @@ randomPosterButton.addEventListener('click',function(){
   getRandomImage();
 });
             //Make Random Poster
-makePoster.addEventListener('click',makeYourPoster());
+makeYourPosterButton.addEventListener('click',revealForm);
 
             //functions and event handlers go here 👇
 
@@ -139,6 +140,6 @@ getRandomQuote();
 getRandomImage();
 
             //Make Random Poster Functions
-function makeYourPoster(){
-
+function revealForm(){
+  posterForm.classList.remove('hidden');
 }
