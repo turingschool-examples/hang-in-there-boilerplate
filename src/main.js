@@ -1,19 +1,24 @@
 // query selector variables go here 👇
-            //Iteration 0
+            //Page element query selector variables 👇
 var randomTitle = document.querySelector('.poster-title');
 var randomQuote = document.querySelector('.poster-quote');
 var randomImage = document.querySelector('.poster-img');
-var randomPosterButton = document.querySelector('.show-random');
-            //Iteration 1
-var mainPoster = document.querySelector('.main-poster');
-var posterForm = document.querySelector('.poster-form');
-var makeYourPosterButton = document.querySelector('.show-form');
 
-var savedPostersSection = document.querySelector('.saved-posters');
+            //Button query selector variables👇
+var saveThisPosterButton = document.querySelector('.save-poster');
 var savedPostersButton = document.querySelector('.show-saved');
-
+var randomPosterButton = document.querySelector('.show-random');
+var makeYourPosterButton = document.querySelector('.show-form');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+
+            //Section query selector variables👇
+var mainPoster = document.querySelector('.main-poster');
+var savedPostersSection = document.querySelector('.saved-posters');
+var posterForm = document.querySelector('.poster-form');
+
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -136,12 +141,8 @@ savedPostersButton.addEventListener('click', function() {
   hideMainPoster();
 });
            //Go back to main poster section
-nevermindButton.addEventListener('click', function(){
-  takeMeBack();
-});
-backToMainButton.addEventListener('click', function(){
-  backToMainPoster();
-});
+nevermindButton.addEventListener('click', takeMeBack);
+backToMainButton.addEventListener('click', backToMainPoster);
             //functions and event handlers go here 👇
 
             //Show Random Poster Functions
