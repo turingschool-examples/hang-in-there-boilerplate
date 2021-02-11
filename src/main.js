@@ -1,4 +1,7 @@
 // query selector variables go here 👇
+var posterQuote = document.querySelector('h3');
+var posterTitle = document.querySelector('.poster-title');
+var posterImage = document.querySelector('.poster-img');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -99,19 +102,39 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [
-  makePoster(
-    "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-    "Optimism",
-    "Keep a joyful heart!"
-  )
+  // makePoster(
+  //   "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
+  //   "Optimism",
+  //   "Keep a joyful heart!"
+  // )
 ];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener('load', generateRandomQuote);
+window.addEventListener('load', generateRandomTitle);
+window.addEventListener('load', generateRandomPoster);
+
+//look into onload
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function generateRandomQuote() {
+  var randomIndexQuote = getRandomIndex(quotes);
+  posterQuote.innerHTML = `${quotes[randomIndexQuote]}`;
+}
+
+function generateRandomTitle() {
+  var randomIndexTitle = getRandomIndex(titles);
+  posterTitle.innerHTML = `${titles[randomIndexTitle]}`;
+}
+
+function generateRandomPoster() {
+  var randomIndexImage = getRandomIndex(images);
+  posterImage.src = `${images[randomIndexImage]}`;
+}
