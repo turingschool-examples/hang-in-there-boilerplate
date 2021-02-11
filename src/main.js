@@ -112,6 +112,8 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 function makeRandomPoster() {
-  mainPosterImage.src = images[1]
+  mainPosterImage.src = images[getRandomIndex(images)]
+  posterTitle.innerText = titles[getRandomIndex(titles)]
+  posterQuote.innerText = quotes[getRandomIndex(quotes)]
 }
-console.log(mainPosterImage)
+makeRandomPoster()
