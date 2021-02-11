@@ -107,7 +107,9 @@ var mainPoster = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 var savedPoster = document.querySelector('.saved-posters');
 //for the make your own poster
-
+var imageCustom = document.getElementById('poster-image-url');
+var titleCustom = document.getElementById('poster-title');
+var quoteCustom = document.getElementById('poster-quote');
 
 //all the buttons
 var savePosterButton = document.querySelector('.save-poster');
@@ -139,23 +141,20 @@ function makePoster(imageUrl, title, quote) {
   posterImage.src = imageUrl;
   posterTitle.innerText = title;
   posterQuote.innerText = quote;
+  event.preventDefault();
 };
 
 
 
 function randomizePoster () {
-// event.preventDefault();
   makePoster(images[getRandomIndex(images)],
   titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
 };
-var imageCustom = document.getElementById('.poster-image-url');
-var titleCustom = document.getElementById('poster-title');
-var quoteCustom = document.getElementById('poster-quote');
-function customizePoster() {
-  debugger
 
+
+function customizePoster() {
   makePoster(imageCustom.value, titleCustom.value, quoteCustom.value)
-  // event.preventDefault();
+  showMain();
 }
 
 function hide(pageShow, pageHide1, pageHide2) {
