@@ -108,21 +108,24 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-            //Random Poster
+
+            //Show Random Poster
 randomPosterButton.addEventListener('click',function(){
   getRandomTitle();
   getRandomQuote();
   getRandomImage();
 });
-            //Make Poster
-makePoster.addEventListener('click',yourPoster());
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+            //Make Random Poster
+makePoster.addEventListener('click',makeYourPoster());
+
+            //functions and event handlers go here 👇
+
+            //Show Random Poster Functions
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 function getRandomTitle() {
-   randomTitle.innerText = titles[getRandomIndex(titles)];
+  randomTitle.innerText = titles[getRandomIndex(titles)];
 }
 function getRandomQuote(){
   randomQuote.innerHTML = quotes[getRandomIndex(quotes)];
@@ -130,7 +133,12 @@ function getRandomQuote(){
 function getRandomImage(){
   randomImage.src = images[getRandomIndex(images)];
 }
-            //Make Poster
-function yourPoster(){
-  makePoster.style.display = "";
+
+getRandomTitle();
+getRandomQuote();
+getRandomImage();
+
+            //Make Random Poster Functions
+function makeYourPoster(){
+
 }
