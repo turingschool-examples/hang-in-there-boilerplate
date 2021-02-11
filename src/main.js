@@ -118,7 +118,9 @@ function randomQuotes() {
   return quotation.innerText = quotes[Math.floor(Math.random() * quotes.length)];
 }
 
-
+function randomPoster() {
+  return image.src = images[Math.floor(Math.random() * images.length)];
+}
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
