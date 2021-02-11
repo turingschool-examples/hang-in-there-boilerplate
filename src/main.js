@@ -2,6 +2,7 @@
 var titleName = document.querySelector('h1');
 var randomButton = document.querySelector('.show-random');
 var quotation = document.querySelector('h3');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -113,6 +114,9 @@ function randomTitle() {
   return titleName.innerText = titles[Math.floor(Math.random() * titles.length)];
 }
 
+function randomQuotes() {
+  return quotation.innerText = quotes[Math.floor(Math.random() * quotes.length)];
+}
 
 
 // (we've provided one for you to get you started)!
