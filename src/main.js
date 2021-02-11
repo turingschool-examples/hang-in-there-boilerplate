@@ -15,9 +15,12 @@ var savePoster = document.querySelector(".saved-posters");
 //buttons
 var buttonRandom = document.querySelector(".show-random"); //html
 var makePosterButton = document.querySelector(".show-form");
-var savePosterButton = document.querySelector("show-saved");
-var backButton = document.querySelector(".show-main");
-var backHomeButton = document.querySelector(".back-to-main");
+
+var savePosterButton = document.querySelector(".show-saved");
+
+var nevermindBackButton = document.querySelector(".show-main");
+
+var mainBackButton = document.querySelector(".back-to-main");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -124,10 +127,11 @@ var currentPoster;
 window.addEventListener('load', randomPoster); //when window opens load randomPoster function
 buttonRandom.addEventListener('click', randomPoster); //button that is random does randomPoster function
 
-makePosterButton.addEventListener('click',);
-savePosterButton.addEventListener('click',);
-backButton.addEventListener('click',);
-backHomeButton.addEventListener('click',);
+makePosterButton.addEventListener('click', unhideMainPoster);
+nevermindBackButton.addEventListener('click', nevermindBack);
+savePosterButton.addEventListener('click', unhideSavePoster);
+mainBackButton.addEventListener('click', mainBack);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -141,7 +145,22 @@ function randomPoster() {
   updateTitle.innerText = randomTitle;
   updateQuote.innerText = randomQuote;
   updateImg.src = randomImage;
-
-  
-  // currentPoster = new Poster(randomImage, randomTitle, randomQuote);
+  currentPoster = new Poster(randomImage, randomTitle, randomQuote);
 };
+
+function unhideMainPoster() {
+    makePoster.classList.remove('hidden');
+    mainPoster.classList.add('hidden');
+  };
+function unhideSavePoster() {
+    savePoster.classList.remove("hidden");
+    mainPoster.classList.add("hidden");
+  };
+function nevermindBack() {
+  makePoster.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+};
+function mainBack() {
+  savePoster.classList.add("hidden");
+  mainPoster.classList.remove("hidden");
+}
