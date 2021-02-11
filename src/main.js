@@ -123,14 +123,15 @@ var currentPoster;
 window.addEventListener('load', randomizePoster);
 randomizeButton.addEventListener('click', randomizePoster);
 makeYourOwnButton.addEventListener('click', makeOwnShow);
-showSavedPosterButton.addEventListener('click', /*function*/);
-nevermindShowMain.addEventListener('click', /*function*/);
-backToMain.addEventListener('click', /*function*/);
+showSavedPosterButton.addEventListener('click', showSavedShow);
+nevermindShowMain.addEventListener('click', showMain);
+backToMain.addEventListener('click', showMain);
 // functions and event handlers go here 👇
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
+
 function randomizePoster() {
   posterImage.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
@@ -146,4 +147,12 @@ function hide(pageShow, pageHide1, pageHide2) {
 
 function makeOwnShow() {
   hide(posterForm, mainPoster, savedPoster)
-}
+};
+
+function showSavedShow() {
+  hide(savedPoster, posterForm, mainPoster)
+};
+
+function showMain() {
+  hide(mainPoster, savedPoster, posterForm)
+};
