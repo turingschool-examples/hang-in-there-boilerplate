@@ -12,7 +12,8 @@ var makeYourPosterButton = document.querySelector('.show-form');
 var savedPostersSection = document.querySelector('.saved-posters');
 var savedPostersButton = document.querySelector('.show-saved');
 
-
+var nevermindButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -134,7 +135,13 @@ savedPostersButton.addEventListener('click', function() {
   showSavedPosters();
   hideMainPoster();
 });
-
+           //Go back to main poster section
+nevermindButton.addEventListener('click', function(){
+  takeMeBack();
+});
+backToMainButton.addEventListener('click', function(){
+  backToMainPoster();
+});
             //functions and event handlers go here 👇
 
             //Show Random Poster Functions
@@ -167,4 +174,13 @@ function showSavedPosters(){
 
 function hideMainPoster() {
   mainPoster.classList.add('hidden');
+}
+            //Go back to main poster
+function takeMeBack(){
+  mainPoster.classList.remove('hidden');
+  posterForm.classList.add('hidden');
+}
+function backToMainPoster(){
+  mainPoster.classList.remove('hidden');
+  savedPostersSection.classList.add('hidden');
 }
