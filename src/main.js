@@ -21,7 +21,13 @@ var savePosterButton = document.querySelector(".show-saved");
 var nevermindBackButton = document.querySelector(".show-main");
 
 var mainBackButton = document.querySelector(".back-to-main");
+=======
+var updateImg = document.querySelector(".poster-img"); //css
+var updateTitle = document.querySelector(".poster-title"); //css
+var updateQuote = document.querySelector(".poster-quote"); //css
 
+
+var buttonRandom = document.querySelector(".show-random"); //html
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -127,16 +133,19 @@ var currentPoster;
 window.addEventListener('load', randomPoster); //when window opens load randomPoster function
 buttonRandom.addEventListener('click', randomPoster); //button that is random does randomPoster function
 
+
 makePosterButton.addEventListener('click', unhideMainPoster);
 nevermindBackButton.addEventListener('click', nevermindBack);
 savePosterButton.addEventListener('click', unhideSavePoster);
 mainBackButton.addEventListener('click', mainBack);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
+
 
 function randomPoster() {
   var randomTitle = titles[getRandomIndex(titles)];
@@ -164,3 +173,15 @@ function mainBack() {
   savePoster.classList.add("hidden");
   mainPoster.classList.remove("hidden");
 }
+=======
+
+function randomPoster() {
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  var randomImage = images[getRandomIndex(images)];
+  updateTitle.innerText = randomTitle;
+  updateQuote.innerText = randomQuote;
+  updateImg.src = randomImage;
+  // currentPoster = new Poster(randomImage, randomTitle, randomQuote);
+};
+
