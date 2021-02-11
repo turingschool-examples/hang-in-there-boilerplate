@@ -2,11 +2,14 @@
 var title = document.querySelector(".poster-title");
 var phrase = document.querySelector(".poster-quote");
 var image = document.querySelector("img");
+
 var randomButton = document.querySelector(".show-random");
 var tryItButton = document.querySelector(".show-form");
+var savedButton = document.querySelector(".show-saved");
+
 var mainSection = document.querySelector(".main-poster");
 var formSection = document.querySelector(".poster-form");
-
+var savedSection = document.querySelector(".saved-posters");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -117,6 +120,8 @@ randomButton.addEventListener('click', function() {
 })
 
 tryItButton.addEventListener('click', showForm);
+savedButton.addEventListener('click', showSaved);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -140,9 +145,14 @@ function randomizePhoto() {
 }
 
 // this function shows the form section
-function showForm(){
+function showForm() {
   mainSection.classList.toggle("hidden");
   formSection.classList.toggle("hidden");
+}
+
+function showSaved() {
+  mainSection.classList.toggle("hidden");
+  savedSection.classList.toggle("hidden");
 }
 
 randomizeTitle();
