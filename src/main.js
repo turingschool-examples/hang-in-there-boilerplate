@@ -14,7 +14,8 @@ var savedPostersButton = document.querySelector('.show-saved');
 
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
-// we've provided you with some data to work with 👇
+            //Iteration 2
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -142,6 +143,10 @@ nevermindButton.addEventListener('click', function(){
 backToMainButton.addEventListener('click', function(){
   backToMainPoster();
 });
+           //Show my poster
+// showMyPosterButton.addEventListener('click', function(){
+//   showMyPoster();
+// });
             //functions and event handlers go here 👇
 
             //Show Random Poster Functions
