@@ -122,11 +122,7 @@ var nevermindShowMain = document.querySelector('.show-main');
 var backToMain = document.querySelector('.back-to-main');
 
 var savedPosters = [];
-var currentPoster = {
-  imageURL: posterImage.src,
-  title: posterTitle.innerText,
-  quote: posterQuote.innerText,
-};
+var currentPoster = null;
 
 // event listeners go here 👇
 window.addEventListener('load', randomizePoster);
@@ -156,9 +152,13 @@ function randomizePoster () {
 
 
 function customizePoster() {
-  displayPoster(imageCustom.value, titleCustom.value, quoteCustom.value)
+  displayPoster(imageCustom.value, titleCustom.value, quoteCustom.value);
+  addToArray(images, imageCustom.value);
+  addToArray(titles, titleCustom.value);
+  addToArray(quotes, quoteCustom.value);
+  currentPoster = new Poster(imageCustom.value, titleCustom.value, quoteCustom.value);
   showMain();
-}
+};
 
 function hide(pageShow, pageHide1, pageHide2) {
   pageHide1.classList.add('hidden');
@@ -176,4 +176,9 @@ function showSavedShow() {
 
 function showMain() {
   hide(mainPoster, savedPoster, posterForm)
+};
+function addToArray(arr, item) {
+  if (!arr.includes(item)) {
+  arr.push(item);
+  }
 };
