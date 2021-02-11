@@ -120,10 +120,12 @@ function getRandomIndex(array) {
 }
 // returns a number value within the arrays length
 function makeNewRandomPoster() {
-  var i = Math.floor(Math.random() * array.length)
-  var currentPoster = new Poster(images[i], title[i], quote[i]);
+  var i = getRandomIndex(images);
+  var t = getRandomIndex(titles);
+  var q = getRandomIndex(quotes);
+  var currentPoster = new Poster(images[i], titles[t], quotes[q]);
 
-  image.src = currentposter.imageURL;
-  tagline.innerHTML = currentPoster.quote;
-  title.innerHTML = currentPoster.title;
+  image.src = currentPoster.imageURL;
+  tagline.innerText = currentPoster.quote;
+  title.innerText = currentPoster.title;
 }
