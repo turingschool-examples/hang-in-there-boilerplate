@@ -2,7 +2,7 @@
 var titleName = document.querySelector('h1');
 var randomButton = document.querySelector('.show-random');
 var quotation = document.querySelector('h3');
-
+var image = document.querySelector('img');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
