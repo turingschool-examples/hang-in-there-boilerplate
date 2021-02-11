@@ -1,6 +1,23 @@
-// query selector variables go here 👇
+// QUERY SELECTOR VARIABLES 👇
+//QS update
+var updateImg = document.querySelector(".poster-img");
+var updateTitle = document.querySelector(".poster-title");
+var updateQuote = document.querySelector(".poster-quote");
 
-// we've provided you with some data to work with 👇
+//QS making poster page
+var mainPoster = document.querySelector(".main-poster");
+var makePoster = document.querySelector(".poster-form");
+var savePoster = document.querySelector(".saved-posters");
+
+//QS buttons
+var buttonRandom = document.querySelector(".show-random");
+var makePosterButton = document.querySelector(".show-form");
+var savePosterButton = document.querySelector(".show-saved");
+var nevermindBackButton = document.querySelector(".show-main");
+var mainBackButton = document.querySelector(".back-to-main");
+
+
+// PROVIDED DATA 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -101,11 +118,45 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
+// EVENT LISTNERS 👇
+window.addEventListener('load', randomPoster); //when window opens load randomPoster function
+buttonRandom.addEventListener('click', randomPoster); //button that is random does randomPoster function
 
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+makePosterButton.addEventListener('click', unhideMainPoster);
+nevermindBackButton.addEventListener('click', nevermindBack);
+savePosterButton.addEventListener('click', unhideSavePoster);
+mainBackButton.addEventListener('click', mainBack);
+
+
+// FUNCTIONS AND EVENT HANDLERS 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
+
+function randomPoster() {
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  var randomImage = images[getRandomIndex(images)];
+  updateTitle.innerText = randomTitle;
+  updateQuote.innerText = randomQuote;
+  updateImg.src = randomImage;
+  currentPoster = new Poster(randomImage, randomTitle, randomQuote);
+};
+
+function unhideMainPoster() {
+    makePoster.classList.remove('hidden');
+    mainPoster.classList.add('hidden');
+  };
+function unhideSavePoster() {
+    savePoster.classList.remove("hidden");
+    mainPoster.classList.add("hidden");
+  };
+function nevermindBack() {
+  makePoster.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+};
+function mainBack() {
+  savePoster.classList.add("hidden");
+  mainPoster.classList.remove("hidden");
+};
