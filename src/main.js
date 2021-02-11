@@ -1,21 +1,25 @@
 // query selector variables go here 👇
-            //Iteration 0
+            //Page element query selector variables 👇
 var randomTitle = document.querySelector('.poster-title');
 var randomQuote = document.querySelector('.poster-quote');
 var randomImage = document.querySelector('.poster-img');
-var randomPosterButton = document.querySelector('.show-random');
-            //Iteration 1
-var mainPoster = document.querySelector('.main-poster');
-var posterForm = document.querySelector('.poster-form');
-var makeYourPosterButton = document.querySelector('.show-form');
 
-var savedPostersSection = document.querySelector('.saved-posters');
+            //Button query selector variables👇
+var saveThisPosterButton = document.querySelector('.save-poster');
 var savedPostersButton = document.querySelector('.show-saved');
-
+var randomPosterButton = document.querySelector('.show-random');
+var makeYourPosterButton = document.querySelector('.show-form');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
-            //Iteration 2
 
+            //Section query selector variables👇
+var mainPoster = document.querySelector('.main-poster');
+var savedPostersSection = document.querySelector('.saved-posters');
+var posterForm = document.querySelector('.poster-form');
+
+
+
+// we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -118,38 +122,29 @@ var currentPoster;
 
 // event listeners go here 👇
 
-            //Show Random Poster
-randomPosterButton.addEventListener('click',function(){
+savedPostersButton.addEventListener('click', function() {
+  showSavedPosters();
+  hideMainPoster();
+});
+
+randomPosterButton.addEventListener('click', function() {
   getRandomTitle();
   getRandomQuote();
   getRandomImage();
 });
-            //Make Random Poster
+
 makeYourPosterButton.addEventListener('click',function(){
   revealForm();
   hideMainPoster();
 });
 
-            //View Saved Posters
-// When a user clicks the “View Saved Posters” button, see the saved posters area, and main poster hidden
-savedPostersButton.addEventListener('click', function() {
-  showSavedPosters();
-  hideMainPoster();
-});
-           //Go back to main poster section
-nevermindButton.addEventListener('click', function(){
-  takeMeBack();
-});
-backToMainButton.addEventListener('click', function(){
-  backToMainPoster();
-});
-           //Show my poster
-// showMyPosterButton.addEventListener('click', function(){
-//   showMyPoster();
-// });
+nevermindButton.addEventListener('click', takeMeBack);
+
+backToMainButton.addEventListener('click', backToMainPoster);
+
+
             //functions and event handlers go here 👇
 
-            //Show Random Poster Functions
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -167,25 +162,22 @@ getRandomTitle();
 getRandomQuote();
 getRandomImage();
 
-            //Make Random Poster Functions
-function revealForm(){
-  posterForm.classList.remove('hidden');
-}
 
-            //View Saved Posters Functions
+            //List of functions 👇
 function showSavedPosters(){
   savedPostersSection.classList.remove('hidden');
 }
-
+function revealForm(){
+  posterForm.classList.remove('hidden');
+}
 function hideMainPoster() {
   mainPoster.classList.add('hidden');
 }
-            //Go back to main poster
-function takeMeBack(){
+function takeMeBack() {
   mainPoster.classList.remove('hidden');
   posterForm.classList.add('hidden');
 }
-function backToMainPoster(){
+function backToMainPoster() {
   mainPoster.classList.remove('hidden');
   savedPostersSection.classList.add('hidden');
 }
