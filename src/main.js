@@ -1,5 +1,6 @@
 // query selector variables go here 👇
-
+var titleName = document.querySelector('h1');
+var randomButton = document.querySelector('.show-random');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -104,8 +105,9 @@ var currentPoster;
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
+
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
