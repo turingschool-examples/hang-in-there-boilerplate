@@ -1,4 +1,17 @@
 // query selector variables go here 👇
+var imageEl = document.querySelector(".poster-img");
+var titleEl = document.querySelector(".poster-title");
+var quoteEl = document.querySelector(".poster-quote");
+
+var mainSection = document.querySelector(".main-poster");
+var makePosterSection = document.querySelector(".poster-form");
+var savePosterSection = document.querySelector(".saved-posters");
+
+var randomizePosterButton = document.querySelector(".show-random");
+var makePosterButton = document.querySelector(".show-form");
+var savePosterButton = document.querySelector(".show-saved");
+var takeMeBackButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,10 +115,55 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener("load", sendPoster);
+randomizePosterButton.addEventListener("click", sendPoster);
+
+makePosterButton.addEventListener("click", setUnhiddenMakeOwnPoster);
+savePosterButton.addEventListener("click", setUnhiddenSavedPoster);
+takeMeBackButton.addEventListener("click", takeMeBack);
+backToMainButton.addEventListener("click", backToMain);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+function sendPoster() {
+   var poster = getPoster();
+
+   imageEl.setAttribute("src", poster.imageURL);
+   titleEl.innerText = poster.title;
+   quoteEl.innerText = poster.quote;
+}
+
+function getPoster() {
+  return new Poster(
+    getRandomElement(images), 
+    getRandomElement(titles), 
+    getRandomElement(quotes));
+}
+
+function getRandomElement(array) {
+  return array[getRandomIndex(array)];
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function setUnhiddenMakeOwnPoster() {
+  makePosterSection.classList.remove("hidden");
+  mainSection.classList.add("hidden");
+}
+
+function setUnhiddenSavedPoster() {
+  savePosterSection.classList.remove("hidden");
+  mainSection.classList.add("hidden");
+}
+
+function takeMeBack() {
+  makePosterSection.classList.add("hidden");
+  mainSection.classList.remove("hidden");
+}
+
+function backToMain() {
+  savePosterSection.classList.add("hidden");
+  mainSection.classList.remove("hidden");
+}
