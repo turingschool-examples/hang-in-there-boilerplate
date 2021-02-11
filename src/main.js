@@ -108,4 +108,20 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+// ITERATION 0
+// 1)   When the page loads, we should see a poster with a randomly selected image, title, and quote
+// i)   On page load, generate random image, title, quote
+  // write a function to generate a random index
+  // write a function that will call the random index function for each data array `images`, `titles`, and `quotes`
+  // write a function to push values to a new object, stored in the currentPoster variable
+  // use a for loop? loop through each array to getRandomIndex() and
+  // currentPoster should hold an object?
+  // write a function that will display these values in the browser (`innerText` and `innerHTML` will be useful for this purpose)
+// ii)
+// iii)
 
+// 2)   Every time the user clicks the Show Random Poster button, a new random poster is displayed.
+// i)   Functionality should follow pattern above:
+  // generate random index for each variable array
+  // generate value by calling array[i] and pushing value into empty `currentPoster` object
+  // display values in the browser
