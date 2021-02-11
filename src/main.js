@@ -1,34 +1,23 @@
-// query selector variables go here 👇
-//update
-var updateImg = document.querySelector(".poster-img"); //css
-var updateTitle = document.querySelector(".poster-title"); //css
-var updateQuote = document.querySelector(".poster-quote"); //css
+// QUERY SELECTOR VARIABLES 👇
+//QS update
+var updateImg = document.querySelector(".poster-img");
+var updateTitle = document.querySelector(".poster-title");
+var updateQuote = document.querySelector(".poster-quote");
 
-//making poster page
+//QS making poster page
 var mainPoster = document.querySelector(".main-poster");
 var makePoster = document.querySelector(".poster-form");
 var savePoster = document.querySelector(".saved-posters");
 
-
-
-
-//buttons
-var buttonRandom = document.querySelector(".show-random"); //html
+//QS buttons
+var buttonRandom = document.querySelector(".show-random");
 var makePosterButton = document.querySelector(".show-form");
-
 var savePosterButton = document.querySelector(".show-saved");
-
 var nevermindBackButton = document.querySelector(".show-main");
-
 var mainBackButton = document.querySelector(".back-to-main");
-=======
-var updateImg = document.querySelector(".poster-img"); //css
-var updateTitle = document.querySelector(".poster-title"); //css
-var updateQuote = document.querySelector(".poster-quote"); //css
 
 
-var buttonRandom = document.querySelector(".show-random"); //html
-// we've provided you with some data to work with 👇
+// PROVIDED DATA 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -129,10 +118,9 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
+// EVENT LISTNERS 👇
 window.addEventListener('load', randomPoster); //when window opens load randomPoster function
 buttonRandom.addEventListener('click', randomPoster); //button that is random does randomPoster function
-
 
 makePosterButton.addEventListener('click', unhideMainPoster);
 nevermindBackButton.addEventListener('click', nevermindBack);
@@ -140,8 +128,7 @@ savePosterButton.addEventListener('click', unhideSavePoster);
 mainBackButton.addEventListener('click', mainBack);
 
 
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+// FUNCTIONS AND EVENT HANDLERS 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
@@ -172,16 +159,4 @@ function nevermindBack() {
 function mainBack() {
   savePoster.classList.add("hidden");
   mainPoster.classList.remove("hidden");
-}
-=======
-
-function randomPoster() {
-  var randomTitle = titles[getRandomIndex(titles)];
-  var randomQuote = quotes[getRandomIndex(quotes)];
-  var randomImage = images[getRandomIndex(images)];
-  updateTitle.innerText = randomTitle;
-  updateQuote.innerText = randomQuote;
-  updateImg.src = randomImage;
-  // currentPoster = new Poster(randomImage, randomTitle, randomQuote);
 };
-
