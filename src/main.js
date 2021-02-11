@@ -8,10 +8,16 @@ var makePosterSection = document.querySelector(".poster-form");
 var savePosterSection = document.querySelector(".saved-posters");
 
 var randomizePosterButton = document.querySelector(".show-random");
-var makePosterButton = document.querySelector(".show-form");
+var showFormButton = document.querySelector(".show-form");
 var savePosterButton = document.querySelector(".show-saved");
 var takeMeBackButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+var makePosterButton = document.querySelector(".make-poster")
+
+
+var posterImageUrl = document.querySelector("#poster-image-url");
+var posterTitle = document.querySelector("#poster-title");
+var posterQuote = document.querySelector("#poster-quote");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -118,10 +124,11 @@ var currentPoster;
 window.addEventListener("load", sendPoster);
 randomizePosterButton.addEventListener("click", sendPoster);
 
-makePosterButton.addEventListener("click", setUnhiddenMakeOwnPoster);
+showFormButton.addEventListener("click", setUnhiddenMakeOwnPoster);
 savePosterButton.addEventListener("click", setUnhiddenSavedPoster);
 takeMeBackButton.addEventListener("click", takeMeBack);
 backToMainButton.addEventListener("click", backToMain);
+makePosterButton.addEventListener("click", makePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -131,6 +138,18 @@ function sendPoster() {
    imageEl.setAttribute("src", poster.imageURL);
    titleEl.innerText = poster.title;
    quoteEl.innerText = poster.quote;
+}
+function makePoster(){
+    var newPoster = new Poster(
+    posterImageUrl.value, 
+    posterTitle.value, 
+    posterQuote.value,)
+
+    savedPosters.push(newPoster)
+    imageEl.src = savedPosters[0].imageURL;
+    titleEl.innerText = savedPosters[0].title;
+    quoteEl.innerText = savedPosters[0].quote;
+    takeMeBack()
 }
 
 function getPoster() {
@@ -151,7 +170,9 @@ function getRandomIndex(array) {
 function setUnhiddenMakeOwnPoster() {
   makePosterSection.classList.remove("hidden");
   mainSection.classList.add("hidden");
+  
 }
+
 
 function setUnhiddenSavedPoster() {
   savePosterSection.classList.remove("hidden");
