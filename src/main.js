@@ -106,8 +106,10 @@ var posterQuote = document.querySelector('.poster-quote');
 var mainPoster = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 var savedPoster = document.querySelector('.saved-posters');
+//for the make your own poster
 
-//Button elements
+
+//all the buttons
 var savePosterButton = document.querySelector('.save-poster');
 var showSavedPosterButton = document.querySelector('.show-saved');
 var randomizeButton = document.querySelector('.show-random');
@@ -117,7 +119,7 @@ var nevermindShowMain = document.querySelector('.show-main');
 var backToMain = document.querySelector('.back-to-main');
 
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {imgUrl: posterImage.src, title:null, quote:null};
 
 // event listeners go here 👇
 window.addEventListener('load', randomizePoster);
@@ -126,23 +128,40 @@ makeYourOwnButton.addEventListener('click', makeOwnShow);
 showSavedPosterButton.addEventListener('click', showSavedShow);
 nevermindShowMain.addEventListener('click', showMain);
 backToMain.addEventListener('click', showMain);
+showPoster.addEventListener('click', customizePoster);
 // functions and event handlers go here 👇
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function randomizePoster() {
-  posterImage.src = images[getRandomIndex(images)];
-  posterTitle.innerText = titles[getRandomIndex(titles)];
-  posterQuote.innerText = quotes[getRandomIndex(quotes)];
+function makePoster(imageUrl, title, quote) {
+  posterImage.src = imageUrl;
+  posterTitle.innerText = title;
+  posterQuote.innerText = quote;
 };
+
+
+
+function randomizePoster () {
+// event.preventDefault();
+  makePoster(images[getRandomIndex(images)],
+  titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
+};
+var imageCustom = document.getElementById('.poster-image-url');
+var titleCustom = document.getElementById('poster-title');
+var quoteCustom = document.getElementById('poster-quote');
+function customizePoster() {
+  debugger
+
+  makePoster(imageCustom.value, titleCustom.value, quoteCustom.value)
+  // event.preventDefault();
+}
 
 function hide(pageShow, pageHide1, pageHide2) {
   pageHide1.classList.add('hidden');
   pageHide2.classList.add('hidden');
   pageShow.classList.remove('hidden');
-  Event.preventDefault();
 };
 
 function makeOwnShow() {
