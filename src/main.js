@@ -2,8 +2,12 @@
 var title = document.querySelector(".poster-title");
 var phrase = document.querySelector(".poster-quote");
 var image = document.querySelector("img");
-
 var randomButton = document.querySelector(".show-random");
+var tryItButton = document.querySelector(".show-form");
+var mainSection = document.querySelector(".main-poster");
+var formSection = document.querySelector(".poster-form");
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -112,12 +116,13 @@ randomButton.addEventListener('click', function() {
   randomizePhoto();
 })
 
+tryItButton.addEventListener('click', showForm);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
 
 // this function populates the title
 function randomizeTitle() {
@@ -132,6 +137,12 @@ function randomizePhrase() {
 // this function populates the image
 function randomizePhoto() {
   image.src = images[getRandomIndex(images)];
+}
+
+// this function shows the form section
+function showForm(){
+  mainSection.classList.toggle("hidden");
+  formSection.classList.toggle("hidden");
 }
 
 randomizeTitle();
