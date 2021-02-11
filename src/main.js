@@ -1,6 +1,7 @@
 // query selector variables go here 👇
 var titleName = document.querySelector('h1');
 var randomButton = document.querySelector('.show-random');
+var quotation = document.querySelector('h3');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -103,13 +104,17 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomButton.addEventListener('click',randomTitle);
+randomButton.addEventListener('click', randomTitle);
+
+
 
 
 // functions and event handlers go here 👇
 function randomTitle() {
-return titleName.innerText = titles[Math.floor(Math.random() * titles.length)];
+  return titleName.innerText = titles[Math.floor(Math.random() * titles.length)];
 }
+
+
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
