@@ -101,18 +101,31 @@ var quotes = [
 var posterImage = document.querySelector('img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+
+//section elements
+var mainPoster = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
+var savedPosters = document.querySelector('.saved-posters');
+
+//Button elements
+var savePosterButton = document.querySelector('.save-poster');
+var showSavedPosterButton = document.querySelector('.show-saved');
 var randomizeButton = document.querySelector('.show-random');
+var makeYourOwnButton = document.querySelector('.show-form');
+var showPoster = document.querySelector('.make-poster');
+var nevermindShowMain = document.querySelector('.show-main');
+var backToMain = document.querySelector('.back-to-main');
 
 var savedPosters = [];
 var currentPoster;
 
-//Button elements
-
-
-
 // event listeners go here 👇
 window.addEventListener('load', randomizePoster);
 randomizeButton.addEventListener('click', randomizePoster);
+makeYourOwnButton.addEventListener('click', /*function*/);
+showSavedPosterButton.addEventListener('click', /*function*/);
+nevermindShowMain.addEventListener('click', /*function*/);
+backToMain.addEventListener('click', /*function*/);
 // functions and event handlers go here 👇
 
 function getRandomIndex(array) {
@@ -123,3 +136,7 @@ function randomizePoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 };
+
+function hide(page1, page2) {
+  var hidden = Element.classList('.hidden')
+}
