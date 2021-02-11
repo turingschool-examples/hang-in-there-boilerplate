@@ -105,7 +105,7 @@ var posterQuote = document.querySelector('.poster-quote');
 //section elements
 var mainPoster = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
-var savedPosters = document.querySelector('.saved-posters');
+var savedPoster = document.querySelector('.saved-posters');
 
 //Button elements
 var savePosterButton = document.querySelector('.save-poster');
@@ -122,7 +122,7 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', randomizePoster);
 randomizeButton.addEventListener('click', randomizePoster);
-makeYourOwnButton.addEventListener('click', /*function*/);
+makeYourOwnButton.addEventListener('click', makeOwnShow);
 showSavedPosterButton.addEventListener('click', /*function*/);
 nevermindShowMain.addEventListener('click', /*function*/);
 backToMain.addEventListener('click', /*function*/);
@@ -137,6 +137,13 @@ function randomizePoster() {
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 };
 
-function hide(page1, page2) {
-  var hidden = Element.classList('.hidden')
+function hide(pageShow, pageHide1, pageHide2) {
+  pageHide1.classList.add('hidden');
+  pageHide2.classList.add('hidden');
+  pageShow.classList.remove('hidden');
+  Event.preventDefault();
+};
+
+function makeOwnShow() {
+  hide(posterForm, mainPoster, savedPoster)
 }
