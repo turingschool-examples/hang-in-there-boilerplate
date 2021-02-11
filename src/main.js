@@ -143,3 +143,6 @@ getRandomImage();
 function revealForm(){
   posterForm.classList.remove('hidden');
 }
+function hideMainPoster() {
+  
+}
