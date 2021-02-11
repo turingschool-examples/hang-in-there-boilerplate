@@ -104,8 +104,12 @@ var currentPoster;
 
 // event listeners go here 👇
 randomButton.addEventListener('click',randomTitle);
-// functions and event handlers go here 👇
 
+
+// functions and event handlers go here 👇
+function randomTitle() {
+return titleName.innerText = titles[Math.floor(Math.random() * titles.length)];
+}
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
