@@ -1,4 +1,9 @@
 // query selector variables go here 👇
+//Create new query selector variables for image source, title, and tagline, and button in HTML doc
+var image = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
+var tagline = document.querySelector('.poster-quote');
+var randomPosterButton = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -99,13 +104,26 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+//var currentPoster;
 
+//var currentPoster = new Poster(imageURL, title, quote);
 // event listeners go here 👇
+//pageLoad
+//onButtonclick
 
+randomPosterButton.addEventListener('click', makeNewRandomPoster);
+window.addEventListener('load', makeNewRandomPoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+// returns a number value within the arrays length
+function makeNewRandomPoster() {
+  var i = Math.floor(Math.random() * array.length)
+  var currentPoster = new Poster(images[i], title[i], quote[i]);
 
+  image.src = currentposter.imageURL;
+  tagline.innerHTML = currentPoster.quote;
+  title.innerHTML = currentPoster.title;
+}
