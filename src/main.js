@@ -102,12 +102,15 @@ var posterImage = document.querySelector('img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 
-//section elements
+//section elements & pages
 var mainPoster = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 var savedPoster = document.querySelector('.saved-posters');
-//for the make your own poster
 
+//for the make your own poster form
+var imageCustom = document.getElementById('poster-image-url');
+var titleCustom = document.getElementById('poster-title');
+var quoteCustom = document.getElementById('poster-quote');
 
 //all the buttons
 var savePosterButton = document.querySelector('.save-poster');
@@ -119,10 +122,14 @@ var nevermindShowMain = document.querySelector('.show-main');
 var backToMain = document.querySelector('.back-to-main');
 
 var savedPosters = [];
-var currentPoster = {imgUrl: posterImage.src, title:null, quote:null};
+var currentPoster = {
+  imageURL: posterImage.src,
+  title: posterTitle.innerText,
+  quote: posterQuote.innerText,
+};
 
 // event listeners go here 👇
-window.addEventListener('load', randomizePoster);
+// window.addEventListener('load', randomizePoster);
 randomizeButton.addEventListener('click', randomizePoster);
 makeYourOwnButton.addEventListener('click', makeOwnShow);
 showSavedPosterButton.addEventListener('click', showSavedShow);
@@ -135,26 +142,25 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function makePoster(imageUrl, title, quote) {
+function displayPoster(imageUrl, title, quote) {
   posterImage.src = imageUrl;
   posterTitle.innerText = title;
   posterQuote.innerText = quote;
+  currentPoster.imageURL = imageUrl;
+  currentPoster.title = title;
+  currentPoster.quote = quote;
 };
-
-
 
 function randomizePoster () {
-// event.preventDefault();
-  makePoster(images[getRandomIndex(images)],
+  displayPoster(images[getRandomIndex(images)],
   titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
 };
-var imageCustom = document.getElementById('.poster-image-url');
-var titleCustom = document.getElementById('poster-title');
-var quoteCustom = document.getElementById('poster-quote');
-function customizePoster() {
-  debugger
 
-  makePoster(imageCustom.value, titleCustom.value, quoteCustom.value)
+
+function customizePoster() {
+  // debugger
+
+  displayPoster(imageCustom.value, titleCustom.value, quoteCustom.value)
   // event.preventDefault();
 }
 
