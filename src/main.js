@@ -129,7 +129,7 @@ var currentPoster = {
 };
 
 // event listeners go here 👇
-// window.addEventListener('load', randomizePoster);
+window.addEventListener('load', randomizePoster);
 randomizeButton.addEventListener('click', randomizePoster);
 makeYourOwnButton.addEventListener('click', makeOwnShow);
 showSavedPosterButton.addEventListener('click', showSavedShow);
@@ -146,9 +146,7 @@ function displayPoster(imageUrl, title, quote) {
   posterImage.src = imageUrl;
   posterTitle.innerText = title;
   posterQuote.innerText = quote;
-  currentPoster.imageURL = imageUrl;
-  currentPoster.title = title;
-  currentPoster.quote = quote;
+  event.preventDefault();
 };
 
 function randomizePoster () {
@@ -158,10 +156,8 @@ function randomizePoster () {
 
 
 function customizePoster() {
-  // debugger
-
   displayPoster(imageCustom.value, titleCustom.value, quoteCustom.value)
-  // event.preventDefault();
+  showMain();
 }
 
 function hide(pageShow, pageHide1, pageHide2) {
