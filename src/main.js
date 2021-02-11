@@ -103,7 +103,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+randomButton.addEventListener('click',randomTitle);
 // functions and event handlers go here 👇
 
 
