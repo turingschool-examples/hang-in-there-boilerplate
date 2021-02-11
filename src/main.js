@@ -1,5 +1,8 @@
 // query selector variables go here 👇
-
+var currentPoster = document.querySelector('.poster-img'); //targets the image in HTML
+var title = document.querySelector('.poster-title') // targets the poster title class in HTML doc
+var quote = document.querySelector('.poster-quote') // targets the poster quote class in HTML doc
+var showRandomButton = document.querySelector('.show-random')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -101,11 +104,29 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
+currentPoster.src = randomizeImage(); //assigns currentPoster to a random image from array
 
+title.innerText = randomizeTitle();
+
+quote.innerText = randomizeQuote();
+
+// event listeners go here 👇
+showRandomButton.addEventListener('click', randomizeImage)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+function randomizeImage() {
+  return currentPoster.src = images[getRandomIndex(images)];
+} // uses getRandomIndex to pull random image from images
+
+
+function randomizeTitle() {
+  return title.innerText = titles[getRandomIndex(titles)];
 }
 
+function randomizeQuote() {
+  return quote.innerText = quotes[getRandomIndex(quotes)];
+}
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length); // takes array.length and returns a random whole number
+}
