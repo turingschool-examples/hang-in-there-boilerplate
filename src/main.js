@@ -105,8 +105,7 @@ var currentPoster;
 
 // event listeners go here 👇
 randomButton.addEventListener('click', randomTitle);
-
-
+randomButton.addEventListener('click', randomQuotes);
 
 
 // functions and event handlers go here 👇
