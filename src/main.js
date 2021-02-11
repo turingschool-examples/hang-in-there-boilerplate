@@ -122,30 +122,29 @@ var currentPoster;
 
 // event listeners go here 👇
 
-            //Show Random Poster
-randomPosterButton.addEventListener('click',function(){
+savedPostersButton.addEventListener('click', function() {
+  showSavedPosters();
+  hideMainPoster();
+});
+
+randomPosterButton.addEventListener('click', function() {
   getRandomTitle();
   getRandomQuote();
   getRandomImage();
 });
-            //Make Random Poster
+
 makeYourPosterButton.addEventListener('click',function(){
   revealForm();
   hideMainPoster();
 });
 
-            //View Saved Posters
-// When a user clicks the “View Saved Posters” button, see the saved posters area, and main poster hidden
-savedPostersButton.addEventListener('click', function() {
-  showSavedPosters();
-  hideMainPoster();
-});
-           //Go back to main poster section
 nevermindButton.addEventListener('click', takeMeBack);
+
 backToMainButton.addEventListener('click', backToMainPoster);
+
+
             //functions and event handlers go here 👇
 
-            //Show Random Poster Functions
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -163,25 +162,22 @@ getRandomTitle();
 getRandomQuote();
 getRandomImage();
 
-            //Make Random Poster Functions
-function revealForm(){
-  posterForm.classList.remove('hidden');
-}
 
-            //View Saved Posters Functions
+            //List of functions 👇
 function showSavedPosters(){
   savedPostersSection.classList.remove('hidden');
 }
-
+function revealForm(){
+  posterForm.classList.remove('hidden');
+}
 function hideMainPoster() {
   mainPoster.classList.add('hidden');
 }
-            //Go back to main poster
-function takeMeBack(){
+function takeMeBack() {
   mainPoster.classList.remove('hidden');
   posterForm.classList.add('hidden');
 }
-function backToMainPoster(){
+function backToMainPoster() {
   mainPoster.classList.remove('hidden');
   savedPostersSection.classList.add('hidden');
 }
