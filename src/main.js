@@ -107,7 +107,7 @@ var currentPoster;
 // event listeners go here 👇
 randomButton.addEventListener('click', randomTitle);
 randomButton.addEventListener('click', randomQuotes);
-
+randomButton.addEventListener('click', randomPoster);
 
 // functions and event handlers go here 👇
 function randomTitle() {
@@ -117,6 +117,7 @@ function randomTitle() {
 function randomQuotes() {
   return quotation.innerText = quotes[Math.floor(Math.random() * quotes.length)];
 }
+
 
 
 // (we've provided one for you to get you started)!
