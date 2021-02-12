@@ -2,6 +2,9 @@
 var title = document.querySelector(".poster-title");
 var phrase = document.querySelector(".poster-quote");
 var image = document.querySelector("img");
+var imageURL = document.querySelector("#poster-image-url");
+var newTitle = document.querySelector("#poster-title");
+var newQuote = document.querySelector("#poster-quote");
 
 var randomButton = document.querySelector(".show-random");
 var tryItButton = document.querySelector(".show-form");
@@ -13,6 +16,7 @@ var savedSection = document.querySelector(".saved-posters");
 
 var neverMindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+var showMyPosterButton = document.querySelector(".make-poster");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -116,16 +120,17 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomButton.addEventListener('click', function() {
+randomButton.addEventListener("click", function() {
   randomizeTitle();
   randomizePhrase();
   randomizePhoto();
 })
 
-tryItButton.addEventListener('click', showForm);
-savedButton.addEventListener('click', showSaved);
-neverMindButton.addEventListener('click', showMain);
-backToMainButton.addEventListener('click', showMain);
+// nav buttons below
+tryItButton.addEventListener("click", showForm);
+savedButton.addEventListener("click", showSaved);
+neverMindButton.addEventListener("click", showMain);
+backToMainButton.addEventListener("click", showMain);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -154,16 +159,31 @@ function showForm() {
   formSection.classList.toggle("hidden");
 }
 
+// this function shows the saved poster section
 function showSaved() {
   mainSection.classList.toggle("hidden");
   savedSection.classList.toggle("hidden");
 }
 
+// this function takes you back to the main page
 function showMain() {
   mainSection.classList.toggle("hidden");
   formSection.classList.add("hidden");
   savedSection.classList.add("hidden");
 }
+
+// this function saves your form input and displays your creation
+showMyPosterButton.addEventListener("click", function(e) {
+  e.preventDefault();
+  currentPoster = new Poster(imageURL.value, newTitle.value, newQuote.value);
+  images.unshift(currentPoster.imageURL);
+  titles.unshift(currentPoster.title);
+  quotes.unshift(currentPoster.quote);
+  showMain();
+  image.src = currentPoster.imageURL;
+  title.innerText = currentPoster.title;
+  phrase.innerText =  currentPoster.quote;
+});
 
 randomizeTitle();
 randomizePhrase();
