@@ -107,8 +107,6 @@ var currentPoster;
 var currImage = getRandomIndex(images);
 var currTitle = getRandomIndex(titles);
 var currQuote = getRandomIndex(quotes);
-var image = document.querySelector('.poster-img');
-var title = document.querySelector('.poster-title');
 
 // event listeners go here 👇
 
@@ -122,12 +120,20 @@ function buildCurrentPoster() {
   image.src = images[currImage];
   title.innerText = titles[currTitle];
   quote.innerText = quotes[currQuote];
+
+  // currentPoster = {
+  // would we want to create values for the currentPoster variable or instantiate a new object? Maybe this should be done in a different function and called on the button click
+  // }
+  console.log('currentPoster:', currentPoster);
+  console.log("CLICK");
 };
+// write a conditional function to pair with buildCurrentPoster that will compare what is currently displayed vs what is stored in the currentPoster object - if the next random value matches any of the current values, find a different value { if a === b we need a new value}
+
 
 // target button element and assign to variable
 
 var button = document.querySelector('.show-random');
-button.addEventListener('click', buildCurrentPoster);
+button.addEventListener('click', buildCurrentPoster); //instead of having this click call the buildCurrentPoster function, it could call a helper function that would buildCurrentPoster, AND instantiate an object AND do whatever else we need it to do in the future
 
 
 // assign eventListener to button variables
@@ -136,7 +142,7 @@ button.addEventListener('click', buildCurrentPoster);
 
 // call buildCurrentPoster function within eventListener assignment
 
-// buildCurrentPoster()
+// buildCurrentPoster();
 
 
 
