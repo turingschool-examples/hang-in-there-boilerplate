@@ -137,11 +137,17 @@ function getRandomIndex(array) {
 }
 
 function randomizePoster(){
-  title.innerText = titles[getRandomIndex(titles)];
-  phrase.innerText = quotes[getRandomIndex(quotes)];
-  image.src = images[getRandomIndex(images)];
+  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  displayCurrentPoster();
 }
 
+function displayCurrentPoster() {
+  image.src = currentPoster.imageURL;
+  title.innerText = currentPoster.title;
+  phrase.innerText =  currentPoster.quote;
+}
+
+// Previous functions used for randomizePoster
 // // this function populates the title
 // function randomizeTitle() {
 //    title.innerText = titles[getRandomIndex(titles)];
@@ -191,8 +197,9 @@ function showMain() {
 -
 */
 function savePoster() {
-
+  savedPosters.push(currentPoster);
 }
+
 
 // this function saves your form input and displays your creation
 showMyPosterButton.addEventListener("click", function(e) {
@@ -202,8 +209,8 @@ showMyPosterButton.addEventListener("click", function(e) {
   titles.unshift(currentPoster.title);
   quotes.unshift(currentPoster.quote);
   showMain();
-  image.src = currentPoster.imageURL;
-  title.innerText = currentPoster.title;
-  phrase.innerText =  currentPoster.quote;
+  displayCurrentPoster();
 });
+
 randomizePoster();
+displayCurrentPoster();
