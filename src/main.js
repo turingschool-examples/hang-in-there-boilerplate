@@ -125,7 +125,7 @@ randomPosterButton.addEventListener('click', makeRandomPoster)
 posterFormButton.addEventListener('click', displayPosterForm);
 // makePosterButton.addEventListener('click', makeNewPoster);
 // neverMindButton.addEventListener('click', takeBackToMain);
-// backToMainButton.addEventListener('click', takeBackToMain);
+backToMainButton.addEventListener('click', takeBackToMain);
 showSavedButton.addEventListener('click', displaySavedPosters);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -146,6 +146,11 @@ function displayPosterForm() {
 function displaySavedPosters() {
   mainPosterSection.classList.add('hidden');
   savedPosterSection.classList.remove('hidden');
+}
+
+function takeBackToMain() {
+  savedPosterSection.classList.add('hidden');
+  mainPosterSection.classList.remove('hidden');
 }
 
 makeRandomPoster();
