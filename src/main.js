@@ -12,17 +12,17 @@ var makeYourPosterButton = document.querySelector('.show-form');
 var showMyPosterButton = document.querySelector('.make-poster');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+var saveThisPosterButton = document.querySelector('.save-poster')
 
             //Section query selector variables👇
 var mainPoster = document.querySelector('.main-poster');
 var savedPostersSection = document.querySelector('.saved-posters');
 var posterForm = document.querySelector('.poster-form');
 
-            //Form input section variables👇
+            //Input variables
 var imgUrlInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
-
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -147,7 +147,11 @@ nevermindButton.addEventListener('click', takeMeBack);
 
 backToMainButton.addEventListener('click', backToMainPoster);
 
-showMyPosterButton.addEventListener('click', showMyPoster);
+showMyPosterButton.addEventListener('click', newPoster);
+
+saveThisPosterButton.addEventListener('click', saveThisPoster);
+
+
             //functions and event handlers go here 👇
 
 function getRandomIndex(array) {
@@ -166,7 +170,6 @@ function getRandomImage(){
 getRandomTitle();
 getRandomQuote();
 getRandomImage();
-
 
             //List of functions 👇
 function showSavedPosters(){
@@ -187,16 +190,19 @@ function backToMainPoster() {
   savedPostersSection.classList.add('hidden');
 }
 
-//Iteration 2
-//Show my Poster
-function showMyPoster(event){
+
+function newPoster(event) {
   event.preventDefault();
   images.push(imgUrlInput.value);
   titles.push(titleInput.value);
   quotes.push(quoteInput.value);
   randomImage.src = imgUrlInput.value;
-  randomTitle.innerHTML = titleInput.value;
+  randomTitle.innerText = titleInput.value;
   randomQuote.innerHTML = quoteInput.value;
-  currentPoster = new Poster (imgUrlInput.value,titleInput.value,quoteInput.value);
+  currentPoster = new Poster(imgUrlInput.value, titleInput.value, quoteInput.value);
   takeMeBack();
+}
+
+function saveThisPoster() {
+  savedPosters.push(currentPoster);
 }
