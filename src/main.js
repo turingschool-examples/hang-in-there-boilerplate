@@ -116,7 +116,10 @@ var currentPoster;
 
 // event listeners go here 👇
 randomPosterButton.addEventListener('click', makeRandomPoster)
-posterForm.addEventListener('click', showPosterForm);
+posterForm.addEventListener('click', displayPosterForm);
+makePosterButton.addEventListener('click', makeNewPoster);
+backToMainButton.addEventListener('click', takeBackToMain);
+neverMindButton.addEventListener('click', takeBackToMain);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
