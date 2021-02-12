@@ -7,7 +7,9 @@ var createPoster = document.querySelector(".show-form");
 var viewSaved = document.querySelector(".show-saved");
 var takeMeBack = document.querySelector(".show-main");
 var backToMain = document.querySelector(".back-to-main");
-
+var mainPage = document.querySelector(".main-poster");
+var posterForm = document.querySelector(".poster-form");
+var savedPosterPage = document.querySelector(".saved-posters");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
