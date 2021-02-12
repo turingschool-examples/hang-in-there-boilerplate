@@ -207,6 +207,7 @@ function newPoster(event) {
 //It will not save twice if you just hit the save button two times, but if you put the exact same information in the form, it will get a new id and save again
 function saveThisPoster() {
   if (!savedPosters.includes(currentPoster)) {
+    currentPoster = new Poster(randomImage.src, randomTitle.innerText, randomQuote.innerHTML);
     savedPosters.push(currentPoster);
   }
 }
