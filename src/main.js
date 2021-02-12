@@ -3,6 +3,11 @@ var mainImg = document.querySelector(".poster-img");
 var mainTitle = document.querySelector(".poster-title");
 var mainQuote = document.querySelector(".poster-quote");
 var randomButton = document.querySelector(".show-random");
+var createPoster = document.querySelector(".show-form");
+var viewSaved = document.querySelector(".show-saved");
+var takeMeBack = document.querySelector(".show-main");
+var backToMain = document.querySelector(".back-to-main");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
