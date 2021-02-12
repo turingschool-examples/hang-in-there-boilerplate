@@ -3,6 +3,16 @@ var randomPosterButton = document.querySelector('.show-random');
 var mainPosterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+
+var posterForm = document.querySelector('.show-form');
+var makePosterButton = document.querySelector('.make-poster');
+var neverMindButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('back-to-main');
+
+
+
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -106,6 +116,7 @@ var currentPoster;
 
 // event listeners go here 👇
 randomPosterButton.addEventListener('click', makeRandomPoster)
+posterForm.addEventListener('click', showPosterForm);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
