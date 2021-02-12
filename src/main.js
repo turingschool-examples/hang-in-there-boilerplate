@@ -8,6 +8,8 @@ var posterForm = document.querySelector('.poster-form')
 var mainPoster = document.querySelector('.main-poster')
 var savePosters = document.querySelector('.saved-posters')
 var savedButton = document.querySelector('.show-saved')
+var backToMain = document.querySelector('.back-to-main')
+var neverMindButton = document.querySelector('.show-main')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -122,6 +124,10 @@ makeYourButton.addEventListener('click', showForm);
 
 savedButton.addEventListener('click', showSavePoster)
 
+backToMain.addEventListener('click', takeBackToMain)
+
+neverMindButton.addEventListener('click',neverMindBack)
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function randomizeImage() {
@@ -148,4 +154,15 @@ function showForm() {
 function showSavePoster() {
   mainPoster.classList.toggle("hidden");
   savePosters.classList.toggle("hidden");
+}
+
+
+function takeBackToMain() {
+savePosters.classList.toggle("hidden");
+mainPoster.classList.toggle("hidden")
+}
+
+function neverMindBack() {
+posterForm.classList.toggle("hidden");
+mainPoster.classList.toggle("hidden")
 }
