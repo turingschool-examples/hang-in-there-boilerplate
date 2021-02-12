@@ -139,16 +139,19 @@ function sendPoster() {
    titleEl.innerText = poster.title;
    quoteEl.innerText = poster.quote;
 }
+
 function makePoster(){
     var newPoster = new Poster(
     posterImageUrl.value, 
     posterTitle.value, 
     posterQuote.value,)
 
-    savedPosters.push(newPoster)
-    imageEl.src = savedPosters[0].imageURL;
-    titleEl.innerText = savedPosters[0].title;
-    quoteEl.innerText = savedPosters[0].quote;
+    images.push(newPoster.imageURL)
+    imageEl.src = newPoster.imageURL;
+    titles.push(newPoster.title)
+    titleEl.innerText = newPoster.title;
+    quotes.push(newPoster.quote)
+    quoteEl.innerText = newPoster.quote;
     takeMeBack()
 }
 
