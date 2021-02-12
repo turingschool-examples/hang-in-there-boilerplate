@@ -126,7 +126,8 @@ function buildCurrentPoster() {
 
 // target button element and assign to variable
 
-var button = document.querySelector(".show-random");
+var button = document.querySelector('.show-random');
+button.addEventListener('click', buildCurrentPoster);
 
 
 // assign eventListener to button variables
@@ -135,8 +136,7 @@ var button = document.querySelector(".show-random");
 
 // call buildCurrentPoster function within eventListener assignment
 
-
-buildCurrentPoster()
+// buildCurrentPoster()
 
 
 
