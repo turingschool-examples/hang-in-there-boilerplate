@@ -1,4 +1,7 @@
 // query selector variables go here 👇
+var image = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -98,8 +101,12 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
+var currImage = getRandomIndex(images);
+var currTitle = getRandomIndex(titles);
+var currQuote = getRandomIndex(quotes);
 
 // event listeners go here 👇
 
@@ -110,15 +117,9 @@ function getRandomIndex(array) {
 }
 
 function buildCurrentPoster() {
-  var currImage = getRandomIndex(images);
-  var currTitle = getRandomIndex(titles);
-  var currQuote = getRandomIndex(quotes);
-  var image = document.querySelector('.poster-img');
-
   image.src = images[currImage];
-  // console.log('random indexes:', currImage, currTitle, currQuote);
-  // console.log('currentImage:', images[currImage]);
-
+  title.innerText = titles[currTitle];
+  quote.innerText = quotes[currQuote];
 };
 
 buildCurrentPoster()
