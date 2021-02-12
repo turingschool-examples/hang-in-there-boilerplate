@@ -105,8 +105,11 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+window.addEventListener("load", newPoster());
+randomButton.addEventListener("click", newPoster);
 // functions and event handlers go here 👇
+
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
