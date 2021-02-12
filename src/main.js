@@ -4,12 +4,12 @@ var mainPosterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 
-var posterForm = document.querySelector('.show-form');
+var posterFormButton = document.querySelector('.show-form');
 var makePosterButton = document.querySelector('.make-poster');
 var neverMindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('back-to-main');
-
-
+var createPosterSection = document.querySelector('.poster-form');
+var mainPosterSection = document.querySelector('.main-poster');
 
 
 
@@ -116,7 +116,7 @@ var currentPoster;
 
 // event listeners go here 👇
 randomPosterButton.addEventListener('click', makeRandomPoster)
-posterForm.addEventListener('click', displayPosterForm);
+posterFormButton.addEventListener('click', displayPosterForm);
 makePosterButton.addEventListener('click', makeNewPoster);
 backToMainButton.addEventListener('click', takeBackToMain);
 neverMindButton.addEventListener('click', takeBackToMain);
@@ -130,4 +130,10 @@ function makeRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)]
   posterQuote.innerText = quotes[getRandomIndex(quotes)]
 }
+
 makeRandomPoster()
+
+function displayPosterForm() {
+  createPosterSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden');
+}
