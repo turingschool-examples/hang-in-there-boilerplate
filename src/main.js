@@ -108,7 +108,13 @@ var currentPoster;
 window.addEventListener("load", newPoster());
 randomButton.addEventListener("click", newPoster);
 // functions and event handlers go here 👇
-
+function newPoster() {
+  var poster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  mainImg.src = poster.imageURL;
+  mainImg.alt = "Random image not found";
+  mainTitle.innerText = poster.title;
+  mainQuote.innerText = poster.quote;
+}
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
