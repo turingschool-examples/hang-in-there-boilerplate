@@ -116,10 +116,26 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// auto-invoke buildCurrentPoster when loading page
+
+window.onload = buildCurrentPoster;
+
+    // alternate code - also works!!
+// document.addEventListener("DOMContentLoaded", function() {
+//   buildCurrentPoster();
+// });
+
+
+
+
 function buildCurrentPoster() {
   image.src = images[currImage];
   title.innerText = titles[currTitle];
   quote.innerText = quotes[currQuote];
+
+
+
+
 
   // currentPoster = {
   // would we want to create values for the currentPoster variable or instantiate a new object? Maybe this should be done in a different function and called on the button click
@@ -128,6 +144,7 @@ function buildCurrentPoster() {
   console.log("CLICK");
 };
 // write a conditional function to pair with buildCurrentPoster that will compare what is currently displayed vs what is stored in the currentPoster object - if the next random value matches any of the current values, find a different value { if a === b we need a new value}
+
 
 
 // target button element and assign to variable
