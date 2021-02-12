@@ -1,4 +1,36 @@
 // query selector variables go here 👇
+var randomImage = document.querySelector("img");
+var randomTitle = document.querySelector("h1");
+var randomQuote = document.querySelector("h3");
+var buttonStart = document.querySelector(".show-random");
+var showFormButton = document.querySelector(".show-form");
+var mainPosterView = document.querySelector(".main-poster");
+var posterFormView = document.querySelector(".poster-form");
+var showSavedButton = document.querySelector(".show-saved");
+var savedPostersView = document.querySelector(".saved-posters");
+var showMainButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
+var imageUrlInput = document.querySelector("#poster-image-url");
+var motivationalTitleInput = document.querySelector("#poster-title");
+var motivationalQuoteInput = document.querySelector("#poster-quote");
+var showPosterButton = document.querySelector(".make-poster");
+var saveMyPosterButton = document.querySelector(".save-poster");
+// var newUserPoster = new Poster (imageURL, title, quote);
+
+//Variabels we created for poster form function(?)
+function makeNewUserPoster() {
+var inputImage = imageUrlInput.value;
+var inputTitle = motivationalTitleInput.value;
+var inputQuote = motivationalQuoteInput.value;
+
+images.push = inputImage
+titles.push = inputTitle
+quote.push = inputQuote
+//innerHTML?
+
+}
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,10 +134,64 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+buttonStart.addEventListener("click", newPoster);
+showFormButton.addEventListener("click", showForm);
+showSavedButton.addEventListener("click", showSaved);
+showMainButton.addEventListener("click", goBackToMain);
+backToMainButton.addEventListener("click", goBackToMain);
+showPosterButton.addEventListener("click", testForUsage);
+// saveMyPoster.addEventListener("click", savesCurrentPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  return array[Math.floor(Math.random() * array.length)]
+};
+
+randomImage.src = getRandomIndex(images);
+randomTitle.innerHTML = getRandomIndex(titles);
+randomQuote.innerHTML = getRandomIndex(quotes);
+
+function newPoster() {
+  randomQuote.innerHTML = getRandomIndex(quotes);
+  randomTitle.innerHTML = getRandomIndex(titles);
+  randomImage.src = getRandomIndex(images);
+};
+
+function showForm() {
+  posterFormView.classList.remove("hidden");
+  mainPosterView.classList.add("hidden");
+};
+
+function showSaved() {
+  savedPostersView.classList.remove("hidden");
+  mainPosterView.classList.add("hidden");
+};
+
+function goBackToMain() {
+  mainPosterView.classList.remove("hidden");
+};
+
+// function userDataInput() {
+//   randomImage.innerHTML = imageUrlInput.value;
+//   randomTitle.innerHTML = motivationalTitleInput.value;
+//   randomQuote.innerHTML = motivationalQuoteInput.value;
+// };
+
+// function showMyNewPoster() {
+//   //CALL TO POSTER CLASS
+// }
+//
+// function savesCurrentPoster() {
+//
+// }
+function testForUsage() {
+  console.log(motivationalTitleInput.innerHTML = randomTitle.value);
 }
 
+
+
+// function addCompliment() {
+//   complimentLocation.innerHTML = `${getRandomCompliment(compliments)} ${textInput.value} .`
+// }
