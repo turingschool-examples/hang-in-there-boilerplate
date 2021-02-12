@@ -3,6 +3,10 @@ var currentPoster = document.querySelector('.poster-img'); //targets the image i
 var title = document.querySelector('.poster-title') // targets the poster title class in HTML doc
 var quote = document.querySelector('.poster-quote') // targets the poster quote class in HTML doc
 var showRandomButton = document.querySelector('.show-random')
+var makeYourButton = document.querySelector('.show-form')
+var posterForm = document.querySelector('.poster-form')
+var mainPoster = document.querySelector('.main-poster')
+var savedPosters = document.querySelector('.saved-posters')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -112,12 +116,15 @@ quote.innerText = randomizeQuote();
 
 // event listeners go here 👇
 showRandomButton.addEventListener('click', randomizeImage)
+
+makeYourButton.addEventListener('click', showForm)
+// savedPosters.addEventListener()
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function randomizeImage() {
   return currentPoster.src = images[getRandomIndex(images)];
 } // uses getRandomIndex to pull random image from images
-
 
 function randomizeTitle() {
   return title.innerText = titles[getRandomIndex(titles)];
@@ -130,3 +137,17 @@ function randomizeQuote() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length); // takes array.length and returns a random whole number
 }
+
+function showForm () {
+  mainPoster.classList.toggle("hidden");
+  posterForm.classList.toggle("hidden");
+}
+
+
+
+
+
+
+
+// console.log(posterForm.classList[1])
+// return posterForm.classList[1].remove('hidden');
