@@ -107,6 +107,8 @@ var currentPoster;
 var currImage = getRandomIndex(images);
 var currTitle = getRandomIndex(titles);
 var currQuote = getRandomIndex(quotes);
+var image = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
 
 // event listeners go here 👇
 
