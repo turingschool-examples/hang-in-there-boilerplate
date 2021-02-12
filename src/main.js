@@ -142,3 +142,9 @@ function switchToSaved() {
   savedPosterPage.classList.remove("hidden");
   mainPage.classList.add("hidden");
 }
+
+function switchToMain() {
+  posterForm.classList.add("hidden");
+  savedPosterPage.classList.add("hidden");
+  mainPage.classList.remove("hidden");
+}
