@@ -5,6 +5,8 @@ var posterImage = document.querySelector('.poster-img');
 var showFormButton = document.querySelector('.show-form');
 var formSection = document.querySelector('.poster-form');
 var mainSection = document.querySelector('.main-poster');
+var showSavedPosterButton = document.querySelector('.show-saved')
+var savedPostersSection = document.querySelector('.saved-posters');
 
 
 // we've provided you with some data to work with 👇
@@ -119,6 +121,8 @@ window.addEventListener('load', generateRandomQuote);
 window.addEventListener('load', generateRandomTitle);
 window.addEventListener('load', generateRandomPoster);
 showFormButton.addEventListener('click', showPosterForm);
+showSavedPosterButton.addEventListener('click', showSavedPosters);
+
 
 
 //look into onload
@@ -145,7 +149,12 @@ function generateRandomPoster() {
   posterImage.src = `${images[randomIndexImage]}`;
 }
 
-function showPosterForm(){
-  mainSection.classList.toggle('hidden')
-  formSection.classList.toggle('hidden')
+function showPosterForm() {
+  mainSection.classList.toggle('hidden');
+  formSection.classList.toggle('hidden');
+}
+
+function showSavedPosters() {
+  mainSection.classList.toggle('hidden');
+  savedPostersSection.classList.toggle('hidden');
 }
