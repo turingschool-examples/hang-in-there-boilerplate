@@ -17,6 +17,7 @@ var savedSection = document.querySelector(".saved-posters");
 var neverMindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 var showMyPosterButton = document.querySelector(".make-poster");
+var savePosterButton = document.querySelector(".save-poster");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -120,17 +121,14 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomButton.addEventListener("click", function() {
-  randomizeTitle();
-  randomizePhrase();
-  randomizePhoto();
-})
+randomButton.addEventListener("click", randomizePoster);
 
 // nav buttons below
 tryItButton.addEventListener("click", showForm);
 savedButton.addEventListener("click", showSaved);
 neverMindButton.addEventListener("click", showMain);
 backToMainButton.addEventListener("click", showMain);
+savePosterButton.addEventListener("click", savePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -138,20 +136,26 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// this function populates the title
-function randomizeTitle() {
-   title.innerText = titles[getRandomIndex(titles)];
- }
-
- // this function populates the quote
-function randomizePhrase() {
+function randomizePoster(){
+  title.innerText = titles[getRandomIndex(titles)];
   phrase.innerText = quotes[getRandomIndex(quotes)];
-}
-
-// this function populates the image
-function randomizePhoto() {
   image.src = images[getRandomIndex(images)];
 }
+
+// // this function populates the title
+// function randomizeTitle() {
+//    title.innerText = titles[getRandomIndex(titles)];
+//  }
+//
+//  // this function populates the quote
+// function randomizePhrase() {
+//   phrase.innerText = quotes[getRandomIndex(quotes)];
+// }
+//
+// // this function populates the image
+// function randomizePhoto() {
+//   image.src = images[getRandomIndex(images)];
+// }
 
 // this function shows the form section
 function showForm() {
@@ -172,6 +176,24 @@ function showMain() {
   savedSection.classList.add("hidden");
 }
 
+
+/*
+-store values of poster object in empty savedPosters array
+  -use currentPoster var? not using in sense of default atm
+  -access first value of each array?
+  -can use currentPoster to create instance of poster class
+  -can store currentPoster every time
+  -look at randomizing functions, update functions to create a new instance
+  -could possibly combine into one function + make dynamic
+    -randomizePoster function, get rid of other 3
+-ensure savePoster function doesn't save some object >once
+  -if/else or for loop  +  use .includes with array.length
+-
+*/
+function savePoster() {
+
+}
+
 // this function saves your form input and displays your creation
 showMyPosterButton.addEventListener("click", function(e) {
   e.preventDefault();
@@ -184,7 +206,4 @@ showMyPosterButton.addEventListener("click", function(e) {
   title.innerText = currentPoster.title;
   phrase.innerText =  currentPoster.quote;
 });
-
-randomizeTitle();
-randomizePhrase();
-randomizePhoto();
+randomizePoster();
