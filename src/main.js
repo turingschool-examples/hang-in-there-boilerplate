@@ -1,4 +1,7 @@
 // query selector variables go here 👇
+var image = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -98,6 +101,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 var currImage = getRandomIndex(images);
@@ -117,8 +121,7 @@ function getRandomIndex(array) {
 function buildCurrentPoster() {
   image.src = images[currImage];
   title.innerText = titles[currTitle];
-  // console.log('random indexes:', currImage, currTitle, currQuote);
-  // console.log('current title:', images[currTitle]);
+  quote.innerText = quotes[currQuote];
 };
 
 buildCurrentPoster()
