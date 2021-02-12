@@ -100,6 +100,11 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var currImage = getRandomIndex(images);
+var currTitle = getRandomIndex(titles);
+var currQuote = getRandomIndex(quotes);
+var image = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
 
 // event listeners go here 👇
 
@@ -110,15 +115,10 @@ function getRandomIndex(array) {
 }
 
 function buildCurrentPoster() {
-  var currImage = getRandomIndex(images);
-  var currTitle = getRandomIndex(titles);
-  var currQuote = getRandomIndex(quotes);
-  var image = document.querySelector('.poster-img');
-
   image.src = images[currImage];
+  title.innerText = titles[currTitle];
   // console.log('random indexes:', currImage, currTitle, currQuote);
-  // console.log('currentImage:', images[currImage]);
-
+  // console.log('current title:', images[currTitle]);
 };
 
 buildCurrentPoster()
