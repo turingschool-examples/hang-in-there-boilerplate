@@ -132,3 +132,8 @@ function newPoster() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+function switchToForm() {
+  posterForm.classList.remove("hidden");
+  mainPage.classList.add("hidden");
+}
