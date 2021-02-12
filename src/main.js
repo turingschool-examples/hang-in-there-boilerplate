@@ -7,9 +7,15 @@ var posterQuote = document.querySelector('.poster-quote');
 var posterFormButton = document.querySelector('.show-form');
 var makePosterButton = document.querySelector('.make-poster');
 var neverMindButton = document.querySelector('.show-main');
-var backToMainButton = document.querySelector('back-to-main');
+
+var showSavedButton = document.querySelector('.show-saved');
+var backToMainButton = document.querySelector('.back-to-main');
+
 var createPosterSection = document.querySelector('.poster-form');
 var mainPosterSection = document.querySelector('.main-poster');
+var savedPosterSection = document.querySelector('.saved-posters');
+
+
 
 
 
@@ -117,23 +123,29 @@ var currentPoster;
 // event listeners go here 👇
 randomPosterButton.addEventListener('click', makeRandomPoster)
 posterFormButton.addEventListener('click', displayPosterForm);
-makePosterButton.addEventListener('click', makeNewPoster);
-backToMainButton.addEventListener('click', takeBackToMain);
-neverMindButton.addEventListener('click', takeBackToMain);
+// makePosterButton.addEventListener('click', makeNewPoster);
+// neverMindButton.addEventListener('click', takeBackToMain);
+// backToMainButton.addEventListener('click', takeBackToMain);
+showSavedButton.addEventListener('click', displaySavedPosters);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 function makeRandomPoster() {
-  mainPosterImage.src = images[getRandomIndex(images)]
-  posterTitle.innerText = titles[getRandomIndex(titles)]
-  posterQuote.innerText = quotes[getRandomIndex(quotes)]
+  mainPosterImage.src = images[getRandomIndex(images)];
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
 }
-
-makeRandomPoster()
 
 function displayPosterForm() {
   createPosterSection.classList.remove('hidden');
   mainPosterSection.classList.add('hidden');
 }
+
+function displaySavedPosters() {
+  mainPosterSection.classList.add('hidden');
+  savedPosterSection.classList.remove('hidden');
+}
+
+makeRandomPoster();
