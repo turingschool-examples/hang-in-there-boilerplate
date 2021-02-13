@@ -122,11 +122,23 @@ var currentPoster;
 
 // event listeners go here 👇
 randomPosterButton.addEventListener('click', makeRandomPoster)
-posterFormButton.addEventListener('click', displayPosterForm);
-// makePosterButton.addEventListener('click', makeNewPoster);
-// neverMindButton.addEventListener('click', takeBackToMain);
-backToMainButton.addEventListener('click', takeBackToMain);
-showSavedButton.addEventListener('click', displaySavedPosters);
+
+posterFormButton.addEventListener('click', function() {
+  hideMainPage(createPosterSection)
+});
+
+neverMindButton.addEventListener('click', function() {
+  takeBackToMain(createPosterSection)
+});
+
+backToMainButton.addEventListener('click', function() {
+  takeBackToMain(savedPosterSection)
+});
+
+showSavedButton.addEventListener('click', function() {
+  hideMainPage(savedPosterSection)
+});
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -138,18 +150,14 @@ function makeRandomPoster() {
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 }
 
-function displayPosterForm() {
-  createPosterSection.classList.remove('hidden');
+function hideMainPage(page) {
+  page.classList.remove('hidden');
   mainPosterSection.classList.add('hidden');
 }
 
-function displaySavedPosters() {
-  mainPosterSection.classList.add('hidden');
-  savedPosterSection.classList.remove('hidden');
-}
 
-function takeBackToMain() {
-  savedPosterSection.classList.add('hidden');
+function takeBackToMain(page) {
+  page.classList.add('hidden');
   mainPosterSection.classList.remove('hidden');
 }
 
