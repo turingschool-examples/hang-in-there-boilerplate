@@ -24,6 +24,8 @@ var imgUrlInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
 
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
+var miniPoster = document.querySelector('.mini-poster'); //getElementsByClassName
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -136,6 +138,7 @@ randomPosterButton.addEventListener('click', function() {
   getRandomTitle();
   getRandomQuote();
   getRandomImage();
+  updateCurrentPoster();
 });
 
 makeYourPosterButton.addEventListener('click',function(){
@@ -151,6 +154,7 @@ showMyPosterButton.addEventListener('click', newPoster);
 
 saveThisPosterButton.addEventListener('click', saveThisPoster);
 
+savedPostersGrid.addEventListener('dblclick', deleteMiniPoster);
 
             //functions and event handlers go here 👇
 
@@ -174,6 +178,17 @@ getRandomImage();
             //List of functions 👇
 function showSavedPosters(){
   savedPostersSection.classList.remove('hidden');
+  savedPostersGrid.innerHTML = "";
+  for (var i = 0; i<savedPosters.length; i++) {
+    savedPostersGrid.innerHTML +=
+    `
+    <section class = "mini-poster" id = "${savedPosters[i].id}" >
+      <img class="poster-img" src=${savedPosters[i].imageURL} alt="saved poster">
+      <h2 class="poster-title">${savedPosters[i].title}</h1>
+      <h4 class="poster-quote">${savedPosters[i].quote}</h3>
+    </section>
+    `;
+  }
 }
 function revealForm(){
   posterForm.classList.remove('hidden');
@@ -189,9 +204,11 @@ function backToMainPoster() {
   mainPoster.classList.remove('hidden');
   savedPostersSection.classList.add('hidden');
 }
+function updateCurrentPoster() {
+  currentPoster = new Poster(randomImage.src, randomTitle.innerText, randomQuote.innerHTML);
+}
 
-
-function newPoster(event) {
+function newPoster() {
   event.preventDefault();
   images.push(imgUrlInput.value);
   titles.push(titleInput.value);
@@ -203,11 +220,20 @@ function newPoster(event) {
   takeMeBack();
 }
 
-
-//It will not save twice if you just hit the save button two times, but if you put the exact same information in the form, it will get a new id and save again
 function saveThisPoster() {
   if (!savedPosters.includes(currentPoster)) {
-    currentPoster = new Poster(randomImage.src, randomTitle.innerText, randomQuote.innerHTML);
+    // currentPoster = new Poster(randomImage.src, randomTitle.innerText, randomQuote.innerHTML);
+    updateCurrentPoster();
     savedPosters.push(currentPoster);
   }
 }
+//target is undefined
+//storing target value somewhere
+// function deleteMiniPoster(){
+//   var getId = event.target.id;
+//   for (var i = 0; i < savedPosters.length; i++) {
+//     if(savedPosters[i].id === getId){
+//       savedPosters.splice(i,1);
+//     }
+//   }
+// }
