@@ -4,13 +4,14 @@ var mainPosterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 
+//BUTTONS
 var posterFormButton = document.querySelector('.show-form');
 var makePosterButton = document.querySelector('.make-poster');
 var neverMindButton = document.querySelector('.show-main');
-
 var showSavedButton = document.querySelector('.show-saved');
 var backToMainButton = document.querySelector('.back-to-main');
 
+// PAGES AND SECTIONS
 var createPosterSection = document.querySelector('.poster-form');
 var mainPosterSection = document.querySelector('.main-poster');
 var savedPosterSection = document.querySelector('.saved-posters');
@@ -143,22 +144,22 @@ showSavedButton.addEventListener('click', function() {
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
+
 function makeRandomPoster() {
   mainPosterImage.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
-}
+};
 
 function hideMainPage(page) {
   page.classList.remove('hidden');
   mainPosterSection.classList.add('hidden');
-}
-
+};
 
 function takeBackToMain(page) {
   page.classList.add('hidden');
   mainPosterSection.classList.remove('hidden');
-}
+};
 
 makeRandomPoster();
