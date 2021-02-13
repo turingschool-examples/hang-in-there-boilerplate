@@ -19,6 +19,8 @@ var backToMainButton = document.querySelector(".back-to-main");
 var showMyPosterButton = document.querySelector(".make-poster");
 var savePosterButton = document.querySelector(".save-poster");
 
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -176,6 +178,7 @@ function showForm() {
 function showSaved() {
   mainSection.classList.toggle("hidden");
   savedSection.classList.toggle("hidden");
+  displayInSaved();
 }
 
 // this function takes you back to the main page
@@ -186,13 +189,20 @@ function showMain() {
 }
 
 
-/*
+function displayInSaved() {
+  for (i = 0; i < savedPosters.length; i++) {
+    var savedPostersData =
+    `
+    <article class="mini-poster">
+      <img class="poster-img" src="${savedPosters[i].imageURL}" alt="somethin' to see here">
+      <h2 class="poster-title">${savedPosters[i].title}</h2>
+      <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+    </article>
+    `;
+    savedPostersGrid.insertAdjacentHTML("beforeend", savedPostersData);
+  }
+}
 
--ensure savePoster function doesn't save some object >once
-  -if/else or for loop  +  use .includes with array.length
-  -
--
-*/
 function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
   savedPosters.unshift(currentPoster);
