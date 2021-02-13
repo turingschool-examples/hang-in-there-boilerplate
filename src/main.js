@@ -229,11 +229,17 @@ function saveThisPoster() {
 }
 //target is undefined
 //storing target value somewhere
-// function deleteMiniPoster(){
-//   var getId = event.target.id;
-//   for (var i = 0; i < savedPosters.length; i++) {
-//     if(savedPosters[i].id === getId){
-//       savedPosters.splice(i,1);
-//     }
-//   }
-// }
+function deleteMiniPoster(event){
+  // console.log(event);
+
+  var getId = parseInt(event.target.id);
+    // console.log(getId);
+  for (var i = 0; i < savedPosters.length; i++) {
+    if(savedPosters[i].id === getId){
+      // console.log(savedPosters[i]);
+      console.log(savedPosters);
+      savedPosters.splice(i,1);
+      console.log("part 2 :"+ savedPosters);
+    }
+  }showSavedPosters();
+}
