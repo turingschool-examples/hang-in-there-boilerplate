@@ -2,14 +2,20 @@
 var mainImg = document.querySelector(".poster-img");
 var mainTitle = document.querySelector(".poster-title");
 var mainQuote = document.querySelector(".poster-quote");
+
 var randomButton = document.querySelector(".show-random");
 var createPoster = document.querySelector(".show-form");
 var viewSaved = document.querySelector(".show-saved");
 var takeMeBack = document.querySelector(".show-main");
 var backToMain = document.querySelector(".back-to-main");
+
 var mainPage = document.querySelector(".main-poster");
 var posterForm = document.querySelector(".poster-form");
 var savedPosterPage = document.querySelector(".saved-posters");
+
+var imageInput = document.querySelector("#poster-image-url");
+var titleInput = document.querySelector("#poster-title");
+var quoteInput = document.querySelector("poster-quote");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
