@@ -178,6 +178,7 @@ function showForm() {
 function showSaved() {
   mainSection.classList.toggle("hidden");
   savedSection.classList.toggle("hidden");
+  savedPostersGrid.innerHTML = "";
   displayInSaved();
 }
 
@@ -193,7 +194,7 @@ function displayInSaved() {
   for (i = 0; i < savedPosters.length; i++) {
     var savedPostersData =
     `
-    <article class="mini-poster">
+    <article class="mini-poster" id="${i}">
       <img class="poster-img" src="${savedPosters[i].imageURL}" alt="somethin' to see here">
       <h2 class="poster-title">${savedPosters[i].title}</h2>
       <h4 class="poster-quote">${savedPosters[i].quote}</h4>
