@@ -17,6 +17,9 @@ var savedSection = document.querySelector(".saved-posters");
 var neverMindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 var showMyPosterButton = document.querySelector(".make-poster");
+var savePosterButton = document.querySelector(".save-poster");
+
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -120,17 +123,14 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomButton.addEventListener("click", function() {
-  randomizeTitle();
-  randomizePhrase();
-  randomizePhoto();
-})
+randomButton.addEventListener("click", randomizePoster);
 
 // nav buttons below
 tryItButton.addEventListener("click", showForm);
 savedButton.addEventListener("click", showSaved);
 neverMindButton.addEventListener("click", showMain);
 backToMainButton.addEventListener("click", showMain);
+savePosterButton.addEventListener("click", savePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -138,20 +138,35 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// this function populates the title
-function randomizeTitle() {
-   title.innerText = titles[getRandomIndex(titles)];
- }
-
- // this function populates the quote
-function randomizePhrase() {
-  phrase.innerText = quotes[getRandomIndex(quotes)];
+function randomizePoster() {
+  var randomImage = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(randomImage, randomTitle, randomQuote);
+  displayCurrentPoster();
 }
 
-// this function populates the image
-function randomizePhoto() {
-  image.src = images[getRandomIndex(images)];
+function displayCurrentPoster() {
+  image.src = currentPoster.imageURL;
+  title.innerText = currentPoster.title;
+  phrase.innerText =  currentPoster.quote;
 }
+
+// Previous functions used for randomizePoster
+// // this function populates the title
+// function randomizeTitle() {
+//    title.innerText = titles[getRandomIndex(titles)];
+//  }
+//
+//  // this function populates the quote
+// function randomizePhrase() {
+//   phrase.innerText = quotes[getRandomIndex(quotes)];
+// }
+//
+// // this function populates the image
+// function randomizePhoto() {
+//   image.src = images[getRandomIndex(images)];
+// }
 
 // this function shows the form section
 function showForm() {
@@ -163,6 +178,7 @@ function showForm() {
 function showSaved() {
   mainSection.classList.toggle("hidden");
   savedSection.classList.toggle("hidden");
+  displayInSaved();
 }
 
 // this function takes you back to the main page
@@ -172,6 +188,28 @@ function showMain() {
   savedSection.classList.add("hidden");
 }
 
+
+function displayInSaved() {
+  for (i = 0; i < savedPosters.length; i++) {
+    var savedPostersData =
+    `
+    <article class="mini-poster">
+      <img class="poster-img" src="${savedPosters[i].imageURL}" alt="somethin' to see here">
+      <h2 class="poster-title">${savedPosters[i].title}</h2>
+      <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+    </article>
+    `;
+    savedPostersGrid.insertAdjacentHTML("beforeend", savedPostersData);
+  }
+}
+
+function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
+  savedPosters.unshift(currentPoster);
+  }
+}
+
+
 // this function saves your form input and displays your creation
 showMyPosterButton.addEventListener("click", function(e) {
   e.preventDefault();
@@ -180,11 +218,8 @@ showMyPosterButton.addEventListener("click", function(e) {
   titles.unshift(currentPoster.title);
   quotes.unshift(currentPoster.quote);
   showMain();
-  image.src = currentPoster.imageURL;
-  title.innerText = currentPoster.title;
-  phrase.innerText =  currentPoster.quote;
+  displayCurrentPoster();
 });
 
-randomizeTitle();
-randomizePhrase();
-randomizePhoto();
+randomizePoster();
+displayCurrentPoster();
