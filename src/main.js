@@ -15,7 +15,8 @@ var savedPosterPage = document.querySelector(".saved-posters");
 
 var imageInput = document.querySelector("#poster-image-url");
 var titleInput = document.querySelector("#poster-title");
-var quoteInput = document.querySelector("poster-quote");
+var quoteInput = document.querySelector("#poster-quote");
+var showPoster = document.querySelector(".make-poster");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
