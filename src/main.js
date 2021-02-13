@@ -187,20 +187,16 @@ function showMain() {
 
 
 /*
--store values of poster object in empty savedPosters array
-  -use currentPoster var? not using in sense of default atm
-  -access first value of each array?
-  -can use currentPoster to create instance of poster class
-  -can store currentPoster every time
-  -look at randomizing functions, update functions to create a new instance
-  -could possibly combine into one function + make dynamic
-    -randomizePoster function, get rid of other 3
+
 -ensure savePoster function doesn't save some object >once
   -if/else or for loop  +  use .includes with array.length
+  -
 -
 */
 function savePoster() {
-  savedPosters.push(currentPoster);
+  if (!savedPosters.includes(currentPoster)) {
+  savedPosters.unshift(currentPoster);
+  }
 }
 
 
