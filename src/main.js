@@ -125,9 +125,11 @@ var savedPosters = [
 var currentPoster;
 
 // event listeners go here 👇
+// Iteration 0
 window.addEventListener('load', generateRandomQuote);
 window.addEventListener('load', generateRandomTitle);
 window.addEventListener('load', generateRandomPoster);
+// Iteration 1
 showFormButton.addEventListener('click', showPosterForm);
 showSavedPosterButton.addEventListener('click', showSavedPosters);
 nevermindButton.addEventListener('click', showPosterForm);
@@ -145,6 +147,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// Iteration 1
 function generateRandomQuote() {
   var randomIndexQuote = getRandomIndex(quotes);
   posterQuote.innerHTML = `${quotes[randomIndexQuote]}`;
@@ -160,6 +163,7 @@ function generateRandomPoster() {
   posterImage.src = `${images[randomIndexImage]}`;
 }
 
+// Iteration 2
 function showPosterForm() {
   mainSection.classList.toggle('hidden');
   formSection.classList.toggle('hidden');
