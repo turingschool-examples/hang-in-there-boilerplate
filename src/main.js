@@ -155,3 +155,15 @@ function switchToMain() {
   savedPosterPage.classList.add("hidden");
   mainPage.classList.remove("hidden");
 }
+
+function makeUserPoster() {
+event.preventDefault();
+  var userPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
+images.push(userPoster.imageURL);
+titles.push(userPoster.title);
+quotes.push(userPoster.quote);
+switchToMain();
+mainImg.src = userPoster.imageURL;
+mainTitle.innerText = userPoster.title;
+mainQuote.innerText = userPoster.quote;
+}
