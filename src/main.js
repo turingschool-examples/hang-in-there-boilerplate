@@ -11,7 +11,7 @@ var neverMindButton = document.querySelector('.show-main');
 var showSavedButton = document.querySelector('.show-saved');
 var backToMainButton = document.querySelector('.back-to-main');
 var showMyPoster = document.querySelector('.make-poster');
-
+var saveMyPoster = document.querySelector('.save-poster');
 
 // PAGES AND SECTIONS
 var createPosterSection = document.querySelector('.poster-form');
@@ -147,6 +147,8 @@ showSavedButton.addEventListener('click', function() {
 
 showMyPoster.addEventListener('click', displayMyPoster);
 
+saveMyPoster.addEventListener('click', saveCreatedPoster);
+
 
 
 // functions and event handlers go here 👇
@@ -179,4 +181,11 @@ function displayMyPoster() {
   mainPosterImage.src = submittedURL.value;
   posterTitle.innerText = submittedTitle.value;
   posterQuote.innerText = submittedQuote.value;
+}
+
+function saveCreatedPoster() {
+  images.push(submittedURL.value);
+  titles.push(submittedTitle.value);
+  quotes.push(submittedQuote.value);
+  currentPoster = new Poster(Date.now(), submittedURL.value, submittedTitle.value, submittedQuote.value);
 }
