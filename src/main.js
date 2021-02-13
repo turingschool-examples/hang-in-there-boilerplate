@@ -136,8 +136,8 @@ function newPoster() {
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
   mainImg.src = poster.imageURL;
   mainImg.alt = "Random image not found";
-  mainTitle.innerText = poster.title;
-  mainQuote.innerText = poster.quote;
+  mainTitle.innerText = currentPoster.title;
+  mainQuote.innerText = currentPoster.quote;
 }
 
 // (we've provided one for you to get you started)!
@@ -164,11 +164,13 @@ function switchToMain() {
 function makeUserPoster() {
 event.preventDefault();
   currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
-images.push(userPoster.imageURL);
-titles.push(userPoster.title);
-quotes.push(userPoster.quote);
+images.push(currentPoster.imageURL);
+titles.push(currentPoster.title);
+quotes.push(currentPoster.quote);
 switchToMain();
-mainImg.src = userPoster.imageURL;
-mainTitle.innerText = userPoster.title;
-mainQuote.innerText = userPoster.quote;
+mainImg.src = currentPoster.imageURL;
+mainTitle.innerText = currentPoster.title;
+mainQuote.innerText = currentPoster.quote;
 }
+
+function saveMainPoster()
