@@ -132,6 +132,7 @@ neverMindButton.addEventListener("click", showMain);
 backToMainButton.addEventListener("click", showMain);
 savePosterButton.addEventListener("click", savePoster);
 
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -194,13 +195,14 @@ function displayInSaved() {
   for (i = 0; i < savedPosters.length; i++) {
     var savedPostersData =
     `
-    <article class="mini-poster" id="${i}">
+    <article class="mini-poster" id=poster-${i}>
       <img class="poster-img" src="${savedPosters[i].imageURL}" alt="somethin' to see here">
       <h2 class="poster-title">${savedPosters[i].title}</h2>
       <h4 class="poster-quote">${savedPosters[i].quote}</h4>
     </article>
     `;
     savedPostersGrid.insertAdjacentHTML("beforeend", savedPostersData);
+    var availPoster = document.getElementById("poster-i");
   }
 }
 
@@ -209,7 +211,6 @@ function savePoster() {
   savedPosters.unshift(currentPoster);
   }
 }
-
 
 // this function saves your form input and displays your creation
 showMyPosterButton.addEventListener("click", function(e) {
@@ -221,6 +222,24 @@ showMyPosterButton.addEventListener("click", function(e) {
   showMain();
   displayCurrentPoster();
 });
+
+/* create a click event listener on the show poster grid
+  target what was clicked to retreive id
+  if poster grid i equals the index of saved posters
+  remove the element out of saved posters array
+  and add hidden styling to the mini poster element
+*/
+
+savedPostersGrid.addEventListener("click", function(e) {
+  console.log(e);
+  if (e.target.matches("article.mini-poster")
+    || e.target.matches("img.poster-img")
+    || e.target.matches("h2.poster-title")
+    || e.target.matches("h4.poster-quote")) {
+   console.log("mini poster clicked!");
+ }
+}
+);
 
 randomizePoster();
 displayCurrentPoster();
