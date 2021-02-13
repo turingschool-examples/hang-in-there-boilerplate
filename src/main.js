@@ -12,11 +12,10 @@ var savedPostersSection = document.querySelector('.saved-posters');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
 //Iteration 2
-var posterURL = document.querySelector('#poster-image-url');
-var posterTitle = document.querySelector('#poster-title');
-var posterQuote = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector('.make-poster');
-
+var inputImage = document.getElementById('poster-image-url');
+var inputTitle = document.getElementById('poster-title');
+var inputQuote = document.getElementById('poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -172,15 +171,16 @@ function showSavedPosters() {
 }
 
 function createYourOwnPoster() {
-  var newPoster = new Poster (posterURL.value, posterTitle.value, posterQuote.value);
+  event.preventDefault();
+  var newPoster = new Poster (inputImage.value, inputTitle.value, inputQuote.value);
 
-  images.push(posterURL.value);
-  titles.push(posterTitle.value);
-  quotes.push(posterQuote.value);
+  images.push(inputImage.value);
+  titles.push(inputTitle.value);
+  quotes.push(inputQuote.value);
 
   showPosterForm();
 
-  posterQuote.innerText = posterQuote.value;
-  posterTitle.innerText = posterTitle.value;
-  posterImage.src = posterURL.value;
+  posterQuote.innerText = newPoster.quote;
+  posterTitle.innerText = newPoster.title;
+  posterImage.src = newPoster.imageURL;
 }
