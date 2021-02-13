@@ -10,13 +10,18 @@ var makePosterButton = document.querySelector('.make-poster');
 var neverMindButton = document.querySelector('.show-main');
 var showSavedButton = document.querySelector('.show-saved');
 var backToMainButton = document.querySelector('.back-to-main');
+var showMyPoster = document.querySelector('.make-poster');
+
 
 // PAGES AND SECTIONS
 var createPosterSection = document.querySelector('.poster-form');
 var mainPosterSection = document.querySelector('.main-poster');
 var savedPosterSection = document.querySelector('.saved-posters');
 
-
+// FORM INPUTS
+var submittedURL = document.getElementById('poster-image-url');
+var submittedTitle = document.getElementById('poster-title');
+var submittedQuote = document.getElementById('poster-quote');
 
 
 
@@ -122,7 +127,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomPosterButton.addEventListener('click', makeRandomPoster)
+randomPosterButton.addEventListener('click', makeRandomPoster);
 
 posterFormButton.addEventListener('click', function() {
   hideMainPage(createPosterSection)
@@ -140,6 +145,10 @@ showSavedButton.addEventListener('click', function() {
   hideMainPage(savedPosterSection)
 });
 
+showMyPoster.addEventListener('click', displayMyPoster);
+
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -151,6 +160,7 @@ function makeRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 };
+makeRandomPoster();
 
 function hideMainPage(page) {
   page.classList.remove('hidden');
@@ -160,6 +170,13 @@ function hideMainPage(page) {
 function takeBackToMain(page) {
   page.classList.add('hidden');
   mainPosterSection.classList.remove('hidden');
+  makeRandomPoster();
 };
 
-makeRandomPoster();
+function displayMyPoster() {
+  event.preventDefault();
+  mainPosterSection.classList.toggle('hidden');
+  mainPosterImage.src = submittedURL.value;
+  posterTitle.innerText = submittedTitle.value;
+  posterQuote.innerText = submittedQuote.value;
+}
