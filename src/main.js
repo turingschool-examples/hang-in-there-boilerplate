@@ -125,7 +125,7 @@ createPoster.addEventListener("click", switchToForm);
 viewSaved.addEventListener("click", switchToSaved);
 takeMeBack.addEventListener("click", switchToMain);
 backToMain.addEventListener("click", switchToMain);
-
+showPoster.addEventListener("click", makeUserPoster);
 // functions and event handlers go here 👇
 function newPoster() {
   var poster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
