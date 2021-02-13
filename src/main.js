@@ -124,8 +124,6 @@ var currentPoster;
 
 // event listeners go here 👇
 randomButton.addEventListener("click", randomizePoster);
-
-// nav buttons below
 tryItButton.addEventListener("click", showForm);
 savedButton.addEventListener("click", showSaved);
 neverMindButton.addEventListener("click", showMain);
@@ -139,6 +137,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// this function randomizes the poster
 function randomizePoster() {
   var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
@@ -147,55 +146,41 @@ function randomizePoster() {
   displayCurrentPoster();
 }
 
+// this function displays current poster on main section
 function displayCurrentPoster() {
   image.src = currentPoster.imageURL;
   title.innerText = currentPoster.title;
   phrase.innerText =  currentPoster.quote;
 }
 
-// Previous functions used for randomizePoster
-// // this function populates the title
-// function randomizeTitle() {
-//    title.innerText = titles[getRandomIndex(titles)];
-//  }
-//
-//  // this function populates the quote
-// function randomizePhrase() {
-//   phrase.innerText = quotes[getRandomIndex(quotes)];
-// }
-//
-// // this function populates the image
-// function randomizePhoto() {
-//   image.src = images[getRandomIndex(images)];
-// }
-
-// this function shows the form section
+// this function shows the form
 function showForm() {
   mainSection.classList.toggle("hidden");
   formSection.classList.toggle("hidden");
 }
 
-// this function shows the saved poster section
+// this function shows the saved posters
 function showSaved() {
   mainSection.classList.toggle("hidden");
   savedSection.classList.toggle("hidden");
   savedPostersGrid.innerHTML = "";
+// savedPostersGrid.classList.remove("hidden");
   displayInSaved();
 }
 
-// this function takes you back to the main page
+// this function shows the main page
 function showMain() {
   mainSection.classList.toggle("hidden");
   formSection.classList.add("hidden");
   savedSection.classList.add("hidden");
 }
 
-
+// this function displays your saved posters
 function displayInSaved() {
   for (i = 0; i < savedPosters.length; i++) {
     var savedPostersData =
     `
-    <article class="mini-poster" id=poster-${i}>
+    <article class="mini-poster" id=${savedPosters[i].id}>
       <img class="poster-img" src="${savedPosters[i].imageURL}" alt="somethin' to see here">
       <h2 class="poster-title">${savedPosters[i].title}</h2>
       <h4 class="poster-quote">${savedPosters[i].quote}</h4>
@@ -206,13 +191,14 @@ function displayInSaved() {
   }
 }
 
+// this function saves a poster
 function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
   savedPosters.unshift(currentPoster);
   }
 }
 
-// this function saves your form input and displays your creation
+// this function stores your form input and displays your creation
 showMyPosterButton.addEventListener("click", function(e) {
   e.preventDefault();
   currentPoster = new Poster(imageURL.value, newTitle.value, newQuote.value);
@@ -223,23 +209,17 @@ showMyPosterButton.addEventListener("click", function(e) {
   displayCurrentPoster();
 });
 
-/* create a click event listener on the show poster grid
-  target what was clicked to retreive id
-  if poster grid i equals the index of saved posters
-  remove the element out of saved posters array
-  and add hidden styling to the mini poster element
-*/
-
-savedPostersGrid.addEventListener("click", function(e) {
-  console.log(e);
-  if (e.target.matches("article.mini-poster")
-    || e.target.matches("img.poster-img")
-    || e.target.matches("h2.poster-title")
-    || e.target.matches("h4.poster-quote")) {
-   console.log("mini poster clicked!");
- }
+// this function removes a saved poster on double-click
+savedPostersGrid.addEventListener("dblclick", function(e) {
+  for (i=0; i<savedPosters.length; i++) {
+  if (parseInt(e.target.closest(".mini-poster").id) === savedPosters[i].id) {
+    savedPosters.splice(i,1);
+    savedPostersGrid.innerHTML = "";
+    displayInSaved();
+  }
 }
-);
+});
 
+// these auto-functions randomize and store poster on refresh
 randomizePoster();
 displayCurrentPoster();
