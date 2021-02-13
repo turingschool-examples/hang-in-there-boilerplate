@@ -1,14 +1,21 @@
 // query selector variables go here 👇
+//Iteration 0
 var posterQuote = document.querySelector('h3');
 var posterTitle = document.querySelector('.poster-title');
 var posterImage = document.querySelector('.poster-img');
+//Iteration 1
 var showFormButton = document.querySelector('.show-form');
 var formSection = document.querySelector('.poster-form');
 var mainSection = document.querySelector('.main-poster');
 var showSavedPosterButton = document.querySelector('.show-saved')
 var savedPostersSection = document.querySelector('.saved-posters');
 var nevermindButton = document.querySelector('.show-main');
-var backToMainButton = document.querySelector('.back-to-main')
+var backToMainButton = document.querySelector('.back-to-main');
+//Iteration 2
+var posterURL = document.querySelector('#poster-image-url');
+var posterTitle = document.querySelector('#poster-title');
+var posterQuote = document.querySelector('#poster-quote');
+var makePosterButton = document.querySelector('.make-poster');
 
 
 // we've provided you with some data to work with 👇
@@ -126,10 +133,11 @@ showFormButton.addEventListener('click', showPosterForm);
 showSavedPosterButton.addEventListener('click', showSavedPosters);
 nevermindButton.addEventListener('click', showPosterForm);
 backToMainButton.addEventListener('click', showSavedPosters);
+//Iteration 2
+makePosterButton.addEventListener('click', createYourOwnPoster);
 
 
 
-//look into onload
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -161,4 +169,18 @@ function showPosterForm() {
 function showSavedPosters() {
   mainSection.classList.toggle('hidden');
   savedPostersSection.classList.toggle('hidden');
+}
+
+function createYourOwnPoster() {
+  var newPoster = new Poster (posterURL.value, posterTitle.value, posterQuote.value);
+
+  images.push(posterURL.value);
+  titles.push(posterTitle.value);
+  quotes.push(posterQuote.value);
+
+  showPosterForm();
+
+  posterQuote.innerText = posterQuote.value;
+  posterTitle.innerText = posterTitle.value;
+  posterImage.src = posterURL.value;
 }
