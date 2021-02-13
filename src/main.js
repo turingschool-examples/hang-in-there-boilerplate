@@ -17,6 +17,10 @@ var imageInput = document.querySelector("#poster-image-url");
 var titleInput = document.querySelector("#poster-title");
 var quoteInput = document.querySelector("#poster-quote");
 var showPoster = document.querySelector(".make-poster");
+
+var savePoster = document.querySelector(".save-poster");
+var posterGrid = document.querySelector(".saved-posters-grid");
+var clonedPoster = document.querySelector(".poster");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -126,13 +130,14 @@ viewSaved.addEventListener("click", switchToSaved);
 takeMeBack.addEventListener("click", switchToMain);
 backToMain.addEventListener("click", switchToMain);
 showPoster.addEventListener("click", makeUserPoster);
+savePoster.addEventListener("click", saveMainPoster);
 // functions and event handlers go here 👇
 function newPoster() {
-  var poster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
-  mainImg.src = poster.imageURL;
+  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  mainImg.src = currentPoster.imageURL;
   mainImg.alt = "Random image not found";
-  mainTitle.innerText = poster.title;
-  mainQuote.innerText = poster.quote;
+  mainTitle.innerText = currentPoster.title;
+  mainQuote.innerText = currentPoster.quote;
 }
 
 // (we've provided one for you to get you started)!
@@ -157,13 +162,38 @@ function switchToMain() {
 }
 
 function makeUserPoster() {
-event.preventDefault();
-  var userPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
-images.push(userPoster.imageURL);
-titles.push(userPoster.title);
-quotes.push(userPoster.quote);
-switchToMain();
-mainImg.src = userPoster.imageURL;
-mainTitle.innerText = userPoster.title;
-mainQuote.innerText = userPoster.quote;
+  event.preventDefault();
+  currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
+  images.push(currentPoster.imageURL);
+  titles.push(currentPoster.title);
+  quotes.push(currentPoster.quote);
+  switchToMain();
+  mainImg.src = currentPoster.imageURL;
+  mainTitle.innerText = currentPoster.title;
+  mainQuote.innerText = currentPoster.quote;
+}
+
+function saveMainPoster() {
+  if (savedPosters.includes(currentPoster) === false) {
+    savedPosters.push(currentPoster);
+    var clone = clonedPoster.cloneNode(true);
+    clone.classList.remove("poster");
+    clone.classList.add("mini-poster");
+    posterGrid.appendChild(clone);
+    formatSavedPosters();
+
+  }
+}
+
+function formatSavedPosters() {
+  for (var i = 1; i <= savedPosters.length; i++) {
+    var h1 = document.getElementsByTagName('h1')[i];
+    var h2 = document.createElement('h2');
+    h2.innerHTML = h1.innerHTML;
+    h1.parentNode.replaceChild(h2, h1);
+    var h3 = document.getElementsByTagName('h3')[i];
+    var h4 = document.createElement('h4');
+    h4.innerHTML = h3.innerHTML;
+    h3.parentNode.replaceChild(h4, h3);
+  }
 }
