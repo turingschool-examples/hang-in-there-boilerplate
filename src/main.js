@@ -188,7 +188,7 @@ function makeClone() {
 function saveMainPoster() {
   if (savedPosters.includes(currentPoster) === false) {
     savedPosters.push(currentPoster);
-
+    makeClone();
     formatSavedPosters();
   }
 }
