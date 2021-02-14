@@ -126,7 +126,8 @@ var currentPoster;
 // Iteration 0
 window.addEventListener('load', generateRandomQuote);
 window.addEventListener('load', generateRandomTitle);
-window.addEventListener('load', generateRandomPoster);
+window.addEventListener('load', generateRandomImage);
+
 // Iteration 1
 showFormButton.addEventListener('click', showPosterForm);
 showSavedPosterButton.addEventListener('click', showSavedPosters);
@@ -158,10 +159,12 @@ function generateRandomTitle() {
   posterTitle.innerHTML = `${titles[randomIndexTitle]}`;
 }
 
-function generateRandomPoster() {
+function generateRandomImage() {
   var randomIndexImage = getRandomIndex(images);
   posterImage.src = `${images[randomIndexImage]}`;
 }
+
+
 
 // Iteration 2
 function showPosterForm() {
@@ -176,7 +179,7 @@ function showSavedPosters() {
 
 function createYourOwnPoster() {
   event.preventDefault();
-  var newPoster = new Poster (inputImage.value, inputTitle.value, inputQuote.value);
+  currentPoster = new Poster (inputImage.value, inputTitle.value, inputQuote.value);
 
   images.push(inputImage.value);
   titles.push(inputTitle.value);
@@ -184,14 +187,16 @@ function createYourOwnPoster() {
 
   showPosterForm();
 
-  posterQuote.innerText = newPoster.quote;
-  posterTitle.innerText = newPoster.title;
-  posterImage.src = newPoster.imageURL;
+  posterQuote.innerText = currentPoster.quote;
+  posterTitle.innerText = currentPoster.title;
+  posterImage.src = currentPoster.imageURL;
 }
 
 function saveCurrentPoster() {
-  var newCurrentPoster = new Poster (posterQuote, posterTitle, posterImage);
-  savedPosters.push(newCurrentPoster);
-  alert("This poster has been saved!");
-  console.log(savedPosters);
+  if (savedPosters.includes(currentPoster)) {
+    alert("You have already saved this poster!");
+  } else {
+    savedPosters.push(currentPoster);
+    alert("This poster has been saved!");
+  }
 }
