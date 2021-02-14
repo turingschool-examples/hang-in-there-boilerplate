@@ -177,8 +177,9 @@ function makeUserPoster() {
   mainQuote.innerText = currentPoster.quote;
 }
 
-function makeClone() {
+function makeClone(id) {
   var clone = clonedPoster.cloneNode(true);
+  clone.setAttribute("id", id);
   clone.classList.remove("poster");
   clone.classList.add("mini-poster");
   posterGrid.appendChild(clone);
@@ -188,7 +189,9 @@ function makeClone() {
 function saveMainPoster() {
   if (savedPosters.includes(currentPoster) === false) {
     savedPosters.push(currentPoster);
-    makeClone();
+    makeClone(currentPoster.id);
+    var currentId = document.getElementById(currentPoster.id);
+    currentId.addEventListener("dblclick", returnId);
     formatSavedPosters();
   }
 }
