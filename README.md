@@ -26,17 +26,17 @@ This is our first paired project for Turing School of Software & Design. We were
 
 The user can pull from a library of images, titles, and quotes to create a randomly generated poster by clicking the “Show Another Random Poster” button. 
 
-![Random Poster](/random-poster.png | width=100)
+![Random Poster](/random-poster.png width=100)
 
 They also have the option of inputing their own data to generate their own unique poster by clicking on the “Make Your Own Poster” button. 
 
-![Create Poster](/created-poster.png | width=100)
-![Create Poster Gif](/create-new-poster.gif | width=100) 
+![Create Poster](/created-poster.png width=100)
+![Create Poster Gif](/create-new-poster.gif width=100) 
 
 Users can save any poster they create or randomly generate by clicking on "Save This Poster" and all saved posters are displayed at the bottom of the page when "Show Saved Posters" is clicked.
 
 
-![Save Poster Gif](/save-poster.gif | width=100)
+![Save Poster Gif](/save-poster.gif width=100)
 
 
 
