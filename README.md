@@ -26,7 +26,7 @@ This is our first paired project for Turing School of Software & Design. We were
 
 The user can pull from a library of images, titles, and quotes to create a randomly generated poster by clicking the “Show Another Random Poster” button. 
 
-![Random Poster](<img src="/random-poster.png" width="100">)
+![Random Poster](/random-poster.png)
 
 They also have the option of inputing their own data to generate their own unique poster by clicking on the “Make Your Own Poster” button. 
 
