@@ -3,6 +3,7 @@
 var posterQuote = document.querySelector('h3');
 var posterTitle = document.querySelector('.poster-title');
 var posterImage = document.querySelector('.poster-img');
+var showRandom = document.querySelector('.show-random');
 //Iteration 1
 var showFormButton = document.querySelector('.show-form');
 var formSection = document.querySelector('.poster-form');
@@ -127,15 +128,15 @@ var currentPoster;
 window.addEventListener('load', generateRandomQuote);
 window.addEventListener('load', generateRandomTitle);
 window.addEventListener('load', generateRandomImage);
-
+showRandom.addEventListener('click', generateRandomPoster);
 // Iteration 1
 showFormButton.addEventListener('click', showPosterForm);
 showSavedPosterButton.addEventListener('click', showSavedPosters);
 nevermindButton.addEventListener('click', showPosterForm);
 backToMainButton.addEventListener('click', showSavedPosters);
-//Iteration 2
+// Iteration 2
 makePosterButton.addEventListener('click', createYourOwnPoster);
-//Iteration 3
+// Iteration 3
 savePosterButton.addEventListener('click', saveCurrentPoster);
 
 
@@ -164,7 +165,12 @@ function generateRandomImage() {
   posterImage.src = `${images[randomIndexImage]}`;
 }
 
-
+function generateRandomPoster() {
+  currentPoster = new Poster (posterImage, posterTitle, posterQuote);
+  generateRandomImage();
+  generateRandomTitle();
+  generateRandomQuote();
+}
 
 // Iteration 2
 function showPosterForm() {
