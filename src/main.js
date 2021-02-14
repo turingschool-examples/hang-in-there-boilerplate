@@ -1,4 +1,3 @@
-// query selector variables go here 👇
 var mainImg = document.querySelector(".poster-img");
 var mainTitle = document.querySelector(".poster-title");
 var mainQuote = document.querySelector(".poster-quote");
@@ -21,8 +20,6 @@ var showPoster = document.querySelector(".make-poster");
 var savePoster = document.querySelector(".save-poster");
 var posterGrid = document.querySelector(".saved-posters-grid");
 var clonedPoster = document.querySelector(".poster");
-
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -191,7 +188,7 @@ function saveMainPoster() {
     savedPosters.push(currentPoster);
     makeClone(currentPoster.id);
     var currentId = document.getElementById(currentPoster.id);
-    currentId.addEventListener("dblclick", returnId);
+    currentId.addEventListener("dblclick", switchToMain);
     formatSavedPosters();
   }
 }
