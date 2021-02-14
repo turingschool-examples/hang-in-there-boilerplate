@@ -21,6 +21,8 @@ var showPoster = document.querySelector(".make-poster");
 var savePoster = document.querySelector(".save-poster");
 var posterGrid = document.querySelector(".saved-posters-grid");
 var clonedPoster = document.querySelector(".poster");
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -131,6 +133,8 @@ takeMeBack.addEventListener("click", switchToMain);
 backToMain.addEventListener("click", switchToMain);
 showPoster.addEventListener("click", makeUserPoster);
 savePoster.addEventListener("click", saveMainPoster);
+
+
 // functions and event handlers go here 👇
 function newPoster() {
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
@@ -173,15 +177,19 @@ function makeUserPoster() {
   mainQuote.innerText = currentPoster.quote;
 }
 
+function makeClone() {
+  var clone = clonedPoster.cloneNode(true);
+  clone.classList.remove("poster");
+  clone.classList.add("mini-poster");
+  posterGrid.appendChild(clone);
+}
+
+
 function saveMainPoster() {
   if (savedPosters.includes(currentPoster) === false) {
     savedPosters.push(currentPoster);
-    var clone = clonedPoster.cloneNode(true);
-    clone.classList.remove("poster");
-    clone.classList.add("mini-poster");
-    posterGrid.appendChild(clone);
-    formatSavedPosters();
 
+    formatSavedPosters();
   }
 }
 
