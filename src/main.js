@@ -16,6 +16,9 @@ var makePosterButton = document.querySelector('.make-poster');
 var inputImage = document.getElementById('poster-image-url');
 var inputTitle = document.getElementById('poster-title');
 var inputQuote = document.getElementById('poster-quote');
+//Iteration 3
+var savePosterButton = document.querySelector('.save-poster');
+var savedPostersImageGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -115,13 +118,8 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [
-  // makePoster(
-  //   "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
-  //   "Optimism",
-  //   "Keep a joyful heart!"
-  // )
-];
+var savedPosters = [];
+
 var currentPoster;
 
 // event listeners go here 👇
@@ -136,6 +134,8 @@ nevermindButton.addEventListener('click', showPosterForm);
 backToMainButton.addEventListener('click', showSavedPosters);
 //Iteration 2
 makePosterButton.addEventListener('click', createYourOwnPoster);
+//Iteration 3
+savePosterButton.addEventListener('click', saveCurrentPoster);
 
 
 
@@ -187,4 +187,11 @@ function createYourOwnPoster() {
   posterQuote.innerText = newPoster.quote;
   posterTitle.innerText = newPoster.title;
   posterImage.src = newPoster.imageURL;
+}
+
+function saveCurrentPoster() {
+  var newCurrentPoster = new Poster (posterQuote, posterTitle, posterImage);
+  savedPosters.push(newCurrentPoster);
+  alert("This poster has been saved!");
+  console.log(savedPosters);
 }
