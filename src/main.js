@@ -182,15 +182,19 @@ function makeClone(id) {
   posterGrid.appendChild(clone);
 }
 
-
 function saveMainPoster() {
   if (savedPosters.includes(currentPoster) === false) {
     savedPosters.push(currentPoster);
     makeClone(currentPoster.id);
     var currentId = document.getElementById(currentPoster.id);
-    currentId.addEventListener("dblclick", switchToMain);
+    currentId.addEventListener("dblclick", deletePoster);
     formatSavedPosters();
   }
+}
+
+function deletePoster() {
+  var deleteChild = document.getElementById(this.id);
+  posterGrid.removeChild(deleteChild);
 }
 
 function formatSavedPosters() {
