@@ -206,3 +206,8 @@ function saveCurrentPoster() {
     alert("This poster has been saved!");
   }
 }
+
+function makePosterGrid() {
+  // for (var i = 0; i < savedPosters.length; i++);
+  // savedPostersImageGrid.innerHTML += `${currentPoster.title}`
+}
