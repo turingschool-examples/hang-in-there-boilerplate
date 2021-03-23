@@ -99,7 +99,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster = randomPoster()
+var currentPoster = createRandomPoster()
 
 // event listeners go here 👇
 window.addEventListener('load', setMainPoster)
@@ -114,11 +114,11 @@ var showRandomButton = document.querySelector('.show-random')
 showRandomButton.addEventListener('click', updateMainPoster)
 
 function updateMainPoster(){
-  currentPoster = randomPoster()
+  currentPoster = createRandomPoster()
   setMainPoster()
 }
 
-function randomPoster(){
+function createRandomPoster(){
   return new Poster(getRandomElement(images), getRandomElement(titles), getRandomElement(quotes))
 }
 
