@@ -112,14 +112,14 @@ var savedPostersPage = document.querySelector('.saved-posters')
 
 var showRandomButton = document.querySelector('.show-random')
 var showFormButton = document.querySelector('.show-form')
-// var showSavedButton = document.querySelector('.show-saved')
+var showSavedButton = document.querySelector('.show-saved')
 // var showMainButtons = document.querySelectorAll('.show-main')
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
 showRandomButton.addEventListener('click', updateMainPoster)
-// showSavedButton.addEventListener('click', showSavedPosters)
+showSavedButton.addEventListener('click', showSavedPosters)
 showFormButton.addEventListener('click', showPosterForm)
 
 function updateMainPoster(){
@@ -127,9 +127,10 @@ function updateMainPoster(){
   setPoster()
 }
 
-// function showSavedPosters(){
-  
-// }
+function showSavedPosters(){
+  savedPostersPage.classList.remove('hidden')
+  mainPoster.classList.add('hidden')
+}
 
 function showPosterForm(){
   posterForm.classList.remove('hidden')
