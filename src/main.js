@@ -113,7 +113,7 @@ var savedPostersPage = document.querySelector('.saved-posters')
 var showRandomButton = document.querySelector('.show-random')
 var showFormButton = document.querySelector('.show-form')
 var showSavedButton = document.querySelector('.show-saved')
-// var showMainButtons = document.querySelectorAll('.show-main')
+var showMainButtons = document.querySelectorAll('.show-main')
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -122,22 +122,32 @@ showRandomButton.addEventListener('click', updateMainPoster)
 showSavedButton.addEventListener('click', showSavedPosters)
 showFormButton.addEventListener('click', showPosterForm)
 
-function updateMainPoster(){
+for(button in showMainButtons){
+  showMainButtons[button].addEventListener('click', showMainPoster)
+}
+
+function showMainPoster() {
+  mainPoster.classList.remove('hidden')
+  posterForm.classList.add('hidden')
+  savedPostersPage.classList.add('hidden')
+}
+
+function updateMainPoster() {
   currentPoster = createRandomPoster()
   setPoster()
 }
 
-function showSavedPosters(){
+function showSavedPosters() {
   savedPostersPage.classList.remove('hidden')
   mainPoster.classList.add('hidden')
 }
 
-function showPosterForm(){
+function showPosterForm() {
   posterForm.classList.remove('hidden')
   mainPoster.classList.add('hidden')
 }
 
-function createRandomPoster(){
+function createRandomPoster() {
   return new Poster(getRandomElement(images), getRandomElement(titles), getRandomElement(quotes))
 }
 
@@ -146,7 +156,7 @@ function getRandomElement(array) {
   return array[index];
 }
 
-function setPoster(){
+function setPoster() {
   html = `
   <article class="poster">
     <img class="poster-img" src="${currentPoster.imageURL}" alt="nothin' to see here">
