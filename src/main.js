@@ -1,7 +1,14 @@
 // query selector variables go here 👇
-// element = document.querySelector(selectors); - returns first element in document that matches the specified selector. If no matches are found, null is returned.
+// adds communications from javascript to the dom
+// var posterImage = document.querySelector(".poster-img");
+// var posterTitle = document.querySelector(".poster-title");
+// var posterQuote = document.querySelector(".poster-quote");
+
+console.log(posterImage, posterTitle, posterQuote)
 
 
+//returns first element in document that matches the specified selector. If no matches are found, null is returned.
+// There are no global variables aside from query selectors, currentPoster, images, titles, quotes, and savedPosters.
 
 // we've provided you with some data to work with 👇
 var images = [
