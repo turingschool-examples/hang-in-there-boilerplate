@@ -108,11 +108,11 @@ window.addEventListener("load", randomizeCover);
 
 // functions and event handlers go here 👇
 
-function randomizeCover() {
+function randomizePoster() {
   posterTitle.innerHTML = titles[getRandomIndex(titles)];
   posterImage.src = images[getRandomIndex(images)];
   posterQuote.innerHTML = quotes[getRandomIndex(quotes)];
-}
+};
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
