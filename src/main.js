@@ -126,13 +126,3 @@ posterQuote.innerText = quotes[randomQuoteIndex];
 
 var randomImageIndex = getRandomIndex(images);
 posterImage.src = images[randomImageIndex];
-
-
-
-
-
-
-
-
-
-// why won't you' let
