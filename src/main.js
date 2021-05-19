@@ -1,4 +1,7 @@
 // query selector variables go here 👇
+// element = document.querySelector(selectors); - returns first element in document that matches the specified selector. If no matches are found, null is returned.
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,10 +105,21 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+// EventListener.handleEvent() - takes input from a user and does something with it
 
 // functions and event handlers go here 👇
+
+// event.preventDefault() {
+//
+// }
+
+// addEventListener() - handlers used to verify user input and browser actions
+// look at which ones might be useful to us in this project
+
 // (we've provided one for you to get you started)!
+// declare a function to get a random index with a parameter array
 function getRandomIndex(array) {
+  // Math.floor makes sure it rounds down to nearest whole integer
+  // takes an argument of a random number which is equal to array.length which makes sure it's not returning a number that's outside the number of elements in array
   return Math.floor(Math.random() * array.length);
 }
-
