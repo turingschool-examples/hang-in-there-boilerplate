@@ -104,8 +104,26 @@ var currentPoster;
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
+function updateTitle() {
+  var title = document.querySelector(".poster-title");
+  title.innerText = titles[getRandomIndex(titles)];
+}
+
+function updateQuote() {
+  var quote = document.querySelector(".poster-quote");
+  quote.innerText = quotes[getRandomIndex(quotes)];
+}
+// declare function named updatePhoto
+function updateImage(){
+  var image = document.querySelector(".poster-img");
+  image.innerText = images[getRandomIndex(images)];
+}
+// first we need to grab title element, assign title element to variable title. We need to use a querySelctor to do this.
+// then we need to use getRandomIndex() to generate an getRandomIndex (pass in titles array as an argument)
+
+// title.innerText = titles[getRandomIndex(titles)]
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
