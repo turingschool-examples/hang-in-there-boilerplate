@@ -116,6 +116,8 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 
+// write functions to manipulate the elements
+
 // event.preventDefault() {
 //
 // }
