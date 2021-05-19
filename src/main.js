@@ -1,4 +1,7 @@
 // query selector variables go here 👇
+var posterTitle = document.querySelector('.poster-title').innerText;
+var posterImage = document.querySelector('.poster-img');
+var posterQuote = document.querySelector('.poster-quote').innerText;
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -103,9 +106,8 @@ var currentPoster;
 
 // event listeners go here 👇
 
-// functions and event handlers go here 👇
+// FUNCTIONS and EVENT HANDLERS go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
