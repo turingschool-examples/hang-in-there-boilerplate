@@ -99,13 +99,35 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var image = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
 
 // event listeners go here 👇
 
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+// currentPoster
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// var i = getRandomIndex(images);
+// var t = getRandomIndex(titles);
+// var q = getRandomIndex(quotes);
+//
+image.src = images[getRandomIndex(images)];
+title.innerText = titles[getRandomIndex(titles)];
+quote.innerText = quotes[getRandomIndex(quotes)];
+
+
+var randomPoster = document.querySelector('.show-random')
+randomPoster.addEventListener('click', getRandomPoster);
+
+function getRandomPoster() {
+  image.src = images[getRandomIndex(images)];
+  title.innerText = titles[getRandomIndex(titles)];
+  quote.innerText = quotes[getRandomIndex(quotes)];
+}
+
+
+// functions and event handlers go here 👇
+// (we've provided one for you to get you started)!
