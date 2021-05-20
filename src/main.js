@@ -1,8 +1,13 @@
 // query selector variables go here 👇
-var posterImage = document.querySelector('.poster')
+var mainPoster = docment.querySelector(.'main-poster')
+var poster = document.querySelector('.poster')
 var posterQuote = document.querySelector('.poster-quote')
 var posterTitle = document.querySelector('.poster-title')
-
+var posterImage = document.querySelector('.poster-img')
+var savePoster= document.querySelector('.save-poster')
+var showSavedPoster= document.querySelector('.show-saved')
+var showRandomPoster= document.querySelector('.show-random')
+var makeOwnPoster = document.querySelector('.show-form')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,6 +113,7 @@ var currentPoster;
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
