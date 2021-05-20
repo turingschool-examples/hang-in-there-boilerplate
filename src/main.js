@@ -151,6 +151,7 @@ function viewHome() {
   savePoster.classList.remove("hidden");
   showSaved.classList.remove("hidden");
   posterForm.classList.add("hidden");
+  savedPosterView.classList.add("hidden");
 
 };
 
