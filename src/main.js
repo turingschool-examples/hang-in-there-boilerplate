@@ -1,11 +1,11 @@
 // query selector variables go here 👇
 var selectImg = document.querySelector(".poster-img");
-
 var selectTitle = document.querySelector(".poster-title");
-
 var selectQuote = document.querySelector(".poster-quote");
-
 var randomPosterButton = document.querySelector(".show-random");
+var ownPosterButton= document.querySelector(".show-form");
+var mainPoster = document.querySelector(".main-poster");
+var posterForm = document.querySelector(".poster-form");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -111,6 +111,7 @@ var currentPoster;
 // event listeners go here 👇
 
 randomPosterButton.addEventListener('click', randomPoster);
+ownPosterButton.addEventListener('click', showOwnPosterForm)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -126,4 +127,9 @@ function randomPoster() {
   selectImg.src = images[getRandomIndex(images)];
   selectTitle.innerHTML = titles[getRandomIndex(titles)];
   selectQuote.innerHTML = quotes[getRandomIndex(quotes)];
+};
+
+function showOwnPosterForm() {
+    posterForm.classList.remove("hidden")
+    mainPoster.classList.add("hidden")
 };
