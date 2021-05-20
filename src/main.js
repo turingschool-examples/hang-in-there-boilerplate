@@ -1,17 +1,18 @@
 // query selector variables go here 👇
-var poster = document.querySelector('.poster');
-var mainPoster = document.querySelector('.main-poster');
-var posterImage = document.querySelector('.poster-img');
-var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querySelector('.poster-quote');
-var showRandomButton = document.querySelector('.show-random');
-var makeYourOwnButton = document.querySelector('.show-form');
-var savePoster = document.querySelector('.save-poster');
-var showSaved = document.querySelector('.show-saved');
-var posterForm = document.querySelector('.poster-form');
-var savedPosterView = document.querySelector('.saved-posters');
-var showMain = document.querySelector('.show-main');
-var backToMain = document.querySelector('.back-to-main');
+var poster = document.querySelector(".poster");
+var mainPoster = document.querySelector(".main-poster");
+var posterImage = document.querySelector(".poster-img");
+var posterTitle = document.querySelector(".poster-title");
+var posterQuote = document.querySelector(".poster-quote");
+var showRandomButton = document.querySelector(".show-random");
+var makeYourOwnButton = document.querySelector(".show-form");
+var savePoster = document.querySelector(".save-poster");
+var showSaved = document.querySelector(".show-saved");
+var posterForm = document.querySelector(".poster-form");
+var savedPosterView = document.querySelector(".saved-posters");
+var showMain = document.querySelector(".show-main");
+var backToMain = document.querySelector(".back-to-main");
+var makePoster = document.querySelector(".make-poster");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -120,6 +121,7 @@ makeYourOwnButton.addEventListener("click", viewForm);
 showSaved.addEventListener("click", viewSaved);
 showMain.addEventListener("click", viewHome);
 backToMain.addEventListener("click", viewHome);
+makePoster.addEventListener("click", createPoster);
 // functions and event handlers go here 👇
 
 function randomizePoster() {
@@ -164,4 +166,7 @@ function viewSaved() {
   savePoster.classList.add("hidden");
   showSaved.classList.add("hidden");
   savedPosterView.classList.remove("hidden");
+}
+function createPoster() {
+
 }
