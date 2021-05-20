@@ -107,6 +107,8 @@ var currentPoster;
 
 // event listeners go here 👇
 
+showRandomButton.addEventListener('click', updatePoster);
+
 // functions and event handlers go here 👇
 function updateTitle() {
   title.innerText = titles[getRandomIndex(titles)];
@@ -116,9 +118,14 @@ function updateQuote() {
   quote.innerText = quotes[getRandomIndex(quotes)];
 }
 
-function updateImage(){
+function updateImage() {
   image.setAttribute("src", images[getRandomIndex(images)]);
+}
 
+function updatePoster() {
+  updateTitle();
+  updateQuote();
+  updateImage();
 
 }
 
