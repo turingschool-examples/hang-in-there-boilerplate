@@ -7,15 +7,9 @@ var showForm = document.querySelector('.show-form')
 var form = document.querySelector('form')
 var posterForm = document.querySelector('.poster-form')
 var mainPoster = document.querySelector('.main-poster')
-// var popcorn = getRandomIndex(images);
-// posterImage.src = images[popcorn];
-// function createRandomPoster() {
-//   currentPoster = new Poster(getRandomImage(), getRandomTitle(), getRandomQuotes());
-//   posterImage.src = currentPoster.imageURL,
-//   posterTitle.innerText = currentPoster.title,
-//   posterQuote.innerText = currentPoster.quote
-// }
-// console.log(createRandomPoster()))
+var showMain = document.querySelector('.show-main')
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -120,7 +114,8 @@ var currentPoster;
 // event listeners go here 👇
 // window.onload = createRandomPoster()
 randoBttn.addEventListener("click",getRandomImage)
-showForm.addEventListener("click", showForm)
+showForm.addEventListener("click", displayForm)
+showMain.addEventListener('click', displayMain)
 
 
 // functions and event handlers go here 👇
@@ -129,14 +124,16 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function showForm() {
-  // posterForm.classList.remove("hidden")
-  // mainPoster.classList.add('hidden')
-  posterForm.element.hidden = false;
-  mainPoster.element.hidden = true;
+function displayForm() {
+  posterForm.classList.remove("hidden")
+  mainPoster.classList.add('hidden')
+
 }
 
-
+function displayMain() {
+  posterForm.classList.add("hidden")
+  mainPoster.classList.remove('hidden')
+}
 
 
 
