@@ -3,6 +3,19 @@ var posterImage = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
 var randoBttn = document.querySelector('.show-random')
+var showForm = document.querySelector('.show-form')
+var form = document.querySelector('form')
+var posterForm = document.querySelector('.poster-form')
+var mainPoster = document.querySelector('.main-poster')
+// var popcorn = getRandomIndex(images);
+// posterImage.src = images[popcorn];
+// function createRandomPoster() {
+//   currentPoster = new Poster(getRandomImage(), getRandomTitle(), getRandomQuotes());
+//   posterImage.src = currentPoster.imageURL,
+//   posterTitle.innerText = currentPoster.title,
+//   posterQuote.innerText = currentPoster.quote
+// }
+// console.log(createRandomPoster()))
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -107,24 +120,28 @@ var currentPoster;
 // event listeners go here 👇
 // window.onload = createRandomPoster()
 randoBttn.addEventListener("click",getRandomImage)
+showForm.addEventListener("click", showForm)
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function showForm() {
+  // posterForm.classList.remove("hidden")
+  // mainPoster.classList.add('hidden')
+  posterForm.element.hidden = false;
+  mainPoster.element.hidden = true;
+}
 
-// var popcorn = getRandomIndex(images);
-// posterImage.src = images[popcorn];
-// function createRandomPoster() {
-//   currentPoster = new Poster(getRandomImage(), getRandomTitle(), getRandomQuotes());
-//   posterImage.src = currentPoster.imageURL,
-//   posterTitle.innerText = currentPoster.title,
-//   posterQuote.innerText = currentPoster.quote
-// }
-// console.log(createRandomPoster())
-//
-//
+
+
+
+
+
+
 function getRandomImage() {
   posterImage.src = images[getRandomIndex(images)],
   posterTitle.innerText = titles[getRandomIndex(titles)],
@@ -145,3 +162,15 @@ function getRandomImage() {
 //
 //   return randomQuotes;
 // }
+
+
+
+// var popcorn = getRandomIndex(images);
+// posterImage.src = images[popcorn];
+// function createRandomPoster() {
+//   currentPoster = new Poster(getRandomImage(), getRandomTitle(), getRandomQuotes());
+//   posterImage.src = currentPoster.imageURL,
+//   posterTitle.innerText = currentPoster.title,
+//   posterQuote.innerText = currentPoster.quote
+// }
+// console.log(createRandomPoster())
