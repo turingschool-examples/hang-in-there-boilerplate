@@ -8,7 +8,12 @@ var savePoster= document.querySelector('.save-poster')
 var showSavedPoster= document.querySelector('.show-saved')
 var showRandomPoster= document.querySelector('.show-random')
 var makeOwnPoster = document.querySelector('.show-form')
-
+//poster-form hidden
+//show-main
+//saved-posters hidden
+//saved-posters grid
+//back-to-main
+//
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -114,7 +119,18 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 
+//When the page loads, we should see a poster with a randomly selected image, title, and quote
+
+//Every time the user clicks the Show Random Poster button, a new random poster is displayed
+//If user clicks Show Random Poster return random image, title, and quote
+
+function randomPoster() {
+  posterImage
+  posterTitle
+  posterQuote
+
+};
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
