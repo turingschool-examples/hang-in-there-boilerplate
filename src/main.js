@@ -145,4 +145,3 @@ function getRandomImage() {
 //
 //   return randomQuotes;
 // }
->>>>>>> 129ac20b6c6bd0208a557be97e4d57ef9a24e640
