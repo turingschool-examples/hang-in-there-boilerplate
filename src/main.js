@@ -127,6 +127,8 @@ function getRandomIndex(array) {
 
 randomImgBtn.addEventListener("click", function() {
   posterImage.src = images[getRandomIndex(images)];
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
 } )
 
 // functions and event handlers go here 👇
