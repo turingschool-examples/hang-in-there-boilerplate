@@ -106,7 +106,7 @@ var currentPoster;
 
 // event listeners go here 👇
 // window.onload = createRandomPoster()
-randoBttn.addEventListener("click", )
+randoBttn.addEventListener("click",getRandomImage)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
