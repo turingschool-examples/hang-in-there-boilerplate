@@ -2,11 +2,11 @@
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote");
 var image = document.querySelector(".poster-img");
-
+var showRandomPosterBtn = document.querySelector(".show-random")
 // event listeners go here 👇
 
-window.addEventListener('load', generatePoster);
-
+window.addEventListener("load", generatePoster);
+showRandomPosterBtn.addEventListener("click", generatePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
