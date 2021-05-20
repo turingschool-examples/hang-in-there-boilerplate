@@ -1,5 +1,7 @@
 // query selector variables go here 👇
-
+// var posterImage = document.querySelector()
+// var posterTitle = document.querySelector()
+// var posterQuote = document.querySelector()
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -102,10 +104,29 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+// document.button.show-random.addEventListener("click",)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+
+function getRandomImage() {
+  var randomImage = images[getRandomIndex(images)];
+
+  return randomImage;
+}
+
+
+function getRandomTitle() {
+  var randomTitle = titles[getRandomTitle(tiltes)];
+
+  return randomTitle
+}
+
+function getRandomQuotes() {
+  var randomQuotes = quotes[getRandomQuotes(quotes)];
+
+  return randomQuotes
+}
