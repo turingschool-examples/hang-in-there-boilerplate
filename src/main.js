@@ -1,18 +1,21 @@
 // query selector variables go here 👇
 
-var title = document.querySelector('.poster-title');
-console.log(title);
+//var title = document.querySelector('.poster-title');
+var newRandomPosterButtonText = document.querySelector(".show-random");
 
-title.innerText = "determination";
-
-var image = document.querySelector('img');
-
-image.src = "./assets/bees.jpg"
-
+// console.log(title);
 
 // var newPosterTitle = {
-//   title: getRandomTitleIndex(),
+//   title: getRandomTitleIndex(titles),
 // }
+
+// title.innerText = newPosterTitle.title;
+
+
+// var image = document.querySelector('img');
+//
+// image.src = "./assets/bees.jpg"
+
 
 
 
@@ -115,20 +118,26 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
 
+
+
+addEventListener("click", function() {
+  newRandomPosterButtonText.innerText = "Hello World";
+});
+
 // functions and event handlers go here 👇
+
 // (we've provided one for you to get you started)!
 // function getRandomIndex() {
 //   return Math.floor(Math.random() * images.length);
 // }
 
 
-// function getRandomTitleIndex() {
-//   Math.floor(Math.random() * titles.length);
-//   console.log(getRandomTitleIndex);
+// function getRandomTitleIndex(titles) {
+//   return titles[Math.floor(Math.random() * images.length)];
 // }
-// getRandomTitleIndex()
