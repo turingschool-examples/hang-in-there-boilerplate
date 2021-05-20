@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-var mainPoster = docment.querySelector(.'main-poster')
+var mainPoster = document.querySelector(.'main-poster')
 var poster = document.querySelector('.poster')
 var posterQuote = document.querySelector('.poster-quote')
 var posterTitle = document.querySelector('.poster-title')
@@ -116,6 +116,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+button.addEventListener ('click', makeRandomPoster)
 
 // functions and event handlers go here 👇
 
@@ -124,10 +125,10 @@ var currentPoster;
 //Every time the user clicks the Show Random Poster button, a new random poster is displayed
 //If user clicks Show Random Poster return random image, title, and quote
 
-function randomPoster() {
-  posterImage
-  posterTitle
-  posterQuote
+function makeRandomPoster() {
+  posterImage.src = getRandomIndex(images[])
+  posterTitle.innerText = getRandomIndex(titles[])
+  posterQuote.innerText = getRandomIndex(quotes[])
 
 };
 // (we've provided one for you to get you started)!
