@@ -116,7 +116,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-button.addEventListener ('click', makeRandomPoster)
+button.addEventListener ('click', showRandomPoster)
 
 // functions and event handlers go here 👇
 
@@ -124,12 +124,12 @@ button.addEventListener ('click', makeRandomPoster)
 
 //Every time the user clicks the Show Random Poster button, a new random poster is displayed
 //If user clicks Show Random Poster return random image, title, and quote
-
-function makeRandomPoster() {
+document.addEventListener("DOMContentLoaded", showRandomPoster) {
+function showRandomPoster() {
   posterImage.src = getRandomIndex(images[])
   posterTitle.innerText = getRandomIndex(titles[])
   posterQuote.innerText = getRandomIndex(quotes[])
-
+  }
 };
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
