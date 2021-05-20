@@ -1,5 +1,22 @@
 // query selector variables go here 👇
 
+var title = document.querySelector('.poster-title');
+console.log(title);
+
+title.innerText = "determination";
+
+var image = document.querySelector('img');
+
+image.src = "./assets/bees.jpg"
+
+
+// var newPosterTitle = {
+//   title: getRandomTitleIndex(),
+// }
+
+
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -105,7 +122,13 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
+// function getRandomIndex() {
+//   return Math.floor(Math.random() * images.length);
+// }
 
+
+// function getRandomTitleIndex() {
+//   Math.floor(Math.random() * titles.length);
+//   console.log(getRandomTitleIndex);
+// }
+// getRandomTitleIndex()
