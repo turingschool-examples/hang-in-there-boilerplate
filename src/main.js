@@ -9,6 +9,7 @@ var formButton = document.querySelector('.show-form');
 var showMain = document.querySelector('.show-main');
 var showSavedButton = document.querySelector('.show-saved');
 var savedPostersPage = document.querySelector('.saved-posters');
+var backFromSavedButton = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -112,16 +113,15 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
 window.addEventListener('load', randomizePoster);
 randomButton.addEventListener('click', randomizePoster);
 formButton.addEventListener('click', displayForm);
 showMain.addEventListener('click', displayMain);
 showSavedButton.addEventListener('click', displaySaved);
+backFromSavedButton.addEventListener('click', backToMain);
 
 
 // functions and event handlers go here 👇
-
 function randomizePoster() {
     posterTitle.innerText = titles[getRandomIndex(titles)];
     posterQuote.innerText = quotes[getRandomIndex(quotes)];
@@ -147,14 +147,10 @@ function displaySaved() {
   mainPoster.classList.add('hidden');
 }
 
-
-// Upon clicking 'Make Your Own Poster'
-   //need an event listener for the button
-   //need a querySelector variable
-  // Current poster view should be hidden
-  // Make-Your-Own-Poster form should display
-  //
-
+function backToMain() {
+  mainPoster.classList.remove('hidden');
+  backFromSavedButton.classList.add('hidden');
+}
 
 // var randomTitleIndex = getRandomIndex(titles); //generates a random
 // posterTitle.innerText = titles[randomTitleIndex]; //reassign
