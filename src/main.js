@@ -1,6 +1,10 @@
 // query selector variables go here 👇
 
 // we've provided you with some data to work with 👇
+
+
+
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -103,31 +107,29 @@ var image = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 
-// event listeners go here 👇
+var image = document.querySelector('.poster-img');
+var quote = document.querySelector('.poster-quote');
+var title = document.querySelector('.poster-title');
+var randomPoster = document.querySelector('.show-random')
+
+
+
+// // event listeners go here 👇
 
 // currentPoster
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// var i = getRandomIndex(images);
-// var t = getRandomIndex(titles);
-// var q = getRandomIndex(quotes);
-//
-image.src = images[getRandomIndex(images)];
 title.innerText = titles[getRandomIndex(titles)];
 quote.innerText = quotes[getRandomIndex(quotes)];
+image.src = images[getRandomIndex(images)];
 
+randomPoster.addEventListener('click', changeButton )
 
-var randomPoster = document.querySelector('.show-random')
-randomPoster.addEventListener('click', getRandomPoster);
-
-function getRandomPoster() {
-  image.src = images[getRandomIndex(images)];
-  title.innerText = titles[getRandomIndex(titles)];
-  quote.innerText = quotes[getRandomIndex(quotes)];
+function changeButton(){
+    title.innerText = titles[getRandomIndex(titles)];
+    quote.innerText = quotes[getRandomIndex(quotes)];
+    image.src = images[getRandomIndex(images)];
 }
-
-
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+// this can be refractored - considering having it stored in an array and having a for loop....
