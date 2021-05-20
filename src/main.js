@@ -1,7 +1,14 @@
 // query selector variables go here 👇
 
 //var title = document.querySelector('.poster-title');
-var newRandomPosterButtonText = document.querySelector(".show-random");
+// var newRandomPosterButtonText = document.querySelector(".show-random");
+var image = document.querySelector('img');
+var title = document.querySelector('.poster-title');
+// var quote = document.querySelector('.poster-quote');
+
+// console.log(image);
+// console.log(title);
+// console.log(quote);
 
 // console.log(title);
 
@@ -125,12 +132,19 @@ var currentPoster;
 // event listeners go here 👇
 
 
-
-addEventListener("click", function() {
-  newRandomPosterButtonText.innerText = "Hello World";
-});
+window.addEventListener('load', changeImg);
+window.addEventListener('load', changeTitle);
 
 // functions and event handlers go here 👇
+function changeImg() {
+  image.src = images[getRandomTitleIndex(images)];
+}
+
+function changeTitle() {
+  title.innerText = titles[getRandomTitleIndex(titles)];// we will use the number out from the random number function to
+  // call on that number index in the titles array
+}
+
 
 // (we've provided one for you to get you started)!
 // function getRandomIndex() {
@@ -138,6 +152,7 @@ addEventListener("click", function() {
 // }
 
 
-// function getRandomTitleIndex(titles) {
-//   return titles[Math.floor(Math.random() * images.length)];
-// }
+function getRandomTitleIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+console.log(getRandomTitleIndex())
