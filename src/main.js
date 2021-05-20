@@ -1,7 +1,8 @@
 // query selector variables go here 👇
-// var posterImage = document.querySelector()
-// var posterTitle = document.querySelector()
-// var posterQuote = document.querySelector()
+var posterImage = document.querySelector('.poster-img')
+var posterTitle = document.querySelector('.poster-title')
+var posterQuote = document.querySelector('.poster-quote')
+var randoBttn = document.querySelector('.show-random')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -104,29 +105,42 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-// document.button.show-random.addEventListener("click",)
+// window.onload = createRandomPoster()
+randoBttn.addEventListener("click", )
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
+// var popcorn = getRandomIndex(images);
+// posterImage.src = images[popcorn];
+// function createRandomPoster() {
+//   currentPoster = new Poster(getRandomImage(), getRandomTitle(), getRandomQuotes());
+//   posterImage.src = currentPoster.imageURL,
+//   posterTitle.innerText = currentPoster.title,
+//   posterQuote.innerText = currentPoster.quote
+// }
+// console.log(createRandomPoster())
+//
+//
 function getRandomImage() {
-  var randomImage = images[getRandomIndex(images)];
-
-  return randomImage;
+  posterImage.src = images[getRandomIndex(images)],
+  posterTitle.innerText = titles[getRandomIndex(titles)],
+  posterQuote.innerText = quotes[getRandomIndex(quotes)]
 }
+  // return randomImage;
 
-
-function getRandomTitle() {
-  var randomTitle = titles[getRandomTitle(tiltes)];
-
-  return randomTitle
-}
-
-function getRandomQuotes() {
-  var randomQuotes = quotes[getRandomQuotes(quotes)];
-
-  return randomQuotes
-}
+//
+//
+// function getRandomTitle() {
+//   var randomTitle = titles[getRandomTitle(titles)];
+//
+//   return randomTitle;
+// }
+//
+// function getRandomQuotes() {
+//   var randomQuotes = quotes[getRandomQuotes(quotes)];
+//
+//   return randomQuotes;
+// }
