@@ -119,11 +119,14 @@ var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 var randomImgBtn = document.querySelector(".show-random");
 
-
-console.log(posterImage, posterTitle, posterQuote)
+function getRandomIndex(array) {
+  // Math.floor makes sure it rounds down to nearest whole integer
+  // takes an argument of a random number which is equal to array.length which makes sure it's not returning a number that's outside the number of elements in array
+  return Math.floor(Math.random() * array.length);
+}
 
 randomImgBtn.addEventListener("click", function() {
-  posterImage.src = "./assets/bees.jpg";
+  posterImage.src = images[getRandomIndex(images)];
 } )
 
 // functions and event handlers go here 👇
@@ -139,8 +142,7 @@ randomImgBtn.addEventListener("click", function() {
 
 // (we've provided one for you to get you started)!
 // declare a function to get a random index with a parameter array
-function getRandomIndex(array) {
+//function getRandomIndex(array) {
   // Math.floor makes sure it rounds down to nearest whole integer
   // takes an argument of a random number which is equal to array.length which makes sure it's not returning a number that's outside the number of elements in array
-  return Math.floor(Math.random() * array.length);
-}
+//  return Math.floor(Math.random() * array.length);
