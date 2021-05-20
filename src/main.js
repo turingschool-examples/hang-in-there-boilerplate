@@ -13,6 +13,9 @@ var savedPosterView = document.querySelector(".saved-posters");
 var showMain = document.querySelector(".show-main");
 var backToMain = document.querySelector(".back-to-main");
 var makePoster = document.querySelector(".make-poster");
+var posterImageInput = document.querySelector("poster-image-url");
+var posterTitleInput = document.querySelector("poster-title");
+var posterQuoteInput = document.querySelector("poster-quote");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -168,5 +171,7 @@ function viewSaved() {
   savedPosterView.classList.remove("hidden");
 }
 function createPoster() {
-
+  images.push(posterImageInput.innerHTML);
+  console.log(images);
+  
 }
