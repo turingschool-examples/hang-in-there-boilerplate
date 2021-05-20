@@ -1,10 +1,6 @@
 // query selector variables go here 👇
 // adds communications from javascript to the dom
-// var posterImage = document.querySelector(".poster-img");
-// var posterTitle = document.querySelector(".poster-title");
-// var posterQuote = document.querySelector(".poster-quote");
 
-console.log(posterImage, posterTitle, posterQuote)
 
 // Pseudocode: What do we want this page to do?
 // 1. Use event listener on "Show Another Random Poster" button, when clicked,
@@ -118,6 +114,17 @@ var currentPoster;
 
 // event listeners go here 👇
 // EventListener.handleEvent() - takes input from a user and does something with it
+var posterImage = document.querySelector(".poster-img");
+var posterTitle = document.querySelector(".poster-title");
+var posterQuote = document.querySelector(".poster-quote");
+var randomImgBtn = document.querySelector(".show-random");
+
+
+console.log(posterImage, posterTitle, posterQuote)
+
+randomImgBtn.addEventListener("click", function() {
+  posterImage.src = "./assets/fox.jpg";
+} )
 
 // functions and event handlers go here 👇
 
