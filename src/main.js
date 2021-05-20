@@ -6,6 +6,11 @@
 
 console.log(posterImage, posterTitle, posterQuote)
 
+// Pseudocode: What do we want this page to do?
+// 1. Use event listener on "Show Another Random Poster" button, when clicked,
+// this will change the image to a random one.
+// 2. Quote, Title, and Image will change when this button is clicked as well.
+
 
 //returns first element in document that matches the specified selector. If no matches are found, null is returned.
 // There are no global variables aside from query selectors, currentPoster, images, titles, quotes, and savedPosters.
