@@ -123,7 +123,7 @@ var randomImgBtn = document.querySelector(".show-random");
 console.log(posterImage, posterTitle, posterQuote)
 
 randomImgBtn.addEventListener("click", function() {
-  posterImage.src = "./assets/fox.jpg";
+  posterImage.src = "./assets/bees.jpg";
 } )
 
 // functions and event handlers go here 👇
