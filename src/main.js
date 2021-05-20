@@ -135,8 +135,6 @@ function updatePoster() {
 
 }
 
-// image.innerText = images[getRandomIndex(images)];
-// title.innerText = titles[getRandomIndex(titles)]
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
