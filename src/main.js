@@ -1,6 +1,10 @@
 // query selector variables go here 👇
 
 // we've provided you with some data to work with 👇
+
+
+
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -101,7 +105,14 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
+var image = document.querySelector('.poster-img');
+var quote = document.querySelector('.poster-quote');
+var title = document.querySelector('.poster-title');
+var randomPoster = document.querySelector('.show-random')
+
+
+
+// // event listeners go here 👇
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -109,3 +120,15 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+title.innerText = titles[getRandomIndex(titles)];
+quote.innerText = quotes[getRandomIndex(quotes)];
+image.src = images[getRandomIndex(images)];
+
+randomPoster.addEventListener('click', changeButton )
+
+function changeButton(){
+    title.innerText = titles[getRandomIndex(titles)];
+    quote.innerText = quotes[getRandomIndex(quotes)];
+    image.src = images[getRandomIndex(images)];
+}
+// this can be refractored - considering having it stored in an array and having a for loop....
