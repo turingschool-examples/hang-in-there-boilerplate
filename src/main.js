@@ -1,4 +1,11 @@
 // query selector variables go here 👇
+var image = document.querySelector('img');
+
+var newPoster = {
+  newImg : images[getRandomImgIndex()]
+}
+
+images.src = newPoster.newImg
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -105,7 +112,25 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
 
+
+function getRandomImgIndex() {
+  return Math.floor(Math.random() * images.length);
+  // console.log(Math.floor(Math.random() * images.length));
+}
+getRandomImgIndex();
+
+function getRandomTitle() {
+  // return Math.floor(Math.random() * titles.length);
+    console.log(Math.floor(Math.random() * titles.length));
+}
+getRandomTitle();
+
+function getRandomQuote() {
+  // return Math.floor(Math.random() * quotes.length);
+    console.log(Math.floor(Math.random() * quotes.length));
+}
+getRandomQuote();
+
+var randomImgValue = getRandomImg();
+console.log(randomImgValue);
