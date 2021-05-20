@@ -1,13 +1,13 @@
 // query selector variables go here 👇
-var mainPoster = document.querySelector(.'main-poster')
-var poster = document.querySelector('.poster')
-var posterQuote = document.querySelector('.poster-quote')
-var posterTitle = document.querySelector('.poster-title')
-var posterImage = document.querySelector('.poster-img')
-var savePoster= document.querySelector('.save-poster')
-var showSavedPoster= document.querySelector('.show-saved')
-var showRandomPoster= document.querySelector('.show-random')
-var makeOwnPoster = document.querySelector('.show-form')
+// var mainPoster = document.querySelector('.main-poster')
+// var poster = document.querySelector('.poster')
+var posterQuote = document.querySelector('.poster-quote');
+var posterTitle = document.querySelector('.poster-title');
+var posterImage = document.querySelector('.poster-img');
+// var savePoster= document.querySelector('.save-poster')
+// var showSavedPoster= document.querySelector('.show-saved')
+var anotherRandomPoster= document.querySelector('.show-random')
+// var makeOwnPoster = document.querySelector('.show-form')
 //poster-form hidden
 //show-main
 //saved-posters hidden
@@ -116,20 +116,20 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-button.addEventListener ('click', showRandomPoster)
-
+anotherRandomPoster.addEventListener('click', showRandomPoster)
+window.addEventListener("load", showRandomPoster);
 // functions and event handlers go here 👇
 
 //When the page loads, we should see a poster with a randomly selected image, title, and quote
 
 //Every time the user clicks the Show Random Poster button, a new random poster is displayed
 //If user clicks Show Random Poster return random image, title, and quote
-document.addEventListener("DOMContentLoaded", showRandomPoster) {
+
 function showRandomPoster() {
-  posterImage.src = getRandomIndex(images[])
-  posterTitle.innerText = getRandomIndex(titles[])
-  posterQuote.innerText = getRandomIndex(quotes[])
-  }
+  console.log(images)
+  posterImage.src = images[getRandomIndex(images)]
+  posterTitle.innerText = titles[getRandomIndex(titles)]
+  posterQuote.innerText = quotes[getRandomIndex(quotes)]
 };
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
