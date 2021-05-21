@@ -1,6 +1,3 @@
-// query selector variables go here 👇
-
-
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -103,14 +100,14 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-
+// query selector variables go here 👇
 var image = document.querySelector('img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
+
 // event listeners go here 👇
 window.addEventListener('load', makeNewRandomPosterOnLoad);
-// window.addEventListener('load', changeTitle);
-// window.addEventListener('load', changeQuote);
+
 
 // functions and event handlers go here 👇
 function makeNewRandomPosterOnLoad(){
@@ -132,38 +129,3 @@ function changeQuote() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-// // event listeners go here 👇
-// window.addEventListener("load", makeNewPoster);
-// showRandomButton.addEventListener('click', makeNewPoster);
-//
-// // functions and event handlers go here 👇
-// // (we've provided one for you to get you started)!
-// function getRandomIndex(array) {
-//   return Math.floor(Math.random() * array.length);
-// }
-//
-// // function Random (){
-// //   var imageRandom = titles[getRandomIndex(titles)];
-// // }
-// //
-// // function getRandomImgIndex() {
-// //   return Math.floor(Math.random() * images.length);
-// //   // console.log(Math.floor(Math.random() * images.length));
-// // }
-// // getRandomImgIndex();
-// //
-// // function getRandomTitle() {
-// //   // return Math.floor(Math.random() * titles.length);
-// //     console.log(Math.floor(Math.random() * titles.length));
-// // }
-// // getRandomTitle();
-// //
-// // function getRandomQuote() {
-// //   // return Math.floor(Math.random() * quotes.length);
-// //     console.log(Math.floor(Math.random() * quotes.length));
-// // }
-// // getRandomQuote();
-// //
-// // var randomImgValue = getRandomImg();
-// // console.log(randomImgValue);
