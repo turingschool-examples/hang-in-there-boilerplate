@@ -108,17 +108,22 @@ var image = document.querySelector('img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 // event listeners go here 👇
-window.addEventListener('load', changeImg);
-window.addEventListener('load', changeTitle);
-window.addEventListener('load', changeQuote);
-// button.addEventListener('click', )
+window.addEventListener('load', makeNewRandomPosterOnLoad);
+// window.addEventListener('load', changeTitle);
+// window.addEventListener('load', changeQuote);
+
 // functions and event handlers go here 👇
+function makeNewRandomPosterOnLoad(){
+  changeImg();
+  changeTitle();
+  changeQuote();
+}
+
 function changeImg() {
   image.src = images[getRandomIndex(images)];
 }
 function changeTitle() {
-  title.innerText = titles[getRandomIndex(titles)];// we will use the number out from the random number function to
-  // call on that number index in the titles array
+  title.innerText = titles[getRandomIndex(titles)];
 }
 function changeQuote() {
   quote.innerText = quotes[getRandomIndex(quotes)];
