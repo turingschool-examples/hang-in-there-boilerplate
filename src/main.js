@@ -8,6 +8,9 @@ var form = document.querySelector('form')
 var posterForm = document.querySelector('.poster-form')
 var mainPoster = document.querySelector('.main-poster')
 var showMain = document.querySelector('.show-main')
+var viewSavedPosters = document.querySelector('.saved-posters')
+var showSavedPosters = document.querySelector('.show-saved')
+var backBttn = document.querySelector('.back-to-main')
 
 
 // we've provided you with some data to work with 👇
@@ -116,6 +119,9 @@ var currentPoster;
 randoBttn.addEventListener("click",getRandomImage)
 showForm.addEventListener("click", displayForm)
 showMain.addEventListener('click', displayMain)
+showSavedPosters.addEventListener('click', displaySavedPosters)
+//savePoster.addEventListener('click', )
+backBttn.addEventListener('click', goBack)
 
 
 // functions and event handlers go here 👇
@@ -127,7 +133,6 @@ function getRandomIndex(array) {
 function displayForm() {
   posterForm.classList.remove("hidden")
   mainPoster.classList.add('hidden')
-
 }
 
 function displayMain() {
@@ -135,6 +140,20 @@ function displayMain() {
   mainPoster.classList.remove('hidden')
 }
 
+function displaySavedPosters() {
+  viewSavedPosters.classList.remove("hidden")
+  mainPoster.classList.add('hidden')
+}
+
+function goBack() {
+  mainPoster.classList.remove('hidden')
+  backBttn.classList.add('hidden')
+}
+
+// function saveMy() {
+//   posterForm.classList.remove("hidden")
+//   mainPoster.classList.add('hidden')
+// }
 
 
 
