@@ -1,15 +1,15 @@
 // query selector variables go here 👇
-// var mainPoster = document.querySelector('.main-poster')
-// var poster = document.querySelector('.poster')
+var mainPoster = document.querySelector('.main-poster')
+var poster = document.querySelector('.poster')
 var posterQuote = document.querySelector('.poster-quote');
 var posterTitle = document.querySelector('.poster-title');
 var posterImage = document.querySelector('.poster-img');
-// var savePoster= document.querySelector('.save-poster')
-// var showSavedPoster= document.querySelector('.show-saved')
+var savePoster= document.querySelector('.save-poster')
+var showSavedPoster= document.querySelector('.show-saved')
 var anotherRandomPoster= document.querySelector('.show-random')
-// var makeOwnPoster = document.querySelector('.show-form')
-//poster-form hidden
-//show-main
+var makeOwnPoster = document.querySelector('.show-form')
+var posterForm = document.querySelector('.poster-form')
+var takeMeBack= document.querySelector('.show-main')
 //saved-posters hidden
 //saved-posters grid
 //back-to-main
@@ -116,22 +116,37 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-anotherRandomPoster.addEventListener('click', showRandomPoster)
-window.addEventListener("load", showRandomPoster);
+
+anotherRandomPoster.addEventListener('click', showRandomPoster);
+window.addEventListener('load', showRandomPoster);
+makeOwnPoster.addEventListener('click', createMotivationalPoster);
+showSavedPoster.addEventListener("click", viewSaved);
+takeMeBack.addEventListener("click", mainPoster);
 // functions and event handlers go here 👇
 
-//When the page loads, we should see a poster with a randomly selected image, title, and quote
-
-//Every time the user clicks the Show Random Poster button, a new random poster is displayed
-//If user clicks Show Random Poster return random image, title, and quote
 
 function showRandomPoster() {
-  console.log(images)
-  posterImage.src = images[getRandomIndex(images)]
-  posterTitle.innerText = titles[getRandomIndex(titles)]
-  posterQuote.innerText = quotes[getRandomIndex(quotes)]
+  posterImage.src = images[getRandomIndex(images)];
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
 };
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+};
+
+function createMotivationalPoster() {
+  mainPoster.classList.add('hidden');
+  poster.classList.add('hidden');
+  anotherRandomPoster.classList.add('hidden');
+  makeOwnPoster.classList.add('hidden');
+  savePoster.classList.add('hidden');
+  showSavedPoster.classList.add('hidden');
+  posterForm.classList.remove('hidden');
+// //When a user clicks the “Make Your Own Poster” button, we should see the form, and the main poster should be hidden
+// // When a user clicks the “View Saved Posters” button, we should see the saved posters area, and the main poster should be hidden
+// // When a user clicks the “Nevermind, take me back!” or “Back to Main” buttons, we should only see the main poster section
+// // In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
+// //
+//
 };
