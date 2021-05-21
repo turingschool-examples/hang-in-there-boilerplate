@@ -104,17 +104,57 @@ var quotes = [
 ];
 var savedPosters = [];
 var image = document.querySelector('.poster-img');
-var title = document.querySelector('.poster-title');
-var quote = document.querySelector('.poster-quote');
-
-var image = document.querySelector('.poster-img');
 var quote = document.querySelector('.poster-quote');
 var title = document.querySelector('.poster-title');
-var randomPoster = document.querySelector('.show-random')
-
-
-
+var randomPoster = document.querySelector('.show-random');
+var posterForm = document.querySelector('.poster-form');
+var posterFormButton = document.querySelector('.show-form');
+var mainPoster = document.querySelector('.main-poster');
+var removeFormButton = document.querySelector('.show-main');
+var savedPosterPage = document.querySelector('.saved-posters');
+var savedPosterButton = document.querySelector('.show-saved');
+// var fromSavedButton = document.querySelector('.show-main')
 // // event listeners go here 👇
+
+function showForm() {
+  if (posterForm.classList.contains('hidden')) {
+    posterForm.classList.remove('hidden');
+    mainPoster.classList.add('hidden');
+  }
+}
+// refactor possible
+function backToMain() {
+  if (mainPoster.classList.contains('hidden')) {
+      mainPoster.classList.remove('hidden');
+      posterForm.classList.add('hidden');
+      changeButton();
+    }
+  }
+
+
+function showSaved() {
+  if (savedPosterPage.classList.contains('hidden')) {
+    savedPosterPage.classList.remove('hidden');
+    mainPoster.classList.add('hidden');
+  }
+}
+
+// function backToMainTwo() {
+//   if (mainPoster.classList.contains('hidden')) {
+//     mainPoster.classList.remove('hidden');
+//     savedPosterPage.classList.add('hidden');
+//     changeButton();
+//   }
+// }
+
+savedPosterButton.addEventListener('click', showSaved);
+removeFormButton.addEventListener('click', backToMain);
+posterFormButton.addEventListener('click', showForm);
+// fromSavedButton.addEventListener('click', backToMain);
+
+
+
+
 
 // currentPoster
 function getRandomIndex(array) {
@@ -133,3 +173,16 @@ function changeButton(){
     image.src = images[getRandomIndex(images)];
 }
 // this can be refractored - considering having it stored in an array and having a for loop....
+// function backToMain() {
+//   if (mainPoster.classList.contains('hidden')) {
+//     if (!mainPoster.classList.contains('hidden')) {
+//       mainPoster.classList.remove('hidden');
+//       posterForm.classList.add('hidden');
+//       changeButton();
+//     } else {
+//       savedPosterPage.classList.remove('hidden');
+//       mainPoster.classList.add('hidden');
+//       changeButton();
+//     }
+//   }
+// }
