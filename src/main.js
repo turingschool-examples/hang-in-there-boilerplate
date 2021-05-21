@@ -59,7 +59,7 @@ var titles = [
   "try",
   "conviction",
   "accomplishment",
-  "Depression",
+  "achievement",
   "ambition",
   "clarity",
   "challenge",
@@ -130,7 +130,6 @@ var currentPoster;
 var image = document.querySelector('img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
-var newRandomPosterButton = document.querySelector('.show-random');
 
 // event listeners go here 👇
 
