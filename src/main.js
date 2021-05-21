@@ -1,5 +1,30 @@
 // query selector variables go here 👇
 
+//var title = document.querySelector('.poster-title');
+// var newRandomPosterButtonText = document.querySelector(".show-random");
+
+
+// console.log(image);
+// console.log(title);
+// console.log(quote);
+
+// console.log(title);
+
+// var newPosterTitle = {
+//   title: getRandomTitleIndex(titles),
+// }
+
+// title.innerText = newPosterTitle.title;
+
+
+// var image = document.querySelector('img');
+//
+// image.src = "./assets/bees.jpg"
+
+
+
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -98,14 +123,40 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 
+var image = document.querySelector('img');
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
+
 // event listeners go here 👇
 
+
+window.addEventListener('load', changeImg);
+window.addEventListener('load', changeTitle);
+
+
+button.addEventListener('click', )
+
 // functions and event handlers go here 👇
+function changeImg() {
+  image.src = images[getRandomIndex(images)];
+}
+
+function changeTitle() {
+  title.innerText = titles[getRandomIndex(titles)];// we will use the number out from the random number function to
+  // call on that number index in the titles array
+}
+
+
 // (we've provided one for you to get you started)!
+// function getRandomIndex() {
+//   return Math.floor(Math.random() * images.length);
+// }
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
