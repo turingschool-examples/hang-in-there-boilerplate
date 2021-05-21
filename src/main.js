@@ -103,12 +103,42 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = [image, quote, title];
 
 var image = document.querySelector('.poster-img');
 var quote = document.querySelector('.poster-quote');
 var title = document.querySelector('.poster-title');
-var randomPoster = document.querySelector('.show-random')
+var randomPoster = document.querySelector('.show-random');
+var showFormButton = document.querySelector('.show-form');
+var posterForm = document.querySelector('.poster-form');
+var mainPoster = document.querySelector('.main-poster');
+var removeFormButton = document.querySelector('.show-main')
+
+console.log('mainPoster', mainPoster)
+ console.log('posterForm', posterForm);
+// console.log('title', title);
+
+
+function showForm() {
+if (posterForm.classList.contains('hidden')){
+  posterForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+}
+  // } else { posterForm.classList.add('hidden');
+  //         mainPoster.classList.remove('hidden');}
+  }
+
+function backToMain() {
+  if (!posterForm.classList.contains('hidden')) {
+    mainPoster.classList.remove('hidden');
+    posterForm.classList.add('hidden');
+     changeButton();
+  }
+}
+
+showFormButton.addEventListener('click', showForm);
+removeFormButton.addEventListener('click', backToMain) ;
+
 
 
 
@@ -131,4 +161,6 @@ function changeButton(){
     quote.innerText = quotes[getRandomIndex(quotes)];
     image.src = images[getRandomIndex(images)];
 }
+
+// posterForm.section = posterForm.classList.remove('.hidden');
 // this can be refractored - considering having it stored in an array and having a for loop....
