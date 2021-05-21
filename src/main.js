@@ -1,11 +1,6 @@
 // query selector variables go here 👇
-var image = document.querySelector('img');
 
-var newPoster = {
-  newImg : images[getRandomImgIndex()]
-}
 
-images.src = newPoster.newImg
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,29 +103,62 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+
+var image = document.querySelector('img');
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
 // event listeners go here 👇
-
+window.addEventListener('load', changeImg);
+window.addEventListener('load', changeTitle);
+window.addEventListener('load', changeQuote);
+// button.addEventListener('click', )
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
-
-
-function getRandomImgIndex() {
-  return Math.floor(Math.random() * images.length);
-  // console.log(Math.floor(Math.random() * images.length));
+function changeImg() {
+  image.src = images[getRandomIndex(images)];
 }
-getRandomImgIndex();
-
-function getRandomTitle() {
-  // return Math.floor(Math.random() * titles.length);
-    console.log(Math.floor(Math.random() * titles.length));
+function changeTitle() {
+  title.innerText = titles[getRandomIndex(titles)];// we will use the number out from the random number function to
+  // call on that number index in the titles array
 }
-getRandomTitle();
-
-function getRandomQuote() {
-  // return Math.floor(Math.random() * quotes.length);
-    console.log(Math.floor(Math.random() * quotes.length));
+function changeQuote() {
+  quote.innerText = quotes[getRandomIndex(quotes)];
 }
-getRandomQuote();
 
-var randomImgValue = getRandomImg();
-console.log(randomImgValue);
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+// // event listeners go here 👇
+// window.addEventListener("load", makeNewPoster);
+// showRandomButton.addEventListener('click', makeNewPoster);
+//
+// // functions and event handlers go here 👇
+// // (we've provided one for you to get you started)!
+// function getRandomIndex(array) {
+//   return Math.floor(Math.random() * array.length);
+// }
+//
+// // function Random (){
+// //   var imageRandom = titles[getRandomIndex(titles)];
+// // }
+// //
+// // function getRandomImgIndex() {
+// //   return Math.floor(Math.random() * images.length);
+// //   // console.log(Math.floor(Math.random() * images.length));
+// // }
+// // getRandomImgIndex();
+// //
+// // function getRandomTitle() {
+// //   // return Math.floor(Math.random() * titles.length);
+// //     console.log(Math.floor(Math.random() * titles.length));
+// // }
+// // getRandomTitle();
+// //
+// // function getRandomQuote() {
+// //   // return Math.floor(Math.random() * quotes.length);
+// //     console.log(Math.floor(Math.random() * quotes.length));
+// // }
+// // getRandomQuote();
+// //
+// // var randomImgValue = getRandomImg();
+// // console.log(randomImgValue);
