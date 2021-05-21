@@ -7,6 +7,9 @@ var ownPosterButton = document.querySelector(".show-form");
 var mainPoster = document.querySelector(".main-poster");
 var posterForm = document.querySelector(".poster-form");
 var viewSavedPosterButton = document.querySelector(".show-saved");
+var savedPosterPage = document.querySelector(".saved-posters");
+var nevermindButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -106,6 +109,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 
@@ -113,7 +117,9 @@ var currentPoster;
 
 randomPosterButton.addEventListener('click', getRandomPoster);
 ownPosterButton.addEventListener('click', showOwnPosterForm);
-viewSavedPosterButton.addEventListener('click', savedPosterButton);
+viewSavedPosterButton.addEventListener('click', showSavedPosterPage);
+nevermindButton.addEventListener('click', goBackToMainFromForm);
+backToMainButton.addEventListener('click',goBackToMainFromSaved);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -133,11 +139,21 @@ function getRandomPoster() {
 };
 
 function showOwnPosterForm() {
-    posterForm.classList.remove("hidden");
-    mainPoster.classList.add("hidden");
+  posterForm.classList.remove("hidden");
+  mainPoster.classList.add("hidden");
 };
 
-function savedPosterButton() {
-    viewSavedPosterButton.classList.remove("hidden");
-    mainPoster.classList.add("hidden");
+function showSavedPosterPage() {
+  savedPosterPage.classList.remove("hidden");
+  mainPoster.classList.add("hidden");
+};
+
+function goBackToMainFromForm () {
+  mainPoster.classList.remove("hidden");
+  posterForm.classList.add("hidden");
+};
+
+function goBackToMainFromSaved () {
+  mainPoster.classList.remove("hidden");
+  savedPosterPage.classList.add("hidden");
 };
