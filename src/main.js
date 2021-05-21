@@ -3,9 +3,10 @@ var selectImg = document.querySelector(".poster-img");
 var selectTitle = document.querySelector(".poster-title");
 var selectQuote = document.querySelector(".poster-quote");
 var randomPosterButton = document.querySelector(".show-random");
-var ownPosterButton= document.querySelector(".show-form");
+var ownPosterButton = document.querySelector(".show-form");
 var mainPoster = document.querySelector(".main-poster");
 var posterForm = document.querySelector(".poster-form");
+var viewSavedPosterButton = document.querySelector(".show-saved");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,26 +111,33 @@ var currentPoster;
 
 // event listeners go here 👇
 
-randomPosterButton.addEventListener('click', randomPoster);
-ownPosterButton.addEventListener('click', showOwnPosterForm)
+randomPosterButton.addEventListener('click', getRandomPoster);
+ownPosterButton.addEventListener('click', showOwnPosterForm);
+viewSavedPosterButton.addEventListener('click', savedPosterButton);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
+
 selectImg.src = images[getRandomIndex(images)];
 selectTitle.innerHTML = titles[getRandomIndex(titles)];
 selectQuote.innerHTML = quotes[getRandomIndex(quotes)];
 
-function randomPoster() {
+function getRandomPoster() {
   selectImg.src = images[getRandomIndex(images)];
   selectTitle.innerHTML = titles[getRandomIndex(titles)];
   selectQuote.innerHTML = quotes[getRandomIndex(quotes)];
 };
 
 function showOwnPosterForm() {
-    posterForm.classList.remove("hidden")
-    mainPoster.classList.add("hidden")
+    posterForm.classList.remove("hidden");
+    mainPoster.classList.add("hidden");
+};
+
+function savedPosterButton() {
+    viewSavedPosterButton.classList.remove("hidden");
+    mainPoster.classList.add("hidden");
 };
