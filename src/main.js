@@ -101,15 +101,23 @@ var savedPosters = [];
 var currentPoster;
 
 // query selector variables go here 👇
+var newRandomPosterButton = document.querySelector('.show-random');
 var image = document.querySelector('img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 
 // event listeners go here 👇
 window.addEventListener('load', makeNewRandomPosterOnLoad);
+newRandomPosterButton.addEventListener('click', makeNewRandomPosterOnClick);
 
 
 // functions and event handlers go here 👇
+function makeNewRandomPosterOnClick(){
+  changeImg();
+  changeTitle();
+  changeQuote();
+}
+
 function makeNewRandomPosterOnLoad(){
   changeImg();
   changeTitle();
