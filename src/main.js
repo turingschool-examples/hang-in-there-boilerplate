@@ -102,7 +102,6 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 
-
 var savedPosters = [];
 var image = document.querySelector('.poster-img');
 var quote = document.querySelector('.poster-quote');
@@ -173,7 +172,7 @@ function changeButton(){
     quote.innerText = quotes[getRandomIndex(quotes)];
     image.src = images[getRandomIndex(images)];
 }
-
+ s
 // posterForm.section = posterForm.classList.remove('.hidden');
 // this can be refractored - considering having it stored in an array and having a for loop....
 // function backToMain() {
