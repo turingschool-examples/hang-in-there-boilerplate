@@ -103,10 +103,11 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
+var currentPoster;
 var savedPosters = [];
-var image = document.querySelector('.poster-img');
-var quote = document.querySelector('.poster-quote');
-var title = document.querySelector('.poster-title');
+var imageMain = document.querySelector('.poster-img');
+var quoteMain = document.querySelector('.poster-quote');
+var titleMain = document.querySelector('.poster-title');
 var randomPoster = document.querySelector('.show-random');
 var posterForm = document.querySelector('.poster-form');
 var posterFormButton = document.querySelector('.show-form');
@@ -115,7 +116,13 @@ var removeFormButton = document.querySelector('.show-main');
 var savedPosterPage = document.querySelector('.saved-posters');
 var savedPosterButton = document.querySelector('.show-saved');
 var fromSavedButton = document.querySelector('.back-to-main')
+var titleInput = document.getElementById('poster-title');
+var quoteInput = document.getElementById('poster-quote');
+var imageInput = document.getElementById('poster-image-url');
+var showPoster = document.querySelector('.make-poster');
 // // event listeners go here 👇
+
+
 
 function showForm() {
   if (posterForm.classList.contains('hidden')) {
@@ -148,11 +155,22 @@ function backToMainSaved() {
   }
 }
 
+function showPosterFunction() {
+event.preventDefault();
+
+  titleMain.innerText = titleInput.value;;
+  quoteMain.innerText = quoteInput.value;
+  imageMain.src = imageInput.value;
+  mainPoster.classList.remove('hidden');
+  posterForm.classList.add('hidden');
+}
+
+  // console.log('outside', title, imageURL, quote)
 savedPosterButton.addEventListener('click', showSaved);
 removeFormButton.addEventListener('click', backToMain);
 posterFormButton.addEventListener('click', showForm);
 fromSavedButton.addEventListener('click', backToMainSaved);
-
+showPoster.addEventListener('click', showPosterFunction)
 
 
 
@@ -162,16 +180,16 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-title.innerText = titles[getRandomIndex(titles)];
-quote.innerText = quotes[getRandomIndex(quotes)];
-image.src = images[getRandomIndex(images)];
+titleMain.innerText = titles[getRandomIndex(titles)];
+quoteMain.innerText = quotes[getRandomIndex(quotes)];
+imageMain.src = images[getRandomIndex(images)];
 
 randomPoster.addEventListener('click', changeButton )
 
 function changeButton(){
-    title.innerText = titles[getRandomIndex(titles)];
-    quote.innerText = quotes[getRandomIndex(quotes)];
-    image.src = images[getRandomIndex(images)];
+    titleMain.innerText = titles[getRandomIndex(titles)];
+    quoteMain.innerText = quotes[getRandomIndex(quotes)];
+    imageMain.src = images[getRandomIndex(images)];
 }
 // posterForm.section = posterForm.classList.remove('.hidden');
 // this can be refractored - considering having it stored in an array and having a for loop....
