@@ -106,11 +106,13 @@ var image = document.querySelector('img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 var createYourOwnPosterButton = document.querySelector('.show-form');
+var makePosterSection = document.querySelector('.poster-form');
+var mainPage = document.querySelector('.main-poster');
 
 // event listeners go here 👇
 window.addEventListener('load', makeNewRandomPosterOnLoad);
 newRandomPosterButton.addEventListener('click', makeNewRandomPosterOnClick);
-createYourOwnPosterButton.addEventListener('click', )
+createYourOwnPosterButton.addEventListener('click', hideMainShowFormSection);
 
 // functions and event handlers go here 👇
 
@@ -141,3 +143,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 // ============== Iteration 1 ====================
+function hideMainShowFormSection() {
+  mainPage.classList.add('hidden');
+  makePosterSection.classList.remove('hidden');
+}
