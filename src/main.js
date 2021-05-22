@@ -8,8 +8,12 @@ var mainPoster = document.querySelector(".main-poster");
 var posterForm = document.querySelector(".poster-form");
 var viewSavedPosterButton = document.querySelector(".show-saved");
 var savedPosterPage = document.querySelector(".saved-posters");
-var nevermindButton = document.querySelector(".show-main");
+var neverMindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+var inputPosterImageUrl = document.getElementById("poster-image-url");
+var inputPosterTitle = document.getElementById("poster-title");
+var inputPosterQuote = document.getElementById("poster-quote");
+var makePosterButton = document.querySelector(".make-poster");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -114,23 +118,22 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+window.addEventListener('load', getRandomPoster);
 randomPosterButton.addEventListener('click', getRandomPoster);
 ownPosterButton.addEventListener('click', showOwnPosterForm);
 viewSavedPosterButton.addEventListener('click', showSavedPosterPage);
-nevermindButton.addEventListener('click', goBackToMainFromForm);
-backToMainButton.addEventListener('click',goBackToMainFromSaved);
-
+neverMindButton.addEventListener('click', goBackToMainFromForm);
+backToMainButton.addEventListener('click', goBackToMainFromSaved);
+makePosterButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    makePosterDisplayPoster();
+});
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
-
-selectImg.src = images[getRandomIndex(images)];
-selectTitle.innerHTML = titles[getRandomIndex(titles)];
-selectQuote.innerHTML = quotes[getRandomIndex(quotes)];
 
 function getRandomPoster() {
   selectImg.src = images[getRandomIndex(images)];
@@ -148,12 +151,26 @@ function showSavedPosterPage() {
   mainPoster.classList.add("hidden");
 };
 
-function goBackToMainFromForm () {
+function goBackToMainFromForm() {
   mainPoster.classList.remove("hidden");
   posterForm.classList.add("hidden");
 };
 
-function goBackToMainFromSaved () {
+function goBackToMainFromSaved() {
   mainPoster.classList.remove("hidden");
   savedPosterPage.classList.add("hidden");
+};
+function makePosterDisplayPoster() {
+  var imageUrl = inputPosterImageUrl.value;
+  var posterTitle = inputPosterTitle.value;
+  var posterQuote = inputPosterQuote.value;
+      images.push(imageUrl);
+      titles.push(posterTitle);
+      quotes.push(posterQuote);
+  var newPoster = new Poster(imageUrl, posterTitle, posterQuote);
+  goBackToMainFromForm();
+      selectImg.src = newPoster.imageURL;
+      selectTitle.innerHTML = newPoster.title;
+      selectQuote.innerHTML = newPoster.quote;
+
 };
