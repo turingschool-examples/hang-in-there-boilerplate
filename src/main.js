@@ -101,6 +101,7 @@ var quotes = [
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
+];
 
 var savedPosters = [];
 var image = document.querySelector('.poster-img');
@@ -113,7 +114,7 @@ var mainPoster = document.querySelector('.main-poster');
 var removeFormButton = document.querySelector('.show-main');
 var savedPosterPage = document.querySelector('.saved-posters');
 var savedPosterButton = document.querySelector('.show-saved');
-// var fromSavedButton = document.querySelector('.show-main')
+var fromSavedButton = document.querySelector('.back-to-main')
 // // event listeners go here 👇
 
 function showForm() {
@@ -139,18 +140,18 @@ function showSaved() {
   }
 }
 
-// function backToMainTwo() {
-//   if (mainPoster.classList.contains('hidden')) {
-//     mainPoster.classList.remove('hidden');
-//     savedPosterPage.classList.add('hidden');
-//     changeButton();
-//   }
-// }
+function backToMainSaved() {
+  if (mainPoster.classList.contains('hidden')) {
+    mainPoster.classList.remove('hidden');
+    savedPosterPage.classList.add('hidden');
+    changeButton();
+  }
+}
 
 savedPosterButton.addEventListener('click', showSaved);
 removeFormButton.addEventListener('click', backToMain);
 posterFormButton.addEventListener('click', showForm);
-// fromSavedButton.addEventListener('click', backToMain);
+fromSavedButton.addEventListener('click', backToMainSaved);
 
 
 
@@ -172,7 +173,6 @@ function changeButton(){
     quote.innerText = quotes[getRandomIndex(quotes)];
     image.src = images[getRandomIndex(images)];
 }
- s
 // posterForm.section = posterForm.classList.remove('.hidden');
 // this can be refractored - considering having it stored in an array and having a for loop....
 // function backToMain() {
