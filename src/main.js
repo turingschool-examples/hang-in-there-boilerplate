@@ -101,51 +101,63 @@ var quotes = [
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
-];
-var savedPosters = [];
-var currentPoster = [image, quote, title];
 
+
+var savedPosters = [];
 var image = document.querySelector('.poster-img');
 var quote = document.querySelector('.poster-quote');
 var title = document.querySelector('.poster-title');
 var randomPoster = document.querySelector('.show-random');
-var showFormButton = document.querySelector('.show-form');
 var posterForm = document.querySelector('.poster-form');
+var posterFormButton = document.querySelector('.show-form');
 var mainPoster = document.querySelector('.main-poster');
-var removeFormButton = document.querySelector('.show-main')
-
-console.log('mainPoster', mainPoster)
- console.log('posterForm', posterForm);
-// console.log('title', title);
-
-
-function showForm() {
-if (posterForm.classList.contains('hidden')){
-  posterForm.classList.remove('hidden');
-  mainPoster.classList.add('hidden');
-}
-  // } else { posterForm.classList.add('hidden');
-  //         mainPoster.classList.remove('hidden');}
-  }
-
-function backToMain() {
-  if (!posterForm.classList.contains('hidden')) {
-    mainPoster.classList.remove('hidden');
-    posterForm.classList.add('hidden');
-     changeButton();
-  }
-}
-
-showFormButton.addEventListener('click', showForm);
-removeFormButton.addEventListener('click', backToMain) ;
-
-
-
-
+var removeFormButton = document.querySelector('.show-main');
+var savedPosterPage = document.querySelector('.saved-posters');
+var savedPosterButton = document.querySelector('.show-saved');
+// var fromSavedButton = document.querySelector('.show-main')
 // // event listeners go here 👇
 
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+function showForm() {
+  if (posterForm.classList.contains('hidden')) {
+    posterForm.classList.remove('hidden');
+    mainPoster.classList.add('hidden');
+  }
+}
+// refactor possible
+function backToMain() {
+  if (mainPoster.classList.contains('hidden')) {
+      mainPoster.classList.remove('hidden');
+      posterForm.classList.add('hidden');
+      changeButton();
+    }
+  }
+
+
+function showSaved() {
+  if (savedPosterPage.classList.contains('hidden')) {
+    savedPosterPage.classList.remove('hidden');
+    mainPoster.classList.add('hidden');
+  }
+}
+
+// function backToMainTwo() {
+//   if (mainPoster.classList.contains('hidden')) {
+//     mainPoster.classList.remove('hidden');
+//     savedPosterPage.classList.add('hidden');
+//     changeButton();
+//   }
+// }
+
+savedPosterButton.addEventListener('click', showSaved);
+removeFormButton.addEventListener('click', backToMain);
+posterFormButton.addEventListener('click', showForm);
+// fromSavedButton.addEventListener('click', backToMain);
+
+
+
+
+
+// currentPoster
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -164,3 +176,16 @@ function changeButton(){
 
 // posterForm.section = posterForm.classList.remove('.hidden');
 // this can be refractored - considering having it stored in an array and having a for loop....
+// function backToMain() {
+//   if (mainPoster.classList.contains('hidden')) {
+//     if (!mainPoster.classList.contains('hidden')) {
+//       mainPoster.classList.remove('hidden');
+//       posterForm.classList.add('hidden');
+//       changeButton();
+//     } else {
+//       savedPosterPage.classList.remove('hidden');
+//       mainPoster.classList.add('hidden');
+//       changeButton();
+//     }
+//   }
+// }
