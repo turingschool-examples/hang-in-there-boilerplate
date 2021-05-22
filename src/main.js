@@ -105,13 +105,16 @@ var newRandomPosterButton = document.querySelector('.show-random');
 var image = document.querySelector('img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
+var createYourOwnPosterButton = document.querySelector('.show-form');
 
 // event listeners go here 👇
 window.addEventListener('load', makeNewRandomPosterOnLoad);
 newRandomPosterButton.addEventListener('click', makeNewRandomPosterOnClick);
-
+createYourOwnPosterButton.addEventListener('click', )
 
 // functions and event handlers go here 👇
+
+//================== Iteration 0 ======================
 function makeNewRandomPosterOnClick(){
   changeImg();
   changeTitle();
@@ -137,3 +140,4 @@ function changeQuote() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+// ============== Iteration 1 ====================
