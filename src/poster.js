@@ -1,7 +1,7 @@
 class Poster {
-  constructor(imageURL, title, quote) {
+  constructor(imageUrl, title, quote) {
     this.id = Date.now();
-    this.imageURL = imageURL;
+    this.imageURL = imageUrl;
     this.title = title;
     this.quote = quote;
   }
