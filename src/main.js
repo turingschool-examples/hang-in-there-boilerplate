@@ -137,6 +137,7 @@ showSavedPosters.addEventListener('click', displaySavedPosters)
 backBttn.addEventListener('click', goBack)
 createPoster.addEventListener('click', makePoster)
 userSavedPoster.addEventListener('click', saveThisPoster)
+savedPostersGrid.addEventListener('dblclick', deleteSavedPoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -202,6 +203,18 @@ function revealSavedPosters() {
     </div>
     `;
   };
+};
+
+
+
+function deleteSavedPoster() {
+  var posterID = event.target.id;
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (`${savedPosters[i].id}` === posterID) {
+      savedPosters.splice(i,1);
+    };
+  };
+  revealSavedPosters()
 };
 
 
