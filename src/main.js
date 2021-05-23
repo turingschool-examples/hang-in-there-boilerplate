@@ -11,7 +11,10 @@ var showMain = document.querySelector('.show-main')
 var viewSavedPosters = document.querySelector('.saved-posters')
 var showSavedPosters = document.querySelector('.show-saved')
 var backBttn = document.querySelector('.back-to-main')
-
+var createPoster = document.querySelector('.make-poster')
+var formURL = document.querySelector('#poster-image-url')
+var formTitle = document.querySelector('#poster-title')
+var formQuote = document.querySelector('#poster-quote')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -115,14 +118,14 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-// window.onload = createRandomPoster()
+window.addEventListener('load',getRandomImage)
 randoBttn.addEventListener("click",getRandomImage)
 showForm.addEventListener("click", displayForm)
 showMain.addEventListener('click', displayMain)
 showSavedPosters.addEventListener('click', displaySavedPosters)
-//savePoster.addEventListener('click', )
+// viewSavedPosters.addEventListener('click',  )
 backBttn.addEventListener('click', goBack)
-
+createPoster.addEventListener('click', makePoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -147,8 +150,26 @@ function displaySavedPosters() {
 
 function goBack() {
   mainPoster.classList.remove('hidden')
-  backBttn.classList.add('hidden')
+  viewSavedPosters.classList.add('hidden')
 }
+
+function makePoster() {
+  event.preventDefault()
+  // var imageValue = posterImage.value
+  // var titleValue = posterTitle.value
+  // var quoteValue = posterQuote.value
+  currentPoster = new Poster(formURL.value, formTitle.value, formQuote.value)
+    posterImage.src = formURL.value;
+    posterTitle.innerText = formTitle.value;
+    posterQuote.innerText = formQuote.value;
+    displayMain()
+    images.push(currentPoster.imageURL)
+    titles.push(currentPoster.title)
+    quotes.push(currentPoster.quote)
+// savedPosters.push(currentPoster)
+// console.log()
+}
+
 
 // function saveMy() {
 //   posterForm.classList.remove("hidden")
