@@ -100,7 +100,11 @@ var quotes = [
 
 // query selector variables go here 👇
 var showRandomBtn = document.querySelector('.show-random');
+
 var mainPosterElem = document.querySelector('.main-poster');
+var posterQuoteElem = document.querySelector('.poster-quote');
+var posterTitleElem = document.querySelector('.poster-title');
+var posterImageElem = document.querySelector('.poster-img');
 
 var savedPosters = [];
 var currentPoster;
