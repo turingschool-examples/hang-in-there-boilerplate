@@ -141,18 +141,25 @@ saveThisPosterButton.addEventListener('click', saveThisPoster);
 
 function saveThisPoster() { // WE NEED TO NOT HAVE THE DUPLICATE
 // currentPoster = new Poster (imageMain.src, quoteMain.innerText, titleMain.innerText); // making new instance
-var currentPoster = new Poster (imageMain.src, quoteMain.innerText, titleMain.innerText);
 
-  if (savedPosters.length === 0) { // if the lenght of the savedPosters array is 0 (none in there)
-    savedPosters.push(currentPoster); // then add the new saved poster to the array
-  } else if (savedPosters.length !== 0) { // if the savedPosters array is NOT equal to zero
-      for (var i = 0; i < savedPosters.length; i++) { // then go through the for loop
-        if (savedPosters[i].imageURL !== currentPoster.imageURL ) /* && savedPosters[i].title !== newSavedPoster.title && savedPosters[i].quote !== newSavedPoster.quote)*/ { // if the savedPoster element at position i's does NOT have the same property as the new poster 'instance's image
-            console.log('Im activated');
-          savedPosters.push(currentPoster); // then add new poster to the array
-        }
-      }
-  }
+currentPoster = new Poster (imageMain.src, quoteMain.innerText, titleMain.innerText);
+
+
+if (!savedPosters.includes(currentPoster)) {
+  savedPosters.push(currentPoster);
+}
+
+
+  // if (savedPosters.length === 0) { // if the lenght of the savedPosters array is 0 (none in there)
+  //   savedPosters.push(currentPoster); // then add the new saved poster to the array
+  // } else if (savedPosters.length !== 0) { // if the savedPosters array is NOT equal to zero
+  //     for (var i = 0; i < savedPosters.length; i++) { // then go through the for loop
+  //       if (savedPosters[i].imageURL !== currentPoster.imageURL ) /* && savedPosters[i].title !== newSavedPoster.title && savedPosters[i].quote !== newSavedPoster.quote)*/ { // if the savedPoster element at position i's does NOT have the same property as the new poster 'instance's image
+  //           console.log('Im activated');
+  //         savedPosters.push(currentPoster); // then add new poster to the array
+  //       }
+  //     }
+  // }
 };
 
 console.log(savedPosters);
@@ -197,23 +204,27 @@ function backToMain() {
   }
 
 
-function showSaved() { // shows saved poster page!
 
 
+function showSaved() {
+  var savedHTML = "";
   if (savedPosterPage.classList.contains('hidden')) {
     savedPosterPage.classList.remove('hidden');
     mainPoster.classList.add('hidden');
+  };
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedHTML += `<article class = "mini-poster" id= "${savedPosters[i].id}" ondblclick = deleteImg(${savedPosters[i].id})>
+    <img src = ${savedPosters[i].imageURL} />
+    <h2> ${savedPosters[i].title} </h2>
+    <h4> ${savedPosters[i].quote} </h4>
+    </article>`;
   }
-    var savedHTML = "";
-    for (var i = 0; i < savedPosters.length; i++) {
-      savedHTML += `<article class = "mini-poster">
-      <img src = ${savedPosters[i].imageURL} />
-      <h2> ${savedPosters[i].title} </h2>
-      <h4> ${savedPosters[i].quote} </h4>
-      </article>`;
-    savedPostersGrid.innerHTML = savedHTML;
-  }
-}
+  savedPostersGrid.innerHTML = savedHTML;
+};
+
+function deleteImg(id) {
+  document.getElementById(id).style.display = "hidden"; // needs to remove 
+};
 
 function backToMainSaved() {
   if (mainPoster.classList.contains('hidden')) {
@@ -235,6 +246,7 @@ event.preventDefault();
   titles.push(titleInput.Value);
   quotes.push(quoteInput.value);
   images.push(imageInput.value);
+
 
 }
 // posterForm.section = posterForm.classList.remove('.hidden');
