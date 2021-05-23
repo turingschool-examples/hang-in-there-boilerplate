@@ -214,6 +214,18 @@ function deleteSavedPoster() {
       savedPosters.splice(i,1);
     };
   };
+  presentSavedPosters()
+};
+
+
+
+function deleteSavedPoster() {
+  var posterID = event.target.id;
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (`${savedPosters[i].id}` === posterID) {
+      savedPosters.splice(i,1);
+    };
+  };
   revealSavedPosters()
 };
 
