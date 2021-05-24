@@ -1,10 +1,23 @@
 // query selector variables go here 👇
+var imageMain = document.querySelector('.poster-img');
+var quoteMain = document.querySelector('.poster-quote');
+var titleMain = document.querySelector('.poster-title');
+var randomPoster = document.querySelector('.show-random');
+var formPage = document.querySelector('.poster-form');
+var formPageButton = document.querySelector('.show-form');
+var mainPage = document.querySelector('.main-poster');
+var removeFormButton = document.querySelector('.show-main');
+var savedPage = document.querySelector('.saved-posters');
+var savedPosterButton = document.querySelector('.show-saved');
+var fromSavedButton = document.querySelector('.back-to-main')
+var titleInput = document.getElementById('poster-title');
+var quoteInput = document.getElementById('poster-quote');
+var imageInput = document.getElementById('poster-image-url');
+var showPoster = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector('.save-poster');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
-
-
-
-
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -105,112 +118,59 @@ var quotes = [
 
 var currentPoster;
 var savedPosters = [];
-var imageMain = document.querySelector('.poster-img');
-var quoteMain = document.querySelector('.poster-quote');
-var titleMain = document.querySelector('.poster-title');
-var randomPoster = document.querySelector('.show-random');
-var posterForm = document.querySelector('.poster-form');
-var posterFormButton = document.querySelector('.show-form');
-var mainPoster = document.querySelector('.main-poster');
-var removeFormButton = document.querySelector('.show-main');
-var savedPosterPage = document.querySelector('.saved-posters');
-var savedPosterButton = document.querySelector('.show-saved');
-var fromSavedButton = document.querySelector('.back-to-main')
-var titleInput = document.getElementById('poster-title');
-var quoteInput = document.getElementById('poster-quote');
-var imageInput = document.getElementById('poster-image-url');
-var showPoster = document.querySelector('.make-poster');
-var saveThisPosterButton = document.querySelector('.save-poster');
-var savedPostersGrid = document.querySelector('.saved-posters-grid');
+
 // // event listeners go here 👇
 
-
-
-
-
-  // console.log('outside', title, imageURL, quote)
 savedPosterButton.addEventListener('click', showSaved);
 removeFormButton.addEventListener('click', backToMain);
-posterFormButton.addEventListener('click', showForm);
-fromSavedButton.addEventListener('click', backToMainSaved);
-showPoster.addEventListener('click', showPosterFunction);
-randomPoster.addEventListener('click', changeButton );
+formPageButton.addEventListener('click', showForm);
+fromSavedButton.addEventListener('click', returnToMainFromSaved);
+showPoster.addEventListener('click', displayCustomPoster);
+randomPoster.addEventListener('click', changeButton);
 saveThisPosterButton.addEventListener('click', saveThisPoster);
-// // Save This Poster Function
 
+// // Event handlers 👇
 
-function saveThisPoster() { // WE NEED TO NOT HAVE THE DUPLICATE
-// currentPoster = new Poster (imageMain.src, quoteMain.innerText, titleMain.innerText); // making new instance
-
-currentPoster = new Poster (imageMain.src, quoteMain.innerText, titleMain.innerText);
-
-
-if (!savedPosters.includes(currentPoster)) {
-  savedPosters.push(currentPoster);
-}
-
-
-  // if (savedPosters.length === 0) { // if the lenght of the savedPosters array is 0 (none in there)
-  //   savedPosters.push(currentPoster); // then add the new saved poster to the array
-  // } else if (savedPosters.length !== 0) { // if the savedPosters array is NOT equal to zero
-  //     for (var i = 0; i < savedPosters.length; i++) { // then go through the for loop
-  //       if (savedPosters[i].imageURL !== currentPoster.imageURL ) /* && savedPosters[i].title !== newSavedPoster.title && savedPosters[i].quote !== newSavedPoster.quote)*/ { // if the savedPoster element at position i's does NOT have the same property as the new poster 'instance's image
-  //           console.log('Im activated');
-  //         savedPosters.push(currentPoster); // then add new poster to the array
-  //       }
-  //     }
-  // }
-};
-
-console.log(savedPosters);
-
-
-
-
-
-
-// && savedPoster[i].title !== titleMain.innerText && savedPoster[i].quote !== quoteMain.innerText
-
-
-// currentPoster
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
 titleMain.innerText = titles[getRandomIndex(titles)];
 quoteMain.innerText = quotes[getRandomIndex(quotes)];
 imageMain.src = images[getRandomIndex(images)];
 
+function saveThisPoster() {
+  currentPoster = new Poster(imageMain.src, quoteMain.innerText, titleMain.innerText);
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+};
 
-function changeButton(){
-    titleMain.innerText = titles[getRandomIndex(titles)];
-    quoteMain.innerText = quotes[getRandomIndex(quotes)];
-    imageMain.src = images[getRandomIndex(images)];
+function changeButton() {
+  titleMain.innerText = titles[getRandomIndex(titles)];
+  quoteMain.innerText = quotes[getRandomIndex(quotes)];
+  imageMain.src = images[getRandomIndex(images)];
 }
 
 function showForm() {
-  if (posterForm.classList.contains('hidden')) {
-    posterForm.classList.remove('hidden');
-    mainPoster.classList.add('hidden');
+  if (formPage.classList.contains('hidden')) {
+    formPage.classList.remove('hidden');
+    mainPage.classList.add('hidden');
   }
 }
-// refactor possible
+
 function backToMain() {
-  if (mainPoster.classList.contains('hidden')) {
-      mainPoster.classList.remove('hidden');
-      posterForm.classList.add('hidden');
-      // changeButton();
-    }
+  if (mainPage.classList.contains('hidden')) {
+    mainPage.classList.remove('hidden');
+    formPage.classList.add('hidden');
+    changeButton();
   }
-
-
-
+}
 
 function showSaved() {
   var savedHTML = "";
-  if (savedPosterPage.classList.contains('hidden')) {
-    savedPosterPage.classList.remove('hidden');
-    mainPoster.classList.add('hidden');
+  if (savedPage.classList.contains('hidden')) {
+    savedPage.classList.remove('hidden');
+    mainPage.classList.add('hidden');
   };
   for (var i = 0; i < savedPosters.length; i++) {
     savedHTML += `<article class = "mini-poster" id= "${savedPosters[i].id}" ondblclick = deleteImg(${savedPosters[i].id})>
@@ -223,44 +183,32 @@ function showSaved() {
 };
 
 function deleteImg(id) {
-  document.getElementById(id).style.display = "hidden"; // needs to remove 
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id === id) {
+      savedPosters.splice(i, 1)
+    }
+  }
+
+  showSaved()
 };
 
-function backToMainSaved() {
-  if (mainPoster.classList.contains('hidden')) {
-    mainPoster.classList.remove('hidden');
-    savedPosterPage.classList.add('hidden');
+function returnToMainFromSaved() {
+  if (mainPage.classList.contains('hidden')) {
+    mainPage.classList.remove('hidden');
+    savedPage.classList.add('hidden');
     changeButton();
   }
 }
 
-function showPosterFunction() {
-event.preventDefault();
-
+function displayCustomPoster() {
+  event.preventDefault();
   titleMain.innerText = titleInput.value;
   quoteMain.innerText = quoteInput.value;
   imageMain.src = imageInput.value;
-  mainPoster.classList.remove('hidden');
-  posterForm.classList.add('hidden');
+  mainPage.classList.remove('hidden');
+  formPage.classList.add('hidden');
 
   titles.push(titleInput.Value);
   quotes.push(quoteInput.value);
   images.push(imageInput.value);
-
-
 }
-// posterForm.section = posterForm.classList.remove('.hidden');
-// this can be refractored - considering having it stored in an array and having a for loop....
-// function backToMain() {
-//   if (mainPoster.classList.contains('hidden')) {
-//     if (!mainPoster.classList.contains('hidden')) {
-//       mainPoster.classList.remove('hidden');
-//       posterForm.classList.add('hidden');
-//       changeButton();
-//     } else {
-//       savedPosterPage.classList.remove('hidden');
-//       mainPoster.classList.add('hidden');
-//       changeButton();
-//     }
-//   }
-// }
