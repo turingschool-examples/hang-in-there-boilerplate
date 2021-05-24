@@ -163,3 +163,29 @@ function showMyPoster(e) {
  posterImageElem.src = motivationalImageUrl.value; posterTitleElem.innerText = motivationalTitle.value; posterQuoteElem.innerText = motivationalQuote.value; images.push(posterImageElem.src);
  titles.push(posterTitleElem.innerText); quotes.push(posterQuoteElem.innerText);
  takeMeBack() };
+
+ function uploadPoster(posterObject) {
+   for (var i = 0; i < savedPosters.length; i++) {
+     if (savedPosters[i].id === posterObject.id) {
+       return
+     }
+   } return true;
+ };
+
+function savePoster() {
+  if (uploadPoster(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+};
+
+function showSaved() {
+  savedPostersGridElem.innerHTML = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    var posterObject = savedPosters[i];
+    savedPostersGridElem.innerHTML +=
+    <section class="mini-poster" id=${posterObject.id}>
+    <img id=${posterObject.id} src=${posterObject.imageURL}>
+    <h2 id=${posterObject.id}>${posterObject.title}</h2>
+    <h4 id=${posterObject.id}>${posterObject.quote}</h4>
+    </section> }
+   };
