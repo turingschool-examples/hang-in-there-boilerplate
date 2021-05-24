@@ -107,6 +107,9 @@ var showMainBtn = document.querySelector('.show-main');
 var savePosterBtn = document.querySelector('.save-poster');
 var showSavedBtn = document.querySelector('.show-saved');
 
+var savedPosters = [];
+var currentPoster = undefined;
+
 var mainPosterElem = document.querySelector('.main-poster');
 var savedPostersElem = document.querySelector('.saved-posters');
 var savedPostersGridElem = document.querySelector('.saved-posters-grid');
