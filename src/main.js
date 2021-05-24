@@ -1,4 +1,3 @@
-// query selector variables go here 👇
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -98,14 +97,95 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+// query selector variables go here 👇
+var showRandomBtn = document.querySelector('.show-random');
+var showFormBtn = document.querySelector('.show-form');
+var makePosterBtn = document.querySelector('.make-poster');
+var backToMainBtn = document.querySelector('.back-to-main');
+var showMainBtn = document.querySelector('.show-main');
+var savePosterBtn = document.querySelector('.save-poster');
+var showSavedBtn = document.querySelector('.show-saved');
+
+var mainPosterElem = document.querySelector('.main-poster');
+var savedPostersElem = document.querySelector('.saved-posters');
+var savedPostersGridElem = document.querySelector('.saved-posters-grid');
+var posterQuoteElem = document.querySelector('.poster-quote');
+var posterTitleElem = document.querySelector('.poster-title');
+var posterImageElem = document.querySelector('.poster-img');
+var posterFormElem = document.querySelector('.poster-form');
+
 var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+window.addEventListener('load', showRandomPoster);
+showRandomBtn.addEventListener('click', showRandomPoster);
+showFormBtn.addEventListener('click', makeYourOwnPoster);
+makePosterBtn.addEventListener("click", showMyPoster);
+backToMainBtn.addEventListener("click", goBackToMain);
+showMainBtn.addEventListener("click", takeMeBack);
+savePosterBtn.addEventListener("click", savePoster);
+showSavedBtn.addEventListener("click", showSavedPosters);
 // functions and event handlers go here 👇
+function showRandomPoster() {
+  posterImageElem.src = images[getRandomIndex(images)];
+  posterTitleElem.innerText = titles[getRandomIndex(titles)];
+  posterQuoteElem.innerText = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(posterImageElem.src, posterTitleElem.innerText, posterQuoteElem.innerText)
+};
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+function makeYourOwnPoster() {
+  posterFormElem.classList.remove('hidden');
+  mainPosterElem.classList.add('hidden'); };
 
+function showSavedPosters() {
+  savedPostersElem.classList.remove('hidden');
+  mainPosterElem.classList.add('hidden');
+  showSaved() };
+
+function takeMeBack() {
+  posterFormElem.classList.add('hidden');
+  mainPosterElem.classList.remove('hidden');
+};
+
+function goBackToMain() {
+  savedPostersElem.classList.add('hidden');
+  mainPosterElem.classList.remove('hidden');
+};
+
+function showMyPoster(e) {
+ e.preventDefault()
+ currentPoster = new Poster(motivationalImageUrl.value, motivationalTitle.value, motivationalQuote.value);
+ posterImageElem.src = motivationalImageUrl.value; posterTitleElem.innerText = motivationalTitle.value; posterQuoteElem.innerText = motivationalQuote.value; images.push(posterImageElem.src);
+ titles.push(posterTitleElem.innerText); quotes.push(posterQuoteElem.innerText);
+ takeMeBack() };
+
+ function uploadPoster(posterObject) {
+   for (var i = 0; i < savedPosters.length; i++) {
+     if (savedPosters[i].id === posterObject.id) {
+       return
+     }
+   } return true;
+ };
+
+function savePoster() {
+  if (uploadPoster(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+};
+
+function showSaved() {
+  savedPostersGridElem.innerHTML = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    var posterObject = savedPosters[i];
+    savedPostersGridElem.innerHTML +=
+    <section class="mini-poster" id=${posterObject.id}>
+    <img id=${posterObject.id} src=${posterObject.imageURL}>
+    <h2 id=${posterObject.id}>${posterObject.title}</h2>
+    <h4 id=${posterObject.id}>${posterObject.quote}</h4>
+    </section> }
+   };
