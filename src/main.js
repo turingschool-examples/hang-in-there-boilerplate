@@ -105,8 +105,9 @@ var makePosterBtn = document.querySelector('.make-poster');
 var backToMainBtn = document.querySelector('.back-to-main');
 var showMainBtn = document.querySelector('.show-main');
 var savePosterBtn = document.querySelector('.save-poster');
+var showSavedBtn = document.querySelector('.show-saved');
 
-var mainPosterElem = document.querySelector('.main-poster'); 
+var mainPosterElem = document.querySelector('.main-poster');
 var savedPostersElem = document.querySelector('.saved-posters');
 var savedPostersGridElem = document.querySelector('.saved-posters-grid');
 var posterQuoteElem = document.querySelector('.poster-quote');
@@ -155,3 +156,10 @@ function goBackToMain() {
   savedPostersElem.classList.add('hidden');
   mainPosterElem.classList.remove('hidden');
 };
+
+function showMyPoster(e) {
+ e.preventDefault()
+ currentPoster = new Poster(motivationalImageUrl.value, motivationalTitle.value, motivationalQuote.value);
+ posterImageElem.src = motivationalImageUrl.value; posterTitleElem.innerText = motivationalTitle.value; posterQuoteElem.innerText = motivationalQuote.value; images.push(posterImageElem.src);
+ titles.push(posterTitleElem.innerText); quotes.push(posterQuoteElem.innerText);
+ takeMeBack() };
