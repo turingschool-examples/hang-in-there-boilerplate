@@ -139,7 +139,7 @@ quoteMain.innerText = quotes[getRandomIndex(quotes)];
 imageMain.src = images[getRandomIndex(images)];
 
 function saveThisPoster() {
-  currentPoster = new Poster(imageMain.src, quoteMain.innerText, titleMain.innerText);
+  currentPoster = new Poster(imageMain.src, titleMain.innerText, quoteMain.innerText);
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
@@ -188,7 +188,6 @@ function deleteImg(id) {
       savedPosters.splice(i, 1)
     }
   }
-
   showSaved()
 };
 
