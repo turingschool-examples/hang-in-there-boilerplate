@@ -156,3 +156,10 @@ function goBackToMain() {
   savedPostersElem.classList.add('hidden');
   mainPosterElem.classList.remove('hidden');
 };
+
+function showMyPoster(e) {
+ e.preventDefault()
+ currentPoster = new Poster(motivationalImageUrl.value, motivationalTitle.value, motivationalQuote.value);
+ posterImageElem.src = motivationalImageUrl.value; posterTitleElem.innerText = motivationalTitle.value; posterQuoteElem.innerText = motivationalQuote.value; images.push(posterImageElem.src);
+ titles.push(posterTitleElem.innerText); quotes.push(posterQuoteElem.innerText);
+ takeMeBack() };
