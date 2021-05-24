@@ -1,18 +1,28 @@
 # Hang In There
 
-A boilerplate repo. 
+Project created by [Zachary Tollman](https://github.com/ztollman) and [Logan Vincent](https://github.com/Logandv3).
+Edited with Atom, stored on GitHub.
 
-## Set Up
+# Project Functionality
 
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
-
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
-
-To view your project:
-
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
+ [Hang-in-There-Boilerplate](https://ztollman.github.io/hang-in-there-boilerplate/)
+ 
+ [Video Walkthrough](https://youtu.be/qUiirMcXci0)
+ 
+ 
+ ## What you can do with this site
+ 
+ 
+ * See randomly generated posters using the `Show Another Random Poster` button
+ 
+ 
+ * Make your own poster using the `Make Your Own Poster` button.  
+   A form will appear and ask you to enter information to make your own poster.
+   
+   
+ * Save the poster that is currently being displayed using the `Save This Poster` button.
+ 
+ 
+ * View all the posters you have saved using the `Show Saved Posters` button.
+   You can delete any of the posters you have saved by double clicking on that poster.
+ 
