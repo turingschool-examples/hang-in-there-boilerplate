@@ -111,6 +111,7 @@ var motivationalImageUrl = document.querySelector("#poster-image-url");
 var motivationalTitle = document.querySelector("#poster-title");
 var motivationalQuote = document.querySelector("#poster-quote");
 
+var savedPostersGridElem = document.querySelector('.saved-posters-grid');
 var mainPosterElem = document.querySelector('.main-poster');
 var savedPostersElem = document.querySelector('.saved-posters');
 var savedPostersGridElem = document.querySelector('.saved-posters-grid');
@@ -207,3 +208,12 @@ function deletePoster(event) { for (var i = 0; i < savedPosters.length; i++) {
   }
 showSaved();
 };
+
+function deletePoster(event) {
+  for (var i = 0; i < savedPosters.length; i++) {
+     if (event.target.id == savedPosters[i].id) { 
+       savedPosters.splice(i, 1);
+     } 
+  } 
+  showSaved(); }
+
