@@ -1,6 +1,6 @@
 # Hang In There
 
-A boilerplate repo. 
+A boilerplate repo.
 
 ## Set Up
 
@@ -9,6 +9,8 @@ A boilerplate repo.
 3. cd into the repository
 4. Open it in your text editor
 5. Add all project partners and your assigned instructor as collaborators on the repository
+
+//collaborators: Johnathan, Tanya Z
 
 Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
 
