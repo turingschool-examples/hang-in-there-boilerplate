@@ -1,4 +1,9 @@
 // query selector variables go here 👇
+var title = document.querySelector('.poster-title');
+
+var quote = document.querySelector('.poster-quote');
+
+var imageURL = document.querySelector('.poster-img');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,16 +107,27 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-var title = document.querySelector('h1');
-title.innerText = titles[getRandomIndex(titles)];
 
-var quote = document.querySelector('h3');
-quote.innerText = quotes[getRandomIndex(quotes)];
-
-var image = document.querySelector('img');
-image.src = images[getRandomIndex(images)];
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+function createRandomPoster() {
+  var imageURL =  images[getRandomIndex(images)];
+  var title = titles[getRandomIndex(titles)];
+  var quote = quotes[getRandomIndex(quotes)];
+
+  return currentPoster = new Poster(imageURL, title, quote);
+}
+
+var randomPoster = createRandomPoster();
+
+function displayPoster() {
+  title.innerText = currentPoster.title;
+  quote.innerText = currentPoster.quote;
+  imageURL.src = currentPoster.imageURL;
+}
+
+displayPoster();
