@@ -1,6 +1,7 @@
 // query selector variables go here 👇
 var mainPage = document.querySelector('.main-poster');
 var makePosterPage = document.querySelector('.poster-form')
+var savedPostersPage = document.querySelector('.saved-posters')
 
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
@@ -8,7 +9,7 @@ var posterQuote = document.querySelector('.poster-quote');
 
 var randomPosterButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
-
+var showSavedButton = document.querySelector('.show-saved');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -115,29 +116,14 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', generateRandomPoster());
 randomPosterButton.addEventListener('click', generateRandomPoster);
-// Add 'click' event listener for clicking make own poster button
 makePosterButton.addEventListener('click', showMakePosterForm);
+showSavedButton.addEventListener('click', showSavedPostersPage);
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// For loop?
-// function generateRandomposter() {
-//   var posterElements = [images, titles, quotes];
-//   var posterQueries = [posterImage, posterTitle, posterQuote]
-//   for (var i = 0; i < posterElements.length; i++) {
-//     var randomIndex = getRandomIndex(posterElements[i]);
-//     if (i == 0) {
-//       posterQueries[i].src = posterElements[i][randomIndex]
-//     } else {
-//       posterQueries[i].innerText = posterElements[i][randomIndex]
-//     }
-//   }
-// }
-
-// Clearer & shorter, even if function calls are not DRY
 function generateRandomPoster() {
   posterImage.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
@@ -146,20 +132,30 @@ function generateRandomPoster() {
   currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innertext);
 };
 
-
 // Iteration 2
 // When a user clicks the “Make Your Own Poster” button, we should see the form, and the main poster should be hidden
-
-// Add hidden class to main page section
-// Remove hidden class to make poster page
-
 function showMakePosterForm() {
   mainPage.classList.add('hidden')
   makePosterPage.classList.remove('hidden')
 }
 
+// When a user clicks the "Show Saved Posters” button, we should see t/the saved posters area, and the main poster should be hidden
+function showSavedPostersPage() {
+  mainPage.classList.add('hidden')
+  savedPostersPage.classList.remove('hidden')
+}
 
-// When a user clicks the “View Saved Posters” button, we should see the saved posters area, and the main poster should be hidden
 // When a user clicks the “Nevermind, take me back!” or “Back to Main” buttons, we should only see the main poster section
-// In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
-// Hint: go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place
+
+
+
+
+
+
+
+
+
+// var nevermindButton = document.querySelector('.show-main')
+// var backToMainButton = document.querySelector('.back-to-main')
+
+// nevermindButton
