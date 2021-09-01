@@ -1,5 +1,9 @@
 // query selector variables go here 👇
 
+
+// var quote = document.querySelector('poster-title');
+// console.log(quote);
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -106,6 +110,8 @@ var currentPoster;
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  return array[Math.floor(Math.random() * array.length)];
 }
-
+getRandomIndex(images);
+getRandomindex(titles);
+getRandomIndex(quotes);
