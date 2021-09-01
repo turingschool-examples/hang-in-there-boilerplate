@@ -102,8 +102,12 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-var title = document.querySelector('h1');//returns a DOM element
+var title = document.querySelector('h1');
 title.innerText = titles[getRandomIndex(titles)];
+
+var quote = document.querySelector('h3');
+quote.innerText = quotes[getRandomIndex(quotes)]; 
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
