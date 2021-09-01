@@ -2,6 +2,7 @@
 var poster = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote");
+var randomButton = document.querySelector(".show-random");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -111,6 +112,7 @@ function randomPoster() {
 };
 // event listeners go here 👇
 document.addEventListener("DOMContentLoaded", randomPoster);
+randomButton.document.addEventListener("click", randomPoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
