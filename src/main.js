@@ -106,7 +106,9 @@ var title = document.querySelector('h1');
 title.innerText = titles[getRandomIndex(titles)];
 
 var quote = document.querySelector('h3');
-quote.innerText = quotes[getRandomIndex(quotes)]; 
+quote.innerText = quotes[getRandomIndex(quotes)];
+
+// test line
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
