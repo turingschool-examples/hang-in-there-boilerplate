@@ -4,6 +4,10 @@ var mainImage = document.querySelector(".poster-img");
 var mainTitle = document.querySelector(".poster-title");
 var mainQuote = document.querySelector(".poster-quote");
 var randomButton = document.querySelector(".show-random");
+var savedButton = document.querySelector(".show-saved");
+var formButton = document.querySelector(".show-form");
+var savedSection = document.querySelector(".saved-posters");
+var formSection = document.querySelector(".poster-form");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,10 +114,22 @@ var currentPoster;
 
 randomButton.addEventListener('click', function(){
     createRandomPoster();
-}
-)
+})
+
+savedButton.addEventListener('click', function(){
+
+})
+
+formButton.addEventListener('click', function(){
+
+})
 
 // functions and event handlers go here 👇
+
+function showSavedPosters(){
+
+};
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
