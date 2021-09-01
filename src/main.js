@@ -109,3 +109,9 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function createRandomPoster(){
+  var randomPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  console.log(randomPoster);
+};
+
+createRandomPoster();
