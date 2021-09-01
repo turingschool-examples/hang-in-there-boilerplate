@@ -8,6 +8,7 @@ var savedButton = document.querySelector(".show-saved");
 var formButton = document.querySelector(".show-form");
 var savedSection = document.querySelector(".saved-posters");
 var formSection = document.querySelector(".poster-form");
+var mainSection = document.querySelector(".main-poster");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -117,17 +118,22 @@ randomButton.addEventListener('click', function(){
 })
 
 savedButton.addEventListener('click', function(){
-                
+
 })
 
 formButton.addEventListener('click', function(){
 
 })
 
+formButton.addEventListener('click', function() {
+  switchSections(mainSection);
+  switchSections(formSection);
+})
+
 // functions and event handlers go here 👇
 
-function showSavedPosters(){
-
+function switchSections(section){
+  section.classList.toggle("hidden")
 };
 
 // (we've provided one for you to get you started)!
