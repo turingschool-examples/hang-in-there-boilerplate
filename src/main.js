@@ -108,8 +108,8 @@ title.innerText = titles[getRandomIndex(titles)];
 var quote = document.querySelector('h3');
 quote.innerText = quotes[getRandomIndex(quotes)];
 
-// test line
-
+var image = document.querySelector('img');
+image.src = images[getRandomIndex(images)];
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
