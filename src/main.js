@@ -126,7 +126,7 @@ makePosterButton.addEventListener('click', showMakePosterForm);
 savedPostersButton.addEventListener('click', showSavedPostersPage);
 nevermindButton.addEventListener('click', showMainPage);
 backToMainButton.addEventListener('click', showMainPage);
-showMyPosterButton.addEventListener('click', makeOwnPoster)
+showMyPosterButton.addEventListener('click', generateOwnPoster)
 
 
 // functions and event handlers go here 👇
@@ -164,9 +164,10 @@ function renderCurrentPoster() {
 
 function generateOwnPoster(event) {
   event.preventDefault()
+  
   currentPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value);
 
   renderCurrentPoster();
   showMainPage();
 }
-  
+
