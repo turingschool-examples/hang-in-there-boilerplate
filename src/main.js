@@ -112,3 +112,11 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+function generateRandomPoster() {
+  posterImage.src = images[getRandomIndex(images)];
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
+
+  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innertext);
+};
