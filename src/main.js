@@ -119,14 +119,19 @@ var quote = document.querySelector(".poster-quote")
 var image = document.querySelector(".poster-img")
 
 function randomizer(){
-  var quotesIndex = getRandomIndex(quotes);
-  quote.innerText = quotes[index];
-
-  var imagesIndex = getRandomIndex(images);
-  image.innerText = images[index];
-
-  var titlesIndex = getRandomIndex(titles);
-  title.innerText = titles[index];
+  var elements = [quotes, images, titles]
+  for (var i = 0; i < elements.length; i++) {
+    var index = getRandomIndex(elements[i])
+    [elements[i]].innerText = elements[i][index]
+  }
+  // var quotesIndex = getRandomIndex(quotes);
+  // quote.innerText = quotes[index];
+  //
+  // var imagesIndex = getRandomIndex(images);
+  // image.innerText = images[index];
+  //
+  // var titlesIndex = getRandomIndex(titles);
+  // title.innerText = titles[index];
 }
 
 randomButton.addEventListener("click", randomizer);
