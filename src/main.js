@@ -102,10 +102,16 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+// var randomEvent = document.querySelector('h1')
+// randomEvent.addEventListener("click", getRandomIndex)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
+  // console.log(images)
   return Math.floor(Math.random() * array.length);
 }
 
+
+// Need to add three event listeners to access the functions for
+//the three different arrays. The function above
