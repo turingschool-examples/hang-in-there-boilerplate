@@ -127,8 +127,3 @@ function getRandomSelection(){
 function reload(){
   window.location.reload();
 }
-
-// function randomizeTitle(array){
-//   var randomTitle = getRandomIndex(titles);
-//   title.innerText = titles[randomTitle];
-// }
