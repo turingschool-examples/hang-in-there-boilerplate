@@ -116,6 +116,8 @@ function getRandomIndex(array) {
 var randomButton = document.querySelector(".show-random")
 var quote = document.querySelector(".poster-quote")
 var image = document.querySelector(".poster-img")
- 
-var index = getRandomIndex(quotes);
-console.log(quotes[index]);
+
+function randomizer(){
+  var index = getRandomIndex(quotes);
+  quote.innerText = quotes[index];
+}
