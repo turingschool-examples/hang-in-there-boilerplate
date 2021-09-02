@@ -110,7 +110,10 @@ var currentPoster;
 
 // event listeners go here 👇
 function showAnotherPoster() {
-  randomPosterButton.addEventListener('click', function() {createRandomPoster(); displayPoster(); });
+  randomPosterButton.addEventListener('click', function() {
+    createRandomPoster();
+    displayPoster();
+  });
 }
 
 // functions and event handlers go here 👇
@@ -134,8 +137,6 @@ function displayPoster() {
   quote.innerText = currentPoster.quote;
   imageURL.src = currentPoster.imageURL;
 }
-
-// displayPoster();
 
 displayPoster();
 showAnotherPoster();
