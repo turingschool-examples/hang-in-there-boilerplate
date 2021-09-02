@@ -112,6 +112,46 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
+<<<<<<< HEAD
 // Need to add three event listeners to access the functions for
 //the three different arrays. The function above
+
+
+
+var posterImages = document.querySelectorAll('.poster-img');
+  // window.onload = getRandomIndex(posterImages);
+posterImages.addEventListener('load', getRandomIndex);
+
+var posterQuotes = document.querySelectorAll('.poster-quote');
+  // window.onload = getRandomIndex(posterQuotes)
+posterQutoes.addEventListener('load', getRandomIndex);
+
+var posterTitles = docuemnt.querySelectorAll('.poster-title');
+  // window.onload = getRandomIndex(posterTitles);
+poster-title.addEventListener('load', getRandomIndex);
+
+
+
+
+
+
+
+
+
+=======
+
+//Emily and Her Mentor's Notes
+var posterImage = document.querySelector(`.poster-img`)
+
+var posterTitle = document.querySelector(`.poster-title`)
+
+var posterQuote = document.querySelector(`.poster-quote`)
+
+function generatePoster() {
+  var i = getRandomIndex(images)
+  var randomImage = images[i]  // accesing whatever is at the random index of i in the images array
+  posterImage.src = randomImage
+}
+
+window.addEventListener("load", generatePoster);
+// >>>>>>> b52e1a12610c3d1f1b19c948467684a08c6e9b04
