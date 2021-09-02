@@ -116,18 +116,29 @@ function getRandomIndex(array) {
 
 var randomButton = document.querySelector(".show-random")
 var quote = document.querySelector(".poster-quote")
-var image = document.querySelector(".poster-img")
+var image = document.querySelector("img")
 var page = document.querySelector(".main-poster")
 var title = document.querySelector(".poster-title")
+
 function randomizer(){
-  var elements = [quotes, images, titles];
-  var htmlElements = [quote, image, title];
+  var elements = [quotes, titles];
+  var htmlElements = [quote, title];
   for (var i = 0; i < elements.length; i++) {
     var index = getRandomIndex(elements[i])
     htmlElements[i].innerText = elements[i][index];
-    console.log(htmlElements[i]);
   }
 }
+
+function imageRandomizer() {
+  var imgIndex = getRandomIndex(images)
+  image.src = images[imgIndex]
+  console.log("html:", image.src)
+  console.log("image from array:", images[imgIndex])
+}
+
+imageRandomizer()
+randomizer()
+
   // var quotesIndex = getRandomIndex(quotes);
   // quote.innerText = quotes[index];
   //
@@ -136,7 +147,10 @@ function randomizer(){
   //
   // var titlesIndex = getRandomIndex(titles);
   // title.innerText = titles[index];
-page.addEventListener('onload', randomizer);
+// page.addEventListener('onload', function(){
+//   // randomizer()
+//   imageRandomizer()
+// });
 
-console.log(randomizer())
-randomButton.addEventListener("click", randomizer);
+// console.log(randomizer())
+// randomButton.addEventListener("click", randomizer);
