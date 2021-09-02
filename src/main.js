@@ -158,3 +158,19 @@ randomButton.addEventListener('click' , function(){
 
 // console.log(randomizer())
 // randomButton.addEventListener("click", randomizer);
+
+// When make-own-poster button is clicked
+// Hide main & show input fields page
+// Save posters into an array
+// Be able to view saved posters array
+// Take me back and back to main - both buttons should reset to main screen
+
+
+var mainPoster = document.querySelector(".main-poster");
+var posterForm = document.querySelector(".poster-form");
+var showFormButton = document.querySelector(".show-form")
+
+showFormButton.addEventListener('click', function() {
+  posterForm.classList.remove("hidden")
+  mainPoster.classList.add("hidden")
+})
