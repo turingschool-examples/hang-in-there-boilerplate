@@ -118,7 +118,12 @@ var currentPoster;
 
 // event listeners go here 👇
 showRandomPoster.addEventListener('click', randomPosterButton);
-makePosterButton.addEventListener('click', posterForm);
+// makePosterButton.addEventListener('click', hideMainShowForm);
+makePosterButton.addEventListener('click', function(){
+  showForm ();
+  hideMainPoster();
+});
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -139,9 +144,14 @@ function getRandomIndex(array) {
  titleInput.innerText = getRandomIndex(titles);
  quotesInput.innerText = getRandomIndex(quotes);
 
- function posterForm(){
+ function hideMainPoster(){
    mainPoster.innerText = 'main-poster hidden';
-   makePosterForm.innerText = 'poster-form';
-   return makePosterForm;
 }
-makePosterForm.innerText = 'poster-form';
+function showForm (){
+  makePosterForm.innerText = "poster-form";
+}
+
+// function hideMainShowForm(){
+//   showForm();
+//   hideMainPoster();
+// }
