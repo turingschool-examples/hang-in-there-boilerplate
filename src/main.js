@@ -117,7 +117,8 @@ function getRandomIndex(array) {
 //the three different arrays. The function above
 
 
-
+//Using .querySelector to grab the classes of poster, titles, quoptes
+//Adding Event Listener to insert randomize function
 var posterImages = document.querySelectorAll('.poster-img');
   // window.onload = getRandomIndex(posterImages);
 posterImages.addEventListener('load', getRandomIndex);
@@ -126,9 +127,15 @@ var posterQuotes = document.querySelectorAll('.poster-quote');
   // window.onload = getRandomIndex(posterQuotes)
 posterQutoes.addEventListener('load', getRandomIndex);
 
-var posterTitles = docuemnt.querySelectorAll('.poster-title');
+var posterTitles = document.querySelectorAll('.poster-title');
   // window.onload = getRandomIndex(posterTitles);
 poster-title.addEventListener('load', getRandomIndex);
+
+
+
+//Create Random Button event listener
+var randomButton = document.querySelector(".show-random");
+randomButton.addEventListener('click', getRandomIndex);
 
 
 
