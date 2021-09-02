@@ -7,10 +7,14 @@ var posterQuote = document.querySelector('.poster-quote');
 
 var makePosterBtn = document.querySelector('.show-form');
 var mainPoster = document.querySelector('.main-poster');
-var posterForm = document.querySelector('.poster-form hidden');
+var posterForm = document.querySelector('.poster-form');
+
+var savedPostersBtn = document.querySelector('.show-saved');
+var savedPostersPg = document.querySelector('.saved-posters');
 
 makePosterBtn.addEventListener('click', makePosterForm);
 
+savedPostersBtn.addEventListener('click', );
 
 
 
@@ -139,7 +143,8 @@ function createRandomPoster() {
 }
 
 function makePosterForm() {
-  mainPoster.classList.add('.hidden');
+  mainPoster.classList.add('hidden');
+  posterForm.classList.remove('hidden');
 }
 
 // for bullet 2 of it0, psuedocoding testing
