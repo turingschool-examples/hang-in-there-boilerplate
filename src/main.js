@@ -138,6 +138,10 @@ function imageRandomizer() {
 
 imageRandomizer()
 randomizer()
+randomButton.addEventListener('click' , function(){
+  imageRandomizer()
+  randomizer()
+});
 
   // var quotesIndex = getRandomIndex(quotes);
   // quote.innerText = quotes[index];
