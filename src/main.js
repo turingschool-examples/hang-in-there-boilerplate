@@ -1,9 +1,18 @@
 // query selector variables go here 👇
+var mainPage = document.querySelector('.main-poster');
+var makePosterPage = document.querySelector('.poster-form')
+var savedPostersPage = document.querySelector('.saved-posters')
+
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
-var showRandomButton = document.querySelector('.show-random');
 
+var randomPosterButton = document.querySelector('.show-random');
+var makePosterButton = document.querySelector('.show-form');
+var savedPostersButton = document.querySelector('.show-saved');
+
+var nevermindButton = document.querySelector('.show-main')
+var backToMainButton = document.querySelector('.back-to-main')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -106,16 +115,19 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-
 // event listeners go here 👇
 window.addEventListener('load', generateRandomPoster());
-showRandomButton.addEventListener('click', generateRandomPoster);
-
+randomPosterButton.addEventListener('click', generateRandomPoster);
+makePosterButton.addEventListener('click', showMakePosterForm);
+savedPostersButton.addEventListener('click', showSavedPostersPage);
+nevermindButton.addEventListener('click', showMainPage);
+backToMainButton.addEventListener('click', showMainPage);
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 
 function generateRandomPoster() {
   posterImage.src = images[getRandomIndex(images)];
@@ -124,3 +136,20 @@ function generateRandomPoster() {
 
   currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innertext);
 };
+
+
+function showMakePosterForm() {
+  mainPage.classList.add('hidden')
+  makePosterPage.classList.remove('hidden')
+}
+
+function showSavedPostersPage() {
+  mainPage.classList.add('hidden')
+  savedPostersPage.classList.remove('hidden')
+}
+
+function showMainPage() {
+  mainPage.classList.remove('hidden');
+  makePosterPage.classList.add('hidden');
+  savedPostersPage.classList.add('hidden');
+}
