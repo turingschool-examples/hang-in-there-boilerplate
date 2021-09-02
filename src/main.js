@@ -1,4 +1,5 @@
 // query selector variables go here 👇
+
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
