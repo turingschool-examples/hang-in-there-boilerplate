@@ -109,3 +109,17 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+
+var posterImage = document.querySelector(`.poster-img`)
+
+var posterTitle = document.querySelector(`.poster-title`)
+
+var posterQuote = document.querySelector(`.poster-quote`)
+
+function generatePoster() {
+  var i = getRandomIndex(images)
+  var randomImage = images[i]  // accesing whatever is at the random index of i in the images array
+  posterImage.src = randomImage
+}
+
+window.addEventListener("load", generatePoster);
