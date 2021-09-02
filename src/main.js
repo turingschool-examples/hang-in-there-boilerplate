@@ -9,7 +9,8 @@ var posterQuote = document.querySelector('.poster-quote');
 
 var randomPosterButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
-var showSavedButton = document.querySelector('.show-saved');
+var savedPostersButton = document.querySelector('.show-saved');
+var nevermindButton = document.querySelector('.show-main')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -112,17 +113,18 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-
 // event listeners go here 👇
 window.addEventListener('load', generateRandomPoster());
 randomPosterButton.addEventListener('click', generateRandomPoster);
 makePosterButton.addEventListener('click', showMakePosterForm);
-showSavedButton.addEventListener('click', showSavedPostersPage);
+savedPostersButton.addEventListener('click', showSavedPostersPage);
+nevermindButton.addEventListener('click', showMainPage);
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 
 function generateRandomPoster() {
   posterImage.src = images[getRandomIndex(images)];
@@ -132,30 +134,18 @@ function generateRandomPoster() {
   currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innertext);
 };
 
-// Iteration 2
-// When a user clicks the “Make Your Own Poster” button, we should see the form, and the main poster should be hidden
+
 function showMakePosterForm() {
   mainPage.classList.add('hidden')
   makePosterPage.classList.remove('hidden')
 }
 
-// When a user clicks the "Show Saved Posters” button, we should see t/the saved posters area, and the main poster should be hidden
 function showSavedPostersPage() {
   mainPage.classList.add('hidden')
   savedPostersPage.classList.remove('hidden')
 }
 
-// When a user clicks the “Nevermind, take me back!” or “Back to Main” buttons, we should only see the main poster section
-
-
-
-
-
-
-
-
-
-// var nevermindButton = document.querySelector('.show-main')
-// var backToMainButton = document.querySelector('.back-to-main')
-
-// nevermindButton
+function showMainPage() {
+  mainPage.classList.remove('hidden');
+  makePosterPage.classList.add('hidden');
+}
