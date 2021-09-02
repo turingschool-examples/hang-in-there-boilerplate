@@ -1,10 +1,16 @@
 // query selector variables go here 👇
 
-//testing with pseudocoding ideas ** it0 bullet 1 (and btn)
 var showRandomPostersBtn = document.querySelector('.show-random');
 var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+
+var makePosterBtn = document.querySelector('.show-form');
+var mainPoster = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form hidden');
+
+makePosterBtn.addEventListener('click', makePosterForm);
+
 
 
 
@@ -127,9 +133,13 @@ window.addEventListener('load', createRandomPoster)
 
 // **testing for pseudocoding ideas bullet 1 it0 and also bullet2 random poster button
 function createRandomPoster() {
-posterTitle.innerText = titles[getRandomIndex(titles)];
-posterQuote.innerText = quotes[getRandomIndex(quotes)];
-posterImg.src = images[getRandomIndex(images)]
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
+  posterImg.src = images[getRandomIndex(images)];
+}
+
+function makePosterForm() {
+  mainPoster.classList.add('.hidden');
 }
 
 // for bullet 2 of it0, psuedocoding testing
