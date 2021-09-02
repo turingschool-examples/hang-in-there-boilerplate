@@ -10,7 +10,9 @@ var posterQuote = document.querySelector('.poster-quote');
 var randomPosterButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
 var savedPostersButton = document.querySelector('.show-saved');
+
 var nevermindButton = document.querySelector('.show-main')
+var backToMainButton = document.querySelector('.back-to-main')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,6 +121,7 @@ randomPosterButton.addEventListener('click', generateRandomPoster);
 makePosterButton.addEventListener('click', showMakePosterForm);
 savedPostersButton.addEventListener('click', showSavedPostersPage);
 nevermindButton.addEventListener('click', showMainPage);
+backToMainButton.addEventListener('click', showMainPage);
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -148,4 +151,5 @@ function showSavedPostersPage() {
 function showMainPage() {
   mainPage.classList.remove('hidden');
   makePosterPage.classList.add('hidden');
+  savedPostersPage.classList.add('hidden');
 }
