@@ -109,7 +109,8 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// Grab a random element from each array
+// Upon page load,
+//Grab a random element from each array
 // Assign each html element a variable
 // Change html elements in existing
 
@@ -118,6 +119,14 @@ var quote = document.querySelector(".poster-quote")
 var image = document.querySelector(".poster-img")
 
 function randomizer(){
-  var index = getRandomIndex(quotes);
+  var quotesIndex = getRandomIndex(quotes);
   quote.innerText = quotes[index];
+
+  var imagesIndex = getRandomIndex(images);
+  image.innerText = images[index];
+
+  var titlesIndex = getRandomIndex(titles);
+  title.innerText = titles[index];
 }
+
+randomButton.addEventListener("click", randomizer);
