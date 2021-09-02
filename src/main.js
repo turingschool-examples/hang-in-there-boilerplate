@@ -134,4 +134,6 @@ function randomizer(){
   // title.innerText = titles[index];
 }
 
+
+console.log(randomizer())
 randomButton.addEventListener("click", randomizer);
