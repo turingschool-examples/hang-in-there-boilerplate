@@ -2,6 +2,8 @@
 var imageInput = document.querySelector(".poster-img");
 var titleInput = document.querySelector('.poster-title');
 var quotesInput = document.querySelector('.poster-quote');
+var showRandomPoster = document.querySelector('.show-random');
+
 
 
 // we've provided you with some data to work with 👇
@@ -113,5 +115,11 @@ function getRandomIndex(array) {
   // return Math.floor(Math.random() * array.length);
   return array[Math.floor(Math.random() * array.length)];
  }
+
+}function getRandomIndex(array) {
+  return array[Math.floor(Math.random() * array.length)];
 }
- getRandomIndex(images);
+imageInput.innerText = getRandomIndex(images);
+imageInput.src = getRandomIndex(images);
+titleInput.innerText = getRandomIndex(titles);
+quotesInput.innerText = getRandomIndex(quotes);
