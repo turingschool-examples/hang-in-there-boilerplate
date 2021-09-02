@@ -138,7 +138,7 @@ function generateRandomPoster() {
   posterImage.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
-};
+}
 
 function showMakePosterForm() {
   mainPage.classList.add('hidden')
@@ -156,7 +156,9 @@ function showMainPage() {
   savedPostersPage.classList.add('hidden');
 }
 
-function renderCurrentPoster() {
+function renderCurrentPoster(image, title, quote) {
+  currentPoster = new Poster(image, title, quote);
+
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote; 
@@ -165,9 +167,15 @@ function renderCurrentPoster() {
 function generateOwnPoster(event) {
   event.preventDefault()
   
-  currentPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value);
-
-  renderCurrentPoster();
+  renderCurrentPoster(inputImage.value, inputTitle.value, inputQuote.value);
+  saveFormData();
   showMainPage();
 }
 
+function saveFormData() {
+  var posterElements = [images, titles, quotes]
+  var formElements = [inputImage, inputTitle, inputQuote]
+  for (var i = 0; i < posterElements.length; i++) {
+    posterElements[i].push(formElements[i].value)
+  }
+}
