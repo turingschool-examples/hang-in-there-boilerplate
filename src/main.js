@@ -109,3 +109,13 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// Grab a random element from each array
+// Assign each html element a variable
+// Change html elements in existing
+
+var randomButton = document.querySelector(".show-random")
+var quote = document.querySelector(".poster-quote")
+var image = document.querySelector(".poster-img")
+ 
+var index = getRandomIndex(quotes);
+console.log(quotes[index]);
