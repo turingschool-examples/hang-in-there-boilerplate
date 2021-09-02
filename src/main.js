@@ -107,10 +107,18 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener(`load`
+  initializePage)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function initializePage() {
+  quote.innerText = quotes[getRandomIndex(quotes)];
+  title.innerText = titles[getRandomIndex(quotes)];
+  img.src = images[getRandomIndex(images)];
 }
