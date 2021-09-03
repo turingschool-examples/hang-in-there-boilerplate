@@ -1,5 +1,15 @@
 // query selector variables go here 👇
-
+var randomImage = document.querySelector('.poster-img');
+var randomTitle = document.querySelector('.poster-title');
+var randomQuote = document.querySelector('.poster-quote');
+var randomBtn = document.querySelector('.show-random');
+var viewPosterBtn = document.querySelector('.show-form');
+var mainPage = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
+var viewSavePosterBtn = document.querySelector('.show-saved');
+var viewPosters = document.querySelector('.saved-posters');
+var neverMindBtn = document.querySelector('.show-main');
+var mainBackBtn = document.querySelector('.back-to-main');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -102,10 +112,48 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener('load', makePoster);
+randomBtn.addEventListener('click', makePoster);
 
+viewPosterBtn.addEventListener('click', viewPosterForm);
+viewSavePosterBtn.addEventListener('click', viewSavedPoster);
+neverMindBtn.addEventListener('click', viewMain);
+mainBackBtn.addEventListener('click', viewMain);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function makePoster() {
+  randomQuote.innerText = quotes[getRandomIndex(quotes)];
+  randomTitle.innerText = titles[getRandomIndex(titles)];
+  randomImage.src = images[getRandomIndex(images)];
+}
+
+function display(element) {
+  element.classList.remove('hidden');
+}
+
+function hide(element) {
+  element.classList.add('hidden');
+}
+
+function viewPosterForm() {
+  hide(mainPage);
+  hide(viewPosters);
+  display(posterForm);
+}
+
+function viewSavedPoster() {
+  hide(mainPage);
+  hide(posterForm);
+  display(viewPosters);
+}
+
+function viewMain() {
+  hide(posterForm);
+  hide(viewPosters);
+  display(mainPage);
+}
