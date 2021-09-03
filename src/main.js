@@ -3,6 +3,8 @@ var mainPage = document.querySelector('.main-poster');
 var makePosterPage = document.querySelector('.poster-form')
 var savedPostersPage = document.querySelector('.saved-posters')
 
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
+
 var inputImage = document.querySelector('#poster-image-url')
 var inputTitle = document.querySelector('#poster-title')
 var inputQuote = document.querySelector('#poster-quote')
@@ -17,7 +19,6 @@ var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
 var showMyPosterButton = document.querySelector('.make-poster');
 var savePosterButton = document.querySelector('.save-poster')
-
 
 
 // we've provided you with some data to work with 👇
@@ -125,12 +126,14 @@ var currentPoster;
 window.addEventListener('load', generateRandomPoster);
 randomPosterButton.addEventListener('click', generateRandomPoster);
 makePosterButton.addEventListener('click', showMakePosterForm);
-savedPostersButton.addEventListener('click', showSavedPostersPage);
+savedPostersButton.addEventListener('click', function() {
+  makeSavedPostersGrid();
+  showSavedPostersPage();
+});
 nevermindButton.addEventListener('click', showMainPage);
 backToMainButton.addEventListener('click', showMainPage);
 showMyPosterButton.addEventListener('click', generateOwnPoster)
 savePosterButton.addEventListener('click', savePoster);
-
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -141,10 +144,6 @@ function generateRandomPoster() {
   var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
-
-  // posterImage.src = images[getRandomIndex(images)];
-  // posterTitle.innerText = titles[getRandomIndex(titles)];
-  // posterQuote.innerText = quotes[getRandomIndex(quotes)];
 
   renderCurrentPoster(randomImage, randomTitle, randomQuote)
 }
@@ -195,6 +194,14 @@ function savePoster() {
   }
 }
 
-// When a user clicks the “Show Saved Posters” button, we should see the saved posters section
-
-// All the posters in the savedPosters array should be displayed in the saved posters grid section
+function makeSavedPostersGrid() {
+  savedPostersGrid.innerHTML = '';
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersGrid.innerHTML += `
+    <article class='mini-poster' id=${savedPosters[i].id}>
+    <img src=${savedPosters[i].imageURL}>
+    <h2>${savedPosters[i].title}</h2>
+    <h4>${savedPosters[i].quote}</h4>
+    `
+  }
+}
