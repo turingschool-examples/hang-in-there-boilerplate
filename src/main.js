@@ -117,6 +117,10 @@ var posterQuote = document.querySelector('.poster-quote')
 
 var randomButton = document.querySelector('.show-random')
 
+var makeYourOwnButton = document.querySelector('.show-form')
+
+var posterForm = document.querySelector('.poster-form hidden')
+
 
 function generatePoster() {
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
@@ -127,11 +131,11 @@ function generatePoster() {
 
 };
 
+function showForm(){
+  posterForm =
+}
+
+
 window.addEventListener("load", generatePoster);
-
-
 randomButton.addEventListener("click", generatePoster);
-
-
-
-//Testing testing 123 push it
+makeYourOwnButton.addEventListener("click", showForm);
