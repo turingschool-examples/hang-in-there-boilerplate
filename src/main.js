@@ -112,8 +112,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', initializePage);
-randomButton.addEventListener('click', initializePage);
+window.addEventListener('load', makePoster);
+randomBtn.addEventListener('click', makePoster);
 
 viewPosterBtn.addEventListener('click', viewPosterForm);
 viewSavePosterBtn.addEventListener('click', viewSavedPoster);
@@ -126,7 +126,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function initializePage() {
+function makePoster() {
   randomQuote.innerText = quotes[getRandomIndex(quotes)];
   randomTitle.innerText = titles[getRandomIndex(titles)];
   randomImage.src = images[getRandomIndex(images)];
