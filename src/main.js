@@ -3,6 +3,7 @@
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+var posterImageURL = document.querySelector('.poster-image-url')
 var randomPosterButton = document.querySelector('.show-random')
 var showForm = document.querySelector('.show-form')
 var mainPoster = document.querySelector('.main-poster')
@@ -11,6 +12,11 @@ var neverMind = document.querySelector('.show-main')
 var createdPosters = document.querySelector('.saved-posters')
 var savedPostersButton = document.querySelector('.show-saved')
 var backToMain = document.querySelector('.back-to-main')
+var showMyPosterButton = document.querySelector('.make-poster')
+
+var inputImage = document.querySelector('#poster-image-url')
+var inputTitle = document.querySelector('#poster-title')
+var inputQuote = document.querySelector('#poster-quote')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -120,6 +126,11 @@ showForm.addEventListener('click', makePosterForm)
 neverMind.addEventListener('click', takeMeBack)
 savedPostersButton.addEventListener('click', showSaved)
 backToMain.addEventListener('click', backToMainPage)
+inputImage.addEventListener('input', receiveImageInput)
+inputTitle.addEventListener('input', receiveTitleInput)
+inputQuote.addEventListener('input', receiveQuoteInput)
+
+showMyPosterButton.addEventListener('click', makeUserPoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -132,8 +143,6 @@ function generateRandomPoster() {
   posterImage.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
-
-  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innertext);
 };
 
 
@@ -157,3 +166,47 @@ function backToMainPage(){
   createdPosters.classList.add('hidden')
   mainPoster.classList.remove('hidden')
 }
+
+function receiveImageInput(){
+  console.log('should be image URL innerText', inputImage.value)
+
+  console.log('images array', images)
+}
+
+function receiveTitleInput(){
+
+}
+
+function receiveQuoteInput(){
+
+}
+
+// the following function will take user inputs and create a new instance of the poster object
+function makeUserPoster(){
+  new Poster(inputImage.value, inputTitle.value, inputQuote.value)
+  takeMeBack();
+  }
+
+
+// the following function will take the same user inputs as above and save them into their respective arrays
+function saveUserData(){
+
+}
+
+
+// images.push(inputImage.value)
+
+// Creating new Poster with the form.
+//
+// User inputs their own values into the form, these will pass through arguments to the following variables:
+// posterImageURL posterTitle, posterQuote
+// this creates a new instance of our Poster class
+
+// submitted data is saved into their respective arrays:
+// imageURL is into the images array
+// poster title is saved into the titles array
+// poster quote is saved into the quotes arrays
+
+// when 'Show my poster' button is clicked ('.make-poster'), this should take the user inputs and use them to create a new poster object,
+// and also saves their darta into their respective arrays.
+// clicking this button will also hide the form page, and show the main page with the new poster showing.
