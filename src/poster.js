@@ -5,4 +5,4 @@ class Poster {
     this.title = title;
     this.quote = quote;
   }
-}
+};
