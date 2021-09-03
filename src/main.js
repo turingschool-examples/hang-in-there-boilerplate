@@ -10,6 +10,25 @@ var showFormButton = document.querySelector(".show-form");
 var mainPosterPage = document.querySelector(".main-poster");
 var posterFormPage = document.querySelector(".poster-form");
 var savedPostersPage = document.querySelector(".saved-posters");
+
+var userImage = document.querySelector(".poster-image-url");
+var userTitle = document.querySelector(".poster-title");
+var userQuote = document.querySelector(".poster-quote");
+var customPosterButton = document.querySelector(".make-poster");
+customPosterButton.addEventListener('click', function() {
+  createCustomPoster()
+  showUserPoster()
+});
+function showUserPoster (){
+  posterFormPage.classList.remove("hidden")
+  mainPosterPage.classList.add("hidden")
+}
+console.log(userImage);
+function createCustomPoster (){
+  imageElement.src = userImage.value;
+  titleElement.innerText = userTitle.value;
+  quoteElement.innerText = userQuote.value;
+};
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
