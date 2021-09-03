@@ -168,9 +168,14 @@ randomButton.addEventListener('click' , function(){
 
 var mainPoster = document.querySelector(".main-poster");
 var posterForm = document.querySelector(".poster-form");
-var showFormButton = document.querySelector(".show-form")
-
+var showFormButton = document.querySelector(".show-form");
+var savedPosters = document.querySelector(".saved-posters");
+var savedPostersButton = document.querySelector(".show-saved");
 showFormButton.addEventListener('click', function() {
   posterForm.classList.remove("hidden")
   mainPoster.classList.add("hidden")
 })
+savedPostersButton.addEventListener('click', function(){
+  savedPosters.classList.remove('hidden')
+  mainPoster.classList.add('hidden')
+});
