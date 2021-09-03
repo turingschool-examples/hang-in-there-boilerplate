@@ -1,9 +1,13 @@
 // query selector variables go here 👇
-var randomImage = document.querySelector('.poster-img')
-var randomTitle = document.querySelector('.poster-title')
-var randomQuote = document.querySelector('.poster-quote')
-var randomButton = document.querySelector('.show-random')
-
+var randomImage = document.querySelector('.poster-img');
+var randomTitle = document.querySelector('.poster-title');
+var randomQuote = document.querySelector('.poster-quote');
+var randomButton = document.querySelector('.show-random');
+var viewPosterBtn = document.querySelector('.show-form');
+var mainPage = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
+var viewSavePosterButton = document.querySelector('.show-saved');
+var viewPosters = document.querySelector('.saved-posters');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,6 +114,10 @@ var currentPoster;
 window.addEventListener('load',
   initializePage);
 randomButton.addEventListener('click', initializePage);
+
+viewPosterBtn.addEventListener('click', viewPosterForm);
+viewSavePosterButton.addEventListener('click', viewSavedPoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -121,4 +129,26 @@ function initializePage() {
   randomQuote.innerText = quotes[getRandomIndex(quotes)];
   randomTitle.innerText = titles[getRandomIndex(titles)];
   randomImage.src = images[getRandomIndex(images)];
+}
+
+// function createNewPoster() {
+//   posterForm.classList.add()
+//   viewPosterBtn.classList.remove(mainPoster)
+// }
+function show(elem){
+    elem.classList.remove('hidden');
+}
+function hide(elem) {
+  elem.classList.add('hidden');
+}
+function viewPosterForm() {
+  hide(mainPage);
+  hide(viewPosters);// when create posterView hide in this function
+  show(posterForm);
+}
+
+function viewSavedPoster() {
+  hide(mainPage);
+  hide(posterForm);
+  show(viewPosters);
 }
