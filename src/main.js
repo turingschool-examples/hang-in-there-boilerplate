@@ -127,6 +127,8 @@ var showSavedPosterButton = document.querySelector('.show-saved')
 
 var savedPostersSection = document.querySelector('.saved-posters')
 
+var backToMainButton = document.querySelector('.back-to-main')
+
 function generatePoster() {
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
 
@@ -147,10 +149,16 @@ function showForm(){
 function showSavedPosters() {
   savedPostersSection.classList.remove('hidden')
   mainPagePoster.classList.add('hidden')
-}
+};
+
+function backToMain() {
+  savedPostersSection.classList.add('hidden')
+  mainPagePoster.classList.remove('hidden')
+};
 
 
 window.addEventListener("load", generatePoster);
 randomButton.addEventListener("click", generatePoster);
 makeYourOwnButton.addEventListener("click", showForm);
 showSavedPosterButton.addEventListener("click", showSavedPosters)
+backToMainButton.addEventListener("click", backToMain)
