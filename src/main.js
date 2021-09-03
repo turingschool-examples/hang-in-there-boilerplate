@@ -8,7 +8,8 @@ var mainPage = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 var viewSavePosterButton = document.querySelector('.show-saved');
 var viewPosters = document.querySelector('.saved-posters');
-
+var neverMindButton = document.querySelector('.show-main');
+var mainBackButton = document.querySelector('.back-to-main');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -117,7 +118,8 @@ randomButton.addEventListener('click', initializePage);
 
 viewPosterBtn.addEventListener('click', viewPosterForm);
 viewSavePosterButton.addEventListener('click', viewSavedPoster);
-
+neverMindButton.addEventListener('click', viewMain);
+mainBackButton.addEventListener('click', viewMain);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -151,4 +153,10 @@ function viewSavedPoster() {
   hide(mainPage);
   hide(posterForm);
   show(viewPosters);
+}
+
+function viewMain() {
+  hide(posterForm);
+  hide(viewPosters);
+  show(mainPage);
 }
