@@ -15,12 +15,6 @@ var savedPostersPg = document.querySelector('.saved-posters');
 var nevermindBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
 
-makePosterBtn.addEventListener('click', makePosterForm);
-
-showSavedBtn.addEventListener('click', showSavedPosters);
-
-nevermindBtn.addEventListener('click', returnToMain);
-backToMainBtn.addEventListener('click', returnToMain);
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -131,15 +125,20 @@ var currentPoster;
 // }
 
 // event listeners go here 👇
-//**testing with pseudocoding ideas
 showRandomPostersBtn.addEventListener('click', createRandomPoster)
-// below on window load event to show random poster for bullet 1 notes it0 testing
-window.addEventListener('load', createRandomPoster)
+
+makePosterBtn.addEventListener('click', makePosterForm);
+
+showSavedBtn.addEventListener('click', showSavedPosters);
+
+nevermindBtn.addEventListener('click', returnToMain);
+backToMainBtn.addEventListener('click', returnToMain);
 
 // functions and event handlers (function to invoke eventListeners) go here 👇
 // (we've provided one for you to get you started)!
 
-// **testing for pseudocoding ideas bullet 1 it0 and also bullet2 random poster button
+window.addEventListener('load', createRandomPoster)
+
 function createRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
@@ -162,24 +161,7 @@ function returnToMain() {
   savedPostersPg.classList.add('hidden');
 }
 
-// makePosterBtn.addEventListener('click', makePosterForm);
-//
-// savedPostersBtn.addEventListener('click', showSavedPosters);
-
-// for bullet 2 of it0, psuedocoding testing
-//function createPoster() {
-//   currentPoster = new Poster(posterTitle.innerText, posterQuote.innerText, posterImg.src)
-// }
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-//PSEUDOCODING NOTES FOR IT0: **note to self: REMEMBER NOT TO DO WORK ON MAIN, PUSH UP BRANCHES SO THERE AREN'T MERGE ERRORS (IF NEEDED WORK IN SEPARATE BRANCHES), GIT FETCH, MERGE AFTER AN ITERATION WITH A PULL REQUEST (CHECK THIS ON WORK FLOW)
-// query selectors: for image, quote and title
-// query selector for the generate random poster button
-// addEventListeners for the page loading (window onload) and a separate one for the generate random poster button)
-// create 2 separate events: an onpage window click event (window.onLoad)
-// utilize get random index function to help us generate a new function to create a random new poster (we can use this function for the onload event & the button
-// to break it down more (something I am still trying to get better at):
-// need to have a function that will reassign the HTML element for each poster item (image, quote, title), uses the get random index arrays to search through so that we can then reassign: the innerText. src, for title/quote/img into the function (think we need an object for this) like var newPoster = {title: title, quote: quote, image: image}
