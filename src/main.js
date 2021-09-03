@@ -3,6 +3,20 @@
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+//button selectors
+var saveNewPosterBtn = document.querySelector('.save-poster');
+var showSavedPosterBtn = document.querySelector('.show-saved');
+var showRandomPosterBtn = document.querySelector('.show-random');
+var makeNewPosterBtn = document.querySelector('.show-form');
+var mainPoster = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
+
+//Save posters
+var savedPostersSection = document.querySelector('.saved-posters');
+
+//backToMainButtons
+var backToMainBtn = document.querySelector('.back-to-main');
+var nevermindBtn = document.querySelector('.show-main');
 
 
 // we've provided you with some data to work with 👇
@@ -109,24 +123,58 @@ var currentPoster;
 // event listeners go here 👇
 window.onload = generateRandomPoster();
 
+showRandomPosterBtn.addEventListener('click', generateRandomPoster)
+
+makeNewPosterBtn.addEventListener('click', makeYourOwnPosterForm)
+
+showSavedPosterBtn.addEventListener('click', showSavedPosterArea)
+
+// saveNewPosterBtn.addEventListener('click', saveNewPoster)
+
+backToMainBtn.addEventListener('click', backToMainPage)
+
+// showMainBtn.addEventListener('click', returnToMainPage)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// function createPoster(image, title, quote) {
 
-//   return new Poster(image, title, quote)
-// }
-
+//mainPageSectionWithButtons
 function generateRandomPoster(){
     var image = images[getRandomIndex(images)]
-    var randomPoster = new Poster(image)
-    setHomeCover(randomPoster)   
-    console.log(image)
+    var title = titles[getRandomIndex(titles)]
+    var quote = quotes[getRandomIndex(quotes)]
+    var randomPoster = new Poster(image, title, quote)
+    setHomeCover(randomPoster)
 };
 
 function setHomeCover(poster){
   posterImage.src = poster.imageURL
+  posterTitle.innerText = poster.title
+  posterQuote.innerText = poster.quote
+
 };
+
+function saveNewPoster() {
+  currentPoster = poster;
+  savedPosters.push[poster];
+}
+
+function makeYourOwnPosterForm() {
+  console.log(posterForm)
+  posterForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+}
+
+function showSavedPosterArea(){
+  savedPostersSection.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+}
+
+//returnToMainPage
+function backToMainPage() {
+  savedPostersSection.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+}
