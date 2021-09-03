@@ -6,6 +6,7 @@ var backToMainButton = document.querySelector(".back-to-main");
 var nevermindButton = document.querySelector(".show-main");
 var randomizeButton = document.querySelector(".show-random");
 var savedPostersButton = document.querySelector(".show-saved");
+var makePosterButton = document.querySelector("make-poster");
 var showFormButton = document.querySelector(".show-form");
 var mainPosterPage = document.querySelector(".main-poster");
 var posterFormPage = document.querySelector(".poster-form");
@@ -131,6 +132,12 @@ nevermindButton.addEventListener('click', function() {
 backToMainButton.addEventListener('click', function() {
   savedPostersPage.classList.add('hidden')
   mainPosterPage.classList.remove('hidden')
+})
+makePosterButton.addEventListener('click', function() {
+  //// Grab three user inputs [.value] - imageURL('#poster-image-url'), title('#poster-title'), quote('#poster-quote') - and put them into an
+  // instance of Poster
+  // Put the saved posters into savedPosters array
+  // Go back to main poster page
 })
 // functions and event handlers go here 👇
 imageRandomizer()
