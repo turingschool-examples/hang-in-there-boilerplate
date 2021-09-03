@@ -12,6 +12,10 @@ var showRandomButton = document.querySelector('.show-random');
 // "Make Your Own Poster" button element and form page
 var makePosterButton = document.querySelector('.show-form');
 var posterForm = document.querySelector('.poster-form');
+var savePosterButton = document.querySelector('.make-poster');
+var posterImage = document.getElementById('poster-image-url');
+var posterTitle = document.getElementById('poster-title');
+var posterQuote = document.getElementById('poster-quote');
 
 // "View Saved Posters" button element and Saved Posters page
 var viewSavedButton = document.querySelector('.show-saved');
@@ -132,6 +136,7 @@ showRandomButton.addEventListener('click', reload);
 
 // when "Make Your Own Poster" button is clicked, show poster form
 makePosterButton.addEventListener('click', showPosterForm);
+savePosterButton.addEventListener('click',saveInfo);
 
 // when "Show Saved Posters" button is clicked, go to Saved Posters page
 viewSavedButton.addEventListener('click', showSaved);
@@ -178,4 +183,15 @@ function takeMeBack(){
 function backToMain(){
   mainPoster.classList.remove('hidden');
   savedPage.classList.add('hidden');
+}
+function saveInfo(){
+  event.preventDefault();
+ currentPoster = new Poster(posterImage.value,posterTitle.value,posterQuote.value);
+ images.push(currentPoster.imageURL);
+ titles.push(currentPoster.title);
+ quotes.push(currentPoster.quote);
+ title.innerText = currentPoster.title;
+ quote.innerText = currentPoster.quote;
+ image.src = currentPoster.imageURL;
+ takeMeBack();
 }
