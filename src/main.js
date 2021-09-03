@@ -9,9 +9,12 @@ var randomBtn = document.querySelector('.show-random');
 
 var makeYourOwnBtn = document.querySelector('.show-form');
 var makeYourOwnForm = document.querySelector('.poster-form');
+var takeMeBackBtn = document.querySelector('.show-main');
+
 
 var showSavedPostersBtn = document.querySelector('.show-saved');
 var savedPostersSection = document.querySelector('.saved-posters');
+var backToMainBtn = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -131,6 +134,8 @@ window.addEventListener('load', setPoster);
 randomBtn.addEventListener('click', setPoster);
 makeYourOwnBtn.addEventListener('click', showMakeYourOwnForm);
 showSavedPostersBtn.addEventListener('click', showSavedPosters);
+takeMeBackBtn.addEventListener('click', takeMeBackToMain);
+backToMainBtn.addEventListener('click', backToMain);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -152,4 +157,14 @@ function showMakeYourOwnForm() {
 function showSavedPosters() {
   mainPosterSection.classList.add('hidden');
   savedPostersSection.classList.remove('hidden');
+};
+
+function takeMeBackToMain() {
+  makeYourOwnForm.classList.add('hidden');
+  mainPosterSection.classList.remove('hidden');
+};
+
+function backToMain() {
+  savedPostersSection.classList.add('hidden');
+  mainPosterSection.classList.remove('hidden');
 };
