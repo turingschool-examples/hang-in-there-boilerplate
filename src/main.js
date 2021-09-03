@@ -1,9 +1,30 @@
 // query selector variables go here 👇
-
+// Image, Title, Quotes
 var imageInput = document.querySelector('.poster-img');
 var titleInput = document.querySelector('.poster-title');
 var quotesInput = document.querySelector('.poster-quote');
-var showRandomPoster = document.querySelector('.show-random');
+
+// show random, make poster buttons, saved poster Button
+var showRandomButton = document.querySelector('.show-random');
+var makePosterButton = document.querySelector('.show-form');
+var savedPostersButton = document.querySelector('.show-saved');
+var nevermindButton =  document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+
+
+// Create Poster
+var makePosterForm = document.querySelector('.poster-form');
+
+
+// main poster
+var mainPoster = document.querySelector('.main-poster');
+
+
+// saved Posters
+var savedPostersPage =  document.querySelector('.saved-posters');
+
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -107,22 +128,68 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-showRandomPoster.addEventListener('click', randomPosterButton);
+showRandomButton.addEventListener('click', randomPosterButton);
+// make a poster button
+makePosterButton.addEventListener('click',hideMainShowForm);
+// saved posters sections
+savedPostersButton.addEventListener('click', showSaved);
+// go back to main buttons
+nevermindButton.addEventListener('click', backToMainPage);
+backToMainButton.addEventListener('click', backToMainPage);
+
+
 
 
 // functions and event handlers go here 👇
+
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
+  // return Math.floor(Math.random() * array.length);
   return array[Math.floor(Math.random() * array.length)];
+ }
+
+
+ function randomPosterButton() {
+   imageInput.innerText = getRandomIndex(images);
+   imageInput.src = getRandomIndex(images);
+   titleInput.innerText = getRandomIndex(titles);
+   quotesInput.innerText = getRandomIndex(quotes);
+ }
+function mainPage() {
+ imageInput.innerText = getRandomIndex(images);
+ imageInput.src = getRandomIndex(images);
+ titleInput.innerText = getRandomIndex(titles);
+ quotesInput.innerText = getRandomIndex(quotes);
 }
-function randomPosterButton() {
-  imageInput.innerText = getRandomIndex(images);
-  imageInput.src = getRandomIndex(images);
-  titleInput.innerText = getRandomIndex(titles);
-  quotesInput.innerText = getRandomIndex(quotes);
+mainPage();
+
+// hidden functions
+ function hideMainPoster() {
+   mainPoster.classList.add('hidden');
+ }
+
+function showForm (){
+  makePosterForm.classList.remove('hidden');
 }
 
-imageInput.innerText = getRandomIndex(images);
-imageInput.src = getRandomIndex(images);
-titleInput.innerText = getRandomIndex(titles);
-quotesInput.innerText = getRandomIndex(quotes);
+function showSavedPosters() {
+  savedPostersPage.classList.remove('hidden');
+}
+
+function backToMainPage(){
+  mainPoster.classList.remove('hidden');
+  makePosterForm.classList.add('hidden');
+  savedPostersPage.classList.add('hidden');
+}
+// helper functions
+
+function hideMainShowForm() {
+  hideMainPoster();
+  showForm();
+}
+
+function showSaved() {
+  hideMainPoster();
+  showSavedPosters();
+}
