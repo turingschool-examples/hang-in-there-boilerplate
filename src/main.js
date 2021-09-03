@@ -13,9 +13,11 @@ var posterQuote = document.querySelector('.poster-quote');
 var randomPosterButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
 var savedPostersButton = document.querySelector('.show-saved');
-var nevermindButton = document.querySelector('.show-main')
-var backToMainButton = document.querySelector('.back-to-main')
-var showMyPosterButton = document.querySelector('.make-poster')
+var nevermindButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var showMyPosterButton = document.querySelector('.make-poster');
+var savePosterButton = document.querySelector('.save-poster')
+
 
 
 // we've provided you with some data to work with 👇
@@ -127,6 +129,7 @@ savedPostersButton.addEventListener('click', showSavedPostersPage);
 nevermindButton.addEventListener('click', showMainPage);
 backToMainButton.addEventListener('click', showMainPage);
 showMyPosterButton.addEventListener('click', generateOwnPoster)
+savePosterButton.addEventListener('click', savePoster);
 
 
 // functions and event handlers go here 👇
@@ -135,9 +138,15 @@ function getRandomIndex(array) {
 }
 
 function generateRandomPoster() {
-  posterImage.src = images[getRandomIndex(images)];
-  posterTitle.innerText = titles[getRandomIndex(titles)];
-  posterQuote.innerText = quotes[getRandomIndex(quotes)];
+  var randomImage = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+
+  // posterImage.src = images[getRandomIndex(images)];
+  // posterTitle.innerText = titles[getRandomIndex(titles)];
+  // posterQuote.innerText = quotes[getRandomIndex(quotes)];
+
+  renderCurrentPoster(randomImage, randomTitle, randomQuote)
 }
 
 function showMakePosterForm() {
@@ -161,12 +170,12 @@ function renderCurrentPoster(image, title, quote) {
 
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
-  posterQuote.innerText = currentPoster.quote; 
+  posterQuote.innerText = currentPoster.quote;
 }
 
 function generateOwnPoster(event) {
   event.preventDefault()
-  
+
   renderCurrentPoster(inputImage.value, inputTitle.value, inputQuote.value);
   saveFormData();
   showMainPage();
@@ -179,3 +188,13 @@ function saveFormData() {
     posterElements[i].push(formElements[i].value)
   }
 }
+
+function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
+     savedPosters.push(currentPoster);
+  }
+}
+
+// When a user clicks the “Show Saved Posters” button, we should see the saved posters section
+
+// All the posters in the savedPosters array should be displayed in the saved posters grid section
