@@ -13,12 +13,14 @@ var showSavedBtn = document.querySelector('.show-saved');
 var savedPostersPg = document.querySelector('.saved-posters');
 
 var nevermindBtn = document.querySelector('.show-main');
+var backToMainBtn = document.querySelector('.back-to-main');
 
 makePosterBtn.addEventListener('click', makePosterForm);
 
 showSavedBtn.addEventListener('click', showSavedPosters);
 
-
+nevermindBtn.addEventListener('click', returnToMain);
+backToMainBtn.addEventListener('click', returnToMain);
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -152,6 +154,12 @@ function makePosterForm() {
 function showSavedPosters() {
   mainPoster.classList.add('hidden');
   savedPostersPg.classList.remove('hidden');
+}
+
+function returnToMain() {
+  mainPoster.classList.remove('hidden');
+  posterForm.classList.add('hidden');
+  savedPostersPg.classList.add('hidden');
 }
 
 // makePosterBtn.addEventListener('click', makePosterForm);
