@@ -117,6 +117,15 @@ var posterQuote = document.querySelector('.poster-quote')
 
 var randomButton = document.querySelector('.show-random')
 
+var makeYourOwnButton = document.querySelector('.show-form')
+
+var posterForm = document.querySelector('.poster-form')
+
+var mainPagePoster = document.querySelector('.main-poster')
+
+var showSavedPosterButton = document.querySelector('.show-saved')
+
+var savedPostersSection = document.querySelector('.saved-posters')
 
 function generatePoster() {
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
@@ -125,13 +134,23 @@ function generatePoster() {
   posterTitle.innerText = currentPoster.title
   posterQuote.innerText = currentPoster.quote
 
+
 };
 
+function showForm(){
+  posterForm.classList.remove('hidden')
+  mainPagePoster.classList.add('hidden')
+
+// create a function that when its clicked, it becomes unhidden
+};
+
+function showSavedPosters() {
+  savedPostersSection.classList.remove('hidden')
+  mainPagePoster.classList.add('hidden')
+}
+
+
 window.addEventListener("load", generatePoster);
-
-
 randomButton.addEventListener("click", generatePoster);
-
-
-
-//Testing testing 123 push it
+makeYourOwnButton.addEventListener("click", showForm);
+showSavedPosterButton.addEventListener("click", showSavedPosters)
