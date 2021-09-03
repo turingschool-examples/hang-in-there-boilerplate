@@ -1,5 +1,15 @@
 // query selector variables go here 👇
-
+var imageElement = document.querySelector("img");
+var titleElement = document.querySelector(".poster-title");
+var quoteElement = document.querySelector(".poster-quote");
+var backToMainButton = document.querySelector(".back-to-main");
+var nevermindButton = document.querySelector(".show-main");
+var randomizeButton = document.querySelector(".show-random");
+var savedPostersButton = document.querySelector(".show-saved");
+var showFormButton = document.querySelector(".show-form");
+var mainPosterPage = document.querySelector(".main-poster");
+var posterFormPage = document.querySelector(".poster-form");
+var savedPostersPage = document.querySelector(".saved-posters");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -102,93 +112,46 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+randomizeButton.addEventListener('click', function() {
+  imageRandomizer()
+  randomizer()
+})
+showFormButton.addEventListener('click', function() {
+  posterFormPage.classList.remove("hidden")
+  mainPosterPage.classList.add("hidden")
+})
+savedPostersButton.addEventListener('click', function() {
+  savedPostersPage.classList.remove('hidden')
+  mainPosterPage.classList.add('hidden')
+})
+nevermindButton.addEventListener('click', function() {
+  posterFormPage.classList.add('hidden')
+  mainPosterPage.classList.remove('hidden')
+})
+backToMainButton.addEventListener('click', function() {
+  savedPostersPage.classList.add('hidden')
+  mainPosterPage.classList.remove('hidden')
+})
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+imageRandomizer()
+textOptionsRandomizer()
+
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  return Math.floor(Math.random() * array.length)
 }
 
-// Upon page load,
-//Grab a random element from each array
-// Assign each html element a variable
-// Change html elements in existing
-
-var randomButton = document.querySelector(".show-random")
-var quote = document.querySelector(".poster-quote")
-var image = document.querySelector("img")
-var page = document.querySelector(".main-poster")
-var title = document.querySelector(".poster-title")
-
-function randomizer(){
-  var elements = [quotes, titles];
-  var htmlElements = [quote, title];
-  for (var i = 0; i < elements.length; i++) {
-    var index = getRandomIndex(elements[i])
-    htmlElements[i].innerText = elements[i][index];
+function textOptionsRandomizer() {
+  var textOptions = [quotes, titles]
+  var htmlElements = [quoteElement, titleElement]
+  for (var i = 0; i < textOptions.length; i++) {
+    var index = getRandomIndex(textOptions[i])
+    htmlElements[i].innerText = textOptions[i][index]
   }
 }
 
 function imageRandomizer() {
   var imgIndex = getRandomIndex(images)
-  image.src = images[imgIndex]
-  console.log("html:", image.src)
+  imageElement.src = images[imgIndex]
+  console.log("html:", imageElement.src)
   console.log("image from array:", images[imgIndex])
 }
-
-imageRandomizer()
-randomizer()
-randomButton.addEventListener('click' , function(){
-  imageRandomizer()
-  randomizer()
-});
-
-  // var quotesIndex = getRandomIndex(quotes);
-  // quote.innerText = quotes[index];
-  //
-  // var imagesIndex = getRandomIndex(images);
-  // image.innerText = images[index];
-  //
-  // var titlesIndex = getRandomIndex(titles);
-  // title.innerText = titles[index];
-// page.addEventListener('onload', function(){
-//   // randomizer()
-//   imageRandomizer()
-// });
-
-// console.log(randomizer())
-// randomButton.addEventListener("click", randomizer);
-
-// When make-own-poster button is clicked
-// Hide main & show input fields page
-// Save posters into an array
-// Be able to view saved posters array
-// Take me back and back to main - both buttons should reset to main screen
-
-
-var mainPoster = document.querySelector(".main-poster");
-var posterForm = document.querySelector(".poster-form");
-var showFormButton = document.querySelector(".show-form");
-var savedPosters = document.querySelector(".saved-posters");
-var savedPostersButton = document.querySelector(".show-saved");
-var backToMainButton = document.querySelector(".back-to-main");
-var nevermindButton = document.querySelector(".show-main");
-
-showFormButton.addEventListener('click', function() {
-  posterForm.classList.remove("hidden")
-  mainPoster.classList.add("hidden")
-})
-savedPostersButton.addEventListener('click', function(){
-  savedPosters.classList.remove('hidden')
-  mainPoster.classList.add('hidden')
-});
-nevermindButton.addEventListener('click', function(){
-  posterForm.classList.add('hidden')
-  mainPoster.classList.remove('hidden')
-})
-backToMainButton.addEventListener('click', function() {
-  savedPosters.classList.add('hidden')
-  mainPoster.classList.remove('hidden')
-})
-
-// backToMain - hides savedPosters page, show main
