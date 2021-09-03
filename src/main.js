@@ -6,7 +6,7 @@ var randomButton = document.querySelector('.show-random');
 var viewPosterBtn = document.querySelector('.show-form');
 var mainPage = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
-var viewSavePosterButton = document.querySelector('.show-saved');
+var viewSavePosterBtn = document.querySelector('.show-saved');
 var viewPosters = document.querySelector('.saved-posters');
 var neverMindBtn = document.querySelector('.show-main');
 var mainBackBtn = document.querySelector('.back-to-main');
@@ -132,11 +132,7 @@ function initializePage() {
   randomImage.src = images[getRandomIndex(images)];
 }
 
-// function createNewPoster() {
-//   posterForm.classList.add()
-//   viewPosterBtn.classList.remove(mainPoster)
-// }
-function show(elem){
+function display(elem){
     elem.classList.remove('hidden');
 }
 function hide(elem) {
@@ -144,18 +140,18 @@ function hide(elem) {
 }
 function viewPosterForm() {
   hide(mainPage);
-  hide(viewPosters);// when create posterView hide in this function
-  show(posterForm);
+  hide(viewPosters);
+  display(posterForm);
 }
 
 function viewSavedPoster() {
   hide(mainPage);
   hide(posterForm);
-  show(viewPosters);
+  display(viewPosters);
 }
 
 function viewMain() {
   hide(posterForm);
   hide(viewPosters);
-  show(mainPage);
+  display(mainPage);
 }
