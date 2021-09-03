@@ -1,6 +1,14 @@
-//**NOTE TO SELF: Before we submit - make sure all commented out code except for//
+//**NOTE TO SELF: DELETE THESE NOTES BEFORE SUBMITTING
+//** Before we submit - make sure all commented out code except for//
 //**the titles to each section is deleted including pseudocoding comments//
 //**Alphabetize each section and make sure each line of code is with its proper home section//
+//**Do not forget to do a README at the end - see saved template from Rock AND MAKE SURE IT UPDATES THE FRONT GITHUB PAGE//
+//Have mentors do a code review each//
+//** links for this project:
+//>>>GIT WORKFLOW STRUCTURE: https://frontend.turing.edu/lessons/module-1/dev-skills-git-team-workflow.html
+//>>>PROJECT TO DO & RUBRIC: https://frontend.turing.edu/projects/module-1/hang-in-there.html
+//>>>GITHUB LINK: https://github.com/delilahrois/hang-in-there-boilerplate
+//**DELETE STUFF ABOVE NOT BELOW THIS**//
 
 
 // query selector variables go here 👇
