@@ -171,6 +171,9 @@ var posterForm = document.querySelector(".poster-form");
 var showFormButton = document.querySelector(".show-form");
 var savedPosters = document.querySelector(".saved-posters");
 var savedPostersButton = document.querySelector(".show-saved");
+var backToMainButton = document.querySelector(".back-to-main");
+var nevermindButton = document.querySelector(".show-main");
+
 showFormButton.addEventListener('click', function() {
   posterForm.classList.remove("hidden")
   mainPoster.classList.add("hidden")
@@ -179,3 +182,13 @@ savedPostersButton.addEventListener('click', function(){
   savedPosters.classList.remove('hidden')
   mainPoster.classList.add('hidden')
 });
+nevermindButton.addEventListener('click', function(){
+  posterForm.classList.add('hidden')
+  mainPoster.classList.remove('hidden')
+})
+backToMainButton.addEventListener('click', function() {
+  savedPosters.classList.add('hidden')
+  mainPoster.classList.remove('hidden')
+})
+
+// backToMain - hides savedPosters page, show main
