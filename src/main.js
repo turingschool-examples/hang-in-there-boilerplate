@@ -4,6 +4,9 @@ var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var randomPosterButton = document.querySelector('.show-random')
+var showForm = document.querySelector('.show-form')
+var mainPoster = document.querySelector('.main-poster')
+var posterForm = document.querySelector('.poster-form')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -109,6 +112,7 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', generateRandomPoster)
 randomPosterButton.addEventListener('click', generateRandomPoster)
+showForm.addEventListener('click', makePosterForm)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -123,3 +127,15 @@ function generateRandomPoster() {
 
   currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innertext);
 };
+
+// saving a variable, showForm that holds the value of document.querySelector('.poster-form hidden')
+
+// creating an event listener that will show the form when the button make new poster is clicked
+
+//when the make new poster button is clicked, the function makePosterForm is invoked which shows the submission form for creating
+//a new poster.
+
+function makePosterForm(){
+  mainPoster.classList.add('hidden')
+  posterForm.classList.remove('hidden')
+}
