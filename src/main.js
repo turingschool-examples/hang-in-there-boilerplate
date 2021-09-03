@@ -9,12 +9,14 @@ var makePosterBtn = document.querySelector('.show-form');
 var mainPoster = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 
-var savedPostersBtn = document.querySelector('.show-saved');
+var showSavedBtn = document.querySelector('.show-saved');
 var savedPostersPg = document.querySelector('.saved-posters');
+
+var nevermindBtn = document.querySelector('.show-main');
 
 makePosterBtn.addEventListener('click', makePosterForm);
 
-savedPostersBtn.addEventListener('click', );
+showSavedBtn.addEventListener('click', showSavedPosters);
 
 
 
@@ -146,6 +148,15 @@ function makePosterForm() {
   mainPoster.classList.add('hidden');
   posterForm.classList.remove('hidden');
 }
+
+function showSavedPosters() {
+  mainPoster.classList.add('hidden');
+  savedPostersPg.classList.remove('hidden');
+}
+
+// makePosterBtn.addEventListener('click', makePosterForm);
+//
+// savedPostersBtn.addEventListener('click', showSavedPosters);
 
 // for bullet 2 of it0, psuedocoding testing
 //function createPoster() {
