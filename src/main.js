@@ -1,12 +1,26 @@
 // query selector variables go here 👇
 
-//testing with pseudocoding ideas ** it0 bullet 1 (and btn)
 var showRandomPostersBtn = document.querySelector('.show-random');
 var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 
+var makePosterBtn = document.querySelector('.show-form');
+var mainPoster = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
 
+var showSavedBtn = document.querySelector('.show-saved');
+var savedPostersPg = document.querySelector('.saved-posters');
+
+var nevermindBtn = document.querySelector('.show-main');
+var backToMainBtn = document.querySelector('.back-to-main');
+
+makePosterBtn.addEventListener('click', makePosterForm);
+
+showSavedBtn.addEventListener('click', showSavedPosters);
+
+nevermindBtn.addEventListener('click', returnToMain);
+backToMainBtn.addEventListener('click', returnToMain);
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -127,10 +141,30 @@ window.addEventListener('load', createRandomPoster)
 
 // **testing for pseudocoding ideas bullet 1 it0 and also bullet2 random poster button
 function createRandomPoster() {
-posterTitle.innerText = titles[getRandomIndex(titles)];
-posterQuote.innerText = quotes[getRandomIndex(quotes)];
-posterImg.src = images[getRandomIndex(images)]
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
+  posterImg.src = images[getRandomIndex(images)];
 }
+
+function makePosterForm() {
+  mainPoster.classList.add('hidden');
+  posterForm.classList.remove('hidden');
+}
+
+function showSavedPosters() {
+  mainPoster.classList.add('hidden');
+  savedPostersPg.classList.remove('hidden');
+}
+
+function returnToMain() {
+  mainPoster.classList.remove('hidden');
+  posterForm.classList.add('hidden');
+  savedPostersPg.classList.add('hidden');
+}
+
+// makePosterBtn.addEventListener('click', makePosterForm);
+//
+// savedPostersBtn.addEventListener('click', showSavedPosters);
 
 // for bullet 2 of it0, psuedocoding testing
 //function createPoster() {
