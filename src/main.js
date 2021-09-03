@@ -2,7 +2,7 @@
 var randomImage = document.querySelector('.poster-img');
 var randomTitle = document.querySelector('.poster-title');
 var randomQuote = document.querySelector('.poster-quote');
-var randomButton = document.querySelector('.show-random');
+var randomBtn = document.querySelector('.show-random');
 var viewPosterBtn = document.querySelector('.show-form');
 var mainPage = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
@@ -116,9 +116,9 @@ window.addEventListener('load', initializePage);
 randomButton.addEventListener('click', initializePage);
 
 viewPosterBtn.addEventListener('click', viewPosterForm);
-viewSavePosterButton.addEventListener('click', viewSavedPoster);
-neverMindButton.addEventListener('click', viewMain);
-mainBackButton.addEventListener('click', viewMain);
+viewSavePosterBtn.addEventListener('click', viewSavedPoster);
+neverMindBtn.addEventListener('click', viewMain);
+mainBackBtn.addEventListener('click', viewMain);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -132,12 +132,14 @@ function initializePage() {
   randomImage.src = images[getRandomIndex(images)];
 }
 
-function display(elem){
-    elem.classList.remove('hidden');
+function display(element) {
+  element.classList.remove('hidden');
 }
-function hide(elem) {
-  elem.classList.add('hidden');
+
+function hide(element) {
+  element.classList.add('hidden');
 }
+
 function viewPosterForm() {
   hide(mainPage);
   hide(viewPosters);
