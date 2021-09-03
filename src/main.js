@@ -9,7 +9,8 @@ var showRandomPoster = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
 
 // Create Poster
-var makePosterForm = document.querySelector('.poster-form hidden');
+var makePosterForm = document.querySelector('.poster-form');
+var getPosterForm = document.querySelector('h2');
 
 // main poster hidden
 var mainPoster = document.querySelector('.main-poster');
@@ -119,10 +120,7 @@ var currentPoster;
 // event listeners go here 👇
 showRandomPoster.addEventListener('click', randomPosterButton);
 // makePosterButton.addEventListener('click', hideMainShowForm);
-makePosterButton.addEventListener('click', function(){
-  showForm ();
-  hideMainPoster();
-});
+makePosterButton.addEventListener('click',hideMainShowForm);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -145,13 +143,15 @@ function getRandomIndex(array) {
  quotesInput.innerText = getRandomIndex(quotes);
 
  function hideMainPoster(){
-   mainPoster.innerText = 'main-poster hidden';
+   mainPoster.classList.add('hidden');
 }
 function showForm (){
-  makePosterForm.innerText = "poster-form";
+  makePosterForm.classList.remove('hidden');
+
 }
 
-// function hideMainShowForm(){
-//   showForm();
-//   hideMainPoster();
-// }
+function hideMainShowForm(){
+  hideMainPoster();
+  showForm();
+
+}
