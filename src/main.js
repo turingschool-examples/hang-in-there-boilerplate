@@ -7,6 +7,10 @@ var randomPosterButton = document.querySelector('.show-random')
 var showForm = document.querySelector('.show-form')
 var mainPoster = document.querySelector('.main-poster')
 var posterForm = document.querySelector('.poster-form')
+var neverMind = document.querySelector('.show-main')
+var createdPosters = document.querySelector('.saved-posters')
+var savedPostersButton = document.querySelector('.show-saved')
+var backToMain = document.querySelector('.back-to-main')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -113,6 +117,10 @@ var currentPoster;
 window.addEventListener('load', generateRandomPoster)
 randomPosterButton.addEventListener('click', generateRandomPoster)
 showForm.addEventListener('click', makePosterForm)
+neverMind.addEventListener('click', takeMeBack)
+savedPostersButton.addEventListener('click', showSaved)
+backToMain.addEventListener('click', backToMainPage)
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -128,14 +136,24 @@ function generateRandomPoster() {
   currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innertext);
 };
 
-// saving a variable, showForm that holds the value of document.querySelector('.poster-form hidden')
 
-// creating an event listener that will show the form when the button make new poster is clicked
-
-//when the make new poster button is clicked, the function makePosterForm is invoked which shows the submission form for creating
-//a new poster.
 
 function makePosterForm(){
   mainPoster.classList.add('hidden')
   posterForm.classList.remove('hidden')
+}
+
+function takeMeBack(){
+  posterForm.classList.add('hidden')
+  mainPoster.classList.remove('hidden')
+}
+
+function showSaved(){
+  mainPoster.classList.add('hidden')
+  createdPosters.classList.remove('hidden')
+}
+
+function backToMainPage(){
+  createdPosters.classList.add('hidden')
+  mainPoster.classList.remove('hidden')
 }
