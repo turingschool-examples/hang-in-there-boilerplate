@@ -3,7 +3,12 @@ var image = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 
+var mainPosterSection = document.querySelector('.main-poster');
+
 var randomBtn = document.querySelector('.show-random');
+
+var makeYourOwnBtn = document.querySelector('.show-form');
+var makeYourOwnForm = document.querySelector('.poster-form');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -121,6 +126,7 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', setPoster);
 randomBtn.addEventListener('click', setPoster);
+makeYourOwnBtn.addEventListener('click', showMakeYourOwnForm);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -132,4 +138,9 @@ function setPoster() {
   title.innerText = titles[getRandomIndex(titles)];
   quote.innerText = quotes[getRandomIndex(quotes)];
   image.src = images[getRandomIndex(images)];
+};
+
+function showMakeYourOwnForm() {
+  mainPosterSection.classList.add('hidden');
+  makeYourOwnForm.classList.remove('hidden');
 };
