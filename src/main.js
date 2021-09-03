@@ -3,7 +3,24 @@ var title = document.querySelector('.poster-title');
 var image = document.querySelector('.poster-img');
 var quote = document.querySelector('.poster-quote');
 
-var showRandom = document.querySelector('.show-random');
+// homepage element
+var mainPoster = document.querySelector('.main-poster');
+
+// "Show Another Random Poster" button element
+var showRandomButton = document.querySelector('.show-random');
+
+// "Make Your Own Poster" button element and form page
+var makePosterButton = document.querySelector('.show-form');
+var posterForm = document.querySelector('.poster-form');
+
+// "View Saved Posters" button element and Saved Posters page
+var viewSavedButton = document.querySelector('.show-saved');
+var savedPage = document.querySelector('.saved-posters');
+
+//"Back To Main" button elements
+var takeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -106,8 +123,23 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+
+// generate a random poster upon page load
 window.addEventListener('load', getRandomSelection);
-showRandom.addEventListener('click', reload);
+
+// generate a random poster by reloading page
+showRandomButton.addEventListener('click', reload);
+
+// when "Make Your Own Poster" button is clicked, show poster form
+makePosterButton.addEventListener('click', showPosterForm);
+
+// when "Show Saved Posters" button is clicked, go to Saved Posters page
+viewSavedButton.addEventListener('click', showSaved);
+
+// when "Back to Main" or "Take Me Back" buttons are clicked, go back to homepage
+takeMeBackButton.addEventListener('click', takeMeBack);
+backToMainButton.addEventListener('click', backToMain);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -126,4 +158,24 @@ function getRandomSelection(){
 
 function reload(){
   window.location.reload();
+}
+
+function showPosterForm(){
+  posterForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+}
+
+function showSaved(){
+  savedPage.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+}
+
+function takeMeBack(){
+  mainPoster.classList.remove('hidden');
+  posterForm.classList.add('hidden');
+}
+
+function backToMain(){
+  mainPoster.classList.remove('hidden');
+  savedPage.classList.add('hidden');
 }
