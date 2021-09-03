@@ -1,3 +1,8 @@
+//**NOTE TO SELF: Before we submit - make sure all commented out code except for//
+//**the titles to each section is deleted including pseudocoding comments//
+//**Alphabetize each section and make sure each line of code is with its proper home section//
+
+
 // query selector variables go here 👇
 
 var showRandomPostersBtn = document.querySelector('.show-random');
@@ -117,7 +122,7 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-//think we might eventually need this to invoke replacing html?
+//think we might eventually need this in a later iteration (initially pc thinking for it0)
 //var poster = {
 //   title: title,
 //   quote: quote,
@@ -160,7 +165,6 @@ function returnToMain() {
   posterForm.classList.add('hidden');
   savedPostersPg.classList.add('hidden');
 }
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
