@@ -3,7 +3,9 @@
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
-
+var showRandomButton = document.querySelector('.show-random');
+var savePosterButton = document.querySelector('.save-poster');
+var showSavedButton = document.querySelector('.show-saved');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -109,24 +111,32 @@ var currentPoster;
 // event listeners go here 👇
 window.onload = generateRandomPoster();
 
+showRandomButton.addEventListener('click', function() {
+generateRandomPoster();
+});
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// function createPoster(image, title, quote) {
+function createPoster(image, title, quote) {
 
-//   return new Poster(image, title, quote)
-// }
+  return new Poster(image, title, quote)
+}
 
 function generateRandomPoster(){
     var image = images[getRandomIndex(images)]
-    var randomPoster = new Poster(image)
+    var title = titles[getRandomIndex(titles)]
+    var quote = quotes[getRandomIndex(quotes)]
+    randomPoster = new Poster(image, title, quote)
     setHomeCover(randomPoster)   
-    console.log(image)
+    console.log('Title', title)
 };
 
 function setHomeCover(poster){
-  posterImage.src = poster.imageURL
+posterImage.src = poster.imageURL
+posterTitle.innerText = poster.title
+posterQuote.innerText = poster.quote
 };
