@@ -190,21 +190,33 @@ function receiveQuoteInput(){
 }
 
 // the following function will take user inputs and create a new instance of the poster object
+// function makeUserPoster(){
+//   event.preventDefault();
+//   posterImage.src = inputImage.value
+//   posterTitle.innerText = inputTitle.value
+//   posterQuote.innerText = inputQuote.value
+//   takeMeBack();
+//   saveUserData();
+//   }
+
 function makeUserPoster(){
+  newUserPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value)
   event.preventDefault();
-  posterImage.src = inputImage.value
-  posterTitle.innerText = inputTitle.value
-  posterQuote.innerText = inputQuote.value
+  posterImage.src = newUserPoster.imageURL
+  posterTitle.innerText = newUserPoster.title
+  posterQuote.innerText = newUserPoster.quote
   takeMeBack();
   saveUserData();
-  }
-
+  console.log('images array', images)
+  console.log('titles array', titles)
+  console.log('quotes array', quotes)
+}
 
 // the following function will take the same user inputs as above and save them into their respective arrays
 function saveUserData(){
   images.push(inputImage.value);
   titles.push(inputTitle.value);
-  quotes.push(inputTitle.value);
+  quotes.push(inputQuotes.value);
 }
 
 
