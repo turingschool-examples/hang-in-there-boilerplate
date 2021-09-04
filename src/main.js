@@ -33,6 +33,8 @@ var posterImgURLInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
 
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
+
 
 
 // we've provided you with some data to work with 👇
@@ -171,6 +173,9 @@ function makePosterForm() {
 function showSavedPosters() {
   mainPoster.classList.add('hidden');
   savedPostersPg.classList.remove('hidden');
+  savedPostersGrid.innerHTML {
+
+  }
 }
 
 function returnToMain() {
@@ -210,3 +215,6 @@ function saveCreatedPoster(event) {
     savedPosters.push(currentPoster);
   }
 }
+
+//display the saved posters page when btn is clicked
+//display all posters in the savedPosters array in the grid section (html)
