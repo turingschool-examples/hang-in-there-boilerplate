@@ -10,8 +10,6 @@
 //>>>GITHUB LINK: https://github.com/delilahrois/hang-in-there
 //**DELETE STUFF ABOVE NOT BELOW THIS**//
 
-// var Poster = require("./poster.js");
-
 // query selector variables go here 👇
 
 var showRandomPostersBtn = document.querySelector('.show-random');
@@ -137,20 +135,7 @@ var quotes = [
 ];
 var savedPosters = [];
 //each time you see the big poster on the main PAGE
-//we want that to be the value of the current poster variables//write a separate function that
-//current poster = new Poster  (random and user generation posters need to be called in function currentPost and feed it the three values to create the variable of current poster)
-
-// var currentImg = posterImgURLInput.value;
-// var currentTitle = posterTitleInput.value;
-// var currentQuote = posterQuoteInput.value;
-// var currentPoster = new Poster(currentImg, currentTitle, currentQuote);
-
-// ** for loop to push the currentPoster onto the savedPosters array?**
-// for (var i = 0; i < savedPosters.length; i++) {
-//   savedPosters.push(currentPoster);
-// }
-
-
+//we want that to be the value of the current poster variables//
 
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster);
@@ -175,6 +160,7 @@ function createRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   posterImg.src = images[getRandomIndex(images)];
+  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
 }
 
 function makePosterForm() {
@@ -202,14 +188,11 @@ function showMyPoster(event) {
   posterImg.src = posterImgURLInput.value;
   posterTitle.innerText = posterTitleInput.value;
   posterQuote.innerText = posterQuoteInput.value;
-  // images.push(posterImg);
-  // titles.push(posterTitle);
-  // quotes.push(posterQuote);
+  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
   images.push(posterImgURLInput.value);
   titles.push(posterTitleInput.value);
   quotes.push(posterQuoteInput.value);
   returnToMain()
-  //add save functionality to the new arrays?
 }
 
 //function savePoster NOTES
@@ -219,32 +202,11 @@ function showMyPoster(event) {
 //returnToMain()
 //mainPage should display new saved poster
 
-// var currentImg = posterImgURLInput.value;
-// var currentTitle = posterTitleInput.value;
-// var currentQuote = posterQuoteInput.value;
 var currentPoster;
 
 function saveCreatedPoster(event) {
   event.preventDefault();
-  // class instance of Poster assigned to the currentPoster variable, with the displayed values
-  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
-  console.log(currentPoster);
-  //for loop with an if statement, cannot push if values are already on arrays
-  if (savedPosters.length) {
-    if (!savedPosters.includes(currentPoster) && !savedPosters.includes(currentPoster.imageURL) && !savedPosters.includes(currentPoster.title) && !savedPosters.includes(currentPoster.quote)) {
-      savedPosters.push(currentPoster);
-    }
-    else if (!savedPosters.length) {
+  if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
-  // if (!savedPosters.includes(currentPoster)) {
-  //   savedPosters.push(currentPoster);
-  //   console.log(savedPosters);
-  // }
-
-  // for (var i = 0; i < savedPosters.length; i++) {
-  //   if (savedPosters[i].imageURL !== currentPoster.imageURL && savedPosters[i].title !== currentPoster.title && savedPosters[i].quote !== currentPoster.quote) {
-  //     savedPosters.push(currentPoster);
-  //   }
-  // }
 }
