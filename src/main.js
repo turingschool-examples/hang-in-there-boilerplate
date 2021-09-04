@@ -136,6 +136,9 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
+//each time you see the big poster on the main PAGE
+//we want that to be the value of the current poster variables//write a separate function that
+//current poster = new poster  (random and user generation posters need to be called in function currentPost and feed it the three values to create the variable of current poster)
 var currentPoster;
 
 //think we might eventually need this in a later iteration (initially pc thinking for it0)
@@ -198,6 +201,7 @@ function showMyPoster() {
   posterImg.src = posterImgURLInput.value;
   posterTitle.innerText = posterTitleInput.value;
   posterQuote.innerText = posterQuoteInput.value;
+  //needs function to call current poster to push into array
   returnToMain()
 }
 
