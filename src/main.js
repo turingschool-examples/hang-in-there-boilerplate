@@ -7,7 +7,7 @@
 //** links for this project:
 //>>>GIT WORKFLOW STRUCTURE: https://frontend.turing.edu/lessons/module-1/dev-skills-git-team-workflow.html
 //>>>PROJECT TO DO & RUBRIC: https://frontend.turing.edu/projects/module-1/hang-in-there.html
-//>>>GITHUB LINK: https://github.com/delilahrois/hang-in-there-boilerplate
+//>>>GITHUB LINK: https://github.com/delilahrois/hang-in-there
 //**DELETE STUFF ABOVE NOT BELOW THIS**//
 
 // var Poster = require("./poster.js");
@@ -29,8 +29,8 @@ var savedPostersPg = document.querySelector('.saved-posters');
 var nevermindBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
 
-var saveThisPosterBTN = document.querySelector('.save-poster');
-var showMyPosterBTN = document.querySelector('.make-poster');
+var saveThisPosterBtn = document.querySelector('.save-poster');
+var showMyPosterBtn = document.querySelector('.make-poster');
 var posterImgURLInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
@@ -138,23 +138,26 @@ var quotes = [
 var savedPosters = [];
 //each time you see the big poster on the main PAGE
 //we want that to be the value of the current poster variables//write a separate function that
-//current poster = new poster  (random and user generation posters need to be called in function currentPost and feed it the three values to create the variable of current poster)
-var currentPoster;
+//current poster = new Poster  (random and user generation posters need to be called in function currentPost and feed it the three values to create the variable of current poster)
 
-//think we might eventually need this in a later iteration (initially pc thinking for it0)
-//var poster = {
-//   title: title,
-//   quote: quote,
-//   img: img
+var currentImg = posterImgURLInput.value;
+var currentTitle = posterTitleInput.value;
+var currentQuote = posterQuoteInput.value;
+var currentPoster = new Poster(currentImg, currentTitle, currentQuote);
+
+// ** for loop to push the currentPoster onto the savedPosters array?**
+// for (var i = 0; i < savedPosters.length; i++) {
+//   savedPosters.push(currentPoster);
 // }
 
 
 
 // event listeners go here 👇
+window.addEventListener('load', createRandomPoster);
 
-showMyPosterBTN.addEventListener('click', showMyPoster);
+showMyPosterBtn.addEventListener('click', showMyPoster);
 
-saveThisPosterBTN.addEventListener('click', saveCreatedPoster)
+saveThisPosterBtn.addEventListener('click', saveCreatedPoster)
 
 showRandomPostersBtn.addEventListener('click', createRandomPoster);
 
@@ -167,8 +170,6 @@ backToMainBtn.addEventListener('click', returnToMain);
 
 // functions and event handlers (function to invoke eventListeners) go here 👇
 // (we've provided one for you to get you started)!
-
-window.addEventListener('load', createRandomPoster)
 
 function createRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
@@ -201,8 +202,14 @@ function showMyPoster() {
   posterImg.src = posterImgURLInput.value;
   posterTitle.innerText = posterTitleInput.value;
   posterQuote.innerText = posterQuoteInput.value;
-  //needs function to call current poster to push into array
+  // images.push(posterImg);
+  // titles.push(posterTitle);
+  // quotes.push(posterQuote);
+  images.push(posterImgURLInput.value);
+  titles.push(posterTitleInput.value);
+  quotes.push(posterQuoteInput.value);
   returnToMain()
+  //add save functionality to the new arrays?
 }
 
 //function savePoster NOTES
@@ -213,9 +220,14 @@ function showMyPoster() {
 //mainPage should display new saved poster
 
 function saveCreatedPoster() {
-  console.log("are you here")
-  var newPoster = new Poster({imageURL: posterImgURLInput, title: posterTitleInput, quote: posterQuoteInput});
-  images.push(posterImgURLInput.value);
-  titles.push(posterTitleInput.value);
-  quotes.push(posterQuoteInput.value);
+  savedPosters.push(currentPoster);
+  console.log(savedPosters);
+  currentPoster = new Poster();
+  // images.push(posterImgURLInput.imageURL);
+  // titles.push(posterTitleInput.title);
+  // quotes.push(posterQuoteInput.quote);
+
+  // images.push(posterImgURLInput.value);
+  // titles.push(posterTitleInput.value);
+  // quotes.push(posterQuoteInput.value);
 }
