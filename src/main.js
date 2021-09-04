@@ -183,18 +183,23 @@ function receiveQuoteInput(){
 
 // the following function will take user inputs and create a new instance of the poster object
 function makeUserPoster(){
-  new Poster(inputImage.value, inputTitle.value, inputQuote.value)
+  event.preventDefault();
+  posterImage.src = inputImage.value
+  posterTitle.innerText = inputTitle.value
+  posterQuote.innerText = inputQuote.value
   takeMeBack();
+  saveUserData();
   }
 
 
 // the following function will take the same user inputs as above and save them into their respective arrays
 function saveUserData(){
-
+  images.push(inputImage.value);
+  titles.push(inputTitle.value);
+  quotes.push(inputTitle.value);
 }
 
 
-// images.push(inputImage.value)
 
 // Creating new Poster with the form.
 //
