@@ -149,11 +149,16 @@ customPosterButton.addEventListener('click', function() {
   showUserPoster()
 });
 // functions and event handlers go here 👇
-console.log("this is the text")
-window.onload = function() {
-  imageRandomizer()
-  textOptionsRandomizer()
+
+
+function pageLoad (){
+  if (!currentPoster) {
+    imageRandomizer()
+    textOptionsRandomizer()
+    console.log("this is the text")
+  }
 }
+pageLoad();
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
@@ -180,11 +185,10 @@ function showUserPoster (){
   console.log("userQuote.value: ", userQuote.value)
 }
 function createCustomPoster (){
-  var newUserPoster = new Poster(userImage.value, userTitle.value, userQuote.value);
-  imageElement.src = newUserPoster.imageURL
-  titleElement.innerText = newUserPoster.title
-  quoteElement.innerText = newUserPoster.quote
-  console.log("LOOOoooooooooooooooooooookkkkkkkkkkkk!!!!!!!!!!!!!!!!!!!!!")
+  currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value);
+  imageElement.src = currentPoster.imageURL
+  titleElement.innerText = currentPoster.title
+  quoteElement.innerText = currentPoster.quote
   }
 
   // var posterPlaceholder = new Poster(imageElement, titleElement, quoteElement)
