@@ -119,7 +119,7 @@ var currentPoster;
 
 // event listeners go here 👇
 randomizeButton.addEventListener('click', function() {
-  randomizer()
+  randomize()
 })
 showFormButton.addEventListener('click', function() {
   posterFormPage.classList.remove("hidden")
@@ -146,13 +146,13 @@ customPosterButton.addEventListener('click', function() {
 // functions and event handlers go here 👇
 
 
-randomizer();
+randomize();
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
-function randomizer() {
+function randomize() {
   var txtImgOptions = [images, titles, quotes];
   var randomPoster = [];
   for (var i = 0; i < txtImgOptions.length; i++) {
@@ -176,7 +176,7 @@ function showUserPoster() {
 }
 
 function createCustomPoster() {
-  currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value);
+  currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value)
 }
 
 function saveUserData() {
