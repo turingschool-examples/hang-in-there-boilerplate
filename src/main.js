@@ -28,6 +28,11 @@ var savedPostersPg = document.querySelector('.saved-posters');
 var nevermindBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
 
+var saveThisPosterBTN = document.querySelector('.save-poster');
+var showMyPosterBTN = document.querySelector('.make-poster');
+var posterImgURLInput = document.querySelector('#poster-image-url');
+var posterTitleInput = document.querySelector('#poster-title');
+var posterQuoteInput = document.querySelector('#poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -137,8 +142,14 @@ var currentPoster;
 //   img: img
 // }
 
+
+
 // event listeners go here 👇
-showRandomPostersBtn.addEventListener('click', createRandomPoster)
+
+showMyPosterBTN.addEventListener('click', showMyPoster);
+
+
+showRandomPostersBtn.addEventListener('click', createRandomPoster);
 
 makePosterBtn.addEventListener('click', makePosterForm);
 
@@ -176,4 +187,19 @@ function returnToMain() {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+
+  //hide the form when invoked (classList)
+  //unhide/ display the main poster that we just made
+  //redefine the values as the input.value of each of the quote/img/title
+
+function showMyPoster() {
+  event.preventDefault();
+  posterImg.src = posterImgURLInput.value;
+  posterTitle.innerText = posterTitleInput.value;
+  posterQuote.innerText = posterQuoteInput.value;
+  returnToMain()
+  // posterForm.classList.add('hidden');
+  // mainPoster.classList.remove('hidden');
 }
