@@ -204,7 +204,7 @@ mainPagePoster.classList.remove('hidden')
 
 };
 
-
+//Testing for push to iteration2
 
 window.addEventListener("load", generatePoster);
 randomButton.addEventListener("click", generatePoster);
