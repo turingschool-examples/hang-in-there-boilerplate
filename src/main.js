@@ -137,7 +137,11 @@ backToMainButton.addEventListener('click', function() {
   savedPostersPage.classList.add('hidden')
   mainPosterPage.classList.remove('hidden')
 })
-savePosterButton.addEventListener('click', saveUserData)
+savePosterButton.addEventListener('click', function() {
+  pushIntoArray()
+  saveUserData()
+  event.preventDefault()
+})
 customPosterButton.addEventListener('click', function() {
   createCustomPoster();
   showUserPoster()
@@ -177,18 +181,23 @@ function showUserPoster() {
 
 function createCustomPoster() {
   currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value)
+  console.log('image',currentPoster.imageURL)
 }
 
 function saveUserData() {
   images.push(imageElement.src)
   titles.push(titleElement.innerText)
   quotes.push(quoteElement.innerText)
-  var userPoster = new Poster(imageElement.src, titleElement.innerText, quoteElement.innerText)
-  console.log(userPoster)
-  console.log("saved posters ",savedPosters)
-  console.log((!savedPosters.includes(userPoster)))
-  if (!savedPosters.includes(userPoster)) {
-    savedPosters.push(userPoster)
-      console.log((!savedPosters.includes(userPoster)))
+
   }
-}
+
+function pushIntoArray(){
+  console.log('image2',currentPoster.imageURL)
+  // var userPoster = new Poster(currentPoster.imageURL, currentPoster.title, currentPoster.quote)
+  console.log("saved posters ",savedPosters)
+  console.log((!savedPosters.includes(currentPoster)))
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+      console.log((!savedPosters.includes(currentPoster)))
+    }
+  }
