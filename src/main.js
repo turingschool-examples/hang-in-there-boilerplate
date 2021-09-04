@@ -137,6 +137,8 @@ var titleInput = document.querySelector('#poster-title')
 
 var quoteInput = document.querySelector('#poster-quote')
 
+var showMyPoster = document.querySelector('.make-poster')
+
 
 
 
@@ -183,8 +185,6 @@ function backToMain() {
 
 
 
-
-
 function generateCustomPoster(event) {
   event.preventDefault();
 
@@ -199,13 +199,10 @@ posterTitle.innerText = currentPoster.title
 posterQuote.innerText = currentPoster.quote
 
 posterForm.classList.add('hidden')
+
 mainPagePoster.classList.remove('hidden')
 
 };
-
-
-
-
 
 
 
@@ -214,4 +211,4 @@ randomButton.addEventListener("click", generatePoster);
 makeYourOwnButton.addEventListener("click", showForm);
 showSavedPosterButton.addEventListener("click", showSavedPosters)
 backToMainButton.addEventListener("click", backToMain)
-showMyPoster.addEventListener("click", generateCustomPoster);
+showMyPoster.addEventListener("click", generateCustomPoster)
