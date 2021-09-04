@@ -140,11 +140,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// function generateRandomPoster() {
-//   posterImage.src = images[getRandomIndex(images)];
-//   posterTitle.innerText = titles[getRandomIndex(titles)];
-//   posterQuote.innerText = quotes[getRandomIndex(quotes)];
-// };
 
 function generateRandomPoster(){
   randomPoster = new Poster (images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
@@ -175,29 +170,6 @@ function backToMainPage(){
   mainPoster.classList.remove('hidden')
 }
 
-function receiveImageInput(){
-  console.log('should be image URL innerText', inputImage.value)
-
-  console.log('images array', images)
-}
-
-function receiveTitleInput(){
-
-}
-
-function receiveQuoteInput(){
-
-}
-
-// the following function will take user inputs and create a new instance of the poster object
-// function makeUserPoster(){
-//   event.preventDefault();
-//   posterImage.src = inputImage.value
-//   posterTitle.innerText = inputTitle.value
-//   posterQuote.innerText = inputQuote.value
-//   takeMeBack();
-//   saveUserData();
-//   }
 
 function makeUserPoster(){
   newUserPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value)
@@ -218,20 +190,3 @@ function saveUserData(){
   titles.push(inputTitle.value);
   quotes.push(inputQuotes.value);
 }
-
-
-
-// Creating new Poster with the form.
-//
-// User inputs their own values into the form, these will pass through arguments to the following variables:
-// posterImageURL posterTitle, posterQuote
-// this creates a new instance of our Poster class
-
-// submitted data is saved into their respective arrays:
-// imageURL is into the images array
-// poster title is saved into the titles array
-// poster quote is saved into the quotes arrays
-
-// when 'Show my poster' button is clicked ('.make-poster'), this should take the user inputs and use them to create a new poster object,
-// and also saves their darta into their respective arrays.
-// clicking this button will also hide the form page, and show the main page with the new poster showing.
