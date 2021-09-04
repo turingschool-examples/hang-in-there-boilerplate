@@ -11,6 +11,8 @@ var savedPostersButton = document.querySelector('.show-saved');
 var nevermindButton =  document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
 var showMyPosterButton = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector('.save-poster');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 
 // Create Poster
@@ -21,8 +23,10 @@ var makePosterForm = document.querySelector('.poster-form');
 var mainPoster = document.querySelector('.main-poster');
 
 
+
 // saved Posters
 var savedPostersPage =  document.querySelector('.saved-posters');
+
 
 //form info
 var formImageInput = document.querySelector('#poster-image-url');
@@ -145,6 +149,8 @@ nevermindButton.addEventListener('click', backToMainPage);
 backToMainButton.addEventListener('click', backToMainPage);
 //form page save my poster button
 showMyPosterButton.addEventListener('click', captureFormValuesOnClick);
+//save this poster
+saveThisPosterButton.addEventListener('click',saveCurrentPoster);
 
 
 
@@ -155,14 +161,16 @@ showMyPosterButton.addEventListener('click', captureFormValuesOnClick);
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   // return Math.floor(Math.random() * array.length);
-  return array[Math.floor(Math.random() * array.length)];
+  return Math.floor(Math.random() * array.length);
  }
 
 
  function randomPoster() {
-   imageInput.src = getRandomIndex(images);
-   titleInput.innerText = getRandomIndex(titles);
-   quotesInput.innerText = getRandomIndex(quotes);
+   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)],
+   quotes[getRandomIndex(titles)]);
+   imageInput.src = currentPoster.imageURL;
+   titleInput.innerText = currentPoster.title;
+   quotesInput.innerText = currentPoster.quote;
  }
 
 // hidden functions
@@ -191,14 +199,32 @@ function captureFormValuesOnClick() {
   imageInput.src = currentPoster.imageURL;
   titleInput.innerText = currentPoster.title;
   quotesInput.innerText = currentPoster.quote;
-  saveUserPoster();
+  saveUserInput();
   backToMainPage();
 }
 
-function saveUserPoster() {
+function saveUserInput() {
   images.push(formImageInput.value);
   titles.push(formTitleInput.value);
   quotes.push(formQuoteInput.value);
+}
+
+
+
+function saveCurrentPoster() {
+  savedPosters.push(currentPoster);
+  }
+
+function createMiniPosters() {
+  savedPostersGrid.innerHTML = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersGrid.innerHTML += `
+    <article>
+      <img src=${savedPosters[i].imageURL}>
+      <h1> ${savedPosters[i].title}</h1>
+      <h3> ${savedPosters[i].quote}</h3>
+    </article>`
+  }
 }
 
 // helper functions
@@ -211,4 +237,5 @@ function hideMainShowForm() {
 function showSaved() {
   hideMainPoster();
   showSavedPosters();
+  createMiniPosters();
 }
