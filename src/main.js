@@ -185,6 +185,28 @@ function backToMain() {
 
 
 
+function generateCustomPoster(event) {
+  event.preventDefault();
+
+currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value)
+
+images.push(imageInput.value);
+titles.push(titleInput.value);
+quotes.push(quoteInput.value);
+
+posterImage.src = currentPoster.imageURL
+posterTitle.innerText = currentPoster.title
+posterQuote.innerText = currentPoster.quote
+
+posterForm.classList.add('hidden')
+mainPagePoster.classList.remove('hidden')
+
+};
+
+
+
+
+
 
 
 window.addEventListener("load", generatePoster);
@@ -192,3 +214,4 @@ randomButton.addEventListener("click", generatePoster);
 makeYourOwnButton.addEventListener("click", showForm);
 showSavedPosterButton.addEventListener("click", showSavedPosters)
 backToMainButton.addEventListener("click", backToMain)
+showMyPoster.addEventListener("click", generateCustomPoster);
