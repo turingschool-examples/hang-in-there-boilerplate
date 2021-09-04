@@ -1,5 +1,6 @@
 // query selector variables go here 👇
 
+
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
@@ -139,11 +140,18 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function generateRandomPoster() {
-  posterImage.src = images[getRandomIndex(images)];
-  posterTitle.innerText = titles[getRandomIndex(titles)];
-  posterQuote.innerText = quotes[getRandomIndex(quotes)];
-};
+// function generateRandomPoster() {
+//   posterImage.src = images[getRandomIndex(images)];
+//   posterTitle.innerText = titles[getRandomIndex(titles)];
+//   posterQuote.innerText = quotes[getRandomIndex(quotes)];
+// };
+
+function generateRandomPoster(){
+  randomPoster = new Poster (images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  posterImage.src = randomPoster.imageURL
+  posterTitle.innerText = randomPoster.title
+  posterQuote.innerText = randomPoster.quote
+}
 
 
 
