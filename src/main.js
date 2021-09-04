@@ -183,4 +183,8 @@ function saveUserData() {
   images.push(imageElement.src)
   titles.push(titleElement.innerText)
   quotes.push(quoteElement.innerText)
+  var userPoster = new Poster(imageElement.src, titleElement.innerText, quoteElement.innerText)
+  if (!savedPosters.includes(userPoster)) {
+    savedPosters.push(userPoster)
+  }
 }
