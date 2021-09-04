@@ -170,8 +170,13 @@ function backToMain() {
 
 //Iteration2
   //Allow the user to input
+    //poster-quote.innerText = input.value;
+    //poster-image.src = input.value;
+    //poster-quote.innerText = input.value;
   //Click button (Event listener with this function)
+    //saveButton.addEventListener("click", createCustomPoster)
   //Create object instance of poster class (see poster.js)
+    //userCreatedPoster = new Poster
   //Save user input into respective arrays
     //.push()
   //Display new object on main view
