@@ -170,20 +170,6 @@ function backToMain() {
   mainPagePoster.classList.remove('hidden')
 };
 
-//Iteration2
-  //Allow the user to input
-    //poster-quote.innerText = input.value;
-    //poster-image.src = input.value;
-    //poster-quote.innerText = input.value;
-  //Click button (Event listener with this function)
-    //saveButton.addEventListener("click", createCustomPoster)
-  //Create object instance of poster class (see poster.js)
-    //userCreatedPoster = new Poster
-  //Save user input into respective arrays
-    //.push()
-  //Display new object on main view
-
-
 
 function generateCustomPoster(event) {
   event.preventDefault();
@@ -199,12 +185,24 @@ posterTitle.innerText = currentPoster.title
 posterQuote.innerText = currentPoster.quote
 
 posterForm.classList.add('hidden')
-
 mainPagePoster.classList.remove('hidden')
 
 };
 
-//Testing for push to iteration2
+
+
+
+function saveMainPoster() {
+  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
+
+  posterImage.src = currentPoster.imageURL
+  posterTitle.innerText = currentPoster.title
+  posterQuote.innerText = currentPoster.quote
+
+savedPoster.push(currentPoster);
+};
+
+
 
 window.addEventListener("load", generatePoster);
 randomButton.addEventListener("click", generatePoster);
@@ -212,3 +210,41 @@ makeYourOwnButton.addEventListener("click", showForm);
 showSavedPosterButton.addEventListener("click", showSavedPosters)
 backToMainButton.addEventListener("click", backToMain)
 showMyPoster.addEventListener("click", generateCustomPoster)
+saveThisPosterButton.addEventListener("click", saveMainPoster)
+
+
+
+
+
+//Iteration2
+  //Allow the user to input
+    //poster-quote.innerText = input.value;
+    //poster-image.src = input.value;
+    //poster-quote.innerText = input.value;
+  //Click button (Event listener with this function)
+    //saveButton.addEventListener("click", createCustomPoster)
+  //Create object instance of poster class (see poster.js)
+    //userCreatedPoster = new Poster
+  //Save user input into respective arrays
+    //.push()
+  //Display new object on main view
+
+
+
+//Iteration3
+
+//Bullet 1
+  //Click "save this poster" button (event listener)
+    //---> Add current poster to savedPosters arrays
+          //Create object instance
+          //and push into savedPosters arrays
+//Bullet 2
+  //If user clicks poster more than once,
+    //Poster will not be saved again
+    //No duplicates!
+//Bullet 3
+  //Click "Show Saved Posters" ---> display saved Posters
+    //Remove hidden from "saved posters" page
+    //Add hidden to main page
+//Bullet 4
+    //Posters in savedPosters should be in grid--->CSS
