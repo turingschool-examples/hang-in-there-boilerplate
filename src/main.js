@@ -140,10 +140,10 @@ function getRandomIndex(array) {
 
 
 function generateRandomPoster(){
-  randomPoster = new Poster (images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
-  posterImage.src = randomPoster.imageURL
-  posterTitle.innerText = randomPoster.title
-  posterQuote.innerText = randomPoster.quote
+  currentPoster = new Poster (images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  posterImage.src = currentPoster.imageURL
+  posterTitle.innerText = currentPoster.title
+  posterQuote.innerText = currentPoster.quote
 }
 
 
@@ -196,6 +196,7 @@ function saveThisPoster(){
     savedPosters.push(currentPoster);
   }
   console.log(currentPoster);
+  console.log('saved poster array', savedPosters)
   showSaved();
   addToGrid();
 }
