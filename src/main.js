@@ -127,9 +127,7 @@ showForm.addEventListener('click', makePosterForm)
 neverMind.addEventListener('click', takeMeBack)
 savedPostersButton.addEventListener('click', showSaved)
 backToMain.addEventListener('click', backToMainPage)
-inputImage.addEventListener('input', receiveImageInput)
-inputTitle.addEventListener('input', receiveTitleInput)
-inputQuote.addEventListener('input', receiveQuoteInput)
+
 
 showMyPosterButton.addEventListener('click', makeUserPoster)
 
@@ -171,6 +169,7 @@ function backToMainPage(){
 }
 
 
+
 function makeUserPoster(){
   newUserPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value)
   event.preventDefault();
@@ -188,5 +187,5 @@ function makeUserPoster(){
 function saveUserData(){
   images.push(inputImage.value);
   titles.push(inputTitle.value);
-  quotes.push(inputQuotes.value);
+  quotes.push(inputQuote.value);
 }
