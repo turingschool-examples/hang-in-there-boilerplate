@@ -133,8 +133,14 @@ backToMainButton.addEventListener('click', function() {
   mainPosterPage.classList.remove('hidden')
 })
 // functions and event handlers go here 👇
-imageRandomizer()
-textOptionsRandomizer()
+function pageLoad (){
+  if (!currentPoster) {
+    imageRandomizer()
+    textOptionsRandomizer()
+    console.log("this is the text")
+  }
+}
+pageLoad();
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
@@ -155,3 +161,21 @@ function imageRandomizer() {
   console.log("html:", imageElement.src)
   console.log("image from array:", images[imgIndex])
 }
+function showUserPoster (){
+  posterFormPage.classList.add("hidden")
+  mainPosterPage.classList.remove("hidden")
+  console.log('image: ', userImage.value)
+  console.log('title: ', userTitle.value)
+  console.log("userQuote.value: ", userQuote.value)
+}
+function createCustomPoster (){
+  currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value);
+  imageElement.src = currentPoster.imageURL
+  titleElement.innerText = currentPoster.title
+  quoteElement.innerText = currentPoster.quote
+  }
+
+  // var posterPlaceholder = new Poster(imageElement, titleElement, quoteElement)
+  // imageElement.src = userImage.value;
+  // titleElement.innerText = userTitle.value;
+  // quoteElement.innerText = userQuote.value;
