@@ -134,6 +134,8 @@ nevermindButton.addEventListener('click', showMainPage);
 backToMainButton.addEventListener('click', showMainPage);
 showMyPosterButton.addEventListener('click', generateOwnPoster)
 savePosterButton.addEventListener('click', savePoster);
+savedPostersGrid.addEventListener("dblclick", deletePoster);
+
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -205,3 +207,10 @@ function makeSavedPostersGrid() {
     `
   }
 }
+
+function deletePoster() {
+    for (var i = 0; i < savedPosters.length; i++) {
+        savedPosters.splice(i,1);
+      }
+    makeSavedPostersGrid();
+  }
