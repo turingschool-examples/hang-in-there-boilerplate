@@ -140,10 +140,10 @@ var savedPosters = [];
 //we want that to be the value of the current poster variables//write a separate function that
 //current poster = new Poster  (random and user generation posters need to be called in function currentPost and feed it the three values to create the variable of current poster)
 
-var currentImg = posterImgURLInput.value;
-var currentTitle = posterTitleInput.value;
-var currentQuote = posterQuoteInput.value;
-var currentPoster = new Poster(currentImg, currentTitle, currentQuote);
+// var currentImg = posterImgURLInput.value;
+// var currentTitle = posterTitleInput.value;
+// var currentQuote = posterQuoteInput.value;
+// var currentPoster = new Poster(currentImg, currentTitle, currentQuote);
 
 // ** for loop to push the currentPoster onto the savedPosters array?**
 // for (var i = 0; i < savedPosters.length; i++) {
@@ -197,7 +197,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function showMyPoster() {
+function showMyPoster(event) {
   event.preventDefault();
   posterImg.src = posterImgURLInput.value;
   posterTitle.innerText = posterTitleInput.value;
@@ -219,15 +219,32 @@ function showMyPoster() {
 //returnToMain()
 //mainPage should display new saved poster
 
-function saveCreatedPoster() {
-  savedPosters.push(currentPoster);
-  console.log(savedPosters);
-  currentPoster = new Poster();
-  // images.push(posterImgURLInput.imageURL);
-  // titles.push(posterTitleInput.title);
-  // quotes.push(posterQuoteInput.quote);
+// var currentImg = posterImgURLInput.value;
+// var currentTitle = posterTitleInput.value;
+// var currentQuote = posterQuoteInput.value;
+var currentPoster;
 
-  // images.push(posterImgURLInput.value);
-  // titles.push(posterTitleInput.value);
-  // quotes.push(posterQuoteInput.value);
+function saveCreatedPoster(event) {
+  event.preventDefault();
+  // class instance of Poster assigned to the currentPoster variable, with the displayed values
+  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
+  console.log(currentPoster);
+  //for loop with an if statement, cannot push if values are already on arrays
+  if (savedPosters.length) {
+    if (!savedPosters.includes(currentPoster) && !savedPosters.includes(currentPoster.imageURL) && !savedPosters.includes(currentPoster.title) && !savedPosters.includes(currentPoster.quote)) {
+      savedPosters.push(currentPoster);
+    }
+    else if (!savedPosters.length) {
+    savedPosters.push(currentPoster);
+  }
+  // if (!savedPosters.includes(currentPoster)) {
+  //   savedPosters.push(currentPoster);
+  //   console.log(savedPosters);
+  // }
+
+  // for (var i = 0; i < savedPosters.length; i++) {
+  //   if (savedPosters[i].imageURL !== currentPoster.imageURL && savedPosters[i].title !== currentPoster.title && savedPosters[i].quote !== currentPoster.quote) {
+  //     savedPosters.push(currentPoster);
+  //   }
+  // }
 }
