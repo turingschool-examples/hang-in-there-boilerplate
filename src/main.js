@@ -139,6 +139,7 @@ var quoteInput = document.querySelector('#poster-quote')
 
 var showMyPoster = document.querySelector('.make-poster')
 
+var showSavedPostersGrid = document.querySelector('.saved-posters-grid')
 
 
 
@@ -196,6 +197,7 @@ function saveMainPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)
   }
+
 };
 
 
@@ -229,12 +231,12 @@ saveThisPosterButton.addEventListener("click", saveMainPoster)
 
 //Iteration3
 
-//Bullet 1
+//Bullet 1 (check!
   //Click "save this poster" button (event listener)
     //---> Add current poster to savedPosters arrays
           //Create object instance
           //and push into savedPosters arrays
-//Bullet 2
+//Bullet 2 (check!)
   //If user clicks poster more than once,
     //Poster will not be saved again
     //No duplicates!
