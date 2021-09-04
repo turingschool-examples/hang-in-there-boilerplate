@@ -129,6 +129,18 @@ var savedPostersSection = document.querySelector('.saved-posters')
 
 var backToMainButton = document.querySelector('.back-to-main')
 
+var saveThisPosterButton = document.querySelector('.save-poster')
+
+var imageInput = document.querySelector('#poster-image-url')
+
+var titleInput = document.querySelector('#poster-title')
+
+var quoteInput = document.querySelector('#poster-quote')
+
+
+
+
+
 function generatePoster() {
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
 
@@ -155,6 +167,19 @@ function backToMain() {
   savedPostersSection.classList.add('hidden')
   mainPagePoster.classList.remove('hidden')
 };
+
+//Iteration2
+  //Allow the user to input
+  //Click button (Event listener with this function)
+  //Create object instance of poster class (see poster.js)
+  //Save user input into respective arrays
+    //.push()
+  //Display new object on main view
+
+
+
+
+
 
 
 window.addEventListener("load", generatePoster);
