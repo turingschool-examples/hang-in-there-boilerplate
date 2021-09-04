@@ -1,8 +1,10 @@
 // query selector variables go here 👇
 
+
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+var posterImageURL = document.querySelector('.poster-image-url')
 var randomPosterButton = document.querySelector('.show-random')
 var showForm = document.querySelector('.show-form')
 var mainPoster = document.querySelector('.main-poster')
@@ -11,6 +13,11 @@ var neverMind = document.querySelector('.show-main')
 var createdPosters = document.querySelector('.saved-posters')
 var savedPostersButton = document.querySelector('.show-saved')
 var backToMain = document.querySelector('.back-to-main')
+var showMyPosterButton = document.querySelector('.make-poster')
+
+var inputImage = document.querySelector('#poster-image-url')
+var inputTitle = document.querySelector('#poster-title')
+var inputQuote = document.querySelector('#poster-quote')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -121,6 +128,9 @@ neverMind.addEventListener('click', takeMeBack)
 savedPostersButton.addEventListener('click', showSaved)
 backToMain.addEventListener('click', backToMainPage)
 
+
+showMyPosterButton.addEventListener('click', makeUserPoster)
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -128,13 +138,13 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function generateRandomPoster() {
-  posterImage.src = images[getRandomIndex(images)];
-  posterTitle.innerText = titles[getRandomIndex(titles)];
-  posterQuote.innerText = quotes[getRandomIndex(quotes)];
 
-  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innertext);
-};
+function generateRandomPoster(){
+  randomPoster = new Poster (images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  posterImage.src = randomPoster.imageURL
+  posterTitle.innerText = randomPoster.title
+  posterQuote.innerText = randomPoster.quote
+}
 
 
 
@@ -156,4 +166,26 @@ function showSaved(){
 function backToMainPage(){
   createdPosters.classList.add('hidden')
   mainPoster.classList.remove('hidden')
+}
+
+
+
+function makeUserPoster(){
+  newUserPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value)
+  event.preventDefault();
+  posterImage.src = newUserPoster.imageURL
+  posterTitle.innerText = newUserPoster.title
+  posterQuote.innerText = newUserPoster.quote
+  takeMeBack();
+  saveUserData();
+  console.log('images array', images)
+  console.log('titles array', titles)
+  console.log('quotes array', quotes)
+}
+
+// the following function will take the same user inputs as above and save them into their respective arrays
+function saveUserData(){
+  images.push(inputImage.value);
+  titles.push(inputTitle.value);
+  quotes.push(inputQuote.value);
 }
