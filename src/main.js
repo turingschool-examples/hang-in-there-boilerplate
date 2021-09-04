@@ -1,5 +1,5 @@
-// query selector variables go here 👇
-var imageElement = document.querySelector("img");
+/// query selector variables go here 👇
+var imageElement = document.querySelector(".poster-img");
 var titleElement = document.querySelector(".poster-title");
 var quoteElement = document.querySelector(".poster-quote");
 var backToMainButton = document.querySelector(".back-to-main");
@@ -7,9 +7,15 @@ var nevermindButton = document.querySelector(".show-main");
 var randomizeButton = document.querySelector(".show-random");
 var savedPostersButton = document.querySelector(".show-saved");
 var showFormButton = document.querySelector(".show-form");
+var customPosterButton = document.querySelector(".make-poster");
+var savePosterButton = document.querySelector(".save-poster");
 var mainPosterPage = document.querySelector(".main-poster");
 var posterFormPage = document.querySelector(".poster-form");
 var savedPostersPage = document.querySelector(".saved-posters");
+var userImage = document.querySelector("#poster-image-url");
+var userTitle = document.querySelector("#poster-title");
+var userQuote = document.querySelector("#poster-quote");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -113,8 +119,7 @@ var currentPoster;
 
 // event listeners go here 👇
 randomizeButton.addEventListener('click', function() {
-  imageRandomizer()
-  randomizer()
+  randomize()
 })
 showFormButton.addEventListener('click', function() {
   posterFormPage.classList.remove("hidden")
@@ -132,26 +137,50 @@ backToMainButton.addEventListener('click', function() {
   savedPostersPage.classList.add('hidden')
   mainPosterPage.classList.remove('hidden')
 })
+savePosterButton.addEventListener('click', saveUserData)
+customPosterButton.addEventListener('click', function() {
+  createCustomPoster();
+  showUserPoster()
+  event.preventDefault()
+});
 // functions and event handlers go here 👇
-imageRandomizer()
-textOptionsRandomizer()
+
+
+randomize();
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
-function textOptionsRandomizer() {
-  var textOptions = [quotes, titles]
-  var htmlElements = [quoteElement, titleElement]
-  for (var i = 0; i < textOptions.length; i++) {
-    var index = getRandomIndex(textOptions[i])
-    htmlElements[i].innerText = textOptions[i][index]
+function randomize() {
+  var txtImgOptions = [images, titles, quotes];
+  var randomPoster = [];
+  for (var i = 0; i < txtImgOptions.length; i++) {
+    var index = getRandomIndex(txtImgOptions[i])
+    randomPoster.push(txtImgOptions[i][index])
   }
+  currentPoster = new Poster(randomPoster[0], randomPoster[1], randomPoster[2])
+  displayPoster();
 }
 
-function imageRandomizer() {
-  var imgIndex = getRandomIndex(images)
-  imageElement.src = images[imgIndex]
-  console.log("html:", imageElement.src)
-  console.log("image from array:", images[imgIndex])
+function displayPoster() {
+  imageElement.src = currentPoster.imageURL
+  titleElement.innerText = currentPoster.title
+  quoteElement.innerText = currentPoster.quote
+}
+
+function showUserPoster() {
+  posterFormPage.classList.add("hidden")
+  mainPosterPage.classList.remove("hidden")
+  displayPoster()
+}
+
+function createCustomPoster() {
+  currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value)
+}
+
+function saveUserData() {
+  images.push(imageElement.src)
+  titles.push(titleElement.innerText)
+  quotes.push(quoteElement.innerText)
 }
