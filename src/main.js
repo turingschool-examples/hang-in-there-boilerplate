@@ -1,3 +1,17 @@
+
+//** Before we submit - make sure all commented out code except for//
+//**the titles to each section is deleted including pseudocoding comments//
+//**Alphabetize each section and make sure each line of code is with its proper home section//
+//**Do not forget to do a README at the end - see saved template from Rock AND MAKE SURE IT UPDATES THE FRONT GITHUB PAGE//
+//Have mentors do a code review each//
+//** links for this project:
+//>>>GIT WORKFLOW STRUCTURE: https://frontend.turing.edu/lessons/module-1/dev-skills-git-team-workflow.html
+//>>>PROJECT TO DO & RUBRIC: https://frontend.turing.edu/projects/module-1/hang-in-there.html
+//>>>GITHUB LINK: https://github.com/delilahrois/hang-in-there-boilerplate
+//**DELETE STUFF ABOVE NOT BELOW THIS**//
+
+// var Poster = require("./poster.js");
+
 // query selector variables go here 👇
 
 var showRandomPostersBtn = document.querySelector('.show-random');
@@ -15,12 +29,13 @@ var savedPostersPg = document.querySelector('.saved-posters');
 var nevermindBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
 
-makePosterBtn.addEventListener('click', makePosterForm);
+var saveThisPosterBTN = document.querySelector('.save-poster');
+var showMyPosterBTN = document.querySelector('.make-poster');
+var posterImgURLInput = document.querySelector('#poster-image-url');
+var posterTitleInput = document.querySelector('#poster-title');
+var posterQuoteInput = document.querySelector('#poster-quote');
 
-showSavedBtn.addEventListener('click', showSavedPosters);
 
-nevermindBtn.addEventListener('click', returnToMain);
-backToMainBtn.addEventListener('click', returnToMain);
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -121,25 +136,40 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
+//each time you see the big poster on the main PAGE
+//we want that to be the value of the current poster variables//write a separate function that
+//current poster = new poster  (random and user generation posters need to be called in function currentPost and feed it the three values to create the variable of current poster)
 var currentPoster;
 
-//think we might eventually need this to invoke replacing html?
+//think we might eventually need this in a later iteration (initially pc thinking for it0)
 //var poster = {
 //   title: title,
 //   quote: quote,
 //   img: img
 // }
 
+
+
 // event listeners go here 👇
-//**testing with pseudocoding ideas
-showRandomPostersBtn.addEventListener('click', createRandomPoster)
-// below on window load event to show random poster for bullet 1 notes it0 testing
-window.addEventListener('load', createRandomPoster)
+
+showMyPosterBTN.addEventListener('click', showMyPoster);
+
+saveThisPosterBTN.addEventListener('click', saveCreatedPoster)
+
+showRandomPostersBtn.addEventListener('click', createRandomPoster);
+
+makePosterBtn.addEventListener('click', makePosterForm);
+
+showSavedBtn.addEventListener('click', showSavedPosters);
+
+nevermindBtn.addEventListener('click', returnToMain);
+backToMainBtn.addEventListener('click', returnToMain);
 
 // functions and event handlers (function to invoke eventListeners) go here 👇
 // (we've provided one for you to get you started)!
 
-// **testing for pseudocoding ideas bullet 1 it0 and also bullet2 random poster button
+window.addEventListener('load', createRandomPoster)
+
 function createRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
@@ -162,24 +192,30 @@ function returnToMain() {
   savedPostersPg.classList.add('hidden');
 }
 
-// makePosterBtn.addEventListener('click', makePosterForm);
-//
-// savedPostersBtn.addEventListener('click', showSavedPosters);
-
-// for bullet 2 of it0, psuedocoding testing
-//function createPoster() {
-//   currentPoster = new Poster(posterTitle.innerText, posterQuote.innerText, posterImg.src)
-// }
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-//PSEUDOCODING NOTES FOR IT0: **note to self: REMEMBER NOT TO DO WORK ON MAIN, PUSH UP BRANCHES SO THERE AREN'T MERGE ERRORS (IF NEEDED WORK IN SEPARATE BRANCHES), GIT FETCH, MERGE AFTER AN ITERATION WITH A PULL REQUEST (CHECK THIS ON WORK FLOW)
-// query selectors: for image, quote and title
-// query selector for the generate random poster button
-// addEventListeners for the page loading (window onload) and a separate one for the generate random poster button)
-// create 2 separate events: an onpage window click event (window.onLoad)
-// utilize get random index function to help us generate a new function to create a random new poster (we can use this function for the onload event & the button
-// to break it down more (something I am still trying to get better at):
-// need to have a function that will reassign the HTML element for each poster item (image, quote, title), uses the get random index arrays to search through so that we can then reassign: the innerText. src, for title/quote/img into the function (think we need an object for this) like var newPoster = {title: title, quote: quote, image: image}
+function showMyPoster() {
+  event.preventDefault();
+  posterImg.src = posterImgURLInput.value;
+  posterTitle.innerText = posterTitleInput.value;
+  posterQuote.innerText = posterQuoteInput.value;
+  //needs function to call current poster to push into array
+  returnToMain()
+}
+
+//function savePoster NOTES
+//create new instance of the Poster class (object?) with the input values
+//img and title and quote
+//push these new values into their arrays (in the data model?)
+//returnToMain()
+//mainPage should display new saved poster
+
+function saveCreatedPoster() {
+  console.log("are you here")
+  var newPoster = new Poster({imageURL: posterImgURLInput, title: posterTitleInput, quote: posterQuoteInput});
+  images.push(posterImgURLInput.value);
+  titles.push(posterTitleInput.value);
+  quotes.push(posterQuoteInput.value);
+}
