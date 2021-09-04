@@ -1,4 +1,4 @@
-//**NOTE TO SELF: DELETE THESE NOTES BEFORE SUBMITTING
+
 //** Before we submit - make sure all commented out code except for//
 //**the titles to each section is deleted including pseudocoding comments//
 //**Alphabetize each section and make sure each line of code is with its proper home section//
@@ -10,6 +10,7 @@
 //>>>GITHUB LINK: https://github.com/delilahrois/hang-in-there-boilerplate
 //**DELETE STUFF ABOVE NOT BELOW THIS**//
 
+// var Poster = require("./poster.js");
 
 // query selector variables go here 👇
 
@@ -33,6 +34,8 @@ var showMyPosterBTN = document.querySelector('.make-poster');
 var posterImgURLInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -148,6 +151,7 @@ var currentPoster;
 
 showMyPosterBTN.addEventListener('click', showMyPoster);
 
+saveThisPosterBTN.addEventListener('click', saveCreatedPoster)
 
 showRandomPostersBtn.addEventListener('click', createRandomPoster);
 
@@ -202,4 +206,12 @@ function showMyPoster() {
 //img and title and quote
 //push these new values into their arrays (in the data model?)
 //returnToMain()
-//mainPage should display new saved poster 
+//mainPage should display new saved poster
+
+function saveCreatedPoster() {
+  console.log("are you here")
+  var newPoster = new Poster({imageURL: posterImgURLInput, title: posterTitleInput, quote: posterQuoteInput});
+  images.push(posterImgURLInput.value);
+  titles.push(posterTitleInput.value);
+  quotes.push(posterQuoteInput.value);
+}
