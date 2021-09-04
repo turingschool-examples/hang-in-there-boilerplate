@@ -134,7 +134,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener("load", randomPoster);
+window.addEventListener('load', randomPoster);
 showRandomButton.addEventListener('click', randomPoster);
 // make a poster button
 makePosterButton.addEventListener('click',hideMainShowForm);
@@ -192,7 +192,7 @@ function captureFormValuesOnClick() {
   titleInput.innerText = currentPoster.title;
   quotesInput.innerText = currentPoster.quote;
   saveUserPoster();
-  backToMainPage(); 
+  backToMainPage();
 }
 
 function saveUserPoster() {
@@ -200,15 +200,6 @@ function saveUserPoster() {
   titles.push(formTitleInput.value);
   quotes.push(formQuoteInput.value);
 }
-
-
-
-
-// function newInputPoster() {
-//     // currentPoster = new Poster(formImageInput.value, formTitleInput.value,
-//     // formQuoteInput.value);
-//     backtoMainPage();
-// };
 
 // helper functions
 
