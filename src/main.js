@@ -14,7 +14,7 @@ var createdPosters = document.querySelector('.saved-posters')
 var savedPostersButton = document.querySelector('.show-saved')
 var backToMain = document.querySelector('.back-to-main')
 var showMyPosterButton = document.querySelector('.make-poster')
-
+var saveMyPosterButton = document.querySelector('.save-poster')
 var inputImage = document.querySelector('#poster-image-url')
 var inputTitle = document.querySelector('#poster-title')
 var inputQuote = document.querySelector('#poster-quote')
@@ -127,9 +127,8 @@ showForm.addEventListener('click', makePosterForm)
 neverMind.addEventListener('click', takeMeBack)
 savedPostersButton.addEventListener('click', showSaved)
 backToMain.addEventListener('click', backToMainPage)
-
-
 showMyPosterButton.addEventListener('click', makeUserPoster)
+saveMyPosterButton.addEventListener('click', saveThisPoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -171,11 +170,11 @@ function backToMainPage(){
 
 
 function makeUserPoster(){
-  newUserPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value)
+  currentPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value)
   event.preventDefault();
-  posterImage.src = newUserPoster.imageURL
-  posterTitle.innerText = newUserPoster.title
-  posterQuote.innerText = newUserPoster.quote
+  posterImage.src = currentPoster.imageURL
+  posterTitle.innerText = currentPoster.title
+  posterQuote.innerText = currentPoster.quote
   takeMeBack();
   saveUserData();
   console.log('images array', images)
@@ -188,4 +187,11 @@ function saveUserData(){
   images.push(inputImage.value);
   titles.push(inputTitle.value);
   quotes.push(inputQuote.value);
+}
+
+function saveThisPoster(){
+  if(!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+  showSaved();
 }
