@@ -194,10 +194,6 @@ function saveUserData() {
   }
 
 function pushIntoArray(){
-  console.log('image2',currentPoster.imageURL)
-  // var userPoster = new Poster(currentPoster.imageURL, currentPoster.title, currentPoster.quote)
-  console.log("saved posters ",savedPosters)
-  console.log((!savedPosters.includes(currentPoster)))
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)
       console.log((!savedPosters.includes(currentPoster)))
@@ -205,7 +201,7 @@ function pushIntoArray(){
   }
 
 function displayInGrid() {
-  grid.innerHTML = ``;
+  grid.innerHTML = ``
   for (var i = 0; i < savedPosters.length; i++) {
     grid.innerHTML += `<article class= "mini-poster">
     <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
