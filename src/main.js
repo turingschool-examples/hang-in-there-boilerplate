@@ -193,13 +193,9 @@ mainPagePoster.classList.remove('hidden')
 
 
 function saveMainPoster() {
-  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
-
-  posterImage.src = currentPoster.imageURL
-  posterTitle.innerText = currentPoster.title
-  posterQuote.innerText = currentPoster.quote
-
-savedPoster.push(currentPoster);
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+  }
 };
 
 
