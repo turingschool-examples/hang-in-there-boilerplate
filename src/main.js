@@ -15,6 +15,7 @@ var savedPostersPage = document.querySelector(".saved-posters");
 var userImage = document.querySelector("#poster-image-url");
 var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
+var grid = document.querySelector(".saved-posters-grid")
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -137,7 +138,11 @@ backToMainButton.addEventListener('click', function() {
   savedPostersPage.classList.add('hidden')
   mainPosterPage.classList.remove('hidden')
 })
-savePosterButton.addEventListener('click', saveUserData)
+savePosterButton.addEventListener('click', function() {
+  pushIntoArray()
+  saveUserData()
+  displayInGrid()
+})
 customPosterButton.addEventListener('click', function() {
   createCustomPoster();
   showUserPoster()
@@ -161,6 +166,7 @@ function randomize() {
   }
   currentPoster = new Poster(randomPoster[0], randomPoster[1], randomPoster[2])
   displayPoster();
+  console.log(mainPosterPage.classList)
 }
 
 function displayPoster() {
@@ -177,10 +183,30 @@ function showUserPoster() {
 
 function createCustomPoster() {
   currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value)
+  console.log('image',currentPoster.imageURL)
 }
 
 function saveUserData() {
   images.push(imageElement.src)
   titles.push(titleElement.innerText)
   quotes.push(quoteElement.innerText)
+
+  }
+
+function pushIntoArray(){
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+      console.log((!savedPosters.includes(currentPoster)))
+    }
+  }
+
+function displayInGrid() {
+  grid.innerHTML = ``
+  for (var i = 0; i < savedPosters.length; i++) {
+    grid.innerHTML += `<article class= "mini-poster">
+    <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
+    <h2>${savedPosters[i].title}</h2>
+    <h4> ${savedPosters[i].quote}</h4>
+    </article>`
+  }
 }
