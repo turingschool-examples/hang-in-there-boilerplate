@@ -189,17 +189,17 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
-  //hide the form when invoked (classList)
-  //unhide/ display the main poster that we just made
-  //redefine the values as the input.value of each of the quote/img/title
-
 function showMyPoster() {
   event.preventDefault();
   posterImg.src = posterImgURLInput.value;
   posterTitle.innerText = posterTitleInput.value;
   posterQuote.innerText = posterQuoteInput.value;
   returnToMain()
-  // posterForm.classList.add('hidden');
-  // mainPoster.classList.remove('hidden');
 }
+
+//function savePoster NOTES
+//create new instance of the Poster class (object?) with the input values
+//img and title and quote
+//push these new values into their arrays (in the data model?)
+//returnToMain()
+//mainPage should display new saved poster 
