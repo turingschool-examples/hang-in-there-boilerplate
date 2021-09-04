@@ -15,6 +15,7 @@ var savedPostersPage = document.querySelector(".saved-posters");
 var userImage = document.querySelector("#poster-image-url");
 var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
+var grid = document.querySelector(".saved-posters-grid")
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -140,7 +141,7 @@ backToMainButton.addEventListener('click', function() {
 savePosterButton.addEventListener('click', function() {
   pushIntoArray()
   saveUserData()
-  event.preventDefault()
+  displayInGrid()
 })
 customPosterButton.addEventListener('click', function() {
   createCustomPoster();
@@ -165,6 +166,7 @@ function randomize() {
   }
   currentPoster = new Poster(randomPoster[0], randomPoster[1], randomPoster[2])
   displayPoster();
+  console.log(mainPosterPage.classList)
 }
 
 function displayPoster() {
@@ -201,3 +203,37 @@ function pushIntoArray(){
       console.log((!savedPosters.includes(currentPoster)))
     }
   }
+
+function displayInGrid() {
+  grid.innerHTML = `<article class= "mini-poster">
+  <img src=${savedPosters[0].imageURL} alt="nothin' to see here">
+  <h2>${savedPosters[0].title}</h2>
+  <h4> ${savedPosters[0].quote}</h4>
+  </article>
+  <article class= "mini-poster">
+  <img src=${savedPosters[1].imageURL} alt="nothin' to see here">
+  <h2>${savedPosters[1].title}</h2>
+  <h4> ${savedPosters[1].quote}</h4>
+  </article>
+  <article class= "mini-poster">
+  <img src=${savedPosters[2].imageURL} alt="nothin' to see here">
+  <h2>${savedPosters[2].title}</h2>
+  <h4> ${savedPosters[2].quote}</h4>
+  </article>`
+
+
+
+  for (var i = 0; i < savedPosters.length; i++) {
+    grid.innerHTML = ``
+  }
+  var newMiniPoster = `<article class= "mini-poster">
+  <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
+  <h2>${savedPosters[i].title}</h2>
+  <h4> ${savedPosters[i].quote}</h4>
+  </article>`
+  console.log(savedPosters)
+  // grid.classList.add(".mini-poster")
+  // grid.classList.add(".mini-poster img")
+  // grid.classList.add(".mini-poster h4")
+  // grid.classList.add(".mini-poster.h2")
+  // console.log("grid :", grid)
