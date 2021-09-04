@@ -237,11 +237,8 @@ function getPosterHTML(array){
      <h2 class="h2">${array[i].title}</h2>
      <h4 class="h4">${array[i].quote}</h4>
      </article>`;
+
      str += miniPosterHTML;
   }
   return str;
-}
-
-function removeSavedPoster(){
-
 }
