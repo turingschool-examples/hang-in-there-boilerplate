@@ -7,10 +7,8 @@
 //** links for this project:
 //>>>GIT WORKFLOW STRUCTURE: https://frontend.turing.edu/lessons/module-1/dev-skills-git-team-workflow.html
 //>>>PROJECT TO DO & RUBRIC: https://frontend.turing.edu/projects/module-1/hang-in-there.html
-//>>>GITHUB LINK: https://github.com/delilahrois/hang-in-there-boilerplate
+//>>>GITHUB LINK: https://github.com/delilahrois/hang-in-there
 //**DELETE STUFF ABOVE NOT BELOW THIS**//
-
-// var Poster = require("./poster.js");
 
 // query selector variables go here 👇
 
@@ -29,11 +27,13 @@ var savedPostersPg = document.querySelector('.saved-posters');
 var nevermindBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
 
-var saveThisPosterBTN = document.querySelector('.save-poster');
-var showMyPosterBTN = document.querySelector('.make-poster');
+var saveThisPosterBtn = document.querySelector('.save-poster');
+var showMyPosterBtn = document.querySelector('.make-poster');
 var posterImgURLInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
+
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 
 
@@ -137,24 +137,14 @@ var quotes = [
 ];
 var savedPosters = [];
 //each time you see the big poster on the main PAGE
-//we want that to be the value of the current poster variables//write a separate function that
-//current poster = new poster  (random and user generation posters need to be called in function currentPost and feed it the three values to create the variable of current poster)
-var currentPoster;
-
-//think we might eventually need this in a later iteration (initially pc thinking for it0)
-//var poster = {
-//   title: title,
-//   quote: quote,
-//   img: img
-// }
-
-
+//we want that to be the value of the current poster variables//
 
 // event listeners go here 👇
+window.addEventListener('load', createRandomPoster);
 
-showMyPosterBTN.addEventListener('click', showMyPoster);
+showMyPosterBtn.addEventListener('click', showMyPoster);
 
-saveThisPosterBTN.addEventListener('click', saveCreatedPoster)
+saveThisPosterBtn.addEventListener('click', saveCreatedPoster)
 
 showRandomPostersBtn.addEventListener('click', createRandomPoster);
 
@@ -168,12 +158,11 @@ backToMainBtn.addEventListener('click', returnToMain);
 // functions and event handlers (function to invoke eventListeners) go here 👇
 // (we've provided one for you to get you started)!
 
-window.addEventListener('load', createRandomPoster)
-
 function createRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   posterImg.src = images[getRandomIndex(images)];
+  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
 }
 
 function makePosterForm() {
@@ -184,6 +173,9 @@ function makePosterForm() {
 function showSavedPosters() {
   mainPoster.classList.add('hidden');
   savedPostersPg.classList.remove('hidden');
+  savedPostersGrid.innerHTML {
+
+  }
 }
 
 function returnToMain() {
@@ -196,12 +188,15 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function showMyPoster() {
+function showMyPoster(event) {
   event.preventDefault();
   posterImg.src = posterImgURLInput.value;
   posterTitle.innerText = posterTitleInput.value;
   posterQuote.innerText = posterQuoteInput.value;
-  //needs function to call current poster to push into array
+  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
+  images.push(posterImgURLInput.value);
+  titles.push(posterTitleInput.value);
+  quotes.push(posterQuoteInput.value);
   returnToMain()
 }
 
@@ -212,10 +207,14 @@ function showMyPoster() {
 //returnToMain()
 //mainPage should display new saved poster
 
-function saveCreatedPoster() {
-  console.log("are you here")
-  var newPoster = new Poster({imageURL: posterImgURLInput, title: posterTitleInput, quote: posterQuoteInput});
-  images.push(posterImgURLInput.value);
-  titles.push(posterTitleInput.value);
-  quotes.push(posterQuoteInput.value);
+var currentPoster;
+
+function saveCreatedPoster(event) {
+  event.preventDefault();
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 }
+
+//display the saved posters page when btn is clicked
+//display all posters in the savedPosters array in the grid section (html)
