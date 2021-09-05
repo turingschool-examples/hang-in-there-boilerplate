@@ -132,6 +132,7 @@ takeMeBackBtn.addEventListener('click', takeMeBackToMain);
 backToMainBtn.addEventListener('click', backToMain);
 showMyPosterBtn.addEventListener('click', makeCustomPoster);
 savePosterBtn.addEventListener('click', addPosterToSaved);
+grid.addEventListener('dblclick', removePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -198,5 +199,15 @@ function gridView() {
       <h2>${savedPosters[i].title}</h2>
       <h4>${savedPosters[i].quote}</h4>
       </article>`
+  }
+};
+
+function removePoster() {
+  var targetID = parseInt(event.target.parentNode.id);
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (targetID === savedPosters[i].id) {
+      event.target.parentNode.remove();
+      savedPosters.splice(i, 1);
+    }
   }
 };
