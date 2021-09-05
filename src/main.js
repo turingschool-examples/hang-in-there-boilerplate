@@ -17,8 +17,6 @@ var showSavedBtn = document.querySelector('.show-saved');
 var showRandomPostersBtn = document.querySelector('.show-random');
 var showMyPosterBtn = document.querySelector('.make-poster');
 
-
-
 // ARRAYS👇
 var images = [
   "./assets/bees.jpg",
