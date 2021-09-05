@@ -1,4 +1,4 @@
-/// query selector variables go here 👇
+// query selector variables go here 👇
 var imageElement = document.querySelector(".poster-img");
 var titleElement = document.querySelector(".poster-title");
 var quoteElement = document.querySelector(".poster-quote");
@@ -118,25 +118,39 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+function toggleHiddenView(elementToShow, elementToHide) {
+	// show an element
+	// hide and element
+}
+
 // event listeners go here 👇
-randomizeButton.addEventListener('click', function() {
-  randomize()
-})
+randomizeButton.addEventListener('click', randomize) // You can give a function without arguments directly to an event listener
+//  Just don't call it like
+// randomizeButton.addEventListener('click', randomize())
+// because it will be invoked when the script runs on load and you want it to be invoked on click
+
+
+// ... but if you need to pass arguments to an event listener, you need to add them in an anonymous function like below
+
 showFormButton.addEventListener('click', function() {
-  posterFormPage.classList.remove("hidden")
-  mainPosterPage.classList.add("hidden")
+	toggleHiddenView(posterFormPage, mainPosterPage)
+	// posterFormPage.classList.remove("hidden")
+  // mainPosterPage.classList.add("hidden")
 })
 savedPostersButton.addEventListener('click', function() {
-  savedPostersPage.classList.remove('hidden')
-  mainPosterPage.classList.add('hidden')
+	toggleHiddenView(savedPostersPage, mainPosterPage)
+  // savedPostersPage.classList.remove('hidden')
+  // mainPosterPage.classList.add('hidden')
 })
 nevermindButton.addEventListener('click', function() {
-  posterFormPage.classList.add('hidden')
-  mainPosterPage.classList.remove('hidden')
+	toggleHiddenView(mainPosterPage, posterFormPage)
+  // mainPosterPage.classList.remove('hidden')
+  // posterFormPage.classList.add('hidden')
 })
 backToMainButton.addEventListener('click', function() {
-  savedPostersPage.classList.add('hidden')
-  mainPosterPage.classList.remove('hidden')
+	toggleHiddenView(mainPosterPage, posterFormPage)
+  // mainPosterPage.classList.remove('hidden')
+  // savedPostersPage.classList.add('hidden')
 })
 savePosterButton.addEventListener('click', function() {
   pushIntoArray()
@@ -144,30 +158,54 @@ savePosterButton.addEventListener('click', function() {
   displayInGrid()
 })
 customPosterButton.addEventListener('click', function() {
+	/**
+	 * Usually you want to add event.preventDefault() first because it is synchronous and most forms 
+	 * make an API call which is asynchronous and the event will have happend before the function resumes
+	 * Don't worry about it much now but since events deal with time and computer time is quick you usually want to 
+	 * tell the event to do something at the top of the function
+	 */
+  event.preventDefault()
   createCustomPoster();
   showUserPoster()
-  event.preventDefault()
 });
 // functions and event handlers go here 👇
 
 
-randomize();
+randomize();  // Doesn't matter with ES5 function syntax but good practice to call functions after they are declared.  And it matters later with ES6.
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
+/**
+ * Something like this might be a bit more strait forward for the randomize function.
+ * Loops are great but I feel this could be more strait forward for what it's doing
+ */
+
 function randomize() {
-  var txtImgOptions = [images, titles, quotes];
-  var randomPoster = [];
-  for (var i = 0; i < txtImgOptions.length; i++) {
-    var index = getRandomIndex(txtImgOptions[i])
-    randomPoster.push(txtImgOptions[i][index])
-  }
-  currentPoster = new Poster(randomPoster[0], randomPoster[1], randomPoster[2])
-  displayPoster();
-  console.log(mainPosterPage.classList)
+	var imagesIndex = getRandomIndex(images)
+	var titlesIndex = getRandomIndex(titles)
+	var quotesIndex = getRandomIndex(quotes)
+
+	currentPoster = new Poster(
+		images[imagesIndex],
+		titles[titlesIndex],
+		quotes[quotesIndex]
+	)
+
+	displayPoster()
 }
+
+// function randomize() {
+//   var txtImgOptions = [images, titles, quotes];
+//   var randomPoster = [];
+//   for (var i = 0; i < txtImgOptions.length; i++) {
+//     var index = getRandomIndex(txtImgOptions[i])
+//     randomPoster.push(txtImgOptions[i][index])
+//   }
+//   currentPoster = new Poster(randomPoster[0], randomPoster[1], randomPoster[2])
+//   displayPoster();
+// }
 
 function displayPoster() {
   imageElement.src = currentPoster.imageURL
@@ -183,7 +221,7 @@ function showUserPoster() {
 
 function createCustomPoster() {
   currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value)
-  console.log('image',currentPoster.imageURL)
+  console.log('image', currentPoster.imageURL)
 }
 
 function saveUserData() {
