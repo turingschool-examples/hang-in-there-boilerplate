@@ -176,5 +176,13 @@ function makeCustomPoster() {
 
 function addPostertoSaved() {
   currentPoster = new Poster(image.src, title.innerText, quote.innerText);
+  if (!savedPosters.length) {
+    savedPosters.push(currentPoster);
+  }
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].imageURL === image.src && savedPosters[i].title === title.innerText && savedPosters[i].quote === quote.innerText) {
+      return
+    }
+  }
   savedPosters.push(currentPoster);
 };
