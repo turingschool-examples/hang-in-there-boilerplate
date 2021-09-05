@@ -1,9 +1,8 @@
-# Hang In There: 2108 "Hang In There" Paired Project
+# "Hang In There" Paired Project (2108)
 
 ## Table of Contents
   - [Abstract](#abstract)
   - [Technologies](#technologies)
-  - [Code Architecture](#code-architecture)
   - [Illustrations](#illustrations)
   - [Install + Setup](#set-up)
   - [Contributors](#contributors)
