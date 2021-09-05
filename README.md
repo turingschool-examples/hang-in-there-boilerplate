@@ -9,10 +9,21 @@ HTML, CSS, and JavaScript.
 ### How to Use the Application  
 This application allows the user to view randomized inspirational posters. It's motivation with a twist, as the title, quote, and image hardly ever align! In addition, the user can create their own poster using a form. Any poster, whether created or randomly generated, can be saved and then also deleted.
 
-### Illustrations  
-// we need to place in the images or giphys here!
+### Illustrations
 
-### Find this project [here](//need to drop in the URL here - it's found in repo settings > pages > select the main branch as source > save > "your site is ready to be published at [URL]")
+##### Main Page
+![Main Section Here](readme-imgs/homepage.png)
+
+##### Make you own form section
+![Create Poster Form Here](readme-imgs/form.png)
+
+##### User created poster displayed on main
+![Newly Created Poster Result Here](readme-imgs/form-result.png)
+
+##### Saved poster grid
+![Saved Section Here](readme-imgs/saved.png)
+
+### Find this project [here](https://edwardkrupicka.github.io/hang-in-there/)
 
 ### Install and Setup
 
@@ -26,7 +37,10 @@ This application allows the user to view randomized inspirational posters. It's 
 [Edward Krupicka](https://github.com/edwardkrupicka) - Contributor  
 [Joan Rasmussen](https://github.com/raz-joan) - Contributor  
 [Rachael Thomas](https://github.com/rachael-t) - Reviewer  
-[Cassandra Torske](https://github.com/cassandraGoose) - Project Manager
+[Matthew Lane](https://github.com/GreyMatteOr) - Reviewer  
+[Cassandra Torske](https://github.com/cassandraGoose) - Project Manager  
+
+
 
 ### Future Iterations  
 - Implement data validation and error handling into the form (disable button, provide error messages if data entered is not correct, etc).
