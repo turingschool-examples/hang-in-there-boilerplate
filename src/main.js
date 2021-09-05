@@ -173,3 +173,8 @@ function makeCustomPoster() {
   quotes.push(quoteInput.value);
   takeMeBackToMain();
 };
+
+function addPostertoSaved() {
+  currentPoster = new Poster(image.src, title.innerText, quote.innerText);
+  savedPosters.push(currentPoster);
+};
