@@ -22,6 +22,7 @@
   - Javascript
   - HTML
   - CSS
+  - Chrome
 
 ## Demonstration
 Access a demontstration here: [https://giphy.com/gifs/l5bjHDOqKVSjHVSaCm]
