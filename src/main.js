@@ -9,10 +9,10 @@ var quoteInput = document.querySelector('#poster-quote');
 
 var mainPosterSection = document.querySelector('.main-poster');
 var savedPostersSection = document.querySelector('.saved-posters');
+var makeYourOwnFormSection = document.querySelector('.poster-form');
 
 var randomBtn = document.querySelector('.show-random');
 var makeYourOwnBtn = document.querySelector('.show-form');
-var makeYourOwnForm = document.querySelector('.poster-form');
 var takeMeBackBtn = document.querySelector('.show-main');
 var showSavedPostersBtn = document.querySelector('.show-saved');
 var backToMainBtn = document.querySelector('.back-to-main');
@@ -152,7 +152,7 @@ function setPoster() {
 
 function showMakeYourOwnForm() {
   mainPosterSection.classList.add('hidden');
-  makeYourOwnForm.classList.remove('hidden');
+  makeYourOwnFormSection.classList.remove('hidden');
 };
 
 function showSavedPosters() {
@@ -161,11 +161,19 @@ function showSavedPosters() {
 };
 
 function takeMeBackToMain() {
-  makeYourOwnForm.classList.add('hidden');
+  makeYourOwnFormSection.classList.add('hidden');
   mainPosterSection.classList.remove('hidden');
 };
 
 function backToMain() {
   savedPostersSection.classList.add('hidden');
   mainPosterSection.classList.remove('hidden');
+};
+
+function makeCustomPoster() {
+  image.src = imageInput.value;
+  title.innerText = titleInput.value;
+  quote.innerText = quoteInput.value;
+  currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
+  takeMeBackToMain();
 };
