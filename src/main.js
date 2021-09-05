@@ -11,6 +11,8 @@ var mainPosterSection = document.querySelector('.main-poster');
 var savedPostersSection = document.querySelector('.saved-posters');
 var makeYourOwnFormSection = document.querySelector('.poster-form');
 
+var grid = document.querySelector('.saved-posters-grid');
+
 var randomBtn = document.querySelector('.show-random');
 var makeYourOwnBtn = document.querySelector('.show-form');
 var takeMeBackBtn = document.querySelector('.show-main');
@@ -151,6 +153,7 @@ function showMakeYourOwnForm() {
 function showSavedPosters() {
   mainPosterSection.classList.add('hidden');
   savedPostersSection.classList.remove('hidden');
+  gridView();
 };
 
 function takeMeBackToMain() {
