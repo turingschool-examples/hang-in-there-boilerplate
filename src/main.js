@@ -212,17 +212,22 @@ function saveUserInput() {
 
 
 function saveCurrentPoster() {
+if (!savedPosters.includes(currentPoster)) {
   savedPosters.push(currentPoster);
   }
+}
+
+
 
 function createMiniPosters() {
   savedPostersGrid.innerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.innerHTML += `
-    <article>
-      <img src=${savedPosters[i].imageURL}>
-      <h1> ${savedPosters[i].title}</h1>
-      <h3> ${savedPosters[i].quote}</h3>
+    <article class="mini-poster">
+
+      <img src=${savedPosters[i].imageURL} alt="nothing going on">
+      <h2> ${savedPosters[i].title}</h2>
+      <h4> ${savedPosters[i].quote}</h4>
     </article>`
   }
 }
