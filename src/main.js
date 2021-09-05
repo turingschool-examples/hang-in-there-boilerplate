@@ -11,6 +11,8 @@ var mainPosterSection = document.querySelector('.main-poster');
 var savedPostersSection = document.querySelector('.saved-posters');
 var makeYourOwnFormSection = document.querySelector('.poster-form');
 
+var grid = document.querySelector('.saved-posters-grid');
+
 var randomBtn = document.querySelector('.show-random');
 var makeYourOwnBtn = document.querySelector('.show-form');
 var takeMeBackBtn = document.querySelector('.show-main');
@@ -129,7 +131,7 @@ showSavedPostersBtn.addEventListener('click', showSavedPosters);
 takeMeBackBtn.addEventListener('click', takeMeBackToMain);
 backToMainBtn.addEventListener('click', backToMain);
 showMyPosterBtn.addEventListener('click', makeCustomPoster);
-savePosterBtn.addEventListener('click', addPostertoSaved);
+savePosterBtn.addEventListener('click', addPosterToSaved);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -151,6 +153,7 @@ function showMakeYourOwnForm() {
 function showSavedPosters() {
   mainPosterSection.classList.add('hidden');
   savedPostersSection.classList.remove('hidden');
+  gridView();
 };
 
 function takeMeBackToMain() {
@@ -174,7 +177,7 @@ function makeCustomPoster() {
   takeMeBackToMain();
 };
 
-function addPostertoSaved() {
+function addPosterToSaved() {
   currentPoster = new Poster(image.src, title.innerText, quote.innerText);
   if (!savedPosters.length) {
     savedPosters.push(currentPoster);
@@ -185,4 +188,15 @@ function addPostertoSaved() {
     }
   }
   savedPosters.push(currentPoster);
+};
+
+function gridView() {
+  grid.innerHTML = '';
+  for (var i = 0; i < savedPosters.length; i++) {
+      grid.innerHTML += `<article class="mini-poster" id="${savedPosters[i].id}">
+      <img src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+      <h2>${savedPosters[i].title}</h2>
+      <h4>${savedPosters[i].quote}</h4>
+      </article>`
+  }
 };
