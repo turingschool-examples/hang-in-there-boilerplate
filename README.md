@@ -24,9 +24,8 @@
   - HTML
   - CSS
 
-## Illustrations
-
-Use [https://gifcap.dev/](https://gifcap.dev/) to make GIFs
+## Demonstration
+Access a demontstration here: [https://giphy.com/gifs/l5bjHDOqKVSjHVSaCm]
 
 ## Project Specs
   - The project spec & rubric can be found here: (https://frontend.turing.edu/projects/module-1/hang-in-there.html)
