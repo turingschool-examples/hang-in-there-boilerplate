@@ -16,6 +16,8 @@ var makeYourOwnBtn = document.querySelector('.show-form');
 var takeMeBackBtn = document.querySelector('.show-main');
 var showSavedPostersBtn = document.querySelector('.show-saved');
 var backToMainBtn = document.querySelector('.back-to-main');
+var showMyPosterBtn = document.querySelector('.make-poster');
+showMyPosterBtn.setAttribute('type', 'button');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -137,6 +139,7 @@ makeYourOwnBtn.addEventListener('click', showMakeYourOwnForm);
 showSavedPostersBtn.addEventListener('click', showSavedPosters);
 takeMeBackBtn.addEventListener('click', takeMeBackToMain);
 backToMainBtn.addEventListener('click', backToMain);
+showMyPosterBtn.addEventListener('click', makeCustomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -175,5 +178,8 @@ function makeCustomPoster() {
   title.innerText = titleInput.value;
   quote.innerText = quoteInput.value;
   currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
+  images.push(imageInput.value);
+  titles.push(titleInput.value);
+  quotes.push(quoteInput.value);
   takeMeBackToMain();
 };
