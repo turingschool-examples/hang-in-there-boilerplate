@@ -1,40 +1,21 @@
-
-//** Before we submit - make sure all commented out code except for//
-//**the titles to each section is deleted including pseudocoding comments//
-//**Alphabetize each section and make sure each line of code is with its proper home section//
-//**Do not forget to do a README at the end - see saved template from Rock AND MAKE SURE IT UPDATES THE FRONT GITHUB PAGE//
-//Have mentors do a code review each//
-//** links for this project:
-//>>>GIT WORKFLOW STRUCTURE: https://frontend.turing.edu/lessons/module-1/dev-skills-git-team-workflow.html
-//>>>PROJECT TO DO & RUBRIC: https://frontend.turing.edu/projects/module-1/hang-in-there.html
-//>>>GITHUB LINK: https://github.com/delilahrois/hang-in-there
-//**DELETE STUFF ABOVE NOT BELOW THIS**//
-
-// query selector variables go here 👇
-
-var showRandomPostersBtn = document.querySelector('.show-random');
-var posterImg = document.querySelector('.poster-img');
-var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querySelector('.poster-quote');
-
+// QUERY SELECTORS👇
+var backToMainBtn = document.querySelector('.back-to-main');
 var makePosterBtn = document.querySelector('.show-form');
 var mainPoster = document.querySelector('.main-poster');
-var posterForm = document.querySelector('.poster-form');
-
-var showSavedBtn = document.querySelector('.show-saved');
-var savedPostersPg = document.querySelector('.saved-posters');
-
 var nevermindBtn = document.querySelector('.show-main');
-var backToMainBtn = document.querySelector('.back-to-main');
-
-var saveThisPosterBtn = document.querySelector('.save-poster');
-var showMyPosterBtn = document.querySelector('.make-poster');
+var posterForm = document.querySelector('.poster-form');
+var posterImg = document.querySelector('.poster-img');
 var posterImgURLInput = document.querySelector('#poster-image-url');
-var posterTitleInput = document.querySelector('#poster-title');
+var posterQuote = document.querySelector('.poster-quote');
 var posterQuoteInput = document.querySelector('#poster-quote');
-
+var posterTitle = document.querySelector('.poster-title');
+var savedPostersPg = document.querySelector('.saved-posters');
+var posterTitleInput = document.querySelector('#poster-title');
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
-
+var saveThisPosterBtn = document.querySelector('.save-poster');
+var showSavedBtn = document.querySelector('.show-saved');
+var showRandomPostersBtn = document.querySelector('.show-random');
+var showMyPosterBtn = document.querySelector('.make-poster');
 
 // ARRAYS👇
 var images = [
@@ -138,7 +119,6 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
 backToMainBtn.addEventListener('click', returnToMain);
 makePosterBtn.addEventListener('click', makePosterForm);
 nevermindBtn.addEventListener('click', returnToMain);
@@ -149,7 +129,6 @@ showSavedBtn.addEventListener('click', showSavedPosters);
 window.addEventListener('load', createRandomPoster);
 
 // functions and event handlers (function to invoke eventListeners) go here 👇
-
 function createRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
@@ -157,10 +136,39 @@ function createRandomPoster() {
   currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
 };
 
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+};
+
 function makePosterForm() {
   mainPoster.classList.add('hidden');
   posterForm.classList.remove('hidden');
 };
+
+function returnToMain() {
+  mainPoster.classList.remove('hidden');
+  posterForm.classList.add('hidden');
+  savedPostersPg.classList.add('hidden');
+};
+
+function saveCreatedPoster(event) {
+  event.preventDefault();
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+};
+
+function showMyPoster(event) {
+  event.preventDefault();
+  posterImg.src = posterImgURLInput.value;
+  posterTitle.innerText = posterTitleInput.value;
+  posterQuote.innerText = posterQuoteInput.value;
+  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
+  images.push(posterImgURLInput.value);
+  titles.push(posterTitleInput.value);
+  quotes.push(posterQuoteInput.value);
+  returnToMain()
+}
 
 function showSavedPosters() {
   mainPoster.classList.add('hidden');
@@ -174,34 +182,5 @@ function showSavedPosters() {
       <h4>${savedPosters[i].quote}</h4>
       </article>
     `
-  }
-};
-
-function returnToMain() {
-  mainPoster.classList.remove('hidden');
-  posterForm.classList.add('hidden');
-  savedPostersPg.classList.add('hidden');
-};
-
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-};
-
-function showMyPoster(event) {
-  event.preventDefault();
-  posterImg.src = posterImgURLInput.value;
-  posterTitle.innerText = posterTitleInput.value;
-  posterQuote.innerText = posterQuoteInput.value;
-  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
-  images.push(posterImgURLInput.value);
-  titles.push(posterTitleInput.value);
-  quotes.push(posterQuoteInput.value);
-  returnToMain()
-};
-
-function saveCreatedPoster(event) {
-  event.preventDefault();
-  if (!savedPosters.includes(currentPoster)) {
-    savedPosters.push(currentPoster);
   }
 };
