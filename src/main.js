@@ -138,6 +138,20 @@ var imageInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
 var showMyPoster = document.querySelector('.make-poster');
+=======
+var saveThisPosterButton = document.querySelector('.save-poster')
+
+var imageInput = document.querySelector('#poster-image-url')
+
+var titleInput = document.querySelector('#poster-title')
+
+var quoteInput = document.querySelector('#poster-quote')
+
+var showMyPoster = document.querySelector('.make-poster')
+
+
+
+
 
 function generatePoster() {
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
@@ -189,6 +203,42 @@ function generateCustomPoster(event) {
 //   mainPagePoster.classList.remove('hidden')
 // }
 
+=======
+//Iteration2
+  //Allow the user to input
+    //poster-quote.innerText = input.value;
+    //poster-image.src = input.value;
+    //poster-quote.innerText = input.value;
+  //Click button (Event listener with this function)
+    //saveButton.addEventListener("click", createCustomPoster)
+  //Create object instance of poster class (see poster.js)
+    //userCreatedPoster = new Poster
+  //Save user input into respective arrays
+    //.push()
+  //Display new object on main view
+
+
+
+function generateCustomPoster(event) {
+  event.preventDefault();
+
+currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value)
+
+images.push(imageInput.value);
+titles.push(titleInput.value);
+quotes.push(quoteInput.value);
+
+posterImage.src = currentPoster.imageURL
+posterTitle.innerText = currentPoster.title
+posterQuote.innerText = currentPoster.quote
+
+posterForm.classList.add('hidden')
+
+mainPagePoster.classList.remove('hidden')
+
+};
+
+//Testing for push to iteration2
 
 window.addEventListener("load", generatePoster);
 randomButton.addEventListener("click", generatePoster);
@@ -202,3 +252,7 @@ nevermindTakeMeBackButton.addEventListener("click", takeMeBack)
 // Ive got an element, showMyPoster, I want to add a behvior for a specific event.
 // I want specific behavior, when this button is clicked.
 //generateCustomPoster is an event handler
+=======
+showSavedPosterButton.addEventListener("click", showSavedPosters)
+backToMainButton.addEventListener("click", backToMain)
+showMyPoster.addEventListener("click", generateCustomPoster)
