@@ -136,6 +136,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
+var currentPoster;
 //each time you see the big poster on the main PAGE
 //we want that to be the value of the current poster variables//
 
@@ -173,6 +174,7 @@ function makePosterForm() {
 function showSavedPosters() {
   mainPoster.classList.add('hidden');
   savedPostersPg.classList.remove('hidden');
+  savedPostersGrid.innerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.innerHTML += `
       <article class="mini-poster">
@@ -206,21 +208,9 @@ function showMyPoster(event) {
   returnToMain()
 }
 
-//function savePoster NOTES
-//create new instance of the Poster class (object?) with the input values
-//img and title and quote
-//push these new values into their arrays (in the data model?)
-//returnToMain()
-//mainPage should display new saved poster
-
-var currentPoster;
-
 function saveCreatedPoster(event) {
   event.preventDefault();
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
 }
-
-//display the saved posters page when btn is clicked
-//display all posters in the savedPosters array in the grid section (html)
