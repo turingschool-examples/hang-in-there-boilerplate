@@ -3,18 +3,21 @@ var image = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 
+var imageInput = document.querySelector('#poster-image-url');
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
+
 var mainPosterSection = document.querySelector('.main-poster');
+var savedPostersSection = document.querySelector('.saved-posters');
+var makeYourOwnFormSection = document.querySelector('.poster-form');
 
 var randomBtn = document.querySelector('.show-random');
-
 var makeYourOwnBtn = document.querySelector('.show-form');
-var makeYourOwnForm = document.querySelector('.poster-form');
 var takeMeBackBtn = document.querySelector('.show-main');
-
-
 var showSavedPostersBtn = document.querySelector('.show-saved');
-var savedPostersSection = document.querySelector('.saved-posters');
 var backToMainBtn = document.querySelector('.back-to-main');
+var showMyPosterBtn = document.querySelector('.make-poster');
+showMyPosterBtn.setAttribute('type', 'button');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -136,6 +139,7 @@ makeYourOwnBtn.addEventListener('click', showMakeYourOwnForm);
 showSavedPostersBtn.addEventListener('click', showSavedPosters);
 takeMeBackBtn.addEventListener('click', takeMeBackToMain);
 backToMainBtn.addEventListener('click', backToMain);
+showMyPosterBtn.addEventListener('click', makeCustomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -151,7 +155,7 @@ function setPoster() {
 
 function showMakeYourOwnForm() {
   mainPosterSection.classList.add('hidden');
-  makeYourOwnForm.classList.remove('hidden');
+  makeYourOwnFormSection.classList.remove('hidden');
 };
 
 function showSavedPosters() {
@@ -160,11 +164,22 @@ function showSavedPosters() {
 };
 
 function takeMeBackToMain() {
-  makeYourOwnForm.classList.add('hidden');
+  makeYourOwnFormSection.classList.add('hidden');
   mainPosterSection.classList.remove('hidden');
 };
 
 function backToMain() {
   savedPostersSection.classList.add('hidden');
   mainPosterSection.classList.remove('hidden');
+};
+
+function makeCustomPoster() {
+  image.src = imageInput.value;
+  title.innerText = titleInput.value;
+  quote.innerText = quoteInput.value;
+  currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
+  images.push(imageInput.value);
+  titles.push(titleInput.value);
+  quotes.push(quoteInput.value);
+  takeMeBackToMain();
 };
