@@ -175,10 +175,10 @@ function showSavedPosters() {
   savedPostersPg.classList.remove('hidden');
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.innerHTML += `
-      <article class="saved-posters-grid">
-      <img class="mini-poster" src= ${savedPosters[i].imageURL} alt="nothin' to see here">
-      <h2 class="mini-poster">${savedPosters[i].title}</h2>
-      <h4 class="mini-poster">${savedPosters[i].quote}</h4>
+      <article class="mini-poster">
+      <img src= ${savedPosters[i].imageURL} alt="nothin' to see here">
+      <h2>${savedPosters[i].title}</h2>
+      <h4>${savedPosters[i].quote}</h4>
       </article>
     `
   }
