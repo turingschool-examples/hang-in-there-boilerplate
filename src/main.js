@@ -110,7 +110,6 @@ function getRandomIndex(array) {
 }
 
 var posterImage = document.querySelector('.poster-img')
-//                ^^
 
 var posterTitle = document.querySelector('.poster-title')
 
@@ -133,12 +132,6 @@ var backToMainButton = document.querySelector('.back-to-main')
 var nevermindTakeMeBackButton = document.querySelector('.show-main')
 
 
-//inputs for create your own motivational poster on form page
-var imageInput = document.querySelector('#poster-image-url');
-var titleInput = document.querySelector('#poster-title');
-var quoteInput = document.querySelector('#poster-quote');
-var showMyPoster = document.querySelector('.make-poster');
-=======
 var saveThisPosterButton = document.querySelector('.save-poster')
 
 var imageInput = document.querySelector('#poster-image-url')
@@ -150,6 +143,13 @@ var quoteInput = document.querySelector('#poster-quote')
 var showMyPoster = document.querySelector('.make-poster')
 
 var showSavedPostersGrid = document.querySelector('.saved-posters-grid')
+
+//inputs for create your own motivational poster on form page
+var imageInput = document.querySelector('#poster-image-url');
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
+var showMyPoster = document.querySelector('.make-poster');
+
 
 
 
@@ -197,31 +197,14 @@ function generateCustomPoster(event) {
   posterForm.classList.add('hidden')
   mainPagePoster.classList.remove('hidden')
 
-  savedPosters.push(currentPoster);
+  // savedPosters.push(currentPoster);
 
 };
 
-// function takeMeBack() {
-//   posterForm.classList.add('hidden')
-//   mainPagePoster.classList.remove('hidden')
-// }
-
-
-//Iteration2
-  //Allow the user to input
-    //poster-quote.innerText = input.value;
-    //poster-image.src = input.value;
-    //poster-quote.innerText = input.value;
-  //Click button (Event listener with this function)
-    //saveButton.addEventListener("click", createCustomPoster)
-  //Create object instance of poster class (see poster.js)
-    //userCreatedPoster = new Poster
-  //Save user input into respective arrays
-    //.push()
-  //Display new object on main view
-
-
-
+function takeMeBack() {
+  posterForm.classList.add('hidden')
+  mainPagePoster.classList.remove('hidden')
+}
 
 function generateCustomPoster(event) {
   event.preventDefault();
@@ -243,7 +226,6 @@ mainPagePoster.classList.remove('hidden')
 
 
 
-
 function saveMainPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)
@@ -260,16 +242,11 @@ showSavedPosterButton.addEventListener("click", showSavedPosters);
 backToMainButton.addEventListener("click", backToMain);
 showMyPoster.addEventListener("click", generateCustomPoster);
 nevermindTakeMeBackButton.addEventListener("click", takeMeBack)
-
+saveThisPosterButton.addEventListener("click", saveMainPoster)
 
 // Ive got an element, showMyPoster, I want to add a behvior for a specific event.
 // I want specific behavior, when this button is clicked.
 //generateCustomPoster is an event handler
-=======
-showSavedPosterButton.addEventListener("click", showSavedPosters)
-backToMainButton.addEventListener("click", backToMain)
-showMyPoster.addEventListener("click", generateCustomPoster)
-saveThisPosterButton.addEventListener("click", saveMainPoster)
 
 
 
