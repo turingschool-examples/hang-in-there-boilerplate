@@ -124,7 +124,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-randomize();
+randomizeAndDisplay();
 
 function toggleHiddenView(elementToShow, elementToHide) {
 	// show a thing
@@ -132,7 +132,7 @@ function toggleHiddenView(elementToShow, elementToHide) {
 }
 
 // event listeners go here 👇
-randomizeButton.addEventListener('click', randomize) // You can give a function without arguments directly to an event listener
+randomizeButton.addEventListener('click', randomizeAndDisplay) // You can give a function without arguments directly to an event listener
 //  Just don't call it like
 // randomizeButton.addEventListener('click', randomize())
 // because it will be invoked when the script runs on load and you want it to be invoked on click
