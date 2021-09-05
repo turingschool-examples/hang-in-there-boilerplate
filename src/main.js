@@ -3,17 +3,18 @@ var image = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 
+var imageInput = document.querySelector('#poster-image-url');
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
+
 var mainPosterSection = document.querySelector('.main-poster');
+var savedPostersSection = document.querySelector('.saved-posters');
 
 var randomBtn = document.querySelector('.show-random');
-
 var makeYourOwnBtn = document.querySelector('.show-form');
 var makeYourOwnForm = document.querySelector('.poster-form');
 var takeMeBackBtn = document.querySelector('.show-main');
-
-
 var showSavedPostersBtn = document.querySelector('.show-saved');
-var savedPostersSection = document.querySelector('.saved-posters');
 var backToMainBtn = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
