@@ -36,8 +36,7 @@ var posterQuoteInput = document.querySelector('#poster-quote');
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 
-
-// we've provided you with some data to work with 👇
+// ARRAYS👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -137,39 +136,31 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-//each time you see the big poster on the main PAGE
-//we want that to be the value of the current poster variables//
 
 // event listeners go here 👇
+
+backToMainBtn.addEventListener('click', returnToMain);
+makePosterBtn.addEventListener('click', makePosterForm);
+nevermindBtn.addEventListener('click', returnToMain);
+saveThisPosterBtn.addEventListener('click', saveCreatedPoster)
+showMyPosterBtn.addEventListener('click', showMyPoster);
+showRandomPostersBtn.addEventListener('click', createRandomPoster);
+showSavedBtn.addEventListener('click', showSavedPosters);
 window.addEventListener('load', createRandomPoster);
 
-showMyPosterBtn.addEventListener('click', showMyPoster);
-
-saveThisPosterBtn.addEventListener('click', saveCreatedPoster)
-
-showRandomPostersBtn.addEventListener('click', createRandomPoster);
-
-makePosterBtn.addEventListener('click', makePosterForm);
-
-showSavedBtn.addEventListener('click', showSavedPosters);
-
-nevermindBtn.addEventListener('click', returnToMain);
-backToMainBtn.addEventListener('click', returnToMain);
-
 // functions and event handlers (function to invoke eventListeners) go here 👇
-// (we've provided one for you to get you started)!
 
 function createRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   posterImg.src = images[getRandomIndex(images)];
   currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
-}
+};
 
 function makePosterForm() {
   mainPoster.classList.add('hidden');
   posterForm.classList.remove('hidden');
-}
+};
 
 function showSavedPosters() {
   mainPoster.classList.add('hidden');
@@ -184,17 +175,17 @@ function showSavedPosters() {
       </article>
     `
   }
-}
+};
 
 function returnToMain() {
   mainPoster.classList.remove('hidden');
   posterForm.classList.add('hidden');
   savedPostersPg.classList.add('hidden');
-}
+};
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
 function showMyPoster(event) {
   event.preventDefault();
@@ -206,11 +197,11 @@ function showMyPoster(event) {
   titles.push(posterTitleInput.value);
   quotes.push(posterQuoteInput.value);
   returnToMain()
-}
+};
 
 function saveCreatedPoster(event) {
   event.preventDefault();
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
-}
+};
