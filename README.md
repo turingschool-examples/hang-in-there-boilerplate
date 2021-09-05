@@ -1,18 +1,45 @@
-# Hang In There
+# Hang In There: 2108 "Hang In There" Paired Project
 
-A boilerplate repo. 
+## Table of Contents
+  - [Abstract](#abstract)
+  - [Technologies](#technologies)
+  - [Code Architecture](#code-architecture)
+  - [Illustrations](#illustrations)
+  - [Install + Setup](#set-up)
+  - [Contributors](#contributors)
+	- [Wins](#wins)
+	- [Challenges + Improvements](#challenges-+-Improvements)
+  - [Project Specs](#project-specs)
 
-## Set Up
+## Abstract
+	Hang in There will allow users to:
+- Generate random projects from asset arrays
+- User created custom projects by filling out pre- assigned fields
+- Add custom data to asset arrays through creating a custom poster
+- Save posters and view them in miniature form
 
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
+## Technologies
+  - ATOM
+  - Javascript
+  - HTML
+  - CSS
 
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
+## Illustrations
 
-To view your project:
+Use [https://gifcap.dev/](https://gifcap.dev/) to make GIFs
 
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
+## Project Specs
+  - The project spec & rubric can be found here: (https://frontend.turing.edu/projects/module-1/hang-in-there.html)
+
+
+## Contributors
+  - [Susanna Carey](https://github.com/susannaopal)
+  - [Delilah Necrason](https://github.com/delilahrois)
+
+
+## Wins
+	- We worked well together as a team
+	- We were able to write a fully functional web app
+
+## Challenges + Improvements
+	- Accessing the material for certain sections
