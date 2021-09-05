@@ -154,7 +154,7 @@ function showMakeYourOwnForm() {
 function showSavedPosters() {
   mainPosterSection.classList.add('hidden');
   savedPostersSection.classList.remove('hidden');
-  gridView();
+  createGridView();
 };
 
 function takeMeBackToMain() {
@@ -168,10 +168,10 @@ function backToMain() {
 };
 
 function makeCustomPoster() {
+  currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
   mainImage.src = imageInput.value;
   mainTitle.innerText = titleInput.value;
   mainQuote.innerText = quoteInput.value;
-  currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
   images.push(imageInput.value);
   titles.push(titleInput.value);
   quotes.push(quoteInput.value);
@@ -191,7 +191,7 @@ function addPosterToSaved() {
   savedPosters.push(currentPoster);
 };
 
-function gridView() {
+function createGridView() {
   grid.innerHTML = '';
   for (var i = 0; i < savedPosters.length; i++) {
       grid.innerHTML += `<article class="mini-poster" id="${savedPosters[i].id}">
