@@ -1,3 +1,7 @@
+/**
+ * Just do a quick find all in your project before pushing to remove all unwanted console logs I think command + shift + f in Atom
+ */
+
 // query selector variables go here 👇
 var imageElement = document.querySelector(".poster-img");
 var titleElement = document.querySelector(".poster-title");
@@ -16,6 +20,10 @@ var userImage = document.querySelector("#poster-image-url");
 var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
 var grid = document.querySelector(".saved-posters-grid")
+
+// Good practice to keep global variabels at the top
+var savedPosters = [];
+var currentPoster;
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -115,12 +123,12 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
+
+randomize();
 
 function toggleHiddenView(elementToShow, elementToHide) {
-	// show an element
-	// hide and element
+	// show a thing
+	// hide a thing
 }
 
 // event listeners go here 👇
@@ -152,11 +160,17 @@ backToMainButton.addEventListener('click', function() {
   // mainPosterPage.classList.remove('hidden')
   // savedPostersPage.classList.add('hidden')
 })
+/** 
+ * Could also combine the following functions into a savePoster function like:
+ * function savePoster() { // ... all those functions } and call like
+ * savePosterButton.addEventListener('click', savePoster)
+*/
 savePosterButton.addEventListener('click', function() {
   pushIntoArray()
   saveUserData()
   displayInGrid()
 })
+
 customPosterButton.addEventListener('click', function() {
 	/**
 	 * Usually you want to add event.preventDefault() first because it is synchronous and most forms 
@@ -170,30 +184,31 @@ customPosterButton.addEventListener('click', function() {
 });
 // functions and event handlers go here 👇
 
-
-randomize();  // Doesn't matter with ES5 function syntax but good practice to call functions after they are declared.  And it matters later with ES6.
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
 /**
  * Something like this might be a bit more strait forward for the randomize function.
- * Loops are great but I feel this could be more strait forward for what it's doing
+ * Loops are great but I feel this could be more strait forward for what it's doing.
+ * It's good to try and do one thing at a time with functions so this function could be split in 2 in case you need it elsewhere
  */
 
-function randomize() {
+function createRandomPoster() {
 	var imagesIndex = getRandomIndex(images)
 	var titlesIndex = getRandomIndex(titles)
 	var quotesIndex = getRandomIndex(quotes)
 
-	currentPoster = new Poster(
+	return currentPoster = new Poster(
 		images[imagesIndex],
 		titles[titlesIndex],
 		quotes[quotesIndex]
 	)
+}
 
-	displayPoster()
+function randomizeAndDisplay() {
+	var randomPoster = createCustomPoster()
+	// displayPoster()
 }
 
 // function randomize() {
@@ -214,8 +229,9 @@ function displayPoster() {
 }
 
 function showUserPoster() {
-  posterFormPage.classList.add("hidden")
-  mainPosterPage.classList.remove("hidden")
+	toggleHiddenView(mainPosterPage, posterFormPage)
+  // mainPosterPage.classList.remove("hidden")
+  // posterFormPage.classList.add("hidden")
   displayPoster()
 }
 
@@ -232,19 +248,22 @@ function saveUserData() {
   }
 
 function pushIntoArray(){
-  if (!savedPosters.includes(currentPoster)) {
+  if (!savedPosters.includes(currentPoster)) { // Nice check!
     savedPosters.push(currentPoster)
       console.log((!savedPosters.includes(currentPoster)))
     }
   }
 
 function displayInGrid() {
-  grid.innerHTML = ``
+  grid.innerHTML = `` // Why backticks here?  `` == '' == "".  No big deal just a small style thing
   for (var i = 0; i < savedPosters.length; i++) {
-    grid.innerHTML += `<article class= "mini-poster">
-    <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
-    <h2>${savedPosters[i].title}</h2>
-    <h4> ${savedPosters[i].quote}</h4>
-    </article>`
+		//  Backticks don't care about white space so something like this is a bit more readable when formatted like HTML
+    grid.innerHTML += `
+			<article class= "mini-poster">
+				<img src=${savedPosters[i].imageURL} alt="nothin' to see here">
+				<h2>${savedPosters[i].title}</h2>
+				<h4> ${savedPosters[i].quote}</h4>
+			</article>
+		`
   }
 }
