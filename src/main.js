@@ -1,7 +1,7 @@
 // query selector variables go here 👇
-var image = document.querySelector('.poster-img');
-var title = document.querySelector('.poster-title');
-var quote = document.querySelector('.poster-quote');
+var mainImage = document.querySelector('.poster-img');
+var mainTitle = document.querySelector('.poster-title');
+var mainQuote = document.querySelector('.poster-quote');
 
 var imageInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
@@ -124,8 +124,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', setPoster);
-randomBtn.addEventListener('click', setPoster);
+window.addEventListener('load', setMainPoster);
+randomBtn.addEventListener('click', setMainPoster);
 makeYourOwnBtn.addEventListener('click', showMakeYourOwnForm);
 showSavedPostersBtn.addEventListener('click', showSavedPosters);
 takeMeBackBtn.addEventListener('click', takeMeBackToMain);
@@ -140,10 +140,10 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function setPoster() {
-  title.innerText = titles[getRandomIndex(titles)];
-  quote.innerText = quotes[getRandomIndex(quotes)];
-  image.src = images[getRandomIndex(images)];
+function setMainPoster() {
+  mainTitle.innerText = titles[getRandomIndex(titles)];
+  mainQuote.innerText = quotes[getRandomIndex(quotes)];
+  mainImage.src = images[getRandomIndex(images)];
 };
 
 function showMakeYourOwnForm() {
@@ -168,9 +168,9 @@ function backToMain() {
 };
 
 function makeCustomPoster() {
-  image.src = imageInput.value;
-  title.innerText = titleInput.value;
-  quote.innerText = quoteInput.value;
+  mainImage.src = imageInput.value;
+  mainTitle.innerText = titleInput.value;
+  mainQuote.innerText = quoteInput.value;
   currentPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
   images.push(imageInput.value);
   titles.push(titleInput.value);
@@ -179,13 +179,13 @@ function makeCustomPoster() {
 };
 
 function addPosterToSaved() {
-  currentPoster = new Poster(image.src, title.innerText, quote.innerText);
+  currentPoster = new Poster(mainImage.src, mainTitle.innerText, mainQuote.innerText);
   if (!savedPosters.length) {
     savedPosters.push(currentPoster);
   }
   for (var i = 0; i < savedPosters.length; i++) {
-    if (savedPosters[i].imageURL === image.src && savedPosters[i].title === title.innerText && savedPosters[i].quote === quote.innerText) {
-      return
+    if (savedPosters[i].imageURL === mainImage.src && savedPosters[i].title === mainTitle.innerText && savedPosters[i].quote === mainQuote.innerText) {
+      return;
     }
   }
   savedPosters.push(currentPoster);
@@ -198,7 +198,7 @@ function gridView() {
       <img src="${savedPosters[i].imageURL}" alt="nothin' to see here">
       <h2>${savedPosters[i].title}</h2>
       <h4>${savedPosters[i].quote}</h4>
-      </article>`
+      </article>`;
   }
 };
 
