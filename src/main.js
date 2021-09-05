@@ -201,3 +201,13 @@ function gridView() {
       </article>`
   }
 };
+
+function removePoster() {
+  var targetID = parseInt(event.target.parentNode.id);
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (targetID === savedPosters[i].id) {
+      event.target.parentNode.remove();
+      savedPosters.splice(i, 1);
+    }
+  }
+};
