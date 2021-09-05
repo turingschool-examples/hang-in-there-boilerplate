@@ -132,6 +132,7 @@ takeMeBackBtn.addEventListener('click', takeMeBackToMain);
 backToMainBtn.addEventListener('click', backToMain);
 showMyPosterBtn.addEventListener('click', makeCustomPoster);
 savePosterBtn.addEventListener('click', addPosterToSaved);
+grid.addEventListener('dblclick', removePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
