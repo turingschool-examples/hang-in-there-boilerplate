@@ -18,6 +18,7 @@ var showSavedPostersBtn = document.querySelector('.show-saved');
 var backToMainBtn = document.querySelector('.back-to-main');
 var showMyPosterBtn = document.querySelector('.make-poster');
 showMyPosterBtn.setAttribute('type', 'button');
+var savePosterBtn = document.querySelector('.save-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -120,18 +121,6 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// var newImage = images[0];
-// var newTitle = titles[0];
-// var newQuote = quotes[0];
-
-// title.innerText = newTitle;
-// quote.innerText = newQuote;
-// image.src = newImage;
-// image.alt = "bees";
-
-// console.log(newTitle);
-// console.log(quote);
-
 // event listeners go here 👇
 window.addEventListener('load', setPoster);
 randomBtn.addEventListener('click', setPoster);
@@ -140,6 +129,7 @@ showSavedPostersBtn.addEventListener('click', showSavedPosters);
 takeMeBackBtn.addEventListener('click', takeMeBackToMain);
 backToMainBtn.addEventListener('click', backToMain);
 showMyPosterBtn.addEventListener('click', makeCustomPoster);
+savePosterBtn.addEventListener('click', addPostertoSaved);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
