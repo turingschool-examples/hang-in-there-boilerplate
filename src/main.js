@@ -131,7 +131,6 @@ var backToMainButton = document.querySelector('.back-to-main')
 
 var nevermindTakeMeBackButton = document.querySelector('.show-main')
 
-
 var saveThisPosterButton = document.querySelector('.save-poster')
 
 var imageInput = document.querySelector('#poster-image-url')
@@ -171,6 +170,7 @@ function showForm(){
 function showSavedPosters() {
   savedPostersSection.classList.remove('hidden')
   mainPagePoster.classList.add('hidden')
+  displaySavedPostersGrid();
 };
 
 function backToMain() {
@@ -221,7 +221,6 @@ posterQuote.innerText = currentPoster.quote
 
 posterForm.classList.add('hidden')
 mainPagePoster.classList.remove('hidden')
-
 };
 
 
@@ -230,9 +229,22 @@ function saveMainPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)
   }
+}
 
-};
+function displaySavedPostersGrid() {
+    showSavedPostersGrid.innerHTML = "";
+    for(var i = 0; i < savedPosters.length; i++) {
+      showSavedPostersGrid.innerHTML += `<article class="mini-poster" id=${savedPosters[i].id}>
+    <img src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+    <h2>${savedPosters[i].title}</h2>
+    <h4>${savedPosters[i].quote}</h4>
+    </article>`
+  }
+}
 
+
+
+// var showSavedPostersGrid = document.querySelector('.saved-posters-grid')
 
 
 window.addEventListener("load", generatePoster);
@@ -243,6 +255,8 @@ backToMainButton.addEventListener("click", backToMain);
 showMyPoster.addEventListener("click", generateCustomPoster);
 nevermindTakeMeBackButton.addEventListener("click", takeMeBack)
 saveThisPosterButton.addEventListener("click", saveMainPoster)
+showSavedPostersGrid.addEventListener("click", displaySavedPostersGrid)
+
 
 // Ive got an element, showMyPoster, I want to add a behvior for a specific event.
 // I want specific behavior, when this button is clicked.
@@ -269,7 +283,7 @@ saveThisPosterButton.addEventListener("click", saveMainPoster)
 
 //Iteration3
 
-//Bullet 1 (check!
+//Bullet 1 (check!)
   //Click "save this poster" button (event listener)
     //---> Add current poster to savedPosters arrays
           //Create object instance
