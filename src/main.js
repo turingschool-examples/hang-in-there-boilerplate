@@ -234,17 +234,23 @@ function saveMainPoster() {
 function displaySavedPostersGrid() {
     showSavedPostersGrid.innerHTML = "";
     for(var i = 0; i < savedPosters.length; i++) {
-      showSavedPostersGrid.innerHTML += `<article class="mini-poster" id=${savedPosters[i].id}>
-    <img src="${savedPosters[i].imageURL}" alt="nothin' to see here">
-    <h2>${savedPosters[i].title}</h2>
-    <h4>${savedPosters[i].quote}</h4>
-    </article>`
+      showSavedPostersGrid.innerHTML += `
+        <article class="mini-poster" id=${savedPosters[i].id}>
+          <img src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+          <h2>${savedPosters[i].title}</h2>
+          <h4>${savedPosters[i].quote}</h4>
+        </article>`
   }
 }
 
-
-
-// var showSavedPostersGrid = document.querySelector('.saved-posters-grid')
+function deletePoster() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id === Number(event.target.parentNode.id)) {
+      savedPosters.splice(i, 1);
+    }
+  }
+  showSavedPosters();
+};
 
 
 window.addEventListener("load", generatePoster);
@@ -255,8 +261,7 @@ backToMainButton.addEventListener("click", backToMain);
 showMyPoster.addEventListener("click", generateCustomPoster);
 nevermindTakeMeBackButton.addEventListener("click", takeMeBack)
 saveThisPosterButton.addEventListener("click", saveMainPoster)
-showSavedPostersGrid.addEventListener("click", displaySavedPostersGrid)
-
+showSavedPostersGrid.addEventListener("dblclick", deletePoster)
 
 // Ive got an element, showMyPoster, I want to add a behvior for a specific event.
 // I want specific behavior, when this button is clicked.
@@ -298,3 +303,8 @@ showSavedPostersGrid.addEventListener("click", displaySavedPostersGrid)
     //Add hidden to main page
 //Bullet 4
     //Posters in savedPosters should be in grid--->CSS
+
+//Iteration4
+//Bullet 1
+  //create add eventListener "DBL" for savedPoster.
+  //
