@@ -143,7 +143,7 @@ var showMyPoster = document.querySelector('.make-poster')
 
 var showSavedPostersGrid = document.querySelector('.saved-posters-grid')
 
-//inputs for create your own motivational poster on form page
+
 var imageInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
@@ -151,12 +151,10 @@ var showMyPoster = document.querySelector('.make-poster');
 
 
 
-
-
 function generatePoster() {
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
 
-  posterImage.src = currentPoster.imageURL //updating the image url source attribute and setting it equal to the value of currentposter.imageURL
+  posterImage.src = currentPoster.imageURL
   posterTitle.innerText = currentPoster.title
   posterQuote.innerText = currentPoster.quote
 };
@@ -164,7 +162,7 @@ function generatePoster() {
 function showForm(){
   posterForm.classList.remove('hidden')
   mainPagePoster.classList.add('hidden')
-// create a function that when its clicked, it becomes unhidden
+
 };
 
 function showSavedPosters() {
@@ -177,7 +175,6 @@ function backToMain() {
   savedPostersSection.classList.add('hidden')
   mainPagePoster.classList.remove('hidden')
 };
-
 
 
 function generateCustomPoster(event) {
@@ -197,7 +194,6 @@ function generateCustomPoster(event) {
   posterForm.classList.add('hidden')
   mainPagePoster.classList.remove('hidden')
 
-  // savedPosters.push(currentPoster);
 
 };
 
@@ -262,49 +258,3 @@ showMyPoster.addEventListener("click", generateCustomPoster);
 nevermindTakeMeBackButton.addEventListener("click", takeMeBack)
 saveThisPosterButton.addEventListener("click", saveMainPoster)
 showSavedPostersGrid.addEventListener("dblclick", deletePoster)
-
-// Ive got an element, showMyPoster, I want to add a behvior for a specific event.
-// I want specific behavior, when this button is clicked.
-//generateCustomPoster is an event handler
-
-
-
-
-
-//Iteration2
-  //Allow the user to input
-    //poster-quote.innerText = input.value;
-    //poster-image.src = input.value;
-    //poster-quote.innerText = input.value;
-  //Click button (Event listener with this function)
-    //saveButton.addEventListener("click", createCustomPoster)
-  //Create object instance of poster class (see poster.js)
-    //userCreatedPoster = new Poster
-  //Save user input into respective arrays
-    //.push()
-  //Display new object on main view
-
-
-
-//Iteration3
-
-//Bullet 1 (check!)
-  //Click "save this poster" button (event listener)
-    //---> Add current poster to savedPosters arrays
-          //Create object instance
-          //and push into savedPosters arrays
-//Bullet 2 (check!)
-  //If user clicks poster more than once,
-    //Poster will not be saved again
-    //No duplicates!
-//Bullet 3
-  //Click "Show Saved Posters" ---> display saved Posters
-    //Remove hidden from "saved posters" page
-    //Add hidden to main page
-//Bullet 4
-    //Posters in savedPosters should be in grid--->CSS
-
-//Iteration4
-//Bullet 1
-  //create add eventListener "DBL" for savedPoster.
-  //
