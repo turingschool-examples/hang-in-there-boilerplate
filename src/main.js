@@ -33,6 +33,9 @@ var formImageInput = document.querySelector('#poster-image-url');
 var formTitleInput = document.querySelector('#poster-title');
 var formQuoteInput = document.querySelector('#poster-quote');
 
+var miniPoster = document.querySelector('img');
+
+
 
 
 
@@ -152,6 +155,8 @@ showMyPosterButton.addEventListener('click', captureFormValuesOnClick);
 //save this poster
 saveThisPosterButton.addEventListener('click',saveCurrentPoster);
 
+savedPostersGrid.addEventListener('dblclick', deletePosterOnDoubleClick);
+
 
 
 
@@ -223,7 +228,7 @@ function createMiniPosters() {
   savedPostersGrid.innerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.innerHTML += `
-    <article class="mini-poster">
+    <article class="mini-poster" id=${savedPosters[i].id}>
 
       <img src=${savedPosters[i].imageURL} alt="nothing going on">
       <h2> ${savedPosters[i].title}</h2>
@@ -231,6 +236,15 @@ function createMiniPosters() {
     </article>`
   }
 }
+
+function deletePosterOnDoubleClick() {
+  for (var i = 0; i < savedPosters.length; i++)
+  if (savedPosters[i].id === Number(event.target.parentNode.id)) {
+    savedPosters.splice(i, 1);
+  }
+  showSaved();
+}
+
 
 // helper functions
 
