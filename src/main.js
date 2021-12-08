@@ -1,5 +1,10 @@
 // query selector variables go here 👇
 
+var randomButton = document.querySelector('.show-random');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var posterImage = document.querySelector('.poster-img');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -103,9 +108,49 @@ var currentPoster;
 
 // event listeners go here 👇
 
+window.addEventListener('load', showRandomTitle);
+window.addEventListener('load', showRandomQuote);
+window.addEventListener('load', showRandomImage);
+
+randomButton.addEventListener('click', showRandomQuote);
+randomButton.addEventListener('click', showRandomTitle);
+randomButton.addEventListener('click', showRandomImage);
+
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+};
+
+// function getRandomPoster() {
+  var randomPoster = new Poster(
+    images[getRandomIndex(images)], 
+    titles[getRandomIndex(titles)],
+    quotes[getRandomIndex(quotes)]);
+//   return
+// }
+
+function showRandomTitle() {
+  return posterTitle.innerText = randomPoster.title
+};
+
+function showRandomQuote() {
+  return posterQuote.innerText = randomPoster.quote
+};
+
+function showRandomImage() {
+  return posterImage.src = randomPoster.imageURL
 }
+
+
+
+// I need to create a new function that uses the newRandomPoster func
+// and updates the .poster class to include the new randomPoster object.
+// -> Then I need to reference that function in the window event
+// listener and the randomButton event listener
+
+
 
