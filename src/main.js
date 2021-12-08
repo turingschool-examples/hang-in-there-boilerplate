@@ -134,7 +134,7 @@ console.log(image);
 //To put the Poster properties on the html page, may have to Use
 //innerHTML method. ???
 
-var title = document.querySelector('h1')
+var title = document.querySelector('.poster-title')
 title.innerText = (titles[getRandomIndex(titles)]);
 console.log(title)
 //I learned that we cannot use the document object, because that exists only in the browser,
