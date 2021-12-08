@@ -1,4 +1,5 @@
 // query selector variables go here 👇
+var posterImg = document.querySelector(".poster-img");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -103,9 +104,17 @@ var currentPoster;
 
 // event listeners go here 👇
 
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+//Get a random image src based off the function get random index
+function loadImage () {
+  posterImg.src = images[getRandomIndex(images)];
+}
+
+//Invoke loadImage to set src attribute
+loadImage();
