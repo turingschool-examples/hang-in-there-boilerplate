@@ -103,9 +103,18 @@ var currentPoster;
 
 // event listeners go here 👇
 
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
+//The postImage function will return a random image onto the html page.
+//Generate a random number from the array.
+//Use the random number to select an image.
+// ??? how do we do we use the image tag/do we need to use it?
+// ??how do we use the strings in the images array to access the file path?
+//return image onto the page.
+function postImage() {
+}
+/images[getRandomIndex(images)];
