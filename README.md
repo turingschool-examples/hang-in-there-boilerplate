@@ -1,14 +1,16 @@
-# Hang In There
+# Motivate Me
+This is a paired project for a website that generates motivational posters. This site will allow you to generate a random poster or create your own. Additionally, you have the option to save posters or delete posters from a collection.
 
-A boilerplate repo. 
+This site is built using JavaScript, HTML, and CSS. There are three views for this page:
+- Main page
+- Make Your Own page
+- Saved Posters page
 
-## Set Up
+#### Contributors
+- [Kim Ward](https://github.com/kmewrd)
+- [Andrew Musselman](https://github.com/Andrew-Musselman)
 
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
+## To be deleted later...
 
 Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
 
