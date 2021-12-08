@@ -136,6 +136,10 @@ console.log(imageSelector);
 
 var title = document.querySelector('h1')
 title.innerText = titles[1];
+//I learned that we cannot use the document object, because that refers to the browser,
+//and we are writing our code on the server, so it is unable to acess the brower? How do we
+//acess these elements then?
+
 
 //Is it necessary for us to have the Poster class re-written in this
 //file? May need to use for Iteration 3??
@@ -146,10 +150,16 @@ class Poster {
     this.title = title;
     this.quote = quote;
   }
-
 }
+
+//May need to use require function to include modules from different files?
+//require() reads the javascript file, executes file, then returns the exports object.
+//May need a module.exports??
+
+
 // function postImage() {
 // } note to selves - this was our very first function and we had no
 //idea what we were doing.
 
 // images[getRandomIndex(images)];
+\
