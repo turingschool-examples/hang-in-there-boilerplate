@@ -126,31 +126,32 @@ function getRandomIndex(array) {
 (titles[getRandomIndex(titles)]);
 (quotes[getRandomIndex(quotes)]);
 
-var image = document.querySelector('img')
-imageSelector.innerText = images[getRandomIndex(images)];
-console.log(imageSelector);
+var image = document.querySelector('.poster-img')
+image.innerText = images[getRandomIndex(images)];
+console.log(image);
 
 
 //To put the Poster properties on the html page, may have to Use
 //innerHTML method. ???
 
 var title = document.querySelector('h1')
-title.innerText = titles[1];
-//I learned that we cannot use the document object, because that refers to the browser,
+title.innerText = (titles[getRandomIndex(titles)]);
+console.log(title)
+//I learned that we cannot use the document object, because that exists only in the browser,
 //and we are writing our code on the server, so it is unable to acess the brower? How do we
 //acess these elements then?
 
 
 //Is it necessary for us to have the Poster class re-written in this
 //file? May need to use for Iteration 3??
-class Poster {
-  constructor(imageURL, title, quote) {
-    this.id = Date.now();
-    this.imageURL = imageURL;
-    this.title = title;
-    this.quote = quote;
-  }
-}
+// class Poster {
+//   constructor(imageURL, title, quote) {
+//     this.id = Date.now();
+//     this.imageURL = imageURL;
+//     this.title = title;
+//     this.quote = quote;
+//   }
+// }
 
 //May need to use require function to include modules from different files?
 //require() reads the javascript file, executes file, then returns the exports object.
@@ -162,4 +163,3 @@ class Poster {
 //idea what we were doing.
 
 // images[getRandomIndex(images)];
-\
