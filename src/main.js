@@ -1,9 +1,9 @@
 // query selector variables go here 👇
 
-var randomButton = document.querySelector('.show-random');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var posterImage = document.querySelector('.poster-img');
+var randomButton = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -114,9 +114,9 @@ randomButton.addEventListener('click', loadMainPage);
 
 
 
-
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -133,18 +133,33 @@ function makeRandomPoster() {
 function loadMainPage() {
   makeRandomPoster();
   posterTitle.innerText = currentPoster.title;
-  posterQuote.innerText = currentPoster.quote
-  posterImage.src = currentPoster.imageURL
+  posterQuote.innerText = currentPoster.quote;
+  posterImage.src = currentPoster.imageURL;
 };
 
 
 
 
+/* ITERATION 0 
+- need to create variables for poster title, quote & image from the DOM
+- need to create a function that instantiates a new Poster with random
+values from the 3 provided arrays
+- need to create a function that then updates currentPoster to be what the 
+values of the new Poster object are
+- need to create event listener on page load to show a random poster
+I need to create a new function that uses the newRandomPoster func
+and updates the .poster class to include the new randomPoster object.
+-> Then I need to reference that function in the window event
+listener and the randomButton event listener
+*/
 
-// I need to create a new function that uses the newRandomPoster func
-// and updates the .poster class to include the new randomPoster object.
-// -> Then I need to reference that function in the window event
-// listener and the randomButton event listener
+
+/* ITERATION 1
+
+
+
+*/
+
 
 
 
