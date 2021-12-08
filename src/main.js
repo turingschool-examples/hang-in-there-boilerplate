@@ -116,22 +116,29 @@ function getRandomIndex(array) {
 // ??how do we use the strings in the images array to access the file path?
 //return image onto the page.
 
-//Will need to use document.querySelector('selector e.g. h1')
 //may need to use the Poster class in our functions??
+
+//Will need to use document.querySelector('selector e.g. h1')
+// to access to random image, title, and quotes.
+
+//Needed to grab a random image, title, or quote from each of their respective arrays.
+(images[getRandomIndex(images)]);
+(titles[getRandomIndex(titles)]);
+(quotes[getRandomIndex(quotes)]);
 
 var image = document.querySelector('img')
 imageSelector.innerText = images[getRandomIndex(images)];
 console.log(imageSelector);
 
-console.log(images[getRandomIndex(images)])
+
 //To put the Poster properties on the html page, may have to Use
-//innerHTML method.
+//innerHTML method. ???
 
 var title = document.querySelector('h1')
 title.innerText = titles[1];
 
 //Is it necessary for us to have the Poster class re-written in this
-//file?
+//file? May need to use for Iteration 3??
 class Poster {
   constructor(imageURL, title, quote) {
     this.id = Date.now();
@@ -139,6 +146,7 @@ class Poster {
     this.title = title;
     this.quote = quote;
   }
+
 }
 // function postImage() {
 // } note to selves - this was our very first function and we had no
