@@ -108,13 +108,10 @@ var currentPoster;
 
 // event listeners go here 👇
 
-window.addEventListener('load', showRandomTitle);
-window.addEventListener('load', showRandomQuote);
-window.addEventListener('load', showRandomImage);
+window.addEventListener('load', loadMainPage);
 
-randomButton.addEventListener('click', showRandomQuote);
-randomButton.addEventListener('click', showRandomTitle);
-randomButton.addEventListener('click', showRandomImage);
+randomButton.addEventListener('click', loadMainPage);
+
 
 
 
@@ -125,25 +122,22 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-// function getRandomPoster() {
-  var randomPoster = new Poster(
+function makeRandomPoster() {
+  currentPoster = new Poster(
     images[getRandomIndex(images)], 
     titles[getRandomIndex(titles)],
     quotes[getRandomIndex(quotes)]);
-//   return
-// }
-
-function showRandomTitle() {
-  return posterTitle.innerText = randomPoster.title
+  return currentPoster
 };
 
-function showRandomQuote() {
-  return posterQuote.innerText = randomPoster.quote
+function loadMainPage() {
+  makeRandomPoster();
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote
+  posterImage.src = currentPoster.imageURL
 };
 
-function showRandomImage() {
-  return posterImage.src = randomPoster.imageURL
-}
+
 
 
 
