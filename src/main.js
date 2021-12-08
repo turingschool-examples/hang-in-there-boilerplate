@@ -115,6 +115,33 @@ function getRandomIndex(array) {
 // ??? how do we do we use the image tag/do we need to use it?
 // ??how do we use the strings in the images array to access the file path?
 //return image onto the page.
-function postImage() {
+
+//Will need to use document.querySelector('selector e.g. h1')
+//may need to use the Poster class in our functions??
+
+var image = document.querySelector('img')
+imageSelector.innerText = images[getRandomIndex(images)];
+console.log(imageSelector);
+
+console.log(images[getRandomIndex(images)])
+//To put the Poster properties on the html page, may have to Use
+//innerHTML method.
+
+var title = document.querySelector('h1')
+title.innerText = titles[1];
+
+//Is it necessary for us to have the Poster class re-written in this
+//file?
+class Poster {
+  constructor(imageURL, title, quote) {
+    this.id = Date.now();
+    this.imageURL = imageURL;
+    this.title = title;
+    this.quote = quote;
+  }
 }
-/images[getRandomIndex(images)];
+// function postImage() {
+// } note to selves - this was our very first function and we had no
+//idea what we were doing.
+
+// images[getRandomIndex(images)];
