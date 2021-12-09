@@ -87,7 +87,7 @@ var quotes = [
   "You must do the things you think you cannot do.",
   "It isn't where you came from. It's where you're going that counts.",
   "It is never too late to be what you might have been.",
-  "Happiness often sneaks in through a doo`r you didn't know you left open.",
+  "Happiness often sneaks in through a door you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
   "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
