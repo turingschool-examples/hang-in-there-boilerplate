@@ -4,6 +4,10 @@ var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var randomizeButton = document.querySelector('.show-random');
 
+var myoButton = document.querySelector('.show-form');
+var myoSection = document.querySelector('.poster-form');
+var mainSection = document.querySelector('.main-poster');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
