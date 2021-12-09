@@ -113,14 +113,28 @@ function getRandomIndex(array) {
 
 // -----------------------------RANDOM POSTER---------------------------------------
 
-var randomImage = document.querySelector(".poster-img").src = images[getRandomIndex(images)];
+
+var randomImage = document.querySelector(".poster-img")
 var randomTitle = document.querySelector(".poster-title");
 var randomQuote = document.querySelector(".poster-quote");
 
-
-randomTitle.innerText = titles[getRandomIndex(titles)];
-randomQuote.innerText = quotes[getRandomIndex(quotes)];
-
+window.addEventListener('load', (event) => {
+  randomImage.src = images[getRandomIndex(images)];
+  randomTitle.innerText = titles[getRandomIndex(titles)];
+  randomQuote.innerText = quotes[getRandomIndex(quotes)];
+});
 // -----------------------------RANDOM POSTER---------------------------------------
 
 // ----------------------------- BUTTONS ---------------------------------------
+
+//Random poster button event listener
+var randomButton = document.querySelector('.show-random')
+randomtButton.addEventListener("click", randomPoster);
+
+function randomPoster() {
+
+  randomImage.src = images[getRandomIndex(images)];
+  randomTitle.innerText = titles[getRandomIndex(titles)];
+  randomQuote.innerText = quotes[getRandomIndex(quotes)];
+
+}
