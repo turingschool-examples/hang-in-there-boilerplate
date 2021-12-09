@@ -120,8 +120,8 @@ randomPosterButton.addEventListener('click', makeRandomPoster);
 makePosterButton.addEventListener('click', showForm);
 // savePosterButton.addEventListener('click',);
 showSavedPostersButton.addEventListener('click', showSavedPosters);
-// nevermindButton.addEventListener('click', );
-// backButton.addEventListener('click', );
+nevermindButton.addEventListener('click', nevermind);
+backButton.addEventListener('click', backToMain);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -151,4 +151,14 @@ function showForm() {
 function showSavedPosters() {
   hide(mainPage);
   show(savedPage);
+}
+
+function nevermind() {
+  hide(form);
+  show(mainPage);
+}
+
+function backToMain() {
+  hide(savedPage);
+  show(mainPage);
 }
