@@ -1,4 +1,12 @@
 // query selector variables go here 👇
+// var header = document.querySelector('h1');
+// header.innerText =
+
+// // var image = document.querySelector(#)
+// var quote = document.querySelector('h3');
+//
+// title.innerText = "Geena"
+// quote.innerText = "blah"
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -58,6 +66,10 @@ var titles = [
   "understanding",
   "wisdom"
 ];
+
+var header = document.querySelector('h1');
+header.innerText = titles[0]
+
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
@@ -101,6 +113,7 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
@@ -108,4 +121,3 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
