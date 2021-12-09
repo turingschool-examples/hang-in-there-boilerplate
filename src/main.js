@@ -145,18 +145,27 @@ var randomQuote = quotes[getRandomIndex(quotes)];
 // //To put the Poster properties on the html page, may have to Use
 //innerHTML method. ???
 
-var title = document.querySelector('.poster-title')
-title.innerText = randomTitle;
+
 
 //I learned that we cannot use the document object, because that exists only in the browser,
 //and we are writing our code on the server, so it is unable to acess the brower? How do we
 //acess these elements then?
 
-var quote = document.querySelector('.poster-quote')
-quote.innerText = randomQuote;
 
-var image = document.querySelector('img')
-image.src = randomImage;
+
+function generatePoster () {
+  var title = document.querySelector('.poster-title');
+  title.innerText = randomTitle;
+
+  var quote = document.querySelector('.poster-quote');
+  quote.innerText = randomQuote;
+
+  var image = document.querySelector('img');
+  image.src = randomImage;
+
+}
+
+generatePoster();
 
 
 //Is it necessary for us to have the Poster class re-written in this
