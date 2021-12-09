@@ -1,5 +1,9 @@
 // query selector variables go here 👇
 
+var postTitle = document.querySelector('.poster-title');
+var postQuote = document.querySelector('.poster-quote');
+var postImg = document.querySelector('.poster-img');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -100,12 +104,19 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
+function randPoster() {
+  postImg.src = images[getRandomIndex(images)];
+  postTitle.innerText = titles[getRandomIndex(titles)];
+  postQuote.innerText = quotes[getRandomIndex(quotes)];
+  //currentPoster = new Poster(randImage.src, mainTitle.innerText, randQuote.innerText);
+};
+
+randPoster();
