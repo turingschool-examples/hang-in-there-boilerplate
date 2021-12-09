@@ -103,6 +103,7 @@ var quotes = [
 ];
 
 
+
 // event listeners go here 👇
 window.addEventListener('load', (event) => {
   randomImage.src = images[getRandomIndex(images)];
