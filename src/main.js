@@ -150,23 +150,30 @@ var randomQuote = quotes[getRandomIndex(quotes)];
 //I learned that we cannot use the document object, because that exists only in the browser,
 //and we are writing our code on the server, so it is unable to acess the brower? How do we
 //acess these elements then?
+var title = document.querySelector('.poster-title');
+
+var quote = document.querySelector('.poster-quote');
+
+var image = document.querySelector('img');
 
 
+
+//function generatePosterButtonClick () {
+    var newRandomPoster = document.querySelector('.show-random')
+      newRandomPoster.addEventListener('click', generatePoster)
+      generatePoster();
+
+//}
+
+//generatePosterButtonClick();
 
 function generatePoster () {
-  var title = document.querySelector('.poster-title');
   title.innerText = randomTitle;
-
-  var quote = document.querySelector('.poster-quote');
   quote.innerText = randomQuote;
-
-  var image = document.querySelector('img');
   image.src = randomImage;
-
 }
 
 generatePoster();
-
 
 //Is it necessary for us to have the Poster class re-written in this
 //file? May need to use for Iteration 3??
