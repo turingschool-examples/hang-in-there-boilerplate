@@ -1,8 +1,3 @@
-// query selector variables go here 👇
-var coverImage = document.querySelector('.poster-img');
-var coverTitle = document.querySelector('.poster-title');
-var coverQuote = document.querySelector('.poster-quote');
-var randomPosterButton = document.querySelector('.show-random');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -101,15 +96,31 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
+// query selector variables go here 👇
+var coverImage = document.querySelector('.poster-img');
+var coverTitle = document.querySelector('.poster-title');
+var coverQuote = document.querySelector('.poster-quote');
+var mainPage = document.querySelector('.main-poster');
+var randomPosterButton = document.querySelector('.show-random');
+var makePosterButton = document.querySelector('.show-form');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var savePosterButton = document.querySelector('.save-poster');
+var nevermindButton = document.querySelector('.show-main');
+var backButton = document.querySelector('.back-to-main');
+var form = document.querySelector('.poster-form');
 
+// event listeners go here 👇
 window.onload = makeRandomPoster();
 randomPosterButton.addEventListener('click', makeRandomPoster);
-// randomPosterButton.onclick = makeRandomPoster();
-
+makePosterButton.addEventListener('click', showForm);
+// savePosterButton.addEventListener('click', );
+// showSavedPostersButton.addEventListener('click', );
+// nevermindButton.addEventListener('click', );
+// backButton.addEventListener('click', );
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -117,8 +128,21 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function makeRandomPoster(){
+function makeRandomPoster() {
   coverImage.src = images[getRandomIndex(images)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
   coverQuote.innerText = quotes[getRandomIndex(quotes)];
+}
+
+function hide(item) {
+  item.classList.add("hidden");
+}
+
+function show(item) {
+  item.classList.remove("hidden");
+}
+
+function showForm() {
+  hide(mainPage);
+  show(form);
 }
