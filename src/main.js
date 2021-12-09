@@ -3,6 +3,11 @@ var coverImage = document.querySelector('.poster-img');
 var coverTitle = document.querySelector('.poster-title');
 var coverQuote = document.querySelector('.poster-quote');
 var randomPosterButton = document.querySelector('.show-random');
+var makePosterButton = document.querySelector('.show-form');
+var savedPosterButton = document.querySelector('.show-saved');
+var nevermindButton = document.querySelector('.show-main');
+var backButton = document.querySelector('.back-to-main');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -108,8 +113,10 @@ var currentPoster;
 
 window.onload = makeRandomPoster();
 randomPosterButton.addEventListener('click', makeRandomPoster);
-// randomPosterButton.onclick = makeRandomPoster();
-
+makePosterButton.addEventListener('click', );
+savedPosterButton.addEventListener('click', );
+nevermindButton.addEventListener('click', );
+backButton.addEventListener('click', );
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
