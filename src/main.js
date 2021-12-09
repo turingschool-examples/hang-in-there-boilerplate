@@ -4,6 +4,9 @@ var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var posterImage = document.querySelector('.poster-img');
 var randomButton = document.querySelector('.show-random');
+var showFormButton = document.querySelector('.show-form');
+var mainPosterPage = document.querySelector('.main-poster');
+var posterFormPage = document.querySelector('poster-form hidden');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -112,7 +115,13 @@ window.addEventListener('load', loadMainPage);
 
 randomButton.addEventListener('click', loadMainPage);
 
+// hide main poster
 
+showFormButton.addEventListener('click', hideMainPoster)
+
+// show form
+
+// showFormButton.addEventListener('click', showPosterForm)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -124,7 +133,7 @@ function getRandomIndex(array) {
 
 function makeRandomPoster() {
   currentPoster = new Poster(
-    images[getRandomIndex(images)], 
+    images[getRandomIndex(images)],
     titles[getRandomIndex(titles)],
     quotes[getRandomIndex(quotes)]);
   return currentPoster
@@ -137,14 +146,22 @@ function loadMainPage() {
   posterImage.src = currentPoster.imageURL;
 };
 
+function hideMainPoster() {
+  mainPosterPage.classList.add('hidden')
+}
 
+function showPosterForm() {
+  posterFormPage.classList.remove('hidden')
+}
 
+// mainPosterPage.classList.toggle('hidden');
+// posterFormPage.classList.toggle('hidden');
 
-/* ITERATION 0 
+/* ITERATION 0
 - need to create variables for poster title, quote & image from the DOM
 - need to create a function that instantiates a new Poster with random
 values from the 3 provided arrays
-- need to create a function that then updates currentPoster to be what the 
+- need to create a function that then updates currentPoster to be what the
 values of the new Poster object are
 - need to create event listener on page load to show a random poster
 I need to create a new function that uses the newRandomPoster func
@@ -155,11 +172,11 @@ listener and the randomButton event listener
 
 
 /* ITERATION 1
+When a user clicks the “Make Your Own Poster” button, we should see the form, and the main poster should be hidden:
+- when someone clicks the MYOP button it removes hidden from poster-form hidden
+and add hidden to main poster class
+- create new form button variable and set it to show-form button in HTML
 
 
 
 */
-
-
-
-
