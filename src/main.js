@@ -120,8 +120,8 @@ randomPosterButton.addEventListener('click', makeRandomPoster);
 makePosterButton.addEventListener('click', showForm);
 // savePosterButton.addEventListener('click',);
 showSavedPostersButton.addEventListener('click', showSavedPosters);
-// nevermindButton.addEventListener('click', );
-// backButton.addEventListener('click', );
+nevermindButton.addEventListener('click', nevermind);
+//backButton.addEventListener('click', );
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -151,4 +151,10 @@ function showForm() {
 function showSavedPosters() {
   hide(mainPage);
   show(savedPage);
+}
+
+//When a user clicks the “Nevermind, take me back!” or “Back to Main” buttons, we should only see the main poster section
+function nevermind() {
+  hide(form);
+  show(mainPage);
 }
