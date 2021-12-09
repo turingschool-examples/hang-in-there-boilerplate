@@ -8,6 +8,9 @@ var myoButton = document.querySelector('.show-form');
 var myoSection = document.querySelector('.poster-form');
 var mainSection = document.querySelector('.main-poster');
 
+var savedPostersButton = document.querySelector('.show-saved');
+var savedSection = document.querySelector('.saved-posters');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
