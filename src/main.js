@@ -1,4 +1,10 @@
 // query selector variables go here 👇
+var titleDumper = document.querySelector(".poster-title")
+var quoteDumper = document.querySelector(".poster-quote")
+var imageDumper = document.querySelector(".poster-img")
+
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -21,6 +27,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+
 var titles = [
   "determination",
   "success",
@@ -103,9 +110,30 @@ var currentPoster;
 
 // event listeners go here 👇
 
+window.addEventListener('load', randomPoster)
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+
+function randomPoster() {
+  console.log(images)
+  currentPoster = new Poster(
+    images[getRandomIndex(images)],
+    titles[getRandomIndex(titles)],
+    quotes[getRandomIndex(quotes)],
+  )
+  generatePoster()
+};
+console.log(images)
+function generatePoster() {
+  console.log(currentPoster)
+  imageDumper.src = currentPoster.imageURL;
+  titleDumper.innerText = currentPoster.title;
+  quoteDumper.innerText = currentPoster.quote;
+}
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
