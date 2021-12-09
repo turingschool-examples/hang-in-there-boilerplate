@@ -2,6 +2,7 @@
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+var showRandomButton = document.querySelector('.show-random');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -86,7 +87,7 @@ var quotes = [
   "You must do the things you think you cannot do.",
   "It isn't where you came from. It's where you're going that counts.",
   "It is never too late to be what you might have been.",
-  "Happiness often sneaks in through a door you didn't know you left open.",
+  "Happiness often sneaks in through a doo`r you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
   "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
@@ -104,18 +105,21 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', randomizePoster)
+window.addEventListener('load', randomizePoster);
+showRandomButton.addEventListener('click', randomizePoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 function randomizePoster() {
   var newQuote = quotes[getRandomIndex(quotes)];
   var newTitle = titles[getRandomIndex(titles)];
   var newImage = images[getRandomIndex(images)];
   makePoster(newImage, newTitle, newQuote);
 }
+
 function makePoster(newImage, newTitle, newQuote) {
   currentPoster = new Poster(newImage, newTitle, newQuote)
   posterImage.src = currentPoster.imageURL
