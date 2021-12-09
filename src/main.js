@@ -1,22 +1,3 @@
-// query selector variables go here 👇
-
-
-//h1.poster-title
-var posterTitle = document.querySelector('.h1')
-//img.poster-img
-var posterImg = document.querySelector('.poster-img')
-//h3.poster-quote
-var posterQuote = document.querySelector('.poster-quote')
-article.poster
-//button.save-poster
-var btnSave = document.querySelector('.save-poster')
-//button.show-saved
-var btnShowSvd = document.querySelector('.show-saved')
-//button.show-random
-var btnShowRnd = document.querySelector('.show-random')
-//button.show-form
-var btnShowFrm = document.querySelector('.show-form')
-section.main-poster
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -117,7 +98,8 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = [];
+
 
 // event listeners go here 👇
 
@@ -127,10 +109,4 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-class Poster{
-  constructor(image, title, quote){
-    this.image = image;
-    this.title = title;
-    this.quote= quote;
-  }
-}
+
