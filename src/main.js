@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-
+const makePosterButton = document.querySelector(".make-poster")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -102,6 +102,10 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+makePosterButton.addEventListener('click', function(){
+  // will add functionality here later
+  
+})
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
