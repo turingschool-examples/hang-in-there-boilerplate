@@ -1,11 +1,9 @@
 // query selector variables go here 👇
+var posterTitles = document.querySelector('.poster-title');
 
-var header = document.querySelector('h1');
+var posterQuotes = document.querySelector('.poster-quote');
 
-var quote = document.querySelector('h3');
-
-var image = document.querySelector(".poster-img")
-
+var posterImages = document.querySelector(".poster-img");
 
 
 // we've provided you with some data to work with 👇
@@ -29,8 +27,6 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
-image.src = images[0]
-
 
 var titles = [
   "determination",
@@ -69,8 +65,6 @@ var titles = [
   "understanding",
   "wisdom"
 ];
-
-header.innerText = titles[0]
 
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
@@ -113,16 +107,19 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-quote.innerText = quotes[0]
-
 var savedPosters = [];
 var currentPoster;
 
 
 // event listeners go here 👇
 
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+posterImages.src = images[getRandomIndex(images)];
+posterTitles.innerText = titles[getRandomIndex(titles)];
+posterQuotes.innerText = quotes[getRandomIndex(quotes)];
