@@ -1,4 +1,5 @@
 // query selector variables go here 👇
+var randomImage = document.querySelector('.poster-img')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -98,14 +99,23 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
+
 
 // event listeners go here 👇
+window.addEventListener('load', (event) => {
+  // show a random picture
+  // grab reference to the elements
+  var posterImageElement = document.getElementsByClassName('poster-img')[0]
+  posterImageElement.src = images[getRandomIndex(images)]
+  var posterTitleElement = document.getElementsByClassName('poster-title')[0]
+  posterTitleElement.innerText = titles[getRandomIndex(titles)]
+  var posterQuoteElement = document.getElementsByClassName('poster-quote')[0]
+  posterQuoteElement.innerText = quotes[getRandomIndex(quotes)]
+});
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
