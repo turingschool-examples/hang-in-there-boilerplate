@@ -1,10 +1,12 @@
-var Poster = require('../src/poster.js');
+
 
 // query selector variables go here 👇
 
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
-var posterSource = document.querySelector('.poster-image');
+var posterSource = document.querySelector('.poster-img');
+var randomPosterBtn = document.querySelector('.show-random')
+
 
 
 
@@ -107,35 +109,32 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-//var currentPoster;
-//var imageURL = images[]
+var currentPoster;
 
 // event listeners go here 👇
 
-window.addEventListener('load', generatePoster())
+window.addEventListener('load', generatePoster)
+randomPosterBtn.addEventListener('click', generatePoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
-var currentPoster = new Poster([getRandomIndex(images)], [getRandomIndex(titles)], [getRandomIndex(quotes)]);
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
 function generatePoster(){
-  currentPoster = new Poster([getRandomIndex(images)], [getRandomIndex(titles)], [getRandomIndex(quotes)]);
+  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  displayPoster();
+
+
 }
 
 function displayPoster() {
+  posterSource.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
-  posterSource.src = currentPoster.imageURL
 }
-
-console.log(currentPoster)
-generatePoster()
-console.log(currentPoster)
-generatePoster()
-console.log(currentPoster)
-displayPoster()
