@@ -140,3 +140,8 @@ function getRandomPoster() {
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
 };
+
+function showPosterForm() {
+  myoSection.classList.toggle('hidden');
+  mainSection.classList.toggle('hidden');
+}
