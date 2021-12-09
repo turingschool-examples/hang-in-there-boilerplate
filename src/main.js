@@ -1,5 +1,10 @@
 // query selector variables go here 👇
 
+// var imageDumper = document.querySelector(".poster-img");
+var titleDumper = document.querySelector(".poster-title");
+var quoteDumper = document.querySelector(".poster-quote");
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -98,6 +103,26 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+
+
+
+
+var dumpings = {
+  images: images[0],
+  titles: titles[0],
+  quotes: quotes[0],
+};
+
+document.getElementById("poster-img").src = `${"dumpings.images"}`;
+titleDumper.innerHTML = `<h6>${dumpings.titles}</h6>`; // Please note that the tags have been changed from h1 to h6 for stylistic reasons.
+quoteDumper.innerHTML = `<h3>${dumpings.quotes}</h3>`;
+
+
+
+
+
+
 var savedPosters = [];
 var currentPoster;
 
@@ -108,4 +133,3 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
