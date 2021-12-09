@@ -105,6 +105,7 @@ var coverImage = document.querySelector('.poster-img');
 var coverTitle = document.querySelector('.poster-title');
 var coverQuote = document.querySelector('.poster-quote');
 var mainPage = document.querySelector('.main-poster');
+var savedPage = document.querySelector('.saved-posters');
 var randomPosterButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
 var showSavedPostersButton = document.querySelector('.show-saved');
@@ -117,8 +118,8 @@ var form = document.querySelector('.poster-form');
 window.onload = makeRandomPoster();
 randomPosterButton.addEventListener('click', makeRandomPoster);
 makePosterButton.addEventListener('click', showForm);
-// savePosterButton.addEventListener('click', );
-// showSavedPostersButton.addEventListener('click', );
+// savePosterButton.addEventListener('click',);
+showSavedPostersButton.addEventListener('click', showSavedPosters);
 // nevermindButton.addEventListener('click', );
 // backButton.addEventListener('click', );
 
@@ -145,4 +146,9 @@ function show(item) {
 function showForm() {
   hide(mainPage);
   show(form);
+}
+
+function showSavedPosters() {
+  hide(mainPage);
+  show(savedPage);
 }
