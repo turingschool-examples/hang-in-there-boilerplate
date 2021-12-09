@@ -4,6 +4,7 @@ var postTitle = document.querySelector('.poster-title');
 var postQuote = document.querySelector('.poster-quote');
 var postImg = document.querySelector('.poster-img');
 
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
