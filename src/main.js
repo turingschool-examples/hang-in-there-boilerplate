@@ -1,5 +1,7 @@
 // query selector variables go here 👇
-var randomImage = document.querySelector('.poster-img')
+var randomImage = document.querySelector(".poster-img");
+var randomTitle = document.querySelector(".poster-title");
+var randomQuote = document.querySelector(".poster-quote");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -103,14 +105,9 @@ var quotes = [
 
 // event listeners go here 👇
 window.addEventListener('load', (event) => {
-  // show a random picture
-  // grab reference to the elements
-  var posterImageElement = document.getElementsByClassName('poster-img')[0]
-  posterImageElement.src = images[getRandomIndex(images)]
-  var posterTitleElement = document.getElementsByClassName('poster-title')[0]
-  posterTitleElement.innerText = titles[getRandomIndex(titles)]
-  var posterQuoteElement = document.getElementsByClassName('poster-quote')[0]
-  posterQuoteElement.innerText = quotes[getRandomIndex(quotes)]
+  randomImage.src = images[getRandomIndex(images)];
+  randomTitle.innerText = titles[getRandomIndex(titles)];
+  randomQuote.innerText = quotes[getRandomIndex(quotes)];
 });
 
 
@@ -119,19 +116,3 @@ window.addEventListener('load', (event) => {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-// -----------------------------MAIN POSTER---------------------------------------
-
-// -----------------------------RANDOM POSTER---------------------------------------
-
-var randomImage = document.querySelector(".poster-img").src = images[getRandomIndex(images)];
-var randomTitle = document.querySelector(".poster-title");
-var randomQuote = document.querySelector(".poster-quote");
-
-
-randomTitle.innerText = titles[getRandomIndex(titles)];
-randomQuote.innerText = quotes[getRandomIndex(quotes)];
-
-// -----------------------------RANDOM POSTER---------------------------------------
-
-// ----------------------------- BUTTONS ---------------------------------------
