@@ -1,5 +1,21 @@
 // query selector variables go here 👇
-//var btnRandom = document.querySelector()
+//h1.poster-title
+var posterTitle = document.querySelector('h1');
+//
+// //img.poster-img
+var posterImg = document.querySelector('.poster-img')
+// //h3.poster-quote
+var posterQuote = document.querySelector('.poster-quote')
+// article.poster
+// //button.save-poster
+// var btnSave = document.querySelector('.save-poster')
+// //button.show-saved
+// var btnShowSvd = document.querySelector('.show-saved')
+// //button.show-random
+var btnShowRnd = document.querySelector('.show-random')
+// //button.show-form
+// var btnShowFrm = document.querySelector('.show-form')
+//section.main-poster
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -104,37 +120,40 @@ var currentPoster = [];
 
 // event listeners go here 👇
 
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// function generateRandomPoster(){
-// var step1 = max - min + 1;
-// var step2 = Math.random() * step1;
-// var result = Math.floor(step2) + min;
+
+randoImg = getRandomIndex(images)
+randoTitl = getRandomIndex(titles)
+randoQuote = getRandomIndex(quotes)
+
+posterTitle.innerText = titles[randoTitl]
+posterImg.src = images[randoImg]
+posterQuote.innerText = quotes[randoQuote]
+
+//var randomGenerated = posterTitle.innerText = titles[randoTitl] && posterImg.src = images[randoImg] && posterQuote.innerText = quotes[randoQuote]
+
+
+ btnShowRnd.addEventListener('click', function)
+
+
+ //make function to change color of box when invoked
+
+ function sendRandom() {
+   posterTitle.innerText = titles[randoTitl]
+   posterImg.src = images[randoImg]
+   posterQuote.innerText = quotes[randoQuote]
+
+ }
+
+// btnShowRnd.addEventListener("click", function(){
 //
-// return result;
-// }
-// btnRandom.addEventListener('click', (){
-//   getRandomIndex
-// })
-class Poster {
-  constructor(image, title, quote){
-    this.image = image;
-    this.title = title;
-    this.quote = quote;
-  }
-}
-
-function savePoster(poster){
-  savedPosters.push(poster)
-}
-var bees = new Poster(images[3],titles[0],quotes[15])
-
-getRandomIndex(savedPosters)
-savePoster(bees)
-
-  console.log(savedPosters[0])
-  console.log(titles.)
+// });
