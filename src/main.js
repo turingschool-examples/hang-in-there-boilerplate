@@ -2,6 +2,7 @@
 var randomImage = document.querySelector(".poster-img");
 var randomTitle = document.querySelector(".poster-title");
 var randomQuote = document.querySelector(".poster-quote");
+var randomButton = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -111,9 +112,22 @@ window.addEventListener('load', (event) => {
   randomQuote.innerText = quotes[getRandomIndex(quotes)];
 });
 
+//Randbom button event listener
+randomButton.addEventListener("click", randomPoster);
+
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+//Random button function
+function randomPoster() {
+
+  randomImage.src = images[getRandomIndex(images)];
+  randomTitle.innerText = titles[getRandomIndex(titles)];
+  randomQuote.innerText = quotes[getRandomIndex(quotes)];
+
 }
