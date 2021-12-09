@@ -110,6 +110,10 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+var quote = document.querySelector('h3');
+quote.innerText = quotes[0]
+
 var savedPosters = [];
 var currentPoster;
 
