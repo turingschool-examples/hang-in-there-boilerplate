@@ -9,6 +9,8 @@ var mainPosterPage = document.querySelector('.main-poster');
 var posterFormPage = document.querySelector('.poster-form');
 var savedPostersPage = document.querySelector('.saved-posters');
 var showSavedButton = document.querySelector('.show-saved');
+var nevermindButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -129,6 +131,14 @@ showSavedButton.addEventListener('click', hideMainPoster)
 
 showSavedButton.addEventListener('click', showSavedPosters)
 
+nevermindButton.addEventListener('click', showMainPoster)
+
+nevermindButton.addEventListener('click', hidePosterForm)
+
+backToMainButton.addEventListener('click', showMainPoster)
+
+backToMainButton.addEventListener('click', hideSavedPosters)
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -162,6 +172,20 @@ function showPosterForm() {
 
 function showSavedPosters() {
   savedPostersPage.classList.remove('hidden')
+}
+
+
+
+function showMainPoster() {
+  mainPosterPage.classList.remove('hidden')
+}
+
+function hidePosterForm () {
+  posterFormPage.classList.add('hidden')
+}
+
+function hideSavedPosters() {
+  savedPostersPage.classList.add('hidden')
 }
 
 // mainPosterPage.classList.toggle('hidden');
