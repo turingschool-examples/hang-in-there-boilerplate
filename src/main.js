@@ -1,5 +1,11 @@
 // query selector variables go here 👇
 
+var randomImage = document.querySelector(.poster-title')
+
+//add others and set better variable names
+
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -107,5 +113,13 @@ var currentPoster;
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
+function openWithPoster() {
+randomImage.src = images[getRandomIndex(images)];
+     .innerText = titles[getRandomIndex(titles)];
+     .innerText = quotes[getRandomIndex(quotes)];
+//.innerText but same stuff title/quotes
+};
+
+openWithPoster();
