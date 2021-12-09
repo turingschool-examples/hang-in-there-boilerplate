@@ -109,3 +109,18 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// -----------------------------MAIN POSTER---------------------------------------
+
+// -----------------------------RANDOM POSTER---------------------------------------
+
+var randomImage = document.querySelector(".poster-img").src = images[getRandomIndex(images)];
+var randomTitle = document.querySelector(".poster-title");
+var randomQuote = document.querySelector(".poster-quote");
+
+
+randomTitle.innerText = titles[getRandomIndex(titles)];
+randomQuote.innerText = quotes[getRandomIndex(quotes)];
+
+// -----------------------------RANDOM POSTER---------------------------------------
+
+// ----------------------------- BUTTONS ---------------------------------------
