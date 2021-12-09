@@ -1,12 +1,12 @@
 // query selector variables go here 👇
-// var header = document.querySelector('h1');
-// header.innerText =
 
-// // var image = document.querySelector(#)
-// var quote = document.querySelector('h3');
-//
-// title.innerText = "Geena"
-// quote.innerText = "blah"
+var header = document.querySelector('h1');
+
+var quote = document.querySelector('h3');
+
+var image = document.querySelector(".poster-img")
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -29,6 +29,9 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+image.src = images[0]
+
+
 var titles = [
   "determination",
   "success",
@@ -67,7 +70,6 @@ var titles = [
   "wisdom"
 ];
 
-var header = document.querySelector('h1');
 header.innerText = titles[0]
 
 var quotes = [
@@ -111,7 +113,6 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-var quote = document.querySelector('h3');
 quote.innerText = quotes[0]
 
 var savedPosters = [];
