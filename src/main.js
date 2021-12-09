@@ -100,6 +100,7 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var randomPoster;
 
 // event listeners go here 👇
 
@@ -108,4 +109,26 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+// -----------------------------MAIN POSTER---------------------------------------
 
+// -----------------------------RANDOM POSTER---------------------------------------
+var randomImage = document.querySelector(".poster-img").src = images[getRandomIndex(images)];
+var randomTitle = document.querySelector(".poster-title");
+var randomQuote = document.querySelector(".poster-quote");
+
+
+randomTitle.innerText = titles[getRandomIndex(titles)];
+randomQuote.innerText = quotes[getRandomIndex(quotes)];
+
+// var randomImg = images[getRandomIndex(images)];
+// randomImage.innerHTML = `<img src="${randomImg}">`;
+
+// randomPoster = new Poster(randomImage, randomTitle.innerText, randomQuote.innerText);
+// randomPoster;
+// console.log(currentPoster)
+
+// -----------------------------RANDOM POSTER---------------------------------------
+
+
+
+// -----------------------------MAIN POSTER---------------------------------------
