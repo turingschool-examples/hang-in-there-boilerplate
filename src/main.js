@@ -124,7 +124,10 @@ function getRandomQuote() {
 var currentPoster = new Poster(getRandomImage(), getRandomTitle(), getRandomQuote());
 
 function getRandomPoster() {
-  return currentPoster
+  currentPoster = new Poster(getRandomImage(), getRandomTitle(), getRandomQuote());
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
 };
 
 posterImage.src = currentPoster.imageURL;
@@ -133,6 +136,6 @@ posterQuote.innerText = currentPoster.quote;
 // event listeners go here 👇
 document.addEventListener('load', getRandomPoster);
 
-randomizeButton.addEventListener('click', getNewRandomPoster);
+randomizeButton.addEventListener('click', getRandomPoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
