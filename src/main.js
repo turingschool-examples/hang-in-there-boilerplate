@@ -146,8 +146,3 @@ function showForm() {
   hide(mainPage);
   show(form);
 }
-
-//function makeOwnPoster() {
-//   mainPage.classList.add('hidden');
-//   form.classList.remove('hidden');
-// }
