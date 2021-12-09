@@ -1,5 +1,3 @@
-// query selector variables go here 👇
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -98,6 +96,12 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+// query selector variables go here 👇
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+
 var savedPosters = [];
 var currentPoster;
 
@@ -108,4 +112,3 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
