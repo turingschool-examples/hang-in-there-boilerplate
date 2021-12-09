@@ -122,24 +122,51 @@ function getRandomIndex(array) {
 // to access to random image, title, and quotes.
 
 //Needed to grab a random image, title, or quote from each of their respective arrays.
-(images[getRandomIndex(images)]);
-(titles[getRandomIndex(titles)]);
-(quotes[getRandomIndex(quotes)]);
+var randomImage = images[getRandomIndex(images)]
 
-var image = document.querySelector(".poster-img")
-image.innerText = (images[getRandomIndex(images)]);
+var randomTitle = titles[getRandomIndex(titles)];
 
-//To put the Poster properties on the html page, may have to Use
+var randomQuote = quotes[getRandomIndex(quotes)];
+
+// var image = document.querySelector('.poster-img')
+// image.innerText = (images[getRandomIndex(images)]);
+// console.log(image);
+//
+// var image = document.querySelector('img')
+// image.innerHTML = `<img class="poster-img" src="./assets/mountain.jpg"; alt="nothin' to see here">`
+
+//Lines 137-139 still broken/not adding image to the webpage.
+
+// var image = document.getElementsByClassName("poster-img");
+// image.innerHTML = (images[getRandomIndex(images)]);
+
+// document.getElementByID("poster-img").src=(images[getRandomIndex(images)]);
+
+// //To put the Poster properties on the html page, may have to Use
 //innerHTML method. ???
 
-var title = document.querySelector(".poster-title")
-title.innerText = (titles[getRandomIndex(titles)]);
-console.log(title)
+
+
 //I learned that we cannot use the document object, because that exists only in the browser,
 //and we are writing our code on the server, so it is unable to acess the brower? How do we
 //acess these elements then?
-var quote = document.querySelector(".poster-quote");
-quote.innerText = (quotes[getRandomIndex(quotes)]);
+
+
+
+function generatePoster () {
+  var title = document.querySelector('.poster-title');
+  title.innerText = randomTitle;
+
+  var quote = document.querySelector('.poster-quote');
+  quote.innerText = randomQuote;
+
+  var image = document.querySelector('img');
+  image.src = randomImage;
+
+}
+
+generatePoster();
+
 
 //Is it necessary for us to have the Poster class re-written in this
 //file? May need to use for Iteration 3??
