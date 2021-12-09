@@ -113,6 +113,9 @@ var currentPoster;
 window.addEventListener('load', getRandomPoster);
 
 randomizeButton.addEventListener('click', getRandomPoster);
+
+myoButton.addEventListener('click', showPosterForm);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
