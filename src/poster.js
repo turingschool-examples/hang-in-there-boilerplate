@@ -6,3 +6,5 @@ class Poster {
     this.quote = quote;
   }
 }
+
+module.exports = Poster;
