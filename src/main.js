@@ -2,11 +2,13 @@
 var coverImage = document.querySelector('.poster-img');
 var coverTitle = document.querySelector('.poster-title');
 var coverQuote = document.querySelector('.poster-quote');
+var mainPage = document.querySelector('.main-poster');
 var randomPosterButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
 var savedPosterButton = document.querySelector('.show-saved');
 var nevermindButton = document.querySelector('.show-main');
 var backButton = document.querySelector('.back-to-main');
+var form = document.querySelector('.poster-form');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -113,10 +115,10 @@ var currentPoster;
 
 window.onload = makeRandomPoster();
 randomPosterButton.addEventListener('click', makeRandomPoster);
-makePosterButton.addEventListener('click', );
-savedPosterButton.addEventListener('click', );
-nevermindButton.addEventListener('click', );
-backButton.addEventListener('click', );
+makePosterButton.addEventListener('click', showForm);
+// savedPosterButton.addEventListener('click', );
+// nevermindButton.addEventListener('click', );
+// backButton.addEventListener('click', );
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -124,8 +126,26 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function makeRandomPoster(){
+function makeRandomPoster() {
   coverImage.src = images[getRandomIndex(images)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
   coverQuote.innerText = quotes[getRandomIndex(quotes)];
 }
+
+function hide(potato) {
+  potato.classList.add("hidden");
+}
+
+function show(potato) {
+  potato.classList.remove("hidden");
+}
+
+function showForm() {
+  hide(mainPage);
+  show(form);
+}
+
+//function makeOwnPoster() {
+//   mainPage.classList.add('hidden');
+//   form.classList.remove('hidden');
+// }
