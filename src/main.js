@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-
+//var btnRandom = document.querySelector()
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -99,7 +99,8 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = [];
+
 
 // event listeners go here 👇
 
@@ -109,3 +110,31 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// function generateRandomPoster(){
+// var step1 = max - min + 1;
+// var step2 = Math.random() * step1;
+// var result = Math.floor(step2) + min;
+//
+// return result;
+// }
+// btnRandom.addEventListener('click', (){
+//   getRandomIndex
+// })
+class Poster {
+  constructor(image, title, quote){
+    this.image = image;
+    this.title = title;
+    this.quote = quote;
+  }
+}
+
+function savePoster(poster){
+  savedPosters.push(poster)
+}
+var bees = new Poster(images[3],titles[0],quotes[15])
+
+getRandomIndex(savedPosters)
+savePoster(bees)
+
+  console.log(savedPosters[0])
+  console.log(titles.)
