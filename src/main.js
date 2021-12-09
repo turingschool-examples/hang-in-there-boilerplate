@@ -122,21 +122,20 @@ function getRandomIndex(array) {
 // to access to random image, title, and quotes.
 
 //Needed to grab a random image, title, or quote from each of their respective arrays.
-(images[getRandomIndex(images)]);
-(titles[getRandomIndex(titles)]);
-(quotes[getRandomIndex(quotes)]);
+var randomImage = images[getRandomIndex(images)]
+
+var randomTitle = titles[getRandomIndex(titles)];
+
+var randomQuote = quotes[getRandomIndex(quotes)];
 
 // var image = document.querySelector('.poster-img')
-// image.innerText = images[getRandomIndex(images)];
+// image.innerText = (images[getRandomIndex(images)]);
 // console.log(image);
 //
 // var image = document.querySelector('img')
 // image.innerHTML = `<img class="poster-img" src="./assets/mountain.jpg"; alt="nothin' to see here">`
 
 //Lines 137-139 still broken/not adding image to the webpage.
-var image = document.querySelector('img')
-image.innerHTML = `<img class="poster-img" id="imageID" src=" "; alt="nothin' to see here">`
-document.getElementById("imageID").src=(images[getRandomIndex(images)]);
 
 // var image = document.getElementsByClassName("poster-img");
 // image.innerHTML = (images[getRandomIndex(images)]);
@@ -147,13 +146,17 @@ document.getElementById("imageID").src=(images[getRandomIndex(images)]);
 //innerHTML method. ???
 
 var title = document.querySelector('.poster-title')
-title.innerText = (titles[getRandomIndex(titles)]);
-console.log(title)
+title.innerText = randomTitle;
+
 //I learned that we cannot use the document object, because that exists only in the browser,
 //and we are writing our code on the server, so it is unable to acess the brower? How do we
 //acess these elements then?
+
 var quote = document.querySelector('.poster-quote')
-quote.innerText = (quotes[getRandomIndex(quotes)]);
+quote.innerText = randomQuote;
+
+var image = document.querySelector('img')
+image.src = randomImage;
 
 
 //Is it necessary for us to have the Poster class re-written in this
