@@ -18,8 +18,6 @@ var imageUserInput = document.getElementById('poster-image-url');
 var titleUserInput = document.getElementById('poster-title');
 var quoteUserInput = document.getElementById('poster-quote');
 
-
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -122,7 +120,6 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
 window.addEventListener('load', generatePoster);
 randomPosterBtn.addEventListener('click', generatePoster);
 makePosterBtn.addEventListener('click', makePoster);
@@ -140,7 +137,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function generatePoster(){
+function generatePoster() {
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
   displayPoster();
 }
@@ -162,7 +159,7 @@ function showForm(element) {
 }
 
 function hideForm(element) {
-  element.classList.add('hidden');
+  element.classList.toggle('hidden');
 }
 
 function makePoster() {
@@ -170,12 +167,12 @@ function makePoster() {
   hideForm(mainPoster);
 }
 
-function showSaved(){
+function showSaved() {
   showForm(savedPoster);
   hideForm(mainPoster);
 }
 
-function showMain(){
+function showMain() {
   showForm(mainPoster);
   hideForm(posterForm);
 }
