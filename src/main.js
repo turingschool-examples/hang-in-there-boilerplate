@@ -13,6 +13,12 @@ var savedPoster = document.querySelector('.saved-posters');
 var savedPosterBtn = document.querySelector('.show-saved');
 var showMainBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
+var showMyPosterBtn = document.querySelector('.make-poster');
+var imageUserInput = document.getElementById('poster-image-url');
+var titleUserInput = document.getElementById('poster-title');
+var quoteUserInput = document.getElementById('poster-quote');
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -117,12 +123,13 @@ var currentPoster;
 
 // event listeners go here 👇
 
-window.addEventListener('load', generatePoster)
-randomPosterBtn.addEventListener('click', generatePoster)
-makePosterBtn.addEventListener('click', makePoster)
-savedPosterBtn.addEventListener('click', showSaved)
-showMainBtn.addEventListener('click', showMain)
-backToMainBtn.addEventListener('click', backToMain)
+window.addEventListener('load', generatePoster);
+randomPosterBtn.addEventListener('click', generatePoster);
+makePosterBtn.addEventListener('click', makePoster);
+savedPosterBtn.addEventListener('click', showSaved);
+showMainBtn.addEventListener('click', showMain);
+backToMainBtn.addEventListener('click', backToMain);
+showMyPosterBtn.addEventListener('click', showMyPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -142,6 +149,12 @@ function displayPoster() {
   posterSource.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
+}
+
+function customPoster() {
+  posterSource.src = imageUserInput.value;
+  posterTitle.innerText = titleUserInput.value;
+  posterQuote.innerText = quoteUserInput.value;
 }
 
 function showForm(element) {
@@ -170,4 +183,10 @@ function showMain(){
 function backToMain() {
   showForm(mainPoster);
   hideForm(savedPoster);
+}
+
+function showMyPoster() {
+  event.preventDefault();
+  customPoster();
+  showMain();
 }
