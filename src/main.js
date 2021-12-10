@@ -124,8 +124,8 @@ myoButton.addEventListener('click', showPosterForm);
 
 savedPostersButton.addEventListener('click', showSavedPosters);
 
-nevermindButton.addEventListener('click', nevermind);
-backToMainButton.addEventListener('click', backToMain);
+nevermindButton.addEventListener('click', showPosterForm);
+backToMainButton.addEventListener('click', showSavedPosters);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
