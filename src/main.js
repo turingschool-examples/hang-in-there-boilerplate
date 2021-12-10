@@ -1,3 +1,4 @@
+
 // query selector variables go here 👇
 var posterTitle = document.querySelector('h1');
 var posterForm = document.querySelector('.poster-form')
@@ -8,6 +9,7 @@ var posterQuote = document.querySelector('.poster-quote')
 // var btnShowSvd = document.querySelector('.show-saved')
 var btnShowRnd = document.querySelector('.show-random')
 var btnShowFrm = document.querySelector('.show-form')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -127,6 +129,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
+
 function switchPage(){
   mainPage.classList.toggle('hidden')
   posterForm.classList.toggle('hidden')
@@ -142,3 +145,4 @@ function switchPage(){
    posterQuote.innerText = quotes[randoQuote]
 
  };
+
