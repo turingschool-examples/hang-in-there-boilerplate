@@ -1,22 +1,13 @@
 // query selector variables go here 👇
-//h1.poster-title
 var posterTitle = document.querySelector('h1');
 var posterForm = document.querySelector('.poster-form')
 var mainPage = document.querySelector('.main-poster')
-// //img.poster-img
 var posterImg = document.querySelector('.poster-img')
-// //h3.poster-quote
 var posterQuote = document.querySelector('.poster-quote')
-// article.poster
-// //button.save-poster
 // var btnSave = document.querySelector('.save-poster')
-// //button.show-saved
 // var btnShowSvd = document.querySelector('.show-saved')
-// //button.show-random
 var btnShowRnd = document.querySelector('.show-random')
-// //button.show-form
 var btnShowFrm = document.querySelector('.show-form')
-//section.main-poster
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -120,8 +111,8 @@ var currentPoster = [];
 
 
 // event listeners go here 👇
-
-
+btnShowFrm.addEventListener('click',switchPage)
+btnShowRnd.addEventListener('click', sendRandom)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -131,23 +122,15 @@ randoQuote = getRandomIndex(quotes)
 posterTitle.innerText = titles[randoTitl]
 posterImg.src = images[randoImg]
 posterQuote.innerText = quotes[randoQuote]
-//Find way to tighten this up. All lines 127-132 are doing is generating an image
-// for the initial load. Thoughts - Have not random for initial.
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
-btnShowFrm.addEventListener('click',switchPage)
-//btn is good. function is good.
+};
+
 function switchPage(){
   mainPage.classList.toggle('hidden')
   posterForm.classList.toggle('hidden')
-
-}
-
-//functionality to send user to posterForm
-
- btnShowRnd.addEventListener('click', sendRandom)
+};
 
  function sendRandom() {
    randoImg = getRandomIndex(images)
@@ -158,4 +141,4 @@ function switchPage(){
    posterImg.src = images[randoImg]
    posterQuote.innerText = quotes[randoQuote]
 
- }
+ };
