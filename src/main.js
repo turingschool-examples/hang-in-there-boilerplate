@@ -150,3 +150,8 @@ function showPosterForm() {
   myoSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
 }
+
+function showSavedPosters() {
+  savedSection.classList.toggle('hidden');
+  mainSection.classList.toggle('hidden');
+}
