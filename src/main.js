@@ -3,14 +3,23 @@
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var posterImage = document.querySelector('.poster-img');
+
 var randomButton = document.querySelector('.show-random');
 var showFormButton = document.querySelector('.show-form');
-var mainPosterPage = document.querySelector('.main-poster');
-var posterFormPage = document.querySelector('.poster-form');
-var savedPostersPage = document.querySelector('.saved-posters');
 var showSavedButton = document.querySelector('.show-saved');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+var makePosterButton = document.querySelector('.make-poster');
+
+var mainPosterPage = document.querySelector('.main-poster');
+var posterFormPage = document.querySelector('.poster-form');
+var savedPostersPage = document.querySelector('.saved-posters');
+
+var userPosterTitle = document.querySelector('#poster-title');
+var userPosterQuote = document.querySelector('#poster-quote');
+var userPosterImage = document.querySelector('#poster-image-url');
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,29 +128,19 @@ window.addEventListener('load', loadMainPage);
 
 randomButton.addEventListener('click', loadMainPage);
 
-// hide main poster
+showFormButton.addEventListener('click', loadFormPage)
 
-showFormButton.addEventListener('click', hideMainPoster)
+showSavedButton.addEventListener('click', loadSavedPoster)
 
-// show form
+nevermindButton.addEventListener('click', loadMainFromForm)
 
-showFormButton.addEventListener('click', showPosterForm)
+backToMainButton.addEventListener('click', loadMainFromSaved)
 
-showSavedButton.addEventListener('click', hideMainPoster)
+makePosterButton.addEventListener('click', loadMainUserPoster);
 
-showSavedButton.addEventListener('click', showSavedPosters)
-
-nevermindButton.addEventListener('click', showMainPoster)
-
-nevermindButton.addEventListener('click', hidePosterForm)
-
-backToMainButton.addEventListener('click', showMainPoster)
-
-backToMainButton.addEventListener('click', hideSavedPosters)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -162,55 +161,68 @@ function loadMainPage() {
   posterImage.src = currentPoster.imageURL;
 };
 
-function hideMainPoster() {
-  mainPosterPage.classList.add('hidden')
-}
+function makeUserPoster() {
+  currentPoster = new Poster(
+    userPosterImage.value,
+    userPosterTitle.value,
+    userPosterQuote.value);
+  return currentPoster
+};
 
-function showPosterForm() {
-  posterFormPage.classList.remove('hidden')
-}
+function loadMainUserPoster(e) {
+  e.preventDefault();
+  makeUserPoster();
+  pushUserData();
+  console.log(titles);
+  console.log(images);
+  console.log(quotes);
+  hidePage(posterFormPage);
+  showPage(mainPosterPage);
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+  posterImage.src = currentPoster.imageURL;
+};
 
-function showSavedPosters() {
-  savedPostersPage.classList.remove('hidden')
-}
+function pushUserData() {
+  images.push(userPosterImage.value);
+  titles.push(userPosterTitle.value);
+  quotes.push(userPosterQuote.value)
+};
 
+function loadFormPage() {
+  hidePage(mainPosterPage);
+  showPage(posterFormPage);
+};
 
+function loadSavedPoster() {
+  hidePage(mainPosterPage);
+  showPage(savedPostersPage);
+};
 
-function showMainPoster() {
-  mainPosterPage.classList.remove('hidden')
-}
+function loadMainFromSaved() {
+  hidePage(savedPostersPage);
+  showPage(mainPosterPage);
+};
 
-function hidePosterForm () {
-  posterFormPage.classList.add('hidden')
-}
+function loadMainFromForm() {
+  hidePage(posterFormPage);
+  showPage(mainPosterPage);
+};
 
-function hideSavedPosters() {
-  savedPostersPage.classList.add('hidden')
-}
+function hidePage(selectorVariable) {
+  selectorVariable.classList.add('hidden')
+};
 
-// mainPosterPage.classList.toggle('hidden');
-// posterFormPage.classList.toggle('hidden');
+function showPage(selectorVariable) {
+  selectorVariable.classList.remove('hidden')
+};
 
-/* ITERATION 0
-- need to create variables for poster title, quote & image from the DOM
-- need to create a function that instantiates a new Poster with random
-values from the 3 provided arrays
-- need to create a function that then updates currentPoster to be what the
-values of the new Poster object are
-- need to create event listener on page load to show a random poster
-I need to create a new function that uses the newRandomPoster func
-and updates the .poster class to include the new randomPoster object.
--> Then I need to reference that function in the window event
-listener and the randomButton event listener
-*/
-
-
-/* ITERATION 1
-When a user clicks the “Make Your Own Poster” button, we should see the form, and the main poster should be hidden:
-- when someone clicks the MYOP button it removes hidden from poster-form hidden
-and add hidden to main poster class
-- create new form button variable and set it to show-form button in HTML
-
+/* ITERATION 2
+- create helper-function that will instantiate new Poster object with values of
+the form fields - assign to currentPoster
+- create a function that run that helper-function and then assign the
+innerText of the HTML elements to currentPoster
+- event listener that will run function ^^
 
 
 */
