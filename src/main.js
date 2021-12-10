@@ -186,7 +186,8 @@ function showMyPoster() {
 }
 
 function saveNewPoster() {
-  //if(!savedPosters.includes(currentPoster)) {
+  currentPoster = new Poster(coverImage.src, coverTitle.innerText, coverQuote.innerText);
+  if(!savedPosters.includes(currentPoster)) {
   savedPosters.push(currentPoster);
-  //}
+  }
 }
