@@ -127,21 +127,15 @@ var currentPoster;
 window.addEventListener('load', loadMainPage);
 randomButton.addEventListener('click', loadMainPage);
 
-showFormButton.addEventListener('click', hideMainPoster)
-showFormButton.addEventListener('click', showPosterForm)
+showFormButton.addEventListener('click', loadFormPage)
 
-showSavedButton.addEventListener('click', hideMainPoster)
-showSavedButton.addEventListener('click', showSavedPosters)
+showSavedButton.addEventListener('click', loadSavedPoster)
 
-nevermindButton.addEventListener('click', showMainPoster)
-nevermindButton.addEventListener('click', hidePosterForm)
+nevermindButton.addEventListener('click', loadMainFromForm)
 
-backToMainButton.addEventListener('click', showMainPoster)
-backToMainButton.addEventListener('click', hideSavedPosters)
+backToMainButton.addEventListener('click', loadMainFromSaved)
 
 makePosterButton.addEventListener('click', loadMainUserPoster);
-makePosterButton.addEventListener('click', showMainPoster);
-makePosterButton.addEventListener('click', hidePosterForm);
 
 
 // functions and event handlers go here 👇
@@ -177,46 +171,45 @@ function makeUserPoster() {
 function loadMainUserPoster(e) {
   e.preventDefault();
   makeUserPoster();
+  hidePage(posterFormPage);
+  showPage(mainPosterPage);
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
   posterImage.src = currentPoster.imageURL;
 };
 
-
-
-
-
-function hideMainPoster() {
-  mainPosterPage.classList.add('hidden')
+function loadFormPage() {
+  hidePage(mainPosterPage);
+  showPage(posterFormPage);
 }
 
-function showPosterForm() {
-  posterFormPage.classList.remove('hidden')
+function loadSavedPoster() {
+  hidePage(mainPosterPage);
+  showPage(savedPostersPage);
 }
 
-
-function showSavedPosters() {
-  savedPostersPage.classList.remove('hidden')
+function loadMainFromSaved() {
+  hidePage(savedPostersPage);
+  showPage(mainPosterPage);
 }
 
-function showMainPoster() {
-  mainPosterPage.classList.remove('hidden')
+function loadMainFromForm() {
+  hidePage(posterFormPage);
+  showPage(mainPosterPage);
 }
 
-
-function hidePosterForm () {
-  posterFormPage.classList.add('hidden')
+function hidePage(selectorVariable) {
+  selectorVariable.classList.add('hidden')
 }
 
-function hideSavedPosters() {
-  savedPostersPage.classList.add('hidden')
+function showPage(selectorVariable) {
+  selectorVariable.classList.remove('hidden')
 }
-
 
 
 
 /* ITERATION 2
-- create helper-function that will instantiate new Poster object with values of 
+- create helper-function that will instantiate new Poster object with values of
 the form fields - assign to currentPoster
 - create a function that run that helper-function and then assign the
 innerText of the HTML elements to currentPoster
