@@ -1,4 +1,13 @@
 // query selector variables go here 👇
+var title = document.querySelector('.poster-title');
+
+var quote = document.querySelector('.poster-quote');
+
+var image = document.querySelector('img');
+
+var newRandomPosterButton = document.querySelector('.show-random')
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,6 +111,10 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+// To have poster on load when page initially loading
+// window.addEventListener('load', newRandomPoster);
+
+newRandomPosterButton.addEventListener('click', generatePoster);
 
 
 // functions and event handlers go here 👇
@@ -109,90 +122,15 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-//The postImage function will return a random image onto the html page.
-//Generate a random number from the array.
-//Use the random number to select an image.
-// ??? how do we do we use the image tag/do we need to use it?
-// ??how do we use the strings in the images array to access the file path?
-//return image onto the page.
-
-//may need to use the Poster class in our functions??
-
-//Will need to use document.querySelector('selector e.g. h1')
-// to access to random image, title, and quotes.
-
-//Needed to grab a random image, title, or quote from each of their respective arrays.
-var randomImage = images[getRandomIndex(images)]
-
-var randomTitle = titles[getRandomIndex(titles)];
-
-var randomQuote = quotes[getRandomIndex(quotes)];
-
-// var image = document.querySelector('.poster-img')
-// image.innerText = (images[getRandomIndex(images)]);
-// console.log(image);
-//
-// var image = document.querySelector('img')
-// image.innerHTML = `<img class="poster-img" src="./assets/mountain.jpg"; alt="nothin' to see here">`
-
-//Lines 137-139 still broken/not adding image to the webpage.
-
-// var image = document.getElementsByClassName("poster-img");
-// image.innerHTML = (images[getRandomIndex(images)]);
-
-// document.getElementByID("poster-img").src=(images[getRandomIndex(images)]);
-
-// //To put the Poster properties on the html page, may have to Use
-//innerHTML method. ???
-
-
-
-//I learned that we cannot use the document object, because that exists only in the browser,
-//and we are writing our code on the server, so it is unable to acess the brower? How do we
-//acess these elements then?
-var title = document.querySelector('.poster-title');
-
-var quote = document.querySelector('.poster-quote');
-
-var image = document.querySelector('img');
-
-
-
-//function generatePosterButtonClick () {
-    var newRandomPoster = document.querySelector('.show-random')
-      newRandomPoster.addEventListener('click', generatePoster)
-      generatePoster();
-
-//}
-
-//generatePosterButtonClick();
 
 function generatePoster () {
-  title.innerText = randomTitle;
-  quote.innerText = randomQuote;
-  image.src = randomImage;
+    var randomImage = images[getRandomIndex(images)]
+
+    var randomTitle = titles[getRandomIndex(titles)];
+
+    var randomQuote = quotes[getRandomIndex(quotes)];
+
+    title.innerText = randomTitle;
+    quote.innerText = randomQuote;
+    image.src = randomImage;
 }
-
-generatePoster();
-
-//Is it necessary for us to have the Poster class re-written in this
-//file? May need to use for Iteration 3??
-// class Poster {
-//   constructor(imageURL, title, quote) {
-//     this.id = Date.now();
-//     this.imageURL = imageURL;
-//     this.title = title;
-//     this.quote = quote;
-//   }
-// }
-
-//May need to use require function to include modules from different files?
-//require() reads the javascript file, executes file, then returns the exports object.
-//May need a module.exports??
-
-
-// function postImage() {
-// } note to selves - this was our very first function and we had no
-//idea what we were doing.
-
-// images[getRandomIndex(images)];
