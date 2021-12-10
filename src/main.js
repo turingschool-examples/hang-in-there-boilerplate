@@ -1,7 +1,8 @@
 // query selector variables go here 👇
 //h1.poster-title
 var posterTitle = document.querySelector('h1');
-//
+var posterForm = document.querySelector('.poster-form')
+var mainPage = document.querySelector('.main-poster')
 // //img.poster-img
 var posterImg = document.querySelector('.poster-img')
 // //h3.poster-quote
@@ -14,7 +15,7 @@ var posterQuote = document.querySelector('.poster-quote')
 // //button.show-random
 var btnShowRnd = document.querySelector('.show-random')
 // //button.show-form
-// var btnShowFrm = document.querySelector('.show-form')
+var btnShowFrm = document.querySelector('.show-form')
 //section.main-poster
 // we've provided you with some data to work with 👇
 var images = [
@@ -124,36 +125,37 @@ var currentPoster = [];
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-
+randoImg = getRandomIndex(images)
+randoTitl = getRandomIndex(titles)
+randoQuote = getRandomIndex(quotes)
+posterTitle.innerText = titles[randoTitl]
+posterImg.src = images[randoImg]
+posterQuote.innerText = quotes[randoQuote]
+//Find way to tighten this up. All lines 127-132 are doing is generating an image
+// for the initial load. Thoughts - Have not random for initial.
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+btnShowFrm.addEventListener('click',switchPage)
+//btn is good. function is good.
+function switchPage(){
+  mainPage.classList.toggle('hidden')
+  posterForm.classList.toggle('hidden')
 
+}
 
-randoImg = getRandomIndex(images)
-randoTitl = getRandomIndex(titles)
-randoQuote = getRandomIndex(quotes)
+//functionality to send user to posterForm
 
-posterTitle.innerText = titles[randoTitl]
-posterImg.src = images[randoImg]
-posterQuote.innerText = quotes[randoQuote]
-
-//var randomGenerated = posterTitle.innerText = titles[randoTitl] && posterImg.src = images[randoImg] && posterQuote.innerText = quotes[randoQuote]
-
-
- btnShowRnd.addEventListener('click', function)
-
-
- //make function to change color of box when invoked
+ btnShowRnd.addEventListener('click', sendRandom)
 
  function sendRandom() {
+   randoImg = getRandomIndex(images)
+   randoTitl = getRandomIndex(titles)
+   randoQuote = getRandomIndex(quotes)
+
    posterTitle.innerText = titles[randoTitl]
    posterImg.src = images[randoImg]
    posterQuote.innerText = quotes[randoQuote]
 
  }
-
-// btnShowRnd.addEventListener("click", function(){
-//
-// });
