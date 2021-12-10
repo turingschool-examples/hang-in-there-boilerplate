@@ -1,4 +1,15 @@
 
+// query selector variables go here 👇
+var posterTitle = document.querySelector('h1');
+var posterForm = document.querySelector('.poster-form')
+var mainPage = document.querySelector('.main-poster')
+var posterImg = document.querySelector('.poster-img')
+var posterQuote = document.querySelector('.poster-quote')
+// var btnSave = document.querySelector('.save-poster')
+// var btnShowSvd = document.querySelector('.show-saved')
+var btnShowRnd = document.querySelector('.show-random')
+var btnShowFrm = document.querySelector('.show-form')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -102,11 +113,36 @@ var currentPoster = [];
 
 
 // event listeners go here 👇
+btnShowFrm.addEventListener('click',switchPage)
+btnShowRnd.addEventListener('click', sendRandom)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+randoImg = getRandomIndex(images)
+randoTitl = getRandomIndex(titles)
+randoQuote = getRandomIndex(quotes)
+posterTitle.innerText = titles[randoTitl]
+posterImg.src = images[randoImg]
+posterQuote.innerText = quotes[randoQuote]
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
+
+function switchPage(){
+  mainPage.classList.toggle('hidden')
+  posterForm.classList.toggle('hidden')
+};
+
+ function sendRandom() {
+   randoImg = getRandomIndex(images)
+   randoTitl = getRandomIndex(titles)
+   randoQuote = getRandomIndex(quotes)
+
+   posterTitle.innerText = titles[randoTitl]
+   posterImg.src = images[randoImg]
+   posterQuote.innerText = quotes[randoQuote]
+
+ };
 
