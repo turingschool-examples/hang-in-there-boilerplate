@@ -178,6 +178,7 @@ function showMyPoster() {
   coverImage.src = currentPoster.imageURL;
   coverTitle.innerText = currentPoster.title;
   coverQuote.innerText = currentPoster.quote;
+  window.images.push(currentPoster.imageURL);
+  titles.push(currentPoster.title);
+  quotes.push(currentPoster.quote);
 }
-
-console.log
