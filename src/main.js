@@ -8,6 +8,9 @@ var myoButton = document.querySelector('.show-form');
 var myoSection = document.querySelector('.poster-form');
 var mainSection = document.querySelector('.main-poster');
 
+var savedPostersButton = document.querySelector('.show-saved');
+var savedSection = document.querySelector('.saved-posters');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -116,6 +119,8 @@ randomizeButton.addEventListener('click', getRandomPoster);
 
 myoButton.addEventListener('click', showPosterForm);
 
+savedPostersButton.addEventListener('click', showSavedPosters);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -143,5 +148,10 @@ function getRandomPoster() {
 
 function showPosterForm() {
   myoSection.classList.toggle('hidden');
+  mainSection.classList.toggle('hidden');
+}
+
+function showSavedPosters() {
+  savedSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
 }
