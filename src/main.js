@@ -5,11 +5,11 @@ var posterForm = document.querySelector('.poster-form')
 var mainPage = document.querySelector('.main-poster')
 var posterImg = document.querySelector('.poster-img')
 var posterQuote = document.querySelector('.poster-quote')
-// var btnSave = document.querySelector('.save-poster')
-// var btnShowSvd = document.querySelector('.show-saved')
+var btnSave = document.querySelector('.save-poster')
+var btnShowSvd = document.querySelector('.show-saved')
 var btnShowRnd = document.querySelector('.show-random')
 var btnShowFrm = document.querySelector('.show-form')
-
+var savedPosters = document.querySelector('.saved-posters')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -115,7 +115,9 @@ var currentPoster = [];
 // event listeners go here 👇
 btnShowFrm.addEventListener('click',switchPage)
 btnShowRnd.addEventListener('click', sendRandom)
+btnShowSvd.addEventListener('click',switchPageDos)
 
+//copy button =show form 116 to 118 change for other button-show saved posters
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 randoImg = getRandomIndex(images)
@@ -128,11 +130,14 @@ posterQuote.innerText = quotes[randoQuote]
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
-
-
 function switchPage(){
   mainPage.classList.toggle('hidden')
   posterForm.classList.toggle('hidden')
+};
+//change somewhat similar main page to saved pages
+function switchPageDos(){
+  mainPage.classList.toggle('hidden')
+  savedPosters.classList.toggle('hidden')
 };
 
  function sendRandom() {
@@ -145,4 +150,3 @@ function switchPage(){
    posterQuote.innerText = quotes[randoQuote]
 
  };
-
