@@ -5,6 +5,7 @@ var posterQuotes = document.querySelector('.poster-quote');
 
 var posterImages = document.querySelector(".poster-img");
 
+var showRandom = document.querySelector(".show-random");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,9 +111,8 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-
 // event listeners go here 👇
-
+showRandom.addEventListener('click', showRandomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -120,6 +120,10 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-posterImages.src = images[getRandomIndex(images)];
-posterTitles.innerText = titles[getRandomIndex(titles)];
-posterQuotes.innerText = quotes[getRandomIndex(quotes)];
+function showRandomPoster() {
+  posterImages.src = images[getRandomIndex(images)];
+  posterTitles.innerText = titles[getRandomIndex(titles)];
+  posterQuotes.innerText = quotes[getRandomIndex(quotes)];
+}
+
+showRandomPoster();
