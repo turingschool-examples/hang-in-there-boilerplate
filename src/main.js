@@ -149,9 +149,9 @@ function displayPoster() {
 }
 
 function customPoster() {
-  posterSource.src = imageUserInput.value;
-  posterTitle.innerText = titleUserInput.value;
-  posterQuote.innerText = quoteUserInput.value;
+  posterSource.src = imageUserInput.value || images[5];
+  posterTitle.innerText = titleUserInput.value || "Growth Mindset";
+  posterQuote.innerText = quoteUserInput.value || "Hang in there!";
 }
 
 function showForm(element) {
@@ -186,4 +186,5 @@ function showMyPoster() {
   event.preventDefault();
   customPoster();
   showMain();
+
 }
