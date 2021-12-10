@@ -125,6 +125,7 @@ var currentPoster;
 // event listeners go here 👇
 
 window.addEventListener('load', loadMainPage);
+
 randomButton.addEventListener('click', loadMainPage);
 
 showFormButton.addEventListener('click', loadFormPage)
@@ -171,6 +172,10 @@ function makeUserPoster() {
 function loadMainUserPoster(e) {
   e.preventDefault();
   makeUserPoster();
+  pushUserData();
+  console.log(titles);
+  console.log(images);
+  console.log(quotes);
   hidePage(posterFormPage);
   showPage(mainPosterPage);
   posterTitle.innerText = currentPoster.title;
@@ -178,35 +183,39 @@ function loadMainUserPoster(e) {
   posterImage.src = currentPoster.imageURL;
 };
 
+function pushUserData() {
+  images.push(userPosterImage.value);
+  titles.push(userPosterTitle.value);
+  quotes.push(userPosterQuote.value)
+};
+
 function loadFormPage() {
   hidePage(mainPosterPage);
   showPage(posterFormPage);
-}
+};
 
 function loadSavedPoster() {
   hidePage(mainPosterPage);
   showPage(savedPostersPage);
-}
+};
 
 function loadMainFromSaved() {
   hidePage(savedPostersPage);
   showPage(mainPosterPage);
-}
+};
 
 function loadMainFromForm() {
   hidePage(posterFormPage);
   showPage(mainPosterPage);
-}
+};
 
 function hidePage(selectorVariable) {
   selectorVariable.classList.add('hidden')
-}
+};
 
 function showPage(selectorVariable) {
   selectorVariable.classList.remove('hidden')
-}
-
-
+};
 
 /* ITERATION 2
 - create helper-function that will instantiate new Poster object with values of
