@@ -112,7 +112,12 @@ var showSavedPostersButton = document.querySelector('.show-saved');
 var savePosterButton = document.querySelector('.save-poster');
 var nevermindButton = document.querySelector('.show-main');
 var backButton = document.querySelector('.back-to-main');
+var customPosterButton = document.querySelector('.make-poster');
 var form = document.querySelector('.poster-form');
+
+var newImageUrl = document.querySelector('#poster-image-url');
+var newTitle = document.querySelector('#poster-title');
+var newQuote = document.querySelector('#poster-quote');
 
 // event listeners go here 👇
 window.onload = makeRandomPoster();
@@ -122,6 +127,8 @@ makePosterButton.addEventListener('click', showForm);
 showSavedPostersButton.addEventListener('click', showSavedPosters);
 nevermindButton.addEventListener('click', nevermind);
 backButton.addEventListener('click', backToMain);
+customPosterButton.addEventListener('click', showMyPoster);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -161,4 +168,17 @@ function nevermind() {
 function backToMain() {
   hide(savedPage);
   show(mainPage);
+}
+
+function showMyPoster() {
+  event.preventDefault();
+  hide(form);
+  show(mainPage);
+  currentPoster = new Poster(newImageUrl.value, newTitle.value, newQuote.value);
+  coverImage.src = currentPoster.imageURL;
+  coverTitle.innerText = currentPoster.title;
+  coverQuote.innerText = currentPoster.quote;
+  window.images.push(currentPoster.imageURL);
+  titles.push(currentPoster.title);
+  quotes.push(currentPoster.quote);
 }
