@@ -124,6 +124,9 @@ myoButton.addEventListener('click', showPosterForm);
 
 savedPostersButton.addEventListener('click', showSavedPosters);
 
+nevermindButton.addEventListener('click', nevermind);
+backToMainButton.addEventListener('click', backToMain);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
