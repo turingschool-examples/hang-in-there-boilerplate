@@ -13,6 +13,9 @@ var savedPoster = document.querySelector('.saved-posters');
 var savedPosterBtn = document.querySelector('.show-saved');
 var showMainBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
+var imageInput = document.querySelector('#poster-image-url');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -117,7 +120,7 @@ var currentPoster;
 
 // event listeners go here 👇
 
-window.addEventListener('load', generatePoster)
+window.addEventListener('load', generatePoster, {once: true})
 randomPosterBtn.addEventListener('click', generatePoster)
 makePosterBtn.addEventListener('click', makePoster)
 savedPosterBtn.addEventListener('click', showSaved)
@@ -133,7 +136,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function generatePoster(){
+function generatePoster() {
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
   displayPoster();
 }
@@ -144,12 +147,20 @@ function displayPoster() {
   posterQuote.innerText = currentPoster.quote;
 }
 
+function toggleNewPoster() {
+  posterTitle.innerText = titleInput.value
+  posterQuote.innerText = quoteInput.value
+  posterSource.src = imageInput.value
+  event.preventDefault()
+  showForm()
+}
+
 function showForm(element) {
   element.classList.toggle('hidden');
 }
 
 function hideForm(element) {
-  element.classList.add('hidden');
+  element.classList.toggle('hidden');
 }
 
 function makePoster() {
@@ -157,12 +168,12 @@ function makePoster() {
   hideForm(mainPoster);
 }
 
-function showSaved(){
+function showSaved() {
   showForm(savedPoster);
   hideForm(mainPoster);
 }
 
-function showMain(){
+function showMain() {
   showForm(mainPoster);
   hideForm(posterForm);
 }
