@@ -10,6 +10,7 @@ var showSavedButton = document.querySelector('.show-saved');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
 var makePosterButton = document.querySelector('.make-poster');
+var savePosterButton = document.querySelector('.save-poster');
 
 var mainPosterPage = document.querySelector('.main-poster');
 var posterFormPage = document.querySelector('.poster-form');
@@ -138,6 +139,7 @@ backToMainButton.addEventListener('click', loadMainFromSaved)
 
 makePosterButton.addEventListener('click', loadMainUserPoster);
 
+savePosterButton.addEventListener('click', pushToSaved)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -173,9 +175,9 @@ function loadMainUserPoster(e) {
   e.preventDefault();
   makeUserPoster();
   pushUserData();
-  console.log(titles);
-  console.log(images);
-  console.log(quotes);
+  // console.log(titles);
+  // console.log(images);
+  // console.log(quotes);
   hidePage(posterFormPage);
   showPage(mainPosterPage);
   posterTitle.innerText = currentPoster.title;
@@ -186,8 +188,13 @@ function loadMainUserPoster(e) {
 function pushUserData() {
   images.push(userPosterImage.value);
   titles.push(userPosterTitle.value);
-  quotes.push(userPosterQuote.value)
+  quotes.push(userPosterQuote.value);
 };
+
+function pushToSaved() {
+  savedPosters.push(currentPoster);
+  console.log(savedPosters);
+}
 
 function loadFormPage() {
   hidePage(mainPosterPage);
