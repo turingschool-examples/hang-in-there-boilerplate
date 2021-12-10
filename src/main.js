@@ -11,7 +11,8 @@ var posterForm = document.querySelector('.poster-form');
 var mainPoster = document.querySelector('.main-poster');
 var savedPoster = document.querySelector('.saved-posters');
 var savedPosterBtn = document.querySelector('.show-saved');
-
+var showMainBtn = document.querySelector('.show-main');
+var backToMainBtn = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -120,6 +121,8 @@ window.addEventListener('load', generatePoster)
 randomPosterBtn.addEventListener('click', generatePoster)
 makePosterBtn.addEventListener('click', makePoster)
 savedPosterBtn.addEventListener('click', showSaved)
+showMainBtn.addEventListener('click', showMain)
+backToMainBtn.addEventListener('click', backToMain)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -157,4 +160,14 @@ function makePoster() {
 function showSaved(){
   showForm(savedPoster);
   hideForm(mainPoster);
+}
+
+function showMain(){
+  showForm(mainPoster);
+  hideForm(posterForm);
+}
+
+function backToMain() {
+  showForm(mainPoster);
+  hideForm(savedPoster);
 }
