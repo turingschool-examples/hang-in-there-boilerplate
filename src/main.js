@@ -3,7 +3,7 @@
 // var imageDumper = document.querySelector(".poster-img");
 var titleDumper = document.querySelector(".poster-title");
 var quoteDumper = document.querySelector(".poster-quote");
-
+var imageDumper = document.
 
 // we've provided you with some data to work with 👇
 var images = [
