@@ -7,7 +7,15 @@ var posterImages = document.querySelector(".poster-img");
 
 var showRandom = document.querySelector(".show-random");
 
-var showForm = document.querySelector(".show-form");
+var showFormButton = document.querySelector(".show-form");
+
+var posterForm = document.querySelector(".poster-form");
+
+var mainPoster = document.querySelector(".main-poster");
+
+
+
+//var posterForm = document.querySelector(".poster-form");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -115,7 +123,10 @@ var currentPoster;
 
 // event listeners go here 👇
 showRandom.addEventListener('click', showRandomPoster);
-showForm.addEventListener('click', showFormPage);
+// unblock.addEventListener('click', unblock);
+showFormButton.addEventListener('click', unhideForm);
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -130,10 +141,20 @@ function showRandomPoster() {
 
 showRandomPoster();
 
+
 // We have to make the showRandomButton clickable. The click should unhide the
 // poster-form in line 22 of html
-function showFormPage() {
-  changeIt.style.visibility = 'visible';
+// function showFormPage() {
+//   changeIt.style.visibility = 'visible';
+// }
+//
+// showFormPage();
+//
+// showForm.addEventListener("click", unblock);
+
+function unhideForm() {
+  posterForm.classList.toggle("hidden")
+  //mainPage.classList.toggle("hidden")
 }
 
-showFormPage();
+unblock()
