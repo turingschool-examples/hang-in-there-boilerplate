@@ -6,6 +6,13 @@ var randomButton = document.querySelector('.show-random');
 var postTitle = document.querySelector('.poster-title');
 var postQuote = document.querySelector('.poster-quote');
 var postImg = document.querySelector('.poster-img');
+var makePosterButton = document.querySelector('.show-form');
+var mainPoster = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
+var savedPostersButton = document.querySelector('.show-saved');
+var savedPosters = document.querySelector('.saved-posters')
+var showMain = document.querySelector('.show-main');
+var backToMain = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -105,11 +112,32 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
 
 randomButton.addEventListener('click', randPoster);
+
+makePosterButton.addEventListener('click', function() {
+  hidePoster();
+  showForm();
+});
+
+showMain.addEventListener('click', function() {
+  showForm();
+  hidePoster();
+});
+
+savedPostersButton.addEventListener('click', function() {
+  hidePoster();
+  showSaved();
+});
+
+backToMain.addEventListener('click', function() {
+  showSaved();
+  hidePoster();
+})
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -117,6 +145,17 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
+function hidePoster() {
+  mainPoster.classList.toggle("hidden");
+};
+
+function showForm() {
+  posterForm.classList.toggle("hidden");
+};
+
+function showSaved() {
+  savedPosters.classList.toggle("hidden");
+};
 
 function randPoster() {
   postImg.src = images[getRandomIndex(images)];
