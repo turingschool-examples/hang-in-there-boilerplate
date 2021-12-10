@@ -166,3 +166,15 @@ function showSavedPosters() {
   savedSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
 }
+
+function makeCustomPoster() {
+  currentPoster = new Poster(imageInputField.value, titleInputField.value, quoteInputField.value)
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+}
+
+imageInputField
+ titleInputField
+ quoteInputField
+ showPosterButton
