@@ -132,6 +132,8 @@ savedPostersButton.addEventListener('click', showSavedPosters);
 nevermindButton.addEventListener('click', showPosterForm);
 backToMainButton.addEventListener('click', showSavedPosters);
 
+showPosterButton.addEventListener('click', makeCustomPoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -168,13 +170,11 @@ function showSavedPosters() {
 }
 
 function makeCustomPoster() {
-  currentPoster = new Poster(imageInputField.value, titleInputField.value, quoteInputField.value)
+  currentPoster = new Poster(imageInputField.value, titleInputField.value, quoteInputField.value);
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
+  myoSection.classList.toggle('hidden');
+  mainSection.classList.toggle('hidden');
+  event.preventDefault();
 }
-
-imageInputField
- titleInputField
- quoteInputField
- showPosterButton
