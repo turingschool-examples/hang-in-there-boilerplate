@@ -14,6 +14,11 @@ var savedSection = document.querySelector('.saved-posters');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
 
+var imageInputField = document.querySelector('#poster-image-url');
+var titleInputField = document.querySelector('#poster-title');
+var quoteInputField = document.querySelector('#poster-quote');
+var showPosterButton = document.querySelector(".make-poster");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
