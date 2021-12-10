@@ -11,6 +11,9 @@ var mainSection = document.querySelector('.main-poster');
 var savedPostersButton = document.querySelector('.show-saved');
 var savedSection = document.querySelector('.saved-posters');
 
+var nevermindButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
