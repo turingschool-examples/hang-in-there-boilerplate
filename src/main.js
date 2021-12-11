@@ -21,6 +21,7 @@ var userPosterQuote = document.querySelector('#poster-quote');
 var userPosterImage = document.querySelector('#poster-image-url');
 
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
+var miniPoster = document.querySelector('.mini-poster');
 
 
 // we've provided you with some data to work with 👇
@@ -130,17 +131,19 @@ window.addEventListener('load', loadMainPage);
 
 randomButton.addEventListener('click', loadMainPage);
 
-showFormButton.addEventListener('click', loadFormPage)
+showFormButton.addEventListener('click', loadFormPage);
 
-showSavedButton.addEventListener('click', loadSavedPoster)
+showSavedButton.addEventListener('click', loadSavedPoster);
 
-nevermindButton.addEventListener('click', loadMainFromForm)
+nevermindButton.addEventListener('click', loadMainFromForm);
 
-backToMainButton.addEventListener('click', loadMainFromSaved)
+backToMainButton.addEventListener('click', loadMainFromSaved);
 
 makePosterButton.addEventListener('click', loadMainUserPoster);
 
-savePosterButton.addEventListener('click', pushToSaved)
+savePosterButton.addEventListener('click', pushToSaved);
+
+savedPostersGrid.addEventListener('dblclick', deleteMiniPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -176,9 +179,6 @@ function loadMainUserPoster(e) {
   e.preventDefault();
   makeUserPoster();
   pushUserData();
-  // console.log(titles);
-  // console.log(images);
-  // console.log(quotes);
   hidePage(posterFormPage);
   showPage(mainPosterPage);
   posterTitle.innerText = currentPoster.title;
@@ -192,33 +192,37 @@ function pushUserData() {
   quotes.push(userPosterQuote.value);
 };
 
-
 function pushToSaved() {
-  for (var i=0; i<savedPosters.length; i++) {
+  for (var i = 0; i < savedPosters.length; i ++) {
     if (savedPosters[i].title === currentPoster.title &&
         savedPosters[i].quote === currentPoster.quote &&
         savedPosters[i].imageURL === currentPoster.imageURL) {
           return
         }
   }
-      savedPosters.push(currentPoster);
-      // console.log(savedPosters)
-}
+  savedPosters.push(currentPoster);
+};
 
 function makeSavedPage() {
-  savedPostersGrid.innerHTML =""
-  for (var i=0; i<savedPosters.length; i++) {
+  savedPostersGrid.innerHTML = ""
+  for (var i = 0; i < savedPosters.length; i ++) {
     savedPostersGrid.innerHTML += `
-   <div class="mini-poster">
+   <div class="mini-poster" id=${savedPosters[i].id}>
     <img src=${savedPosters[i].imageURL} alt="sorry can't load">
     <h2>${savedPosters[i].title}</h2>
     <h4>${savedPosters[i].quote}</h4>
-   </div>
-    `
+   </div>`
   }
-  // return
-}
+};
 
+function deleteMiniPoster(e) {
+  for (i = 0; i < savedPosters.length; i ++) {
+    if (savedPosters[i].id == e.target.closest('.mini-poster').id) {
+      savedPosters.splice(i, 1)
+    }
+  }
+  loadSavedPoster();
+};
 
 function loadFormPage() {
   hidePage(mainPosterPage);
@@ -249,12 +253,4 @@ function showPage(selectorVariable) {
   selectorVariable.classList.remove('hidden')
 };
 
-/* ITERATION 2
-- create helper-function that will instantiate new Poster object with values of
-the form fields - assign to currentPoster
-- create a function that run that helper-function and then assign the
-innerText of the HTML elements to currentPoster
-- event listener that will run function ^^
 
-
-*/
