@@ -19,6 +19,8 @@ var titleInputField = document.querySelector('#poster-title');
 var quoteInputField = document.querySelector('#poster-quote');
 var showPosterButton = document.querySelector(".make-poster");
 
+var saveMyPosterButton = document.querySelector('.save-poster');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -137,6 +139,7 @@ showPosterButton.addEventListener('click', function() {
   saveUserInputs();
 });
 
+saveMyPosterButton.addEventListener('click', saveMyPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -187,4 +190,8 @@ function saveUserInputs() {
   images.push(imageInputField.value);
   titles.push(titleInputField.value);
   quotes.push(quoteInputField.value);
+}
+
+function saveMyPoster() {
+  savedPosters.push(currentPoster);
 }
