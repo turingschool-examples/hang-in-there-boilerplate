@@ -1,18 +1,17 @@
-# Hang In There
+# Make your own motivational poster!
 
-A boilerplate repo. 
+A Ron and Kyle project
 
-## Set Up
+## How to
 
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
+1. Click Show Another Random Poster to display a random image with a motivational quote and title!
+2. If you would like to save the randomly generated poster, click Save This Poster.
+3. To make your own poster click Make Your Own Poster and then fill in the required fields.
+4. To save your custom poster design click Save This Poster.
+5. If you would like to see all the posters you have saved then click Show Saved Posters.
 
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
 
-To view your project:
 
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
+[Our repository](https://github.com/K-Howard/RonKyle)
+[Kyles Github](https://github.com/K-Howard)
+[Rons Github](https://github.com/rlh28)

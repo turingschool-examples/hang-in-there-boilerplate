@@ -171,13 +171,13 @@ backToMain.addEventListener('click', function() {
   console.log(mySavedPosters);
 });
 
-miniPoster.addEventListener('dblclick', function(event) {
-  event.preventDefault();
-  hidePoster();
-  showSaved();
-  showGrid();
-  deletePoster();
-})
+// miniPoster.addEventListener('dblclick', function(event) {
+//   event.preventDefault();
+//   hidePoster();
+//   showSaved();
+//   showGrid();
+//   deletePoster();
+// })
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -238,9 +238,9 @@ function showGrid() {
   grid.innerHTML = htmlElem;
 }
 
-function deletePoster() {
-  mySavedPosters.pop(currentPoster);
-}
+// function deletePoster() {
+//   mySavedPosters.pop(currentPoster);
+// }
 
 function randPoster() {
   postImg.src = images[getRandomIndex(images)];
