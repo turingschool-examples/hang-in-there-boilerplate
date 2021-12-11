@@ -10,6 +10,7 @@ var showSavedButton = document.querySelector('.show-saved');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
 var makePosterButton = document.querySelector('.make-poster');
+var savePosterButton = document.querySelector('.save-poster');
 
 var mainPosterPage = document.querySelector('.main-poster');
 var posterFormPage = document.querySelector('.poster-form');
@@ -19,6 +20,7 @@ var userPosterTitle = document.querySelector('#poster-title');
 var userPosterQuote = document.querySelector('#poster-quote');
 var userPosterImage = document.querySelector('#poster-image-url');
 
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 
 // we've provided you with some data to work with 👇
@@ -138,6 +140,7 @@ backToMainButton.addEventListener('click', loadMainFromSaved)
 
 makePosterButton.addEventListener('click', loadMainUserPoster);
 
+savePosterButton.addEventListener('click', pushToSaved)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -173,9 +176,9 @@ function loadMainUserPoster(e) {
   e.preventDefault();
   makeUserPoster();
   pushUserData();
-  console.log(titles);
-  console.log(images);
-  console.log(quotes);
+  // console.log(titles);
+  // console.log(images);
+  // console.log(quotes);
   hidePage(posterFormPage);
   showPage(mainPosterPage);
   posterTitle.innerText = currentPoster.title;
@@ -186,8 +189,36 @@ function loadMainUserPoster(e) {
 function pushUserData() {
   images.push(userPosterImage.value);
   titles.push(userPosterTitle.value);
-  quotes.push(userPosterQuote.value)
+  quotes.push(userPosterQuote.value);
 };
+
+
+function pushToSaved() {
+  for (var i=0; i<savedPosters.length; i++) {
+    if (savedPosters[i].title === currentPoster.title &&
+        savedPosters[i].quote === currentPoster.quote &&
+        savedPosters[i].imageURL === currentPoster.imageURL) {
+          return
+        }
+  }
+      savedPosters.push(currentPoster);
+      // console.log(savedPosters)
+}
+
+function makeSavedPage() {
+  savedPostersGrid.innerHTML =""
+  for (var i=0; i<savedPosters.length; i++) {
+    savedPostersGrid.innerHTML += `
+   <div class="mini-poster">
+    <img src=${savedPosters[i].imageURL} alt="sorry can't load">
+    <h2>${savedPosters[i].title}</h2>
+    <h4>${savedPosters[i].quote}</h4>
+   </div>
+    `
+  }
+  // return
+}
+
 
 function loadFormPage() {
   hidePage(mainPosterPage);
@@ -197,6 +228,7 @@ function loadFormPage() {
 function loadSavedPoster() {
   hidePage(mainPosterPage);
   showPage(savedPostersPage);
+  makeSavedPage();
 };
 
 function loadMainFromSaved() {
