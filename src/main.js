@@ -139,6 +139,7 @@ showPosterButton.addEventListener('click', function() {
   saveUserInputs();
 });
 
+saveMyPosterButton.addEventListener('click', saveMyPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
