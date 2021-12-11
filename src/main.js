@@ -5,9 +5,16 @@ var quote = document.querySelector('.poster-quote');
 
 var image = document.querySelector('img');
 
-var newRandomPosterButton = document.querySelector('.show-random')
+var randomPosterButton = document.querySelector('.show-random');
+
+var makeYourOwnPosterButton = document.querySelector('.show-form');
+
+var makeYourOwnPoster = document.querySelector('.poster-form');//lines 26-39 in HTML
+
+var mainPosterPage = document.querySelector('.main-poster');//lines 11-25 in HTML
 
 
+//var makeOwnPosterButton = document.querySelector('.make-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -111,26 +118,35 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-// To have poster on load when page initially loading
-// window.addEventListener('load', newRandomPoster);
 
-newRandomPosterButton.addEventListener('click', generatePoster);
+window.addEventListener('load', generatePoster);
+
+randomPosterButton.addEventListener('click', generatePoster);
+
+makeYourOwnPosterButton.addEventListener('click', makeOwnPoster);
 
 
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
 function generatePoster () {
-    var randomImage = images[getRandomIndex(images)]
-
+    var randomImage = images[getRandomIndex(images)];
     var randomTitle = titles[getRandomIndex(titles)];
-
     var randomQuote = quotes[getRandomIndex(quotes)];
 
     title.innerText = randomTitle;
     quote.innerText = randomQuote;
     image.src = randomImage;
+}
+
+function makeOwnPoster() {
+    makeYourOwnPoster.classList.remove('hidden');
+
+    mainPosterPage.classList.add('hidden');
+}
+
+function testFunction () {
+    console.log('Test Function');
 }
