@@ -131,7 +131,10 @@ randomizeButton.addEventListener('click', getRandomPoster);
 
 myoButton.addEventListener('click', showPosterForm);
 
-savedPostersButton.addEventListener('click', showSavedPosters);
+savedPostersButton.addEventListener('click', function() {
+  showSavedPosters();
+  makePosterGrid();
+});
 
 nevermindButton.addEventListener('click', showPosterForm);
 backToMainButton.addEventListener('click', showSavedPosters);
@@ -173,17 +176,27 @@ function showPosterForm() {
   mainSection.classList.toggle('hidden');
 }
 
+function saveMyPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+}
+
 function showSavedPosters() {
   savedSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
+}
+
+function makePosterGrid() {
+  savedPostersGrid.innerHTML = '';
   for (var i = 0; i < savedPosters.length; i++) {
-    savedPostersGrid.innerHTML = `
-    <article class="saved-posters-grid mini-poster">
-      <img class="mini-poster" src=${savedPosters[i].imageURL}>
-      <h2 class="mini-poster">${savedPosters[i].title}</h2>
-      <h4 class="mini-poster">${savedPosters[i].quote}</h4>
-    </article>
-    `
+    savedPostersGrid.innerHTML += `
+      <section class="mini-poster">
+        <img src=${savedPosters[i].imageURL}>
+        <h2>${savedPosters[i].title}</h2>
+        <h4>${savedPosters[i].quote}</h4>
+      </section>
+      `
   }
 }
 
@@ -201,8 +214,4 @@ function saveUserInputs() {
   images.push(imageInputField.value);
   titles.push(titleInputField.value);
   quotes.push(quoteInputField.value);
-}
-
-function saveMyPoster() {
-  savedPosters.push(currentPoster);
 }
