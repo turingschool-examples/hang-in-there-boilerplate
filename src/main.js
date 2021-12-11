@@ -1,16 +1,25 @@
 // query selector variables go here 👇
 //
-// var randomButton = document.querySelector('.show-random');
-// var postTitle = document.querySelector('.poster-title');
-// var postQuote = document.querySelector('.poster-quote');
-// var postImg = document.querySelector('.poster-img');
-// var makePosterButton = document.querySelector('.show-form');
-// var mainPoster = document.querySelector('.main-poster');
-// var posterForm = document.querySelector('.poster-form');
-// var savedPostersButton = document.querySelector('.show-saved');
-// var savedPosters = document.querySelector('.saved-posters')
-// var showMain = document.querySelector('.show-main');
-// var backToMain = document.querySelector('.back-to-main');
+var randomButton = document.querySelector('.show-random');
+var postTitle = document.querySelector('.poster-title');
+var postQuote = document.querySelector('.poster-quote');
+var postImg = document.querySelector('.poster-img');
+var makePosterButton = document.querySelector('.show-form');
+var mainPoster = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
+var savedPostersButton = document.querySelector('.show-saved');
+var savedPosters = document.querySelector('.saved-posters')
+var showMain = document.querySelector('.show-main');
+var backToMain = document.querySelector('.back-to-main');
+var makeImage = document.querySelector('#poster-image-url')
+var makeTitle = document.querySelector('#poster-title')
+var makeQuote = document.querySelector('#poster-quote')
+var makePoster = document.querySelector('.make-poster')
+var saveThePoster = document.querySelector('.save-poster')
+var grid = document.querySelector('.saved-posters-grid')
+var miniPoster = document.querySelector('mini-poster')
+var mySavedPosters = [];
+var currentPoster;
 
 
 // we've provided you with some data to work with 👇
@@ -111,26 +120,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var randomButton = document.querySelector('.show-random');
-var postTitle = document.querySelector('.poster-title');
-var postQuote = document.querySelector('.poster-quote');
-var postImg = document.querySelector('.poster-img');
-var makePosterButton = document.querySelector('.show-form');
-var mainPoster = document.querySelector('.main-poster');
-var posterForm = document.querySelector('.poster-form');
-var savedPostersButton = document.querySelector('.show-saved');
-var savedPosters = document.querySelector('.saved-posters')
-var showMain = document.querySelector('.show-main');
-var backToMain = document.querySelector('.back-to-main');
-var makeImage = document.querySelector('#poster-image-url')
-var makeTitle = document.querySelector('#poster-title')
-var makeQuote = document.querySelector('#poster-quote')
-var makePoster = document.querySelector('.make-poster')
-var saveThePoster = document.querySelector('.save-poster')
-var grid = document.querySelector('.saved-posters-grid')
-var miniPoster = document.querySelector('mini-poster')
-var mySavedPosters = [];
-var currentPoster;
+
 // event listeners go here 👇
 
 saveThePoster.addEventListener('click', function(){
@@ -140,7 +130,7 @@ saveThePoster.addEventListener('click', function(){
 })
 
 makePoster.addEventListener('click', function(event){
-event.preventDefault()
+ event.preventDefault()
   makeYourOwn();
   hidePoster();
   showForm();
@@ -184,23 +174,11 @@ backToMain.addEventListener('click', function() {
 
 function saveMyPoster() {
 
-
   if(!mySavedPosters.includes(currentPoster)) {
     mySavedPosters.push(currentPoster);
   }
 
-  // mySavedPosters.push(currentPoster)
-  console.log("Yay")
-
-
-
-  console.log("What we should have " + mySavedPosters);
-  console.log(mySavedPosters.length);
-
   }
-
-
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -237,10 +215,6 @@ function showGrid() {
   }
   grid.innerHTML = htmlElem;
 }
-
-// function deletePoster() {
-//   mySavedPosters.pop(currentPoster);
-// }
 
 function randPoster() {
   postImg.src = images[getRandomIndex(images)];
