@@ -118,6 +118,7 @@ var newImageUrl = document.querySelector('#poster-image-url');
 var newTitle = document.querySelector('#poster-title');
 var newQuote = document.querySelector('#poster-quote');
 var savedGrid = document.querySelector('.saved-posters-grid');
+// querySelector for line 132;
 
 // event listeners go here 👇
 window.onload = makeRandomPoster();
@@ -128,7 +129,7 @@ showSavedPostersButton.addEventListener('click', showSavedPosters);
 nevermindButton.addEventListener('click', nevermind);
 backButton.addEventListener('click', backToMain);
 customPosterButton.addEventListener('click', showMyPoster);
-
+savedGrid.addEventListener('dblclick', deletePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -160,10 +161,10 @@ function showSavedPosters() {
   hide(mainPage);
   show(savedPage);
   savedGrid.innerHTML = ``
-  for ( var i = 0; i < savedPosters.length; i++){
+  for ( var i = 0; i < savedPosters.length; i++) {
     savedGrid.innerHTML += `
     <article class="mini-poster">
-      <img class="" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+      <img class="" id=${savedPosters[i].id} src="${savedPosters[i].imageURL}" alt="nothin' to see here">
       <h1 class="">${savedPosters[i].title}</h1>
       <h3 class="">${savedPosters[i].quote}</h3>
     </article>`
@@ -196,5 +197,14 @@ function showMyPoster() {
 function saveNewPoster() {
   if(!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
+  }
+}
+
+function deletePoster() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (`${savedPosters[i].id}` === event.target.id) {
+      savedPosters.splice(i, 1);
+    }
+    showSavedPosters()
   }
 }
