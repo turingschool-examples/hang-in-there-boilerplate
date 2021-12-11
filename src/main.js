@@ -132,7 +132,11 @@ savedPostersButton.addEventListener('click', showSavedPosters);
 nevermindButton.addEventListener('click', showPosterForm);
 backToMainButton.addEventListener('click', showSavedPosters);
 
-showPosterButton.addEventListener('click', makeCustomPoster);
+showPosterButton.addEventListener('click', function() {
+  makeCustomPoster();
+  saveUserInputs();
+});
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -177,4 +181,10 @@ function makeCustomPoster() {
   myoSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
   event.preventDefault();
+}
+
+function saveUserInputs() {
+  images.push(imageInputField.value);
+  titles.push(titleInputField.value);
+  quotes.push(quoteInputField.value);
 }
