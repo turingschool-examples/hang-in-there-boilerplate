@@ -21,6 +21,8 @@ var showPosterButton = document.querySelector(".make-poster");
 
 var saveMyPosterButton = document.querySelector('.save-poster');
 
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -129,7 +131,10 @@ randomizeButton.addEventListener('click', getRandomPoster);
 
 myoButton.addEventListener('click', showPosterForm);
 
-savedPostersButton.addEventListener('click', showSavedPosters);
+savedPostersButton.addEventListener('click', function() {
+  showSavedPosters();
+  makePosterGrid();
+});
 
 nevermindButton.addEventListener('click', showPosterForm);
 backToMainButton.addEventListener('click', showSavedPosters);
@@ -174,6 +179,19 @@ function showPosterForm() {
 function showSavedPosters() {
   savedSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
+}
+
+function makePosterGrid() {
+  savedPostersGrid.innerHTML = '';
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersGrid.innerHTML += `
+      <section class="mini-poster">
+        <img src=${savedPosters[i].imageURL}>
+        <h2>${savedPosters[i].title}</h2>
+        <h4>${savedPosters[i].quote}</h4>
+      </section>
+      `
+  }
 }
 
 function makeCustomPoster() {
