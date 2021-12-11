@@ -176,6 +176,15 @@ function showPosterForm() {
 function showSavedPosters() {
   savedSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersGrid.innerHTML = `
+    <article class="saved-posters-grid mini-poster">
+      <img class="mini-poster" src=${savedPosters[i].imageURL}>
+      <h2 class="mini-poster">${savedPosters[i].title}</h2>
+      <h4 class="mini-poster">${savedPosters[i].quote}</h4>
+    </article>
+    `
+  }
 }
 
 function makeCustomPoster() {
