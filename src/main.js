@@ -193,5 +193,7 @@ function saveUserInputs() {
 }
 
 function saveMyPoster() {
-  savedPosters.push(currentPoster);
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 }
