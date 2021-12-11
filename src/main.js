@@ -134,6 +134,18 @@ makePosterButton.addEventListener('click', function() {
 });
 saveMyPosterButton.addEventListener('click', saveMyPoster);
 savedPostersGrid.addEventListener('dblclick', deletePoster);
+posterImage.addEventListener('click', function() {
+  currentPoster = new Poster(getRandomImage(), currentPoster.title, currentPoster.quote);
+  posterImage.src = currentPoster.imageURL;
+});
+posterTitle.addEventListener('click', function() {
+  currentPoster = new Poster(currentPoster.imageURL, getRandomTitle(), currentPoster.quote);
+  posterTitle.innerText = currentPoster.title;
+});
+posterQuote.addEventListener('click', function() {
+  currentPoster = new Poster(currentPoster.imageURL, currentPoster.title, getRandomQuote());
+  posterQuote.innerText = currentPoster.quote;
+});
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
