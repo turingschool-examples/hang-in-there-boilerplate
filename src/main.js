@@ -14,7 +14,7 @@ var savedPosterPage = document.querySelector('.saved-posters');
 
 var savedPosterButton = document.querySelector('.show-saved');
 var nevermindButton = document.querySelector('.show-main');
-
+var backToMainButton = document.querySelector('.back-to-main')
 
 
 
@@ -141,6 +141,12 @@ savedPosterButton.addEventListener('click', showSavedPoster);
 nevermindButton.addEventListener('click',function() {
   backToMain(makeYourOwnPoster)
 });
+
+backToMainButton.addEventListener('click', function(){
+  backToMain(savedPosterPage)
+})
+
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
