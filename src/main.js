@@ -127,6 +127,8 @@ var makeTitle = document.querySelector('#poster-title')
 var makeQuote = document.querySelector('#poster-quote')
 var makePoster = document.querySelector('.make-poster')
 var saveThePoster = document.querySelector('.save-poster')
+var grid = document.querySelector('.saved-posters-grid')
+var miniPoster = document.querySelector('mini-poster')
 var mySavedPosters = [];
 var currentPoster;
 // event listeners go here 👇
@@ -160,6 +162,7 @@ savedPostersButton.addEventListener('click', function(event) {
  event.preventDefault()
   hidePoster();
   showSaved();
+  showGrid();
 });
 
 backToMain.addEventListener('click', function() {
@@ -168,27 +171,36 @@ backToMain.addEventListener('click', function() {
   console.log(mySavedPosters);
 });
 
+miniPoster.addEventListener('dblclick', function(event) {
+  event.preventDefault();
+  hidePoster();
+  showSaved();
+  showGrid();
+  deletePoster();
+})
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
 function saveMyPoster() {
-  currentPoster = new Poster(postImg.src, postTitle.innerText, postQuote.innerText);
-  console.log(currentPoster.title);
 
-  if(mySavedPosters.length >= 1) {
-    for(var i = 0; i < mySavedPosters.length; i++) {
-      if(!mySavedPosters[i].title === currentPoster.title) {
-        return
-      }
-    }
-  } else {
+
+  if(!mySavedPosters.includes(currentPoster)) {
     mySavedPosters.push(currentPoster);
   }
+
+  // mySavedPosters.push(currentPoster)
+  console.log("Yay")
+
+
 
   console.log("What we should have " + mySavedPosters);
   console.log(mySavedPosters.length);
 
-}
+  }
+
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -210,13 +222,31 @@ function makeYourOwn() {
   postImg.src = makeImage.value
   postTitle.innerText = makeTitle.value
   postQuote.innerText = makeQuote.value
+  currentPoster = new Poster(postImg.src, postTitle.innerText, postQuote.innerText);
+}
+
+function showGrid() {
+  var htmlElem = '';
+  for(var i = 0; i < mySavedPosters.length; i++) {
+    htmlElem += `
+    <section class = "mini-poster">
+      <img src="${mySavedPosters[i].imageURL}"alt="images">
+      <h2>${mySavedPosters[i].title}</h2>
+      <h3>${mySavedPosters[i].quote}</h3>
+    </section>`
+  }
+  grid.innerHTML = htmlElem;
+}
+
+function deletePoster() {
+  mySavedPosters.pop(currentPoster);
 }
 
 function randPoster() {
   postImg.src = images[getRandomIndex(images)];
   postTitle.innerText = titles[getRandomIndex(titles)];
   postQuote.innerText = quotes[getRandomIndex(quotes)];
-
+  currentPoster = new Poster(postImg.src, postTitle.innerText, postQuote.innerText);
 };
 
 randPoster();
