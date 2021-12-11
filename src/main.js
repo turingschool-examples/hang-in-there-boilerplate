@@ -14,6 +14,11 @@ var savedSection = document.querySelector('.saved-posters');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
 
+var imageInputField = document.querySelector('#poster-image-url');
+var titleInputField = document.querySelector('#poster-title');
+var quoteInputField = document.querySelector('#poster-quote');
+var showPosterButton = document.querySelector(".make-poster");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -127,6 +132,8 @@ savedPostersButton.addEventListener('click', showSavedPosters);
 nevermindButton.addEventListener('click', showPosterForm);
 backToMainButton.addEventListener('click', showSavedPosters);
 
+showPosterButton.addEventListener('click', makeCustomPoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -160,4 +167,14 @@ function showPosterForm() {
 function showSavedPosters() {
   savedSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
+}
+
+function makeCustomPoster() {
+  currentPoster = new Poster(imageInputField.value, titleInputField.value, quoteInputField.value);
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+  myoSection.classList.toggle('hidden');
+  mainSection.classList.toggle('hidden');
+  event.preventDefault();
 }
