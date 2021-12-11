@@ -126,9 +126,16 @@ var makeImage = document.querySelector('#poster-image-url')
 var makeTitle = document.querySelector('#poster-title')
 var makeQuote = document.querySelector('#poster-quote')
 var makePoster = document.querySelector('.make-poster')
+var saveThePoster = document.querySelector('.save-poster')
 var mySavedPosters = [];
-//var currentPoster;
+var currentPoster;
 // event listeners go here 👇
+
+saveThePoster.addEventListener('click', function(){
+  saveMyPoster();
+  // hidePoster();
+
+})
 
 makePoster.addEventListener('click', function(event){
 event.preventDefault()
@@ -158,10 +165,31 @@ savedPostersButton.addEventListener('click', function(event) {
 backToMain.addEventListener('click', function() {
   showSaved();
   hidePoster();
+  console.log(mySavedPosters);
 });
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+function saveMyPoster() {
+  currentPoster = new Poster(postImg.src, postTitle.innerText, postQuote.innerText);
+  console.log(currentPoster.title);
+
+  if(mySavedPosters.length >= 1) {
+    for(var i = 0; i < mySavedPosters.length; i++) {
+      if(!mySavedPosters[i].title === currentPoster.title) {
+        return
+      }
+    }
+  } else {
+    mySavedPosters.push(currentPoster);
+  }
+
+  console.log("What we should have " + mySavedPosters);
+  console.log(mySavedPosters.length);
+
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
