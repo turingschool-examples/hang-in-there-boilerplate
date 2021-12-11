@@ -191,9 +191,17 @@ function pushUserData() {
   quotes.push(userPosterQuote.value);
 };
 
+
 function pushToSaved() {
-  savedPosters.push(currentPoster);
-  console.log(savedPosters);
+  for (var i=0; i<savedPosters.length; i++) {
+    if (savedPosters[i].title === currentPoster.title &&
+        savedPosters[i].quote === currentPoster.quote &&
+        savedPosters[i].imageURL === currentPoster.imageURL) {
+          return
+        }
+  }
+      savedPosters.push(currentPoster);
+      // console.log(savedPosters)
 }
 
 function loadFormPage() {
