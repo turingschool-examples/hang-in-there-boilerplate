@@ -1,11 +1,16 @@
 // query selector variables go here 👇
-
-//add others and set better variable names
-
-var randomButton = document.querySelector('.show-random');
-var postTitle = document.querySelector('.poster-title');
-var postQuote = document.querySelector('.poster-quote');
-var postImg = document.querySelector('.poster-img');
+//
+// var randomButton = document.querySelector('.show-random');
+// var postTitle = document.querySelector('.poster-title');
+// var postQuote = document.querySelector('.poster-quote');
+// var postImg = document.querySelector('.poster-img');
+// var makePosterButton = document.querySelector('.show-form');
+// var mainPoster = document.querySelector('.main-poster');
+// var posterForm = document.querySelector('.poster-form');
+// var savedPostersButton = document.querySelector('.show-saved');
+// var savedPosters = document.querySelector('.saved-posters')
+// var showMain = document.querySelector('.show-main');
+// var backToMain = document.querySelector('.back-to-main');
 
 
 // we've provided you with some data to work with 👇
@@ -106,11 +111,54 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
+var randomButton = document.querySelector('.show-random');
+var postTitle = document.querySelector('.poster-title');
+var postQuote = document.querySelector('.poster-quote');
+var postImg = document.querySelector('.poster-img');
+var makePosterButton = document.querySelector('.show-form');
+var mainPoster = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
+var savedPostersButton = document.querySelector('.show-saved');
+var savedPosters = document.querySelector('.saved-posters')
+var showMain = document.querySelector('.show-main');
+var backToMain = document.querySelector('.back-to-main');
+var makeImage = document.querySelector('#poster-image-url')
+var makeTitle = document.querySelector('#poster-title')
+var makeQuote = document.querySelector('#poster-quote')
+var makePoster = document.querySelector('.make-poster')
+var mySavedPosters = [];
+//var currentPoster;
 // event listeners go here 👇
 
+makePoster.addEventListener('click', function(event){
+event.preventDefault()
+  makeYourOwn();
+  hidePoster();
+  showForm();
+});
+
 randomButton.addEventListener('click', randPoster);
+
+makePosterButton.addEventListener('click', function() {
+  hidePoster();
+  showForm();
+});
+
+showMain.addEventListener('click', function() {
+  showForm();
+  hidePoster();
+});
+
+savedPostersButton.addEventListener('click', function(event) {
+ event.preventDefault()
+  hidePoster();
+  showSaved();
+});
+
+backToMain.addEventListener('click', function() {
+  showSaved();
+  hidePoster();
+});
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -118,12 +166,29 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
+function hidePoster() {
+  mainPoster.classList.toggle("hidden");
+};
+
+function showForm() {
+  posterForm.classList.toggle("hidden");
+};
+
+function showSaved() {
+  savedPosters.classList.toggle("hidden");
+};
+function makeYourOwn() {
+//console.log('makeYourOwn')
+  postImg.src = makeImage.value
+  postTitle.innerText = makeTitle.value
+  postQuote.innerText = makeQuote.value
+}
 
 function randPoster() {
   postImg.src = images[getRandomIndex(images)];
   postTitle.innerText = titles[getRandomIndex(titles)];
   postQuote.innerText = quotes[getRandomIndex(quotes)];
-  //currentPoster = new Poster(randImage.src, mainTitle.innerText, randQuote.innerText);
+
 };
 
 randPoster();
