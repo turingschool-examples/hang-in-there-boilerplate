@@ -159,10 +159,15 @@ function showForm() {
 function showSavedPosters() {
   hide(mainPage);
   show(savedPage);
-  savedGrid.classList.add("poster-img poster-title poster-quote");
-  // savedGrid.classList.add("poster-title");
-  // savedGrid.classList.add("poster-quote");
-  //savedPosters;
+  savedGrid.innerHTML = ``
+  for ( var i = 0; i < savedPosters.length; i++){
+    savedGrid.innerHTML += `
+    <article class="mini-poster">
+      <img class="" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+      <h1 class="">${savedPosters[i].title}</h1>
+      <h3 class="">${savedPosters[i].quote}</h3>
+    </article>`
+  }
 }
 
 function nevermind() {
