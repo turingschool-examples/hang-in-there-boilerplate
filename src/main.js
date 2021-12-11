@@ -140,6 +140,7 @@ function makeRandomPoster() {
   coverImage.src = images[getRandomIndex(images)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
   coverQuote.innerText = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(coverImage.src, coverTitle.innerText, coverQuote.innerText);
 }
 
 function hide(item) {
@@ -158,7 +159,9 @@ function showForm() {
 function showSavedPosters() {
   hide(mainPage);
   show(savedPage);
-  //savedGrid;
+  savedGrid.classList.add("poster-img poster-title poster-quote");
+  // savedGrid.classList.add("poster-title");
+  // savedGrid.classList.add("poster-quote");
   //savedPosters;
 }
 
@@ -186,8 +189,7 @@ function showMyPoster() {
 }
 
 function saveNewPoster() {
-  currentPoster = new Poster(coverImage.src, coverTitle.innerText, coverQuote.innerText);
   if(!savedPosters.includes(currentPoster)) {
-  savedPosters.push(currentPoster);
+    savedPosters.push(currentPoster);
   }
 }
