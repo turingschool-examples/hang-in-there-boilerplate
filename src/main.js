@@ -172,22 +172,9 @@ backToMain.addEventListener('click', function() {
 // (we've provided one for you to get you started)!
 
 function saveMyPoster() {
-  currentPoster = new Poster(postImg.src, postTitle.innerText, postQuote.innerText);
-  console.log(currentPoster.title);
-
-  if(mySavedPosters.length >= 1) {
-    for(var i = 0; i < mySavedPosters.length; i++) {
-      if(!mySavedPosters[i].title === currentPoster.title) {
-        return
-      }
-    }
-  } else {
+  if(!mySavedPosters.includes(currentPoster)) {
     mySavedPosters.push(currentPoster);
   }
-
-  console.log("What we should have " + mySavedPosters);
-  console.log(mySavedPosters.length);
-
 }
 
 function getRandomIndex(array) {
@@ -210,13 +197,14 @@ function makeYourOwn() {
   postImg.src = makeImage.value
   postTitle.innerText = makeTitle.value
   postQuote.innerText = makeQuote.value
+  currentPoster = new Poster(postImg.src, postTitle.innerText, postQuote.innerText);
 }
 
 function randPoster() {
   postImg.src = images[getRandomIndex(images)];
   postTitle.innerText = titles[getRandomIndex(titles)];
   postQuote.innerText = quotes[getRandomIndex(quotes)];
-
+  currentPoster = new Poster(postImg.src, postTitle.innerText, postQuote.innerText);
 };
 
 randPoster();
