@@ -146,6 +146,8 @@ showPosterButton.addEventListener('click', function() {
 
 saveMyPosterButton.addEventListener('click', saveMyPoster);
 
+savedPostersGrid.addEventListener('dblclick', deletePoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -185,13 +187,23 @@ function makePosterGrid() {
   savedPostersGrid.innerHTML = '';
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.innerHTML += `
-      <section class="mini-poster">
+      <section class="mini-poster" id=${savedPosters[i].id}>
         <img src=${savedPosters[i].imageURL}>
         <h2>${savedPosters[i].title}</h2>
         <h4>${savedPosters[i].quote}</h4>
       </section>
       `
   }
+}
+
+function deletePoster() {
+  var id = event.target.parentNode.id;
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id == id) {
+    savedPosters.splice(i, 1);
+    }
+  }
+  makePosterGrid();
 }
 
 function makeCustomPoster() {
