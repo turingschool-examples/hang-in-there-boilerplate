@@ -4,10 +4,10 @@ A Ron and Kyle project
 
 ## How to access the project
 
--First clone this repo from Github by going to the code button on the top right of the the RonKyle repo.
--Next copy the HTTPS and enter it into your terminal
--From there you will want to access the RonKyle directory by typing 'cd RonKyle' into your terminal.
--Once your have successfully cloned the repo and you are in the right directory you will want to type 'open index.html' into your terminal to open the project in a browser window.
+* First clone this repo from Github by going to the code button on the top right of the the RonKyle repo.
+* Next copy the HTTPS and enter it into your terminal
+* From there you will want to access the RonKyle directory by typing 'cd RonKyle' into your terminal.
+* Once your have successfully cloned the repo and you are in the right directory you will want to type 'open index.html' into your terminal to open the project in a browser window.
 
 ## How to navigate the project
 
