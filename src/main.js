@@ -176,12 +176,6 @@ function showPosterForm() {
   mainSection.classList.toggle('hidden');
 }
 
-function saveMyPoster() {
-  if (!savedPosters.includes(currentPoster)) {
-    savedPosters.push(currentPoster);
-  }
-}
-
 function showSavedPosters() {
   savedSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
@@ -214,4 +208,10 @@ function saveUserInputs() {
   images.push(imageInputField.value);
   titles.push(titleInputField.value);
   quotes.push(quoteInputField.value);
+}
+
+function saveMyPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 }
