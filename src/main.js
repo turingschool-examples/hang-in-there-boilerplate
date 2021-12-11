@@ -21,6 +21,8 @@ var showPosterButton = document.querySelector(".make-poster");
 
 var saveMyPosterButton = document.querySelector('.save-poster');
 
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
