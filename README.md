@@ -22,6 +22,7 @@ https://ekaiman.github.io/hang-in-there-boilerplate/
 - When the page loads, the user will see a randomly generated poster.
 - If the user would like to save that poster, the user will click on the <u>*Save This Poster*</u> button.
 - If the user would like to view all saved posters, the user will click on the <u>*Show Saved Posters*</u> button.
+- If the user would like to delete one of their saved posters, the user will double click on that posters image.
 - If the user would like to go back to the main page, the user will click on the
  <u>*Back to Main*</u> button.
 - If the user would like to see another random poster, the user will click on the <u>*Show Another Random Poster*</u> button.
@@ -30,3 +31,8 @@ https://ekaiman.github.io/hang-in-there-boilerplate/
 - Upon filling in the form, the user will then click the <u>*Show my poster*</u> button and will see their input reformatted into a poster on the main page.
 - If while on the <u>*Create your own motivational page*</u>, if the user would like to
 return to the main page, they will click on the <u>*Nevermind, take me back!*</u> button
+
+<div style="width:100%;height:0;padding-bottom:54%;position:relative;"><iframe src="https://giphy.com/embed/dmdFUIgO4x7hzacC6i" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/dmdFUIgO4x7hzacC6i">via GIPHY</a></p>
+
+## Future Additions
+We would like to add a feature that will alert the user when they try to save the same poster more than once .
