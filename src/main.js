@@ -191,3 +191,7 @@ function saveUserInputs() {
   titles.push(titleInputField.value);
   quotes.push(quoteInputField.value);
 }
+
+function saveMyPoster() {
+  savedPosters.push(currentPoster);
+}
