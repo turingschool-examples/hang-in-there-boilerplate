@@ -163,12 +163,12 @@ function getRandomPoster() {
 function showPosterForm() {
   formSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
-}
+};
 
 function showSavedPosters() {
   savedSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
-}
+};
 
 function makePosterGrid() {
   savedPostersGrid.innerHTML = '';
@@ -181,17 +181,17 @@ function makePosterGrid() {
       </section>
       `
   }
-}
+};
 
 function deletePoster() {
   var id = event.target.parentNode.id;
   for (var i = 0; i < savedPosters.length; i++) {
     if (savedPosters[i].id == id) {
-    savedPosters.splice(i, 1);
+      savedPosters.splice(i, 1);
     }
   }
   makePosterGrid();
-}
+};
 
 function makeCustomPoster() {
   currentPoster = new Poster(imageInputField.value, titleInputField.value, quoteInputField.value);
@@ -201,16 +201,16 @@ function makeCustomPoster() {
   formSection.classList.toggle('hidden');
   mainSection.classList.toggle('hidden');
   event.preventDefault();
-}
+};
 
 function saveUserInputs() {
   images.push(imageInputField.value);
   titles.push(titleInputField.value);
   quotes.push(quoteInputField.value);
-}
+};
 
 function saveMyPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
-}
+};
