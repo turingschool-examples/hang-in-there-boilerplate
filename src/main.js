@@ -20,6 +20,7 @@ var userPosterTitle = document.querySelector('#poster-title');
 var userPosterQuote = document.querySelector('#poster-quote');
 var userPosterImage = document.querySelector('#poster-image-url');
 
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 
 // we've provided you with some data to work with 👇
@@ -204,6 +205,21 @@ function pushToSaved() {
       // console.log(savedPosters)
 }
 
+function makeSavedPage() {
+  savedPostersGrid.innerHTML =""
+  for (var i=0; i<savedPosters.length; i++) {
+    savedPostersGrid.innerHTML += `
+   <div class="mini-poster">
+    <img src=${savedPosters[i].imageURL} alt="sorry can't load">
+    <h2>${savedPosters[i].title}</h2>
+    <h4>${savedPosters[i].quote}</h4>
+   </div>
+    `
+  }
+  // return
+}
+
+
 function loadFormPage() {
   hidePage(mainPosterPage);
   showPage(posterFormPage);
@@ -212,6 +228,7 @@ function loadFormPage() {
 function loadSavedPoster() {
   hidePage(mainPosterPage);
   showPage(savedPostersPage);
+  makeSavedPage();
 };
 
 function loadMainFromSaved() {
