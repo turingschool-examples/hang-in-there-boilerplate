@@ -5,4 +5,4 @@ Reference a related issue
 Description of changes proposed
 
 *Section 3:*
-Add mentions of team members resposbible for reviewing
+Add mentions of team members responsible for reviewing
