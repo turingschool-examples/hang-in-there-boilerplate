@@ -114,16 +114,16 @@ var nevermindButton = document.querySelector('.show-main');
 var backButton = document.querySelector('.back-to-main');
 var customPosterButton = document.querySelector('.make-poster');
 var form = document.querySelector('.poster-form');
-
 var newImageUrl = document.querySelector('#poster-image-url');
 var newTitle = document.querySelector('#poster-title');
 var newQuote = document.querySelector('#poster-quote');
+var savedGrid = document.querySelector('.saved-posters-grid');
 
 // event listeners go here 👇
 window.onload = makeRandomPoster();
 randomPosterButton.addEventListener('click', makeRandomPoster);
 makePosterButton.addEventListener('click', showForm);
-// savePosterButton.addEventListener('click',);
+savePosterButton.addEventListener('click', saveNewPoster);
 showSavedPostersButton.addEventListener('click', showSavedPosters);
 nevermindButton.addEventListener('click', nevermind);
 backButton.addEventListener('click', backToMain);
@@ -140,6 +140,7 @@ function makeRandomPoster() {
   coverImage.src = images[getRandomIndex(images)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
   coverQuote.innerText = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(coverImage.src, coverTitle.innerText, coverQuote.innerText);
 }
 
 function hide(item) {
@@ -158,6 +159,10 @@ function showForm() {
 function showSavedPosters() {
   hide(mainPage);
   show(savedPage);
+  savedGrid.classList.add("poster-img poster-title poster-quote");
+  // savedGrid.classList.add("poster-title");
+  // savedGrid.classList.add("poster-quote");
+  //savedPosters;
 }
 
 function nevermind() {
@@ -178,7 +183,13 @@ function showMyPoster() {
   coverImage.src = currentPoster.imageURL;
   coverTitle.innerText = currentPoster.title;
   coverQuote.innerText = currentPoster.quote;
-  window.images.push(currentPoster.imageURL);
+  images.push(currentPoster.imageURL);
   titles.push(currentPoster.title);
   quotes.push(currentPoster.quote);
+}
+
+function saveNewPoster() {
+  if(!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 }
