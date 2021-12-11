@@ -161,7 +161,7 @@ function showSavedPosters() {
   hide(mainPage);
   show(savedPage);
   savedGrid.innerHTML = ``
-  for ( var i = 0; i < savedPosters.length; i++){
+  for ( var i = 0; i < savedPosters.length; i++) {
     savedGrid.innerHTML += `
     <article class="mini-poster">
       <img class="" id=${savedPosters[i].id} src="${savedPosters[i].imageURL}" alt="nothin' to see here">
