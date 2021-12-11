@@ -198,8 +198,7 @@ function makeCustomPoster() {
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
-  formSection.classList.toggle('hidden');
-  mainSection.classList.toggle('hidden');
+  showPosterForm();
   event.preventDefault();
 };
 
