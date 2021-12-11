@@ -159,8 +159,9 @@ function showForm() {
 function showSavedPosters() {
   hide(mainPage);
   show(savedPage);
-  savedGrid.classList.add("poster-img poster-title poster-quote");
-  // savedGrid.classList.add("poster-title");
+  savedGrid.classList.add("poster-img", "poster-title", "poster-quote");
+  savedGrid.classList.add('mini-poster', );
+  window.savedGrid.add('savedPosters')
   // savedGrid.classList.add("poster-quote");
   //savedPosters;
 }
