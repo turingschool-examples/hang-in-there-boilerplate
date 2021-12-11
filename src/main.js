@@ -132,7 +132,8 @@ savedPostersButton.addEventListener('click', showSavedPosters);
 nevermindButton.addEventListener('click', showPosterForm);
 backToMainButton.addEventListener('click', showSavedPosters);
 
-showPosterButton.addEventListener('click', makeCustomPoster);
+showPosterButton.addEventListener('click', makeCustomPoster, saveUserInputs);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
