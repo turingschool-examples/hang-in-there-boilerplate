@@ -131,13 +131,9 @@ makeYourOwnPosterButton.addEventListener('click', makeOwnPoster);
 
 savedPosterButton.addEventListener('click', showSavedPoster);
 
-nevermindButton.addEventListener('click',function() {
-  backToMain(makeYourOwnPoster)
-});
+nevermindButton.addEventListener('click', makeOwnPoster);
 
-backToMainButton.addEventListener('click', function(){
-  backToMain(savedPosterPage)
-});
+backToMainButton.addEventListener('click', makeOwnPoster);
 
 showPosterButton.addEventListener('click', generatePosterFromInput);
 
@@ -161,18 +157,13 @@ function generatePoster () {
 };
 
 function makeOwnPoster() {
-    makeYourOwnPoster.classList.remove('hidden');
-    mainPosterPage.classList.add('hidden');
+    makeYourOwnPoster.classList.toggle('hidden');
+    mainPosterPage.classList.toggle('hidden');
 };
 
 function showSavedPoster() {
     savedPosterPage.classList.remove('hidden');
     mainPosterPage.classList.add('hidden');
-};
-
-function backToMain(currentPage){
-  currentPage.classList.add('hidden');
-  mainPosterPage.classList.remove('hidden');
 };
 
 function generatePosterFromInput(){
@@ -184,6 +175,5 @@ function generatePosterFromInput(){
   images.push(posterImageURL.value)
    titles.push(posterTitle.value)
   quotes.push(posterQuote.value)
-
-  backToMain(posterFormPage);
+  makeOwnPoster();
 };
