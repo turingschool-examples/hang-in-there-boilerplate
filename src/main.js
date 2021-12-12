@@ -129,11 +129,17 @@ randomPosterButton.addEventListener('click', generatePoster);
 
 makeYourOwnPosterButton.addEventListener('click', makeOwnPoster);
 
-savedPosterButton.addEventListener('click', showSavedPoster);
+savedPosterButton.addEventListener('click', function(){
+  returnToMain(savedPosterPage)
+});
 
-nevermindButton.addEventListener('click', makeOwnPoster);
+nevermindButton.addEventListener('click', function(){
+  returnToMain(makeYourOwnPoster)
+});
 
-backToMainButton.addEventListener('click', makeOwnPoster);
+backToMainButton.addEventListener('click', function(){
+  returnToMain(savedPosterPage)
+});
 
 showPosterButton.addEventListener('click', generatePosterFromInput);
 
@@ -161,9 +167,9 @@ function makeOwnPoster() {
     mainPosterPage.classList.toggle('hidden');
 };
 
-function showSavedPoster() {
-    savedPosterPage.classList.remove('hidden');
-    mainPosterPage.classList.add('hidden');
+function returnToMain(currentPage){
+  currentPage.classList.toggle('hidden')
+      mainPosterPage.classList.toggle('hidden');
 };
 
 function generatePosterFromInput(){
