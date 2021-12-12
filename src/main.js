@@ -1,4 +1,3 @@
-// query selector variables go here 👇
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
@@ -16,8 +15,6 @@ var quoteInputField = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector(".make-poster");
 var saveMyPosterButton = document.querySelector('.save-poster');
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
-
-// we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -117,8 +114,6 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-
-// event listeners go here 👇
 window.addEventListener('load', getRandomPoster);
 randomizeButton.addEventListener('click', getRandomPoster);
 formButton.addEventListener('click', showPosterForm);
@@ -126,29 +121,31 @@ showSavedButton.addEventListener('click', function() {
   showSavedPosters();
   makePosterGrid();
 });
+
 nevermindButton.addEventListener('click', showPosterForm);
 backToMainButton.addEventListener('click', showSavedPosters);
 makePosterButton.addEventListener('click', function() {
   makeCustomPoster();
   saveUserInputs();
 });
+
 saveMyPosterButton.addEventListener('click', saveMyPoster);
 savedPostersGrid.addEventListener('dblclick', deletePoster);
 posterImage.addEventListener('click', function() {
   currentPoster = new Poster(getRandomImage(), currentPoster.title, currentPoster.quote);
   posterImage.src = currentPoster.imageURL;
 });
+
 posterTitle.addEventListener('click', function() {
   currentPoster = new Poster(currentPoster.imageURL, getRandomTitle(), currentPoster.quote);
   posterTitle.innerText = currentPoster.title;
 });
+
 posterQuote.addEventListener('click', function() {
   currentPoster = new Poster(currentPoster.imageURL, currentPoster.title, getRandomQuote());
   posterQuote.innerText = currentPoster.quote;
 });
 
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
