@@ -193,7 +193,6 @@ function generatePosterFromInput(){
   image.src = posterImageURL.value
   title.innerText = posterTitle.value
   quote.innerText = posterQuote.value
-
   images.push(posterImageURL.value)
    titles.push(posterTitle.value)
   quotes.push(posterQuote.value)
