@@ -124,14 +124,12 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', generatePoster);
-randomPosterButton.addEventListener('click', generatePoster);
 
+randomPosterButton.addEventListener('click', generatePoster);
 
 makeYourOwnPosterButton.addEventListener('click', makeOwnPoster);
 
-// viewSavedPostersButton.addEventListener('click', viewSavedPosters);
 savedPosterButton.addEventListener('click', showSavedPoster);
-
 
 nevermindButton.addEventListener('click',function() {
   backToMain(makeYourOwnPoster)
@@ -139,9 +137,9 @@ nevermindButton.addEventListener('click',function() {
 
 backToMainButton.addEventListener('click', function(){
   backToMain(savedPosterPage)
-})
+});
 
-showPosterButton.addEventListener('click', generatePosterFromInput)
+showPosterButton.addEventListener('click', generatePosterFromInput);
 
 
 
@@ -151,7 +149,7 @@ showPosterButton.addEventListener('click', generatePosterFromInput)
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
 function generatePoster () {
     var randomImage = images[getRandomIndex(images)];
@@ -176,16 +174,6 @@ function backToMain(currentPage){
   currentPage.classList.add('hidden');
   mainPosterPage.classList.remove('hidden');
 };
-
-function testFunction() {
-    console.log('Test Function');
-};
-
-// function pushInput(){
-//   images.push(posterImageURL.value)
-//    titles.push(posterTitle.value)
-//   quotes.push(posterQuote.value)
-// };
 
 function generatePosterFromInput(){
   event.preventDefault();
