@@ -131,8 +131,9 @@ showMainBtn.addEventListener('click', showMain);
 backToMainBtn.addEventListener('click', backToMain);
 showMyPosterBtn.addEventListener('click', showMyPoster);
 savePosterBtn.addEventListener('click', savePoster)
+savedPostersGrid.addEventListener('dblclick', deletePoster)
 
-// functions and event handlers go here 👇
+// functions and event handlers go here 👇  
 // (we've provided one for you to get you started)!
 
 
@@ -208,4 +209,14 @@ function displayMiniPosters() {
       <h1>${savedPosters[i].title}</h1>
       <h3>${savedPosters[i].quote}</h3></section>`;
     }
+}
+
+function deletePoster() {
+  var id = event.target.parentNode.id
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id == id) {
+      savedPosters.splice(i,1)
+    }
+  }
+  displayMiniPosters()
 }
