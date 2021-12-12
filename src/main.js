@@ -3,23 +3,18 @@ var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 var image = document.querySelector('.poster-img');
 var randomPosterButton = document.querySelector('.show-random');
-
 var makeYourOwnPoster = document.querySelector('.poster-form');//lines 26-39 in HTML
 var makeYourOwnPosterButton = document.querySelector('.show-form');
-
 var mainPosterPage = document.querySelector('.main-poster');//lines 11-25 in HTML
-
 var savedPosterPage = document.querySelector('.saved-posters');
-
 var savedPosterButton = document.querySelector('.show-saved');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main')
-
 var posterImageURL = document.querySelector('#poster-image-url');
 var posterTitle = document.querySelector('#poster-title');
 var posterQuote = document.querySelector('#poster-quote');
-
 var showPosterButton = document.querySelector('.make-poster');
+var posterFormPage = document.querySelector('form')
 
 // var viewSavedPosters = document.querySelector('.saved-posters');
 // var viewSavedPostersButton = document.querySelector('.show-saved');
@@ -160,54 +155,48 @@ function getRandomIndex(array) {
 
 function generatePoster () {
     var randomImage = images[getRandomIndex(images)];
-
     var randomTitle = titles[getRandomIndex(titles)];
-
     var randomQuote = quotes[getRandomIndex(quotes)];
-
     title.innerText = randomTitle;
     quote.innerText = randomQuote;
     image.src = randomImage;
-}
-
+};
 
 function makeOwnPoster() {
     makeYourOwnPoster.classList.remove('hidden');
     mainPosterPage.classList.add('hidden');
-}
+};
 
 function showSavedPoster() {
     savedPosterPage.classList.remove('hidden');
     mainPosterPage.classList.add('hidden');
-}
+};
 
 function backToMain(currentPage){
   currentPage.classList.add('hidden');
   mainPosterPage.classList.remove('hidden');
-}
-// function viewSavedPosters() {
-//     viewSavedPosters.classList.remove('hidden');
-//     mainPosterPage.classList.add('hidden');
-//     //makeYourOwnPoster.classList.add('hidden');
-// }
+};
 
 function testFunction() {
     console.log('Test Function');
-}
+};
+
+// function pushInput(){
+//   images.push(posterImageURL.value)
+//    titles.push(posterTitle.value)
+//   quotes.push(posterQuote.value)
+// };
 
 function generatePosterFromInput(){
   event.preventDefault();
   var newInstance = new Poster(posterImageURL.value, posterTitle.value, posterQuote.value)
-image.src = posterImageURL.value
-title.innerText = posterTitle.value
-quote.innerText = posterQuote.value
+  image.src = posterImageURL.value
+  title.innerText = posterTitle.value
+  quote.innerText = posterQuote.value
 
-// images.push(posterImageURL.value)
-// titles.push(posterTitle.value)
-// quotes.push(posterQuote.value)
-console.log(newInstance)
-}
-// generatePosterFromInput() {
+  images.push(posterImageURL.value)
+   titles.push(posterTitle.value)
+  quotes.push(posterQuote.value)
 
-//   var newPoster = new Poster(url, title, quote)
-// };
+  backToMain(posterFormPage);
+};
