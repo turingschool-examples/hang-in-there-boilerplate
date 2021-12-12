@@ -24,8 +24,12 @@ When you click the Show Saved Posters button, it will take you to the saved post
 
 <img width="1440" alt="saved-view-empty" src="https://user-images.githubusercontent.com/79027364/145722654-d7a44bde-e2f6-4d92-be50-c912158dfe71.png">
 
-Clicking on the Make Your Own Poster button will take you to a form that contains fields to enter an image URL, title, and quote for your custom poster. Show my poster will bring you back to the main page view with your custom poster displayed. If you decide not to create your own poster, you can click on the Nevermind button and go back to the main page without filling out the form.
+Clicking on the Make Your Own Poster button will take you to a form that contains fields to enter an image URL, title, and quote for your custom poster. If you decide not to create your own poster, you can click on the Nevermind button and go back to the main page without filling out the form.
 
 <img width="1440" alt="form-view" src="https://user-images.githubusercontent.com/79027364/145722609-f4e5e3a1-2b04-4609-a771-e677d44666fb.png">
+
+#### Part 3: Make a Custom Poster
+
+On the poster form, fill in the three fields with your desired text and image URL. Show my poster will bring you back to the main page view with your custom poster displayed. It will also save your submitted data so that you can use it for future random posters.
 
 <img width="1440" alt="create-poster" src="https://user-images.githubusercontent.com/79027364/145722632-c2d6ab62-3bb8-45a1-80a9-e711bb2116ab.png">
