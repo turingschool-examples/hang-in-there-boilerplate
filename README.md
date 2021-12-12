@@ -8,11 +8,16 @@ This site was built using JavaScript, HTML, and CSS. There are three views for t
 - Make Your Own Poster page
 - Saved Posters page
 
-
 #### Contributors
 This site was built by [Kim Ward](https://github.com/kmewrd) and [Andrew Musselman](https://github.com/Andrew-Musselman) as a pair project at Turing School of Software & Design.
 
+## Step-by-Step Guide
+#### Part 1: Main Page
+The site can be opened at [this link](https://andrew-musselman.github.io/motivate-me/). On load, you will see the main page and a poster with a randomly selected image, title, and quote.
+
 <img width="1440" alt="main-page" src="https://user-images.githubusercontent.com/79027364/145722550-9324f6c6-8ae4-4f37-9cc2-2c7071fce44e.png">
+
+Every time the Show Another Random Poster button is clicked, a new random poster will be displayed.
 
 <img width="1440" alt="saved-view-empty" src="https://user-images.githubusercontent.com/79027364/145722654-d7a44bde-e2f6-4d92-be50-c912158dfe71.png">
 
