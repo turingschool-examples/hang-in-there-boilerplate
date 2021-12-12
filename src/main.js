@@ -1,9 +1,8 @@
 // query selector variables go here 👇
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
-var image = document.querySelector('img');
+var image = document.querySelector('.poster-img');
 var randomPosterButton = document.querySelector('.show-random');
-
 
 var makeYourOwnPoster = document.querySelector('.poster-form');//lines 26-39 in HTML
 var makeYourOwnPosterButton = document.querySelector('.show-form');
@@ -16,15 +15,16 @@ var savedPosterButton = document.querySelector('.show-saved');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main')
 
+var posterImageURL = document.querySelector('#poster-image-url');
+var posterTitle = document.querySelector('#poster-title');
+var posterQuote = document.querySelector('#poster-quote');
 
+var showPosterButton = document.querySelector('.make-poster');
 
 // var viewSavedPosters = document.querySelector('.saved-posters');
 // var viewSavedPostersButton = document.querySelector('.show-saved');
 
 //var makeOwnPosterButton = document.querySelector('.make-poster');
-
-
-
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -146,10 +146,14 @@ backToMainButton.addEventListener('click', function(){
   backToMain(savedPosterPage)
 })
 
+showPosterButton.addEventListener('click', generatePosterFromInput)
+
 
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -190,3 +194,20 @@ function backToMain(currentPage){
 function testFunction() {
     console.log('Test Function');
 }
+
+function generatePosterFromInput(){
+  event.preventDefault();
+  var newInstance = new Poster(posterImageURL.value, posterTitle.value, posterQuote.value)
+image.src = posterImageURL.value
+title.innerText = posterTitle.value
+quote.innerText = posterQuote.value
+
+// images.push(posterImageURL.value)
+// titles.push(posterTitle.value)
+// quotes.push(posterQuote.value)
+console.log(newInstance)
+}
+// generatePosterFromInput() {
+
+//   var newPoster = new Poster(url, title, quote)
+// };
