@@ -3,7 +3,7 @@ Motivational poster creator. This site will allow you to generate a random poste
 
 #### Tech
 
-This site was built using JavaScript, HTML, and CSS. There are three views for this page:
+This site was built using JavaScript, HTML, and CSS. The main functionality of the site is created through DOM manipulation in the JavaScript file. There are three views for this page:
 - Main page
 - Make Your Own Poster page
 - Saved Posters page
@@ -33,3 +33,30 @@ Clicking on the Make Your Own Poster button will take you to a form that contain
 On the poster form, fill in the three fields with your desired text and image URL. Show my poster will bring you back to the main page view with your custom poster displayed. It will also save your submitted data so that you can use it for future random posters.
 
 <img width="1440" alt="create-poster" src="https://user-images.githubusercontent.com/79027364/145722632-c2d6ab62-3bb8-45a1-80a9-e711bb2116ab.png">
+
+#### Part 4: Saving Posters
+
+On the main poster screen after either creating your own poster or creating a new random poster there is an option to save the poster you created. Clicking on the Save This Poster button adds the current poster to the Saved Posters gallery. Each poster will only be saved once so the gallery does not repeat. Clicking on the Show Saved Posters button opens the gallery which displays all saved posters as a thumbnail.
+
+<img width="1440" alt="saved-view-posters" src="https://user-images.githubusercontent.com/92277979/145724958-e0952712-1362-418a-ad8b-b72669f67e0e.png">
+
+
+#### Part 5: Deleting Saved Posters
+
+On the saved posters double clicking any of the poster thumbnails will delete that poster from the saved posters gallery and only show the remaining posters.
+
+
+<img width="1440" alt="delete-posters" src="https://user-images.githubusercontent.com/92277979/145725373-1acacd9e-4687-4028-b15f-48ab70d0207e.gif">
+
+
+#### Part 6: Dynamic Poster Elements
+
+On the main poster view you can click on any of the parts of the poster to randomize that part while keeping the other parts the same. If you click the image it will select another random image while keeping the title and quote the same.
+
+![extension](https://user-images.githubusercontent.com/92277979/145725639-fcb4eb4d-d20b-42ae-8dde-b443c657f5ca.gif)
+
+#### Future Additions
+
+  - Provide an error alert on the poster form to alert you if the data you have entered is incorrect or missing
+  - Allow you to view saved posters in the full size poster view by clicking on them in the saved posters gallery
+  - Allow you to rearrange the saved posters gallery by dragging the poster thumbnails
