@@ -1,18 +1,13 @@
 # Hang In There
 
-A boilerplate repo. 
+##Kevin King https://github.com/King13k
 
-## Set Up
+##George Lemmon https://github.com/GALemmon
 
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
+This is a paired project from Turing's Mod 1 Front End program.  It demonstrates the interactions between javaScript, HTML, and CSS.  This project was completed primarily through live driver/navigator Zoom coding sessions.  The code is javaScript we authored with some javaScript components, HTML, and CSS that were provided in the initial project repo.
 
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
-
-To view your project:
-
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
+1. To begin, fork and clone this repo.
+2. In your terminal, navigate to your freshly pulled repo.
+3. Run the command `open index.html`.  This will open the project page in your default browser.
+4. Feel free to explore our project.
+5. Refresh the page to reset to the default state.
