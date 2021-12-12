@@ -19,7 +19,12 @@ The site can be opened at [this link](https://andrew-musselman.github.io/motivat
 
 Every time the Show Another Random Poster button is clicked, a new random poster will be displayed.
 
+#### Part 2: Switching Page View
+When you click the Show Saved Posters button, it will take you to the saved posters area. The Back to Main button takes you back to the main page.
+
 <img width="1440" alt="saved-view-empty" src="https://user-images.githubusercontent.com/79027364/145722654-d7a44bde-e2f6-4d92-be50-c912158dfe71.png">
+
+Clicking on the Make Your Own Poster button will take you to a form that contains fields to enter an image URL, title, and quote for your custom poster. Show my poster will bring you back to the main page view with your custom poster displayed. If you decide not to create your own poster, you can click on the Nevermind button and go back to the main page without filling out the form.
 
 <img width="1440" alt="form-view" src="https://user-images.githubusercontent.com/79027364/145722609-f4e5e3a1-2b04-4609-a771-e677d44666fb.png">
 
