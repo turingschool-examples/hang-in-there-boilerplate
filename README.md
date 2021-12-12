@@ -10,12 +10,3 @@ This site was built using JavaScript, HTML, and CSS. There are three views for t
 
 #### Contributors
 This site was built by [Kim Ward](https://github.com/kmewrd) and [Andrew Musselman](https://github.com/Andrew-Musselman) as a pair project at Turing School of Software & Design.
-
-## To be deleted later...
-
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
-
-To view your project:
-
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
