@@ -36,14 +36,14 @@ On the poster form, fill in the three fields with your desired text and image UR
 
 #### Part 4: Saving Posters
 
-On the main poster screen after either creating your own poster or creating a new random poster there is an option to save the poster you created. Clicking on the Save This Poster button adds the current poster to the Saved Posters gallery. Each poster will only be saved once so the gallery does not repeat. Clicking on the Show Saved Posters button opens the gallery which displays all saved posters as a thumbnail.
+On the main page, there is an option to save this poster. You can use this after getting a random poster or after creating your own poster. Clicking on the Save This Poster button adds the current poster to the Saved Posters gallery. Each poster will only be saved once so the gallery does not contain duplicates. Clicking on the Show Saved Posters button opens the gallery, which displays all saved posters as a thumbnail.
 
 <img width="1440" alt="saved-view-posters" src="https://user-images.githubusercontent.com/92277979/145724958-e0952712-1362-418a-ad8b-b72669f67e0e.png">
 
 
 #### Part 5: Deleting Saved Posters
 
-On the saved posters double clicking any of the poster thumbnails will delete that poster from the saved posters gallery and only show the remaining posters.
+In the saved posters area, double clicking any of the poster thumbnails will delete that poster from the saved posters gallery and only show the remaining posters.
 
 
 <img width="1440" alt="delete-posters" src="https://user-images.githubusercontent.com/92277979/145725373-1acacd9e-4687-4028-b15f-48ab70d0207e.gif">
@@ -51,7 +51,7 @@ On the saved posters double clicking any of the poster thumbnails will delete th
 
 #### Part 6: Dynamic Poster Elements
 
-On the main poster view you can click on any of the parts of the poster to randomize that part while keeping the other parts the same. If you click the image it will select another random image while keeping the title and quote the same.
+On the main page, you can click on the poster image, title, or quote to randomize that element while keeping the other parts the same. For example, if you click the image it will select another random image while keeping the title and quote the same.
 
 ![extension](https://user-images.githubusercontent.com/92277979/145725639-fcb4eb4d-d20b-42ae-8dde-b443c657f5ca.gif)
 
