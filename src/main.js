@@ -1,25 +1,27 @@
 // query selector variables go here 👇
+
+//global variables
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 var image = document.querySelector('.poster-img');
+
+//Buttons
 var randomPosterButton = document.querySelector('.show-random');
-var makeYourOwnPoster = document.querySelector('.poster-form');//lines 26-39 in HTML
 var makeYourOwnPosterButton = document.querySelector('.show-form');
-var mainPosterPage = document.querySelector('.main-poster');//lines 11-25 in HTML
-var savedPosterPage = document.querySelector('.saved-posters');
 var savedPosterButton = document.querySelector('.show-saved');
 var nevermindButton = document.querySelector('.show-main');
-var backToMainButton = document.querySelector('.back-to-main')
+var backToMainButton = document.querySelector('.back-to-main');
+var showPosterButton = document.querySelector('.make-poster');
+
+//Pages
+var makeYourOwnPoster = document.querySelector('.poster-form');
+var mainPosterPage = document.querySelector('.main-poster');
+var savedPosterPage = document.querySelector('.saved-posters');
+
+//Form Input
 var posterImageURL = document.querySelector('#poster-image-url');
 var posterTitle = document.querySelector('#poster-title');
 var posterQuote = document.querySelector('#poster-quote');
-var showPosterButton = document.querySelector('.make-poster');
-var posterFormPage = document.querySelector('form')
-
-// var viewSavedPosters = document.querySelector('.saved-posters');
-// var viewSavedPostersButton = document.querySelector('.show-saved');
-
-//var makeOwnPosterButton = document.querySelector('.make-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
