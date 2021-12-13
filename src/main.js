@@ -118,7 +118,7 @@ var newImageUrl = document.querySelector('#poster-image-url');
 var newTitle = document.querySelector('#poster-title');
 var newQuote = document.querySelector('#poster-quote');
 var savedGrid = document.querySelector('.saved-posters-grid');
-// querySelector for line 132;
+
 
 // event listeners go here 👇
 window.onload = makeRandomPoster();
@@ -126,13 +126,13 @@ randomPosterButton.addEventListener('click', makeRandomPoster);
 makePosterButton.addEventListener('click', showForm);
 savePosterButton.addEventListener('click', saveNewPoster);
 showSavedPostersButton.addEventListener('click', showSavedPosters);
-nevermindButton.addEventListener('click', nevermind);
+nevermindButton.addEventListener('click', returnToMain);
 backButton.addEventListener('click', backToMain);
 customPosterButton.addEventListener('click', showMyPoster);
 savedGrid.addEventListener('dblclick', deletePoster);
 
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -164,14 +164,14 @@ function showSavedPosters() {
   for ( var i = 0; i < savedPosters.length; i++) {
     savedGrid.innerHTML += `
     <article class="mini-poster">
-      <img class="" id=${savedPosters[i].id} src="${savedPosters[i].imageURL}" alt="nothin' to see here">
-      <h1 class="">${savedPosters[i].title}</h1>
-      <h3 class="">${savedPosters[i].quote}</h3>
+      <img class="" id=${savedPosters[i].id} src="${savedPosters[i].imageURL}" alt="Motivational Poster">
+      <h2 class="">${savedPosters[i].title}</h2>
+      <h4 class="">${savedPosters[i].quote}</h4>
     </article>`
   }
 }
 
-function nevermind() {
+function returnToMain() {
   hide(form);
   show(mainPage);
 }
@@ -182,7 +182,7 @@ function backToMain() {
 }
 
 function showMyPoster() {
-  event.preventDefault();
+  event.preventDefault(event);
   hide(form);
   show(mainPage);
   currentPoster = new Poster(newImageUrl.value, newTitle.value, newQuote.value);
@@ -205,6 +205,6 @@ function deletePoster() {
     if (`${savedPosters[i].id}` === event.target.id) {
       savedPosters.splice(i, 1);
     }
-    showSavedPosters()
+    showSavedPosters();
   }
 }
