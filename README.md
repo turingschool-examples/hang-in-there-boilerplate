@@ -29,7 +29,13 @@ With **Inspirational Poster Site** you can view, generate, and save poster image
 ## Screenshots:
 
 **Main Page:**
+<img width="1108" alt="main page" src="https://user-images.githubusercontent.com/63659270/145749458-3371d197-fcc2-4e7d-953e-986518d4c65f.png">
+
+**Poster Form Page:**
+<img width="1257" alt="Form page" src="https://user-images.githubusercontent.com/63659270/145749411-be67896e-8821-4716-93c6-44c04b401d26.png">
 
 **Build Your Own Poster:**
+<img width="1257" alt="Form page" src="https://user-images.githubusercontent.com/63659270/145749563-46b6f3e4-93e7-42ae-abfc-a814a39256f3.png">
 
-**Saved Images:**
+**Saved Posters:**
+<img width="1255" alt="Saved Posters page" src="https://user-images.githubusercontent.com/63659270/145749509-e44cc81a-241d-4364-8914-bf5892510744.png">
