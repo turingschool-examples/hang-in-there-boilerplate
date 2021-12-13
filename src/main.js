@@ -122,7 +122,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
+var savedPosters = ['No saved posters'];
 var currentPoster;
 
 // event listeners go here 👇
@@ -173,15 +173,21 @@ function returnToMain(currentPage){
     mainPosterPage.classList.toggle('hidden');
 };
 
+function storePoster(){
+    var currentPoster = new Poster(posterImageURL.value, posterTitle.value, posterQuote.value)
+}
+
 function generatePosterFromInput(){
     event.preventDefault();
-    var newInstance = new Poster(posterImageURL.value, posterTitle.value, posterQuote.value)
+    storePoster();
     image.src = posterImageURL.value
     title.innerText = posterTitle.value
     quote.innerText = posterQuote.value
+
     images.push(posterImageURL.value)
     titles.push(posterTitle.value)
     quotes.push(posterQuote.value)
+
     makeOwnPoster();
 };
 
@@ -189,8 +195,22 @@ function addToSavedImageArray () {
     var posterToBeSaved = {
       image: posterImageURL.value,
       title: posterTitle.value,
-      quote: posterQuote.value,
+      quote: posterQuote.value,}
+
+    storePoster();
+    savedPosters.push(currentPoster);
     }
 
-    savedPosters.push(posterToBeSaved);
-}
+      // for (var i = 0; i < savedPosters.length; i++) {
+        // if (!savedPosters.includes(posterToBeSaved)) {
+        //   savedPosters.push(posterToBeSaved);}
+          // console.log("It worked!")
+        // } else {
+        //   console.log("it didn't work");
+        //   }
+      // }
+
+        // savedPosters.push(posterToBeSaved)
+
+
+//}
