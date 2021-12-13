@@ -132,16 +132,16 @@ randomPosterButton.addEventListener('click', generatePoster);
 
 makeYourOwnPosterButton.addEventListener('click', makeOwnPoster);
 
-savedPosterButton.addEventListener('click', function(){
-  returnToMain(savedPosterPage)
+savedPosterButton.addEventListener('click', function() {
+    returnToMain(savedPosterPage)
 });
 
-nevermindButton.addEventListener('click', function(){
-  returnToMain(makeYourOwnPoster)
+nevermindButton.addEventListener('click', function() {
+    returnToMain(makeYourOwnPoster)
 });
 
-backToMainButton.addEventListener('click', function(){
-  returnToMain(savedPosterPage)
+backToMainButton.addEventListener('click', function() {
+    returnToMain(savedPosterPage)
 });
 
 showPosterButton.addEventListener('click', generatePosterFromInput);
@@ -154,13 +154,21 @@ function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
 };
 
-function generatePoster () {
-    var randomImage = images[getRandomIndex(images)];
-    var randomTitle = titles[getRandomIndex(titles)];
-    var randomQuote = quotes[getRandomIndex(quotes)];
-    title.innerText = randomTitle;
-    quote.innerText = randomQuote;
-    image.src = randomImage;
+function generatePoster() {
+    var randomGeneratedPoster = {
+    randomImage: images[getRandomIndex(images)] || posterImageURL.value,
+    randomTitle: titles[getRandomIndex(titles)] || posterTitle.value,
+    randomQuote: quotes[getRandomIndex(quotes)] || posterQuote.value,
+  }
+
+    currentPoster = new Poster(
+          randomGeneratedPoster.randomImage,
+          randomGeneratedPoster.randomTitle,
+          randomGeneratedPoster.randomQuote)
+
+    title.innerText = randomGeneratedPoster.randomTitle;
+    quote.innerText = randomGeneratedPoster.randomQuote;
+    image.src = randomGeneratedPoster.randomImage;
 };
 
 function makeOwnPoster() {
@@ -168,49 +176,27 @@ function makeOwnPoster() {
     mainPosterPage.classList.toggle('hidden');
 };
 
-function returnToMain(currentPage){
-    currentPage.classList.toggle('hidden')
+function returnToMain(currentPage) {
+    currentPage.classList.toggle('hidden');
     mainPosterPage.classList.toggle('hidden');
 };
 
-function storePoster(){
-    var currentPoster = new Poster(posterImageURL.value, posterTitle.value, posterQuote.value)
-}
-
-function generatePosterFromInput(){
+function generatePosterFromInput() {
     event.preventDefault();
-    storePoster();
-    image.src = posterImageURL.value
-    title.innerText = posterTitle.value
-    quote.innerText = posterQuote.value
+    generatePoster();
+    image.src = posterImageURL.value;
+    title.innerText = posterTitle.value;
+    quote.innerText = posterQuote.value;
 
-    images.push(posterImageURL.value)
-    titles.push(posterTitle.value)
-    quotes.push(posterQuote.value)
+    images.push(posterImageURL.value);
+    titles.push(posterTitle.value);
+    quotes.push(posterQuote.value);
 
     makeOwnPoster();
 };
 
-function addToSavedImageArray () {
-    var posterToBeSaved = {
-      image: posterImageURL.value,
-      title: posterTitle.value,
-      quote: posterQuote.value,}
-
-    storePoster();
-    savedPosters.push(currentPoster);
+function addToSavedImageArray() {
+    if (!savedPosters.includes(currentPoster)){
+        savedPosters.push(currentPoster)
     }
-
-      // for (var i = 0; i < savedPosters.length; i++) {
-        // if (!savedPosters.includes(posterToBeSaved)) {
-        //   savedPosters.push(posterToBeSaved);}
-          // console.log("It worked!")
-        // } else {
-        //   console.log("it didn't work");
-        //   }
-      // }
-
-        // savedPosters.push(posterToBeSaved)
-
-
-//}
+};
