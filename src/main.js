@@ -149,9 +149,11 @@ showRandomBtn.addEventListener('click', function(e) {
 function showForm() {
   posterFormSec.classList.remove('hidden');
   mainPosterSec.classList.add('hidden');
+  console.log('this is the show form function');
 }
 
 function mainPoster() {
   posterFormSec.classList.add('hidden');
   mainPosterSec.classList.remove('hidden');
+  console.log('this is the main poster function');
 }
