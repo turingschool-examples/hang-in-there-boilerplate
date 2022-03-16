@@ -2,6 +2,7 @@
 const img = document.querySelector('.poster-img');
 const title = document.querySelector('.poster-title');
 const quote = document.querySelector('.poster-quote');
+
 const showSavedBtn = document.querySelector('.show-saved');
 const savePosterBtn = document.querySelector('.save-poster');
 const backToMainBtn = document.querySelector('.back-to-main');
@@ -12,8 +13,8 @@ const posterFormSec = document.querySelector('.poster-form');
 const savedPosterSec = document.querySelector('.saved-posters');
 
 const showRandomBtn = document.querySelector('.show-random');
-
-
+const showFormBtn = document.querySelector('.show-form');
+const showMainBtn = document.querySelector('.show-main');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -128,10 +129,9 @@ backToMainBtn.addEventListener('click', function() {
   mainPosterSec.classList.toggle('hidden');
 })
 
-showRandomBtn.addEventListener('click', function() {
-  getRandomPoster();
-});
 
+showFormBtn.addEventListener('click', showForm);
+showMainBtn.addEventListener('click', mainPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -157,7 +157,20 @@ function getRandomQuote() {
   quote.textContent = quotes[getRandomIndex(quotes)];
 }
 
-function showForm() {
+showRandomBtn.addEventListener('click', function(e) {
+  getRandomPoster();
+})
 
+function showForm() {
+  posterFormSec.classList.remove('hidden');
+  mainPosterSec.classList.add('hidden');
+  console.log('this is the show form function');
 }
 
+function mainPoster() {
+  posterFormSec.classList.add('hidden');
+  mainPosterSec.classList.remove('hidden');
+  console.log('this is the main poster function');
+}
+
+// e.preventDefault
