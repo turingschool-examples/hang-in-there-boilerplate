@@ -10,6 +10,7 @@ const savedPosterSec = document.querySelector('.saved-posters');
 
 const showRandomBtn = document.querySelector('.show-random');
 const showFormBtn = document.querySelector('.show-form');
+const showMainBtn = document.querySelector('.show-main');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -115,6 +116,7 @@ var currentPoster;
 window.onload = getRandomPoster();
 
 showFormBtn.addEventListener('click', showForm);
+showMainBtn.addEventListener('click', mainPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -149,3 +151,7 @@ function showForm() {
   mainPosterSec.classList.add('hidden');
 }
 
+function mainPoster() {
+  posterFormSec.classList.add('hidden');
+  mainPosterSec.classList.remove('hidden');
+}
