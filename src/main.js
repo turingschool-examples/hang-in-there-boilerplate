@@ -157,3 +157,5 @@ function mainPoster() {
   mainPosterSec.classList.remove('hidden');
   console.log('this is the main poster function');
 }
+
+// e.preventDefault
