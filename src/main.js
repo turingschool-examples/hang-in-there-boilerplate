@@ -3,6 +3,11 @@ const img = document.querySelector('.poster-img');
 const title = document.querySelector('.poster-title');
 const quote = document.querySelector('.poster-quote');
 
+// variables for each section
+const mainPosterSec = document.querySelector('.main-poster');
+const posterFormSec = document.querySelector('.poster-form');
+const savedPosterSec = document.querySelector('.saved-posters');
+
 const showRandomBtn = document.querySelector('.show-random');
 // we've provided you with some data to work with 👇
 var images = [
@@ -136,3 +141,7 @@ function getRandomQuote() {
 showRandomBtn.addEventListener('click', function(e) {
   getRandomPoster();
 })
+
+function showForm() {
+
+}
