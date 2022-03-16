@@ -1,10 +1,14 @@
 // query selector variables go here 👇
-const img = document.querySelector('.poster-img')
-const title = document.querySelector('.poster-title')
-const quote = document.querySelector('.poster-quote')
+const img = document.querySelector('.poster-img');
+const title = document.querySelector('.poster-title');
+const quote = document.querySelector('.poster-quote');
 
-const showRandom = document.querySelector('.show-random')
+// variables for each section
+const mainPosterSec = document.querySelector('.main-poster');
+const posterFormSec = document.querySelector('.poster-form');
+const savedPosterSec = document.querySelector('.saved-posters');
 
+const showRandomBtn = document.querySelector('.show-random');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -107,7 +111,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.onload = getRandomPoster()
+window.onload = getRandomPoster();
+
 
 // functions and event handlers go here 👇
 
@@ -123,18 +128,21 @@ function getRandomPoster() {
 }
 
 function getRandomPhoto() {
-  img.src = images[getRandomIndex(images)]
+  img.src = images[getRandomIndex(images)];
 }
 
 function getRandomTitle() {
-  title.textContent = titles[getRandomIndex(titles)]
+  title.textContent = titles[getRandomIndex(titles)];
 }
 
 function getRandomQuote() {
-  quote.textContent = quotes[getRandomIndex(quotes)]
+  quote.textContent = quotes[getRandomIndex(quotes)];
 }
-showRandom.addEventListener("click", function(e){
-    getRandomPoster()
-});
 
+showRandomBtn.addEventListener('click', function(e) {
+  getRandomPoster();
+})
 
+function showForm() {
+
+}
