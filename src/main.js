@@ -3,6 +3,10 @@ const img = document.querySelector('.poster-img');
 const title = document.querySelector('.poster-title');
 const quote = document.querySelector('.poster-quote');
 
+const showSavedBtn = document.querySelector('.show-saved');
+const savePosterBtn = document.querySelector('.save-poster');
+const backToMainBtn = document.querySelector('.back-to-main');
+
 // variables for each section
 const mainPosterSec = document.querySelector('.main-poster');
 const posterFormSec = document.querySelector('.poster-form');
@@ -114,6 +118,17 @@ var currentPoster;
 
 // event listeners go here 👇
 window.onload = getRandomPoster();
+
+showSavedBtn.addEventListener('click', function() {
+  savedPosterSec.classList.toggle('hidden');
+  mainPosterSec.classList.toggle('hidden');
+});
+
+backToMainBtn.addEventListener('click', function() {
+  savedPosterSec.classList.toggle('hidden');
+  mainPosterSec.classList.toggle('hidden');
+})
+
 
 showFormBtn.addEventListener('click', showForm);
 showMainBtn.addEventListener('click', mainPoster);
