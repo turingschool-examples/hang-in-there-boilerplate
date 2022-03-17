@@ -1,20 +1,33 @@
 // query selector variables go here 👇
-const img = document.querySelector('.poster-img');
-const title = document.querySelector('.poster-title');
-const quote = document.querySelector('.poster-quote');
+// variables to generate poster
+const posterImg = document.querySelector('.poster-img');
+const posterTitle = document.querySelector('.poster-title');
+const posterQuote = document.querySelector('.poster-quote');
 
-const showSavedBtn = document.querySelector('.show-saved');
-const savePosterBtn = document.querySelector('.save-poster');
-const backToMainBtn = document.querySelector('.back-to-main');
+// variables for poster input values
+const inputImg = document.querySelector('#poster-image-url');
+const inputTitle = document.querySelector('#poster-title');
+const inputQuote = document.querySelector('#poster-quote');
+
+// variables for all buttons
+const showRandomBtn = document.querySelector('.show-random'); // generate random poster
+const showFormBtn = document.querySelector('.show-form'); // hides main, shows create your own form
+const makePosterBtn = document.querySelector('.make-poster'); // make this poster (from create your own)
+const showSavedBtn = document.querySelector('.show-saved'); // hides main, shows all saved posters
+const savePosterBtn = document.querySelector('.save-poster'); // save this poster
+
+// variables for buttons to return back to main page
+const showMainFromFormBtn = document.querySelector('.show-main'); // "nevermind take me back from form page"
+const backToMainFromSavedBtn = document.querySelector('.back-to-main'); // "back to main from saved page"
+
+// variable for saved posters grid
+const savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 // variables for each section
-const mainPosterSec = document.querySelector('.main-poster');
-const posterFormSec = document.querySelector('.poster-form');
-const savedPosterSec = document.querySelector('.saved-posters');
+const mainPosterSection = document.querySelector('.main-poster');
+const posterFormSection = document.querySelector('.poster-form');
+const savedPosterSection = document.querySelector('.saved-posters');
 
-const showRandomBtn = document.querySelector('.show-random');
-const showFormBtn = document.querySelector('.show-form');
-const showMainBtn = document.querySelector('.show-main');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -119,19 +132,20 @@ var currentPoster;
 // event listeners go here 👇
 window.onload = getRandomPoster();
 
+showRandomBtn.addEventListener('click', getRandomPoster);
+
 showSavedBtn.addEventListener('click', function() {
-  savedPosterSec.classList.toggle('hidden');
-  mainPosterSec.classList.toggle('hidden');
+  savedPosterSection.classList.toggle('hidden');
+  mainPosterSection.classList.toggle('hidden');
 });
 
 backToMainBtn.addEventListener('click', function() {
-  savedPosterSec.classList.toggle('hidden');
-  mainPosterSec.classList.toggle('hidden');
+  savedPosterSection.classList.toggle('hidden');
+  mainPosterSection.classList.toggle('hidden');
 })
 
-
 showFormBtn.addEventListener('click', showForm);
-showMainBtn.addEventListener('click', mainPoster);
+showMainBtn.addEventListener('click', showMainPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -146,31 +160,23 @@ function getRandomPoster() {
 }
 
 function getRandomPhoto() {
-  img.src = images[getRandomIndex(images)];
+  posterImg.src = images[getRandomIndex(images)];
 }
 
 function getRandomTitle() {
-  title.textContent = titles[getRandomIndex(titles)];
+  posterTitle.textContent = titles[getRandomIndex(titles)];
 }
 
 function getRandomQuote() {
-  quote.textContent = quotes[getRandomIndex(quotes)];
+  posterQuote.textContent = quotes[getRandomIndex(quotes)];
 }
-
-showRandomBtn.addEventListener('click', function(e) {
-  getRandomPoster();
-})
 
 function showForm() {
-  posterFormSec.classList.remove('hidden');
-  mainPosterSec.classList.add('hidden');
-  console.log('this is the show form function');
+  posterFormSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden');
 }
 
-function mainPoster() {
-  posterFormSec.classList.add('hidden');
-  mainPosterSec.classList.remove('hidden');
-  console.log('this is the main poster function');
+function showMainPoster() {
+  posterFormSection.classList.add('hidden');
+  mainPosterSection.classList.remove('hidden');
 }
-
-// e.preventDefault
