@@ -139,13 +139,13 @@ showSavedBtn.addEventListener('click', function() {
   mainPosterSection.classList.toggle('hidden');
 });
 
-backToMainBtn.addEventListener('click', function() {
+backToMainFromSavedBtn.addEventListener('click', function() {
   savedPosterSection.classList.toggle('hidden');
   mainPosterSection.classList.toggle('hidden');
 })
 
 showFormBtn.addEventListener('click', showForm);
-showMainBtn.addEventListener('click', showMainPoster);
+showMainFromFormBtn.addEventListener('click', showMainPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
