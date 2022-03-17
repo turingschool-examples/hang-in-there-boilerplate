@@ -153,6 +153,7 @@ backToMainFromSavedBtn.addEventListener('click', function() {
 showFormBtn.addEventListener('click', showForm);
 showMainFromFormBtn.addEventListener('click', showMainPoster);
 
+makePosterBtn.addEventListener('click', createThisPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -177,6 +178,35 @@ function getRandomTitle() {
 
 function getRandomQuote() {
   posterQuote.textContent = quotes[getRandomIndex(quotes)];
+}
+
+function createThisPoster(e) {
+  let newImg = inputImg.value;
+  let newTitle = inputTitle.value;
+  let newQuote = inputQuote.value;
+  e.preventDefault();
+  console.log(newImg, newTitle, newQuote);
+  // cool have all values saved...how do i put it into making a poster?
+  // it cant be random...
+  posterImg.src = newImg;
+  posterTitle.textContent = newTitle;
+  posterQuote.textContent = newQuote;
+  console.log(posterImg.src);
+  // maybe i should create a new function to create a poster off of this info
+  // keep random separate?
+  // well i need to save these values anyway in case it's saved, so it needs to be pushed to the corresponding arrays
+  makePoster(newImg, newTitle, newQuote);
+  // show poster by returning to main page
+  showMainPoster();
+}
+
+// create a poster given inputs 
+function makePoster(imgURL, title, quote) {
+  // saved posters should be stored as objects?
+  // so when creating a poster, make it an object?
+  let newPoster = new Poster (imgURL, title, quote);
+  console.log('is this an object: ', newPoster); // logs Poster obj with id, imageURL, title, and quote properties propery filled out
+  // where did the id come from?????
 }
 
 function showForm() {
