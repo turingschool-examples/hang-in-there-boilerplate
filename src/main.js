@@ -132,11 +132,25 @@ var currentPoster;
 // event listeners go here 👇
 window.onload = getRandomPoster();
 
+savePosterBtn.addEventListener('click', function() {
+  var imgSrc = document.getElementsByClassName('poster-img')[0].getAttribute('src');
+  var currentTitle = document.getElementsByClassName('poster-title')[0].innerText;
+  var currentQuote = document.getElementsByClassName('poster-quote')[0].innerText;
+  let currentPoster =  {
+    imgSrc,
+    currentTitle,
+    currentQuote
+  }
+  savedPosters.push(currentPoster);
+  savePosterBtn.disabled = true;
+});
+
 showRandomBtn.addEventListener('click', getRandomPoster);
 
 showSavedBtn.addEventListener('click', function() {
   savedPosterSection.classList.toggle('hidden');
   mainPosterSection.classList.toggle('hidden');
+  savedPosterGrid.classList.add('saved-posters-grid');
 });
 
 backToMainFromSavedBtn.addEventListener('click', function() {
@@ -157,6 +171,7 @@ function getRandomPoster() {
   getRandomPhoto();
   getRandomTitle();
   getRandomQuote();
+  savePosterBtn.disabled = false;
 }
 
 function getRandomPhoto() {
