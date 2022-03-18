@@ -126,31 +126,21 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
 window.onload = getRandomPoster();
 
-savePosterBtn.addEventListener('click', function() {
-  var imgSrc = document.getElementsByClassName('poster-img')[0].getAttribute('src');
-  var currentTitle = document.getElementsByClassName('poster-title')[0].innerText;
-  var currentQuote = document.getElementsByClassName('poster-quote')[0].innerText;
-  let currentPoster =  {
-    imgSrc,
-    currentTitle,
-    currentQuote
-  }
-  savedPosters.push(currentPoster);
-  savePosterBtn.disabled = true;
-});
+savePosterBtn.addEventListener('click', saveCurrentPoster);
 
 showRandomBtn.addEventListener('click', getRandomPoster);
 
 showSavedBtn.addEventListener('click', function() {
   savedPosterSection.classList.toggle('hidden');
   mainPosterSection.classList.toggle('hidden');
-  savedPosterGrid.classList.add('saved-posters-grid');
+  
 });
 
 backToMainFromSavedBtn.addEventListener('click', function() {
@@ -195,3 +185,19 @@ function showMainPoster() {
   posterFormSection.classList.add('hidden');
   mainPosterSection.classList.remove('hidden');
 }
+
+function saveCurrentPoster() {
+  var imgSrc = document.getElementsByClassName('poster-img')[0].getAttribute('src');
+  var currentTitle = document.getElementsByClassName('poster-title')[0].innerText;
+  var currentQuote = document.getElementsByClassName('poster-quote')[0].innerText;
+  let currentPoster =  {
+    imgSrc,
+    currentTitle,
+    currentQuote
+  }
+  savedPosters.push(currentPoster);
+  savePosterBtn.disabled = true;
+  console.log(savedPosters);
+}
+
+
