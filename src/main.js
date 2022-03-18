@@ -210,9 +210,9 @@ function createThisPoster(e) {
 function makePoster(imgURL, title, quote) {
   // saved posters should be stored as objects?
   // so when creating a poster, make it an object?
+  // turing has poster object saved in poster.js file
   let newPoster = new Poster (imgURL, title, quote);
   console.log('is this an object: ', newPoster); // logs Poster obj with id, imageURL, title, and quote properties propery filled out
-  // where did the id come from????? does it matter?
   // what should be in current poster? i want to log the info in it so if i save it it pushes? or that already happens in createPoster
   // so let eplty current poster var equal to new poster object named Poster
   currentPoster = newPoster;
