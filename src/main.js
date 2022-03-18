@@ -162,22 +162,34 @@ function getRandomIndex(array) {
 }
 
 function getRandomPoster() {
-  getRandomPhoto();
-  getRandomTitle();
-  getRandomQuote();
+  makePoster(getRandomPhoto(), getRandomTitle(), getRandomQuote());
   savePosterBtn.disabled = false;
 }
 
 function getRandomPhoto() {
   posterImg.src = images[getRandomIndex(images)];
+  return posterImg.src;
 }
 
 function getRandomTitle() {
   posterTitle.textContent = titles[getRandomIndex(titles)];
+  return posterTitle.textContent;
 }
 
 function getRandomQuote() {
   posterQuote.textContent = quotes[getRandomIndex(quotes)];
+  return posterQuote.textContent;
+}
+
+// create a poster given inputs 
+function makePoster(imgURL, title, quote) {
+  let newPoster = new Poster (imgURL, title, quote);
+  currentPoster = newPoster;
+  // set the values
+  posterImg.src = currentPoster.imageURL;
+  posterTitle.textContent = currentPoster.title;
+  posterQuote.textContent = currentPoster.quote;
+  console.log('currentposter:', currentPoster);
 }
 
 function createThisPoster(e) {
@@ -192,18 +204,10 @@ function createThisPoster(e) {
   titles.push(newTitle);
   quotes.push(newQuote);
   makePoster(newImg, newTitle, newQuote);
+  savePosterBtn.disabled = false;
   showMainPoster();
 }
 
-// create a poster given inputs 
-function makePoster(imgURL, title, quote) {
-  let newPoster = new Poster (imgURL, title, quote);
-  currentPoster = newPoster;
-  // set the values
-  posterImg.src = currentPoster.imageURL;
-  posterTitle.textContent = currentPoster.title;
-  posterQuote.textContent = currentPoster.quote;
-}
 
 function showForm() {
   posterFormSection.classList.remove('hidden');
@@ -216,14 +220,7 @@ function showMainPoster() {
 }
 
 function saveCurrentPoster() {
-  var imgSrc = document.getElementsByClassName('poster-img')[0].getAttribute('src');
-  var currentTitle = document.getElementsByClassName('poster-title')[0].innerText;
-  var currentQuote = document.getElementsByClassName('poster-quote')[0].innerText;
-  let currentPoster =  {
-    imgSrc,
-    currentTitle,
-    currentQuote
-  }
+  console.log('does this save?', currentPoster);
   savedPosters.push(currentPoster);
   savePosterBtn.disabled = true;
   console.log(savedPosters);
@@ -235,9 +232,9 @@ function displaySavedPostersGrid() {
   for (var i = 0; i < savedPosters.length; i++) {
     console.log(savedPosters[i]);
     savedPostersGrid.innerHTML += `<article class="mini-poster">
-  <img class="poster-img" id="miniImg-${i}" src="${savedPosters[i].imgSrc}" alt="nothin' to see here">
-  <h2 class="poster-title">${savedPosters[i].currentTitle}</h2>
-  <h4 class="poster-quote">${savedPosters[i].currentQuote}</h4>
+  <img class="poster-img" id="miniImg-${i}" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+  <h2 class="poster-title">${savedPosters[i].title}</h2>
+  <h4 class="poster-quote">${savedPosters[i].quote}</h4>
   </article>`;
   }
 }
