@@ -187,40 +187,22 @@ function createThisPoster(e) {
   let newQuote = inputQuote.value;
   // prevents 'show my poster' button to default returning to the main page
   e.preventDefault();
-  console.log(newImg, newTitle, newQuote);
+  // push new input values into corresponding arrays
   images.push(newImg);
   titles.push(newTitle);
   quotes.push(newQuote);
-  console.log(titles);
-  // cool have all values saved...how do i put it into making a poster? call the make poster generator?
-  // it cant be random...
-  // posterImg.src = newImg;
-  // posterTitle.textContent = newTitle;
-  // posterQuote.textContent = newQuote;
-  // console.log(posterImg.src);
-  // maybe i should create a new function to create a poster off of this info
-  // keep random separate?
-  // well i need to save these values anyway in case it's saved, so it needs to be pushed to the corresponding arrays
   makePoster(newImg, newTitle, newQuote);
-  // show poster by returning to main page
   showMainPoster();
 }
 
 // create a poster given inputs 
 function makePoster(imgURL, title, quote) {
-  // saved posters should be stored as objects?
-  // so when creating a poster, make it an object?
-  // turing has poster object saved in poster.js file
   let newPoster = new Poster (imgURL, title, quote);
-  console.log('is this an object: ', newPoster); // logs Poster obj with id, imageURL, title, and quote properties propery filled out
-  // what should be in current poster? i want to log the info in it so if i save it it pushes? or that already happens in createPoster
-  // so let eplty current poster var equal to new poster object named Poster
   currentPoster = newPoster;
   // set the values
   posterImg.src = currentPoster.imageURL;
   posterTitle.textContent = currentPoster.title;
   posterQuote.textContent = currentPoster.quote;
-  console.log('currentPoster: ', currentPoster);
 }
 
 function showForm() {
