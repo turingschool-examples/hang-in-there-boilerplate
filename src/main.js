@@ -129,6 +129,7 @@ var quotes = [
 
 var savedPosters = [];
 var currentPoster;
+let clickedId;
 
 // event listeners go here 👇
 window.onload = getRandomPoster();
@@ -140,7 +141,8 @@ showRandomBtn.addEventListener('click', getRandomPoster);
 showSavedBtn.addEventListener('click', function() {
   savedPosterSection.classList.toggle('hidden');
   mainPosterSection.classList.toggle('hidden');
-  
+  // savedPostersGrid.classList.add('saved-posters-grid');
+  displaySavedPostersGrid();
 });
 
 backToMainFromSavedBtn.addEventListener('click', function() {
@@ -150,6 +152,7 @@ backToMainFromSavedBtn.addEventListener('click', function() {
 
 showFormBtn.addEventListener('click', showForm);
 showMainFromFormBtn.addEventListener('click', showMainPoster);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -201,3 +204,14 @@ function saveCurrentPoster() {
 }
 
 
+function displaySavedPostersGrid() {
+  savedPostersGrid.innerHTML = '';
+  for (var i = 0; i < savedPosters.length; i++) {
+    console.log(savedPosters[i]);
+    savedPostersGrid.innerHTML += `<article class="mini-poster">
+  <img class="poster-img" id="miniImg-${i}" src="${savedPosters[i].imgSrc}" alt="nothin' to see here">
+  <h2 class="poster-title">${savedPosters[i].currentTitle}</h2>
+  <h4 class="poster-quote">${savedPosters[i].currentQuote}</h4>
+  </article>`;
+  }
+}
