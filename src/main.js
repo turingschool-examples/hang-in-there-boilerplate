@@ -140,7 +140,8 @@ showRandomBtn.addEventListener('click', getRandomPoster);
 showSavedBtn.addEventListener('click', function() {
   savedPosterSection.classList.toggle('hidden');
   mainPosterSection.classList.toggle('hidden');
-  
+  // savedPostersGrid.classList.add('saved-posters-grid');
+  displaySavedPostersGrid();
 });
 
 backToMainFromSavedBtn.addEventListener('click', function() {
@@ -201,3 +202,14 @@ function saveCurrentPoster() {
 }
 
 
+function displaySavedPostersGrid() {
+  savedPostersGrid.innerHTML = '';
+  for (var i = 0; i < savedPosters.length; i++) {
+    console.log(savedPosters[i]);
+    savedPostersGrid.innerHTML += `<article class="mini-poster">
+  <img class="poster-img" src="${savedPosters[i].imgSrc}" alt="nothin' to see here">
+  <h2 class="poster-title">${savedPosters[i].currentTitle}</h2>
+  <h4 class="poster-quote">${savedPosters[i].currentQuote}</h4>
+  </article>`;
+  }
+}
