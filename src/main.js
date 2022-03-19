@@ -155,6 +155,8 @@ showMainFromFormBtn.addEventListener('click', showMainPoster);
 
 makePosterBtn.addEventListener('click', createThisPoster);
 
+savedPostersGrid.addEventListener('dblclick', doubleClickToDelete);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -231,10 +233,22 @@ function displaySavedPostersGrid() {
   savedPostersGrid.innerHTML = '';
   for (var i = 0; i < savedPosters.length; i++) {
     console.log(savedPosters[i]);
-    savedPostersGrid.innerHTML += `<article class="mini-poster">
+    savedPostersGrid.innerHTML += `<article class="mini-poster" id="mini${i}">
   <img class="poster-img" id="miniImg-${i}" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
   <h2 class="poster-title">${savedPosters[i].title}</h2>
   <h4 class="poster-quote">${savedPosters[i].quote}</h4>
   </article>`;
   }
+}
+
+savedPostersGrid.addEventListener('dblclick', doubleClickToDelete);
+
+function doubleClickToDelete(e) {
+  console.log(e);
+  // prints out a lot of stuff...
+  // grab something from e? or id?
+  let thisPosterId = e.target.id;
+  console.log(thisPosterId);
+  let deleteThis = document.querySelector(`#${thisPosterId}`);
+  savedPostersGrid.removeChild(deleteThis);
 }
