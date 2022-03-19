@@ -141,7 +141,6 @@ showRandomBtn.addEventListener('click', getRandomPoster);
 showSavedBtn.addEventListener('click', function() {
   savedPosterSection.classList.toggle('hidden');
   mainPosterSection.classList.toggle('hidden');
-  // savedPostersGrid.classList.add('saved-posters-grid');
   displaySavedPostersGrid();
 });
 
@@ -191,7 +190,6 @@ function makePoster(imgURL, title, quote) {
   posterImg.src = currentPoster.imageURL;
   posterTitle.textContent = currentPoster.title;
   posterQuote.textContent = currentPoster.quote;
-  console.log('currentposter:', currentPoster);
 }
 
 function createThisPoster(e) {
@@ -222,21 +220,18 @@ function showMainPoster() {
 }
 
 function saveCurrentPoster() {
-  console.log('does this save?', currentPoster);
   savedPosters.push(currentPoster);
   savePosterBtn.disabled = true;
-  console.log(savedPosters);
 }
 
 
 function displaySavedPostersGrid() {
   savedPostersGrid.innerHTML = '';
   for (var i = 0; i < savedPosters.length; i++) {
-    console.log(savedPosters[i]);
     savedPostersGrid.innerHTML += `<article class="mini-poster" id="mini${i}">
   <img class="poster-img" id="miniImg-${i}" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
-  <h2 class="poster-title">${savedPosters[i].title}</h2>
-  <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+  <h2 class="poster-title" id="miniTitle-${i}">${savedPosters[i].title}</h2>
+  <h4 class="poster-quote" id="miniQuote-${i}">${savedPosters[i].quote}</h4>
   </article>`;
   }
 }
@@ -244,13 +239,9 @@ function displaySavedPostersGrid() {
 savedPostersGrid.addEventListener('dblclick', doubleClickToDelete);
 
 function doubleClickToDelete(e) {
-  console.log(e);
-  // prints out a lot of stuff...
-  // grab something from e? or id?
   let thisPosterId = e.target.id;
   let thisPosterIndex = thisPosterId.charAt(thisPosterId.length-1)
   savedPosters.splice(thisPosterIndex, 1);
-  let deleteThis = document.querySelector(`#${thisPosterId}`);
+  let deleteThis = document.querySelector(`#mini${thisPosterIndex}`);
   savedPostersGrid.removeChild(deleteThis);
-  // still only works if I click on a black area of the mini poster...
 }
