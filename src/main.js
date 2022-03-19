@@ -248,7 +248,9 @@ function doubleClickToDelete(e) {
   // prints out a lot of stuff...
   // grab something from e? or id?
   let thisPosterId = e.target.id;
-  console.log(thisPosterId);
+  let thisPosterIndex = thisPosterId.charAt(thisPosterId.length-1)
+  savedPosters.splice(thisPosterIndex, 1);
   let deleteThis = document.querySelector(`#${thisPosterId}`);
   savedPostersGrid.removeChild(deleteThis);
+  // still only works if I click on a black area of the mini poster...
 }
