@@ -109,3 +109,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+var Poster = require('./poster');
+var test = new Poster('March', 'dog.png', 'Hello', 'Shoot for the stars!')
+  console.log(test);
