@@ -108,3 +108,9 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+//This piece of code will: select a random element from any array passed through its parameters
+function getRandomElement(array) {
+  let randomNum = (getRandomIndex(array));
+  let randomItem = array[randomNum]
+  return randomItem
+}
