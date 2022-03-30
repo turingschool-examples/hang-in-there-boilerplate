@@ -109,3 +109,18 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function populateRandomPoster(images, titles, quotes) {
+  var imageURL = images[getRandomIndex(images)]
+  var title = titles[getRandomIndex(titles)]
+  var quote = quotes[getRandomIndex(quotes)]
+  var imageTarget = document.getElementsByClassName("poster-img")
+  imageTarget.src = imageURL
+  var titleTarget = document.getElementsByClassName("poster-title")
+  titleTarget.innerText = title
+  var quoteTarget = document.getElementsByClassName("poster-quote")
+  quoteTarget.innerText = quote
+}
+
+function createRandomPoster() {
+  populateRandomPoster(images, titles, quotes)
+}
