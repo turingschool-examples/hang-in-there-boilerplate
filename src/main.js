@@ -117,8 +117,10 @@ var currentPoster;
 window.addEventListener('load', createRandomPoster)
 randomButton.addEventListener('click', createRandomPoster)
 // saveButton.addEventListener('click', )
-// showSavedButton.addEventListener('click', )
+showSavedButton.addEventListener('click', showSavedView)
 formButton.addEventListener('click', showFormView)
+nevermindButton.addEventListener('click', showMainView)
+backToMainButton.addEventListener('click', showMainView)
 
 
 // functions and event handlers go here 👇
@@ -130,10 +132,32 @@ function createRandomPoster() {
 }
 
 function showFormView() {
-  console.log('bob')
-  formView = formView.classList.remove('hidden')
-  mainView = mainView.classList.add('hidden')
+  document.querySelector('.poster-form').classList.remove('hidden')
+  document.querySelector('.main-poster').classList.add('hidden')
+  document.querySelector('.saved-posters').classList.add('hidden')
+  // formView = formView.classList.remove('hidden')
+  // mainView = mainView.classList.add('hidden')
+  // savedView = savedView.classList.add('hidden')
 }
+
+function showSavedView() {
+  document.querySelector('.saved-posters').classList.remove('hidden')
+  document.querySelector('.main-poster').classList.add('hidden')
+  document.querySelector('.poster-form').classList.add('hidden')
+  // savedView = savedView.classList.remove('hidden')
+  // mainView = mainView.classList.add('hidden')
+  // formView = formView.classList.add('hidden')
+}
+
+function showMainView() {
+  document.querySelector('.main-poster').classList.remove('hidden')
+  document.querySelector('.saved-posters').classList.add('hidden')
+  document.querySelector('.poster-form').classList.add('hidden')
+  // mainView = mainView.classList.remove('hidden')
+  // formView = formView.classList.add('hidden')
+  // savedView = savedView.classList.add('hidden')
+}
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
