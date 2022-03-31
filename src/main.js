@@ -7,6 +7,7 @@ var mainPoster = document.querySelector('.poster');
 var showForm = document.querySelector('.show-form')
 var bigMain = document.querySelector(".main-poster")
 var hiddenForm = document.querySelector(".poster-form")
+var nevermind = document.querySelector('.show-main')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -116,6 +117,10 @@ showRandomBtn.addEventListener('click', function(){
 showForm.addEventListener('click', function(){
   makeOwnPoster();
 });
+
+nevermind.addEventListener('click', function(){
+  takeMeBack();
+});
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -133,8 +138,16 @@ function makeOwnPoster (){
   hiddenForm.classList.remove('hidden')
 }
 
+function takeMeBack(){
+  mainPoster.classList.remove('hidden')
+  hiddenForm.classList.add('hidden')
+}
+
 getRandomLoad();
 
 //next PR, moved section poster-form hidden to be above
 //main poster to more cleanly show hidden form.
+//When a user clicks the “Nevermind, take me back!”
+// or “Back to Main” buttons, 
+//we should only see the main poster section
 
