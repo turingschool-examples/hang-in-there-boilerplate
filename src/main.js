@@ -98,19 +98,82 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+var colors = [
+  "black",
+  "#005F73",
+  "#CA6702",
+  "#BB3E03",
+  "#AE2012",
+  "#E9D8A6",
+  "#0A9396",
+  "#001219",
+  "#94D2BD",
+  "#9B2226",
+  "#EE9B00",
+];
 var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+//This code will: display a random poster on load
+window.addEventListener("load", uponLoad)
+
+//This piece of code will: add event listening to "show random" button. On click,
+//it will display a new random poster.
+let showRandomButton = document.querySelector(".show-random")
+showRandomButton.addEventListener("click", uponLoad)
+
+
+//This piece of code will: add event listening to "change background color" button. On click,
+//it will change the poster's background color.
+let backgroundColorButton = document.querySelector(".change-background")
+backgroundColorButton.addEventListener("click", changeBackgroundColor)
+
+//This piece of code will: add event listening to the title as a button. On click,
+//it will run changeTitle function
+let posterTitleButton = document.querySelector(".poster-title")
+posterTitleButton.addEventListener("click", changeTitle)
+
+let posterImage = document.querySelector(".poster-img");
+posterImage.addEventListener("click", getRandomElement(images));
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 //This piece of code will: select a random element from any array passed through its parameters
 function getRandomElement(array) {
   let randomNum = (getRandomIndex(array));
   let randomItem = array[randomNum]
   return randomItem
 }
+
+//This piece of code will: display a random pic upon page load
+function uponLoad() {
+  document.querySelector(".poster-img").src = getRandomElement(images)
+  document.querySelector(".poster-title").innerHTML = getRandomElement(titles)
+  document.querySelector(".poster-quote").innerHTML = getRandomElement(quotes)
+}
+
+// This code will: access colors array and change poster background color when invoked
+function changeBackgroundColor() {
+  let posterBackground = document.querySelector(".poster");
+  posterBackground.style.backgroundColor = getRandomElement(colors);
+}
+
+// This code will: generate and display new title in title button
+function changeTitle() {
+  let posterTitle = document.querySelector(".poster-title");
+  posterTitle.innerHTML = getRandomElement(titles)
+}
+//function generateNewPosterObject() {
+//  let newPoster = new RandomPoster()
+//  return newPoster
+//}
+
+//function displayRandomPoster() {
+//  let randomDisplayPoster = generateNewPosterObject()
+//}
