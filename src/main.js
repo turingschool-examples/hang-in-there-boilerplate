@@ -104,6 +104,7 @@ var currentPoster;
 // event listeners go here 👇
 //This code will: display a random poster on load
 window.addEventListener("load", uponLoad)
+document.querySelector(".show-random").addEventListener("click", uponLoad)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -124,17 +125,22 @@ function uponLoad() {
   document.querySelector(".poster-quote").innerHTML = getRandomElement(quotes)
 }
 
+//This piece of code will: add event listening to "show random" button. On click,
+//it will display a new random poster.
 
 
 
 
 
 
-function generateNewPosterObject() {
-  let newPoster = new RandomPoster()
-  return newPoster
-}
 
-function displayRandomPoster() {
-  let randomDisplayPoster = generateNewPosterObject()
-}
+
+
+//function generateNewPosterObject() {
+//  let newPoster = new RandomPoster()
+//  return newPoster
+//}
+
+//function displayRandomPoster() {
+//  let randomDisplayPoster = generateNewPosterObject()
+//}
