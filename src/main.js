@@ -1,4 +1,9 @@
 // query selector variables go here 👇
+var posterImg = document.querySelector(".poster-img")
+var posterTitle = document.querySelector(".poster-title")
+var posterQuote = document.querySelector(".poster-quote")
+var showRandomButton = document.querySelector(".show-random")
+//variable names are based on the class names we are querying against.
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,10 +107,30 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener('load', function() {
+  generateRandomPoster(images, titles, quotes)
+})
+
+showRandomButton.addEventListener('click', function() {
+  generateRandomPoster(images, titles, quotes)
+})
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+//this function returns a number between 0 and end of whatever array is passed through as an argument.
 
+//Event handler for the showRandomButton event listener
+function generateRandomPoster(images, titles, quotes) {
+  var imageURL = images[getRandomIndex(images)]
+  var title = titles[getRandomIndex(titles)]
+  var quote = quotes[getRandomIndex(quotes)]
+  //in order to get a random index number we invoke the getRandomIndex function within the index parameter of the array we are using.
+
+  posterImg.src = imageURL
+  posterTitle.innerText = title
+  posterQuote.innerText = quote
+  //Using the query selector variables from above we manipulate the DOM and pass in our randomly generated variables
+}
