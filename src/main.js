@@ -102,6 +102,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+//This code will: display a random poster on load
+window.addEventListener("load", uponLoad)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -113,4 +115,26 @@ function getRandomElement(array) {
   let randomNum = (getRandomIndex(array));
   let randomItem = array[randomNum]
   return randomItem
+}
+
+//This piece of code will: display a random pic upon page load
+function uponLoad() {
+  document.querySelector(".poster-img").src = getRandomElement(images)
+  document.querySelector(".poster-title").innerHTML = getRandomElement(titles)
+  document.querySelector(".poster-quote").innerHTML = getRandomElement(quotes)
+}
+
+
+
+
+
+
+
+function generateNewPosterObject() {
+  let newPoster = new RandomPoster()
+  return newPoster
+}
+
+function displayRandomPoster() {
+  let randomDisplayPoster = generateNewPosterObject()
 }
