@@ -1,7 +1,10 @@
 // query selector variables go here 👇
 
 var randomPosterImg = document.querySelector(".poster-img");
+
 var randomPosterTitle = document.querySelector(".poster-title");
+
+
 var randomPosterQuote = document.querySelector(".poster-quote");
 
 
@@ -108,15 +111,22 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+window.addEventListener("load", showRandom)
 
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
 //The function for a random title. Currently returning index position #
-function getRandomIndex(titles) {
-  return Math.floor(Math.random() * titles.length);
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
+//
+function showRandom () {
+  randomPosterTitle.innerText = titles[getRandomIndex(titles)]
+  randomPosterQuote.innerText = quotes[getRandomIndex(quotes)]
+  //randomPosterImg.innerText =
+}
+
 
 getRandomIndex(titles);
