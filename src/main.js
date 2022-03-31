@@ -127,9 +127,13 @@ showRandomButton.addEventListener("click", uponLoad)
 
 //This piece of code will: add event listening to "change background color" button. On click,
 //it will change the poster's background color.
-let backgroundColor = document.querySelector(".change-background")
-backgroundColor.addEventListener("click", changeBackgroundColor)
+let backgroundColorButton = document.querySelector(".change-background")
+backgroundColorButton.addEventListener("click", changeBackgroundColor)
 
+//This piece of code will: add event listening to the title as a button. On click,
+//it will run changeTitle function
+let posterTitleButton = document.querySelector(".poster-title")
+posterTitleButton.addEventListener("click", changeTitle)
 
 let posterImage = document.querySelector(".poster-img");
 posterImage.addEventListener("click", getRandomElement(images));
@@ -158,6 +162,12 @@ function uponLoad() {
 function changeBackgroundColor() {
   let posterBackground = document.querySelector(".poster");
   posterBackground.style.backgroundColor = getRandomElement(colors);
+}
+
+// This code will: generate and display new title in title button
+function changeTitle() {
+  let posterTitle = document.querySelector(".poster-title");
+  posterTitle.innerHTML = getRandomElement(titles)
 }
 //function generateNewPosterObject() {
 //  let newPoster = new RandomPoster()

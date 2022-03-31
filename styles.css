@@ -74,6 +74,15 @@ button:hover {
   margin: 10px;
 }
 
+#title-button {
+  background-color: transparent;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+#title-button:hover {
+  background-color: gray;
+}
+
 /* ~~~~~ POSTER FORM SECTION ~~~~~ */
 .poster-form {
   display: flex;
