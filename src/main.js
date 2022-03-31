@@ -107,7 +107,6 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
 window.addEventListener('load', function() {
   generateRandomPoster(images, titles, quotes)
 })
@@ -121,8 +120,9 @@ showRandomButton.addEventListener('click', function() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-//this function returns a number between 0 and end of array.
+//this function returns a number between 0 and end of whatever array is passed through as an argument.
 
+//Event handler for the showRandomButton event listener
 function generateRandomPoster(images, titles, quotes) {
   var imageURL = images[getRandomIndex(images)]
   var title = titles[getRandomIndex(titles)]
@@ -132,4 +132,5 @@ function generateRandomPoster(images, titles, quotes) {
   posterImg.src = imageURL
   posterTitle.innerText = title
   posterQuote.innerText = quote
+  //Using the query selector variables from above we manipulate the DOM and pass in our randomly generated variables
 }
