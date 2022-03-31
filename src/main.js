@@ -1,6 +1,12 @@
 // query selector variables go here 👇
 
+var posterTitle = document.querySelector(".poster-title");
+var posterQuote = document.querySelector(".poster-quote");
+var posterImage = document.querySelector(".poster-img");
+var showRandomButton = document.querySelector('.show-random')
+
 // we've provided you with some data to work with 👇
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -101,11 +107,36 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+
 // event listeners go here 👇
+
+// var refreshPage = () => {
+//   location.reload();
+// }
+// showRandomButton.addEventListener('click',clickRandomButton);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+var randomTitle = titles[getRandomIndex(titles)];
+var randomQuote = quotes[getRandomIndex(quotes)];
+var randomImage = images[getRandomIndex(images)];
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
+function changeHomePage() {
+  posterQuote.innerText = randomQuote;
+  posterTitle.innerText = randomTitle;
+  posterImage.src = randomImage;
+  }
+changeHomePage()
+
+
+
+
+
+
+
+// module.export = Poster;
