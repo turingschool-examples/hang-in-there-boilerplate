@@ -134,3 +134,7 @@ function makeOwnPoster (){
 }
 
 getRandomLoad();
+
+//next PR, moved section poster-form hidden to be above
+//main poster to more cleanly show hidden form.
+
