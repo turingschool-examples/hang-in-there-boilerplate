@@ -2,7 +2,16 @@
 var image = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
-var randomButton = document.querySelector('.show-random')
+var randomButton = document.querySelector('.show-random');
+var saveButton = document.querySelector('.save-poster');
+var showSavedButton = document.querySelector('.show-saved');
+var formButton = document.querySelector('.show-form');
+var makePosterButton = document.querySelector('.make-poster');
+var nevermindButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var formView = document.querySelector('.poster-form')
+var mainView = document.querySelector('.main-poster');
+var savedView = document.querySelector('.saved-posters');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -104,10 +113,15 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster)
 randomButton.addEventListener('click', createRandomPoster)
+// saveButton.addEventListener('click', )
+showSavedButton.addEventListener('click', showSavedView)
+formButton.addEventListener('click', showFormView)
+nevermindButton.addEventListener('click', showMainView)
+backToMainButton.addEventListener('click', showMainView)
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -116,6 +130,34 @@ function createRandomPoster() {
   title.innerText = titles[getRandomIndex(titles)];
   quote.innerText = quotes[getRandomIndex(quotes)];
 }
+
+function showFormView() {
+  document.querySelector('.poster-form').classList.remove('hidden')
+  document.querySelector('.main-poster').classList.add('hidden')
+  document.querySelector('.saved-posters').classList.add('hidden')
+  // formView = formView.classList.remove('hidden')
+  // mainView = mainView.classList.add('hidden')
+  // savedView = savedView.classList.add('hidden')
+}
+
+function showSavedView() {
+  document.querySelector('.saved-posters').classList.remove('hidden')
+  document.querySelector('.main-poster').classList.add('hidden')
+  document.querySelector('.poster-form').classList.add('hidden')
+  // savedView = savedView.classList.remove('hidden')
+  // mainView = mainView.classList.add('hidden')
+  // formView = formView.classList.add('hidden')
+}
+
+function showMainView() {
+  document.querySelector('.main-poster').classList.remove('hidden')
+  document.querySelector('.saved-posters').classList.add('hidden')
+  document.querySelector('.poster-form').classList.add('hidden')
+  // mainView = mainView.classList.remove('hidden')
+  // formView = formView.classList.add('hidden')
+  // savedView = savedView.classList.add('hidden')
+}
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
