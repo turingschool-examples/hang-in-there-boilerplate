@@ -45,13 +45,14 @@ button:hover {
   justify-content: center;
   margin: 20px auto;
   padding: 50px 20px;
-  width: 70%;
+  width: 850px;
+  height: 650px;
 }
 
 .poster-img {
   background-size: cover;
   border: 2px solid white;
-  max-width: 80%;
+  width: 70%;
 }
 
 .poster-title,
