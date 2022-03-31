@@ -9,6 +9,7 @@ var showForm = document.querySelector('.show-form')
 var bigMain = document.querySelector(".main-poster")
 var hiddenForm = document.querySelector(".poster-form")
 var nevermind = document.querySelector('.show-main')
+var backToMain = document.querySelector('.back-to-main')
 var savedPostersArea = document.querySelector('.saved-posters')
 var viewSavePosterBtn = document.querySelector('.show-saved')
 
@@ -117,23 +118,17 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-showRandomBtn.addEventListener('click', function(){
-  getRandomLoad();
-});
+showRandomBtn.addEventListener('click', getRandomLoad)
 
 
-showForm.addEventListener('click', function(){
-  makeOwnPoster();
-});
+showForm.addEventListener('click', makeOwnPoster);
 
 
-nevermind.addEventListener('click', function(){
-  takeMeBack();
-});
+nevermind.addEventListener('click', takeMeBack);
 
-viewSavePosterBtn.addEventListener('click', function(){
-  viewSavedPosters();
-});
+backToMain.addEventListener('click', goBackToMain);
+
+viewSavePosterBtn.addEventListener('click', viewSavedPosters)
 
 
 // functions and event handlers go here 👇
@@ -159,18 +154,13 @@ function makeOwnPoster (){
 };
 
 
-
-
 function takeMeBack(){
   mainPoster.classList.remove('hidden')
   hiddenForm.classList.add('hidden')
 }
 
+function goBackToMain(){
+  mainPoster.classList.remove('hidden')
+  savedPostersArea.classList.add('hidden')
+};
 getRandomLoad();
-
-//next PR, moved section poster-form hidden to be above
-//main poster to more cleanly show hidden form.
-//When a user clicks the “Nevermind, take me back!”
-// or “Back to Main” buttons, 
-//we should only see the main poster section
-
