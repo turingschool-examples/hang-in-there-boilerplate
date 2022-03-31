@@ -110,6 +110,7 @@ var currentPoster;
 
 // event listeners go here 👇
 showRandomPoster.addEventListener('click', displayRandomPoster);
+makePoster.addEventListener('click', viewPosterForm);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -117,15 +118,19 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function makeContent(content, fromArray){
+function makeContent(fromArray){
   var index = getRandomIndex(fromArray);
-  content = fromArray[index];
+  return fromArray[index];
 }
 
 function displayRandomPoster() {
-  makeContent(posterImage.src, images);
-  makeContent(posterTitle.innerText, titles);
-  makeContent(posterQuote.innerText, quotes);
+  posterImage.src = makeContent(images);
+  posterTitle.innerText = makeContent(titles);
+  posterQuote.innerText = makeContent(quotes);
+}
+
+function viewPosterForm() {
+  console.log('hello');
 }
 
 displayRandomPoster();
