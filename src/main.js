@@ -117,23 +117,15 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function makeContent(content, fromArray){
+  var index = getRandomIndex(fromArray);
+  content = fromArray[index];
+}
+
 function displayRandomPoster() {
-
-  // Pick an index of the images array.
-  var index = getRandomIndex(images);
-  posterImage.src = images[index];
-
-  // Pick an index of the titles array.
-  index = getRandomIndex(titles);
-  posterTitle.innerText = titles[index];
-
-  // Pick an index of the quotes array.
-  index = getRandomIndex(quotes);
-  posterQuote.innerText = quotes[index];
-
-  // Create poster using image, title and quote.
-  currentPoster = new Poster(posterImage.src, posterTitle, posterQuote);
-
+  makeContent(posterImage.src, images);
+  makeContent(posterTitle.innerText, titles);
+  makeContent(posterQuote.innerText, quotes);
 }
 
 displayRandomPoster();
