@@ -2,7 +2,10 @@
 var posterImage = document.querySelector("img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
-
+var savePoster = document.querySelector(".save-poster");
+var showSavedPosters = document.querySelector(".show-saved");
+var showRandomPoster = document.querySelector(".show-random");
+var makePoster = document.querySelector(".show-form");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -106,6 +109,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+showRandomPoster.addEventListener('click', displayRandomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -117,10 +121,7 @@ function displayRandomPoster() {
 
   // Pick an index of the images array.
   var index = getRandomIndex(images);
-  // var imgStr = "<img class=\"poster-img\" src=\".\/assets\/bridge.jpg"
-  // imgStr = imgStr + "\" alt=\"nothing to see here\">""
-  // console.log(imgStr);
-  // posterImage.innerText = imgStr;
+  posterImage.src = images[index];
 
   // Pick an index of the titles array.
   index = getRandomIndex(titles);
@@ -131,7 +132,7 @@ function displayRandomPoster() {
   posterQuote.innerText = quotes[index];
 
   // Create poster using image, title and quote.
-  // currentPoster = new Poster(imgUrl, posterTitle, posterQuote);
+  currentPoster = new Poster(posterImage.src, posterTitle, posterQuote);
 
 }
 
