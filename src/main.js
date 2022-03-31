@@ -1,8 +1,10 @@
-var Poster = require('./poster');
+// var Poster = require('./poster');
 // query selector variables go here 👇
+
 var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -112,23 +114,13 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
   }
 
-function buildRandomPoster(){
-  var imageURL = images[getRandomIndex(images)];
-  var header = titles[getRandomIndex(titles)];
-  var saying = quotes[getRandomIndex(quotes)];
-  var randomPoster = new Poster(imageURL,header,saying);
-  return randomPoster;
-}
-var firstPoster = buildRandomPoster();
-console.log("122",firstPoster);
-
-posterImg.innerHTML = `
-  <img class="poster-img" src=${firstPoster.imageURL} alt="nothin' to see here">
-  `;
-
-posterTitle.innerHTML = `
-  <h1 class="poster-title">${firstPoster.title}</h1>`;
-
-posterQuote.innerHTML = `
-  <h3 class="poster-quote">${firstPoster.quote}</h3>
-`;
+// function buildRandomPoster(){
+//   var image = images[getRandomIndex(images)];
+//   var header = titles[getRandomIndex(titles)];
+//   var saying = quotes[getRandomIndex(quotes)];
+//   var randomPoster = new Poster(imageURL,header,saying);
+//   return randomPoster;
+// }
+// var firstPoster = buildRandomPoster();
+//
+posterImg.src = images[getRandomIndex(images)];
