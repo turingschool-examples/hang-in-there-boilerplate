@@ -1,7 +1,8 @@
 var Poster = require('./poster');
 // query selector variables go here 👇
-var homePagePoster = document.querySelector(".poster");
-
+var posterImg = document.querySelector(".poster-img");
+var posterTitle = document.querySelector(".poster-title");
+var posterQuote = document.querySelector(".poster-quote");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -119,9 +120,15 @@ function buildRandomPoster(){
   return randomPoster;
 }
 var firstPoster = buildRandomPoster();
+console.log("122",firstPoster);
 
-homePagePoster.innerHTML = `
+posterImg.innerHTML = `
   <img class="poster-img" src=${firstPoster.imageURL} alt="nothin' to see here">
-  <h1 class="poster-title">${firstPoster.title}</h1>
+  `;
+
+posterTitle.innerHTML = `
+  <h1 class="poster-title">${firstPoster.title}</h1>`;
+
+posterQuote.innerHTML = `
   <h3 class="poster-quote">${firstPoster.quote}</h3>
 `;
