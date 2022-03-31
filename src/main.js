@@ -8,10 +8,14 @@ var mainPoster = document.querySelector('.poster')
 var showForm = document.querySelector('.show-form')
 var bigMain = document.querySelector(".main-poster")
 var hiddenForm = document.querySelector(".poster-form")
-var nevermind = document.querySelector('.show-main')
+var nevermindTakeBack = document.querySelector('.show-main')
 var backToMain = document.querySelector('.back-to-main')
 var savedPostersArea = document.querySelector('.saved-posters')
 var viewSavePosterBtn = document.querySelector('.show-saved')
+var showPosterButton = document.querySelector('.make-poster')
+var userPosterImage = document.querySelector('#poster-image-url')
+var userPosterTitle = document.querySelector('#poster-title')
+var userPosterQuote = document.querySelector('#poster-quote')
 
 
 
@@ -120,15 +124,18 @@ var currentPoster;
 // event listeners go here 👇
 showRandomBtn.addEventListener('click', getRandomLoad)
 
-
 showForm.addEventListener('click', makeOwnPoster);
 
-
-nevermind.addEventListener('click', takeMeBack);
+nevermindTakeBack.addEventListener('click', takeMeBack);
 
 backToMain.addEventListener('click', goBackToMain);
 
 viewSavePosterBtn.addEventListener('click', viewSavedPosters)
+
+showPosterButton.addEventListener('click', function(){
+event.preventDefault()
+customPoster()
+});
 
 
 // functions and event handlers go here 👇
@@ -163,4 +170,16 @@ function goBackToMain(){
   mainPoster.classList.remove('hidden')
   savedPostersArea.classList.add('hidden')
 };
+var newPoster = {};
+function customPoster(){
+  newPoster = new Poster(userPosterImage.value , userPosterTitle.value, userPosterQuote.value)
+  images.unshift(newPoster.imageURL)
+  titles.unshift(newPoster.title)
+  quotes.unshift(newPoster.quote)
+  hiddenForm.classList.add('hidden')
+  mainPoster.classList.remove('hidden')
+  posterImg.src = images[0];
+  posterTitle.innerText = titles[0];
+  posterQuote.innerText = quotes[0];
+}
 getRandomLoad();
