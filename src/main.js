@@ -1,4 +1,5 @@
 // query selector variables go here 👇
+
 var posterImg = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
@@ -9,6 +10,7 @@ var bigMain = document.querySelector(".main-poster")
 var hiddenForm = document.querySelector(".poster-form")
 var savedPostersArea = document.querySelector('.saved-posters')
 var viewSavePosterBtn = document.querySelector('.show-saved')
+
 
 
 // we've provided you with some data to work with 👇
@@ -117,6 +119,7 @@ showRandomBtn.addEventListener('click', function(){
   getRandomLoad();
 });
 
+
 showForm.addEventListener('click', function(){
   makeOwnPoster();
 });
@@ -124,6 +127,7 @@ showForm.addEventListener('click', function(){
 viewSavePosterBtn.addEventListener('click', function(){
   viewSavedPosters();
 });
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -146,6 +150,7 @@ function makeOwnPoster (){
   mainPoster.classList.add('hidden')
   hiddenForm.classList.remove('hidden')
 };
+
 
 
 
