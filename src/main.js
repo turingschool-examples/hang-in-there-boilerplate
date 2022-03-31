@@ -2,7 +2,19 @@
 var posterImg = document.querySelector(".poster-img")
 var posterTitle = document.querySelector(".poster-title")
 var posterQuote = document.querySelector(".poster-quote")
+
+var mainPosterSection = document.querySelector(".main-poster")
+var posterFormSection = document.querySelector(".poster-form")
+var savedPostersSection = document.querySelector(".saved-posters")
+
+var savePosterButton = document.querySelector(".save-poster")
+var showSavedButton = document.querySelector(".show-saved")
 var showRandomButton = document.querySelector(".show-random")
+var showFormButton = document.querySelector(".show-form")
+var makePosterButton = document.querySelector(".make-poster")
+var showMainButton = document.querySelector(".show-main")
+var backToMainButton = document.querySelector(".back-to-main")
+
 //variable names are based on the class names we are querying against.
 
 // we've provided you with some data to work with 👇
@@ -107,23 +119,28 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', function() {
-  generateRandomPoster(images, titles, quotes)
-})
+window.addEventListener('load', generateRandomPoster)
 
-showRandomButton.addEventListener('click', function() {
-  generateRandomPoster(images, titles, quotes)
-})
+showRandomButton.addEventListener('click', generateRandomPoster)
+
+showFormButton.addEventListener('click', toggleFormAndMain)
+
+showMainButton.addEventListener('click', toggleFormAndMain)
+
+showSavedButton.addEventListener('click', toggleSavedAndMain)
+
+backToMainButton.addEventListener('click', toggleSavedAndMain)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+//this function returns a number between 0 and end of whatever array is passed through as an argument.
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-//this function returns a number between 0 and end of whatever array is passed through as an argument.
 
 //Event handler for the showRandomButton event listener
-function generateRandomPoster(images, titles, quotes) {
+function generateRandomPoster() {
   var imageURL = images[getRandomIndex(images)]
   var title = titles[getRandomIndex(titles)]
   var quote = quotes[getRandomIndex(quotes)]
@@ -133,4 +150,14 @@ function generateRandomPoster(images, titles, quotes) {
   posterTitle.innerText = title
   posterQuote.innerText = quote
   //Using the query selector variables from above we manipulate the DOM and pass in our randomly generated variables
+}
+
+function toggleFormAndMain() {
+  posterFormSection.classList.toggle("hidden")
+  mainPosterSection.classList.toggle("hidden")
+}
+
+function toggleSavedAndMain() {
+  savedPostersSection.classList.toggle("hidden")
+  mainPosterSection.classList.toggle("hidden")
 }
