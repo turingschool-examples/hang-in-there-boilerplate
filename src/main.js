@@ -1,3 +1,4 @@
+var Poster = require('./poster');
 // query selector variables go here 👇
 
 // we've provided you with some data to work with 👇
@@ -107,8 +108,12 @@ var currentPoster;
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+  }
 
-var Poster = require('./poster');
-var test = new Poster('March', 'dog.png', 'Hello', 'Shoot for the stars!')
-  console.log(test);
+function buildRandomPoster(){
+  var imageURL = images[getRandomIndex(images)];
+  var header = titles[getRandomIndex(titles)];
+  var saying = quotes[getRandomIndex(quotes)];
+  var randomPoster = new Poster(imageURL,header,saying);
+  return randomPoster;
+}
