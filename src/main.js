@@ -1,3 +1,17 @@
+// query selector variables go here 👇
+var image = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
+var randomButton = document.querySelector('.show-random');
+var saveButton = document.querySelector('.save-poster');
+var showSavedButton = document.querySelector('.show-saved');
+var formButton = document.querySelector('.show-form');
+var makePosterButton = document.querySelector('.make-poster');
+var nevermindButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var formView = document.querySelector('.poster-form')
+var mainView = document.querySelector('.main-poster');
+var savedView = document.querySelector('.saved-posters');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -98,26 +112,13 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-// query selector variables go here 👇
-var image = document.querySelector('.poster-img');
-var title = document.querySelector('.poster-title');
-var quote = document.querySelector('.poster-quote');
-var randomButton = document.querySelector('.show-random');
-var saveButton = document.querySelector('.save-poster');
-var showSavedButton = document.querySelector('.show-saved');
-var formButton = document.querySelector('.show-form');
-var makePosterButton = document.querySelector('.make-poster');
-var nevermindButton = document.querySelector('.show-main');
-var backToMainButton = document.querySelector('.back-to-main');
-var formView = document.querySelector('.poster-form');
-var savedView = document.querySelector('.saved-posters');
 
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster)
 randomButton.addEventListener('click', createRandomPoster)
-saveButton.addEventListener('click', )
-showSavedButton.addEventListener('click', )
-formButton.addEventListener('click', )
+// saveButton.addEventListener('click', )
+// showSavedButton.addEventListener('click', )
+formButton.addEventListener('click', showFormView)
 
 
 // functions and event handlers go here 👇
@@ -126,6 +127,12 @@ function createRandomPoster() {
   image.src = images[getRandomIndex(images)];
   title.innerText = titles[getRandomIndex(titles)];
   quote.innerText = quotes[getRandomIndex(quotes)];
+}
+
+function showFormView() {
+  console.log('bob')
+  formView = formView.classList.remove('hidden')
+  mainView = mainView.classList.add('hidden')
 }
 
 function getRandomIndex(array) {
