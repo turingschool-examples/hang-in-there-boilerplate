@@ -1,10 +1,13 @@
 // var Poster = require('./poster');
 // query selector variables go here 👇
 
+var mainPoster = document.querySelector(".main-poster");
 var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
-var button = document.querySelector(".show-random");
+var buttonRandomPoster = document.querySelector(".show-random");
+var posterForm = document.querySelector(".poster-form");
+var buttonMakePoster = document.querySelector(".show-form");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,16 +111,23 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+buttonRandomPoster.addEventListener('click', randomizePoster);
+window.addEventListener('load', randomizePoster);
+buttonMakePoster.addEventListener('click', displayFormView);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
   }
-button.addEventListener('click', randomPoster);
-window.addEventListener('load', randomPoster);
-function randomPoster(){
+
+function randomizePoster() {
   posterImg.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 }
+
+function displayFormView() {
+  posterForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+};
