@@ -5,7 +5,8 @@ var savePoster = document.querySelector('.save-poster');
 var showSaved = document.querySelector('.show-saved');
 var showRando = document.querySelector('.show-random');
 var showForm = document.querySelector('.show-form');
-var postForm = document.querySelector('.poster-form hidden');
+var postForm = document.querySelector('.poster-form');
+
 
 
 
@@ -112,7 +113,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+showRando.addEventListener('click', showRandom)
 // functions and event handlers go here 👇
 
 // (we've provided one for you to get you started)!
@@ -125,6 +126,10 @@ function loadWindow() {
 }
 
 loadWindow()
+
+function showRandom() {
+  getRandoStuff()
+}
 
 
 function getRandoStuff() {
