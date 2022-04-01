@@ -90,9 +90,6 @@ button:hover {
 }
 
 /* ~~~~~ POSTER FORM SECTION ~~~~~ */
-.poster-shown {
-  display: block;
-}
 
 .poster-form {
   display: flex;

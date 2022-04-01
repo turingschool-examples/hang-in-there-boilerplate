@@ -138,6 +138,9 @@ backgroundColorButton.addEventListener("click", changeBackgroundColor)
 let posterTitleButton = document.querySelector(".poster-title")
 posterTitleButton.addEventListener("click", changeTitle)
 
+let showMainButton = document.querySelector(".show-main");
+showMainButton.addEventListener("click", revealMainPoster);
+
 let posterImage = document.querySelector(".poster-img");
 posterImage.addEventListener("click", getRandomElement(images));
 
@@ -174,11 +177,17 @@ function changeTitle() {
 }
 
 function revealForm() {
-  let createPoster = document.getElementById("poster-form-reveal")
+  let createPoster = document.getElementById("poster-form-reveal");
   createPoster.className = ("poster-shown");
-
+  hideMain()
 }
 
 function hideMain() {
+  let hideMainPoster = document.getElementById("main-poster-shown");
+  hideMainPoster.className = ("main-poster hidden");
+}
 
+function revealMainPoster() {
+  let backToMainPoster = document.getElementById("main-poster-shown");
+  backToMainPoster.className = ("main-poster")
 }
