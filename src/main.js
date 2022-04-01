@@ -1,16 +1,20 @@
 // var Poster = require('./poster');
 // query selector variables go here 👇
-var mainPoster = document.querySelector(".main-poster");
+//poster elements👇
 var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
-var randomButton = document.querySelector(".show-random");
-var savedPosterButton = document.querySelector(".show-saved");
+//page elements 👇
+var mainPoster = document.querySelector(".main-poster");
 var savedPosterPage = document.querySelector(".saved-posters");
 var posterForm = document.querySelector(".poster-form");
+//buttons 👇
+var randomButton = document.querySelector(".show-random");
+var savedPosterButton = document.querySelector(".show-saved");
 var makePosterButton = document.querySelector(".show-form");
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -114,12 +118,12 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomButton.addEventListener('click', randomizePoster);
 window.addEventListener('load', randomizePoster);
+randomButton.addEventListener('click', randomizePoster);
 makePosterButton.addEventListener('click', displayFormView);
 savedPosterButton.addEventListener('click', showSavedPoster);
 nevermindButton.addEventListener('click', returnToMain);
-backToMainButton.addEventListener('click', takeBacktoMain);
+backToMainButton.addEventListener('click', returnToMain);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -132,8 +136,9 @@ function randomizePoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 };
-
-function showSavedPoster(){
+//Is there a way we can see which button was pressed to make these two functions
+//one function 👇 ? 
+function showSavedPoster() {
   mainPoster.classList.add("hidden");
   savedPosterPage.classList.remove("hidden");
 };
@@ -145,10 +150,9 @@ function displayFormView() {
 
 function returnToMain() {
   mainPoster.classList.remove("hidden");
-  posterForm.classList.add("hidden");
-};
-
-function takeBacktoMain() {
-  savedPosterPage.classList.add("hidden");
-  mainPoster.classList.remove("hidden");
+    if(!posterForm.classList.contains("hidden")){
+        posterForm.classList.add("hidden");
+        }else if(!savedPosterPage.classList.contains("hidden")){
+          savedPosterPage.classList.add("hidden");
+          }
 };
