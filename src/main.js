@@ -7,6 +7,20 @@ var firstQuote = document.querySelector('.poster-quote');
 
 var randomButton = document.querySelector('.show-random');
 
+var makePosterButton = document.querySelector('.show-form')
+
+var poster = document.querySelector('.main-poster')
+
+var hiddenForm = document.querySelector('.poster-form')
+
+var showSavedButton = document.querySelector('.show-saved')
+
+var savedPosts = document.querySelector('.saved-posters')
+
+var takeMeBack = document.querySelector('.show-main')
+
+var backToMain = document.querySelector('.back-to-main')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -120,10 +134,46 @@ firstImage.src = images[getRandomIndex(images)];
 firstQuote.innerText = quotes[getRandomIndex(quotes)];
 firstTitle.innerText = titles[getRandomIndex(titles)];
 
+
+//Show Another Random Poster//
+
 randomButton.addEventListener('click', randomPoster);
 
 function randomPoster() {
   firstImage.src = images[getRandomIndex(images)];
   firstQuote.innerText = quotes[getRandomIndex(quotes)];
   firstTitle.innerText = titles[getRandomIndex(titles)];
+}
+
+//Make Your Own Poster//
+
+makePosterButton.addEventListener('click', showForm);
+
+function showForm(){
+  poster.classList.add('hidden')
+  hiddenForm.classList.remove('hidden')
+}
+
+takeMeBack.addEventListener('click', mainPage)
+
+function mainPage(){
+  hiddenForm.classList.add('hidden')
+  poster.classList.remove('hidden')
+}
+
+
+//Show Saved Posters//
+
+showSavedButton.addEventListener('click', showSavedPosters);
+
+function showSavedPosters() {
+  poster.classList.add('hidden')
+  savedPosts.classList.remove('hidden')
+}
+
+backToMain.addEventListener('click', backMainPage)
+
+function backMainPage() {
+  savedPosts.classList.add('hidden')
+  poster.classList.remove('hidden')
 }
