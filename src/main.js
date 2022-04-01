@@ -145,6 +145,11 @@ function createNewPoster(){
 }
 
 function savePoster() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters.includes(currentPoster)) {
+      savedPosters.splice(i, 1)
+    }
+  }
   savedPosters.push(currentPoster)
 }
 
@@ -168,9 +173,6 @@ function showFormView() {
 }
 
 function showSavedView() {
-  // document.querySelector('.saved-posters').classList.revome('hidden')
-  // document.querySelector('.main-poster').classList.add('hidden')
-  // document.querySelector('.poster-form').classList.add('hidden')
   formView.classList.add('hidden')
   mainView.classList.add('hidden')
   savedView.classList.remove('hidden')
