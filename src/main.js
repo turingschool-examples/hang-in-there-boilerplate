@@ -6,7 +6,11 @@ var posterTitle = document.querySelector(".poster-title");
 
 var posterQuote = document.querySelector(".poster-quote");
 
-var button = document.querySelector(".show-random");
+var randomButton = document.querySelector(".show-random");
+
+var indyButton = document.querySelector(".show-form");
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -112,7 +116,12 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener("load", showRandom);
 
-button.addEventListener("click", showRandom);
+randomButton.addEventListener("click", showRandom);
+
+indyButton.addEventListener("click", makeOwnPoster);
+// on click, show poster form hidden
+
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -121,7 +130,17 @@ button.addEventListener("click", showRandom);
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-// function above returns the index position #
+
+function makeOwnPoster () {
+    indyButton.querySelector(".poster-form").hidden = false;
+    indyButton.querySelector(".main-poster").hidden = true;
+
+
+}
+// //() {
+//   document.getElementById("welcome").hidden = true;
+//   document.getElementById("awesome").hidden = false;
+// }, false)
 
 
 function showRandom () {
