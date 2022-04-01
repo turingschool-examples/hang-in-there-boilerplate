@@ -11,6 +11,10 @@ var posterForm = document.querySelector(".poster-form");
 var showMain = document.querySelector(".show-main");
 var savedPoster = document.querySelector(".saved-posters");
 var backToMain = document.querySelector(".back-to-main");
+var newImageUrl = document.querySelector("#poster-image-url");
+var newTitle = document.querySelector("#poster-title");
+var newQuote = document.querySelector("#poster-quote");
+var newPoster = document.querySelector(".make-poster");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -118,7 +122,7 @@ makePoster.addEventListener('click', viewPosterForm);
 showMain.addEventListener('click', viewPosterForm);
 showSavedPosters.addEventListener('click',viewSavedPosters);
 backToMain.addEventListener('click', viewSavedPosters);
-
+newPoster.addEventListener('click', createNewPoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -144,6 +148,32 @@ function viewPosterForm() {
 function viewSavedPosters() {
   mainPoster.classList.toggle("hidden");
   savedPoster.classList.toggle("hidden");
+}
+
+function createNewPoster() {
+   // Needs to create a new instance of our Poster class.
+   myPoster = new Poster();
+   myPoster.imageUrl = newImageUrl.value;
+   myPoster.title = newTitle.value;
+   myPoster.quote = newQuote.value;
+
+   console.log(myPoster);
+
+   // Saves the submitted data to the respective arrays.
+   images[array.length] = myPoster.imageURL;
+   titles[array.length] = myPoster.title;
+   quotes[array.length] = myPoster.quote;
+
+   // Use the new instance of Poster to display the new poster image,
+   // title, and quote.
+   posterImage.src = myPoster.imageUrl;
+   posterTitle.innerText = myPoster.title;
+   posterQuotes.innerText = myPoster.quote;
+
+   // Change back to the main poster view.
+   viewPosterForm();
+
+   return myPoster;
 }
 
 displayRandomPoster();
