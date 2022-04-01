@@ -123,6 +123,8 @@ showMain.addEventListener('click', viewPosterForm);
 showSavedPosters.addEventListener('click',viewSavedPosters);
 backToMain.addEventListener('click', viewSavedPosters);
 newPoster.addEventListener('click', createNewPoster);
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -151,29 +153,31 @@ function viewSavedPosters() {
 }
 
 function createNewPoster() {
-   // Needs to create a new instance of our Poster class.
-   myPoster = new Poster();
-   myPoster.imageUrl = newImageUrl.value;
-   myPoster.title = newTitle.value;
-   myPoster.quote = newQuote.value;
 
-   console.log(myPoster);
+  event.preventDefault();
+
+   // Needs to create a new instance of our Poster class.
+   var myPoster = new Poster(
+        newImageUrl.value,
+        newTitle.value,
+        newQuote.value
+        );
 
    // Saves the submitted data to the respective arrays.
-   images[array.length] = myPoster.imageURL;
-   titles[array.length] = myPoster.title;
-   quotes[array.length] = myPoster.quote;
-
+   images[images.length] = myPoster.imageURL;
+   titles[titles.length] = myPoster.title;
+   quotes[quotes.length] = myPoster.quote;
+ 
+   // Change back to the main poster view.
+  
    // Use the new instance of Poster to display the new poster image,
    // title, and quote.
-   posterImage.src = myPoster.imageUrl;
+   posterImage.src = myPoster.imageURL;
    posterTitle.innerText = myPoster.title;
-   posterQuotes.innerText = myPoster.quote;
+   posterQuote.innerText = myPoster.quote;
 
-   // Change back to the main poster view.
-   viewPosterForm();
-
-   return myPoster;
+  //  mainPoster.classList.toggle('hidden');
+  viewPosterForm();
 }
 
 displayRandomPoster();
