@@ -1,6 +1,6 @@
 var pImg = document.querySelector('.poster-img');
 var postTitle = document.querySelector('.poster-title');
-var postQuote = document.querySelector('.poster-quote');
+var pQuote = document.querySelector('.poster-quote');
 var savePoster = document.querySelector('.save-poster');
 var showSaved = document.querySelector('.show-saved');
 var showRando = document.querySelector('.show-random');
@@ -120,14 +120,17 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function loadWindow() {
+  getRandoStuff()
+}
+
+loadWindow()
 
 
-// getRandoStuff()
-//
-// function getRandoStuff() {
-//   currentPoster = new Poster(
-//     images[getRandomIndex(images)],
-//     title[getRandomIndex(title)],
-//     quotes[getRandomIndex(quotes)]
-//   )
-// };
+function getRandoStuff() {
+  currentPoster = new Poster(
+    pImg.src = images[getRandomIndex(images)],
+    postTitle.innerText = titles[getRandomIndex(titles)],
+    pQuote.innerText = quotes[getRandomIndex(quotes)]
+  )
+};
