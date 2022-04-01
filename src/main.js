@@ -14,6 +14,7 @@ var backToMainButton = document.querySelector('.back-to-main');
 var formView = document.querySelector('.poster-form')
 var mainView = document.querySelector('.main-poster');
 var savedView = document.querySelector('.saved-posters');
+var savedGrid = document.querySelector('.saved-posters-grid')
 
 var imageInput = document.querySelector('#poster-image-url')
 var titleInput = document.querySelector('#poster-title')
@@ -137,10 +138,24 @@ backToMainButton.addEventListener('click', showMainView)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+function loadSavedPosters() {
+  var savedPosterDisplay = [];
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPosterDisplay += `<article class="mini-poster">
+    <img class="poster-img" src="${savedPosters[i].imageURL}" alt="">
+    <h1 class="poster-title">${savedPosters[i].title}</h1>
+    <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+    </article>`
+  }
+  console.log('bob')
+  savedGrid.innerHTML = savedPosterDisplay
+}
+
 function createNewPoster(){
   image.src = imageInput.value;
   title.innerText = titleInput.value;
-  quote.innerText = titleInput.value;
+  quote.innerText = quoteInput.value;
   currentPoster = new Poster(image.src, title.innerText, quote.innerText)
 }
 
@@ -176,6 +191,7 @@ function showSavedView() {
   formView.classList.add('hidden')
   mainView.classList.add('hidden')
   savedView.classList.remove('hidden')
+  loadSavedPosters()
 }
 
 function showMainView() {
