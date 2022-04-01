@@ -2,6 +2,16 @@
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+var buttonShowRandom = document.querySelector(".show-random");
+var buttonMakeYourOwn = document.querySelector(".show-form");
+var buttonSavedPoster = document.querySelector(".show-saved");
+// var buttonShowMain = document.querySelector("show-main");
+// var buttonBackMain = document.querySelector("back-to-main");
+var posterForm = document.querySelector(".poster-form");
+var mainPoster = document.querySelector(".main-poster");
+var savedPoster =document.querySelector(".saved-posters");
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -105,6 +115,13 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+buttonShowRandom.addEventListener("click", showPoster);
+buttonMakeYourOwn.addEventListener("click", viewForm);
+buttonSavedPoster.addEventListener("click", savePoster);
+// buttonShowMain.addEventListener("click", showMain);
+// buttonBackMain.addEventListener("click", showMain);
+
+//var.addEventListener(event,function)
 
 // functions and event handlers go here 👇
 
@@ -113,13 +130,27 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function newPoster(array) {
+function showPoster(array) {
   index = getRandomIndex (titles);
   posterTitle.innerText = titles[index];
   index = getRandomIndex (quotes);
   posterQuote.innerText = quotes[index];
   index = getRandomIndex (images);
-  posterImage.innerText = images[index];
+  posterImage.src = images[index];
 }
 
-newPoster(images, titles, quotes);
+showPoster(images, titles, quotes);
+
+function viewForm(){
+  posterForm.classList.remove("hidden");
+  mainPoster.classList.add("hidden");
+}
+
+function savePoster(){
+  savedPoster.classList.remove("hidden");
+  mainPoster.classList.add("hidden");
+}
+// function showMain(){
+//   mainPoster.classList.remove("hidden");
+//   posterForm.classList.add("hidden");
+// }
