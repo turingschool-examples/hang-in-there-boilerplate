@@ -2,6 +2,7 @@
 var image = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
+
 var randomButton = document.querySelector('.show-random');
 var saveButton = document.querySelector('.save-poster');
 var showSavedButton = document.querySelector('.show-saved');
@@ -9,9 +10,14 @@ var formButton = document.querySelector('.show-form');
 var makePosterButton = document.querySelector('.make-poster');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+
 var formView = document.querySelector('.poster-form')
 var mainView = document.querySelector('.main-poster');
 var savedView = document.querySelector('.saved-posters');
+
+var imageInput = document.querySelector('#poster-image-url')
+var titleInput = document.querySelector('#poster-title')
+var quoteInput = document.querySelector('#poster-quote')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -116,7 +122,13 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster)
 randomButton.addEventListener('click', createRandomPoster)
-// saveButton.addEventListener('click', )
+makePosterButton.addEventListener('click', function(){
+  event.preventDefault();
+  createNewPoster();
+  showMainView();
+  saveInputToArray();
+})
+saveButton.addEventListener('click', savePoster)
 showSavedButton.addEventListener('click', showSavedView)
 formButton.addEventListener('click', showFormView)
 nevermindButton.addEventListener('click', showMainView)
@@ -125,37 +137,49 @@ backToMainButton.addEventListener('click', showMainView)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+function createNewPoster(){
+  image.src = imageInput.value;
+  title.innerText = titleInput.value;
+  quote.innerText = titleInput.value;
+  currentPoster = new Poster(image.src, title.innerText, quote.innerText)
+}
+
+function savePoster() {
+  savedPosters.push(currentPoster)
+}
+
+function saveInputToArray() {
+  images.push(imageInput.value)
+  titles.push(titleInput.value)
+  quotes.push(titleInput.value)
+}
+
 function createRandomPoster() {
   image.src = images[getRandomIndex(images)];
   title.innerText = titles[getRandomIndex(titles)];
   quote.innerText = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(image.src, title.innerText, quote.innerText)
 }
 
 function showFormView() {
-  document.querySelector('.poster-form').classList.remove('hidden')
-  document.querySelector('.main-poster').classList.add('hidden')
-  document.querySelector('.saved-posters').classList.add('hidden')
-  // formView = formView.classList.remove('hidden')
-  // mainView = mainView.classList.add('hidden')
-  // savedView = savedView.classList.add('hidden')
+  formView.classList.remove('hidden')
+  mainView.classList.add('hidden')
+  savedView.classList.add('hidden')
 }
 
 function showSavedView() {
-  document.querySelector('.saved-posters').classList.remove('hidden')
-  document.querySelector('.main-poster').classList.add('hidden')
-  document.querySelector('.poster-form').classList.add('hidden')
-  // savedView = savedView.classList.remove('hidden')
-  // mainView = mainView.classList.add('hidden')
-  // formView = formView.classList.add('hidden')
+  // document.querySelector('.saved-posters').classList.revome('hidden')
+  // document.querySelector('.main-poster').classList.add('hidden')
+  // document.querySelector('.poster-form').classList.add('hidden')
+  formView.classList.add('hidden')
+  mainView.classList.add('hidden')
+  savedView.classList.remove('hidden')
 }
 
 function showMainView() {
-  document.querySelector('.main-poster').classList.remove('hidden')
-  document.querySelector('.saved-posters').classList.add('hidden')
-  document.querySelector('.poster-form').classList.add('hidden')
-  // mainView = mainView.classList.remove('hidden')
-  // formView = formView.classList.add('hidden')
-  // savedView = savedView.classList.add('hidden')
+  mainView.classList.remove('hidden')
+  formView.classList.add('hidden')
+  savedView.classList.add('hidden')
 }
 
 
