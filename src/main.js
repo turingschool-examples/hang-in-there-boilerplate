@@ -2,9 +2,8 @@
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 var posterImage = document.querySelector(".poster-img");
-var showRandomButton = document.querySelector('.show-random')
+var showRandomButton = document.querySelector('.show-random');
 
-//var randomButton = document.querySelector(".show-random");//
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -108,13 +107,19 @@ var currentPoster;
 
 
 // event listeners go here 👇//
+showRandomButton.addEventListener('click', changeHomePage);
+addEventListener('click', displayForm)
+
+// makePosterButton.addEventListener('click', makePoster);
+
+// backToMainButton.addEventListener('click', showMainPage);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
+
 function changeHomePage() {
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
@@ -124,5 +129,9 @@ function changeHomePage() {
   posterImage.src = randomImage;
   console.log({randomQuote});
 };
-changeHomePage();
-showRandomButton.addEventListener('click' , changeHomePage);
+changeHomePage()
+
+function displayForm() {
+  document.getElementsByClassName('main-poster')[0].style.display = 'none';
+  document.getElementsByClassName('poster-form')[0].classList.remove('hidden');
+}
