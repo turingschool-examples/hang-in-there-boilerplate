@@ -114,6 +114,9 @@ var currentPoster;
 
 // event listeners go here 👇
 showRando.addEventListener('click', showRandom)
+// showForm.addEventListener(‘click’, function() {
+//   console.log(‘hi’)})
+showForm.addEventListener('click', ownPoster)
 // functions and event handlers go here 👇
 
 // (we've provided one for you to get you started)!
@@ -132,6 +135,11 @@ function showRandom() {
 }
 
 
+function ownPoster() {
+  console.log('Hi')
+}
+
+
 function getRandoStuff() {
   currentPoster = new Poster(
     pImg.src = images[getRandomIndex(images)],
@@ -139,3 +147,11 @@ function getRandoStuff() {
     pQuote.innerText = quotes[getRandomIndex(quotes)]
   )
 };
+
+
+
+
+function showHide(arg1, arg2) {
+  arg1.classList.remove('.hidden')
+  arg2.classList.add('.hidden')
+}
