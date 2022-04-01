@@ -1,20 +1,20 @@
 // query selector variables go here 👇
-var posterImage = document.querySelector("img");
-var posterTitle = document.querySelector(".poster-title");
-var posterQuote = document.querySelector(".poster-quote");
-var savePoster = document.querySelector(".save-poster");
-var mainPoster = document.querySelector(".main-poster");
-var showSavedPosters = document.querySelector(".show-saved");
-var showRandomPoster = document.querySelector(".show-random");
-var makePoster = document.querySelector(".show-form");
-var posterForm = document.querySelector(".poster-form");
-var showMain = document.querySelector(".show-main");
-var savedPoster = document.querySelector(".saved-posters");
-var backToMain = document.querySelector(".back-to-main");
-var newImageUrl = document.querySelector("#poster-image-url");
-var newTitle = document.querySelector("#poster-title");
-var newQuote = document.querySelector("#poster-quote");
-var newPoster = document.querySelector(".make-poster");
+var posterImage = document.querySelector('img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var savePoster = document.querySelector('.save-poster');
+var mainPoster = document.querySelector('.main-poster');
+var showSavedPosters = document.querySelector('.show-saved');
+var showRandomPoster = document.querySelector('.show-random');
+var makePoster = document.querySelector('.show-form');
+var posterForm = document.querySelector('.poster-form');
+var showMain = document.querySelector('.show-main');
+var savedPoster = document.querySelector('.saved-posters');
+var backToMain = document.querySelector('.back-to-main');
+var newImageUrl = document.querySelector('#poster-image-url');
+var newTitle = document.querySelector('#poster-title');
+var newQuote = document.querySelector('#poster-quote');
+var newPoster = document.querySelector('.make-poster');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -142,50 +142,54 @@ function displayRandomPoster() {
 }
 
 function viewPosterForm() {
-  mainPoster.classList.toggle("hidden");
-  posterForm.classList.toggle("hidden");
+  mainPoster.classList.toggle('hidden');
+  posterForm.classList.toggle('hidden');
 }
 
 function viewMainPoster() {
-  posterForm.classList.toggle("hidden");
-  mainPoster.classList.toggle("hidden");
+  posterForm.classList.toggle('hidden');
+  mainPoster.classList.toggle('hidden');
   displayRandomPoster();
 }
 
 
 function viewSavedPosters() {
-  mainPoster.classList.toggle("hidden");
-  savedPoster.classList.toggle("hidden");
+  mainPoster.classList.toggle('hidden');
+  savedPoster.classList.toggle('hidden');
+}
+
+function createNewPoster(newPoster) {
+  images.push(newPoster.imageURL);
+  titles.push(newPoster.title);
+  quotes.push(newPoster.quote);
+}
+
+function clearTheForm() {
+  newImageUrl.value = '';
+  newTitle.value = '';
+  newQuote.value = '';
+}
+
+function displayCustomPoster(posterObj) {
+  posterImage.src = posterObj.imageURL;
+  posterTitle.innerText = posterObj.title;
+  posterQuote.innerText = posterObj.quote;
 }
 
 function createNewPoster() {
+  var userPoster = new Poster(
+    newImageUrl.value,
+    newTitle.value,
+    newQuote.value
+  );
 
   event.preventDefault();
-
-   // Needs to create a new instance of our Poster class.
-   var myPoster = new Poster(
-        newImageUrl.value,
-        newTitle.value,
-        newQuote.value
-        );
-
-    // clear the form.
-    newImageUrl.value = "";
-    newTitle.value = "";
-    newQuote.value = "";
-
-   // Saves the submitted data to the respective arrays.
-   images[images.length] = myPoster.imageURL;
-   titles[titles.length] = myPoster.title;
-   quotes[quotes.length] = myPoster.quote;
- 
-   // Change back to the main poster view.
   
-   // Use the new instance of Poster to display the new poster image,
-   // title, and quote.
-   posterImage.src = myPoster.imageURL;
-   posterTitle.innerText = myPoster.title;
-   posterQuote.innerText = myPoster.quote;
+  clearTheForm();
+
+  createNewPoster(userPoster);
+  
+  displayCustomPoster(userPoster);
 
   viewPosterForm();
 }
