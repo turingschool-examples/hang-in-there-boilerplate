@@ -1,4 +1,6 @@
-// query selector variables go here 👇
+var pImg = document.querySelector('.poster-img');
+var postTitle = document.querySelector('.poster-title');
+var postQuote = document.querySelector('.poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -109,3 +111,19 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+git checkout -b feature/(yourBranchName)
+
+getRandoStuff()
+
+function getRandoStuff() {
+  currentPoster = new Poster(
+    images[getRandomIndex(images)],
+    title[getRandomIndex(title)],
+    quotes[getRandomIndex(quotes)]
+  )
+};
+
+
+
+
+//Something similar for title as well as quotes
