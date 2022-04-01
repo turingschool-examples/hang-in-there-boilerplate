@@ -119,7 +119,7 @@ function newPoster(array) {
   index = getRandomIndex (quotes);
   posterQuote.innerText = quotes[index];
   index = getRandomIndex (images);
-  posterImage.innerText = images[index];
+  posterImage.src = images[index];
 }
 
 newPoster(images, titles, quotes);
