@@ -119,11 +119,10 @@ var currentPoster;
 // event listeners go here 👇
 showRandomPoster.addEventListener('click', displayRandomPoster);
 makePoster.addEventListener('click', viewPosterForm);
-showMain.addEventListener('click', viewPosterForm);
+showMain.addEventListener('click', viewMainPoster);
 showSavedPosters.addEventListener('click',viewSavedPosters);
 backToMain.addEventListener('click', viewSavedPosters);
 newPoster.addEventListener('click', createNewPoster);
-
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -147,6 +146,13 @@ function viewPosterForm() {
   posterForm.classList.toggle("hidden");
 }
 
+function viewMainPoster() {
+  posterForm.classList.toggle("hidden");
+  mainPoster.classList.toggle("hidden");
+  displayRandomPoster();
+}
+
+
 function viewSavedPosters() {
   mainPoster.classList.toggle("hidden");
   savedPoster.classList.toggle("hidden");
@@ -163,6 +169,11 @@ function createNewPoster() {
         newQuote.value
         );
 
+    // clear the form.
+    newImageUrl.value = "";
+    newTitle.value = "";
+    newQuote.value = "";
+
    // Saves the submitted data to the respective arrays.
    images[images.length] = myPoster.imageURL;
    titles[titles.length] = myPoster.title;
@@ -176,7 +187,6 @@ function createNewPoster() {
    posterTitle.innerText = myPoster.title;
    posterQuote.innerText = myPoster.quote;
 
-  //  mainPoster.classList.toggle('hidden');
   viewPosterForm();
 }
 
