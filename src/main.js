@@ -118,10 +118,12 @@ var currentPoster;
 
 // event listeners go here 👇
 showRando.addEventListener('click', showRandom)
-showForm.addEventListener('click', ownPoster)
+// showForm.addEventListener('click', ownPoster)
 takeBack.addEventListener('click', goHome)
 goMain.addEventListener('click', goHome)
-
+// showSaved.addEventListener('click', )
+showForm.addEventListener('click', function() {showHide(postForm,mainPost)})
+showSaved.addEventListener('click', function() {showHide(savedPostersPage,mainPost)})
 // functions and event handlers go here 👇
 
 // (we've provided one for you to get you started)!
@@ -140,9 +142,9 @@ function showRandom() {
 }
 
 
-function ownPoster() {
-  showHide(postForm, mainPost )
-}
+// function ownPoster() {
+//   showHide(postForm, mainPost )
+// }
 
 function goHome() {
   mainPost.classList.remove('hidden')
@@ -157,6 +159,8 @@ function getRandoStuff() {
     pQuote.innerText = quotes[getRandomIndex(quotes)]
   )
 };
+
+
 
 
 
