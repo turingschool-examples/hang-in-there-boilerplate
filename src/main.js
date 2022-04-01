@@ -6,6 +6,10 @@ var showSaved = document.querySelector('.show-saved');
 var showRando = document.querySelector('.show-random');
 var showForm = document.querySelector('.show-form');
 var postForm = document.querySelector('.poster-form');
+var mainPost = document.querySelector('.main-poster');
+var takeBack = document.querySelector('.show-main')
+var goMain = document.querySelector('.back-to-main')
+var savedPostersPage = document.querySelector('.saved-posters')
 
 
 
@@ -114,9 +118,10 @@ var currentPoster;
 
 // event listeners go here 👇
 showRando.addEventListener('click', showRandom)
-// showForm.addEventListener(‘click’, function() {
-//   console.log(‘hi’)})
 showForm.addEventListener('click', ownPoster)
+takeBack.addEventListener('click', goHome)
+goMain.addEventListener('click', goHome)
+
 // functions and event handlers go here 👇
 
 // (we've provided one for you to get you started)!
@@ -136,9 +141,14 @@ function showRandom() {
 
 
 function ownPoster() {
-  console.log('Hi')
+  showHide(postForm, mainPost )
 }
 
+function goHome() {
+  mainPost.classList.remove('hidden')
+  savedPostersPage.classList.add('hidden')
+  postForm.classList.add('hidden')
+}
 
 function getRandoStuff() {
   currentPoster = new Poster(
@@ -152,6 +162,6 @@ function getRandoStuff() {
 
 
 function showHide(arg1, arg2) {
-  arg1.classList.remove('.hidden')
-  arg2.classList.add('.hidden')
+  arg1.classList.remove('hidden')
+  arg2.classList.add('hidden')
 }
