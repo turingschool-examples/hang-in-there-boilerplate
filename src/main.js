@@ -16,6 +16,7 @@ var showPosterButton = document.querySelector('.make-poster')
 var userPosterImage = document.querySelector('#poster-image-url')
 var userPosterTitle = document.querySelector('#poster-title')
 var userPosterQuote = document.querySelector('#poster-quote')
+var savePosterButton = document.querySelector('.save-poster')
 
 
 
@@ -137,6 +138,8 @@ event.preventDefault()
 customPoster()
 });
 
+savePosterButton.addEventListener('click', saveThisPoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -181,5 +184,24 @@ function customPoster(){
   posterImg.src = images[0];
   posterTitle.innerText = titles[0];
   posterQuote.innerText = quotes[0];
-}
+};
+var savedPosterInstance = {};
+
+function saveThisPoster (){
+  savedPosterInstance = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
+  if (savedPosters.length === 0){
+    savedPosters.unshift(savedPosterInstance)
+  }else {
+    for (var i=0; i<savedPosters.length; i++){
+      if (savedPosters[i].imageURL === savedPosterInstance.imageURL){
+        window.alert('it already exists')
+      }else {
+        savedPosters[i].unshift(savedPosterInstance)
+      };
+    };
+  };
+};
+
+
+
 getRandomLoad();
