@@ -43,13 +43,15 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin: 20px auto;
   padding: 50px 20px;
-  width: 850px;
+  width: 1000px;
   height: 650px;
 }
 
 .poster-img {
+  display: flex;
   background-size: cover;
   border: 2px solid white;
   width: 70%;
@@ -57,6 +59,8 @@ button:hover {
 
 .poster-title,
 .poster-quote {
+  display: flex;
+  justify-content: center;
   color: white;
   line-height: 1;
   width: 90%;
@@ -75,6 +79,8 @@ button:hover {
 }
 
 #title-button {
+  display: flex;
+  justify-content: center;
   background-color: transparent;
   padding-right: 25px;
   padding-left: 25px;
