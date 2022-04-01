@@ -121,8 +121,11 @@ window.addEventListener("load", uponLoad)
 
 //This piece of code will: add event listening to "show random" button. On click,
 //it will display a new random poster.
-let showRandomButton = document.querySelector(".show-random")
-showRandomButton.addEventListener("click", uponLoad)
+let showRandomButton = document.querySelector(".show-random");
+showRandomButton.addEventListener("click", uponLoad);
+
+let showFormButton = document.querySelector(".show-form");
+showFormButton.addEventListener("click", revealForm)
 
 
 //This piece of code will: add event listening to "change background color" button. On click,
@@ -169,11 +172,13 @@ function changeTitle() {
   let posterTitle = document.querySelector(".poster-title");
   posterTitle.innerHTML = getRandomElement(titles)
 }
-//function generateNewPosterObject() {
-//  let newPoster = new RandomPoster()
-//  return newPoster
-//}
 
-//function displayRandomPoster() {
-//  let randomDisplayPoster = generateNewPosterObject()
-//}
+function revealForm() {
+  let createPoster = document.getElementById("poster-form-reveal")
+  createPoster.className = ("poster-shown");
+
+}
+
+function hideMain() {
+
+}
