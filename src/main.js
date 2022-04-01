@@ -7,19 +7,27 @@ var firstQuote = document.querySelector('.poster-quote');
 
 var randomButton = document.querySelector('.show-random');
 
-var makePosterButton = document.querySelector('.show-form')
+var makePosterButton = document.querySelector('.show-form');
 
-var poster = document.querySelector('.main-poster')
+var poster = document.querySelector('.main-poster');
 
-var hiddenForm = document.querySelector('.poster-form')
+var hiddenForm = document.querySelector('.poster-form');
 
-var showSavedButton = document.querySelector('.show-saved')
+var showSavedButton = document.querySelector('.show-saved');
 
-var savedPosts = document.querySelector('.saved-posters')
+var savedPosts = document.querySelector('.saved-posters');
 
-var takeMeBack = document.querySelector('.show-main')
+var takeMeBack = document.querySelector('.show-main');
 
-var backToMain = document.querySelector('.back-to-main')
+var backToMain = document.querySelector('.back-to-main');
+
+var posterTitleInput = document.querySelector('#poster-title');
+
+var posterQuoteInput = document.querySelector('#poster-quote');
+
+var posterImageInput = document.querySelector('#poster-image-url');
+
+var showMyPosterButton = document.querySelector('make-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,7 +127,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
+//var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
@@ -149,14 +157,14 @@ function randomPoster() {
 
 makePosterButton.addEventListener('click', showForm);
 
-function showForm(){
+function showForm() {
   poster.classList.add('hidden')
   hiddenForm.classList.remove('hidden')
 }
 
 takeMeBack.addEventListener('click', mainPage)
 
-function mainPage(){
+function mainPage() {
   hiddenForm.classList.add('hidden')
   poster.classList.remove('hidden')
 }
@@ -176,4 +184,31 @@ backToMain.addEventListener('click', backMainPage)
 function backMainPage() {
   savedPosts.classList.add('hidden')
   poster.classList.remove('hidden')
+}
+
+//Create New Poster//
+
+showMyPosterButton.addEventListener('click', submitPosterInfo);
+
+function submitPosterInfo() {
+  event.preventDefault();
+  getCustomPosterInfo();
+}
+
+//create an Object Instance from Poster class
+//save submitted data in respective arrays
+//var savedPosters = [];
+
+function getCustomPosterInfo() {
+  var userImage = posterImageInput.value;
+  var userTitle = posterTitleInput.value;
+  var userQuote = posterQuoteInput.value;
+
+  showCustomPoster(userImage, userTitle, userQuote);
+}
+
+function showCustomPoster(url, title, quote) {
+  firstImage.src = url;
+  firstQuote.innerText = quote;
+  firstTitle.innerText = title;
 }
