@@ -1,14 +1,19 @@
 // query selector variables go here 👇
 
+// Variables for our three main pages - main poster page, create own poster form, & saved posters
+var posterMain = document.querySelector(".main-poster");
+var posterForm = document.querySelector(".poster-form hidden");
+var postersSaved = document.querySelector(".saved-posters hidden");
+
+// Variables specific to main poster page
 var posterImage = document.querySelector(".poster-img");
-
 var posterTitle = document.querySelector(".poster-title");
-
 var posterQuote = document.querySelector(".poster-quote");
 
-var randomButton = document.querySelector(".show-random");
+// Variables specific to buttons
+var showRandomButton = document.querySelector(".show-random");
+var showFormButton = document.querySelector(".show-form");
 
-var indyButton = document.querySelector(".show-form");
 
 
 
@@ -113,13 +118,12 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+
+
 // event listeners go here 👇
 window.addEventListener("load", showRandom);
-
-randomButton.addEventListener("click", showRandom);
-
-indyButton.addEventListener("click", makeOwnPoster);
-// on click, show poster form hidden
+showRandomButton.addEventListener("click", showRandom);
+showFormButton.addEventListener("click", makeOwnPoster, showForm);
 
 
 
@@ -131,20 +135,20 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function makeOwnPoster () {
-    indyButton.querySelector(".poster-form").hidden = false;
-    indyButton.querySelector(".main-poster").hidden = true;
-
-
-}
-// //() {
-//   document.getElementById("welcome").hidden = true;
-//   document.getElementById("awesome").hidden = false;
-// }, false)
-
-
+// Function to click on "Show Another Random Poster"
 function showRandom () {
   posterTitle.innerText = titles[getRandomIndex(titles)]
   posterQuote.innerText = quotes[getRandomIndex(quotes)]
   posterImage.src = images[getRandomIndex(images)];
-}
+};
+
+
+// Function to hide our Main Poster Page
+function makeOwnPoster () {
+    posterMain.classList.add("hidden")
+};
+
+// Function to make visible our Create Poster Form page
+function showForm() {
+  posterForm.classList.remove("hidden")
+};
