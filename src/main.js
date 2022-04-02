@@ -198,3 +198,11 @@ function showMyPoster(poster){
 
 function addToSavedPosters(){
     savedPosters.push(currentPoster);
+    if(!savedPosters.includes (currentPoster)){
+      savedPosters.push(currentPoster);
+      window.alert("The poster was saved!");
+      console.log(savedPosters);
+    }else {
+      window.alert("This poster already exists.");
+    }
+  }
