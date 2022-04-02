@@ -15,11 +15,11 @@ var makePosterButton = document.querySelector(".show-form");
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 var showMyPosterButton = document.querySelector(".make-poster");
-
 //input
 var inputUrl = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -141,24 +141,33 @@ function randomizePoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 };
+
 //Is there a way we can see which button was pressed to make these two functions
 //one function 👇 ?
 function submitPosterInfo(){
   event.preventDefault();
   getUserInput();
-}
+};
+
 function getUserInput(){
   var imageUrl = inputUrl.value;
   var title = inputTitle.value;
   var quote = inputQuote.value;
-  displayUserPoster(imageUrl,title,quote);
-}
+  displayUserPoster(imageUrl, title, quote);
+  addToArray(imageUrl, title, quote);
+};
 
-function displayUserPoster(url,title,quote){
+function displayUserPoster(url, title, quote) {
   posterImg.src = url;
   posterTitle.innerText = title;
   posterQuote.innerText = quote;
   returnToMain();
+};
+
+function addToArray(imageUrl, title, quote) {
+  images.push(imageUrl);
+  titles.push(title);
+  quotes.push(quote);
 }
 
 function showSavedPoster() {
@@ -175,7 +184,7 @@ function returnToMain() {
   mainPoster.classList.remove("hidden");
     if(!posterForm.classList.contains("hidden")){
         posterForm.classList.add("hidden");
-        }else if(!savedPosterPage.classList.contains("hidden")){
+        } else if(!savedPosterPage.classList.contains("hidden")){
           savedPosterPage.classList.add("hidden");
-          }
+        }
 };
