@@ -14,6 +14,7 @@ var makePosterButton = document.querySelector(".show-form");
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 var showMyPosterButton = document.querySelector(".make-poster");
+var saveMyPosterButton = document.querySelector(".save-poster");
 //input
 var inputUrl = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
@@ -128,6 +129,7 @@ makePosterButton.addEventListener('click', displayFormView);
 nevermindButton.addEventListener('click', returnToMain);
 backToMainButton.addEventListener('click', returnToMain);
 showMyPosterButton.addEventListener('click', submitPosterInfo);
+saveMyPosterButton.addEventListener('click', addToArray);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -158,7 +160,7 @@ function getUserInput() {
   var imageUrl = inputUrl.value;
   var title = inputTitle.value;
   var quote = inputQuote.value;
-  displayUserPoster(imageUrl, title, quote);
+  currentPoster.updatePosterInfo(imageUrl, title, quote);
   addToArray(imageUrl, title, quote);
 };
 
@@ -173,6 +175,9 @@ function addToArray(imageUrl, title, quote) {
   images.push(imageUrl);
   titles.push(title);
   quotes.push(quote);
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 };
 
 function showSavedPoster() {
