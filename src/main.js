@@ -181,7 +181,7 @@ function getPosterData() {
   var newImageURL = document.querySelector("#poster-image-url").value;
   var newPosterTitle = document.querySelector("#poster-title").value;
   var newPosterQuote = document.querySelector("#poster-quote").value;
-  var newPoster = new poster(newImageURL, newPosterTitle, newPosterQuote);
+  var newPoster = new Poster(newImageURL, newPosterTitle, newPosterQuote);
   createNewPoster(newPoster);
 }
 
