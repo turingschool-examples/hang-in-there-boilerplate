@@ -5,8 +5,11 @@ var posterImage = document.querySelector('.poster-img');
 var showRandomButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
 var savedPosterButton = document.querySelector('.show-saved');
-var takeMeBackButton = document.querySelector('.show-main')
-var backToMainButton = document.querySelector('.back-to-main')
+var takeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var mainPosterPage = document.querySelector('.main-poster')
+var makePosterPage = document.querySelector('.poster-form')
+var savedPosterPage = document.querySelector('.saved-posters')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -114,8 +117,8 @@ var currentPoster;
 showRandomButton.addEventListener('click', changeHomePage);
 makePosterButton.addEventListener('click', displayForm);
 savedPosterButton.addEventListener('click', showSavedPosters);
-takeMeBackButton.addEventListener('click', takeMeBack)
-backToMainButton.addEventListener('click', takeMeBack)
+takeMeBackButton.addEventListener('click', takeMeBack);
+backToMainButton.addEventListener('click', takeMeBack);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -130,21 +133,29 @@ function changeHomePage() {
   posterQuote.innerText = randomQuote;
   posterTitle.innerText = randomTitle;
   posterImage.src = randomImage;
-  console.log({randomQuote});
 };
 changeHomePage()
 
 function displayForm() {
-  document.getElementsByClassName('main-poster')[0].style.display = 'none';
-  document.getElementsByClassName('poster-form')[0].classList.remove('hidden');
+  mainPosterPage.classList.add('hidden');
+  show(makePosterPage)
+}
+
+function show(element) {
+  element.classList.remove('hidden')
+}
+
+function hide(element) {
+  element.classList.add('hidden')
 }
 
 function showSavedPosters() {
-  document.getElementsByClassName('main-poster')[0].style.display = 'none';
-  document.getElementsByClassName('saved-posters')[0].classList.remove('hidden')
+  mainPosterPage.classList.add('hidden')
+  show(savedPosterPage)
 }
 
 function takeMeBack() {
-  window.location.reload();
-
+  hide(savedPosterPage);
+  hide(makePosterPage);
+  show(mainPosterPage);
 }
