@@ -15,7 +15,7 @@ var makePosterButton = document.querySelector(".show-form");
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 var showMyPosterButton = document.querySelector(".make-poster");
-var saveMyPosterButton = document.querySelector(".save-poster");
+var saveThisPosterButton = document.querySelector(".save-poster");
 //input
 var inputUrl = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
@@ -120,7 +120,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster = new Poster('url', 'title', 'quote');
+var currentPoster = new Poster();
 
 // event listeners go here 👇
 window.addEventListener('load', randomizePoster);
@@ -130,7 +130,7 @@ makePosterButton.addEventListener('click', displayFormView);
 nevermindButton.addEventListener('click', returnToMain);
 backToMainButton.addEventListener('click', returnToMain);
 showMyPosterButton.addEventListener('click', submitPosterInfo);
-saveMyPosterButton.addEventListener('click', addToArray);
+saveThisPosterButton.addEventListener('click', addToSavedPosters);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -176,27 +176,27 @@ function addToArray(imageUrl, title, quote) {
   images.push(imageUrl);
   titles.push(title);
   quotes.push(quote);
-  if (!savedPosters.includes(currentPoster)) {
-    savedPosters.push(currentPoster);
-  }
 };
+
+function addToSavedPosters(){
+    savedPosters.push(currentPoster);
+    displaySavedPosters();
+}
 
 function showSavedPoster() {
   mainPoster.classList.add("hidden");
   savedPosterPage.classList.remove("hidden");
-  displaySavedPosters();
 };
 
 function displaySavedPosters(){
-  for(var i=0; i<savedPosters.length; i++){
     var newElement = document.createElement("article");
     newElement.classList.add("mini-poster");
     newElement.innerHTML = `
-      <img class="poster-img" src="${savedPosters[i].imageUrl}" alt="nothin' to see here">
-      <h1 class="poster-title">"${savedPosters[i].title}"</h1>
-      <h3 class="poster-quote">"${savedPosters[i].quote}"</h3>
+      <img class="poster-img" src="${currentPoster.imageUrl}" alt="nothin' to see here">
+      <h2 class="poster-title">"${currentPoster.title}"</h2>
+      <h4 class="poster-quote">"${currentPoster.quote}"</h4>
     `;
-  }
+    savedPosterGrid.appendChild(newElement);
 }
 
 function displayFormView() {
