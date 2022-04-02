@@ -14,12 +14,7 @@ var savedPostersPage = document.querySelector('.saved-posters');
 var imgURL = document.getElementById('poster-image-url');
 var newTitle = document.getElementById('poster-title');
 var newQuote = document.getElementById('poster-quote');
-var makePoster = document.querySelector('make-poster');
-
-
-var userImgURL = imgURL.value;
-var userNewTitle = newTitle.value;
-var userNewQuote = newQuote.value;
+var makePoster = document.querySelector('.make-poster');
 
 
 
@@ -137,7 +132,10 @@ showForm.addEventListener('click', function() {showHide(postForm,mainPost)})
 showSaved.addEventListener('click', function() {showHide(savedPostersPage,mainPost)})
 
 //Make a button click that takes me to savedPostersPage
-makePoster.addEventListener('click', getVal)
+makePoster.addEventListener('click',function() {
+getVal()
+submitForm()
+});
 
 
 // functions and event handlers go here 👇
@@ -151,8 +149,6 @@ function getRandomIndex(array) {
 function showRandom() {
   getRandoStuff()
 }
-
-
 
 function ownPoster() {
   showHide(postForm, mainPost )
@@ -185,4 +181,12 @@ submitForm()
 
 function submitForm() {
   event.preventDefault();
+}
+
+
+function pushInfo() {
+  var pushPoster = new Poster(imgURL.value, userNewTitle.value, userNewQuote.value)
+  console.log(pushPoster)
+  submitForm()
+  showHide()
 }
