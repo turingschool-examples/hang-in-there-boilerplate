@@ -6,6 +6,20 @@ var showSaved = document.querySelector('.show-saved');
 var showRando = document.querySelector('.show-random');
 var showForm = document.querySelector('.show-form');
 var postForm = document.querySelector('.poster-form');
+var mainPost = document.querySelector('.main-poster');
+var takeBack = document.querySelector('.show-main');
+var goMain = document.querySelector('.back-to-main');
+var savedPostersPage = document.querySelector('.saved-posters');
+
+var imgURL = document.getElementById('poster-image-url');
+var newTitle = document.getElementById('poster-title');
+var newQuote = document.getElementById('poster-quote');
+var makePoster = document.querySelector('make-poster');
+
+
+var userImgURL = imgURL.value;
+var userNewTitle = newTitle.value;
+var userNewQuote = newQuote.value;
 
 
 
@@ -113,7 +127,19 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener('load', getRandoStuff)
 showRando.addEventListener('click', showRandom)
+// showForm.addEventListener('click', ownPoster)
+takeBack.addEventListener('click', goHome)
+goMain.addEventListener('click', goHome)
+// showSaved.addEventListener('click', )
+showForm.addEventListener('click', function() {showHide(postForm,mainPost)})
+showSaved.addEventListener('click', function() {showHide(savedPostersPage,mainPost)})
+
+//Make a button click that takes me to savedPostersPage
+makePoster.addEventListener('click', getVal)
+
+
 // functions and event handlers go here 👇
 
 // (we've provided one for you to get you started)!
@@ -121,16 +147,22 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function loadWindow() {
-  getRandoStuff()
-}
-
-loadWindow()
 
 function showRandom() {
   getRandoStuff()
 }
 
+
+
+function ownPoster() {
+  showHide(postForm, mainPost )
+}
+
+function goHome() {
+  mainPost.classList.remove('hidden')
+  savedPostersPage.classList.add('hidden')
+  postForm.classList.add('hidden')
+}
 
 function getRandoStuff() {
   currentPoster = new Poster(
@@ -139,3 +171,18 @@ function getRandoStuff() {
     pQuote.innerText = quotes[getRandomIndex(quotes)]
   )
 };
+
+
+function showHide(arg1, arg2) {
+  arg1.classList.remove('hidden')
+  arg2.classList.add('hidden')
+}
+
+function getVal() {
+var newPoster = new Poster(userImgURL, userNewTitle, userNewQuote)
+submitForm()
+}
+
+function submitForm() {
+  event.preventDefault();
+}
