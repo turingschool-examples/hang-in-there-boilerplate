@@ -125,7 +125,7 @@ let showRandomButton = document.querySelector(".show-random");
 showRandomButton.addEventListener("click", uponLoad);
 
 let showFormButton = document.querySelector(".show-form");
-showFormButton.addEventListener("click", revealForm)
+showFormButton.addEventListener("click", toggleForm)
 
 
 //This piece of code will: add event listening to "change background color" button. On click,
@@ -139,7 +139,7 @@ let posterTitleButton = document.querySelector(".poster-title")
 posterTitleButton.addEventListener("click", changeTitle)
 
 let showMainButton = document.querySelector(".show-main");
-showMainButton.addEventListener("click", revealMainPoster);
+showMainButton.addEventListener("click", toggleForm);
 
 let posterImage = document.querySelector(".poster-img");
 posterImage.addEventListener("click", getRandomElement(images));
@@ -176,11 +176,17 @@ function changeTitle() {
   posterTitle.innerHTML = getRandomElement(titles)
 }
 
-function revealForm() {
+function toggleForm() {
   let createPoster = document.getElementById("poster-form-reveal");
-  createPoster.className = ("poster-shown");
-  hideMain()
+  if (createPoster.className === ("poster-form")){
+    revealMainPoster()
+    createPoster.className = ("poster-form hidden");
+  } else if (createPoster.className === ("poster-form hidden")) {
+    hideMain()
+    createPoster.className = ("poster-form")
+  }
 }
+
 
 function hideMain() {
   let hideMainPoster = document.getElementById("main-poster-shown");
@@ -190,4 +196,5 @@ function hideMain() {
 function revealMainPoster() {
   let backToMainPoster = document.getElementById("main-poster-shown");
   backToMainPoster.className = ("main-poster")
+
 }
