@@ -7,6 +7,7 @@ var posterQuote = document.querySelector(".poster-quote");
 var mainPoster = document.querySelector(".main-poster");
 var savedPosterPage = document.querySelector(".saved-posters");
 var posterForm = document.querySelector(".poster-form");
+var savedPosterGrid = document.querySelector(".saved-posters-grid");
 //buttons 👇
 var randomButton = document.querySelector(".show-random");
 var savedPosterButton = document.querySelector(".show-saved");
@@ -183,7 +184,20 @@ function addToArray(imageUrl, title, quote) {
 function showSavedPoster() {
   mainPoster.classList.add("hidden");
   savedPosterPage.classList.remove("hidden");
+  displaySavedPosters();
 };
+
+function displaySavedPosters(){
+  for(var i=0; i<savedPosters.length; i++){
+    var newElement = document.createElement("article");
+    newElement.classList.add("mini-poster");
+    newElement.innerHTML = `
+      <img class="poster-img" src="${savedPosters[i].imageUrl}" alt="nothin' to see here">
+      <h1 class="poster-title">"${savedPosters[i].title}"</h1>
+      <h3 class="poster-quote">"${savedPosters[i].quote}"</h3>
+    `;
+  }
+}
 
 function displayFormView() {
   posterForm.classList.remove("hidden");
