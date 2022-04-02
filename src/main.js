@@ -115,6 +115,7 @@ var colors = [
 var savedPosters = [];
 var currentPoster;
 
+
 // event listeners go here 👇
 //This code will: display a random poster on load
 window.addEventListener("load", uponLoad)
@@ -152,6 +153,10 @@ posterImage.addEventListener("click", getRandomElement(images));
 
 let generateUserPoster = document.querySelector(".make-poster");
 generateUserPoster.addEventListener("click", submitForm);
+
+function submitForm() {
+  event.preventDefault();
+}
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -216,12 +221,22 @@ function toggleSavedView() {
     }
   }
 
-var formUserTitle = document.querySelector("#poster-title").value;
-var formUserQuote = document.querySelector("#poster-quote").value;
+//Create & save Poster Section
+var newPosterObject = createPosterObject(imageInputBox.value, titleInputBox.value, quoteInputBox.value)
+  quoteText.innerText = newPosterObject.quoteText;
+  titleText.innerText = newPosterObject.title;
+  posterImage.src = newPosterObject.imageURL;
 
+  function createPosterObject(imageURL, title, quote) {
+    var createdPoster = new Poster(imageURL, title, quote);
+    images.push(createdPoster.imageURL)
+    title.push(createdPoster.title)
+    quotes.push(createdPoster.quote)
 
+    return createdPoster;
+  }
 
-
-function submitForm() {
-  event.preventDefault();
+function savePoster() {
+  var newSavedPoster = new Poster(posterImage.src, titleText.innerText, quoteText.innerText);
+  savedPosters.push(newSavedPoster);
 }
