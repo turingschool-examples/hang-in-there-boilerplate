@@ -29,6 +29,9 @@ var posterImageInput = document.querySelector('#poster-image-url');
 
 var showMyPosterButton = document.querySelector('.make-poster');
 
+var savePosterButton = document.querySelector('.save-poster');
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -127,7 +130,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-//var savedPosters = [];
+var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
@@ -179,7 +182,7 @@ function showSavedPosters() {
   savedPosts.classList.remove('hidden')
 }
 
-backToMain.addEventListener('click', backMainPage)
+backToMain.addEventListener('click', backMainPage);
 
 function backMainPage() {
   savedPosts.classList.add('hidden')
@@ -194,8 +197,6 @@ function submitPosterInfo() {
   event.preventDefault();
   getCustomPosterInfo();
 }
-
-//var savedPosters = [];
 
 function getCustomPosterInfo() {
   var userImage = posterImageInput.value;
@@ -228,4 +229,28 @@ function compileCustomPoster(customPoster) {
 function displayCustomPoster() {
   hiddenForm.classList.add('hidden');
   poster.classList.remove('hidden');
+}
+
+//Save Poster Button//
+
+savePosterButton.addEventListener('click', getCurrentPoster);
+
+function getCurrentPoster() {
+  var frontImage = firstImage.src;
+  var frontQuote = firstQuote.innerText;
+  var frontTitle = firstTitle.innerText;
+  createSavedInstance(frontImage, frontTitle, frontQuote);
+}
+
+function createSavedInstance(url, title, quote) {
+  var currentPoster = new Poster(url, title, quote);
+  console.log(currentPoster);
+  savePosterSection(currentPoster);
+}
+
+var savedPosters = [];
+console.log(savedPosters);
+
+function savePosterSection(arr) {
+  savedPosters.push(arr);
 }
