@@ -17,6 +17,15 @@ var mySavedPosters = document.querySelector(".saved-posters");
 
 var takeMeBackButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+
+var showMyPosterButton = document.querySelector(".make-poster");
+var imageInput = document.querySelector("#poster-image-url");
+var titleInput = document.querySelector("#poster-title");
+var quoteInput = document.querySelector("#poster-quote");
+
+
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -133,6 +142,11 @@ takeMeBackButton.addEventListener("click", takeMeBack);
 
 backToMainButton.addEventListener("click", backToMain);
 
+showMyPosterButton.addEventListener("click", createNewPoster);
+
+
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function loadRandomImage() {
@@ -173,7 +187,25 @@ function backToMain() {
   mainPoster.classList.remove("hidden");
 }
 
+function createNewPoster() {
+  event.preventDefault()
+  var imageURL = imageInput.value
+  var title = titleInput.value
+  var quote = quoteInput.value
+  var newPoster1 = new Poster(imageURL, title, quote)
+  //images.push(imageURL)
+  titles.push(title)
+  quotes.push(quote)
+  takeMeBack();
+  displayNewlyCreatedPoster(imageURL, title, quote)
+}
 
+function displayNewlyCreatedPoster(imageURL, title, quote) {
+  //image.src = `${imageURL}`
+  title.innertext = `${title}`
+  quotes.innerText = `${quotes}`
+
+}
 
 
 
