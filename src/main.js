@@ -31,6 +31,8 @@ var showMyPosterButton = document.querySelector('.make-poster');
 
 var savePosterButton = document.querySelector('.save-poster');
 
+var savedPosterGrid = document.querySelector('.saved-posters-grid')
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -248,9 +250,23 @@ function createSavedInstance(url, title, quote) {
   savePosterSection(currentPoster);
 }
 
-var savedPosters = [];
-console.log(savedPosters);
-
 function savePosterSection(arr) {
-  savedPosters.push(arr);
+   if (!savedPosters.includes(arr)) {
+       savedPosters.push(arr);
+
+    makingGrid()
+  }
+}
+
+
+function makingGrid(){
+  var tinyPoster = '';
+  for (var i = 0; i < savedPosters.length; i++){
+    tinyPoster = tinyPoster + `<article class="mini-poster">
+          <img class="poster-img" id=${savedPosters[i].id} src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+          <h2 class="poster-title">${savedPosters[i].title}</h2>
+          <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+        </article>`
+  }
+  savedPosterGrid.innerHTML = empty;
 }
