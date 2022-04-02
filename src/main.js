@@ -27,7 +27,7 @@ var posterQuoteInput = document.querySelector('#poster-quote');
 
 var posterImageInput = document.querySelector('#poster-image-url');
 
-var showMyPosterButton = document.querySelector('make-poster');
+var showMyPosterButton = document.querySelector('.make-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -195,8 +195,6 @@ function submitPosterInfo() {
   getCustomPosterInfo();
 }
 
-//create an Object Instance from Poster class
-//save submitted data in respective arrays
 //var savedPosters = [];
 
 function getCustomPosterInfo() {
@@ -204,11 +202,30 @@ function getCustomPosterInfo() {
   var userTitle = posterTitleInput.value;
   var userQuote = posterQuoteInput.value;
 
-  showCustomPoster(userImage, userTitle, userQuote);
+  createNewInstance(userImage, userTitle, userQuote);
 }
 
-function showCustomPoster(url, title, quote) {
-  firstImage.src = url;
-  firstQuote.innerText = quote;
-  firstTitle.innerText = title;
+function createNewInstance(url, title, quote) {
+  var brandNewPoster = new Poster(url, title, quote);
+  compileCustomPoster(brandNewPoster);
+  savePostItems(brandNewPoster);
+}
+
+function savePostItems(saveIt) {
+  images.push(saveIt.imageURL);
+  titles.push(saveIt.title);
+  quotes.push(saveIt.quote);
+}
+
+function compileCustomPoster(customPoster) {
+  firstImage.src = customPoster.imageURL;
+  firstQuote.innerText = customPoster.quote;
+  firstTitle.innerText = customPoster.title;
+
+  displayCustomPoster();
+}
+
+function displayCustomPoster() {
+  hiddenForm.classList.add('hidden');
+  poster.classList.remove('hidden');
 }
