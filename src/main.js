@@ -155,7 +155,6 @@ function viewMainPoster() {
   displayRandomPoster();
 }
 
-
 function viewSavedPosters() {
   mainPoster.classList.toggle('hidden');
   savedPoster.classList.toggle('hidden');
@@ -193,11 +192,6 @@ function createNewPoster() {
   displayCustomPoster(userPoster);
 }
 
-// When a user clicks the “Save This Poster” button, the current main poster will be added to the savedPosters array.
-// If a user clicks the “Save This Poster” more than once on a single poster, it will still only be saved once (no duplicates)
-// When a user clicks the “Show Saved Posters” button, we should see the saved posters section
-// All the posters in the savedPosters array should be displayed in the saved posters grid section
-
 function addPosterToSaved() {
   var posterToSave = new Poster (
     posterImage.src,
@@ -222,10 +216,7 @@ function viewPostersGrid() {
 
 function displaySavedPosters() {
   var miniPosterHTML = '';
-  //get element of the saved posters array
-  //need to dislay the saved poster element
-  //add classes to the poster element to set styles
-  //add the element to the grid
+
   for (var i = 0; i < savedPosters.length; i++) {
     currentPoster = savedPosters[i];
     miniPosterHTML = miniPosterHTML +
@@ -233,11 +224,9 @@ function displaySavedPosters() {
         '<img src="' + currentPoster.imageURL +
         '"><h2>'+ currentPoster.title + '</h2><h4>' +
         currentPoster.quote + '</h4></div>';
-
-    console.log(miniPosterHTML);
   }
-  posterGrid.innerHTML = miniPosterHTML;
 
+  posterGrid.innerHTML = miniPosterHTML;
 }
 
 displayRandomPoster();
