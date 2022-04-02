@@ -208,6 +208,7 @@ function addPosterToSaved() {
       return;
     } 
   }
+
   savedPosters.push(posterToSave);
 }
 
