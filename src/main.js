@@ -259,6 +259,7 @@ function savePosterSection(arr) {
 }
 
 
+
 function makingGrid(){
   var tinyPoster = '';
   for (var i = 0; i < savedPosters.length; i++){
@@ -268,5 +269,5 @@ function makingGrid(){
           <h4 class="poster-quote">${savedPosters[i].quote}</h4>
         </article>`
   }
-  savedPosterGrid.innerHTML = empty;
+  savedPosterGrid.innerHTML = tinyPoster;
 }
