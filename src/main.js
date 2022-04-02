@@ -1,10 +1,16 @@
 // query selector variables go here 👇
-var posterTitle = document.querySelector(".poster-title");
-var posterQuote = document.querySelector(".poster-quote");
-var posterImage = document.querySelector(".poster-img");
-var showRandomButton = document.querySelector('.show-random')
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var posterImage = document.querySelector('.poster-img');
+var showRandomButton = document.querySelector('.show-random');
+var makePosterButton = document.querySelector('.show-form');
+var savedPosterButton = document.querySelector('.show-saved');
+var takeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var mainPosterPage = document.querySelector('.main-poster')
+var makePosterPage = document.querySelector('.poster-form')
+var savedPosterPage = document.querySelector('.saved-posters')
 
-//var randomButton = document.querySelector(".show-random");//
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -108,13 +114,18 @@ var currentPoster;
 
 
 // event listeners go here 👇//
+showRandomButton.addEventListener('click', changeHomePage);
+makePosterButton.addEventListener('click', displayForm);
+savedPosterButton.addEventListener('click', showSavedPosters);
+takeMeBackButton.addEventListener('click', takeMeBack);
+backToMainButton.addEventListener('click', takeMeBack);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
+
 function changeHomePage() {
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
@@ -122,7 +133,29 @@ function changeHomePage() {
   posterQuote.innerText = randomQuote;
   posterTitle.innerText = randomTitle;
   posterImage.src = randomImage;
-  console.log({randomQuote});
 };
-changeHomePage();
-showRandomButton.addEventListener('click' , changeHomePage);
+changeHomePage()
+
+function displayForm() {
+  mainPosterPage.classList.add('hidden');
+  show(makePosterPage)
+}
+
+function show(element) {
+  element.classList.remove('hidden')
+}
+
+function hide(element) {
+  element.classList.add('hidden')
+}
+
+function showSavedPosters() {
+  mainPosterPage.classList.add('hidden')
+  show(savedPosterPage)
+}
+
+function takeMeBack() {
+  hide(savedPosterPage);
+  hide(makePosterPage);
+  show(mainPosterPage);
+}
