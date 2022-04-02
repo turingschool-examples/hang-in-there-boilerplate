@@ -1,11 +1,12 @@
 var pImg = document.querySelector('.poster-img');
 var postTitle = document.querySelector('.poster-title');
-var postQuote = document.querySelector('.poster-quote');
+var pQuote = document.querySelector('.poster-quote');
 var savePoster = document.querySelector('.save-poster');
 var showSaved = document.querySelector('.show-saved');
 var showRando = document.querySelector('.show-random');
 var showForm = document.querySelector('.show-form');
-var postForm = document.querySelector('.poster-form hidden');
+var postForm = document.querySelector('.poster-form');
+
 
 
 
@@ -112,7 +113,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+showRando.addEventListener('click', showRandom)
 // functions and event handlers go here 👇
 
 // (we've provided one for you to get you started)!
@@ -120,14 +121,21 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function loadWindow() {
+  getRandoStuff()
+}
+
+loadWindow()
+
+function showRandom() {
+  getRandoStuff()
+}
 
 
-// getRandoStuff()
-//
-// function getRandoStuff() {
-//   currentPoster = new Poster(
-//     images[getRandomIndex(images)],
-//     title[getRandomIndex(title)],
-//     quotes[getRandomIndex(quotes)]
-//   )
-// };
+function getRandoStuff() {
+  currentPoster = new Poster(
+    pImg.src = images[getRandomIndex(images)],
+    postTitle.innerText = titles[getRandomIndex(titles)],
+    pQuote.innerText = quotes[getRandomIndex(quotes)]
+  )
+};
