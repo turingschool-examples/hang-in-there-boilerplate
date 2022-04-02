@@ -1,8 +1,12 @@
 // query selector variables go here 👇
-var posterTitle = document.querySelector(".poster-title");
-var posterQuote = document.querySelector(".poster-quote");
-var posterImage = document.querySelector(".poster-img");
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var posterImage = document.querySelector('.poster-img');
 var showRandomButton = document.querySelector('.show-random');
+var makePosterButton = document.querySelector('.show-form');
+var savedPosterButton = document.querySelector('.show-saved');
+var takeMeBackButton = document.querySelector('.show-main')
+var backToMainButton = document.querySelector('.back-to-main')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,11 +112,10 @@ var currentPoster;
 
 // event listeners go here 👇//
 showRandomButton.addEventListener('click', changeHomePage);
-addEventListener('click', displayForm)
-
-// makePosterButton.addEventListener('click', makePoster);
-
-// backToMainButton.addEventListener('click', showMainPage);
+makePosterButton.addEventListener('click', displayForm);
+savedPosterButton.addEventListener('click', showSavedPosters);
+takeMeBackButton.addEventListener('click', takeMeBack)
+backToMainButton.addEventListener('click', takeMeBack)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -134,4 +137,14 @@ changeHomePage()
 function displayForm() {
   document.getElementsByClassName('main-poster')[0].style.display = 'none';
   document.getElementsByClassName('poster-form')[0].classList.remove('hidden');
+}
+
+function showSavedPosters() {
+  document.getElementsByClassName('main-poster')[0].style.display = 'none';
+  document.getElementsByClassName('saved-posters')[0].classList.remove('hidden')
+}
+
+function takeMeBack() {
+  window.location.reload();
+
 }
