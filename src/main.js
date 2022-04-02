@@ -147,6 +147,12 @@ function submitPosterInfo(){
   event.preventDefault();
   getUserInput();
 }
+function getUserInput(){
+  var imageUrl = inputUrl.value;
+  var title = inputTitle.value;
+  var quote = inputQuote.value;
+  displayUserPoster(imageUrl,title,quote);
+}
 
 function showSavedPoster() {
   mainPoster.classList.add("hidden");
