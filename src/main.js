@@ -15,6 +15,8 @@ var newImageUrl = document.querySelector('#poster-image-url');
 var newTitle = document.querySelector('#poster-title');
 var newQuote = document.querySelector('#poster-quote');
 var newPoster = document.querySelector('.make-poster');
+var posterGrid = document.querySelector('.saved-posters-grid');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -120,7 +122,7 @@ var currentPoster;
 showRandomPoster.addEventListener('click', displayRandomPoster);
 makePoster.addEventListener('click', viewPosterForm);
 showMain.addEventListener('click', viewMainPoster);
-showSavedPosters.addEventListener('click',viewSavedPosters);
+showSavedPosters.addEventListener('click',viewPostersGrid);
 backToMain.addEventListener('click', viewSavedPosters);
 newPoster.addEventListener('click', createNewPoster);
 savePoster.addEventListener('click', addPosterToSaved);
@@ -179,16 +181,16 @@ function createNewPoster() {
   );
 
   event.preventDefault();
-  
+
   images.push(userPoster.imageURL);
   titles.push(userPoster.title);
   quotes.push(userPoster.quote);
 
   clearTheForm();
-  
+
   viewPosterForm();
 
-  displayCustomPoster(userPoster); 
+  displayCustomPoster(userPoster);
 }
 
 // When a user clicks the “Save This Poster” button, the current main poster will be added to the savedPosters array.
@@ -199,17 +201,43 @@ function createNewPoster() {
 function addPosterToSaved() {
   var posterToSave = new Poster (
     posterImage.src,
-    posterTitle.innerText, 
+    posterTitle.innerText,
     posterQuote.innerText
   );
 
   for (var i = 0; i < savedPosters.length; i++) {
     if (savedPosters[i].imageURL === posterToSave.imageURL && savedPosters[i].title === posterToSave.title && savedPosters[i].quote) {
       return;
-    } 
+    }
   }
 
   savedPosters.push(posterToSave);
+}
+
+function viewPostersGrid() {
+  mainPoster.classList.toggle('hidden');
+  savedPoster.classList.toggle('hidden');
+  displaySavedPosters();
+}
+
+function displaySavedPosters() {
+  var miniPosterHTML = '';
+  //get element of the saved posters array
+  //need to dislay the saved poster element
+  //add classes to the poster element to set styles
+  //add the element to the grid
+  for (var i = 0; i < savedPosters.length; i++) {
+    currentPoster = savedPosters[i];
+    miniPosterHTML = miniPosterHTML +
+      '<div class="mini-poster" id="' + i + '">' +
+        '<img src="' + currentPoster.imageURL +
+        '"><h2>'+ currentPoster.title + '</h2><h4>' +
+        currentPoster.quote + '</h4></div>';
+
+    console.log(miniPosterHTML);
+  }
+  posterGrid.innerHTML = miniPosterHTML;
+
 }
 
 displayRandomPoster();
