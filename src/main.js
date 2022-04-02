@@ -123,6 +123,7 @@ showMain.addEventListener('click', viewMainPoster);
 showSavedPosters.addEventListener('click',viewSavedPosters);
 backToMain.addEventListener('click', viewSavedPosters);
 newPoster.addEventListener('click', createNewPoster);
+savePoster.addEventListener('click', addPosterToSaved);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -188,6 +189,26 @@ function createNewPoster() {
   viewPosterForm();
 
   displayCustomPoster(userPoster); 
+}
+
+// When a user clicks the “Save This Poster” button, the current main poster will be added to the savedPosters array.
+// If a user clicks the “Save This Poster” more than once on a single poster, it will still only be saved once (no duplicates)
+// When a user clicks the “Show Saved Posters” button, we should see the saved posters section
+// All the posters in the savedPosters array should be displayed in the saved posters grid section
+
+function addPosterToSaved() {
+  var posterToSave = new Poster (
+    posterImage.src,
+    posterTitle.innerText, 
+    posterQuote.innerText
+  );
+
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].imageURL === posterToSave.imageURL && savedPosters[i].title === posterToSave.title && savedPosters[i].quote) {
+      return;
+    } 
+  }
+  savedPosters.push(posterToSave);
 }
 
 displayRandomPoster();
