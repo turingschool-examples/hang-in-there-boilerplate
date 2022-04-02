@@ -121,8 +121,11 @@ window.addEventListener("load", uponLoad)
 
 //This piece of code will: add event listening to "show random" button. On click,
 //it will display a new random poster.
-let showRandomButton = document.querySelector(".show-random")
-showRandomButton.addEventListener("click", uponLoad)
+let showRandomButton = document.querySelector(".show-random");
+showRandomButton.addEventListener("click", uponLoad);
+
+let showFormButton = document.querySelector(".show-form");
+showFormButton.addEventListener("click", toggleForm)
 
 
 //This piece of code will: add event listening to "change background color" button. On click,
@@ -134,6 +137,9 @@ backgroundColorButton.addEventListener("click", changeBackgroundColor)
 //it will run changeTitle function
 let posterTitleButton = document.querySelector(".poster-title")
 posterTitleButton.addEventListener("click", changeTitle)
+
+let showMainButton = document.querySelector(".show-main");
+showMainButton.addEventListener("click", toggleForm);
 
 let posterImage = document.querySelector(".poster-img");
 posterImage.addEventListener("click", getRandomElement(images));
@@ -169,11 +175,26 @@ function changeTitle() {
   let posterTitle = document.querySelector(".poster-title");
   posterTitle.innerHTML = getRandomElement(titles)
 }
-//function generateNewPosterObject() {
-//  let newPoster = new RandomPoster()
-//  return newPoster
-//}
 
-//function displayRandomPoster() {
-//  let randomDisplayPoster = generateNewPosterObject()
-//}
+function toggleForm() {
+  let createPoster = document.getElementById("poster-form-reveal");
+  if (createPoster.className === ("poster-form")){
+    revealMainPoster()
+    createPoster.className = ("poster-form hidden");
+  } else if (createPoster.className === ("poster-form hidden")) {
+    hideMain()
+    createPoster.className = ("poster-form")
+  }
+}
+
+
+function hideMain() {
+  let hideMainPoster = document.getElementById("main-poster-shown");
+  hideMainPoster.className = ("main-poster hidden");
+}
+
+function revealMainPoster() {
+  let backToMainPoster = document.getElementById("main-poster-shown");
+  backToMainPoster.className = ("main-poster")
+
+}
