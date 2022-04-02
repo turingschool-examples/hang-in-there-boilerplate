@@ -158,12 +158,6 @@ function viewSavedPosters() {
   savedPoster.classList.toggle('hidden');
 }
 
-function createNewPoster(newPoster) {
-  images.push(newPoster.imageURL);
-  titles.push(newPoster.title);
-  quotes.push(newPoster.quote);
-}
-
 function clearTheForm() {
   newImageUrl.value = '';
   newTitle.value = '';
@@ -185,13 +179,15 @@ function createNewPoster() {
 
   event.preventDefault();
   
+  images.push(userPoster.imageURL);
+  titles.push(userPoster.title);
+  quotes.push(userPoster.quote);
+
   clearTheForm();
-
-  createNewPoster(userPoster);
   
-  displayCustomPoster(userPoster);
-
   viewPosterForm();
+
+  displayCustomPoster(userPoster); 
 }
 
 displayRandomPoster();
