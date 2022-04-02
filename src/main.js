@@ -143,6 +143,12 @@ function randomizePoster() {
   initializePoster();
 };
 
+function initializePoster() {
+  posterImg.src = currentPoster.imageUrl;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+};
+
 function submitPosterInfo() {
   event.preventDefault();
   getUserInput();
