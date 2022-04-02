@@ -154,6 +154,13 @@ function getUserInput(){
   displayUserPoster(imageUrl,title,quote);
 }
 
+function displayUserPoster(url,title,quote){
+  posterImg.src = url;
+  posterTitle.innerText = title;
+  posterQuote.innerText = quote;
+  returnToMain();
+}
+
 function showSavedPoster() {
   mainPoster.classList.add("hidden");
   savedPosterPage.classList.remove("hidden");
