@@ -7,6 +7,16 @@ var randomButton = document.querySelector(".show-random");
 var randomImage = document.querySelector(".poster-img");
 var randomQuote = document.querySelector(".poster-quote");
 var randomTitle = document.querySelector(".poster-title");
+
+var makeYourOwnButton = document.querySelector(".show-form");
+var mainPoster = document.querySelector(".main-poster");
+var posterForm = document.querySelector(".poster-form");
+
+var savedPostersButton = document.querySelector(".show-saved");
+var mySavedPosters = document.querySelector(".saved-posters");
+
+var takeMeBackButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -109,11 +119,20 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener("load", loadRandomImage)
-window.addEventListener("load", loadRandomTitle)
-window.addEventListener("load", loadRandomQuote)
+window.addEventListener("load", loadRandomImage);
+window.addEventListener("load", loadRandomTitle);
+window.addEventListener("load", loadRandomQuote);
 
-randomButton.addEventListener("click", generateRandomPoster)
+randomButton.addEventListener("click", generateRandomPoster);
+
+makeYourOwnButton.addEventListener("click", showForm);
+
+savedPostersButton.addEventListener("click", showSavedPosters);
+
+takeMeBackButton.addEventListener("click", takeMeBack);
+
+backToMainButton.addEventListener("click", backToMain);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function loadRandomImage() {
@@ -121,7 +140,7 @@ function loadRandomImage() {
 }
 
   function loadRandomTitle() {
-title.innerText= `${titles[getRandomIndex(titles)]}`;
+  title.innerText= `${titles[getRandomIndex(titles)]}`;
 }
 
 function loadRandomQuote() {
@@ -129,10 +148,33 @@ function loadRandomQuote() {
 }
 
 function generateRandomPoster() {
-randomImage.src=`${images[getRandomIndex(images)]}`;
-randomQuote.innerText=`${quotes[getRandomIndex(quotes)]}`;
-title.innerText= `${titles[getRandomIndex(titles)]}`;
+  randomImage.src=`${images[getRandomIndex(images)]}`;
+  randomQuote.innerText=`${quotes[getRandomIndex(quotes)]}`;
+  title.innerText= `${titles[getRandomIndex(titles)]}`;
 }
+
+function showForm() {
+  posterForm.classList.remove("hidden");
+  mainPoster.classList.add("hidden");
+}
+
+function showSavedPosters() {
+  mainPoster.classList.add("hidden");
+  mySavedPosters.classList.remove("hidden");
+}
+
+function takeMeBack() {
+  posterForm.classList.add("hidden");
+  mainPoster.classList.remove("hidden");
+}
+
+function backToMain() {
+  mySavedPosters.classList.add("hidden");
+  mainPoster.classList.remove("hidden");
+}
+
+
+
 
 
 
