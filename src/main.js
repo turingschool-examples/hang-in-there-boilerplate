@@ -14,8 +14,12 @@ var savedPosterButton = document.querySelector(".show-saved");
 var makePosterButton = document.querySelector(".show-form");
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+var showMyPosterButton = document.querySelector(".make-poster");
 
-
+//input
+var inputUrl = document.querySelector("#poster-image-url");
+var inputTitle = document.querySelector("#poster-title");
+var inputQuote = document.querySelector("#poster-quote");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -124,6 +128,7 @@ makePosterButton.addEventListener('click', displayFormView);
 savedPosterButton.addEventListener('click', showSavedPoster);
 nevermindButton.addEventListener('click', returnToMain);
 backToMainButton.addEventListener('click', returnToMain);
+showMyPosterButton.addEventListener('click', submitPosterInfo);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -137,7 +142,25 @@ function randomizePoster() {
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 };
 //Is there a way we can see which button was pressed to make these two functions
-//one function 👇 ? 
+//one function 👇 ?
+function submitPosterInfo(){
+  event.preventDefault();
+  getUserInput();
+}
+function getUserInput(){
+  var imageUrl = inputUrl.value;
+  var title = inputTitle.value;
+  var quote = inputQuote.value;
+  displayUserPoster(imageUrl,title,quote);
+}
+
+function displayUserPoster(url,title,quote){
+  posterImg.src = url;
+  posterTitle.innerText = title;
+  posterQuote.innerText = quote;
+  returnToMain();
+}
+
 function showSavedPoster() {
   mainPoster.classList.add("hidden");
   savedPosterPage.classList.remove("hidden");
