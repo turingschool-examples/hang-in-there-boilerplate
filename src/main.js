@@ -126,6 +126,7 @@ showSavedPosters.addEventListener('click',viewPostersGrid);
 backToMain.addEventListener('click', hideSavedPosters);
 newPoster.addEventListener('click', createNewPoster);
 savePoster.addEventListener('click', addPosterToSaved);
+posterGrid.addEventListener('dblclick', getElementId);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -233,6 +234,19 @@ function displaySavedPosters() {
   }
 
   posterGrid.innerHTML = miniPosterHTML;
+}
+
+function getElementId(event){
+  if (event.target.id){
+    deleteSavedPoster(event.target.id)
+  } else {
+    deleteSavedPoster(event.target.parentElement.id)
+  }
+}
+
+function deleteSavedPoster(id) {
+  savedPosters.splice(id, 1);
+  displaySavedPosters();
 }
 
 displayRandomPoster();
