@@ -158,7 +158,7 @@ function getUserInput() {
   var imageUrl = inputUrl.value;
   var title = inputTitle.value;
   var quote = inputQuote.value;
-  displayUserPoster(imageUrl, title, quote);
+  currentPoster.updatePosterInfo(imageUrl, title, quote);
   addToArray(imageUrl, title, quote);
 };
 
@@ -173,6 +173,7 @@ function addToArray(imageUrl, title, quote) {
   images.push(imageUrl);
   titles.push(title);
   quotes.push(quote);
+  savedPosters.push(currentPoster);
 };
 
 function showSavedPoster() {
