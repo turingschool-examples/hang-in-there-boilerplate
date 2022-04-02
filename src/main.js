@@ -127,7 +127,13 @@ showRandomButton.addEventListener("click", uponLoad);
 let showFormButton = document.querySelector(".show-form");
 showFormButton.addEventListener("click", toggleForm)
 
+//This will: add event listening to "Show Saved Posters" button. On click,
+//it will show saved posters section
+let showSavedButton = document.querySelector(".show-saved");
+showSavedButton.addEventListener("click", toggleSavedView)
 
+let backToMainButton = document.querySelector(".back-to-main");
+backToMainButton.addEventListener("click", revealMainPoster)
 //This piece of code will: add event listening to "change background color" button. On click,
 //it will change the poster's background color.
 let backgroundColorButton = document.querySelector(".change-background")
@@ -182,19 +188,28 @@ function toggleForm() {
     revealMainPoster()
     createPoster.className = ("poster-form hidden");
   } else if (createPoster.className === ("poster-form hidden")) {
-    hideMain()
+    revealMainPoster()
     createPoster.className = ("poster-form")
   }
 }
 
-
-function hideMain() {
-  let hideMainPoster = document.getElementById("main-poster-shown");
-  hideMainPoster.className = ("main-poster hidden");
-}
-
 function revealMainPoster() {
   let backToMainPoster = document.getElementById("main-poster-shown");
-  backToMainPoster.className = ("main-poster")
-
+  if (backToMainPoster.className === "main-poster") {
+    backToMainPoster.className = "main-poster hidden";
+  } else {
+  backToMainPoster.className = "main-poster";
+  }
 }
+
+
+function toggleSavedView() {
+  const grabSavedId = document.getElementById("saved-posters-shown");
+  if (grabSavedId.className === "saved-posters hidden") {
+    grabSavedId.className = "saved-posters";
+    revealMainPoster();
+  } else {
+    grabSavedId.className = "saved-posters hidden";
+    }
+  }
+  
