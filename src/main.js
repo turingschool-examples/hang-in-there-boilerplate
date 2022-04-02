@@ -123,7 +123,8 @@ buttonMakeYourOwn.addEventListener("click", viewForm);
 buttonSavedPoster.addEventListener("click", savePoster);
 buttonShowMain.addEventListener("click", showMain);
 buttonBackMain.addEventListener("click", showMain);
-buttonNewPoster.addEventListener("click", getPosterData);
+buttonNewPoster.addEventListener("click", createNewPoster);
+buttonSavePoster.addEventListener("click", addToSavedPosters);
 
 
 //var.addEventListener(event,function)
@@ -165,10 +166,11 @@ function showMain(){
     }
 }
 
-function createNewPoster(poster) {
+function createNewPoster() {
   event.preventDefault();
-    addPosterItemsToArrays(poster.imageURL, poster.title, poster.quote);
-    showMyPoster(poster);
+  this.poster = getPosterData();
+  addPosterItemsToArrays(this.poster.imageURL, this.poster.title, this.poster.quote);
+  showMyPoster(this.poster);
 }
 
 function addPosterItemsToArrays(url, title, quote) {
@@ -181,8 +183,9 @@ function getPosterData() {
   var newImageURL = document.querySelector("#poster-image-url").value;
   var newPosterTitle = document.querySelector("#poster-title").value;
   var newPosterQuote = document.querySelector("#poster-quote").value;
-  var newPoster = new Poster(newImageURL, newPosterTitle, newPosterQuote);
-  createNewPoster(newPoster);
+  newPoster = new Poster(newImageURL, newPosterTitle, newPosterQuote);
+  currentPoster = newPoster;
+  return newPoster;
 }
 
 function showMyPoster(poster){
@@ -192,3 +195,6 @@ function showMyPoster(poster){
   posterTitle.innerText = poster.title;
   posterQuote.innerText = poster.quote;
 }
+
+function addToSavedPosters(){
+    savedPosters.push(currentPoster);
