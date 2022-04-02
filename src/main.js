@@ -7,6 +7,7 @@ var buttonMakeYourOwn = document.querySelector(".show-form");
 var buttonSavedPoster = document.querySelector(".show-saved");
 var buttonShowMain = document.querySelector(".show-main");
 var buttonBackMain = document.querySelector(".back-to-main");
+var buttonNewPoster = document.querySelector(".make-poster");
 var posterForm = document.querySelector(".poster-form");
 var mainPoster = document.querySelector(".main-poster");
 var savedPoster =document.querySelector(".saved-posters");
@@ -122,6 +123,8 @@ buttonMakeYourOwn.addEventListener("click", viewForm);
 buttonSavedPoster.addEventListener("click", savePoster);
 buttonShowMain.addEventListener("click", showMain);
 buttonBackMain.addEventListener("click", showMain);
+buttonNewPoster.addEventListener("click", getPosterData);
+
 
 //var.addEventListener(event,function)
 
@@ -133,12 +136,12 @@ function getRandomIndex(array) {
 }
 
 function showPoster(array) {
-  index = getRandomIndex (titles);
-  posterTitle.innerText = titles[index];
-  index = getRandomIndex (quotes);
-  posterQuote.innerText = quotes[index];
-  index = getRandomIndex (images);
-  posterImage.src = images[index];
+  index = getRandomIndex(titles);
+    posterTitle.innerText = titles[index];
+  index = getRandomIndex(quotes);
+    posterQuote.innerText = quotes[index];
+  index = getRandomIndex(images);
+    posterImage.src = images[index];
 }
 
 showPoster(images, titles, quotes);
@@ -152,8 +155,40 @@ function savePoster(){
   savedPoster.classList.remove("hidden");
   mainPoster.classList.add("hidden");
 }
+
 function showMain(){
   mainPoster.classList.remove("hidden");
-  posterForm.classList.add("hidden");
+    if(!posterForm.classList.contains("hidden")) {
+      posterForm.classList.add("hidden");
+    } else if (!savedPoster.classList.contains("hidden")) {
+      savedPoster.classList.add("hidden");
+    }
 }
 
+function createNewPoster(poster) {
+  event.preventDefault();
+    addPosterItemsToArrays(poster.imageURL, poster.title, poster.quote);
+    showMyPoster(poster);
+}
+
+function addPosterItemsToArrays(url, title, quote) {
+  images.push(url);
+  titles.push(title);
+  quotes.push(quote);
+}
+
+function getPosterData() {
+  var newImageURL = document.querySelector("#poster-image-url").value;
+  var newPosterTitle = document.querySelector("#poster-title").value;
+  var newPosterQuote = document.querySelector("#poster-quote").value;
+  var newPoster = new Poster(newImageURL, newPosterTitle, newPosterQuote);
+  createNewPoster(newPoster);
+}
+
+function showMyPoster(poster){
+  mainPoster.classList.remove("hidden");
+  posterForm.classList.add("hidden");
+  posterImage.src = poster.imageURL;
+  posterTitle.innerText = poster.title;
+  posterQuote.innerText = poster.quote;
+}
