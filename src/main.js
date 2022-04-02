@@ -148,20 +148,6 @@ function submitPosterInfo(){
   getUserInput();
 }
 
-function getUserInput(){
-  var imageUrl = inputUrl.value;
-  var title = inputTitle.value;
-  var quote = inputQuote.value;
-  displayUserPoster(imageUrl,title,quote);
-}
-
-function displayUserPoster(url,title,quote){
-  posterImg.src = url;
-  posterTitle.innerText = title;
-  posterQuote.innerText = quote;
-  returnToMain();
-}
-
 function showSavedPoster() {
   mainPoster.classList.add("hidden");
   savedPosterPage.classList.remove("hidden");
