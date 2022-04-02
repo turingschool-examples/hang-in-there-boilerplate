@@ -1,7 +1,7 @@
 // query selector variables go here 👇
-var image = document.querySelector(".poster-img");
-var title = document.querySelector(".poster-title");
-var quote = document.querySelector(".poster-quote");
+var mainImage = document.querySelector(".poster-img");
+var mainTitle = document.querySelector(".poster-title");
+var mainQuote = document.querySelector(".poster-quote");
 
 var randomButton = document.querySelector(".show-random");
 var randomImage = document.querySelector(".poster-img");
@@ -17,6 +17,15 @@ var mySavedPosters = document.querySelector(".saved-posters");
 
 var takeMeBackButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+
+var showMyPosterButton = document.querySelector(".make-poster");
+var imageInput = document.querySelector("#poster-image-url");
+var titleInput = document.querySelector("#poster-title");
+var quoteInput = document.querySelector("#poster-quote");
+
+
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -133,24 +142,29 @@ takeMeBackButton.addEventListener("click", takeMeBack);
 
 backToMainButton.addEventListener("click", backToMain);
 
+showMyPosterButton.addEventListener("click", createNewPoster);
+
+
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function loadRandomImage() {
-  image.src=`${images[getRandomIndex(images)]}`;
+  mainImage.src=`${images[getRandomIndex(images)]}`;
 }
 
   function loadRandomTitle() {
-  title.innerText= `${titles[getRandomIndex(titles)]}`;
+  mainTitle.innerText= `${titles[getRandomIndex(titles)]}`;
 }
 
 function loadRandomQuote() {
-  quote.innerText=`${quotes[getRandomIndex(quotes)]}`;
+  mainQuote.innerText=`${quotes[getRandomIndex(quotes)]}`;
 }
 
 function generateRandomPoster() {
   randomImage.src=`${images[getRandomIndex(images)]}`;
   randomQuote.innerText=`${quotes[getRandomIndex(quotes)]}`;
-  title.innerText= `${titles[getRandomIndex(titles)]}`;
+  randomTitle.innerText= `${titles[getRandomIndex(titles)]}`;
 }
 
 function showForm() {
@@ -173,7 +187,24 @@ function backToMain() {
   mainPoster.classList.remove("hidden");
 }
 
+function createNewPoster() {
+  event.preventDefault()
+  var imageURL = imageInput.value
+  var title = titleInput.value
+  var quote = quoteInput.value
+  var newPoster1 = new Poster(imageURL, title, quote)
+  images.push(imageURL)
+  titles.push(title)
+  quotes.push(quote)
+  takeMeBack();
+  displayNewlyCreatedPoster(imageURL, title, quote)
+}
 
+function displayNewlyCreatedPoster(imageURL, title, quote) {
+  mainImage.src = `${imageURL}`
+  mainTitle.innerText = `${title}`
+  mainQuote.innerText = `${quote}`
+}
 
 
 
