@@ -15,6 +15,8 @@ var newImageUrl = document.querySelector('#poster-image-url');
 var newTitle = document.querySelector('#poster-title');
 var newQuote = document.querySelector('#poster-quote');
 var newPoster = document.querySelector('.make-poster');
+var posterGrid = document.querySelector('.saved-posters-grid');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -120,7 +122,7 @@ var currentPoster;
 showRandomPoster.addEventListener('click', displayRandomPoster);
 makePoster.addEventListener('click', viewPosterForm);
 showMain.addEventListener('click', viewMainPoster);
-showSavedPosters.addEventListener('click',viewSavedPosters);
+showSavedPosters.addEventListener('click',viewPostersGrid);
 backToMain.addEventListener('click', viewSavedPosters);
 newPoster.addEventListener('click', createNewPoster);
 savePoster.addEventListener('click', addPosterToSaved);
@@ -153,7 +155,6 @@ function viewMainPoster() {
   displayRandomPoster();
 }
 
-
 function viewSavedPosters() {
   mainPoster.classList.toggle('hidden');
   savedPoster.classList.toggle('hidden');
@@ -179,37 +180,53 @@ function createNewPoster() {
   );
 
   event.preventDefault();
-  
+
   images.push(userPoster.imageURL);
   titles.push(userPoster.title);
   quotes.push(userPoster.quote);
 
   clearTheForm();
-  
+
   viewPosterForm();
 
-  displayCustomPoster(userPoster); 
+  displayCustomPoster(userPoster);
 }
-
-// When a user clicks the “Save This Poster” button, the current main poster will be added to the savedPosters array.
-// If a user clicks the “Save This Poster” more than once on a single poster, it will still only be saved once (no duplicates)
-// When a user clicks the “Show Saved Posters” button, we should see the saved posters section
-// All the posters in the savedPosters array should be displayed in the saved posters grid section
 
 function addPosterToSaved() {
   var posterToSave = new Poster (
     posterImage.src,
-    posterTitle.innerText, 
+    posterTitle.innerText,
     posterQuote.innerText
   );
 
   for (var i = 0; i < savedPosters.length; i++) {
     if (savedPosters[i].imageURL === posterToSave.imageURL && savedPosters[i].title === posterToSave.title && savedPosters[i].quote) {
       return;
-    } 
+    }
   }
 
   savedPosters.push(posterToSave);
+}
+
+function viewPostersGrid() {
+  mainPoster.classList.toggle('hidden');
+  savedPoster.classList.toggle('hidden');
+  displaySavedPosters();
+}
+
+function displaySavedPosters() {
+  var miniPosterHTML = '';
+
+  for (var i = 0; i < savedPosters.length; i++) {
+    currentPoster = savedPosters[i];
+    miniPosterHTML = miniPosterHTML +
+      '<div class="mini-poster" id="' + i + '">' +
+        '<img src="' + currentPoster.imageURL +
+        '"><h2>'+ currentPoster.title + '</h2><h4>' +
+        currentPoster.quote + '</h4></div>';
+  }
+
+  posterGrid.innerHTML = miniPosterHTML;
 }
 
 displayRandomPoster();
