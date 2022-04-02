@@ -134,21 +134,37 @@ showSavedButton.addEventListener('click', showSavedView)
 formButton.addEventListener('click', showFormView)
 nevermindButton.addEventListener('click', showMainView)
 backToMainButton.addEventListener('click', showMainView)
+savedGrid.addEventListener('dblclick', function(event){
+  // console.log('bob')
+  deletePoster(event)
+})
+
 
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+function deletePoster(event){
+  // console.log(typeof event.target.id)
+  var posterID = parseInt(event.target.id)
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id === posterID) {
+      console.log('bob')
+      savedPosters.splice(i,1)
+      event.target.parentNode.remove(event.target);
+    }
+  }
+
+}
 
 function loadSavedPosters() {
   var savedPosterDisplay = [];
   for (var i = 0; i < savedPosters.length; i++) {
-    savedPosterDisplay += `<article class="mini-poster">
-    <img class="poster-img" src="${savedPosters[i].imageURL}" alt="">
-    <h1 class="poster-title">${savedPosters[i].title}</h1>
-    <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+    savedPosterDisplay += `<article class="mini-poster" id="${savedPosters[i].id}">
+    <img src="${savedPosters[i].imageURL}" alt="" id="${savedPosters[i].id}">
+    <h1 class="poster-title" id="${savedPosters[i].id}">${savedPosters[i].title}</h1>
+    <h3 class="poster-quote" id="${savedPosters[i].id}">${savedPosters[i].quote}</h3>
     </article>`
   }
-  console.log('bob')
   savedGrid.innerHTML = savedPosterDisplay
 }
 
