@@ -5,11 +5,13 @@ var posterQuote = document.querySelector(".poster-quote");
 var buttonShowRandom = document.querySelector(".show-random");
 var buttonMakeYourOwn = document.querySelector(".show-form");
 var buttonSavedPoster = document.querySelector(".show-saved");
-// var buttonShowMain = document.querySelector("show-main");
-// var buttonBackMain = document.querySelector("back-to-main");
+var buttonShowMain = document.querySelector(".show-main");
+var buttonBackMain = document.querySelector(".back-to-main");
 var posterForm = document.querySelector(".poster-form");
 var mainPoster = document.querySelector(".main-poster");
 var savedPoster =document.querySelector(".saved-posters");
+var imageURL = document.querySelector(".poster-image-url");
+
 
 
 
@@ -118,8 +120,8 @@ var currentPoster;
 buttonShowRandom.addEventListener("click", showPoster);
 buttonMakeYourOwn.addEventListener("click", viewForm);
 buttonSavedPoster.addEventListener("click", savePoster);
-// buttonShowMain.addEventListener("click", showMain);
-// buttonBackMain.addEventListener("click", showMain);
+buttonShowMain.addEventListener("click", showMain);
+buttonBackMain.addEventListener("click", showMain);
 
 //var.addEventListener(event,function)
 
@@ -150,7 +152,8 @@ function savePoster(){
   savedPoster.classList.remove("hidden");
   mainPoster.classList.add("hidden");
 }
-// function showMain(){
-//   mainPoster.classList.remove("hidden");
-//   posterForm.classList.add("hidden");
-// }
+function showMain(){
+  mainPoster.classList.remove("hidden");
+  posterForm.classList.add("hidden");
+}
+
