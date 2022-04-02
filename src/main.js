@@ -123,7 +123,7 @@ showRandomPoster.addEventListener('click', displayRandomPoster);
 makePoster.addEventListener('click', viewPosterForm);
 showMain.addEventListener('click', viewMainPoster);
 showSavedPosters.addEventListener('click',viewPostersGrid);
-backToMain.addEventListener('click', viewSavedPosters);
+backToMain.addEventListener('click', hideSavedPosters);
 newPoster.addEventListener('click', createNewPoster);
 savePoster.addEventListener('click', addPosterToSaved);
 
@@ -158,6 +158,12 @@ function viewMainPoster() {
 function viewSavedPosters() {
   mainPoster.classList.toggle('hidden');
   savedPoster.classList.toggle('hidden');
+}
+
+function hideSavedPosters() {
+  mainPoster.classList.toggle('hidden');
+  savedPoster.classList.toggle('hidden');
+  displayRandomPoster();
 }
 
 function clearTheForm() {
