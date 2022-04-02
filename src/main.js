@@ -150,6 +150,9 @@ showMainButton.addEventListener("click", toggleForm);
 let posterImage = document.querySelector(".poster-img");
 posterImage.addEventListener("click", getRandomElement(images));
 
+let generateUserPoster = document.querySelector(".make-poster");
+generateUserPoster.addEventListener("click", submitForm);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -212,4 +215,13 @@ function toggleSavedView() {
     grabSavedId.className = "saved-posters hidden";
     }
   }
-  
+
+var formUserTitle = document.querySelector("#poster-title").value;
+var formUserQuote = document.querySelector("#poster-quote").value;
+
+
+
+
+function submitForm() {
+  event.preventDefault();
+}
