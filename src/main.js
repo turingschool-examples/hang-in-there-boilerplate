@@ -161,16 +161,12 @@ showSavedButton.addEventListener("click", miniPoster)
 let backToMainButton = document.querySelector(".back-to-main");
 backToMainButton.addEventListener("click", toggleSavedView);
 
-let submitButton = document.querySelector(".submit-button")
-submitButton.addEventListener("click", submitForm)
+let showMyPosterButton = document.querySelector(".make-poster")
+showMyPosterButton.addEventListener("click", submitForm)
 
 
 let saveButton = document.querySelector(".save-poster")
 saveButton.addEventListener("click", storeData)
-
-//THIS WILL ONE DAY DELETE POSTER ON DOUBLE CLICK
-//let deletion = document.querySelector(".mini-poster")
-//deletion.addEventListener("dblclick", deletePoster);
 
 
 // functions and event handlers go here 👇
@@ -317,23 +313,35 @@ if (!newArray[i]) {
     let a = newArray[i].imageURL
     let b = newArray[i].title
     let c = newArray[i].quote
+    let d = newArray[i].id
     let aa = document.getElementById("mini-img" + i);
     let bb = document.getElementById("mini-poster-title" + i);
     let cc = document.getElementById("mini-poster-quote" + i);
     let dd = document.getElementById("mini-poster-shown" + i);
-    dd.className = "mini-poster";
+    dd.className = "mini-poster " + newArray[i].id;
     aa.src = a;
     bb.innerText = b;
     cc.innerText = c;
     }
-
     getAllMiniPosters()
   }
 
   function deletePoster() {
-
-    console.log("delete")
+    let allMiniPosters = document.querySelectorAll(".mini-poster")
+    for (let i = 0; i < allMiniPosters.length; i++) {
+      let idNumber = allMiniPosters[i].id
+      if (idNumber.includes(this.id)){
+      console.log("delete")
+      newArray.splice(i, 1);
+      console.log(newArray);
+      let toBeRemoved = document.getElementById(idNumber);
+      console.log(toBeRemoved)
+      toBeRemoved.className = "mini-poster hidden"
+    } else {
+      console.log("no")
+    }
   }
+}
 
 function getAllMiniPosters() {
 let allMiniPosters = document.querySelectorAll(".mini-poster")
