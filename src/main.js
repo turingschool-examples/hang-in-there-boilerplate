@@ -264,3 +264,16 @@ function submitForm() {
   document.getElementById("title-button").innerHTML = data.quote
   document.getElementById("quote-button").innerHTML = data.title
 }
+
+// Fetches data from form, generates new Poster instance, saves submitted data to arrays
+function getFormData() {
+  let userInputImage = document.getElementById("poster-image-url").value;
+  let userInputQuote = document.getElementById("poster-quote").value;
+  let userInputTitle = document.getElementById("poster-titleId").value;
+  let userPoster = new Poster(userInputImage, userInputQuote, userInputTitle);
+
+  images.push(userPoster.imageURL)
+  titles.push(userPoster.title)
+  quotes.push(userPoster.quote)
+  return userPoster
+}
