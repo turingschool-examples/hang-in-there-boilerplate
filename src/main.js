@@ -277,3 +277,11 @@ function getFormData() {
   quotes.push(userPoster.quote)
   return userPoster
 }
+
+function captureAsObject() {
+  let currentDisplayImage = document.getElementById("poster-img").src
+  let currentDisplayQuote = document.getElementById("quote-button").innerText;
+  let currentDisplayTitle = document.getElementById("title-button").innerText;
+  let newObject = new Poster (currentDisplayImage, currentDisplayTitle, currentDisplayQuote);
+  return newObject
+}
