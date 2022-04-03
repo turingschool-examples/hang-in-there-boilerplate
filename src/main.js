@@ -310,3 +310,18 @@ if (!newArray[i]) {
          return newArray
        }
   }
+
+  function miniPoster() {
+  for (let i = 0; i < newArray.length; i++) {
+    let a = newArray[i].imageURL
+    let b = newArray[i].title
+    let c = newArray[i].quote
+    let aa = document.getElementById("mini-img" + i);
+    let bb = document.getElementById("mini-poster-title" + i);
+    let cc = document.getElementById("mini-poster-quote" + i);
+    let dd = document.getElementById("mini-poster-shown" + i);
+    dd.className = "mini-poster";
+    aa.src = a;
+    bb.innerText = b;
+    cc.innerText = c;
+    }
