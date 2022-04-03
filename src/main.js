@@ -13,12 +13,9 @@ var posterForm = document.querySelector(".poster-form");
 var mainPoster = document.querySelector(".main-poster");
 var savedPoster =document.querySelector(".saved-posters");
 var imageURL = document.querySelector(".poster-image-url");
-var miniPoster = document.querySelector(".saved-posters-grid");
+var miniPoster = document.querySelector('.saved-posters-grid');
 
-
-
-
-// we've provided you with some data to work with 👇
+//Variables Go here 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -118,22 +115,22 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var entity;
 
 // event listeners go here 👇
 buttonShowRandom.addEventListener("click", showPoster);
 buttonMakeYourOwn.addEventListener("click", viewForm);
 buttonSavedPoster.addEventListener("click", showSavedPosters);
-buttonShowMain.addEventListener("click", showMain);
-buttonBackMain.addEventListener("click", showMain);
+buttonShowMain.addEventListener("click", showHideMain);
+buttonBackMain.addEventListener("click", showHideMain);
 buttonNewPoster.addEventListener("click", createNewPoster);
 buttonSavePoster.addEventListener("click", addToSavedPosters);
-miniPoster.addEventListener("dblclick", deletePoster);
+miniPoster.addEventListener('dblclick', deletePoster);
 
-//var.addEventListener(event,function)
+// Poster Intantiator goes here 👇
+showPoster(images, titles, quotes);
 
 // functions and event handlers go here 👇
-
-// (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -148,8 +145,6 @@ function showPoster(array) {
   posterImage.src = currentPoster.imageURL;
 }
 
-showPoster(images, titles, quotes);
-
 function viewForm(){
   posterForm.classList.remove("hidden");
   mainPoster.classList.add("hidden");
@@ -161,7 +156,7 @@ function showSavedPosters(){
   insertSavedPosters()
 }
 
-function showMain(){
+function showHideMain(){
   mainPoster.classList.remove("hidden");
   if (!posterForm.classList.contains("hidden")){
     posterForm.classList.add("hidden");
@@ -181,9 +176,8 @@ function getPosterData() {
   var newImageURL = document.querySelector("#poster-image-url").value;
   var newPosterTitle = document.querySelector("#poster-title").value;
   var newPosterQuote = document.querySelector("#poster-quote").value;
-  newPoster = new Poster(newImageURL, newPosterTitle, newPosterQuote);
-  currentPoster = newPoster;
-  return newPoster;
+  currentPoster = new Poster(newImageURL, newPosterTitle, newPosterQuote);
+  return currentPoster;
 }
 
 function addPosterItemsToArrays (url, title, quote){
@@ -198,16 +192,15 @@ function showMyPoster(poster){
   posterImage.src = poster.imageURL;
   posterTitle.innerText = poster.title;
   posterQuote.innerText = poster.quote;
- }
+}
 
 function addToSavedPosters(){
   if(currentPoster === undefined){
     currentPoster = new Poster (mainPoster.imageURL, mainPoster.title, mainPoster.quote, id = Date.now());
-
   }
   if(!savedPosters.includes (currentPoster)){
     savedPosters.push(currentPoster);
-      window.alert("The poster was saved!");
+    window.alert("The poster was saved!");
   }else {
     window.alert("This poster already exists.");
   }
@@ -216,13 +209,13 @@ function addToSavedPosters(){
 function insertSavedPosters(){
   var posterGrid = document.querySelector(".saved-posters-grid")
   posterGrid.innerHTML = '';
-    for (var i = 0; i < savedPosters.length; i++){
-      posterGrid.innerHTML += ("<article class='mini-poster' id = " + savedPosters[i].id + "><img class='mini-poster img' id = " + savedPosters[i].id + " src='" + savedPosters[i].imageURL + "' alt='nothin/' to see here'><h2 id = " + savedPosters[i].id + ">" + savedPosters[i].title + "</h2><h4 id = " + savedPosters[i].id + ">" + savedPosters[i].quote + "</h4></article>")
+  for (var i = 0; i < savedPosters.length; i++){
+    posterGrid.innerHTML += ("<article class='mini-poster' id = "+savedPosters[i].id+"><img class='mini-poster img' id = "+savedPosters[i].id+" src='" + savedPosters[i].imageURL + "' alt='nothin/' to see here'><h2 id = "+savedPosters[i].id+">" + savedPosters[i].title + "</h2><h4 id = "+savedPosters[i].id+">" + savedPosters[i].quote + "</h4></article>")
   }
 }
 
-function deletePoster(e) {
-    id = parseInt(e.target.id);
-    savedPosters = savedPosters.filter(savedPosters => savedPosters.id !== id);
-    insertSavedPosters();
+function deletePoster(e){
+  id = parseInt(e.target.id);
+  savedPosters = savedPosters.filter(savedPosters => savedPosters.id !== id);
+  insertSavedPosters()
 }
