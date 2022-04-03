@@ -139,12 +139,13 @@ function getRandomIndex(array) {
 }
 
 function showPoster(array) {
-  index = getRandomIndex (titles);
-    posterTitle.innerText = titles[index];
-  index = getRandomIndex (quotes);
-    posterQuote.innerText = quotes[index];
-  index = getRandomIndex (images);
-    posterImage.src = images[index];
+  titlesIndex = getRandomIndex (titles);
+  quotesIndex = getRandomIndex (quotes);
+  imagesIndex = getRandomIndex (images);
+  currentPoster = new Poster(images[imagesIndex], titles[titlesIndex], quotes[quotesIndex]) 
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+  posterImage.src = currentPoster.imageURL;
 }
 
 showPoster(images, titles, quotes);
@@ -200,22 +201,23 @@ function showMyPoster(poster){
  }
 
 function addToSavedPosters(){
-  //console.log(currentPoster)
-  //console.log(!savedPosters.includes (newPoster))
+  if(currentPoster === undefined){
+    currentPoster = new Poster (mainPoster.imageURL, mainPoster.title, mainPoster.quote, id = Date.now());
+    
+  }
   if(!savedPosters.includes (currentPoster)){
     savedPosters.push(currentPoster);
       window.alert("The poster was saved!");
-        console.log(savedPosters);
   }else {
     window.alert("This poster already exists.");
   }
 }
 
 function insertSavedPosters(){
-  console.log(savedPosters);
-    var posterGrid = document.querySelector(".saved-posters-grid")
-       for (var i = 0; i < savedPosters.length; i++){
-        posterGrid.innerHTML += ("<article class='mini-poster' id=" + savedPosters[i].id + "><img class='mini-poster img' src='" + savedPosters[i].imageURL + "' alt='nothin/' to see here'><h2>" + savedPosters[i].title + "</h2><h4>" + savedPosters[i].quote + "</h4></article>")
+  var posterGrid = document.querySelector(".saved-posters-grid")
+  posterGrid.innerHTML = '';
+    for (var i = 0; i < savedPosters.length; i++){
+      posterGrid.innerHTML += ("<article class='mini-poster'><img class='mini-poster img' src='" + savedPosters[i].imageURL + "' alt='nothin/' to see here'><h2>" + savedPosters[i].title + "</h2><h4>" + savedPosters[i].quote + "</h4></article>")
   }
 }
 
