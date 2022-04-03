@@ -169,6 +169,7 @@ function changeTitle() {
   let posterTitle = document.querySelector(".poster-title");
   posterTitle.innerHTML = getRandomElement(titles)
 }
+
 //function generateNewPosterObject() {
 //  let newPoster = new RandomPoster()
 //  return newPoster
