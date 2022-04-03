@@ -161,8 +161,8 @@ showSavedButton.addEventListener("click", miniPoster)
 let backToMainButton = document.querySelector(".back-to-main");
 backToMainButton.addEventListener("click", toggleSavedView);
 
-let submitButton = document.querySelector(".submit-button")
-submitButton.addEventListener("click", submitForm)
+let showMyPosterButton = document.querySelector(".make-poster")
+showMyPosterButton.addEventListener("click", submitForm)
 
 
 let saveButton = document.querySelector(".save-poster")
