@@ -264,3 +264,44 @@ function submitForm() {
   document.getElementById("title-button").innerHTML = data.quote
   document.getElementById("quote-button").innerHTML = data.title
 }
+
+// Fetches data from form, generates new Poster instance, saves submitted data to arrays
+function getFormData() {
+  let userInputImage = document.getElementById("poster-image-url").value;
+  let userInputQuote = document.getElementById("poster-quote").value;
+  let userInputTitle = document.getElementById("poster-titleId").value;
+  let userPoster = new Poster(userInputImage, userInputQuote, userInputTitle);
+
+  images.push(userPoster.imageURL)
+  titles.push(userPoster.title)
+  quotes.push(userPoster.quote)
+  return userPoster
+}
+
+function captureAsObject() {
+  let currentDisplayImage = document.getElementById("poster-img").src
+  let currentDisplayQuote = document.getElementById("quote-button").innerText;
+  let currentDisplayTitle = document.getElementById("title-button").innerText;
+  let newObject = new Poster (currentDisplayImage, currentDisplayTitle, currentDisplayQuote);
+  return newObject
+}
+// Stores posters as objects until saved poster area is full
+function storeData() {
+  let myPoster = captureAsObject()
+for (let i = 0; i < 10; i++)
+if (!newArray[i]) {
+  newArray[i] = myPoster;
+  return myPoster;
+} else if (myPoster.title === newArray[i].title &&
+   myPoster.quote === newArray[i].quote &&
+   myPoster.imageURL === newArray[i].imageURL) {
+     console.log("Taken!");
+     return "taken!";
+   } else if (newArray[i] === undefined) {
+         newArray[i] = myPoster;
+         return newArray
+       }
+  }
+//function displaySaved() {
+//  let savedAredocument.querySelector("saved-posters-grid")
+//}
