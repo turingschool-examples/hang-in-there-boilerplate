@@ -285,3 +285,23 @@ function captureAsObject() {
   let newObject = new Poster (currentDisplayImage, currentDisplayTitle, currentDisplayQuote);
   return newObject
 }
+// Stores posters as objects until saved poster area is full
+function storeData() {
+  let myPoster = captureAsObject()
+for (let i = 0; i < 10; i++)
+if (!newArray[i]) {
+  newArray[i] = myPoster;
+  return myPoster;
+} else if (myPoster.title === newArray[i].title &&
+   myPoster.quote === newArray[i].quote &&
+   myPoster.imageURL === newArray[i].imageURL) {
+     console.log("Taken!");
+     return "taken!";
+   } else if (newArray[i] === undefined) {
+         newArray[i] = myPoster;
+         return newArray
+       }
+  }
+//function displaySaved() {
+//  let savedAredocument.querySelector("saved-posters-grid")
+//}
