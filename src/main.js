@@ -141,6 +141,8 @@ pushInfo(imgURL.value, newTitle.value, newQuote.value)
 showPoster(currentPoster)
 });
 
+savePoster.addEventListener('click', addSavedPoster)
+
 
 // functions and event handlers go here 👇
 
@@ -205,6 +207,10 @@ function newArray(userImgURL, userNewTitle, userNewQuote) {
 }
 
 // make a function for pushing make your own into the savedPosters
-
+function addSavedPoster() {
+  if (!savedPosters.includes(currentPoster) ) {
+      savedPosters.push(currentPoster)
+  }
+};
 
 getRandoStuff();
