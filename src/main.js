@@ -10,6 +10,12 @@ var backToMainButton = document.querySelector('.back-to-main');
 var mainPosterPage = document.querySelector('.main-poster')
 var makePosterPage = document.querySelector('.poster-form')
 var savedPosterPage = document.querySelector('.saved-posters')
+var imageInput = document.getElementById('poster-image-url');
+var titleInput = document.getElementById('poster-title');
+var quoteInput = document.getElementById('poster-quote');
+var showMyPosterButton = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector('.save-poster')
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,6 +125,7 @@ makePosterButton.addEventListener('click', displayForm);
 savedPosterButton.addEventListener('click', showSavedPosters);
 takeMeBackButton.addEventListener('click', takeMeBack);
 backToMainButton.addEventListener('click', takeMeBack);
+showMyPosterButton.addEventListener('click', submitForm);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -151,11 +158,32 @@ function hide(element) {
 
 function showSavedPosters() {
   mainPosterPage.classList.add('hidden')
-  show(savedPosterPage)
+  show(savedPosterPage);
 }
 
 function takeMeBack() {
   hide(savedPosterPage);
   hide(makePosterPage);
   show(mainPosterPage);
+}
+function createPoster() {
+  var imageURL = imageInput.value;
+  var title = titleInput.value;
+  var quote = quoteInput.value;
+  posterQuote.innerText = quote;
+  posterTitle.innerText = title;
+  posterImage.src = imageURL;
+  images.push(imageURL);
+  titles.push(title);
+  quotes.push(quote);
+  newPoster(imageURL, title, quote);
+  takeMeBack();
+}
+function newPoster(imageURL, title, quote) {
+  var userPoster = new Poster(imageURL, title, quote);
+  console.log(userPoster)
+}
+function submitForm() {
+  event.preventDefault();
+  createPoster();
 }
