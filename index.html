@@ -9,11 +9,11 @@
 </head>
 <body>
   <!-- Begin section that displays image that loads initially -->
-  <section class="main-poster">
+  <section class="main-poster" id = "main-posterId">
     <article class="poster">
-      <img class="poster-img" src="" alt="nothin' to see here">
+      <img class="poster-img" id="poster-img" src="" alt="nothin' to see here">
       <button class="poster-title" id="title-button"></button>
-      <h3 class="poster-quote"></h3>
+      <button class="poster-quote" id="quote-button"></button>
     </article>
     <button class="save-poster">Save This Poster</button>
     <button class="show-saved">Show Saved Posters</button>
@@ -22,13 +22,13 @@
     <button class="change-background">Change Poster Color</button>
   </section>
   <!-- End of section -->
-  <section class="poster-form hidden">
+  <section class="poster-form hidden" id="poster-form-shown">
     <form>
       <h2>Create your own motivational poster</h2>
       <label for="poster-image-url">Image url</label>
       <input type="text" name="poster-image-url" id="poster-image-url" placeholder="https://gph.is/2n553Ra">
       <label for="poster-title">Motivational title</label>
-      <input type="text" name="poster-title" id="poster-title" placeholder="Growth Mindset">
+      <input type="text" name="poster-title" id="poster-titleId" placeholder="Growth Mindset">
       <label for="poster-quote">Motivational quote</label>
         <input type="text" name="poster-quote" id="poster-quote" placeholder="Hang in there!">
       <button class="make-poster">Show my poster</button>
@@ -36,9 +36,63 @@
     <div class="divider"></div>
     <button class="show-main">Nevermind, take me back!</button>
   </section>
-  <section class="saved-posters hidden">
+  <section class="saved-posters hidden" id="saved-posters-shown">
     <h2>Saved Posters</h2>
-    <article class="saved-posters-grid"></article>
+    <article class="saved-posters-grid">
+      <!--start changes -->
+      <article class="mini-poster hidden" id ="mini-poster-shown0">
+        <img class="mini-img" id="mini-img0" src="" alt="nothin' to see here">
+        <h2 class="poster-title" id="mini-poster-title0"></h2>
+        <h4 class="poster-quote" id="mini-poster-quote0"></h4>
+      </article>
+      <article class="mini-poster hidden" id ="mini-poster-shown1">
+          <img class="mini-img" id="mini-img1" src="" alt="nothin' to see here">
+          <h2 class="poster-title" id="mini-poster-title1"></h2>
+          <h4 class="poster-quote" id="mini-poster-quote1"></h4>
+      </article>
+      <article class="mini-poster hidden" id ="mini-poster-shown2">
+          <img class="mini-img" id="mini-img2" src="" alt="nothin' to see here">
+          <h2 class="poster-title" id="mini-poster-title2"></h2>
+          <h4 class="poster-quote" id="mini-poster-quote2"></h4>
+      </article>
+      <article class="mini-poster hidden" id ="mini-poster-shown3">
+            <img class="mini-img" id="mini-img3" src="" alt="nothin' to see here">
+            <h2 class="poster-title" id="mini-poster-title3"></h2>
+            <h4 class="poster-quote" id="mini-poster-quote3"></h4>
+      </article>
+      <article class="mini-poster hidden" id ="mini-poster-shown4">
+            <img class="mini-img" id="mini-img4" src="" alt="nothin' to see here">
+            <h2 class="poster-title" id="mini-poster-title4"></h2>
+            <h4 class="poster-quote" id="mini-poster-quote4"></h4>
+      </article>
+      <article class="mini-poster hidden" id ="mini-poster-shown5">
+              <img class="mini-img" id="mini-img5" src="" alt="nothin' to see here">
+              <h2 class="poster-title" id="mini-poster-title5"></h2>
+              <h4 class="poster-quote" id="mini-poster-quote5"></h4>
+      </article>
+      <article class="mini-poster hidden" id ="mini-poster-shown6">
+              <img class="mini-img" id="mini-img6" src="" alt="nothin' to see here">
+              <h2 class="poster-title" id="mini-poster-title6"></h2>
+              <h4 class="poster-quote" id="mini-poster-quote6"></h4>
+      </article>
+      <article class="mini-poster hidden" id ="mini-poster-shown7">
+                <img class="mini-img" id="mini-img7" src="" alt="nothin' to see here">
+                <h2 class="poster-title" id="mini-poster-title7"></h2>
+                <h4 class="poster-quote" id="mini-poster-quote7"></h4>
+      </article>
+      <article class="mini-poster hidden" id ="mini-poster-shown8">
+                <img class="mini-img" id="mini-img8" src="" alt="nothin' to see here">
+                <h2 class="poster-title" id="mini-poster-title8"></h2>
+                <h4 class="poster-quote" id="mini-poster-quote8"></h4>
+      </article>
+      <article class="mini-poster hidden" id ="mini-poster-shown9">
+                  <img class="mini-img" id="mini-img9" src="" alt="nothin' to see here">
+                  <h2 class="poster-title" id="mini-poster-title9"></h2>
+                  <h4 class="poster-quote" id="mini-poster-quote9"></h4>
+      </article>
+        <!--end-->
+      </article>
+    </article>
     <button class="back-to-main">Back to Main</button>
   </section>
   <script src="./src/poster.js"></script>
