@@ -193,6 +193,7 @@ function getRandomElement(array) {
   document.getElementById("title-button").innerHTML = loadPoster.title
   document.getElementById("quote-button").innerHTML = loadPoster.quote
   return loadPoster
+
 //  document.querySelector(".poster-img").src = getRandomElement(images)
 //  document.querySelector(".poster-title").innerHTML = getRandomElement(titles)
 //  document.querySelector(".poster-quote").innerHTML = getRandomElement(quotes)
