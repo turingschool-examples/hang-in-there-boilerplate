@@ -325,3 +325,19 @@ if (!newArray[i]) {
     bb.innerText = b;
     cc.innerText = c;
     }
+
+    getAllMiniPosters()
+  }
+
+  function deletePoster() {
+
+    console.log("delete")
+  }
+
+function getAllMiniPosters() {
+let allMiniPosters = document.querySelectorAll(".mini-poster")
+for (let i = 0; i < allMiniPosters.length; i++) {
+  allMiniPosters[i].addEventListener("dblclick", deletePoster)
+  }
+  return allMiniPosters
+}
