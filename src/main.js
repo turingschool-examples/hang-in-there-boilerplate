@@ -29,6 +29,8 @@ var savedGrid = document.querySelector(".saved-posters-grid");
 
 
 
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -151,6 +153,24 @@ showMyPosterButton.addEventListener("click", createNewPoster);
 
 saveThisPosterButton.addEventListener("click", addToSavedPosters);
 
+document.addEventListener("dblclick", function(event) {
+  var target = event.target;
+  var toDelete;
+
+  if (target.classList.toString().includes("mini-poster")) {
+    toDelete = target.id
+  }
+
+  if (target.parentElement.classList.toString().includes("mini-poster")) {
+    toDelete = target.parentElement.id
+    console.log(target.parentElement.id)
+  }
+
+  if (toDelete) {
+    deleteSavedPoster(toDelete)
+  }
+});
+
 
 
 
@@ -224,17 +244,7 @@ function addToSavedPosters() {
   })
   if (!posterSaved) {
     savedPosters.push(currentPoster);
-
-  var gridHTML = "";
-  for (i = 0; i< savedPosters.length; i++) {
-    var poster = savedPosters[i];
-    gridHTML += `<div class="mini-poster">
-       <img src="${poster.imageURL}" alt="${poster.title}">
-       <h2>${poster.title}</h2>
-       <h4>${poster.quote}</h4>
-     </div>`
-  }
-  savedGrid.innerHTML = gridHTML;
+    renderSavedPosters();
   }
 }
 
@@ -245,6 +255,26 @@ function posterComparator(posterA, posterB) {
     posterA.quote === posterB.quote &&
     posterA.title === posterB.title
   )
+}
+
+function deleteSavedPoster(toDelete) {
+  savedPosters = savedPosters.filter(function(poster) {
+    return poster.imageURL !== toDelete
+  })
+  renderSavedPosters();
+}
+
+function renderSavedPosters () {
+  var gridHTML = "";
+  for (i = 0; i< savedPosters.length; i++) {
+    var poster = savedPosters[i];
+    gridHTML += `<button id=${poster.imageURL} class="mini-poster">
+      <img src="${poster.imageURL}" alt="${poster.title}">
+      <h2>${poster.title}</h2>
+      <h4>${poster.quote}</h4>
+      </button>`
+    }
+    savedGrid.innerHTML = gridHTML;
 }
 
 function getRandomIndex(array) {
