@@ -59,7 +59,7 @@ var titles = [
   "wisdom"
 ];
 var quotes = [
-  "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
+  "Don't downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
   "The one who has confidence gains the confidence of others.",
@@ -86,7 +86,7 @@ var quotes = [
   "It is never too late to be what you might have been.",
   "Happiness often sneaks in through a door you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
-  "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
+  "Never limit yourself because of others' limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
   "Let us make our future now, and let us make our dreams tomorrow's reality.",
   "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
@@ -121,34 +121,53 @@ window.addEventListener("load", uponLoad)
 
 //This piece of code will: add event listening to "show random" button. On click,
 //it will display a new random poster.
-let showRandomButton = document.querySelector(".show-random");
-showRandomButton.addEventListener("click", uponLoad);
+let showRandomButton = document.querySelector(".show-random")
+showRandomButton.addEventListener("click", uponLoad)
 
-let showFormButton = document.querySelector(".show-form");
-showFormButton.addEventListener("click", toggleForm)
+//This piece of code will: add event listening to "change background color" button. On click,
+//it will change the poster's background color.
+let backgroundColorButton = document.querySelector(".change-background");
+backgroundColorButton.addEventListener("click", changeBackgroundColor);
+
+
+//These will: add event listening to the title  and quote buttons. On click,
+//random selection is generated and displayed
+let posterImageButton = document.querySelector(".poster-img")
+posterImageButton.addEventListener("click", changeImage);
+
+let posterTitleButton = document.querySelector(".poster-title");
+posterTitleButton.addEventListener("click", changeTitle);
+
+let posterQuoteButton = document.querySelector(".poster-quote");
+posterQuoteButton.addEventListener("click", changeQuote);
+
+//This will: add event listening to "Make Your Own Poster" button. On click,
+//it will show form
+let makeOwnPosterButton = document.querySelector(".show-form");
+makeOwnPosterButton.addEventListener("click", toggleFormView);
+
+//This will: add event listening to "Nevermind, Go Back" button. On click,
+//it will restore main view from "Make Your Own Poster" view
+let goBackButton = document.querySelector(".show-main");
+goBackButton.addEventListener("click", toggleFormView);
 
 //This will: add event listening to "Show Saved Posters" button. On click,
 //it will show saved posters section
 let showSavedButton = document.querySelector(".show-saved");
 showSavedButton.addEventListener("click", toggleSavedView)
+//showSavedButton.addEventListener("click", displaySaved)
 
+//This will: add event listening to "Back to Main" button
 let backToMainButton = document.querySelector(".back-to-main");
-backToMainButton.addEventListener("click", revealMainPoster)
-//This piece of code will: add event listening to "change background color" button. On click,
-//it will change the poster's background color.
-let backgroundColorButton = document.querySelector(".change-background")
-backgroundColorButton.addEventListener("click", changeBackgroundColor)
+backToMainButton.addEventListener("click", toggleSavedView);
 
-//This piece of code will: add event listening to the title as a button. On click,
-//it will run changeTitle function
-let posterTitleButton = document.querySelector(".poster-title")
-posterTitleButton.addEventListener("click", changeTitle)
+let submitButton = document.querySelector(".submit-button")
+submitButton.addEventListener("click", submitForm)
 
-let showMainButton = document.querySelector(".show-main");
-showMainButton.addEventListener("click", toggleForm);
 
-let posterImage = document.querySelector(".poster-img");
-posterImage.addEventListener("click", getRandomElement(images));
+let saveButton = document.querySelector(".save-poster")
+saveButton.addEventListener("click", storeData)
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -164,10 +183,14 @@ function getRandomElement(array) {
 }
 
 //This piece of code will: display a random pic upon page load
-function uponLoad() {
-  document.querySelector(".poster-img").src = getRandomElement(images)
-  document.querySelector(".poster-title").innerHTML = getRandomElement(titles)
-  document.querySelector(".poster-quote").innerHTML = getRandomElement(quotes)
+  function uponLoad() {
+  let loadPoster = new RandomPoster()
+  document.getElementById("poster-img").src = loadPoster.imageURL
+  document.getElementById("title-button").innerHTML = loadPoster.title
+  document.getElementById("quote-button").innerHTML = loadPoster.quote
+//  document.querySelector(".poster-img").src = getRandomElement(images)
+//  document.querySelector(".poster-title").innerHTML = getRandomElement(titles)
+//  document.querySelector(".poster-quote").innerHTML = getRandomElement(quotes)
 }
 
 // This code will: access colors array and change poster background color when invoked
@@ -176,40 +199,57 @@ function changeBackgroundColor() {
   posterBackground.style.backgroundColor = getRandomElement(colors);
 }
 
+//
+function changeImage() {
+  document.querySelector(".poster-img").src = getRandomElement(images)
+}
+
 // This code will: generate and display new title in title button
 function changeTitle() {
-  let posterTitle = document.querySelector(".poster-title");
-  posterTitle.innerHTML = getRandomElement(titles)
+  posterTitleButton.innerHTML = getRandomElement(titles);
 }
 
-function toggleForm() {
-  let createPoster = document.getElementById("poster-form-reveal");
-  if (createPoster.className === ("poster-form")){
-    revealMainPoster()
-    createPoster.className = ("poster-form hidden");
-  } else if (createPoster.className === ("poster-form hidden")) {
-    revealMainPoster()
-    createPoster.className = ("poster-form")
-  }
+// This code will: generate and display new quote in quote button
+function changeQuote() {
+  posterQuoteButton.innerHTML = getRandomElement(quotes);
 }
 
-function revealMainPoster() {
-  let backToMainPoster = document.getElementById("main-poster-shown");
-  if (backToMainPoster.className === "main-poster") {
-    backToMainPoster.className = "main-poster hidden";
+
+//This will: turng main view on and off
+function toggleMainView() {
+  const grabPosterId = document.getElementById("main-posterId");
+  if (grabPosterId.className == "main-poster") {
+    grabPosterId.className = "main-poster hidden";
   } else {
-  backToMainPoster.className = "main-poster";
+    grabPosterId.className = "main-poster";
   }
 }
 
 
+// This code will: toggle between "hidden" class in order to
+// reveal form
+function toggleFormView() {
+  const grabFormId = document.getElementById("poster-form-shown");
+  if (grabFormId.className == "poster-form hidden") {
+    grabFormId.className = "poster-form";
+    toggleMainView();
+  } else {
+    grabFormId.className = "poster-form hidden";
+    toggleMainView();
+  }
+}
+
+//Turns saved posters section on and off
 function toggleSavedView() {
   const grabSavedId = document.getElementById("saved-posters-shown");
-  if (grabSavedId.className === "saved-posters hidden") {
+  if (grabSavedId.className == "saved-posters hidden") {
     grabSavedId.className = "saved-posters";
-    revealMainPoster();
+    toggleMainView();
   } else {
     grabSavedId.className = "saved-posters hidden";
+    toggleMainView();
     }
   }
-  
+
+let newArray = [];
+let savedArea = document.querySelector(".saved-posters-grid");
