@@ -1,10 +1,10 @@
 var pImg = document.querySelector('.poster-img');
 var postTitle = document.querySelector('.poster-title');
 var pQuote = document.querySelector('.poster-quote');
-var savePoster = document.querySelector('.save-poster');
-var showSaved = document.querySelector('.show-saved');
-var showRando = document.querySelector('.show-random');
-var showForm = document.querySelector('.show-form');
+var buttonSavePoster = document.querySelector('.save-poster');
+var buttonShowSaved = document.querySelector('.show-saved');
+var buttonShowRando = document.querySelector('.show-random');
+var buttonShowForm = document.querySelector('.show-form');
 var postForm = document.querySelector('.poster-form');
 var mainPost = document.querySelector('.main-poster');
 var takeBack = document.querySelector('.show-main');
@@ -15,6 +15,8 @@ var imgURL = document.getElementById('poster-image-url');
 var newTitle = document.getElementById('poster-title');
 var newQuote = document.getElementById('poster-quote');
 var makePoster = document.querySelector('.make-poster');
+
+var savedPosterGrid = document.querySelector('.saved-posters');
 
 
 
@@ -121,27 +123,30 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-// window.addEventListener('load', getRandoStuff)
-showRando.addEventListener('click', showRandom)
+window.addEventListener('load', getRandoStuff)
+buttonShowRando.addEventListener('click', showRandom)
 // showForm.addEventListener('click', ownPoster)
 takeBack.addEventListener('click', goHome)
 goMain.addEventListener('click', goHome)
-// showSaved.addEventListener('click', )
-showForm.addEventListener('click', function() {showHide(postForm,mainPost)})
-showSaved.addEventListener('click', function() {showHide(savedPostersPage,mainPost)})
+buttonShowForm.addEventListener('click', function() {showHide(postForm,mainPost)})
+buttonShowSaved.addEventListener('click', function() {
+  showHide(savedPostersPage,mainPost)
+  makeGrid()
+  stopReset()
+})
 
 //Make a button click that takes me to savedPostersPage
 
 
 makePoster.addEventListener('click',function() {
-// getVal()
 stopReset()
 newArray(imgURL.value, newTitle.value, newQuote.value)
 pushInfo(imgURL.value, newTitle.value, newQuote.value)
 showPoster(currentPoster)
 });
 
-savePoster.addEventListener('click', addSavedPoster)
+buttonSavePoster.addEventListener('click', addSavedPoster)
+
 
 
 // functions and event handlers go here 👇
@@ -206,11 +211,22 @@ function newArray(userImgURL, userNewTitle, userNewQuote) {
   quotes.unshift(userNewQuote);
 }
 
-// make a function for pushing make your own into the savedPosters
+
 function addSavedPoster() {
   if (!savedPosters.includes(currentPoster) ) {
       savedPosters.push(currentPoster)
   }
 };
+//
 
-getRandoStuff();
+function makeGrid() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersPage.innerHTML +=
+    `<article class="mini-poster">
+      <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+      <h2 class="poster-title">${savedPosters[i].title}</h2>
+      <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+    </article>`
+  }
+}
+//
