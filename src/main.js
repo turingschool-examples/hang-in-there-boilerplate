@@ -120,6 +120,8 @@ var currentPoster;
 
 // event listeners go here 👇
 
+savePosterButton.addEventListener('click', savePosterSection);
+
 // functions and event handlers go here 👇
 
 //Generates Random Poster Main Page
@@ -127,6 +129,16 @@ var currentPoster;
 randomPoster();
 
 //Show Another Random Poster//
+
+makePosterButton.addEventListener('click', showForm);
+
+takeMeBack.addEventListener('click', mainPage);
+
+showSavedButton.addEventListener('click', showSavedPosters);
+
+backToMain.addEventListener('click', backMainPage);
+
+showMyPosterButton.addEventListener('click', submitPosterInfo);
 
 randomButton.addEventListener('click', randomPoster);
 
@@ -138,6 +150,11 @@ function randomPoster() {
   firstImage.src = images[getRandomIndex(images)];
   firstQuote.innerText = quotes[getRandomIndex(quotes)];
   firstTitle.innerText = titles[getRandomIndex(titles)];
+  currentPoster = new Poster (
+    firstImage.src,
+    firstQuote.innerText,
+    firstTitle.innerText,
+  )
 };
 
 //Toggle Button//
@@ -147,29 +164,21 @@ function toggleButtons(hide, show) {
   show.classList.remove('hidden');
 };
 
-//Make Your Own Poster//
-
-makePosterButton.addEventListener('click', showForm);
 
 function showForm() {
   toggleButtons(poster, hiddenForm);
 };
 
-takeMeBack.addEventListener('click', mainPage);
 
 function mainPage() {
   toggleButtons(hiddenForm, poster);
 };
 
-//Show Saved Posters//
-
-showSavedButton.addEventListener('click', showSavedPosters);
 
 function showSavedPosters() {
   toggleButtons(poster, savedPosts);
 };
 
-backToMain.addEventListener('click', backMainPage);
 
 function backMainPage() {
   toggleButtons(savedPosts, poster);
@@ -177,7 +186,6 @@ function backMainPage() {
 
 //Create New Poster//
 
-showMyPosterButton.addEventListener('click', submitPosterInfo);
 
 function submitPosterInfo() {
   event.preventDefault();
@@ -219,23 +227,7 @@ function displayCustomPoster() {
 
 //Save Poster Button//
 
-savePosterButton.addEventListener('click', getCurrentPoster);
-
-function getCurrentPoster() {
-  var frontImage = firstImage.src;
-  var frontQuote = firstQuote.innerText;
-  var frontTitle = firstTitle.innerText;
-
-  createSavedInstance(frontImage, frontTitle, frontQuote);
-};
-
-function createSavedInstance(url, title, quote) {
-  var currentPoster = new Poster(url, title, quote);
-
-  savePosterSection(currentPoster);
-};
-
-function savePosterSection(currentPoster) {
+function savePosterSection() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
 
