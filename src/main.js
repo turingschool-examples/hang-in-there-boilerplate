@@ -17,11 +17,6 @@ var newQuote = document.getElementById('poster-quote');
 var makePoster = document.querySelector('.make-poster');
 
 
-// var newImgURL
-// var
-// var
-
-
 
 
 // we've provided you with some data to work with 👇
@@ -136,9 +131,11 @@ showForm.addEventListener('click', function() {showHide(postForm,mainPost)})
 showSaved.addEventListener('click', function() {showHide(savedPostersPage,mainPost)})
 
 //Make a button click that takes me to savedPostersPage
+
+
 makePoster.addEventListener('click',function() {
 // getVal()
-submitForm()
+stopReset()
 newArray(imgURL.value, newTitle.value, newQuote.value)
 pushInfo(imgURL.value, newTitle.value, newQuote.value)
 showPoster(currentPoster)
@@ -167,6 +164,8 @@ function goHome() {
   postForm.classList.add('hidden')
 }
 
+
+
 function getRandoStuff() {
   currentPoster = new Poster(images[getRandomIndex(images)],
     titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
@@ -180,12 +179,7 @@ function showHide(arg1, arg2) {
   arg2.classList.toggle('hidden')
 }
 
-// function getVal() {
-// var newPoster = new Poster(userImgURL, userNewTitle, userNewQuote)
-// submitForm()
-// }
-
-function submitForm() {
+function stopReset() {
   event.preventDefault();
 }
 
@@ -197,9 +191,11 @@ function showPoster(currentPoster){
 
 function pushInfo(userImgURL, userNewTitle, userNewQuote) {
   currentPoster = new Poster(userImgURL, userNewTitle, userNewQuote)
+  images.push(imgURL.value)
+  titles.push(newTitle.value)
+  quotes.push(newQuote.value)
   showHide(postForm, mainPost)
 }
-
 
 
 function newArray(userImgURL, userNewTitle, userNewQuote) {
@@ -208,6 +204,7 @@ function newArray(userImgURL, userNewTitle, userNewQuote) {
   quotes.unshift(userNewQuote);
 }
 
+// make a function for pushing make your own into the savedPosters
 
 
 getRandoStuff();
