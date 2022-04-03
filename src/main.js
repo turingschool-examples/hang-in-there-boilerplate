@@ -2,7 +2,6 @@
 var image = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
-
 var randomButton = document.querySelector('.show-random');
 var saveButton = document.querySelector('.save-poster');
 var showSavedButton = document.querySelector('.show-saved');
@@ -10,15 +9,14 @@ var formButton = document.querySelector('.show-form');
 var makePosterButton = document.querySelector('.make-poster');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
-
-var formView = document.querySelector('.poster-form')
+var formView = document.querySelector('.poster-form');
 var mainView = document.querySelector('.main-poster');
 var savedView = document.querySelector('.saved-posters');
 var savedGrid = document.querySelector('.saved-posters-grid')
-
 var imageInput = document.querySelector('#poster-image-url')
-var titleInput = document.querySelector('#poster-title')
-var quoteInput = document.querySelector('#poster-quote')
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -121,34 +119,44 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', createRandomPoster)
-randomButton.addEventListener('click', createRandomPoster)
+window.addEventListener('load', createRandomPoster);
+randomButton.addEventListener('click', createRandomPoster);
 makePosterButton.addEventListener('click', function(){
   event.preventDefault();
   createNewPoster();
   showMainView();
   saveInputToArray();
-})
+});
 saveButton.addEventListener('click', savePoster)
 showSavedButton.addEventListener('click', showSavedView)
 formButton.addEventListener('click', showFormView)
 nevermindButton.addEventListener('click', showMainView)
 backToMainButton.addEventListener('click', showMainView)
-
+savedGrid.addEventListener('dblclick', function(clickedPoster){
+  deletePoster(event)
+})
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+function deletePoster(event){
+  var posterID = parseInt(event.target.id)
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id === posterID) {
+      savedPosters.splice(i,1)
+      event.target.parentNode.remove(event.target);
+    }
+  }
+}
 
 function loadSavedPosters() {
   var savedPosterDisplay = [];
   for (var i = 0; i < savedPosters.length; i++) {
-    savedPosterDisplay += `<article class="mini-poster">
-    <img class="poster-img" src="${savedPosters[i].imageURL}" alt="">
-    <h1 class="poster-title">${savedPosters[i].title}</h1>
-    <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+    savedPosterDisplay += `<article class="mini-poster" id="${savedPosters[i].id}">
+    <img src="${savedPosters[i].imageURL}" alt="" id="${savedPosters[i].id}">
+    <h2 class="poster-title" id="${savedPosters[i].id}">${savedPosters[i].title}</h2>
+    <h4 class="poster-quote" id="${savedPosters[i].id}">${savedPosters[i].quote}</h4>
     </article>`
   }
-  console.log('bob')
   savedGrid.innerHTML = savedPosterDisplay
 }
 
@@ -156,6 +164,13 @@ function createNewPoster(){
   image.src = imageInput.value;
   title.innerText = titleInput.value;
   quote.innerText = quoteInput.value;
+  currentPoster = new Poster(image.src, title.innerText, quote.innerText)
+}
+
+function createRandomPoster() {
+  image.src = images[getRandomIndex(images)];
+  title.innerText = titles[getRandomIndex(titles)];
+  quote.innerText = quotes[getRandomIndex(quotes)];
   currentPoster = new Poster(image.src, title.innerText, quote.innerText)
 }
 
@@ -171,15 +186,9 @@ function savePoster() {
 function saveInputToArray() {
   images.push(imageInput.value)
   titles.push(titleInput.value)
-  quotes.push(titleInput.value)
+  quotes.push(quoteInput.value)
 }
 
-function createRandomPoster() {
-  image.src = images[getRandomIndex(images)];
-  title.innerText = titles[getRandomIndex(titles)];
-  quote.innerText = quotes[getRandomIndex(quotes)];
-  currentPoster = new Poster(image.src, title.innerText, quote.innerText)
-}
 
 function showFormView() {
   formView.classList.remove('hidden')
@@ -199,7 +208,6 @@ function showMainView() {
   formView.classList.add('hidden')
   savedView.classList.add('hidden')
 }
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
