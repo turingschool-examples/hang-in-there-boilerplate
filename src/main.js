@@ -253,3 +253,14 @@ function toggleSavedView() {
 
 let newArray = [];
 let savedArea = document.querySelector(".saved-posters-grid");
+
+
+// Accepts user input from form and displays data on main page
+function submitForm() {
+  event.preventDefault();
+  toggleFormView();
+  let data = getFormData();
+  document.getElementById("poster-img").src = data.imageURL
+  document.getElementById("title-button").innerHTML = data.quote
+  document.getElementById("quote-button").innerHTML = data.title
+}
