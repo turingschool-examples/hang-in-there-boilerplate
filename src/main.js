@@ -17,6 +17,10 @@ var newQuote = document.getElementById('poster-quote');
 var makePoster = document.querySelector('.make-poster');
 
 
+// var newImgURL
+// var
+// var
+
 
 
 
@@ -122,7 +126,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', getRandoStuff)
+// window.addEventListener('load', getRandoStuff)
 showRando.addEventListener('click', showRandom)
 // showForm.addEventListener('click', ownPoster)
 takeBack.addEventListener('click', goHome)
@@ -133,8 +137,11 @@ showSaved.addEventListener('click', function() {showHide(savedPostersPage,mainPo
 
 //Make a button click that takes me to savedPostersPage
 makePoster.addEventListener('click',function() {
-getVal()
+// getVal()
 submitForm()
+newArray(imgURL.value, newTitle.value, newQuote.value)
+pushInfo(imgURL.value, newTitle.value, newQuote.value)
+showPoster(currentPoster)
 });
 
 
@@ -161,32 +168,46 @@ function goHome() {
 }
 
 function getRandoStuff() {
-  currentPoster = new Poster(
-    pImg.src = images[getRandomIndex(images)],
-    postTitle.innerText = titles[getRandomIndex(titles)],
-    pQuote.innerText = quotes[getRandomIndex(quotes)]
-  )
+  currentPoster = new Poster(images[getRandomIndex(images)],
+    titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
+  pImg.src = currentPoster.imageURL
+  postTitle.innerText = currentPoster.title
+  pQuote.innerText = currentPoster.quote
 };
 
-
 function showHide(arg1, arg2) {
-  arg1.classList.remove('hidden')
-  arg2.classList.add('hidden')
+  arg1.classList.toggle('hidden')
+  arg2.classList.toggle('hidden')
 }
 
-function getVal() {
-var newPoster = new Poster(userImgURL, userNewTitle, userNewQuote)
-submitForm()
-}
+// function getVal() {
+// var newPoster = new Poster(userImgURL, userNewTitle, userNewQuote)
+// submitForm()
+// }
 
 function submitForm() {
   event.preventDefault();
 }
 
-
-function pushInfo() {
-  var pushPoster = new Poster(imgURL.value, userNewTitle.value, userNewQuote.value)
-  console.log(pushPoster)
-  submitForm()
-  showHide()
+function showPoster(currentPoster){
+  pImg.src = currentPoster.imageURL
+  postTitle.innerText = currentPoster.title
+  pQuote.innerText = currentPoster.quote
 }
+
+function pushInfo(userImgURL, userNewTitle, userNewQuote) {
+  currentPoster = new Poster(userImgURL, userNewTitle, userNewQuote)
+  showHide(postForm, mainPost)
+}
+
+
+
+function newArray(userImgURL, userNewTitle, userNewQuote) {
+  images.unshift(userImgURL);
+  titles.unshift(userNewTitle);
+  quotes.unshift(userNewQuote);
+}
+
+
+
+getRandoStuff();
