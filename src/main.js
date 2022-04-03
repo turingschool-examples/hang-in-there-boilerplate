@@ -168,10 +168,6 @@ showMyPosterButton.addEventListener("click", submitForm)
 let saveButton = document.querySelector(".save-poster")
 saveButton.addEventListener("click", storeData)
 
-//THIS WILL ONE DAY DELETE POSTER ON DOUBLE CLICK
-//let deletion = document.querySelector(".mini-poster")
-//deletion.addEventListener("dblclick", deletePoster);
-
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
