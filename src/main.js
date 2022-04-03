@@ -13,7 +13,7 @@ var posterForm = document.querySelector(".poster-form");
 var mainPoster = document.querySelector(".main-poster");
 var savedPoster =document.querySelector(".saved-posters");
 var imageURL = document.querySelector(".poster-image-url");
-
+var miniPoster = document.querySelector(".saved-posters-grid");
 
 
 
@@ -127,7 +127,7 @@ buttonShowMain.addEventListener("click", showMain);
 buttonBackMain.addEventListener("click", showMain);
 buttonNewPoster.addEventListener("click", createNewPoster);
 buttonSavePoster.addEventListener("click", addToSavedPosters);
-
+miniPoster.addEventListener("dblclick", deletePoster);
 
 //var.addEventListener(event,function)
 
@@ -142,7 +142,7 @@ function showPoster(array) {
   titlesIndex = getRandomIndex (titles);
   quotesIndex = getRandomIndex (quotes);
   imagesIndex = getRandomIndex (images);
-  currentPoster = new Poster(images[imagesIndex], titles[titlesIndex], quotes[quotesIndex]) 
+  currentPoster = new Poster(images[imagesIndex], titles[titlesIndex], quotes[quotesIndex])
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
   posterImage.src = currentPoster.imageURL;
@@ -203,7 +203,7 @@ function showMyPoster(poster){
 function addToSavedPosters(){
   if(currentPoster === undefined){
     currentPoster = new Poster (mainPoster.imageURL, mainPoster.title, mainPoster.quote, id = Date.now());
-    
+
   }
   if(!savedPosters.includes (currentPoster)){
     savedPosters.push(currentPoster);
@@ -217,7 +217,12 @@ function insertSavedPosters(){
   var posterGrid = document.querySelector(".saved-posters-grid")
   posterGrid.innerHTML = '';
     for (var i = 0; i < savedPosters.length; i++){
-      posterGrid.innerHTML += ("<article class='mini-poster'><img class='mini-poster img' src='" + savedPosters[i].imageURL + "' alt='nothin/' to see here'><h2>" + savedPosters[i].title + "</h2><h4>" + savedPosters[i].quote + "</h4></article>")
+      posterGrid.innerHTML += ("<article class='mini-poster' id = " + savedPosters[i].id + "><img class='mini-poster img' id = " + savedPosters[i].id + " src='" + savedPosters[i].imageURL + "' alt='nothin/' to see here'><h2 id = " + savedPosters[i].id + ">" + savedPosters[i].title + "</h2><h4 id = " + savedPosters[i].id + ">" + savedPosters[i].quote + "</h4></article>")
   }
 }
 
+function deletePoster(e) {
+    id = parseInt(e.target.id);
+    savedPosters = savedPosters.filter(savedPosters => savedPosters.id !== id);
+    insertSavedPosters();
+}
