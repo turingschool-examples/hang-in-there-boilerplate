@@ -133,7 +133,7 @@ var currentPoster;
 
 
 // event listeners go here 👇
-window.addEventListener("load", loadRandomImage);
+window.addEventListener("load", generateRandomPoster);
 window.addEventListener("load", loadRandomTitle);
 window.addEventListener("load", loadRandomQuote);
 
@@ -155,12 +155,12 @@ saveThisPosterButton.addEventListener("click", addToSavedPosters);
 
 
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+
 function loadRandomImage() {
   mainImage.src=`${images[getRandomIndex(images)]}`;
 }
 
-  function loadRandomTitle() {
+function loadRandomTitle() {
   mainTitle.innerText= `${titles[getRandomIndex(titles)]}`;
 }
 
@@ -169,9 +169,14 @@ function loadRandomQuote() {
 }
 
 function generateRandomPoster() {
-  randomImage.src=`${images[getRandomIndex(images)]}`;
-  randomQuote.innerText=`${quotes[getRandomIndex(quotes)]}`;
-  randomTitle.innerText= `${titles[getRandomIndex(titles)]}`;
+  var imgSrc = images[getRandomIndex(images)];
+  var quote = quotes[getRandomIndex(quotes)];
+  var title = titles[getRandomIndex(titles)];
+  randomImage.src = imgSrc;
+  randomQuote.innerText = quote;
+  randomTitle.innerText = title;
+  currentPoster = new Poster(imgSrc, title, quote);
+  displayNewlyCreatedPoster(imgSrc, title, quote);
 }
 
 function showForm() {
@@ -196,43 +201,51 @@ function backToMain() {
 
 function createNewPoster() {
   event.preventDefault()
-  var imageURL = imageInput.value
+  var imageSrc = imageInput.value
   var title = titleInput.value
   var quote = quoteInput.value
-  currentPoster = new Poster(imageURL, title, quote)
-  //console.log("currentPoster", currentPoster);
-  images.push(imageURL)
+  currentPoster = new Poster(imageSrc, title, quote)
+  images.push(imageSrc)
   titles.push(title)
   quotes.push(quote)
-  displayNewlyCreatedPoster(imageURL, title, quote);
-  addToSavedPosters(currentPoster);
+  displayNewlyCreatedPoster(imageSrc, title, quote);
   takeMeBack();
 }
 
-function displayNewlyCreatedPoster(imageURL, title, quote) {
-  mainImage.src = `${imageURL}`
+function displayNewlyCreatedPoster(imageSrc, title, quote) {
+  mainImage.src = `${imageSrc}`
   mainTitle.innerText = `${title}`
   mainQuote.innerText = `${quote}`
 }
 
-function addToSavedPosters(poster) {
-if (!savedPosters.includes(poster)) {
-  savedPosters.push(poster);
-  console.log(savedPosters);
+function addToSavedPosters() {
+  var posterSaved = savedPosters.find(function(poster) {
+    return posterComparator(poster, currentPoster);
+  })
+  if (!posterSaved) {
+    savedPosters.push(currentPoster);
+
+  var gridHTML = "";
+  for (i = 0; i< savedPosters.length; i++) {
+    var poster = savedPosters[i];
+    gridHTML += `<div class="mini-poster">
+       <img src="${poster.imageURL}" alt="${poster.title}">
+       <h2>${poster.title}</h2>
+       <h4>${poster.quote}</h4>
+     </div>`
+  }
+  savedGrid.innerHTML = gridHTML;
   }
 }
 
-function displaySavedPosters() {
-  savedGrid.innerHTML =
-  <article class="mini-poster">
-    <img class="mini-poster-img" src="" alt="nothin' to see here">
-    <h2 class="mini-poster-h2">Title</h2>
-    <h4 class="mini-poster-h4">Quote</h4>
-  </article>
-
+function posterComparator(posterA, posterB) {
+  return (
+    posterA && posterB &&
+    posterA.imgSrc === posterB.imgSrc &&
+    posterA.quote === posterB.quote &&
+    posterA.title === posterB.title
+  )
 }
-
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
