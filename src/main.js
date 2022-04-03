@@ -155,7 +155,7 @@ goBackButton.addEventListener("click", toggleFormView);
 //it will show saved posters section
 let showSavedButton = document.querySelector(".show-saved");
 showSavedButton.addEventListener("click", toggleSavedView)
-//showSavedButton.addEventListener("click", displaySaved)
+showSavedButton.addEventListener("click", miniPoster)
 
 //This will: add event listening to "Back to Main" button
 let backToMainButton = document.querySelector(".back-to-main");
@@ -167,6 +167,10 @@ submitButton.addEventListener("click", submitForm)
 
 let saveButton = document.querySelector(".save-poster")
 saveButton.addEventListener("click", storeData)
+
+//THIS WILL ONE DAY DELETE POSTER ON DOUBLE CLICK
+//let deletion = document.querySelector(".mini-poster")
+//deletion.addEventListener("dblclick", deletePoster);
 
 
 // functions and event handlers go here 👇
@@ -188,6 +192,8 @@ function getRandomElement(array) {
   document.getElementById("poster-img").src = loadPoster.imageURL
   document.getElementById("title-button").innerHTML = loadPoster.title
   document.getElementById("quote-button").innerHTML = loadPoster.quote
+  return loadPoster
+
 //  document.querySelector(".poster-img").src = getRandomElement(images)
 //  document.querySelector(".poster-title").innerHTML = getRandomElement(titles)
 //  document.querySelector(".poster-quote").innerHTML = getRandomElement(quotes)
@@ -261,8 +267,8 @@ function submitForm() {
   toggleFormView();
   let data = getFormData();
   document.getElementById("poster-img").src = data.imageURL
-  document.getElementById("title-button").innerHTML = data.quote
-  document.getElementById("quote-button").innerHTML = data.title
+  document.getElementById("title-button").innerHTML = data.title
+  document.getElementById("quote-button").innerHTML = data.quote
 }
 
 // Fetches data from form, generates new Poster instance, saves submitted data to arrays
@@ -270,13 +276,14 @@ function getFormData() {
   let userInputImage = document.getElementById("poster-image-url").value;
   let userInputQuote = document.getElementById("poster-quote").value;
   let userInputTitle = document.getElementById("poster-titleId").value;
-  let userPoster = new Poster(userInputImage, userInputQuote, userInputTitle);
+  let userPoster = new Poster(userInputImage, userInputTitle, userInputQuote);
 
   images.push(userPoster.imageURL)
   titles.push(userPoster.title)
   quotes.push(userPoster.quote)
   return userPoster
 }
+
 
 function captureAsObject() {
   let currentDisplayImage = document.getElementById("poster-img").src
@@ -285,6 +292,8 @@ function captureAsObject() {
   let newObject = new Poster (currentDisplayImage, currentDisplayTitle, currentDisplayQuote);
   return newObject
 }
+
+
 // Stores posters as objects until saved poster area is full
 function storeData() {
   let myPoster = captureAsObject()
@@ -302,6 +311,34 @@ if (!newArray[i]) {
          return newArray
        }
   }
-//function displaySaved() {
-//  let savedAredocument.querySelector("saved-posters-grid")
-//}
+
+  function miniPoster() {
+  for (let i = 0; i < newArray.length; i++) {
+    let a = newArray[i].imageURL
+    let b = newArray[i].title
+    let c = newArray[i].quote
+    let aa = document.getElementById("mini-img" + i);
+    let bb = document.getElementById("mini-poster-title" + i);
+    let cc = document.getElementById("mini-poster-quote" + i);
+    let dd = document.getElementById("mini-poster-shown" + i);
+    dd.className = "mini-poster";
+    aa.src = a;
+    bb.innerText = b;
+    cc.innerText = c;
+    }
+
+    getAllMiniPosters()
+  }
+
+  function deletePoster() {
+
+    console.log("delete")
+  }
+
+function getAllMiniPosters() {
+let allMiniPosters = document.querySelectorAll(".mini-poster")
+for (let i = 0; i < allMiniPosters.length; i++) {
+  allMiniPosters[i].addEventListener("dblclick", deletePoster)
+  }
+  return allMiniPosters
+}
