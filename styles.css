@@ -118,6 +118,7 @@ button:hover {
 }
 
 /* ~~~~~ POSTER FORM SECTION ~~~~~ */
+
 .poster-form {
   display: flex;
   flex-direction: column;
