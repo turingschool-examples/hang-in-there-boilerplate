@@ -48,8 +48,8 @@ button:hover {
   align-items: center;
   align-content: space-between;
   margin: 20px auto;
-  padding: 50px 20px;
-  width: 80%
+  padding: 10px 10px;
+  width: 65%
   /*width: 1000px;
   height: 700px;*/
 }
@@ -58,7 +58,7 @@ button:hover {
   display: flex;
   background-size: cover;
   border: 2px solid white;
-  max-width: 60%;
+  max-width: 70%;
   margin-top: 100px;
   transition: 0.4s;
 }
