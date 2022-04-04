@@ -23,10 +23,12 @@ button {
   border: none;
   border-radius: 10px;
   color: white;
+  transition-duration: 0.4s;
 }
 
 button:hover {
   background: darkslateblue;
+  cursor: pointer;
 }
 
 .hidden {
@@ -44,17 +46,26 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-content: space-between;
   margin: 20px auto;
   padding: 50px 20px;
-  width: 1000px;
-  height: 650px;
+  width: 80%
+  /*width: 1000px;
+  height: 700px;*/
 }
 
 .poster-img {
   display: flex;
   background-size: cover;
   border: 2px solid white;
-  width: 70%;
+  max-width: 60%;
+  margin-top: 100px;
+  transition: 0.4s;
+}
+
+.poster-img:hover {
+  cursor: pointer;
+  box-shadow: 10px 10px gray;
 }
 
 .poster-title,
@@ -63,7 +74,6 @@ button:hover {
   justify-content: center;
   color: white;
   line-height: 1;
-  width: 90%;
 }
 
 .poster-title {
@@ -86,7 +96,25 @@ button:hover {
   padding-left: 25px;
 }
 #title-button:hover {
-  background-color: gray;
+  display: flex;
+  background-color: #d3d5f5;
+  color: black;
+  opacity: 0.6;
+}
+
+#quote-button {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  margin-bottom: 50px;
+}
+
+#quote-button:hover {
+  display: flex;
+  justify-content: center;
+  background-color: #d3d5f5;
+  color: black;
+  opacity: 0.6;
 }
 
 /* ~~~~~ POSTER FORM SECTION ~~~~~ */
@@ -96,6 +124,7 @@ button:hover {
   flex-direction: column;
   height: 100vh;
 }
+
 
 .poster-form h2 {
   margin-bottom: 30px;
