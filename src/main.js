@@ -292,14 +292,9 @@ if (!newArray[i]) {
     for (let i = 0; i < allMiniPosters.length; i++) {
       let idNumber = allMiniPosters[i].id
       if (idNumber.includes(this.id)){
-      console.log("delete")
       newArray.splice(i, 1);
-      console.log(newArray);
       let toBeRemoved = document.getElementById(idNumber);
-      console.log(toBeRemoved)
       toBeRemoved.className = "mini-poster hidden"
-    } else {
-      console.log("no")
     }
   }
 }
