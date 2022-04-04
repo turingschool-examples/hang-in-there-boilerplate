@@ -16,8 +16,4 @@ class RandomPoster {
     let image = this.imageURL
     return image
   }
-  //returnId() {
-  //  let id = this.id
-  //  return id
-  //}
 }
