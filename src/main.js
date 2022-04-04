@@ -1,15 +1,19 @@
 // query selector variables go here 👇
-let showRandomButton = document.querySelector(".show-random")
+let showRandomButton = document.querySelector(".show-random");
 let backgroundColorButton = document.querySelector(".change-background");
-let posterImageButton = document.querySelector(".poster-img")
+let posterBackground = document.querySelector(".poster");
+let posterImageButton = document.querySelector(".poster-img");
 let posterTitleButton = document.querySelector(".poster-title");
 let posterQuoteButton = document.querySelector(".poster-quote");
 let makeOwnPosterButton = document.querySelector(".show-form");
 let goBackButton = document.querySelector(".show-main");
 let showSavedButton = document.querySelector(".show-saved");
 let backToMainButton = document.querySelector(".back-to-main");
-let showMyPosterButton = document.querySelector(".make-poster")
-let saveButton = document.querySelector(".save-poster")
+let showMyPosterButton = document.querySelector(".make-poster");
+let saveButton = document.querySelector(".save-poster");
+let savedArea = document.querySelector(".saved-posters-grid");
+
+
 
 
 // we've provided you with some data to work with 👇
@@ -160,19 +164,18 @@ function getRandomElement(array) {
 
   function uponLoad() {
   let loadPoster = new RandomPoster()
-  document.getElementById("poster-img").src = loadPoster.imageURL
-  document.getElementById("title-button").innerHTML = loadPoster.title
-  document.getElementById("quote-button").innerHTML = loadPoster.quote
+  posterImageButton.src = loadPoster.imageURL
+  posterTitleButton.innerHTML = loadPoster.title
+  posterQuoteButton.innerHTML = loadPoster.quote
   return loadPoster
 }
 
 function changeBackgroundColor() {
-  let posterBackground = document.querySelector(".poster");
   posterBackground.style.backgroundColor = getRandomElement(colors);
 }
 
 function changeImage() {
-  document.querySelector(".poster-img").src = getRandomElement(images)
+  posterImageButton.src = getRandomElement(images)
 }
 
 function changeTitle() {
@@ -214,16 +217,13 @@ function toggleSavedView() {
     }
   }
 
-let newArray = [];
-let savedArea = document.querySelector(".saved-posters-grid");
-
 function submitForm() {
   event.preventDefault();
   toggleFormView();
   let data = getFormData();
-  document.getElementById("poster-img").src = data.imageURL
-  document.getElementById("title-button").innerHTML = data.title
-  document.getElementById("quote-button").innerHTML = data.quote
+  posterImageButton.src = data.imageURL
+  posterTitleButton.innerHTML = data.title
+  posterQuoteButton.innerHTML = data.quote
 }
 
 function getFormData() {
@@ -241,10 +241,10 @@ function getFormData() {
 
 
 function captureAsObject() {
-  let currentDisplayImage = document.getElementById("poster-img").src
-  let currentDisplayQuote = document.getElementById("quote-button").innerText;
-  let currentDisplayTitle = document.getElementById("title-button").innerText;
-  let currentBackgroundColor = document.querySelector(".poster").style.backgroundColor
+  let currentDisplayImage = posterImageButton.src
+  let currentDisplayQuote = posterQuoteButton.innerText;
+  let currentDisplayTitle = posterTitleButton.innerText;
+  let currentBackgroundColor = posterBackground.style.backgroundColor
   let newObject = new Poster (currentDisplayImage, currentDisplayTitle, currentDisplayQuote, currentBackgroundColor);
   return newObject
 }
@@ -252,32 +252,32 @@ function captureAsObject() {
 function storeData() {
   let myPoster = captureAsObject()
 for (let i = 0; i < 10; i++)
-if (!newArray[i]) {
-  newArray[i] = myPoster;
+if (!savedPosters[i]) {
+  savedPosters[i] = myPoster;
   return myPoster;
-} else if (myPoster.title === newArray[i].title &&
-   myPoster.quote === newArray[i].quote &&
-   myPoster.imageURL === newArray[i].imageURL &&
-   myPoster.color === newArray[i].color) {
+} else if (myPoster.title === savedPosters[i].title &&
+   myPoster.quote === savedPosters[i].quote &&
+   myPoster.imageURL === savedPosters[i].imageURL &&
+   myPoster.color === savedPosters[i].color) {
      return "taken!";
-   } else if (newArray[i] === undefined) {
-         newArray[i] = myPoster;
-         return newArray
+   } else if (savedPosters[i] === undefined) {
+         savedPosters[i] = myPoster;
+         return savedPosters
        }
   }
 
   function miniPoster() {
-  for (let i = 0; i < newArray.length; i++) {
-    let currentURL = newArray[i].imageURL
-    let currentTitle = newArray[i].title
-    let currentQuote = newArray[i].quote
-    let currentId = newArray[i].id
-    let currentPosterColor = newArray[i].color
+  for (let i = 0; i < savedPosters.length; i++) {
+    let currentURL = savedPosters[i].imageURL
+    let currentTitle = savedPosters[i].title
+    let currentQuote = savedPosters[i].quote
+    let currentId = savedPosters[i].id
+    let currentPosterColor = savedPosters[i].color
     let imageNode = document.getElementById("mini-img" + i);
     let titleNode = document.getElementById("mini-poster-title" + i);
     let quoteNode = document.getElementById("mini-poster-quote" + i);
     let idNode = document.getElementById("mini-poster-shown" + i);
-    idNode.className = "mini-poster " + newArray[i].id;
+    idNode.className = "mini-poster " + savedPosters[i].id;
     idNode.style.backgroundColor = currentPosterColor
     imageNode.src = currentURL;
     titleNode.innerText = currentTitle;
@@ -291,7 +291,7 @@ if (!newArray[i]) {
     for (let i = 0; i < allMiniPosters.length; i++) {
       let idNumber = allMiniPosters[i].id
       if (idNumber.includes(this.id)){
-      newArray.splice(i, 1);
+      savedPosters.splice(i, 1);
       let toBeRemoved = document.getElementById(idNumber);
       toBeRemoved.className = "mini-poster hidden"
     }
