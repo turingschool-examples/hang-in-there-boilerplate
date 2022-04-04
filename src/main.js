@@ -259,7 +259,6 @@ if (!newArray[i]) {
    myPoster.quote === newArray[i].quote &&
    myPoster.imageURL === newArray[i].imageURL &&
    myPoster.color === newArray[i].color) {
-     console.log("Taken!");
      return "taken!";
    } else if (newArray[i] === undefined) {
          newArray[i] = myPoster;
