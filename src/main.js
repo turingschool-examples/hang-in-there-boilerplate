@@ -230,6 +230,7 @@ function getFormData() {
   let userInputImage = document.getElementById("poster-image-url").value;
   let userInputQuote = document.getElementById("poster-quote").value;
   let userInputTitle = document.getElementById("poster-titleId").value;
+
   let userPoster = new Poster(userInputImage, userInputTitle, userInputQuote);
 
   images.push(userPoster.imageURL)
@@ -245,7 +246,6 @@ function captureAsObject() {
   let currentDisplayTitle = document.getElementById("title-button").innerText;
   let currentBackgroundColor = document.querySelector(".poster").style.backgroundColor
   let newObject = new Poster (currentDisplayImage, currentDisplayTitle, currentDisplayQuote, currentBackgroundColor);
-  console.log(newObject)
   return newObject
 }
 
