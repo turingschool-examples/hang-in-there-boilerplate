@@ -257,7 +257,8 @@ if (!newArray[i]) {
   return myPoster;
 } else if (myPoster.title === newArray[i].title &&
    myPoster.quote === newArray[i].quote &&
-   myPoster.imageURL === newArray[i].imageURL) {
+   myPoster.imageURL === newArray[i].imageURL &&
+   myPoster.color === newArray[i].color) {
      console.log("Taken!");
      return "taken!";
    } else if (newArray[i] === undefined) {
@@ -268,20 +269,20 @@ if (!newArray[i]) {
 
   function miniPoster() {
   for (let i = 0; i < newArray.length; i++) {
-    let a = newArray[i].imageURL
-    let b = newArray[i].title
-    let c = newArray[i].quote
-    let d = newArray[i].id
-    let e = newArray[i].color
-    let aa = document.getElementById("mini-img" + i);
-    let bb = document.getElementById("mini-poster-title" + i);
-    let cc = document.getElementById("mini-poster-quote" + i);
-    let dd = document.getElementById("mini-poster-shown" + i);
-    dd.className = "mini-poster " + newArray[i].id;
-    dd.style.backgroundColor = e
-    aa.src = a;
-    bb.innerText = b;
-    cc.innerText = c;
+    let currentURL = newArray[i].imageURL
+    let currentTitle = newArray[i].title
+    let currentQuote = newArray[i].quote
+    let currentId = newArray[i].id
+    let currentPosterColor = newArray[i].color
+    let imageNode = document.getElementById("mini-img" + i);
+    let titleNode = document.getElementById("mini-poster-title" + i);
+    let quoteNode = document.getElementById("mini-poster-quote" + i);
+    let idNode = document.getElementById("mini-poster-shown" + i);
+    idNode.className = "mini-poster " + newArray[i].id;
+    idNode.style.backgroundColor = currentPosterColor
+    imageNode.src = currentURL;
+    titleNode.innerText = currentTitle;
+    quoteNode.innerText = currentQuote;
     }
     getAllMiniPosters()
   }
