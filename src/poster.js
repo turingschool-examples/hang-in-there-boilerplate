@@ -1,9 +1,10 @@
 class Poster {
-  constructor(imageURL, title, quote) {
+  constructor(imageURL, title, quote, color) {
     this.id = Date.now();
     this.imageURL = imageURL
     this.title = title
     this.quote = quote
+    this.color = color
   }
 }
 
