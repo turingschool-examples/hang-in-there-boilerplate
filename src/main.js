@@ -1,5 +1,17 @@
 // query selector variables go here 👇
-// test
+let showRandomButton = document.querySelector(".show-random")
+let backgroundColorButton = document.querySelector(".change-background");
+let posterImageButton = document.querySelector(".poster-img")
+let posterTitleButton = document.querySelector(".poster-title");
+let posterQuoteButton = document.querySelector(".poster-quote");
+let makeOwnPosterButton = document.querySelector(".show-form");
+let goBackButton = document.querySelector(".show-main");
+let showSavedButton = document.querySelector(".show-saved");
+let backToMainButton = document.querySelector(".back-to-main");
+let showMyPosterButton = document.querySelector(".make-poster")
+let saveButton = document.querySelector(".save-poster")
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -119,53 +131,18 @@ var currentPoster;
 //This code will: display a random poster on load
 window.addEventListener("load", uponLoad)
 
-//This piece of code will: add event listening to "show random" button. On click,
-//it will display a new random poster.
-let showRandomButton = document.querySelector(".show-random")
 showRandomButton.addEventListener("click", uponLoad)
 
-//This piece of code will: add event listening to "change background color" button. On click,
-//it will change the poster's background color.
-let backgroundColorButton = document.querySelector(".change-background");
 backgroundColorButton.addEventListener("click", changeBackgroundColor);
-
-
-//These will: add event listening to the title  and quote buttons. On click,
-//random selection is generated and displayed
-let posterImageButton = document.querySelector(".poster-img")
 posterImageButton.addEventListener("click", changeImage);
-
-let posterTitleButton = document.querySelector(".poster-title");
 posterTitleButton.addEventListener("click", changeTitle);
-
-let posterQuoteButton = document.querySelector(".poster-quote");
 posterQuoteButton.addEventListener("click", changeQuote);
-
-//This will: add event listening to "Make Your Own Poster" button. On click,
-//it will show form
-let makeOwnPosterButton = document.querySelector(".show-form");
 makeOwnPosterButton.addEventListener("click", toggleFormView);
-
-//This will: add event listening to "Nevermind, Go Back" button. On click,
-//it will restore main view from "Make Your Own Poster" view
-let goBackButton = document.querySelector(".show-main");
 goBackButton.addEventListener("click", toggleFormView);
-
-//This will: add event listening to "Show Saved Posters" button. On click,
-//it will show saved posters section
-let showSavedButton = document.querySelector(".show-saved");
 showSavedButton.addEventListener("click", toggleSavedView)
 showSavedButton.addEventListener("click", miniPoster)
-
-//This will: add event listening to "Back to Main" button
-let backToMainButton = document.querySelector(".back-to-main");
 backToMainButton.addEventListener("click", toggleSavedView);
-
-let showMyPosterButton = document.querySelector(".make-poster")
 showMyPosterButton.addEventListener("click", submitForm)
-
-
-let saveButton = document.querySelector(".save-poster")
 saveButton.addEventListener("click", storeData)
 
 
@@ -175,49 +152,37 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-//This piece of code will: select a random element from any array passed through its parameters
 function getRandomElement(array) {
   let randomNum = (getRandomIndex(array));
   let randomItem = array[randomNum]
   return randomItem
 }
 
-//This piece of code will: display a random pic upon page load
   function uponLoad() {
   let loadPoster = new RandomPoster()
   document.getElementById("poster-img").src = loadPoster.imageURL
   document.getElementById("title-button").innerHTML = loadPoster.title
   document.getElementById("quote-button").innerHTML = loadPoster.quote
   return loadPoster
-
-//  document.querySelector(".poster-img").src = getRandomElement(images)
-//  document.querySelector(".poster-title").innerHTML = getRandomElement(titles)
-//  document.querySelector(".poster-quote").innerHTML = getRandomElement(quotes)
 }
 
-// This code will: access colors array and change poster background color when invoked
 function changeBackgroundColor() {
   let posterBackground = document.querySelector(".poster");
   posterBackground.style.backgroundColor = getRandomElement(colors);
 }
 
-//
 function changeImage() {
   document.querySelector(".poster-img").src = getRandomElement(images)
 }
 
-// This code will: generate and display new title in title button
 function changeTitle() {
   posterTitleButton.innerHTML = getRandomElement(titles);
 }
 
-// This code will: generate and display new quote in quote button
 function changeQuote() {
   posterQuoteButton.innerHTML = getRandomElement(quotes);
 }
 
-
-//This will: turng main view on and off
 function toggleMainView() {
   const grabPosterId = document.getElementById("main-posterId");
   if (grabPosterId.className == "main-poster") {
@@ -227,9 +192,6 @@ function toggleMainView() {
   }
 }
 
-
-// This code will: toggle between "hidden" class in order to
-// reveal form
 function toggleFormView() {
   const grabFormId = document.getElementById("poster-form-shown");
   if (grabFormId.className == "poster-form hidden") {
@@ -241,7 +203,6 @@ function toggleFormView() {
   }
 }
 
-//Turns saved posters section on and off
 function toggleSavedView() {
   const grabSavedId = document.getElementById("saved-posters-shown");
   if (grabSavedId.className == "saved-posters hidden") {
@@ -256,8 +217,6 @@ function toggleSavedView() {
 let newArray = [];
 let savedArea = document.querySelector(".saved-posters-grid");
 
-
-// Accepts user input from form and displays data on main page
 function submitForm() {
   event.preventDefault();
   toggleFormView();
@@ -267,7 +226,6 @@ function submitForm() {
   document.getElementById("quote-button").innerHTML = data.quote
 }
 
-// Fetches data from form, generates new Poster instance, saves submitted data to arrays
 function getFormData() {
   let userInputImage = document.getElementById("poster-image-url").value;
   let userInputQuote = document.getElementById("poster-quote").value;
@@ -289,8 +247,6 @@ function captureAsObject() {
   return newObject
 }
 
-
-// Stores posters as objects until saved poster area is full
 function storeData() {
   let myPoster = captureAsObject()
 for (let i = 0; i < 10; i++)
