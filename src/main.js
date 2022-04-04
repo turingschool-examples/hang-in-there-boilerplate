@@ -243,7 +243,9 @@ function captureAsObject() {
   let currentDisplayImage = document.getElementById("poster-img").src
   let currentDisplayQuote = document.getElementById("quote-button").innerText;
   let currentDisplayTitle = document.getElementById("title-button").innerText;
-  let newObject = new Poster (currentDisplayImage, currentDisplayTitle, currentDisplayQuote);
+  let currentBackgroundColor = document.querySelector(".poster").style.backgroundColor
+  let newObject = new Poster (currentDisplayImage, currentDisplayTitle, currentDisplayQuote, currentBackgroundColor);
+  console.log(newObject)
   return newObject
 }
 
@@ -270,11 +272,13 @@ if (!newArray[i]) {
     let b = newArray[i].title
     let c = newArray[i].quote
     let d = newArray[i].id
+    let e = newArray[i].color
     let aa = document.getElementById("mini-img" + i);
     let bb = document.getElementById("mini-poster-title" + i);
     let cc = document.getElementById("mini-poster-quote" + i);
     let dd = document.getElementById("mini-poster-shown" + i);
     dd.className = "mini-poster " + newArray[i].id;
+    dd.style.backgroundColor = e
     aa.src = a;
     bb.innerText = b;
     cc.innerText = c;
