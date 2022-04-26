@@ -230,7 +230,7 @@ function getCurrentPoster() {
 };
 
 function createSavedInstance(url, title, quote) {
-  var currentPoster = new Poster(url, title, quote);
+  currentPoster = new Poster(url, title, quote);
 
   savePosterSection(currentPoster);
 };

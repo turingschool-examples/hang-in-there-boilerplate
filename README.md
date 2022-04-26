@@ -26,7 +26,7 @@
 
 
   <img width="1380" alt="screenshot4" src="https://user-images.githubusercontent.com/28677929/161409315-1bcd2c79-7bd8-489f-8891-ca9b098b3a4a.png">
-  
+
 
   ## Technologies Used
   * JavaScript
@@ -36,3 +36,9 @@
   ## Contributors
   * https://github.com/alinix1
   * https://github.com/megschuetz
+
+  ## Set Up Instructions
+  1. Clone down repository
+  2. cd into the repository
+  3. Open it in your text editor
+  4. In your terminal, run the command `open index.html` 
