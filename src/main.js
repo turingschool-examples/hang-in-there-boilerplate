@@ -1,5 +1,6 @@
 // query selector variables go here 👇
-
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('h3');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -108,4 +109,10 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
+function makeRandomPoster() {
+  currentPoster = new Poster(
+  getRandomIndex(images),
+  getRandomIndex(titles),
+  getRandomIndex(quotes),
+)
+}
