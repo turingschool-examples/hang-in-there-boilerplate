@@ -99,7 +99,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = mainPage();
 
 // event listeners go here 👇
 
@@ -109,3 +109,8 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function mainPage() {
+  var randomImage = images[getRandomIndex(images)];
+  var mainPagePoster = new Poster(randomImage, title, quote);
+  return mainPagePoster
+}
