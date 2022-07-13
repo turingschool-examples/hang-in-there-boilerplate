@@ -1,4 +1,10 @@
 // query selector variables go here 👇
+// article class = "poster"
+var posterImg = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+//******************************************************//
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -105,7 +111,17 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+//random images
+var randomImgNum = getRandomIndex(images);
+posterImg.src = images[randomImgNum];
+//Random titles // revisit
+var randomTitleNum = getRandomIndex(titles);
+posterTitle.innerText = titles[randomTitleNum];
+//random quotes
+var randomQuoteNum = getRandomIndex(quotes);
+posterQuote.innerText = quotes[randomQuoteNum];
