@@ -6,10 +6,10 @@ var posterQuote = document.querySelector('.poster-quote');
 //******************************************************//
 //buttons
 
-//var savePosterButton = document.querySelector('.save-poster');
-//var showSavedButton = document.querySelector('.show-saved');
+var savePosterButton = document.querySelector('.save-poster');
+var showSavedButton = document.querySelector('.show-saved');
 var randomPosterButton = document.querySelector('.show-random');
-//var makeNewButton = document.querySelector('.show-form');
+var makeNewButton = document.querySelector('.show-form');
 
 
 // we've provided you with some data to work with 👇
@@ -114,7 +114,6 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
 window.addEventListener('load', displayRandomPoster); //random poster per refresh
 randomPosterButton.addEventListener('click', displayRandomPoster); // random poster per button click
 
@@ -135,6 +134,4 @@ function displayRandomPoster(){
   //random quotes
   var randomQuoteNum = getRandomIndex(quotes);
   posterQuote.innerText = quotes[randomQuoteNum];
-
-
 }
