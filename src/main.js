@@ -2,6 +2,8 @@
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+var randomPostBut = document.querySelector(".show-random");
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -107,6 +109,8 @@ var currentPoster;
 
 // event listeners go here 👇
 // next step, add an event listener to trigger on page load
+window.addEventListener("load", showRandomPoster);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -118,6 +122,11 @@ function showRandomPoster() {
 // we want to load a random poster on page load
 // we want to generate a random title, quote and image by using function getRandomIndex
 var randomTitleNum = getRandomIndex(titles);
+posterTitle.innerText = titles[randomTitleNum];
+var randomQuoteNum = getRandomIndex(quotes);
+posterQuote.innerText = quotes[randomQuoteNum];
+var randomImageNum = getRandomIndex(images);
+posterImage.src = images[randomImageNum];
 
 
 // [randomTitleNum]        <-- array index variable value from above
