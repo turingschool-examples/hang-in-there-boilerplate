@@ -102,10 +102,29 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+var pic = document.querySelector("img");
+
+window.onload = getRandomIndex(images),getRandomTitle(titles),getRandomQuote(quotes);
+
 
 // functions and event handlers go here 👇
+
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  var randomPic = Math.floor(Math.random() * array.length);
+  pic.setAttribute("src", array[randomPic]);
 }
+
+function getRandomTitle(array) {
+  document.querySelector("h1").innerHTML = titles[Math.floor(Math.random() * array.length)];
+}
+
+function getRandomQuote(array) {
+  document.querySelector("h3").innerHTML = quotes[Math.floor(Math.random() * array.length)];
+}
+
+
+
+
 
