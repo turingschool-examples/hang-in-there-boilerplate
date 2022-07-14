@@ -5,12 +5,15 @@ var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 //******************************************************//
 //buttons
-
 var savePosterButton = document.querySelector('.save-poster');
 var showSavedButton = document.querySelector('.show-saved');
 var randomPosterButton = document.querySelector('.show-random');
 var makeNewButton = document.querySelector('.show-form');
-
+//******************************************************//
+//sections
+var mainPosterSection = document.querySelector('.main-poster');
+var posterFormSection = document.querySelector('.poster-form');
+var savedPosterSection = document.querySelector('.saved-posters');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -116,6 +119,7 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', displayRandomPoster); //random poster per refresh
 randomPosterButton.addEventListener('click', displayRandomPoster); // random poster per button click
+makeNewButton.addEventListener('click', showForm); // when clicked, make new button hides main page, displays form page
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -124,14 +128,20 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-//adds functionality to button and new page load outs.;
+//adds functionality to random poster button and new page load outs.;
 function displayRandomPoster(){
+  //random images
   var randomImgNum = getRandomIndex(images);
   posterImg.src = images[randomImgNum];
-  //Random titles
+  //random titles
   var randomTitleNum = getRandomIndex(titles);
   posterTitle.innerText = titles[randomTitleNum];
   //random quotes
   var randomQuoteNum = getRandomIndex(quotes);
   posterQuote.innerText = quotes[randomQuoteNum];
+}
+
+function showForm() {
+  mainPosterSection.classList.add('hidden'); // add CSS property hidden to main poster section
+  posterFormSection.classList.toggle('hidden'); // toggle CSS property hidden on poster form section
 }
