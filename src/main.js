@@ -1,8 +1,16 @@
 // query selector variables go here 👇
-var title = document.querySelector('.poster-title');
-var quote = document.querySelector('.poster-quote');
-var image = document.querySelector('.poster-img');
-var randomButton = document.querySelector('.show-random');
+var title = document.querySelector('.poster-title')
+var quote = document.querySelector('.poster-quote')
+var image = document.querySelector('.poster-img')
+var randomButton = document.querySelector('.show-random')
+var makeOwnButton = document.querySelector('.show-form')
+var posterForm = document.querySelector('.poster-form')//
+var mainPoster = document.querySelector('.main-poster')
+var savedButton = document.querySelector('.show-saved')
+var viewSavedPosters = document.querySelector('.saved-posters')
+var backMainButton = document.querySelector('.back-to-main')
+var nevermindButton = document.querySelector('.show-main')
+
 
 
 // we've provided you with some data to work with 👇
@@ -110,6 +118,10 @@ var currentPoster = new Poster();
 //eventListeners something that communicates JS with the DOM.  Listening for us taking the
 //action of clicking the button.
 randomButton.addEventListener("click", getRandomPoster)
+makeOwnButton.addEventListener("click", showForm)
+savedButton.addEventListener("click", showSavedPosters)
+backMainButton.addEventListener('click', returnToMain)
+nevermindButton.addEventListener('click', returnToMain)
 
 
 // functions and event handlers go here 👇
@@ -127,3 +139,20 @@ function getRandomPoster() {
   quote.innerText = currentPoster.quote
 }
 getRandomPoster(); //invoking our new getRandPoster function.
+
+function showForm(){
+  posterForm.classList.remove('hidden')
+  mainPoster.classList.add('hidden')
+}
+
+function showSavedPosters(){
+  viewSavedPosters.classList.remove('hidden')
+  mainPoster.classList.add('hidden')
+
+}
+
+function returnToMain(){
+  mainPoster.classList.remove('hidden')
+  viewSavedPosters.classList.add('hidden')
+  posterForm.classList.add('hidden')
+}
