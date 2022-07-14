@@ -127,3 +127,4 @@ function getRandomPoster() {
   quote.innerText = currentPoster.quote
 }
 getRandomPoster(); //invoking our new getRandPoster function.
+//
