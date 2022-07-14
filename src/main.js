@@ -1,4 +1,6 @@
 // query selector variables go here 👇
+var newPoster = document.querySelector('.poster');
+var showRandomButton = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -109,3 +111,13 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+var randomTitle = titles[getRandomIndex(titles)]; 
+var randomQuote = quotes[getRandomIndex(quotes)];
+var randomImage = images[getRandomIndex(images)];
+
+
+newPoster.innerHTML = `<img class="poster-img" src="${randomImage}" alt="nothin' to see here">
+  <h1 class="poster-title">${randomTitle}</h1>
+  <h3 class="poster-quote">${randomQuote}</h3>`;
+
+console.log(newPoster)
