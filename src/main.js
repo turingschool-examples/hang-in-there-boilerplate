@@ -102,29 +102,29 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-var pic = document.querySelector("img");
-
-window.onload = getRandomIndex(images),getRandomTitle(titles),getRandomQuote(quotes);
-
+var newPic = document.querySelector("img");
+var newTitles = document.querySelector("h1");
+var newQuotes = document.querySelector("h3");
 
 // functions and event handlers go here 👇
-
-
 // (we've provided one for you to get you started)!
+window.onload = getRandomPicture(images),getRandomTitle(titles),getRandomQuote(quotes);
+
 function getRandomIndex(array) {
-  var randomPic = Math.floor(Math.random() * array.length);
-  pic.setAttribute("src", array[randomPic]);
+  return Math.floor(Math.random() * array.length);
+  // pic.setAttribute("src", array[randomPic]);
 }
 
-function getRandomTitle(array) {
-  document.querySelector("h1").innerHTML = titles[Math.floor(Math.random() * array.length)];
+function getRandomPicture(images) {
+  var picIndex = getRandomIndex(images)
+  newPic.setAttribute("src", images[picIndex])
 }
-
-function getRandomQuote(array) {
-  document.querySelector("h3").innerHTML = quotes[Math.floor(Math.random() * array.length)];
+function getRandomTitle(titles) {
+  var titleIndex = getRandomIndex(titles)
+  newTitles.innerHTML = titles[titleIndex]
 }
-
-
-
-
-
+function getRandomQuote(quotes) {
+  var quoteIndex = getRandomIndex(quotes)
+  newQuotes.innerHTML = quotes[quoteIndex];
+}
+//Every time the user clicks the Show Random Poster button, a new random poster is displayed.
