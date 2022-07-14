@@ -13,6 +13,7 @@ var nevermindButton = document.querySelector('.show-main')
 
 
 
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -112,7 +113,9 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
+
 var currentPoster = new Poster();
+
 
 // event listeners go here 👇
 //eventListeners something that communicates JS with the DOM.  Listening for us taking the
@@ -129,6 +132,7 @@ nevermindButton.addEventListener('click', returnToMain)
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 function getRandomPoster() {
   var posterImage = images[getRandomIndex(images)] //invoking the function and giving it the parameter (images instead of .length)
   var posterTitle = titles[getRandomIndex(titles)] //referring to the data variables (invoking the getRandomIndex() inside of the square)
@@ -139,6 +143,7 @@ function getRandomPoster() {
   quote.innerText = currentPoster.quote
 }
 getRandomPoster(); //invoking our new getRandPoster function.
+
 
 function showForm(){
   posterForm.classList.remove('hidden')
@@ -156,3 +161,4 @@ function returnToMain(){
   viewSavedPosters.classList.add('hidden')
   posterForm.classList.add('hidden')
 }
+
