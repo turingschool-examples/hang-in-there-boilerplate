@@ -120,6 +120,7 @@ var currentPoster;
 window.addEventListener('load', displayRandomPoster); //random poster per refresh
 randomPosterButton.addEventListener('click', displayRandomPoster); // random poster per button click
 makeNewButton.addEventListener('click', showForm); // when clicked, make new button hides main page, displays form page
+showSavedButton.addEventListener('click', showSavedPosters);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -144,4 +145,9 @@ function displayRandomPoster(){
 function showForm() {
   mainPosterSection.classList.add('hidden'); // add CSS property hidden to main poster section
   posterFormSection.classList.toggle('hidden'); // toggle CSS property hidden on poster form section
+}
+
+function showSavedPosters() {
+  mainPosterSection.classList.add('hidden');
+  savedPosterSection.classList.toggle('hidden');
 }
