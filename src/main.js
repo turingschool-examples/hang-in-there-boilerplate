@@ -1,4 +1,8 @@
 // query selector variables go here 👇
+var newPic = document.querySelector("img");
+var newTitles = document.querySelector("h1");
+var newQuotes = document.querySelector("h3");
+var randomButton = document.querySelector(".show-random");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,29 +106,37 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-var newPic = document.querySelector("img");
-var newTitles = document.querySelector("h1");
-var newQuotes = document.querySelector("h3");
+window.addEventListener("load", getRandomPicture(images),getRandomTitle(titles),getRandomQuote(quotes));
+ // getRandomPoster(images, titles, quotes))
+randomButton.addEventListener("click",getRandomPicture(images), getRandomTitle(titles), getRandomQuote(quotes));
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-window.onload = getRandomPicture(images),getRandomTitle(titles),getRandomQuote(quotes);
+// window.onload = getRandomPicture(images),getRandomTitle(titles),getRandomQuote(quotes);
+// randomButton.onclick = getRandomPicture(images),getRandomTitle(titles),getRandomQuote(quotes);
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-  // pic.setAttribute("src", array[randomPic]);
 }
 
 function getRandomPicture(images) {
   var picIndex = getRandomIndex(images)
   newPic.setAttribute("src", images[picIndex])
 }
+
 function getRandomTitle(titles) {
   var titleIndex = getRandomIndex(titles)
   newTitles.innerHTML = titles[titleIndex]
 }
+
 function getRandomQuote(quotes) {
   var quoteIndex = getRandomIndex(quotes)
   newQuotes.innerHTML = quotes[quoteIndex];
 }
+
+// function getRandomPoster(images, titles, quotes) {
+  // getRandomPicture(images);
+  // getRandomTitles(tiltes);
+  // getRandomQuote(quotes)
+// }
 //Every time the user clicks the Show Random Poster button, a new random poster is displayed.
