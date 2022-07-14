@@ -1,6 +1,10 @@
 // query selector variables go here 👇
 var title = document.querySelector('.poster-title');
-var quote = document.querySelector('h3');
+var quote = document.querySelector('.poster-quote');
+var image = document.querySelector('.poster-img');
+var randomButton = document.querySelector('.show-random');
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -100,19 +104,26 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = new Poster();
 
 // event listeners go here 👇
+//eventListeners something that communicates JS with the DOM.  Listening for us taking the
+//action of clicking the button.
+randomButton.addEventListener("click", getRandomPoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-function makeRandomPoster() {
-  currentPoster = new Poster(
-  getRandomIndex(images),
-  getRandomIndex(titles),
-  getRandomIndex(quotes),
-)
+function getRandomPoster() {
+  var posterImage = images[getRandomIndex(images)] //invoking the function and giving it the parameter (images instead of .length)
+  var posterTitle = titles[getRandomIndex(titles)] //referring to the data variables (invoking the getRandomIndex() inside of the square)
+  var posterQuotes = quotes[getRandomIndex(quotes)] //brackets, in place of a hardcoded index number.
+  var currentPoster = new Poster(posterImage, posterTitle, posterQuotes)// referring to the class Poster in poster.js, and adding the variable parameters we created for the images, titles and quotes arrays.
+  image.src = currentPoster.imageURL  //this is the change code (.src and .innerText) that we use after creating the querySelector variables to link to the index.html doc.
+  title.innerText = currentPoster.title
+  quote.innerText = currentPoster.quote
 }
+getRandomPoster(); //invoking our new getRandPoster function.
