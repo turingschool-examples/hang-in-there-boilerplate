@@ -1,5 +1,8 @@
 // query selector variables go here 👇
-
+var picture = document.querySelector(".poster-img");
+var title = document.querySelector(".poster-title");
+var quote = document.querySelector(".poster-quote");
+var buttonOne = document.querySelector(".show-random");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -19,7 +22,7 @@ var images = [
   "./assets/runner.jpg",
   "./assets/squirrel.jpg",
   "./assets/tiger.jpg",
-  "./assets/turtle.jpg"
+  "./assets/turtle.jpg",
 ];
 var titles = [
   "determination",
@@ -56,7 +59,7 @@ var titles = [
   "smile",
   "trust",
   "understanding",
-  "wisdom"
+  "wisdom",
 ];
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
@@ -96,16 +99,26 @@ var quotes = [
   "If you have good thoughts they will shine out of your face like sunbeams and you will always look lovely.",
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
-  "A champion is defined not by their wins but by how they can recover when they fall."
+  "A champion is defined not by their wins but by how they can recover when they fall.",
 ];
 var savedPosters = [];
-var currentPoster;
-
+var currentPoster = new Poster();
+// console.log(button);
 // event listeners go here 👇
-
+window.addEventListener("load", displayPoster());
+buttonOne.addEventListener("click", () => displayPoster());
 // functions and event handlers go here 👇
+//function randomImage() {
+//  picture.src = images[getRandomIndex(images)];
+function displayPoster() {
+  picture.src = images[getRandomIndex(images)];
+  title.innerText = titles[getRandomIndex(titles)];
+  quote.innerText = quotes[getRandomIndex(quotes)];
+}
+
+console.log(picture);
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-

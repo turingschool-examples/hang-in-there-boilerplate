@@ -1,44 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <title>Hang In There</title>
-</head>
-<body>
-  <section class="main-poster">
-    <article class="poster">
-      <img class="poster-img" src="" alt="nothin' to see here">
-      <h1 class="poster-title">Title</h1>
-      <h3 class="poster-quote">Quote</h3>
-    </article>
-    <button class="save-poster">Save This Poster</button>
-    <button class="show-saved">Show Saved Posters</button>
-    <button class="show-random">Show Another Random Poster</button>
-    <button class="show-form">Make Your Own Poster</button>
-  </section>
-  <section class="poster-form hidden">
-    <form>
-      <h2>Create your own motivational poster</h2>
-      <label for="poster-image-url">Image url</label>
-      <input type="text" name="poster-image-url" id="poster-image-url" placeholder="https://gph.is/2n553Ra">
-      <label for="poster-title">Motivational title</label>
-      <input type="text" name="poster-title" id="poster-title" placeholder="Growth Mindset">
-      <label for="poster-quote">Motivational quote</label>
-        <input type="text" name="poster-quote" id="poster-quote" placeholder="Hang in there!">
-      <button class="make-poster">Show my poster</button>
-    </form>
-    <div class="divider"></div>
-    <button class="show-main">Nevermind, take me back!</button>
-  </section>
-  <section class="saved-posters hidden">
-    <h2>Saved Posters</h2>
-    <article class="saved-posters-grid"></article>
-    <button class="back-to-main">Back to Main</button>
-  </section>
-  <script src="./src/poster.js"></script>
-  <script src="./src/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Hang In There</title>
+  </head>
+  <body>
+    <section class="main-poster">
+      <article class="poster">
+        <img class="poster-img" src="" alt="nothin' to see here" />
+        <h1 class="poster-title">Title</h1>
+        <h3 class="poster-quote">Quote</h3>
+      </article>
+      <button class="save-poster">Save This Poster</button>
+      <button class="show-saved">Show Saved Posters</button>
+      <button class="show-random">Show Another Random Poster</button>
+      <button class="show-form">Make Your Own Poster</button>
+    </section>
+    <section class="poster-form hidden">
+      <form>
+        <h2>Create your own motivational poster</h2>
+        <label for="poster-image-url">Image url</label>
+        <input
+          type="text"
+          name="poster-image-url"
+          id="poster-image-url"
+          placeholder="https://gph.is/2n553Ra"
+        />
+        <label for="poster-title">Motivational title</label>
+        <input
+          type="text"
+          name="poster-title"
+          id="poster-title"
+          placeholder="Growth Mindset"
+        />
+        <label for="poster-quote">Motivational quote</label>
+        <input
+          type="text"
+          name="poster-quote"
+          id="poster-quote"
+          placeholder="Hang in there!"
+        />
+        <button class="make-poster">Show my poster</button>
+      </form>
+      <div class="divider"></div>
+      <button class="show-main">Nevermind, take me back!</button>
+    </section>
+    <section class="saved-posters hidden">
+      <h2>Saved Posters</h2>
+      <article class="saved-posters-grid"></article>
+      <button class="back-to-main">Back to Main</button>
+    </section>
+    <script src="./src/poster.js"></script>
+    <script src="./src/main.js"></script>
+  </body>
 </html>
