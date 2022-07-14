@@ -132,7 +132,7 @@ function getRandomTitle(titles) {
 function getRandomQuote(quotes) {
   var quoteIndex = getRandomIndex(quotes)
   newQuotes.innerHTML = quotes[quoteIndex];
-}
+} 
 
 // function getRandomPoster(images, titles, quotes) {
   // getRandomPicture(images);
