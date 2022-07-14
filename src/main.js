@@ -2,7 +2,7 @@
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
-var randomPostBut = document.querySelector(".show-random");
+var buttonShowRandom = document.querySelector(".show-random");
 
 
 // we've provided you with some data to work with 👇
@@ -110,7 +110,7 @@ var currentPoster;
 // event listeners go here 👇
 // next step, add an event listener to trigger on page load
 window.addEventListener("load", showRandomPoster);
-
+buttonShowRandom.addEventListener("click", showRandomPoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
