@@ -106,14 +106,11 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener("load", getRandomPicture(images),getRandomTitle(titles),getRandomQuote(quotes));
- // getRandomPoster(images, titles, quotes))
-randomButton.addEventListener("click",getRandomPicture(images), getRandomTitle(titles), getRandomQuote(quotes));
+window.addEventListener("load", getRandomPoster(images, titles, quotes));
+randomButton.addEventListener("click", getRandomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-// window.onload = getRandomPicture(images),getRandomTitle(titles),getRandomQuote(quotes);
-// randomButton.onclick = getRandomPicture(images),getRandomTitle(titles),getRandomQuote(quotes);
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -132,11 +129,12 @@ function getRandomTitle(titles) {
 function getRandomQuote(quotes) {
   var quoteIndex = getRandomIndex(quotes)
   newQuotes.innerHTML = quotes[quoteIndex];
-} 
+}
 
-// function getRandomPoster(images, titles, quotes) {
-  // getRandomPicture(images);
-  // getRandomTitles(tiltes);
-  // getRandomQuote(quotes)
-// }
+function getRandomPoster() {
+  getRandomPicture(images)
+  getRandomTitle(titles)
+  getRandomQuote(quotes)
+}
+
 //Every time the user clicks the Show Random Poster button, a new random poster is displayed.
