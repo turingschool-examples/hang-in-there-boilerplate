@@ -115,7 +115,7 @@ var randomTitle = titles[getRandomIndex(titles)];
 var randomQuote = quotes[getRandomIndex(quotes)];
 var randomImage = images[getRandomIndex(images)];
 
-newPoster.innerHTML = `<img class="poster-img" src="${randomImage}" alt="nothin' to see here">
+newPoster.innerHTML = `<img class="poster-img" src="${randomImage}" alt="this is a poster">
   <h1 class="poster-title">${titles[getRandomIndex(titles)]}</h1>
   <h3 class="poster-quote">${randomQuote}</h3>`;
 
@@ -125,10 +125,7 @@ function getRandomPoster() {
     <h1 class="poster-title">${titles[getRandomIndex(titles)]}</h1>
     <h3 class="poster-quote">${quotes[getRandomIndex(quotes)]}</h3>`;
 }
-console.log(getRandomPoster(randomTitle))
 
 //newPoster.innerHTML = `<img class="poster-img" src="${randomImage}" alt="nothin' to see here">
 //  <h1 class="poster-title">${randomTitle}</h1>
 //  <h3 class="poster-quote">${randomQuote}</h3>`;
-
-console.log(newPoster)
