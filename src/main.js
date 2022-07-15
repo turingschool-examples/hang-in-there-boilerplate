@@ -1,4 +1,14 @@
 // query selector variables go here 👇
+var posterImage = document.querySelector('.poster-img') //Original
+// console.log(posterImage)
+var posterTitle = document.querySelector('.poster-title')//Original
+// console.log(posterTitle)
+var posterQuote = document.querySelector('.poster-quote')//Original
+// console.log(posterQuote)
+var showRandomButton = document.querySelector('.show-random')//Original
+var posterFormButton = document.querySelector('.show-form')
+var posterForm = document.querySelector('.poster-form')
+var mainPage = document.querySelector('.main-poster')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,10 +112,42 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+showRandomButton.addEventListener('click', showRandomPoster);
+posterFormButton.addEventListener('click', displayForm);
+
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+// function randomize() {
+//   var image = getRandomIndex(images);
+//   var title = getRandomIndex(titles);
+//   var quote = getRandomIndex(quotes);
+// }
+function showRandomPoster() {
+  var imageRandomNumber = getRandomIndex(images);//Original
+    posterImage.src = images[imageRandomNumber]
+    console.log(imageRandomNumber);
+  var titleRandomNumber = getRandomIndex(titles);//Original
+    posterTitle.innerText = titles[titleRandomNumber]
+    console.log(titleRandomNumber);
+  var quoteRandomNumber = getRandomIndex(quotes);//Original
+    posterQuote.innerText = quotes[quoteRandomNumber]
+    console.log(quoteRandomNumber);
+}
+
+console.log(showRandomPoster());
+
+function displayForm() {
+  posterForm.className = 'poster-form'
+  mainPage.className = 'main-poster hidden'
+  console.log(displayForm);
+  // I would like to grab the poster form with posterFormButton
+  // Hide the main page from user view - add hidden attribute to main page
+  // need to remove 'hidden' attribute from poster-form class
+// HOW: use querySelector for poster form page & main poster
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
