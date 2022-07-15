@@ -1,6 +1,5 @@
 // query selector variables go here 👇
 // var Poster = require("..hang-in-there/src/poster.js");
-
 var indexImage = document.querySelector(".poster-img");
 var indexTitle = document.querySelector(".poster-title");
 var indexQuote = document.querySelector(".poster-quote");
@@ -111,11 +110,13 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomButton.addEventListener("click", pleaseGodWork);
+randomButton.addEventListener("click", changeRandomPoster);
+
 // functions and event handlers go here 👇
-function pleaseGodWork() {
-  indexTitle.innerText = titles[3];
-  alert("Fuck Yeah!");
+function changeRandomPoster() {
+  indexTitle.innerText = titles[getRandomIndex(titles)];
+  indexImage.src = images[getRandomIndex(images)];
+  indexQuote.innerText = quotes[getRandomIndex(quotes)];
 }
 
 // (we've provided one for you to get you started)!
