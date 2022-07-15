@@ -3,6 +3,7 @@ var newPic = document.querySelector("img");
 var newTitles = document.querySelector("h1");
 var newQuotes = document.querySelector("h3");
 var randomButton = document.querySelector(".show-random");
+var makePosterButton = document.querySelector(".show-form");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,6 +109,7 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener("load", getRandomPoster(images, titles, quotes));
 randomButton.addEventListener("click", getRandomPoster);
+makePosterButton.addEventListener("click", showMakePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -137,4 +139,18 @@ function getRandomPoster() {
   getRandomQuote(quotes)
 }
 
-//Every time the user clicks the Show Random Poster button, a new random poster is displayed.
+function showMakePoster() {
+  var mainPoster = document.querySelector(".main-poster");
+  var posterForm = document.querySelector(".poster-form");
+  mainPoster.classList.add("hidden");
+  posterForm.classList.remove("hidden")
+}
+
+// query selector form / class: "poster-form hidden"
+// inner HTML for class: "main-poster" add "hidden"
+// event listener for button push
+// event handlers: on click, custom poster form
+//function (removes current poster, bring up form)
+
+//When a user clicks the “Make Your Own Poster” button,
+//we should see the form, and the main poster should be hidden
