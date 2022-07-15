@@ -170,7 +170,6 @@ function showMyPoster() {
 }
 
 function posterInstance() {
-  
 }
 
 
