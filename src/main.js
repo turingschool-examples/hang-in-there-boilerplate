@@ -1,11 +1,8 @@
 // query selector variables go here 👇
-var posterImage = document.querySelector('.poster-img') //Original
-// console.log(posterImage)
-var posterTitle = document.querySelector('.poster-title')//Original
-// console.log(posterTitle)
-var posterQuote = document.querySelector('.poster-quote')//Original
-// console.log(posterQuote)
-var showRandomButton = document.querySelector('.show-random')//Original
+var posterImage = document.querySelector('.poster-img')
+var posterTitle = document.querySelector('.poster-title')
+var posterQuote = document.querySelector('.poster-quote')
+var showRandomButton = document.querySelector('.show-random')
 
 var posterFormButton = document.querySelector('.show-form')
 var posterForm = document.querySelector('.poster-form')
@@ -19,7 +16,7 @@ var goBackButton = document.querySelector('.back-to-main')
 
 var makePosterButton = document.querySelector('.make-poster')
 var createNewQuote = document.querySelector('#poster-quote')
-var createNewURL = document.querySelector('#poster-img-url')
+var createNewURL = document.querySelector('#poster-image-url')
 var createNewTitle = document.querySelector('#poster-title')
 
 // we've provided you with some data to work with 👇
@@ -134,24 +131,16 @@ makePosterButton.addEventListener('click', showMyPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-// function randomize() {
-//   var image = getRandomIndex(images);
-//   var title = getRandomIndex(titles);
-//   var quote = getRandomIndex(quotes);
-// }
-function showRandomPoster() {
-  var imageRandomNumber = getRandomIndex(images);//Original
-    posterImage.src = images[imageRandomNumber]
-    console.log(imageRandomNumber);
-  var titleRandomNumber = getRandomIndex(titles);//Original
-    posterTitle.innerText = titles[titleRandomNumber]
-    console.log(titleRandomNumber);
-  var quoteRandomNumber = getRandomIndex(quotes);//Original
-    posterQuote.innerText = quotes[quoteRandomNumber]
-    console.log(quoteRandomNumber);
-}
 
+
+
+function showRandomPoster() {
+    posterImage.src = images[getRandomIndex(images)]
+    posterTitle.innerText = titles[getRandomIndex(titles)]
+    posterQuote.innerText = quotes[getRandomIndex(quotes)]
+}
 console.log(showRandomPoster());
+
 
 function displayForm() {
   posterForm.className = 'poster-form'
@@ -172,16 +161,21 @@ function goToMain() {
 }
 
 function showMyPoster() {
-  createNewURL.value = 
+  event.preventDefault();
+  posterTitle.innerText = createNewTitle.value
+  posterImage.src = createNewURL.value
+  posterQuote.innerText = createNewQuote.value
+  console.log(posterTitle.innerText);
+  goToMain();
 }
 
-//
+function posterInstance() {
+  
+}
 
 
-// I would like to grab the poster form with posterFormButton
-  // Hide the main page from user view - add hidden attribute to main page
-  // need to remove 'hidden' attribute from poster-form class
-// HOW: use querySelector for poster form page & main poster
+
+
 
 
 function getRandomIndex(array) {
