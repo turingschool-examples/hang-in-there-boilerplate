@@ -8,22 +8,20 @@ var posterQuote = document.querySelector('.poster-quote')//Original
 var showRandomButton = document.querySelector('.show-random')//Original
 
 var posterFormButton = document.querySelector('.show-form')
-
 var posterForm = document.querySelector('.poster-form')
-
 var mainPage = document.querySelector('.main-poster')
 
 var showSavedPoster = document.querySelector('.saved-posters')
-
 var showSavedButton = document.querySelector('.show-saved')
 
 var nevermindButton = document.querySelector('.show-main')
-
 var goBackButton = document.querySelector('.back-to-main')
 
-var userQuote = document.querySelector('#poster-quote')
+var makePosterButton = document.querySelector('.make-poster')
+var createNewQuote = document.querySelector('#poster-quote')
+var createNewURL = document.querySelector('#poster-img-url')
+var createNewTitle = document.querySelector('#poster-title')
 
-var makePoster = document.querySelector('.make-poster')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -132,7 +130,8 @@ posterFormButton.addEventListener('click', displayForm);
 showSavedButton.addEventListener('click', displaySaved);
 nevermindButton.addEventListener('click', goToMain);
 goBackButton.addEventListener('click', goToMain);
-makeNewPoster.addEventListener('click', createPosterQuote);
+makePosterButton.addEventListener('click', showMyPoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 // function randomize() {
@@ -172,8 +171,8 @@ function goToMain() {
     console.log(goToMain);
 }
 
-function createPosterQuote() {
-  userQuote.innerText = Post
+function showMyPoster() {
+  createNewURL.value = 
 }
 
 //
