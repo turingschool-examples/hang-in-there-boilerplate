@@ -139,25 +139,25 @@ function showRandomPoster() {
     posterTitle.innerText = titles[getRandomIndex(titles)]
     posterQuote.innerText = quotes[getRandomIndex(quotes)]
 }
-console.log(showRandomPoster());
+
 
 
 function displayForm() {
   posterForm.className = 'poster-form'
   mainPage.className = 'main-poster hidden'
-  console.log(displayForm);
+
 }
 
 function displaySaved() {
   showSavedPoster.className = 'showed-posters'
   mainPage.className = 'main-poster hidden'
-  console.log(displaySaved);
+
 }
 function goToMain() {
   showSavedPoster.className = 'saved-poster hidden'
   posterForm.className = 'poster-form hidden'
   mainPage.className = 'main-poster'
-    console.log(goToMain);
+
 }
 
 function showMyPoster() {
@@ -165,11 +165,20 @@ function showMyPoster() {
   posterTitle.innerText = createNewTitle.value
   posterImage.src = createNewURL.value
   posterQuote.innerText = createNewQuote.value
-  console.log(posterTitle.innerText);
   goToMain();
+  posterInstance();
+  saveData();
 }
 
 function posterInstance() {
+  currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText)
+}
+
+function saveData() {
+  images.push(posterImage.src)
+  titles.push(posterTitle.innerText)
+  quotes.push(posterQuote.innerText)
+
 }
 
 
