@@ -6,10 +6,24 @@ var posterTitle = document.querySelector('.poster-title')//Original
 var posterQuote = document.querySelector('.poster-quote')//Original
 // console.log(posterQuote)
 var showRandomButton = document.querySelector('.show-random')//Original
+
 var posterFormButton = document.querySelector('.show-form')
+
 var posterForm = document.querySelector('.poster-form')
+
 var mainPage = document.querySelector('.main-poster')
 
+var showSavedPoster = document.querySelector('.saved-posters')
+
+var showSavedButton = document.querySelector('.show-saved')
+
+var nevermindButton = document.querySelector('.show-main')
+
+var goBackButton = document.querySelector('.back-to-main')
+
+var userQuote = document.querySelector('#poster-quote')
+
+var makePoster = document.querySelector('.make-poster')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -108,15 +122,17 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
 showRandomButton.addEventListener('click', showRandomPoster);
 posterFormButton.addEventListener('click', displayForm);
-
-
-
+showSavedButton.addEventListener('click', displaySaved);
+nevermindButton.addEventListener('click', goToMain);
+goBackButton.addEventListener('click', goToMain);
+makeNewPoster.addEventListener('click', createPosterQuote);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 // function randomize() {
@@ -142,11 +158,32 @@ function displayForm() {
   posterForm.className = 'poster-form'
   mainPage.className = 'main-poster hidden'
   console.log(displayForm);
-  // I would like to grab the poster form with posterFormButton
+}
+
+function displaySaved() {
+  showSavedPoster.className = 'showed-posters'
+  mainPage.className = 'main-poster hidden'
+  console.log(displaySaved);
+}
+function goToMain() {
+  showSavedPoster.className = 'saved-poster hidden'
+  posterForm.className = 'poster-form hidden'
+  mainPage.className = 'main-poster'
+    console.log(goToMain);
+}
+
+function createPosterQuote() {
+  userQuote.innerText = Post
+}
+
+//
+
+
+// I would like to grab the poster form with posterFormButton
   // Hide the main page from user view - add hidden attribute to main page
   // need to remove 'hidden' attribute from poster-form class
 // HOW: use querySelector for poster form page & main poster
-}
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
