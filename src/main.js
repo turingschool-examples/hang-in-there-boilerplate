@@ -10,6 +10,10 @@ var savedPoster = document.querySelector(".saved-posters");
 var savedPosterButton = document.querySelector(".show-saved");
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+var newImg = document.getElementById('poster-image-url');
+var newPictureTitle = document.getElementById('poster-title');
+var newSaying = document.getElementById('poster-quote');
+var NewPosterButton = document.querySelector(".make-poster");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,6 +123,8 @@ makePosterButton.addEventListener("click", showMakePoster);
 savedPosterButton.addEventListener("click", showSavedPoster);
 nevermindButton.addEventListener("click", backToMain);
 backToMainButton.addEventListener("click", backToMain);
+NewPosterButton.addEventListener("click", savePoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -128,12 +134,12 @@ function getRandomIndex(array) {
 
 function getRandomPicture(images) {
   var picIndex = getRandomIndex(images)
-  newPic.setAttribute("src", images[picIndex])
+  newPic.src = images[picIndex];
 }
 
 function getRandomTitle(titles) {
   var titleIndex = getRandomIndex(titles)
-  newTitles.innerHTML = titles[titleIndex]
+  newTitles.innerHTML = titles[titleIndex];
 }
 
 function getRandomQuote(quotes) {
@@ -162,6 +168,33 @@ function backToMain() {
   posterForm.classList.add("hidden");
   mainPoster.classList.remove("hidden")
 }
+
+function savePoster() {
+  event.preventDefault();
+
+  var newSavedPoster = new Poster(newImg.value, newPictureTitle.value, newSaying.value);
+  images.push(newSavedPoster.imageURL);
+  titles.push(newSavedPoster.title);
+  quotes.push(newSavedPoster.quote);
+
+  backToMain();
+  
+  newPic.src = newSavedPoster.imageURL;
+  newTitles.innerHTML = newSavedPoster.title;
+  newQuotes.innerHTML = newSavedPoster.quote;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 // query selector form / class: "poster-form hidden"
 // inner HTML for class: "main-poster" add "hidden"
