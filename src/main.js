@@ -4,6 +4,7 @@ var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 
+
 //buttons
 var savePosterButton = document.querySelector(".save-poster");
 var showSavedButton = document.querySelector(".show-saved");
@@ -128,20 +129,37 @@ var currentPoster;
 
 // event listeners go here 👇
 //buttons
-savePosterButton.addEventListener('click', savingPoster);
-showSavedButton.addEventListener('click', showSaved);
+//savePosterButton.addEventListener('click', savingPoster);
+//showSavedButton.addEventListener('click', showSaved);
 showRandomButton.addEventListener('click', showRandom);
-showFormButton.addEventListener('click', showForm);
+//showFormButton.addEventListener('click', showForm);
 makePoster.addEventListener('click', makingPoster);
-showMain.addEventListener('click', showingMain);
-backToMain.addEventListener('click', toMain);
+//showMain.addEventListener('click', showingMain);
+//backToMain.addEventListener('click', toMain);
 
 
 // functions and event handlers go here 👇
-
-
-
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
+function loadPoster(image, title, quote) {
+  posterImage.src = image
+  posterTitle.innerText = title
+  posterQuote.innerText = quote
+}
+
+function showRandom() {
+  var image = images[getRandomIndex(images)]
+  var title = titles[getRandomIndex(titles)]
+  var quote = quotes[getRandomIndex(quotes)]
+  loadPoster(image, title, quote)
+}
+showRandom()
+
+
+
+
+/*We want to display a poster of randomly selected images, titles, and quotes. We need to create a function that first displays a poster. The properties of the poster should be image, title, quote. We think we need to pass information via an array of images, titles, and quotes.*/
