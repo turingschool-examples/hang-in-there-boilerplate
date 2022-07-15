@@ -3,10 +3,27 @@
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+
+//buttons
 var savePosterButton = document.querySelector(".save-poster");
 var showSavedButton = document.querySelector(".show-saved");
 var showRandomButton = document.querySelector(".show-random");
 var showFormButton = document.querySelector(".show-form");
+var makePoster = document.querySelector(".make-poster");
+var showMain = document.querySelector(".show-main");
+var backToMain = document.querySelector(".back-to-main");
+
+//custom poster
+var customPoster = document.querySelector("#poster-image-url");
+var customTitle = document.querySelector("#poster-title");
+var customQuote = document.querySelector("#poster-quote");
+
+//make poster
+var mainPoster = document.querySelector(".main-poster");
+var posterForm = document.querySelector(".poster-form");
+var savedPosters = document.querySelector(".saved-posters");
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
