@@ -10,7 +10,10 @@ var savedButton = document.querySelector('.show-saved')
 var viewSavedPosters = document.querySelector('.saved-posters')
 var backMainButton = document.querySelector('.back-to-main')
 var nevermindButton = document.querySelector('.show-main')
-
+var imageInput = document.getElementById('poster-image-url')
+var titleInput = document.getElementById('poster-title')
+var quoteInput = document.getElementById('poster-quote')
+var showPosterButton = document.querySelector('.make-poster')
 
 
 
@@ -125,6 +128,8 @@ makeOwnButton.addEventListener("click", showForm)
 savedButton.addEventListener("click", showSavedPosters)
 backMainButton.addEventListener('click', returnToMain)
 nevermindButton.addEventListener('click', returnToMain)
+showPosterButton.addEventListener('click', createPosterOne)
+
 
 
 // functions and event handlers go here 👇
@@ -160,5 +165,17 @@ function returnToMain(){
   mainPoster.classList.remove('hidden')
   viewSavedPosters.classList.add('hidden')
   posterForm.classList.add('hidden')
+  showPosterButton.classList.add('hidden')
 }
 
+function createPosterOne(event){
+  event.preventDefault()
+  images.push(imageInput.value)
+  titles.push(titleInput.value)
+  quotes.push(quoteInput.value)
+  var newPosterOne = new Poster(imageInput.value, titleInput.value, quoteInput.value);
+  image.src = newPosterOne.imageURL
+  title.innerText = newPosterOne.title
+  quote.innerText = newPosterOne.quote
+  returnToMain()
+}
