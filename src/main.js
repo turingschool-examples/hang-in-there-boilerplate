@@ -1,4 +1,21 @@
 // query selector variables go here 👇
+var mainURL = document.querySelector(".poster-img");
+var mainTitle = document.querySelector(".poster-title");
+var mainQuote = document.querySelector(".poster-quote");
+var buttonRandomPoster = document.querySelector(".show-random");
+var mainPage = document.querySelector(".main-poster");
+var formPage = document.querySelector(".poster-form");
+var showForm = document.querySelector(".show-form");
+var formToMain = document.querySelector(".show-main");
+var savedPage = document.querySelector(".saved-posters");
+var showSaved = document.querySelector(".show-saved");
+var savedToMain = document.querySelector(".back-to-main");
+var makePoster = document.querySelector(".make-poster");
+var userURL = document.querySelector("#poster-image-url");
+var userTitle = document.querySelector("#poster-title");
+var userQuote = document.querySelector("#poster-quote");
+var buttonSavePoster = document.querySelector(".save-poster");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -99,9 +116,20 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster = mainPage();
+var currentPoster = makeRandomPoster();
 
 // event listeners go here 👇
+buttonRandomPoster.addEventListener("click", makeRandomPoster);
+showForm.addEventListener("click", displayForm);
+formToMain.addEventListener("click", displayForm);
+showSaved.addEventListener("click", function() {
+  displaySaved();
+  loadSavedPosters();
+});
+savedToMain.addEventListener("click", displaySaved);
+makePoster.addEventListener("click", displayUserPoster);
+buttonSavePoster.addEventListener("click", addPosterSaved);
+savedPostersGrid.addEventListener("dblclick", deleteSavedPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -109,8 +137,67 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function mainPage() {
-  var randomImage = images[getRandomIndex(images)];
-  var mainPagePoster = new Poster(randomImage, title, quote);
-  return mainPagePoster
+function makeRandomPoster() {
+  mainURL.src = images[getRandomIndex(images)];
+  mainTitle.innerText = titles[getRandomIndex(titles)];
+  mainQuote.innerText = quotes[getRandomIndex(quotes)];
+}
+
+function displayForm() {
+  mainPage.classList.toggle("hidden");
+  formPage.classList.toggle("hidden");
+}
+
+function displayUserPoster() {
+  event.preventDefault();
+  var userPoster = new Poster(userURL.value, userTitle.value, userQuote.value);
+  images.push(userPoster.imageURL);
+  titles.push(userPoster.title);
+  quotes.push(userPoster.quote);
+  displayForm();
+  mainURL.src = userPoster.imageURL;
+  mainTitle.innerText = userPoster.title;
+  mainQuote.innerText = userPoster.quote;
+}
+
+function addPosterSaved() {
+  var likedPoster = new Poster(mainURL.src, mainTitle.innerText, mainQuote.innerText);
+  for (var i = 0; i < savedPosters.length; i++) {
+    // Fix if statement conditional because right now it will not push a new poster in if any of the proteries match a savedPosters property
+    if (likedPoster.imageURL !== savedPosters[i].imageURL && likedPoster.title !== savedPosters[i].title && likedPoster.quote !== savedPosters[i].quote) {
+      continue;
+    } else {
+      return;
+    }
+  }
+  savedPosters.push(likedPoster);
+  console.log(savedPosters);
+}
+
+function displaySaved() {
+  mainPage.classList.toggle("hidden");
+  savedPage.classList.toggle("hidden");
+}
+
+function loadSavedPosters() {
+  savedPostersGrid.innerHTML = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersGrid.innerHTML += `<figure class="mini-poster" id="${savedPosters[i].id}">
+        <img class="poster-img" src="${savedPosters[i].imageURL}" alt="">
+        <h1 class="poster-title">${savedPosters[i].title}</h1>
+        <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+      </figure>`;
+  }
+}
+
+function deleteSavedPoster(e) {
+  var targetId = e.target.getAttribute("id");
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (targetId != savedPosters[i].id) {
+      continue;
+    } else {
+      savedPosters.splice(i, 1);
+    }
+  }
+  loadSavedPosters();
 }
