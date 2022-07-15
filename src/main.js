@@ -104,20 +104,31 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+showRandomButton.addEventListener("click", getRandomPoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-var randomTitle = titles[getRandomIndex(titles)]; 
+var randomTitle = titles[getRandomIndex(titles)];
 var randomQuote = quotes[getRandomIndex(quotes)];
 var randomImage = images[getRandomIndex(images)];
 
-
 newPoster.innerHTML = `<img class="poster-img" src="${randomImage}" alt="nothin' to see here">
-  <h1 class="poster-title">${randomTitle}</h1>
+  <h1 class="poster-title">${titles[getRandomIndex(titles)]}</h1>
   <h3 class="poster-quote">${randomQuote}</h3>`;
+
+
+function getRandomPoster() {
+  newPoster.innerHTML = `<img class="poster-img" src="${images[getRandomIndex(images)]}" alt="nothin' to see here">
+    <h1 class="poster-title">${titles[getRandomIndex(titles)]}</h1>
+    <h3 class="poster-quote">${quotes[getRandomIndex(quotes)]}</h3>`;
+}
+console.log(getRandomPoster(randomTitle))
+
+//newPoster.innerHTML = `<img class="poster-img" src="${randomImage}" alt="nothin' to see here">
+//  <h1 class="poster-title">${randomTitle}</h1>
+//  <h3 class="poster-quote">${randomQuote}</h3>`;
 
 console.log(newPoster)
