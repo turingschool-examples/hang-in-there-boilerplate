@@ -113,7 +113,7 @@ showRandomButton.addEventListener("click", function() {
   var randomPoster = getRandomPoster();
   displayPoster(randomPoster);
 })
-// createNewPoster.addEventListener("click", goToCreateForm)
+createNewPoster.addEventListener("click", goToCreateForm)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -123,7 +123,6 @@ function getRandomIndex(array) {
 // now we need a way to display it
 function displayPoster(poster) {
   posterImage.setAttribute('src', poster.imageURL);
-  console.log(poster)
   posterTitle.innerText = poster.title;
   posterQuote.innerText = poster.quote;
 }
@@ -136,11 +135,11 @@ function getRandomPoster() { // pulling what elements from the array will go int
   )
 }
 
-displayPoster(getRandomPoster())
+displayPoster(getRandomPoster());
 
 
-// function goToCreateForm() {
-//   newPoster.className.add = hidden
-// }
+function goToCreateForm() {
+  newPoster.className.add = hidden
+}
 
 
