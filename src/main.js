@@ -1,20 +1,18 @@
-// query selector variables go here 👇
 var newPic = document.querySelector("img");
 var newTitles = document.querySelector("h1");
 var newQuotes = document.querySelector("h3");
 var randomButton = document.querySelector(".show-random");
-var makePosterButton = document.querySelector(".show-form");
+var customPosterButton = document.querySelector(".show-form");
 var mainPoster = document.querySelector(".main-poster");
 var posterForm = document.querySelector(".poster-form");
 var savedPoster = document.querySelector(".saved-posters");
 var savedPosterButton = document.querySelector(".show-saved");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var nevermindButton = document.querySelector(".show-main");
-var backToMainButton = document.querySelector(".back-to-main");
+var returnToMainButton = document.querySelector(".back-to-main");
 var newPosterButton = document.querySelector(".make-poster");
 var saveThisPosterButton = document.querySelector(".save-poster")
 
-// we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -114,18 +112,14 @@ var quotes = [
 ];
 var savedPosters = [];
 
-// event listeners go here 👇
 window.addEventListener("load", getRandomPoster(images, titles, quotes));
 randomButton.addEventListener("click", getRandomPoster);
-makePosterButton.addEventListener("click", showMakePoster);
+customPosterButton.addEventListener("click", showMakePoster);
 savedPosterButton.addEventListener("click", showSavedPoster);
-nevermindButton.addEventListener("click", backToMain);
-backToMainButton.addEventListener("click", backToMain);
-newPosterButton.addEventListener("click", customPoster);
+nevermindButton.addEventListener("click", returnToMain);
+returnToMainButton.addEventListener("click", returnToMain);
+newPosterButton.addEventListener("click", createCustomPoster);
 saveThisPosterButton.addEventListener("click", savePoster)
-
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -171,13 +165,13 @@ function showSavedPoster() {
     }
 }
 
-function backToMain() {
+function returnToMain() {
   savedPoster.classList.add("hidden");
   posterForm.classList.add("hidden");
   mainPoster.classList.remove("hidden")
 }
 
-function customPoster() {
+function createCustomPoster() {
   event.preventDefault();
   var customImg = document.getElementById('poster-image-url');
   var customTitle = document.getElementById('poster-title');
@@ -186,7 +180,7 @@ function customPoster() {
     images.push(newSavedPoster.imageURL);
     titles.push(newSavedPoster.title);
     quotes.push(newSavedPoster.quote);
-  backToMain();
+  returnToMain();
   newPic.src = newSavedPoster.imageURL;
   newTitles.innerHTML = newSavedPoster.title;
   newQuotes.innerHTML = newSavedPoster.quote;
