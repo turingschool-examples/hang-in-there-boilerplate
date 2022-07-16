@@ -179,5 +179,11 @@ function createNewPoster() {
   posterQuote.innerText = inputQuote;
   var inputImg = addForm.querySelector('#poster-image-url').value;
   posterImage.src = inputImg;
+  var newPoster = new Poster(inputImg, inputTitle, inputQuote)
+
+  titles.push(inputTitle);
+  quotes.push(inputQuote);
+  images.push(inputImg);
+
   showMainPage();
 }
