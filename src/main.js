@@ -160,10 +160,15 @@ function showMakePoster() {
 function showSavedPoster() {
   mainPoster.classList.add("hidden");
   savedPoster.classList.remove("hidden");
-for (var i = 0; i < savedPosters.length; i++) {
-  savedPostersGrid.innerHTML = `
-  <img class="saved-posters-variable" src=${savedPosters[i]}>`
-  }
+  savedPostersGrid.innerHTML = ""
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersGrid.innerHTML +=
+    `<div class="mini-poster">
+      <img src=${savedPosters[i].imageURL}>
+      <h2>${savedPosters[i].title}</h2>
+      <h4>${savedPosters[i].quote}</h4>
+    </div>`;
+    }
 }
 
 function backToMain() {
@@ -187,17 +192,24 @@ function customPoster() {
   newQuotes.innerHTML = newSavedPoster.quote;
 }
 
-function savePoster() {
-  var currentPoster = new Poster(newPic.src, newTitles.innerText, newQuotes.innerText);
-  if (!savedPosters.includes(currentPoster)) {
-    savedPosters.push(currentPoster);
-    console.log(savedPosters)
-  } return savedPosters
-
+function checkForDuplicates(currentPoster) {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].imageURL === currentPoster.imageURL &&
+        savedPosters[i].quote === currentPoster.quote &&
+        savedPosters[i].title === currentPoster.title) {
+          return true
+    }
+  }
+    return false
 }
 
-/*
-querySelector Save This Poster button, add event listener
-to button that will add current poster to saved Posters
-array.
-*/
+function savePoster() {
+  var currentPoster = new Poster(newPic.src, newTitles.innerText, newQuotes.innerText);
+  if (savedPosters.length === 0) {
+    savedPosters.push(currentPoster);
+  } else {
+    if (!checkForDuplicates(currentPoster)) {
+        savedPosters.push(currentPoster);
+      }
+  } console.log(savedPosters)
+}
