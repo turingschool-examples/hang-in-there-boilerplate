@@ -8,6 +8,8 @@ var formPage = document.querySelector('.poster-form');
 var mainPoster = document.querySelector('.main-poster');
 var savedPageButton = document.querySelector('.show-saved');
 var savedPage = document.querySelector('.saved-posters');
+var returnButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -118,13 +120,17 @@ showRandomButton.addEventListener("click", function() {
 showFormButton.addEventListener("click", makeYourOwnPoster);
 
 savedPageButton.addEventListener("click", showSavedPage);
+
+returnButton.addEventListener("click", returnToMain);
+
+backToMainButton.addEventListener("click", returnToMain);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function getRandomPoster() { 
+function getRandomPoster() {
   var poster = new Poster(
     images[getRandomIndex(images)],
     titles[getRandomIndex(titles)],
@@ -150,4 +156,10 @@ function makeYourOwnPoster() {
 function showSavedPage() {
   mainPoster.classList.add("hidden");
   savedPage.classList.remove("hidden");
+}
+
+function returnToMain() {
+  if (mainPoster.classList.contains('hidden')) {
+    mainPoster.classList.remove('hidden')
+  }
 }
