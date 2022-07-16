@@ -113,11 +113,11 @@ var currentPoster;
 // event listeners go here 👇
 showRandomButton.addEventListener("click", function() {
   displayPoster(getRandomPoster());
-})
+});
 
-showFormButton.addEventListener("click", makeYourOwnPoster)
+showFormButton.addEventListener("click", makeYourOwnPoster);
 
-savedPageButton.addEventListener("click", showSavedPage)
+savedPageButton.addEventListener("click", showSavedPage);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
