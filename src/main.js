@@ -160,6 +160,6 @@ function showSavedPage() {
 
 function returnToMain() {
   if (mainPoster.classList.contains('hidden')) {
-    mainPoster.classList.remove('hidden')
+    mainPoster.classList.remove('hidden');
   }
 }
