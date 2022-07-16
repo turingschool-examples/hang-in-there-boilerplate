@@ -3,7 +3,9 @@ var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 var randomPostBut = document.querySelector(".show-random");
-
+var makeNewPosterButton = document.querySelector(".show-form");
+var posterForm = document.querySelector(".poster-form hidden");
+var mainPage = document.querySelector(".main-poster");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,7 +112,7 @@ var currentPoster;
 // event listeners go here 👇
 // next step, add an event listener to trigger on page load
 window.addEventListener("load", showRandomPoster);
-
+makeNewPosterButton.addEventListener("click", showFormPage)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -135,4 +137,16 @@ posterImage.src = images[randomImageNum];
 // will use the above index vaule in bracket notation to get the corresponding title from the array.
 // function needs to update the .innerText of our title and quotes
 // also nees to add in an image source <- google it innerHTML?
+}
+
+function showFormPage() {
+  /*
+  we want this function to show form page(unhide)
+  and hide main page(hide) when the makeNewPosterButton is clicked
+  */
+  if (mainPage.style.display == "none") {
+    mainPage.style.display = "block";
+  } else {
+    mainPage.style.display = "none";
+  }
 }
