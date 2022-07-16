@@ -2,8 +2,17 @@
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+// Main Page Buttons
 var buttonShowRandom = document.querySelector(".show-random");
+var makeNewPosterButton = document.querySelector(".show-form");
+var viewSavedPostersButton = document.querySelector(".show-saved");
+// FormPage and SavedPostersPage Buttons
+var takeMeBackButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
 
+var mainPage = document.querySelector(".main-poster");
+var posterForm = document.querySelector(".poster-form");
+var savedPosterPage = document.querySelector(".saved-posters");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -111,6 +120,10 @@ var currentPoster;
 // next step, add an event listener to trigger on page load
 window.addEventListener("load", showRandomPoster);
 buttonShowRandom.addEventListener("click", showRandomPoster)
+makeNewPosterButton.addEventListener("click", showFormPage);
+viewSavedPostersButton.addEventListener("click", showSavedPage);
+takeMeBackButton.addEventListener("click", showMainPage);
+backToMainButton.addEventListener("click", backToMainPage);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -120,19 +133,30 @@ function getRandomIndex(array) {
 
 function showRandomPoster() {
 // we want to load a random poster on page load
-// we want to generate a random title, quote and image by using function getRandomIndex
 var randomTitleNum = getRandomIndex(titles);
 posterTitle.innerText = titles[randomTitleNum];
 var randomQuoteNum = getRandomIndex(quotes);
 posterQuote.innerText = quotes[randomQuoteNum];
 var randomImageNum = getRandomIndex(images);
 posterImage.src = images[randomImageNum];
+}
 
+function showFormPage() {
+  mainPage.classList.add("hidden");
+  posterForm.classList.remove("hidden");
+}
 
-// [randomTitleNum]        <-- array index variable value from above
+function showSavedPage() {
+  mainPage.classList.add("hidden");
+  savedPosterPage.classList.remove("hidden");
+}
 
-// how do we get a random title? getRandomIndex (titles)           <-- will return a random index value of the titles array
-// will use the above index vaule in bracket notation to get the corresponding title from the array.
-// function needs to update the .innerText of our title and quotes
-// also nees to add in an image source <- google it innerHTML?
+function showMainPage() {
+  posterForm.classList.add("hidden");
+  mainPage.classList.remove("hidden");
+}
+
+function backToMainPage() {
+  savedPosterPage.classList.add("hidden");
+  mainPage.classList.remove("hidden");
 }
