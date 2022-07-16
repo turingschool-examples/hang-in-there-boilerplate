@@ -8,12 +8,11 @@ var mainPoster = document.querySelector(".main-poster");
 var posterForm = document.querySelector(".poster-form");
 var savedPoster = document.querySelector(".saved-posters");
 var savedPosterButton = document.querySelector(".show-saved");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
-var newImg = document.getElementById('poster-image-url');
-var newPictureTitle = document.getElementById('poster-title');
-var newSaying = document.getElementById('poster-quote');
-var NewPosterButton = document.querySelector(".make-poster");
+var newPosterButton = document.querySelector(".make-poster");
+var saveThisPosterButton = document.querySelector(".save-poster")
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -114,7 +113,6 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener("load", getRandomPoster(images, titles, quotes));
@@ -123,7 +121,8 @@ makePosterButton.addEventListener("click", showMakePoster);
 savedPosterButton.addEventListener("click", showSavedPoster);
 nevermindButton.addEventListener("click", backToMain);
 backToMainButton.addEventListener("click", backToMain);
-NewPosterButton.addEventListener("click", savePoster);
+newPosterButton.addEventListener("click", customPoster);
+saveThisPosterButton.addEventListener("click", savePoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -161,6 +160,10 @@ function showMakePoster() {
 function showSavedPoster() {
   mainPoster.classList.add("hidden");
   savedPoster.classList.remove("hidden");
+for (var i = 0; i < savedPosters.length; i++) {
+  savedPostersGrid.innerHTML = `
+  <img class="saved-posters-variable" src=${savedPosters[i]}>`
+  }
 }
 
 function backToMain() {
@@ -169,38 +172,32 @@ function backToMain() {
   mainPoster.classList.remove("hidden")
 }
 
-function savePoster() {
+function customPoster() {
   event.preventDefault();
-
-  var newSavedPoster = new Poster(newImg.value, newPictureTitle.value, newSaying.value);
-  images.push(newSavedPoster.imageURL);
-  titles.push(newSavedPoster.title);
-  quotes.push(newSavedPoster.quote);
-
+  var customImg = document.getElementById('poster-image-url');
+  var customTitle = document.getElementById('poster-title');
+  var customQuote = document.getElementById('poster-quote');
+  var newSavedPoster = new Poster(customImg.value, customTitle.value, customQuote.value);
+    images.push(newSavedPoster.imageURL);
+    titles.push(newSavedPoster.title);
+    quotes.push(newSavedPoster.quote);
   backToMain();
-  
   newPic.src = newSavedPoster.imageURL;
   newTitles.innerHTML = newSavedPoster.title;
   newQuotes.innerHTML = newSavedPoster.quote;
 }
 
+function savePoster() {
+  var currentPoster = new Poster(newPic.src, newTitles.innerText, newQuotes.innerText);
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+    console.log(savedPosters)
+  } return savedPosters
 
+}
 
-
-
-
-
-
-
-
-
-
-
-// query selector form / class: "poster-form hidden"
-// inner HTML for class: "main-poster" add "hidden"
-// event listener for button push
-// event handlers: on click, custom poster form
-//function (removes current poster, bring up form)
-
-//When a user clicks the “Make Your Own Poster” button,
-//we should see the form, and the main poster should be hidden
+/*
+querySelector Save This Poster button, add event listener
+to button that will add current poster to saved Posters
+array.
+*/
