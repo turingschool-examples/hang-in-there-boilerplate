@@ -8,6 +8,7 @@ var mainPoster = document.querySelector(".main-poster");
 var posterForm = document.querySelector(".poster-form");
 var savedPoster = document.querySelector(".saved-posters");
 var savedPosterButton = document.querySelector(".show-saved");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 var newPosterButton = document.querySelector(".make-poster");
@@ -159,6 +160,10 @@ function showMakePoster() {
 function showSavedPoster() {
   mainPoster.classList.add("hidden");
   savedPoster.classList.remove("hidden");
+for (var i = 0; i < savedPosters.length; i++) {
+  savedPostersGrid.innerHTML = `
+  <img class="saved-posters-variable" src=${savedPosters[i]}>`
+  }
 }
 
 function backToMain() {
@@ -184,10 +189,12 @@ function customPoster() {
 
 function savePoster() {
   var currentPoster = new Poster(newPic.src, newTitles.innerText, newQuotes.innerText);
-  savedPosters.push(currentPoster)
-  console.log(savedPosters)
-}
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+    console.log(savedPosters)
+  } return savedPosters
 
+}
 
 /*
 querySelector Save This Poster button, add event listener
