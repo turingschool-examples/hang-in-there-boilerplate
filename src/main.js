@@ -3,8 +3,9 @@ var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var showRandomButton = document.querySelector('.show-random');
-var createNewPoster = document.querySelector('.show-form');
-var form = document.querySelector('form');
+var showFormButton = document.querySelector('.show-form');
+var formPage = document.querySelector('.poster-form');
+var mainPoster = document.querySelector('.main-poster')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -110,36 +111,37 @@ var currentPoster;
 
 // event listeners go here 👇
 showRandomButton.addEventListener("click", function() {
-  var randomPoster = getRandomPoster();
-  displayPoster(randomPoster);
+  displayPoster(getRandomPoster());
 })
-createNewPoster.addEventListener("click", goToCreateForm)
+
+showFormButton.addEventListener("click", makeYourOwnPoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
 // now we need a way to display it
+
+
+function getRandomPoster() { // pulling what elements from the array will go into the poster
+  var poster = new Poster(
+    images[getRandomIndex(images)],
+    titles[getRandomIndex(titles)],
+    quotes[getRandomIndex(quotes)]
+  )
+  return poster
+}
+
 function displayPoster(poster) {
   posterImage.setAttribute('src', poster.imageURL);
   posterTitle.innerText = poster.title;
   posterQuote.innerText = poster.quote;
+  currentPoster = poster
 }
 
-function getRandomPoster() { // pulling what elements from the array will go into the poster
-  return new Poster(
-    images[getRandomIndex(images)], 
-    titles[getRandomIndex(titles)], 
-    quotes[getRandomIndex(quotes)]
-  )
+displayPoster(getRandomPoster())
+
+function makeYourOwnPoster() {
+  mainPoster.classList.add("hidden");
+  formPage.classList.remove("hidden");
 }
-
-displayPoster(getRandomPoster());
-
-
-function goToCreateForm() {
-  newPoster.className.add = hidden
-}
-
-
