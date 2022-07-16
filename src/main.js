@@ -19,10 +19,13 @@ var customPoster = document.querySelector("#poster-image-url");
 var customTitle = document.querySelector("#poster-title");
 var customQuote = document.querySelector("#poster-quote");
 
+
 //make poster
 var mainPoster = document.querySelector(".main-poster");
 var posterForm = document.querySelector(".poster-form");
 var savedPosters = document.querySelector(".saved-posters");
+var savedGrid = document.querySelector(".saved-posters-grid");
+var miniPoster = document.querySelector(".mini-poster");
 
 
 
@@ -124,18 +127,18 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
+// var savedPosters = [];
+// var currentPoster;
 
 // event listeners go here 👇
 //buttons
 //savePosterButton.addEventListener('click', savingPoster);
-//showSavedButton.addEventListener('click', showSaved);
+showSavedButton.addEventListener('click', showSaved);
 showRandomButton.addEventListener('click', showRandom);
-//showFormButton.addEventListener('click', showForm);
-makePoster.addEventListener('click', makingPoster);
-//showMain.addEventListener('click', showingMain);
-//backToMain.addEventListener('click', toMain);
+showFormButton.addEventListener('click', showForm);
+// makePoster.addEventListener('click', makingPoster);
+showMain.addEventListener('click', showingMain);
+backToMain.addEventListener('click', toMain);
 
 
 // functions and event handlers go here 👇
@@ -159,6 +162,27 @@ function showRandom() {
 }
 showRandom()
 
+function showForm() {
+  mainPoster.classList.add('hidden');
+  posterForm.classList.remove('hidden');
+}
+
+function showSaved() {
+  mainPoster.classList.add('hidden');
+  posterForm.classList.add('hidden');
+  savedPosters.classList.remove('hidden');
+}
+
+function showingMain() {
+  posterForm.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+}
+
+function toMain() {
+  savedPosters.classList.add('hidden');
+  posterForm.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+}
 
 
 
