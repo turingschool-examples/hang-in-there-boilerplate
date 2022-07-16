@@ -5,6 +5,14 @@ var indexTitle = document.querySelector(".poster-title");
 var indexQuote = document.querySelector(".poster-quote");
 var randomButton = document.querySelector(".show-random");
 
+var mainPoster = document.querySelector(".main-poster");
+var formPoster = document.querySelector(".poster-form");
+var savedPoster = document.querySelector(".saved-posters");
+var makePosterButton = document.querySelector(".show-form");
+var nevermindButton = document.querySelector(".show-main");
+var showSavedButton = document.querySelector(".show-saved");
+
+
 
 console.log("indexTitle:", indexTitle);
 
@@ -109,8 +117,15 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+
+
+
 // event listeners go here 👇
+changeRandomPoster();
 randomButton.addEventListener("click", changeRandomPoster);
+makePosterButton.addEventListener("click", changeToForm);
+nevermindButton.addEventListener("click", changeToMain);
+showSavedButton.addEventListener("click", changeToSaved);
 
 // functions and event handlers go here 👇
 function changeRandomPoster() {
@@ -118,6 +133,20 @@ function changeRandomPoster() {
   indexImage.src = images[getRandomIndex(images)];
   indexQuote.innerText = quotes[getRandomIndex(quotes)];
 }
+function changeToForm() {
+  mainPoster.classList.add("hidden");
+  formPoster.classList.remove("hidden");
+}
+function changeToMain() {
+  formPoster.classList.add("hidden");
+  mainPoster.classList.remove("hidden");
+}
+function changeToSaved(){
+  mainPoster.classList.add("hidden");
+  savedPoster.classList.remove("hidden");
+}
+
+
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
