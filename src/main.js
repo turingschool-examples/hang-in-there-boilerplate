@@ -4,7 +4,7 @@ var quote = document.querySelector('.poster-quote')
 var image = document.querySelector('.poster-img')
 var randomButton = document.querySelector('.show-random')
 var makeOwnButton = document.querySelector('.show-form')
-var posterForm = document.querySelector('.poster-form')//
+var posterForm = document.querySelector('.poster-form') //
 var mainPoster = document.querySelector('.main-poster')
 var savedButton = document.querySelector('.show-saved')
 var viewSavedPosters = document.querySelector('.saved-posters')
@@ -14,7 +14,8 @@ var imageInput = document.getElementById('poster-image-url')
 var titleInput = document.getElementById('poster-title')
 var quoteInput = document.getElementById('poster-quote')
 var showPosterButton = document.querySelector('.make-poster')
-
+var savePosterButton = document.querySelector('.save-poster')
+var posterGrid = document.querySelector('.saved-posters-grid')
 
 
 // we've provided you with some data to work with 👇
@@ -115,60 +116,82 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
 
-var currentPoster = new Poster();
+
+var savedPosters = [];
+var currentPoster;
+//var currentPoster = new Poster();
 
 
 // event listeners go here 👇
 //eventListeners something that communicates JS with the DOM.  Listening for us taking the
 //action of clicking the button.
-randomButton.addEventListener("click", getRandomPoster)
+window.addEventListener('load', loadRandomPoster)
+randomButton.addEventListener("click", loadRandomPoster)
 makeOwnButton.addEventListener("click", showForm)
 savedButton.addEventListener("click", showSavedPosters)
 backMainButton.addEventListener('click', returnToMain)
-nevermindButton.addEventListener('click', returnToMain)
+nevermindButton.addEventListener('click', nvmReturn)
 showPosterButton.addEventListener('click', createPosterOne)
-
+savePosterButton.addEventListener('click', savePoster)
+savedButton.addEventListener("click", displaySavedPosters)
 
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  var index = Math.floor(Math.random() * array.length);
+  return array[index]
 }
 
+
 function getRandomPoster() {
-  var posterImage = images[getRandomIndex(images)] //invoking the function and giving it the parameter (images instead of .length)
-  var posterTitle = titles[getRandomIndex(titles)] //referring to the data variables (invoking the getRandomIndex() inside of the square)
-  var posterQuotes = quotes[getRandomIndex(quotes)] //brackets, in place of a hardcoded index number.
-  var currentPoster = new Poster(posterImage, posterTitle, posterQuotes)// referring to the class Poster in poster.js, and adding the variable parameters we created for the images, titles and quotes arrays.
-  image.src = currentPoster.imageURL  //this is the change code (.src and .innerText) that we use after creating the querySelector variables to link to the index.html doc.
+  currentPoster = new Poster( getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes) )
+}
+
+function loadNewPoster() {
+  image.src = currentPoster.imageURL
   title.innerText = currentPoster.title
   quote.innerText = currentPoster.quote
 }
-getRandomPoster(); //invoking our new getRandPoster function.
 
 
-function showForm(){
+function loadRandomPoster() {
+  getRandomPoster()
+  loadNewPoster()
+}
+
+
+function showForm() {
   posterForm.classList.remove('hidden')
   mainPoster.classList.add('hidden')
+  nevermindButton.classList.remove('hidden')
+  showPosterButton.classList.remove('hidden')
 }
 
-function showSavedPosters(){
+
+function showSavedPosters() {
   viewSavedPosters.classList.remove('hidden')
   mainPoster.classList.add('hidden')
-
 }
 
-function returnToMain(){
+function returnToMain() {
   mainPoster.classList.remove('hidden')
   viewSavedPosters.classList.add('hidden')
-  posterForm.classList.add('hidden')
-  showPosterButton.classList.add('hidden')
+  // randomButton.classList.remove('hidden')
+  // savePosterButton.classList.remove('hidden')
+  // backMainButton.classList.add('hidden')
+  // savedButton.classList.add('hidden')
 }
 
-function createPosterOne(event){
+function nvmReturn() {
+  mainPoster.classList.remove('hidden')
+  posterForm.classList.add('hidden')
+
+}
+
+
+function createPosterOne(event) {
   event.preventDefault()
   images.push(imageInput.value)
   titles.push(titleInput.value)
@@ -178,4 +201,20 @@ function createPosterOne(event){
   title.innerText = newPosterOne.title
   quote.innerText = newPosterOne.quote
   returnToMain()
+}
+
+function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+  }
+}
+
+function displaySavedPosters() {
+  posterGrid.innerHTML = ""
+  for (var i = 0; i < savedPosters.length; i++) {
+      posterGrid.innerHTML += `<article class="mini-poster">
+  <img class="mini-poster" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+  <h2 class=" ">${savedPosters[i].title}</h2>
+  <h4 class="">${savedPosters[i].quote}</h4>  </article>`
+  }
 }
