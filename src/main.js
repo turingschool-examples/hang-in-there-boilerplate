@@ -4,6 +4,7 @@ var indexImage = document.querySelector(".poster-img");
 var indexTitle = document.querySelector(".poster-title");
 var indexQuote = document.querySelector(".poster-quote");
 var randomButton = document.querySelector(".show-random");
+var backToMainButton = document.querySelector(".back-to-main")
 
 var mainPoster = document.querySelector(".main-poster");
 var formPoster = document.querySelector(".poster-form");
@@ -14,7 +15,7 @@ var showSavedButton = document.querySelector(".show-saved");
 
 
 
-console.log("indexTitle:", indexTitle);
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -126,6 +127,8 @@ randomButton.addEventListener("click", changeRandomPoster);
 makePosterButton.addEventListener("click", changeToForm);
 nevermindButton.addEventListener("click", changeToMain);
 showSavedButton.addEventListener("click", changeToSaved);
+backToMainButton.addEventListener('click', savedToMain)
+
 
 // functions and event handlers go here 👇
 function changeRandomPoster() {
@@ -141,9 +144,13 @@ function changeToMain() {
   formPoster.classList.add("hidden");
   mainPoster.classList.remove("hidden");
 }
-function changeToSaved(){
+function changeToSaved() {
   mainPoster.classList.add("hidden");
   savedPoster.classList.remove("hidden");
+}
+function savedToMain() {
+  mainPoster.classList.remove("hidden");
+  savedPoster.classList.add("hidden");
 }
 
 
