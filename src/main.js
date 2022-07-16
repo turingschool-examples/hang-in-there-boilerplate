@@ -120,21 +120,20 @@ var quotes = [
 
 var savedPosters = [];
 var currentPoster;
-//var currentPoster = new Poster();
 
 
 // event listeners go here 👇
-//eventListeners something that communicates JS with the DOM.  Listening for us taking the
-//action of clicking the button.
+
 window.addEventListener('load', loadRandomPoster)
-randomButton.addEventListener("click", loadRandomPoster)
-makeOwnButton.addEventListener("click", showForm)
-savedButton.addEventListener("click", showSavedPosters)
+randomButton.addEventListener('click', loadRandomPoster)
+makeOwnButton.addEventListener('click', showForm)
+savedButton.addEventListener('click', showSavedPosters)
 backMainButton.addEventListener('click', returnToMain)
 nevermindButton.addEventListener('click', nvmReturn)
 showPosterButton.addEventListener('click', createPosterOne)
 savePosterButton.addEventListener('click', savePoster)
-savedButton.addEventListener("click", displaySavedPosters)
+savedButton.addEventListener('click', displaySavedPosters)
+posterGrid.addEventListener('dblclick', deletePoster)
 
 
 // functions and event handlers go here 👇
@@ -146,7 +145,7 @@ function getRandomIndex(array) {
 
 
 function getRandomPoster() {
-  currentPoster = new Poster( getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes) )
+  currentPoster = new Poster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes) )
 }
 
 function loadNewPoster() {
@@ -165,10 +164,8 @@ function loadRandomPoster() {
 function showForm() {
   posterForm.classList.remove('hidden')
   mainPoster.classList.add('hidden')
-  nevermindButton.classList.remove('hidden')
-  showPosterButton.classList.remove('hidden')
-}
 
+}
 
 function showSavedPosters() {
   viewSavedPosters.classList.remove('hidden')
@@ -178,10 +175,7 @@ function showSavedPosters() {
 function returnToMain() {
   mainPoster.classList.remove('hidden')
   viewSavedPosters.classList.add('hidden')
-  // randomButton.classList.remove('hidden')
-  // savePosterButton.classList.remove('hidden')
-  // backMainButton.classList.add('hidden')
-  // savedButton.classList.add('hidden')
+  posterForm.classList.add('hidden')
 }
 
 function nvmReturn() {
@@ -212,9 +206,24 @@ function savePoster() {
 function displaySavedPosters() {
   posterGrid.innerHTML = ""
   for (var i = 0; i < savedPosters.length; i++) {
-      posterGrid.innerHTML += `<article class="mini-poster">
-  <img class="mini-poster" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
-  <h2 class=" ">${savedPosters[i].title}</h2>
-  <h4 class="">${savedPosters[i].quote}</h4>  </article>`
+      posterGrid.innerHTML += `<article class="mini-poster" id="${savedPosters[i].id}">
+  <img class="mini-poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+  <h2 class="mini-poster-title">${savedPosters[i].title}</h2>
+  <h4 class="mini-poster-quote">${savedPosters[i].quote}</h4>  </article>`
   }
 }
+
+// function deletePoster() {
+// // if (posterGrid.hasAttribute('class')) {
+// //     posterGrid.removeAttribute('class')
+// //   }  //SORT OF WORKS, IT MOVES THE POSTER TO ANOTHER LINE
+//
+//   var deletePost = event.currentTarget.id
+//   for (var i = 0; i < savedPosters.length; i++) {
+//     if (`${savedPosters[i].id}` === deletePost) {
+//     savedPosters.splice(i, 1)
+//     }
+//   }
+//   console.log('hello')
+//   //displaySavedPosters()
+// }
