@@ -201,7 +201,7 @@ function createNewPoster(event) {
   pushToArrays();
   changeView();
   displayPoster(createUserPoster());
-}
+} 
 
 function addToSavedPage() {
   var isUnique = true;
