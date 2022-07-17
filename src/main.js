@@ -194,17 +194,16 @@ function addSavedPoster() {
        isDuplicate = true
      }
    }
-   if(!isDuplicate) {     
+   if(!isDuplicate) {
      savedPosters.push(currentPoster)
 
    }
-console.log(savedPosters)
 }
 
-
 function injectPoster() {
+  savePosterGrid.innerHTML = ``
   for (var i = 0; i < savedPosters.length; i++) {
-    savePosterGrid.innerHTML = `
+    savePosterGrid.innerHTML += `
       <article class="mini-poster">
         <img class="new-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
         <h1 class="new-poster-title">${savedPosters[i].title}</h1>
