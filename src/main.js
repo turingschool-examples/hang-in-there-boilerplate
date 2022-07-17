@@ -10,6 +10,10 @@ var showSavedButton = document.querySelector('.show-saved');
 var seeSavedPage = document.querySelector('.saved-posters');
 var returnButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+var makeMyPosterButton = document.querySelector('.make-poster');
+var imageInput = document.getElementById('poster-image-url');
+var titleInput = document.getElementById('poster-title');
+var quoteInput = document.getElementById('poster-quote');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -117,6 +121,7 @@ showFormButton.addEventListener('click', viewForm);
 showSavedButton.addEventListener('click', seeSavedPosters);
 returnButton.addEventListener('click', returnToMain);
 backToMainButton.addEventListener('click', returnToMain);
+makeMyPosterButton.addEventListener('click', showCreatedPoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -160,4 +165,22 @@ function returnToMain() {
   if (posterSection.classList.contains('hidden')) {
     posterSection.classList.remove('hidden')
   }
+}
+
+function pushToArrays(array, input) {
+  array.push(input);
+}
+
+function showCreatedPoster(event) {
+  event.preventDefault(); // default behavior is to submit the form, but we don't want to submit the form
+
+  var poster = new Poster(imageInput.value, titleInput.value, quoteInput.value)
+  displayPoster(poster)
+
+  pushToArrays(images, imageInput.value);
+  pushToArrays(titles, titleInput.value);
+  pushToArrays(quotes, quoteInput.value);
+
+  accessForm.classList.add('hidden');
+  posterSection.classList.remove('hidden');
 }
