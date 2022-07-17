@@ -139,6 +139,7 @@ showFormButton.addEventListener('click', showForm);
 makePoster.addEventListener('click', makingPoster);
 showMain.addEventListener('click', showingMain);
 backToMain.addEventListener('click', toMain);
+savedGrid.addEventListener('dblclick', deleteMiniPoster);
 
 
 // functions and event handlers go here 👇
@@ -214,6 +215,40 @@ function makeGrid() {
   showingMain()
 }
 
+<<<<<<< HEAD
+=======
+// function deletePoster() {
+//   miniPoster = document.querySelectorAll('.mini-poster');
+//   for (var i = 0; i < savePostersArr.length; i++) {
+//   }
+//   //.splce
+// }
+
+function deleteMiniPoster() {
+  console.log('event: ', event);
+  console.log('event.target: ', event.target);
+  console.log('event.target.id: ', event.target.id);
+  console.log("before deletion: ", savePostersArr);
+
+  var posterID = event.target.id
+  for (var i = 0; i < savePostersArr.length; i++) {
+    if (savePostersArr[i].id == posterID) {
+    savePostersArr.splice(i, 1);
+    reloadGrid();
+    }
+  }
+
+
+function reloadGrid() {
+  event.target.remove(posterID);
+}
+
+  console.log("after deletion: ", savePostersArr);
+/*need to figure out way to update page.  DOM doesn't know ^^^ has happened.
+need to invoke a function*/
+
+}
+>>>>>>> 5e13dbe0ae034dc04c3a18361bff4934a0afa33b
 
 
 showRandom()
