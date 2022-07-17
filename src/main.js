@@ -155,7 +155,7 @@ function displayForm() {
 function displaySaved() {
   showSavedPoster.className = 'showed-posters'
   mainPage.className = 'main-poster hidden'
-  injectSaved();
+  injectPoster();
 }
 function goToMain() {
   showSavedPoster.className = 'saved-poster hidden'
@@ -201,8 +201,17 @@ function addSavedPoster() {
 console.log(savedPosters)
 }
 
-function showSavedPosters() {
 
+function injectPoster() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    savePosterGrid.innerHTML = `
+      <article class="mini-poster">
+        <img class="new-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+        <h1 class="new-poster-title">${savedPosters[i].title}</h1>
+        <h3 class="new-poster-quote">${savedPosters[i].quote}</h3>
+        </article>
+    `
+  }
 }
 
 
