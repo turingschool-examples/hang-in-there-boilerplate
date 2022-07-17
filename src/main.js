@@ -21,6 +21,7 @@ var createNewTitle = document.querySelector('#poster-title')
 
 var savePosterButton = document.querySelector('.save-poster')
 var savePosterGrid = document.querySelector('.saved-posters-grid')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -131,6 +132,7 @@ nevermindButton.addEventListener('click', goToMain);
 goBackButton.addEventListener('click', goToMain);
 makePosterButton.addEventListener('click', showMyPoster);
 savePosterButton.addEventListener('click', addSavedPoster);
+savePosterGrid.addEventListener('click', showSavedPosters)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -184,13 +186,21 @@ function saveData() {
 }
 
 function addSavedPoster() {
-   if(!savedPosters.includes(currentPoster)) {
-     console.log("duplicate")
+   event.preventDefault()
+   posterInstance()
+   var isDuplicate = false
+   for(var i = 0; i < savedPosters.length; i++) {
+     if(savedPosters[i].src === currentPoster.src && savedPosters[i].title === currentPoster.title && savedPosters[i].quote === currentPoster.quote) {
+       isDuplicate = true
+     }
+   }
+   if(!isDuplicate) {     
      savedPosters.push(currentPoster)
 
    }
 console.log(savedPosters)
 }
+
 
 function injectPoster() {
   for (var i = 0; i < savedPosters.length; i++) {
