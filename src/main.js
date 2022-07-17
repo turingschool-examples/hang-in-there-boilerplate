@@ -1,4 +1,24 @@
 // query selector variables go here 👇
+// var Poster = require("..hang-in-there/src/poster.js");
+var indexImage = document.querySelector(".poster-img");
+var indexTitle = document.querySelector(".poster-title");
+var indexQuote = document.querySelector(".poster-quote");
+var randomButton = document.querySelector(".show-random");
+var backToMainButton = document.querySelector(".back-to-main");
+
+var mainPoster = document.querySelector(".main-poster");
+var formPoster = document.querySelector(".poster-form");
+var savedPoster = document.querySelector(".saved-posters");
+//save poster button
+var makePosterButton = document.querySelector(".show-form");
+var nevermindButton = document.querySelector(".show-main");
+var showSavedButton = document.querySelector(".show-saved");
+var userImageInput = document.querySelector("#poster-image-url");
+var userTitleInput = document.querySelector("#poster-title");
+var userQuoteInput = document.querySelector("#poster-quote");
+var submitUserInfoButton = document.querySelector(".make-poster");
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -99,13 +119,70 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {
+    image : userImageInput,
+    title : userTitleInput,
+    quote : userQuoteInput
+}
+
+
+
+
 
 // event listeners go here 👇
+// invoking changeRandomPoster() loads a random poster on page
+//changeRandomPoster();
+window.addEventListener('load',changeRandomPoster)
+randomButton.addEventListener("click", changeRandomPoster);
+makePosterButton.addEventListener("click", changeToForm);
+nevermindButton.addEventListener("click", changeToMain);
+showSavedButton.addEventListener("click", changeToSaved);
+backToMainButton.addEventListener('click', savedToMain);
+submitUserInfoButton.addEventListener('click', submitUserInfo);
+
+//submitUserInfoButton addEventListener and handler function are correct
 
 // functions and event handlers go here 👇
+function changeRandomPoster() {
+  indexTitle.innerText = titles[getRandomIndex(titles)];
+  indexImage.src = images[getRandomIndex(images)];
+  indexQuote.innerText = quotes[getRandomIndex(quotes)];
+}
+function changeToForm() {
+  mainPoster.classList.add("hidden");
+  formPoster.classList.remove("hidden");
+}
+function changeToMain() {
+  formPoster.classList.add("hidden");
+  mainPoster.classList.remove("hidden");
+}
+function changeToSaved() {
+  mainPoster.classList.add("hidden");
+  savedPoster.classList.remove("hidden");
+}
+function savedToMain() {
+  mainPoster.classList.remove("hidden");
+  savedPoster.classList.add("hidden");
+}
+function submitUserInfo() {
+  event.preventDefault();
+  var userPoster1 = new Poster(userImageInput.value, userTitleInput.value, userQuoteInput.value);
+  indexTitle.innerText = userPoster1.title;
+  indexImage.src = userPoster1.imageURL;
+  indexQuote.innerText = userPoster1.quote;
+  titles.push(userPoster1.title);
+  images.push(userPoster1.imageURL);
+  quotes.push(userPoster1.quote);
+  mainPoster.classList.remove("hidden");
+  formPoster.classList.add("hidden");
+}
+function saveThisPoster() {
+  var userSavedPoster = new Poster(userImageInput.value, userTitleInput.value, userQuoteInput.value);
+  savedPosters.push(userSavedPoster);
+}
+
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
