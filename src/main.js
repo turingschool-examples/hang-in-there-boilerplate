@@ -194,10 +194,7 @@ function addSavedPoster() {
        isDuplicate = true
      }
    }
-   if(!isDuplicate) {     // couldnt use "includes" b/c the id
-     console.log("duplicate")
-     console.log("Current poster," , currentPoster)
-     console.log("Saved posters" ,savedPosters)
+   if(!isDuplicate) {     
      savedPosters.push(currentPoster)
 
    }
