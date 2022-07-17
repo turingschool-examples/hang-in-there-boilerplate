@@ -127,16 +127,16 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-// var savedPosters = [];
-// var currentPoster;
+var savePostersArr = [];
+var currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
 
 // event listeners go here 👇
 //buttons
-//savePosterButton.addEventListener('click', savingPoster);
+savePosterButton.addEventListener('click', savingPoster);
 showSavedButton.addEventListener('click', showSaved);
 showRandomButton.addEventListener('click', showRandom);
 showFormButton.addEventListener('click', showForm);
-// makePoster.addEventListener('click', makingPoster);
+makePoster.addEventListener('click', makingPoster);
 showMain.addEventListener('click', showingMain);
 backToMain.addEventListener('click', toMain);
 
@@ -152,15 +152,17 @@ function loadPoster(image, title, quote) {
   posterImage.src = image
   posterTitle.innerText = title
   posterQuote.innerText = quote
+
 }
 
 function showRandom() {
-  var image = images[getRandomIndex(images)]
-  var title = titles[getRandomIndex(titles)]
-  var quote = quotes[getRandomIndex(quotes)]
+  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
+  var image = currentPoster.imageURL
+  var title = currentPoster.title
+  var quote = currentPoster.quote
   loadPoster(image, title, quote)
 }
-showRandom()
+
 
 function showForm() {
   mainPoster.classList.add('hidden');
@@ -183,7 +185,39 @@ function toMain() {
   posterForm.classList.add('hidden');
   mainPoster.classList.remove('hidden');
 }
+function makingPoster() {
+  event.preventDefault()
+  currentPoster = new Poster(posterImage, posterTitle, posterQuote)
+  loadPoster(customPoster.value, customTitle.value, customQuote.value)
+  toMain()
 
+}
 
+function savingPoster() {
+
+  if (!savePostersArr.includes(currentPoster)) {
+    savePostersArr.push(currentPoster)
+  }
+  makeGrid()
+}
+
+function makeGrid() {
+  savedGrid.innerHTML = ""
+  for (var i = 0; i < savePostersArr.length; i++) {
+    savedGrid.innerHTML += `<div class="mini-poster" id="${savePostersArr[i].id}">
+              <img src="${savePostersArr[i].imageURL}" alt="saved poster">
+              <h2>${savePostersArr[i].title}</h2>
+              <h4>${savePostersArr[i].quote}</h4>
+            </div>`
+
+  }
+  showingMain()
+}
+
+showRandom()
+/*if !savePostersArr.includes(currentPoster)
+savePostersArr.push(currentPoster)
+
+how to push ann array into an html article
 
 /*We want to display a poster of randomly selected images, titles, and quotes. We need to create a function that first displays a poster. The properties of the poster should be image, title, quote. We think we need to pass information via an array of images, titles, and quotes.*/
