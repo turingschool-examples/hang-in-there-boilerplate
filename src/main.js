@@ -125,6 +125,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener("load", showRandomPoster)
 showRandomButton.addEventListener('click', showRandomPoster);
 posterFormButton.addEventListener('click', displayForm);
 showSavedButton.addEventListener('click', displaySaved);
@@ -132,7 +133,8 @@ nevermindButton.addEventListener('click', goToMain);
 goBackButton.addEventListener('click', goToMain);
 makePosterButton.addEventListener('click', showMyPoster);
 savePosterButton.addEventListener('click', addSavedPoster);
-savePosterGrid.addEventListener('click', showSavedPosters)
+savePosterGrid.addEventListener('dblclick', deletePoster)
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -204,7 +206,7 @@ function injectPoster() {
   savePosterGrid.innerHTML = ``
   for (var i = 0; i < savedPosters.length; i++) {
     savePosterGrid.innerHTML += `
-      <article class="mini-poster">
+      <article class="mini-poster" id="${savedPosters[i].id}">
         <img class="new-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
         <h1 class="new-poster-title">${savedPosters[i].title}</h1>
         <h3 class="new-poster-quote">${savedPosters[i].quote}</h3>
@@ -213,7 +215,16 @@ function injectPoster() {
   }
 }
 
+function deletePoster() {
+var id = event.target.parentNode.id
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id == id) {
+      savedPosters.splice(i, 1)
+    }
+}
+  injectPoster()
 
+}
 
 
 
