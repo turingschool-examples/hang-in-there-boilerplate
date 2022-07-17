@@ -14,6 +14,7 @@ var makeMyPosterButton = document.querySelector('.make-poster');
 var imageInput = document.getElementById('poster-image-url');
 var titleInput = document.getElementById('poster-title');
 var quoteInput = document.getElementById('poster-quote');
+var saveThisButton = document.querySelector('.save-poster');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -122,6 +123,7 @@ showSavedButton.addEventListener('click', seeSavedPosters);
 returnButton.addEventListener('click', returnToMain);
 backToMainButton.addEventListener('click', returnToMain);
 makeMyPosterButton.addEventListener('click', createNewPoster);
+saveThisButton.addEventListener('click', addToSavedPage);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -191,4 +193,16 @@ function createNewPoster(event) {
   pushToArrays();
   changeView();
   displayPoster(createUserPoster());
+}
+
+function addToSavedPage() {
+  var isUnique = true;
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (currentPoster.id === savedPosters[i].id) {
+      isUnique = false;
+    }
+  } 
+  if (isUnique) {
+    savedPosters.push(currentPoster); 
+  }
 }
