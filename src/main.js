@@ -214,6 +214,8 @@ function makeGrid() {
   showingMain()
 }
 
+
+
 showRandom()
 /*if !savePostersArr.includes(currentPoster)
 savePostersArr.push(currentPoster)
