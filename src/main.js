@@ -14,6 +14,7 @@ var makeMyPosterButton = document.querySelector('.make-poster');
 var imageInput = document.getElementById('poster-image-url');
 var titleInput = document.getElementById('poster-title');
 var quoteInput = document.getElementById('poster-quote');
+var saveThisButton = document.querySelector('.save-poster');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -121,7 +122,8 @@ showFormButton.addEventListener('click', viewForm);
 showSavedButton.addEventListener('click', seeSavedPosters);
 returnButton.addEventListener('click', returnToMain);
 backToMainButton.addEventListener('click', returnToMain);
-makeMyPosterButton.addEventListener('click', showCreatedPoster);
+makeMyPosterButton.addEventListener('click', createNewPoster);
+saveThisButton.addEventListener('click', addToSavedPage);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -167,20 +169,40 @@ function returnToMain() {
   }
 }
 
-function pushToArrays(array, input) {
-  array.push(input);
+function createUserPoster() {
+  var poster = new Poster(imageInput.value, titleInput.value, quoteInput.value);
+
+  return poster;
 }
 
-function showCreatedPoster(event) {
-  event.preventDefault(); // default behavior is to submit the form, but we don't want to submit the form
+function pushToArrays() {
+  var poster = createUserPoster();
 
-  var poster = new Poster(imageInput.value, titleInput.value, quoteInput.value)
-  displayPoster(poster)
+  images.push(poster.imageURL);
+  titles.push(poster.title);
+  quotes.push(poster.quote);
+}
 
-  pushToArrays(images, imageInput.value);
-  pushToArrays(titles, titleInput.value);
-  pushToArrays(quotes, quoteInput.value);
-
+function changeView() {
   accessForm.classList.add('hidden');
   posterSection.classList.remove('hidden');
+}
+
+function createNewPoster(event) {
+  event.preventDefault();
+  pushToArrays();
+  changeView();
+  displayPoster(createUserPoster());
+}
+
+function addToSavedPage() {
+  var isUnique = true;
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (currentPoster.id === savedPosters[i].id) {
+      isUnique = false;
+    }
+  } 
+  if (isUnique) {
+    savedPosters.push(currentPoster); 
+  }
 }
