@@ -15,6 +15,7 @@ var imageInput = document.getElementById('poster-image-url');
 var titleInput = document.getElementById('poster-title');
 var quoteInput = document.getElementById('poster-quote');
 var saveThisButton = document.querySelector('.save-poster');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -161,6 +162,13 @@ function viewForm() {
 function seeSavedPosters() {
   posterSection.classList.add('hidden');
   seeSavedPage.classList.remove('hidden');
+  var addedPoster = '';
+  for (var i = 0; i < savedPosters.length; i++) {
+    addedPoster += `<article class="poster"><img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+    <h1 class="poster-title">${savedPosters[i].title}</h1>
+    <h3 class="poster-quote">${savedPosters[i].quote}</h3></article>`;
+  }
+  savedPostersGrid.innerHTML = addedPoster;
 }
 
 function returnToMain() {
