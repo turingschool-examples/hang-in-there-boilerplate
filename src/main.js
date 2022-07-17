@@ -1,8 +1,16 @@
 // query selector variables go here 👇
-//Load page -- iteration 0
+
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+var customPoster = document.querySelector("#poster-image-url");
+var customTitle = document.querySelector("#poster-title");
+var customQuote = document.querySelector("#poster-quote");
+var mainPoster = document.querySelector(".main-poster");
+var posterForm = document.querySelector(".poster-form");
+var savedPosters = document.querySelector(".saved-posters");
+var savedGrid = document.querySelector(".saved-posters-grid");
+var miniPoster = document.querySelector(".mini-poster");
 
 
 //buttons
@@ -14,18 +22,7 @@ var makePoster = document.querySelector(".make-poster");
 var showMain = document.querySelector(".show-main");
 var backToMain = document.querySelector(".back-to-main");
 
-//custom poster
-var customPoster = document.querySelector("#poster-image-url");
-var customTitle = document.querySelector("#poster-title");
-var customQuote = document.querySelector("#poster-quote");
 
-
-//make poster
-var mainPoster = document.querySelector(".main-poster");
-var posterForm = document.querySelector(".poster-form");
-var savedPosters = document.querySelector(".saved-posters");
-var savedGrid = document.querySelector(".saved-posters-grid");
-var miniPoster = document.querySelector(".mini-poster");
 
 
 
@@ -143,7 +140,7 @@ savedGrid.addEventListener('dblclick', deleteMiniPoster);
 
 
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -186,12 +183,12 @@ function toMain() {
   posterForm.classList.add('hidden');
   mainPoster.classList.remove('hidden');
 }
+
 function makingPoster() {
   event.preventDefault()
   currentPoster = new Poster(posterImage, posterTitle, posterQuote)
   loadPoster(customPoster.value, customTitle.value, customQuote.value)
   toMain()
-
 }
 
 function savingPoster() {
@@ -210,26 +207,11 @@ function makeGrid() {
               <h2>${savePostersArr[i].title}</h2>
               <h4>${savePostersArr[i].quote}</h4>
             </div>`
-
   }
   showingMain()
 }
 
-<<<<<<< HEAD
-=======
-// function deletePoster() {
-//   miniPoster = document.querySelectorAll('.mini-poster');
-//   for (var i = 0; i < savePostersArr.length; i++) {
-//   }
-//   //.splce
-// }
-
 function deleteMiniPoster() {
-  console.log('event: ', event);
-  console.log('event.target: ', event.target);
-  console.log('event.target.id: ', event.target.id);
-  console.log("before deletion: ", savePostersArr);
-
   var posterID = event.target.id
   for (var i = 0; i < savePostersArr.length; i++) {
     if (savePostersArr[i].id == posterID) {
@@ -237,24 +219,8 @@ function deleteMiniPoster() {
     reloadGrid();
     }
   }
-
-
 function reloadGrid() {
   event.target.remove(posterID);
 }
-
-  console.log("after deletion: ", savePostersArr);
-/*need to figure out way to update page.  DOM doesn't know ^^^ has happened.
-need to invoke a function*/
-
 }
->>>>>>> 5e13dbe0ae034dc04c3a18361bff4934a0afa33b
-
-
 showRandom()
-/*if !savePostersArr.includes(currentPoster)
-savePostersArr.push(currentPoster)
-
-how to push ann array into an html article
-
-/*We want to display a poster of randomly selected images, titles, and quotes. We need to create a function that first displays a poster. The properties of the poster should be image, title, quote. We think we need to pass information via an array of images, titles, and quotes.*/
