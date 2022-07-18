@@ -158,7 +158,6 @@ function changeToMain() {
   mainPoster.classList.remove("hidden");
 }
 function changeToSaved() {
-  //clear the grid everytime we jump back in
   mainPoster.classList.add("hidden");
   savedPoster.classList.remove("hidden");
   posterGrid.innerHTML = ""
