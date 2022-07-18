@@ -9,6 +9,7 @@ var backToMainButton = document.querySelector(".back-to-main");
 var mainPoster = document.querySelector(".main-poster");
 var formPoster = document.querySelector(".poster-form");
 var savedPoster = document.querySelector(".saved-posters");
+var posterGrid = document.querySelector(".saved-posters-grid");
 var savePostersButton = document.querySelector(".save-poster")
 var makePosterButton = document.querySelector(".show-form");
 var nevermindButton = document.querySelector(".show-main");
@@ -118,12 +119,12 @@ var quotes = [
 ];
 var savedPosters = [];
 
-var currentPoster = new Poster();
+var currentPoster;
 
 // event listeners go here 👇
 // invoking changeRandomPoster() loads a random poster on page
 //changeRandomPoster();
-window.addEventListener('load', changeRandomPoster)
+window.addEventListener('load', changeRandomPoster);
 randomButton.addEventListener("click", changeRandomPoster);
 makePosterButton.addEventListener("click", changeToForm);
 nevermindButton.addEventListener("click", changeToMain);
@@ -136,11 +137,17 @@ savePostersButton.addEventListener('click', saveThisPoster);
 
 // functions and event handlers go here 👇
 function changeRandomPoster() {
-  var randomPoster = new Poster(indexImage.src, indexTitle.innerText, indexQuote.innerText);
-  indexTitle.innerText = titles[getRandomIndex(titles)];
-  indexImage.src = images[getRandomIndex(images)];
-  indexQuote.innerText = quotes[getRandomIndex(quotes)];
-  currentPoster = randomPoster;
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomImage = images[getRandomIndex(images)];
+  var randomQuote =  quotes[getRandomIndex(quotes)];
+
+  indexTitle.innerText = randomTitle;
+  indexImage.src = randomImage;
+  indexQuote.innerText = randomQuote;
+
+  currentPoster = new Poster(randomImage, randomTitle, randomQuote);
+
+  console.log(currentPoster);
 }
 function changeToForm() {
   mainPoster.classList.add("hidden");
@@ -153,6 +160,23 @@ function changeToMain() {
 function changeToSaved() {
   mainPoster.classList.add("hidden");
   savedPoster.classList.remove("hidden");
+
+  var img = document.createElement("img");
+  var title = document.createElement("h2");
+  var quote = document.createElement("h4");
+  var div = document.createElement("div");
+
+  img.classList.add("mini-poster");
+  // title.classList.add("mini-poster");
+  // quote.classList.add("mini-poster");
+
+  title.innerHTML = "Test Title";
+  quote.innerHTML = "Test Quote";
+
+  posterGrid.appendChild(div);
+  div.appendChild(img);
+  div.appendChild(title);
+  div.appendChild(quote);
 }
 function savedToMain() {
   mainPoster.classList.remove("hidden");
@@ -169,14 +193,15 @@ function submitUserInfo() {
   quotes.push(userPoster1.quote);
   mainPoster.classList.remove("hidden");
   formPoster.classList.add("hidden");
+  currentPoster = userPoster1;
 }
 function saveThisPoster() {
-  var userSavedPoster = new Poster(indexImage.src, indexTitle.innerText, indexQuote.innerText);
-  console.log(userSavedPoster);
-  if (!savedPosters.includes(userSavedPoster)){
-    savedPosters.push(userSavedPoster);
+  if(!savedPosters.includes(currentPoster)){
+    savedPosters.push(currentPoster);
   }
 }
+
+//innerHTML
 
 
 // (we've provided one for you to get you started)!
