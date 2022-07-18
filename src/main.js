@@ -173,7 +173,7 @@ function navMainPageToSavedPosters() {
     var div = document.createElement("div");
 
     div.classList.add("mini-poster")
-    //div.addEventListener("dblclick",deletePoster);
+    div.addEventListener("dblclick",deletePoster);
 
     img.src = savedPosters[i].imageURL;
     title.innerHTML = savedPosters[i].title;
@@ -185,6 +185,8 @@ function navMainPageToSavedPosters() {
     div.appendChild(quote);
   }
 }
+
+
 
 function navSavedPostersToMain() {
   changePages(savedPoster, mainPoster)
