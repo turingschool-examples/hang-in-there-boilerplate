@@ -158,25 +158,28 @@ function changeToMain() {
   mainPoster.classList.remove("hidden");
 }
 function changeToSaved() {
+  //clear the grid everytime we jump back in
   mainPoster.classList.add("hidden");
   savedPoster.classList.remove("hidden");
+  posterGrid.innerHTML = ""
 
-  var img = document.createElement("img");
-  var title = document.createElement("h2");
-  var quote = document.createElement("h4");
-  var div = document.createElement("div");
+  for(var i = 0; i < savedPosters.length; i++) {
+    var img = document.createElement("img");
+    var title = document.createElement("h2");
+    var quote = document.createElement("h4");
+    var div = document.createElement("div");
 
-  img.classList.add("mini-poster");
-  // title.classList.add("mini-poster");
-  // quote.classList.add("mini-poster");
+    div.classList.add("mini-poster")
 
-  title.innerHTML = "Test Title";
-  quote.innerHTML = "Test Quote";
+    img.src = savedPosters[i].imageURL;
+    title.innerHTML = savedPosters[i].title;
+    quote.innerHTML = savedPosters[i].quote ;
 
-  posterGrid.appendChild(div);
-  div.appendChild(img);
-  div.appendChild(title);
-  div.appendChild(quote);
+    posterGrid.appendChild(div);
+    div.appendChild(img);
+    div.appendChild(title);
+    div.appendChild(quote);
+  }
 }
 function savedToMain() {
   mainPoster.classList.remove("hidden");
