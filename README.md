@@ -31,7 +31,7 @@ ______________________________________________________
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
 
 ### Contributors:
-[//]: <> (Who worked on this application? Who owned what pieces of building this application?)
+[//]: <> (Who worked on this application? Link to their GitHubs.)
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
