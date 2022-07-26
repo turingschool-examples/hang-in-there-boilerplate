@@ -25,7 +25,7 @@ ______________________________________________________
 # Hang in There  
 
 ### Abstract:
-[//]: Briefly describe what you built and its features
+[//]: (Briefly describe what you built and its features)
 
 
 install steps
