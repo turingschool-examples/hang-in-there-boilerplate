@@ -24,9 +24,8 @@ ______________________________________________________
 
 # Hang in There  
 
-[//]: <> (1)
-[//]: 2
-[//] 3
+### Abstract:
+[//]: Briefly describe what you built and its features
 
 
 install steps
