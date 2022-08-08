@@ -222,10 +222,9 @@ var id = event.target.parentNode.id
       savedPosters.splice(i, 1)
     }
 }
-  injectPoster()
+  injectPoster();
 
 }
-
 
 
 
