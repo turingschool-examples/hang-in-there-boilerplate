@@ -106,10 +106,19 @@ var posterTitle = document.querySelector(".poster-title")
 var posterQuote = document.querySelector(".poster-quote")
 var posterImage = document.querySelector(".poster-img")
 // functions and event handlers go here 👇
+createsRandomPoster ()
 function createsRandomPoster (){
   var imgIndex = getRandomIndex(images)
+  var img = images[imgIndex]
+  posterImage.src = img
+  
   var titleIndex = getRandomIndex(titles)
+  var title = titles[titleIndex]
+  posterTitle.innerText = title
+  
   var quoteIndex = getRandomIndex(quotes)
+  var quote = quotes[quoteIndex]
+  posterQuote.innerText = quote 
 }
 
 
