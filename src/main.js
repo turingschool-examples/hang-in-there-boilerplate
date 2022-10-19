@@ -1,5 +1,7 @@
 // query selector variables go here 👇
-
+var newImage = document.querySelector('.poster-img');
+var newTitle = document.querySelector('.poster-title');
+var newQuote = document.querySelector('.poster-quote');
 // we've provided you with some data to work with 👇
 var images = [ //this is accessing the assets directory (images that will be used later on when we make a new class of Poster!)
   "./assets/bees.jpg",
@@ -108,3 +110,6 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+//iteration 0: display random image, title, and quote when the page loads
+// Access arrays with for loops
+function 
