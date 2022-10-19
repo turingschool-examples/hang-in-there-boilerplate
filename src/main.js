@@ -1,5 +1,7 @@
 // query selector variables go here 👇
 
+// declare var poster = document.querySelector(".poster") 
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -103,9 +105,32 @@ var currentPoster;
 
 // event listeners go here 👇
 
+//poster.addEventListener("load", nameOfFunctionForPageLoad())
+
+
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+//function pageLoadFunction() {
+  //instantiate poster
+  //var indexForArray = getRandomIndex(pickAnArray);
+  //pass value at each index 
+//}
+
+
+
+//-----------------//
+//1st. bullet point of iteration 0
+//when page loads we should see a poster with a randomly selected image title and quote
+//listen for page load
+//create a poster (instantiate a class or pull individual pieces from the datamodel and send them individually to the DOM(but better to use class))
+  //poster needs random image, title, quote (random generator Math floor)
+  //instantiated poster is created in the datamodel and needs to be sent to the DOM (link poster.js to main.js)
+
+
+  //use innerHTML to send the poster to the DOM
