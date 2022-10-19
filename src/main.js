@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-
+var Poster = require('./poster.js');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -103,9 +103,22 @@ var currentPoster;
 
 // event listeners go here 👇
 
+var randomImageNum = getRandomIndex(images);
+// called func passed in images array
+
+
+images[2];
+// bracket notation
+images[randomImageNum];
+images[getRandomIndex(images)];
+// ^^ either one works. one stored in variable, one calls 
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+// takes array as parameter
+// will return random # from that array
 
