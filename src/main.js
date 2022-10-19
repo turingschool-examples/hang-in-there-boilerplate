@@ -5,6 +5,7 @@ var titlePathway = document.querySelector(".poster-title");
 
 var quotePathway = document.querySelector(".poster-quote");
 
+var randomButton = document.querySelector(".show-random");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,14 +109,14 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+randomButton.addEventListener("click", displayRandomPoster);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-// array names are "quotes", "titles", "images"
 
 function getRandomImages() {
   return images[getRandomIndex(images)];
@@ -129,16 +130,10 @@ function getRandomQuotes() {
   return quotes[getRandomIndex(quotes)];
 };
 
- var randomPoster = {
-  image: getRandomImages(),
-  title: getRandomTitle(),
-  quote: getRandomQuotes(),
- };
-
  function displayRandomPoster() {
-  imagePathway.src= randomPoster.image;
-  titlePathway.innerText = randomPoster.title;
-  quotePathway.innerText = randomPoster.quote;
+  imagePathway.src= getRandomImages();
+  titlePathway.innerText = getRandomTitle();
+  quotePathway.innerText = getRandomQuotes();
  };
 
  document.onload = displayRandomPoster();
