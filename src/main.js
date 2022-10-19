@@ -1,7 +1,7 @@
 // query selector variables go here 👇
 
 // we've provided you with some data to work with 👇
-var images = [
+var images = [ //this is accessing the assets directory (images that will be used later on when we make a new class of Poster!)
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
   "./assets/butterfly.jpg",
@@ -108,4 +108,3 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
