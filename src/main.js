@@ -119,5 +119,15 @@ function getRandomImage(getRandomIndex){
   var randomImage = getRandomIndex(images)
   var randomTitle = getRandomIndex(titles)
   var randomQuote = getRandomIndex(quotes)
+
   //return values from the getRandom function, and store themas individual somewhere, and then push those new values into our variables deaclared above.
+}
+
+function displayRandomPoster(phrase) {
+  // for (var i = 0; i < titles.length; i++) {  
+  var phrase = titles[i]
+  newTitle.innerText = phrase
+  
+    
+//   }
 }
