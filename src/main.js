@@ -118,7 +118,9 @@ function getRandomPoster() {
   var randomQuote = quotes[randomQuoteNumber];
   posterQuote.innerText = randomQuote;
 
-  
+  var randomImageNumber = getRandomIndex(images);
+  var randomImage = images[randomImageNumber];
+  posterImage.src = randomImage;
 }
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
