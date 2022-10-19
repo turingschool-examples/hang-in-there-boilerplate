@@ -1,4 +1,4 @@
-// query selector variables go here 👇
+// .query selector variables go here 👇
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,4 +108,3 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
