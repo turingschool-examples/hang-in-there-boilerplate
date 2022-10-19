@@ -107,6 +107,7 @@ var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var randomPosterButton = document.querySelector('.show-random')
 // event listeners go here 👇
+window.addEventListener('load', getRandomPoster);
 randomPosterButton.addEventListener('click', getRandomPoster);
 // functions and event handlers go here 👇
 function getRandomPoster() {
@@ -126,6 +127,3 @@ function getRandomPoster() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-//We don't have:
-// * 
