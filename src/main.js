@@ -1,4 +1,11 @@
 // query selector variables go here 👇
+var randomButton = document.querySelector(`.show-random`)
+var image = document.querySelector(`.poster-img`)
+var title = document.querySelector(`.poster-title`)
+var quote = document.querySelector(`.poster-quote`)
+var homePage = document.querySelector(`.main-poster`)
+var makeNewPoster = document.querySelector(`.poster-form`)
+var makePosterButtton = doucment.querySelector(`.show-form`)
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,10 +109,35 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+window.addEventListener(`load`, getNewLoadPoster)
+randomButton.addEventListener(`click`, getNewLoadPoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  var arrayIndex = Math.floor(Math.random() * array.length);
+  return array[arrayIndex]
 }
+
+
+
+
+
+function loadRandomPoster() {
+    currentPoster = new Poster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
+  }
+
+function randomLoadPoster() {
+    image.src = currentPoster.imageURL
+    title.innerText = currentPoster.title
+    quote.innerText = currentPoster.quote
+
+    }
+
+function getNewLoadPoster() {
+  loadRandomPoster()
+  randomLoadPoster()
+
+}
+
+
 
