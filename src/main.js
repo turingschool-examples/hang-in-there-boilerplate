@@ -130,7 +130,7 @@ function getRandomPoster(currentPoster){ //declare new variables that invokes th
 
 
 function displayRandomPoster() {
-  newTitle.innerText = randomTitle
+  newTitle.innerText = current
   
     
 //   }
