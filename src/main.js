@@ -113,6 +113,12 @@ function getRandomPoster() {
   var randomTitleNumber = getRandomIndex(titles);
   var randomTitle = titles[randomTitleNumber];
   posterTitle.innerText = randomTitle;
+
+  var randomQuoteNumber = getRandomIndex(quotes);
+  var randomQuote = quotes[randomQuoteNumber];
+  posterQuote.innerText = randomQuote;
+
+  
 }
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
