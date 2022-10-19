@@ -1,4 +1,8 @@
 // query selector variables go here 👇
+var shownImage = document.querySelector('.poster-img')
+var shownTitle = document.querySelector('.poster-title')
+var shownQuote = document.querySelector('.poster-quote')
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -103,9 +107,16 @@ var currentPoster;
 
 // event listeners go here 👇
 
+
 // functions and event handlers go here 👇
+
+shownImage.src = images[getRandomIndex(images)]
+shownTitle.innerText = titles[getRandomIndex(titles)]
+shownQuote.innerText =quotes [getRandomIndex(quotes)]
+// console.log(shownImage.src)
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
+console.log(getRandomIndex(images))
