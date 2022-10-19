@@ -1,4 +1,14 @@
 // query selector variables go here 👇
+var mainPoster = document.querySelector('.main-poster');
+var poster = document.querySelector('.poster');
+var posterImg = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var savePoster = document.querySelector('.save-poster');
+var showSaved = document.querySelector('.show-saved');
+var showRandom = document.querySelector('.show-random');
+var showForm = document.querySelector('.show-form');
+var posterForm = document.querySelector('.poster-form');
 
 // we've provided you with some data to work with 👇
 var images = [
