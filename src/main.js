@@ -1,15 +1,3 @@
-// query selector variables go here 👇
-var mainPoster = document.querySelector('.main-poster');
-var poster = document.querySelector('.poster');
-var posterImg = document.querySelector('.poster-img');
-var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querySelector('.poster-quote');
-var savePoster = document.querySelector('.save-poster');
-var showSaved = document.querySelector('.show-saved');
-var showRandom = document.querySelector('.show-random');
-var showForm = document.querySelector('.show-form');
-var posterForm = document.querySelector('.poster-form');
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -108,11 +96,32 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+// query selector variables go here 👇
+var mainPoster = document.querySelector('.main-poster');
+var poster = document.querySelector('.poster');
+var posterImg = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var savePosterButton = document.querySelector('.save-poster');
+var showSavedButton = document.querySelector('.show-saved');
+var showRandomButton = document.querySelector('.show-random');
+var showFormButton = document.querySelector('.show-form');
+var posterForm = document.querySelector('.poster-form');
+var posterImageUrl = document.querySelector('#poster-image-url');
+var posterTitle = document.querySelector('#poster-title');
+var posterQuote = document.quarySelector('#poster-quote');
+var makePosterButton = document.querySelector('.make-poster');
+var showMainButton = document.querySelector('.showMain');
+var savedPosterGrid = document.querySelector('.saved-poster-grid');//may need to delete this
+var backToMainButton = document.querySelector('.backToMain');
+
+
 var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+window.addEventListener('load', function)
+showRandomButton.addEventListener('click', function)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
