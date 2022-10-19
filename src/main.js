@@ -105,8 +105,13 @@ var currentPoster;
 var posterTitle = document.querySelector(".poster-title")
 var posterQuote = document.querySelector(".poster-quote")
 var posterImage = document.querySelector(".poster-img")
+
+var showRandomPosterButton = document.querySelector(".show-random") 
+showRandomPosterButton.addEventListener("click", createsRandomPoster)
+window.addEventListener("load", createsRandomPoster)
+
 // functions and event handlers go here 👇
-createsRandomPoster ()
+
 function createsRandomPoster (){
   var imgIndex = getRandomIndex(images)
   var img = images[imgIndex]
