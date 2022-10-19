@@ -1,4 +1,10 @@
 // query selector variables go here 👇
+var imagePathway = document.querySelector(".poster-img");
+
+var titlePathway = document.querySelector(".poster-title");
+
+var quotePathway = document.querySelector(".poster-quote");
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -109,3 +115,30 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// array names are "quotes", "titles", "images"
+
+function getRandomImages() {
+  return images[getRandomIndex(images)];
+};
+
+function getRandomTitle() {
+  return titles[getRandomIndex(titles)].toUpperCase();
+};
+
+function getRandomQuotes() {
+  return quotes[getRandomIndex(quotes)];
+};
+
+ var randomPoster = {
+  image: getRandomImages(),
+  title: getRandomTitle(),
+  quote: getRandomQuotes(),
+ };
+
+ function displayRandomPoster() {
+  imagePathway.src= randomPoster.image;
+  titlePathway.innerText = randomPoster.title;
+  quotePathway.innerText = randomPoster.quote;
+ };
+
+ document.onload = displayRandomPoster();
