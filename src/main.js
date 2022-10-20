@@ -2,7 +2,17 @@
 var shownImage = document.querySelector('.poster-img')
 var shownTitle = document.querySelector('.poster-title')
 var shownQuote = document.querySelector('.poster-quote')
+var mainPosterPage = document.querySelector('.main-poster')
+var savedPosterPage = document.querySelector('.saved-posters')
+var makePosterPage = document.querySelector('.poster-form')
+
+var savePosterButton = document.querySelector('.save-poster')
+var showSavedPostersButton = document.querySelector('.show-saved')
 var showRandomButton = document.querySelector('.show-random')
+var makePosterButton = document.querySelector('.show-form')
+var backToMainButton = document.querySelector(`.back-to-main`)
+var nevermindBackToMainButtom = document.querySelector('.show-main')
+
 
 
 // we've provided you with some data to work with 👇
@@ -109,21 +119,46 @@ var currentPoster;
 // event listeners go here 👇
 showRandomButton.addEventListener('click', randomize)
 
+makePosterButton.addEventListener('click',displayMakePoster)
+
+showSavedPostersButton.addEventListener('click', viewSavedPoster)
+
+backToMainButton.addEventListener('click', viewSavedPoster)
+
+nevermindBackToMainButtom.addEventListener('click', displayMakePoster)
+
 // functions and event handlers go here 👇
 
 shownImage.src = images[getRandomIndex(images)]
 shownTitle.innerText = titles[getRandomIndex(titles)]
 shownQuote.innerText =quotes [getRandomIndex(quotes)]
 
+
+
 function randomize(){
 shownImage.src = images[getRandomIndex(images)]
 shownTitle.innerText = titles[getRandomIndex(titles)]
 shownQuote.innerText =quotes [getRandomIndex(quotes)]
 }
-// console.log(shownImage.src)
+
+function viewSavedPoster() {
+  savedPosterPage.classList.toggle("hidden")
+  mainPosterPage.classList.toggle("hidden")
+}
+
+function displayMakePoster() {
+  mainPosterPage.classList.toggle("hidden")
+  makePosterPage.classList.toggle("hidden")
+  
+}
+
+function displaySavedPoster() {
+  savedPosterPage.classList.replace("save-poster hidden", "save-poster")
+}
+
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-console.log(getRandomIndex(images))
+
