@@ -141,6 +141,8 @@ function pageLoad() {
 //https://attacomsian.com/blog/javascript-hide-show-elements-using-css-class
 
 
+
+
 //function pageLoadFunction() {
   //instantiate poster
   //var indexForArray = getRandomIndex(pickAnArray);
