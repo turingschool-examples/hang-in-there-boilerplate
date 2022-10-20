@@ -111,9 +111,9 @@ var posterImageUrl = document.querySelector('#poster-image-url');
 var posterTitleForm = document.querySelector('#poster-title');
 var posterQuoteForm = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector('.make-poster');
-var showMainButton = document.querySelector('.showMain');
-var savedPosterGrid = document.querySelector('.saved-poster-grid');//may need to delete this
-var backToMainButton = document.querySelector('.backToMain');
+var showMainButton = document.querySelector('.show-main');
+var showSavedPosterPage = document.querySelector('.saved-posters');//may need to delete this
+var backToMainButton = document.querySelector('.back-to-main');
 
 
 var savedPosters = [];
@@ -121,10 +121,25 @@ var currentPoster;
 
 //-------------------------------> Event Listeners <-------------------------------------------
 
-window.addEventListener('load', createRandomPoster)
-showRandomButton.addEventListener('click', createRandomPoster)
+window.addEventListener('load', createRandomPoster);
+showRandomButton.addEventListener('click', createRandomPoster);
+showFormButton.addEventListener('click', makeYourOwnPoster);
+// savePosterButton.addEventListener('click', function);
+showSavedButton.addEventListener('click', showSavedPosters);
+showMainButton.addEventListener('click', backToMain);
+backToMainButton.addEventListener('click', backToMain);
+
+
 
 //-------------------------------> Functions <-------------------------------------------------
+
+function show(elements) {
+  elements.classList.remove('hidden')
+}
+
+function hide(elements) {
+  elements.classList.add('hidden')
+}
 
 function createRandomPoster() {
   currentPoster = new Poster ( 
@@ -135,16 +150,57 @@ function createRandomPoster() {
 displayPoster()
 }
 
-// we need to generate the get random idex(takes arrays and picks a random image, quote and title)do this inside of anothe instants of the poster class
-// we need to create a function that displays all of the properties from our instance
-
 function displayPoster() {
   posterImg.src = currentPoster.imageURL
   posterTitle.innerText = currentPoster.title
   posterQuote.innerText = currentPoster.quote
  }
+
+ // we need to generate the get random idex(takes arrays and picks a random image, quote and title)do this inside of anothe instants of the poster class
+// we need to create a function that displays all of the properties from our instance
+
+function makeYourOwnPoster() {
+  hide(mainPoster)
+  hide(showRandomButton)
+  hide(showSavedButton)
+  hide(savePosterButton)
+  hide(showFormButton)
+  show(posterForm)
+  show(showMainButton)
+  show(makePosterButton)
+}
+
+function showSavedPosters() {
+  hide(mainPoster)
+  hide(showRandomButton)
+  hide(showSavedButton)
+  hide(savePosterButton)
+  hide(showFormButton)
+  hide(posterForm)
+  hide(showMainButton)
+  hide(makePosterButton)
+  show(backToMainButton)
+  show(showSavedPosterPage)
+}
+
+function backToMain() {
+  show(mainPoster)
+  show(showRandomButton)
+  show(showSavedButton)
+  show(savePosterButton)
+  show(showFormButton)
+}
+
 //-------------------------------> Misc Functions <-----------------------------------------
  
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
+
+
+
+// Create an event listener that accesses the querySelector for makePosterButton
+// and hides the main page, 
+
