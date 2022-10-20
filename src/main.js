@@ -1,9 +1,11 @@
 // query selector variables go here 👇
 var poster = document.querySelector('.poster');
 var randomButton = document.querySelector('.show-random');
+
 var mainPosterPage = document.querySelector('.main-poster')
 var posterFormPage = document.querySelector('.poster-form')
 var savedPosterPage = document.querySelector('.saved-posters')
+
 var makePosterButton = document.querySelector('.show-form')
 var showSavedButton = document.querySelector('.show-saved')
 var takeMeBackButton = document.querySelector('.show-main')
@@ -118,7 +120,7 @@ var currentPoster;
 window.addEventListener('load', pageLoad);
 randomButton.addEventListener('click', pageLoad);
 
-makePosterButton.addEventListener('click', XXXX);
+makePosterButton.addEventListener('click', goToFormPage);
 showSavedButton.addEventListener('click', XXXX);
 takeMeBackButton.addEventListener('click', XXXX);
 backToMainButton.addEventListener('click', XXXX);
@@ -151,9 +153,12 @@ function pageLoad() {
   <h1 class="poster-title">${newPoster.title}</h1>
   <h3 class="poster-quote">${newPoster.quote}</h3>`
 }
-function XXXX() {
+function goToFormPage() {
 
   //make your own poster button -  function that hides main poster and unhides form
+  mainPosterPage.classList.add('hidden');
+  posterFormPage.classList.remove('hidden');
+
 }
 
 
