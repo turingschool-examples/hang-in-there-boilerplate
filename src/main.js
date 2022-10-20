@@ -108,8 +108,8 @@ var showRandomButton = document.querySelector('.show-random');
 var showFormButton = document.querySelector('.show-form');
 var posterForm = document.querySelector('.poster-form');
 var posterImageUrl = document.querySelector('#poster-image-url');
-var posterTitle = document.querySelector('#poster-title');
-var posterQuote = document.querySelector('#poster-quote');
+var posterTitleForm = document.querySelector('#poster-title');
+var posterQuoteForm = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector('.make-poster');
 var showMainButton = document.querySelector('.showMain');
 var savedPosterGrid = document.querySelector('.saved-poster-grid');//may need to delete this
@@ -125,24 +125,27 @@ showRandomButton.addEventListener('click', createRandomPoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
-function createRandomPoster(){
+
+// we need to generate the get random idex(takes arrays and picks a random image, quote and title)do this inside of anothe instants of the poster class
+
+function getRandomIndex(array) {
+  var randomArray = Math.floor(Math.random() * array.length);
+    return array[randomArray]
+}
+
+function displayPoster(){
   var currentPoster = new Poster( 
     getRandomIndex(images),
     getRandomIndex(titles),
-    getRandomIndex(quotes),
-    console.log(quotes[getRandomIndex(quotes)])
+    getRandomIndex(quotes)
   )
-  displayPoster()
-}
-console.log(createRandomPoster)
-// we need to generate the get random idex(takes arrays and picks a random image, quote and title)do this inside of anothe instants of the poster class
-function displayPoster(){
 posterImg.src = currentPoster.imageURL
 posterTitle.innerText = currentPoster.title
 posterQuote.innerText = currentPoster.quote
 }
 // we need to create a function that displays all of the properties from our instance
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
 
+function createRandomPoster(){
+ 
+  displayPoster()
+}
