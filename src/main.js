@@ -101,6 +101,7 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 var currentPageView = document.querySelector('.main-poster')
+var mainPageView = document.querySelector('.main-poster')
 var formView = document.querySelector('.poster-form')
 var savedPostersView = document.querySelector('.saved-posters')
 
@@ -124,10 +125,21 @@ showFormButton.addEventListener("click", function() {
 showSavedButton.addEventListener("click", function() {
   switchingViews(savedPostersView)
 })
+showMainButton.addEventListener('click', function () {
+  switchingViews(mainPageView)
+})
+backToMainButton.addEventListener('click', function () {
+  switchingViews(mainPageView)
+})
 savePosterButton.addEventListener("click", //this is a function to push posters into our empty array
 )
 
 // functions and event handlers go here 👇
+
+// function switchToMain() {
+//   mainPageView.classList.toggle('hidden')
+// }
+
 
 function switchingViews(goToView) {
   currentPageView.classList.toggle('hidden')
