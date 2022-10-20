@@ -104,14 +104,15 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = []; //array of custom posters; includes array of images, titles, ITERATION 1 to push
-var currentPoster; 
+var currentPoster;
 
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  var randomIndexArray = Math.floor(Math.random() * array.length);
+  return array[randomIndexArray]
 }
 //iteration 0: display random image, title, and quote when the page loads
 // Access arrays with for loops
@@ -128,10 +129,14 @@ function getRandomPoster(currentPoster){ //declare new variables that invokes th
   //return values from the getRandom function, and store themas individual somewhere, and then push those new values into our variables deaclared above.
 }
 
+function createNewPoster(getRandomIndexArray){
+  return new Poster (three arguments here)
+}
+
 
 function displayRandomPoster() {
   newTitle.innerText = current
-  
-    
+
+
 //   }
 }
