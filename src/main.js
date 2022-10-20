@@ -10,6 +10,8 @@ var savePosterButton = document.querySelector('.save-poster')
 var showSavedPostersButton = document.querySelector('.show-saved')
 var showRandomButton = document.querySelector('.show-random')
 var makePosterButton = document.querySelector('.show-form')
+var backToMainButton = document.querySelector(`.back-to-main`)
+var nevermindBackToMainButtom = document.querySelector('.show-main')
 
 
 
@@ -121,11 +123,17 @@ makePosterButton.addEventListener('click',displayMakePoster)
 
 showSavedPostersButton.addEventListener('click', viewSavedPoster)
 
+backToMainButton.addEventListener('click', viewSavedPoster)
+
+nevermindBackToMainButtom.addEventListener('click', displayMakePoster)
+
 // functions and event handlers go here 👇
 
 shownImage.src = images[getRandomIndex(images)]
 shownTitle.innerText = titles[getRandomIndex(titles)]
 shownQuote.innerText =quotes [getRandomIndex(quotes)]
+
+
 
 function randomize(){
 shownImage.src = images[getRandomIndex(images)]
@@ -136,13 +144,11 @@ shownQuote.innerText =quotes [getRandomIndex(quotes)]
 function viewSavedPoster() {
   savedPosterPage.classList.toggle("hidden")
   mainPosterPage.classList.toggle("hidden")
-  console.log("Hello")
 }
 
 function displayMakePoster() {
   mainPosterPage.classList.toggle("hidden")
   makePosterPage.classList.toggle("hidden")
-  console.log("Howdy")
   
 }
 
