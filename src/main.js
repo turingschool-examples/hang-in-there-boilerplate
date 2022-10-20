@@ -1,6 +1,5 @@
 // query selector variables go here 👇
 
-var Poster = require('./poster.js');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -128,12 +127,16 @@ var randomQuote = quotes[randomQuoteNumber];
 //^^ returns an element from the quotes array, which so happens to be a quote
 
 
+var title = document.querySelector('h1');
+title.innerText = randomTitle;
 
 
+var image = document.querySelector('img');
+image.src = randomImageURL;
 
 
-var randomPoster = new Poster(randomImageURL, randomTitle, randomQuote);
-
+var quote = document.querySelector('h3');
+quote.innerText = randomQuote;
 
 
 // functions and event handlers go here 👇
