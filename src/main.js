@@ -1,9 +1,11 @@
 // query selector variables go here 👇
-var newPoster = document.querySelector('.poster');
+var makeNewPoster = document.querySelector('.poster-form');
+var image = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
+var homepage = document.querySelector('.main-poster');
+var makePosterButton = document.querySelector('.show-form')
 
-var newImage = document.querySelector('.poster-img');
-var newTitle = document.querySelector('.poster-title');
-var newQuote = document.querySelector('.poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [ //this is accessing the assets directory (images that will be used later on when we make a new class of Poster!)
@@ -111,13 +113,14 @@ var currentPoster;
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  var randomArrayIndex = Math.floor(Math.random() * array.length);
+  return array[randomArrayIndex]
 }
 //iteration 0: display random image, title, and quote when the page loads
 // Access arrays with for loops
-function getRandomImage(getRandomIndex){
-  var randomImage = getRandomIndex(images)
-  var randomTitle = getRandomIndex(titles)
-  var randomQuote = getRandomIndex(quotes)
+function getRandomPoster(){
+  return new Poster (imageURL, title, quote)
+}
   //return values from the getRandom function, and store themas individual somewhere, and then push those new values into our variables deaclared above.
 }
+newImage.innerText = randomImage
