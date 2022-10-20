@@ -1,5 +1,7 @@
 // query selector variables go here 👇
 
+var Poster = require('./poster.js');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -103,9 +105,39 @@ var currentPoster;
 
 // event listeners go here 👇
 
+var randomImageNumber = getRandomIndex(images);
+// ^^ returns random number
+// randomImageNumber = a random number
+
+var randomImageURL = images[randomImageNumber];
+// ^^ returns a random element in the images array (image URL)
+
+
+var randomTitleNumber = getRandomIndex(titles);
+// ^^ returns random number 
+// randomTitleNumber = a random number
+
+var randomTitle = titles[randomTitleNumber];
+// ^^ returns a random title from the titles array
+
+
+var randomQuoteNumber = getRandomIndex(quotes);
+//^^ returns a random number in the context of quotes
+
+var randomQuote = quotes[randomQuoteNumber];
+//^^ returns an element from the quotes array, which so happens to be a quote
+
+
+
+
+
+
+var randomPoster = new Poster(randomImageURL, randomTitle, randomQuote);
+
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
