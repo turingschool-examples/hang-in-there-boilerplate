@@ -7,4 +7,3 @@ class Poster {
   }
 }
 
-module.exports = Poster

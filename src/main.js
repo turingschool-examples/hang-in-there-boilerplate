@@ -1,5 +1,7 @@
 // query selector variables go here 👇
-var Poster = require('./poster.js');
+
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -103,15 +105,42 @@ var currentPoster;
 
 // event listeners go here 👇
 
-var randomImageNum = getRandomIndex(images);
-// called func passed in images array
 
 
-images[2];
-// bracket notation
-images[randomImageNum];
-images[getRandomIndex(images)];
-// ^^ either one works. one stored in variable, one calls 
+var randomImageNumber = getRandomIndex(images);
+// ^^ returns random number
+// randomImageNumber = a random number
+
+var randomImageURL = images[randomImageNumber];
+// ^^ returns a random element in the images array (image URL)
+
+
+var randomTitleNumber = getRandomIndex(titles);
+// ^^ returns random number 
+// randomTitleNumber = a random number
+
+var randomTitle = titles[randomTitleNumber];
+// ^^ returns a random title from the titles array
+
+
+var randomQuoteNumber = getRandomIndex(quotes);
+//^^ returns a random number in the context of quotes
+
+var randomQuote = quotes[randomQuoteNumber];
+//^^ returns an element from the quotes array, which so happens to be a quote
+
+
+var title = document.querySelector('h1');
+title.innerText = randomTitle;
+
+
+var image = document.querySelector('img');
+image.src = randomImageURL;
+
+
+var quote = document.querySelector('h3');
+quote.innerText = randomQuote;
+
 
 
 // functions and event handlers go here 👇
@@ -119,6 +148,4 @@ images[getRandomIndex(images)];
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-// takes array as parameter
-// will return random # from that array
 
