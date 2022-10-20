@@ -121,8 +121,8 @@ window.addEventListener('load', pageLoad);
 randomButton.addEventListener('click', pageLoad);
 
 makePosterButton.addEventListener('click', goToFormPage);
-showSavedButton.addEventListener('click', XXXX);
-takeMeBackButton.addEventListener('click', XXXX);
+showSavedButton.addEventListener('click', goToSavedPage);
+takeMeBackButton.addEventListener('click', takeMeBack);
 backToMainButton.addEventListener('click', XXXX);
 
 //make your own poster button- add event listener 'click' connected to function that hides main poster and unhides form
@@ -153,16 +153,27 @@ function pageLoad() {
   <h1 class="poster-title">${newPoster.title}</h1>
   <h3 class="poster-quote">${newPoster.quote}</h3>`
 }
-function goToFormPage() {
 
-  //make your own poster button -  function that hides main poster and unhides form
+//change page functions. REFACTOR: CAN THEY BE COMBINED?
+function goToFormPage() {
   mainPosterPage.classList.add('hidden');
   posterFormPage.classList.remove('hidden');
-
+}
+function goToSavedPage() {
+  mainPosterPage.classList.add('hidden');
+  showSavedButton.classList.remove('hidden');
+}
+function takeMeBack() {
+  mainPosterPage.classList.remove('hidden');
+  posterFormPage.classList.add('hidden');
+}
+function backToMain() {
+  mainPosterPage.classList.remove('hidden');
+  savedPosterPage.classList.add('hidden');
 }
 
 
-//view saved posters button - function that hides main poster and unhides saved posters
+
 //never mind take me back button - function that hides form and unhides main poster
 //back to main button - function that hides saved posters and unhides main
 
