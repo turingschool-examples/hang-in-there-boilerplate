@@ -1,10 +1,15 @@
 // query selector variables go here 👇
 var poster = document.querySelector('.poster');
 var randomButton = document.querySelector('.show-random');
+var mainPosterPage = document.querySelector('.main-poster')
+var posterFormPage = document.querySelector('.poster-form')
+var savedPosterPage = document.querySelector('.saved-posters')
+var makePosterButton = document.querySelector('.show-form')
+var showSavedButton = document.querySelector('.show-saved')
+var takeMeBackButton = document.querySelector('.show-main')
+var backToMainButton = document.querySelector('.back-to-main')
 
-//main-poster
-//poster-form
-//saved-posters
+
 
 // declare var poster = document.querySelector(".poster") 
 
@@ -113,6 +118,16 @@ var currentPoster;
 window.addEventListener('load', pageLoad);
 randomButton.addEventListener('click', pageLoad);
 
+makePosterButton.addEventListener('click', XXXX);
+showSavedButton.addEventListener('click', XXXX);
+takeMeBackButton.addEventListener('click', XXXX);
+backToMainButton.addEventListener('click', XXXX);
+
+//make your own poster button- add event listener 'click' connected to function that hides main poster and unhides form
+//view saved posters button - add event listener 'click' connected to function that hides main poster and unhides saved posters
+//never mind take me back button - add event listener 'click' connected to function that hides form and unhides main poster
+//back to main button - add event listener 'click' connected to function that hides saved posters and unhides main
+
 //addEventListener('click', hidePage)
 
 
@@ -136,6 +151,17 @@ function pageLoad() {
   <h1 class="poster-title">${newPoster.title}</h1>
   <h3 class="poster-quote">${newPoster.quote}</h3>`
 }
+function XXXX() {
+
+  //make your own poster button -  function that hides main poster and unhides form
+}
+
+
+//view saved posters button - function that hides main poster and unhides saved posters
+//never mind take me back button - function that hides form and unhides main poster
+//back to main button - function that hides saved posters and unhides main
+
+
 //one function for each page. Hides unhidden page and unhides clicked page
 //do we want to access innerHTML to remove the word hidden (similar to changing the string above?)
 //https://attacomsian.com/blog/javascript-hide-show-elements-using-css-class
