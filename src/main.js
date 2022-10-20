@@ -2,10 +2,15 @@
 var shownImage = document.querySelector('.poster-img')
 var shownTitle = document.querySelector('.poster-title')
 var shownQuote = document.querySelector('.poster-quote')
-var showRandomButton = document.querySelector('.show-random')
 var mainPoster = document.querySelector('.main-poster')
 var savedPoster = document.querySelector('.saved-poster')
-var makePoster = document.querySelector('.make-poster')
+var makePoster = document.querySelector('.poster-form hidden')
+var savePosterButton = document.querySelector('.save-poster')
+var showSavedPostersButton = document.querySelector('.show-saved')
+var showRandomButton = document.querySelector('.show-random')
+var makePosterButton = document.querySelector('.show-form')
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,8 +115,9 @@ var currentPoster;
 
 // event listeners go here 👇
 showRandomButton.addEventListener('click', randomize)
+make
 
-
+makePosterButton.addEventListener('click',displayMakePoster)
 // functions and event handlers go here 👇
 
 shownImage.src = images[getRandomIndex(images)]
@@ -125,12 +131,13 @@ shownQuote.innerText =quotes [getRandomIndex(quotes)]
 }
 
 function displayMakePoster() {
-  make-poster.classList.replace("main-poster", "main-poster hidden")
+  mainPoster.classList.replace("main-poster", "main-poster hidden")
+  makePoster.classList.replace("poster-form hidden", "poster-form ")
   
 }
 
 function displaySavedPoster() {
-  saved-poster.classList.replace("save-poster hidden", "save-poster")
+  savedPoster.classList.replace("save-poster hidden", "save-poster")
 }
 
 
