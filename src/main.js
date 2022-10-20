@@ -5,7 +5,8 @@ var title = document.querySelector(`.poster-title`)
 var quote = document.querySelector(`.poster-quote`)
 var homePage = document.querySelector(`.main-poster`)
 var makeNewPoster = document.querySelector(`.poster-form`)
-var makePosterButtton = doucment.querySelector(`.show-form`)
+var makePosterButton = document.querySelector(`.show-form`)
+// var hiddenPosterForm = document.querySelector(`.poster-form hidden`)
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -111,6 +112,7 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener(`load`, getNewLoadPoster)
 randomButton.addEventListener(`click`, getNewLoadPoster)
+makePosterButton.addEventListener(`click`, loadCreateForm)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -139,5 +141,9 @@ function getNewLoadPoster() {
 
 }
 
+function loadCreateForm() {
+  homePage.classList.add("hidden");
+  makeNewPoster.classList.remove("hidden")
+}
 
 
