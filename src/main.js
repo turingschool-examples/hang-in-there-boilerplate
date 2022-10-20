@@ -1,5 +1,8 @@
 // query selector variables go here 👇
-var randomTitle = document.querySelector(".poster-title")
+var randomImages = document.querySelector(".poster-img")
+var randomTitles = document.querySelector(".poster-title")
+var randomQuotes = document.querySelector(".poster-quote")
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -102,10 +105,20 @@ var savedPosters = [];
 var currentPoster;
 
 // Generates a random title
+var random1 = images[Math.floor(Math.random() * images.length)];
+console.log(random1)
+
+randomImages.src = random1
+
 var random2 = titles[Math.floor(Math.random() * titles.length)];
 console.log(random2)
 
-randomTitle.innerText = random2
+randomTitles.innerText = random2
+
+var random3 = quotes[Math.floor(Math.random() * quotes.length)];
+console.log(random3)
+
+randomQuotes.innerText = random3
 
 
 
