@@ -129,13 +129,15 @@ function getRandomPoster(currentPoster){ //declare new variables that invokes th
   //return values from the getRandom function, and store themas individual somewhere, and then push those new values into our variables deaclared above.
 }
 
-function createNewPoster(getRandomIndexArray){
-  return new Poster (three arguments here)
-}
+// function createNewPoster(getRandomIndexArray){
+//   return new Poster (three arguments here)
+// }
 
 
 function displayRandomPoster() {
-  newTitle.innerText = current
+  newImage.src = getRandomIndex(images)
+  newTitle.innerText = getRandomIndex(titles)
+  newQuote.innerText = getRandomIndex(quotes)
 
 
 //   }
