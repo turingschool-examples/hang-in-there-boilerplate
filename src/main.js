@@ -115,30 +115,18 @@ function getRandomIndex(array) {
   return array[randomIndexArray]
 }
 //iteration 0: display random image, title, and quote when the page loads
-// Access arrays with for loops
-function getRandomPoster(currentPoster){ //declare new variables that invokes the getRandomIndex(fromArray:images, titles, quotes)
-  var randomImage = images[getRandomIndex(images)]
-  var randomTitle = titles[getRandomIndex(titles)]
-  var randomQuote = quotes[getRandomIndex(quotes)]
-  currentPoster = {
-    picture: randomImage,
-    title: randomTitle,
-    phrase: randomQuote
-  }
-    return currentPoster
-  //return values from the getRandom function, and store themas individual somewhere, and then push those new values into our variables deaclared above.
-}
 
 // function createNewPoster(getRandomIndexArray){
 //   return new Poster (three arguments here)
 // }
 
 
-function displayRandomPoster() {
-  newImage.src = getRandomIndex(images)
-  newTitle.innerText = getRandomIndex(titles)
-  newQuote.innerText = getRandomIndex(quotes)
-
+function displayRandomPoster(currentPoster) {
+  currentPoster = new Poster(newImage, newTitle, newQuote)
+    newImage.src = getRandomIndex(images)
+    newTitle.innerText = getRandomIndex(titles)
+    newQuote.innerText = getRandomIndex(quotes)
+  return currentPoster
 
 //   }
 }
