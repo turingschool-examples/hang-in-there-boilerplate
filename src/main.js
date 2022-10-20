@@ -2,6 +2,7 @@
 var shownImage = document.querySelector('.poster-img')
 var shownTitle = document.querySelector('.poster-title')
 var shownQuote = document.querySelector('.poster-quote')
+
 var mainPosterPage = document.querySelector('.main-poster')
 var savedPosterPage = document.querySelector('.saved-posters')
 var makePosterPage = document.querySelector('.poster-form')
@@ -12,7 +13,11 @@ var showRandomButton = document.querySelector('.show-random')
 var makePosterButton = document.querySelector('.show-form')
 var backToMainButton = document.querySelector(`.back-to-main`)
 var nevermindBackToMainButtom = document.querySelector('.show-main')
+var showMyPosterButton = document.querySelector('.make-poster')
 
+var inputImageUrl = document.querySelector("#poster-image-url")
+var inputTitle = document.querySelector("#poster-title")
+var inputQuote = document.querySelector("#poster-quote")
 
 
 // we've provided you with some data to work with 👇
@@ -114,7 +119,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster 
 
 // event listeners go here 👇
 showRandomButton.addEventListener('click', randomize)
@@ -127,13 +132,43 @@ backToMainButton.addEventListener('click', viewSavedPoster)
 
 nevermindBackToMainButtom.addEventListener('click', displayMakePoster)
 
+ showMyPosterButton.addEventListener('click', function(){
+  event.preventDefault()
+  createPoster()
+  addInputToArrays()
+  showCreatedPoster()
+  displayMakePoster()
+})
+// showMyPosterButton.addEventListener('click', testing)
+
 // functions and event handlers go here 👇
 
 shownImage.src = images[getRandomIndex(images)]
 shownTitle.innerText = titles[getRandomIndex(titles)]
 shownQuote.innerText =quotes [getRandomIndex(quotes)]
 
+function createPoster(){
+  imageURL =  inputImageUrl.value
+  title = inputTitle.value
+  quote = inputQuote.value
+  currentPoster = new Poster(imageURL, title, quote)
+  console.log(currentPoster)
+  return currentPoster
+}
 
+function addInputToArrays(){
+  images.push( inputImageUrl.value)
+  titles.push(inputTitle.value)
+  quotes.push(inputQuote.value)
+  console.log(images,titles,quotes)
+}
+
+function showCreatedPoster() {
+  console.log(currentPoster)
+  shownImage.src = currentPoster.imageURL
+  shownTitle.innerText = currentPoster.title
+  shownQuote.innerText = currentPoster.quote
+}
 
 function randomize(){
 shownImage.src = images[getRandomIndex(images)]
@@ -149,11 +184,12 @@ function viewSavedPoster() {
 function displayMakePoster() {
   mainPosterPage.classList.toggle("hidden")
   makePosterPage.classList.toggle("hidden")
-  
+  console.log("running")
 }
 
-function displaySavedPoster() {
-  savedPosterPage.classList.replace("save-poster hidden", "save-poster")
+function testing(){
+  event.preventDefault()
+  console.log("AAAAAAAAAAAAAAAAAA")
 }
 
 
@@ -162,3 +198,4 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+console.log("hello")
