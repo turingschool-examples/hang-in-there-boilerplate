@@ -100,23 +100,46 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var currentPageView = document.querySelector('.main-poster')
+var formView = document.querySelector('.poster-form')
+var savedPostersView = document.querySelector('.saved-posters')
 
 // event listeners go here 👇
 var posterTitle = document.querySelector(".poster-title")
 var posterQuote = document.querySelector(".poster-quote")
 var posterImage = document.querySelector(".poster-img")
+var showRandomButton = document.querySelector(".show-random") 
+var showFormButton = document.querySelector('.show-form')
+var savePosterButton = document.querySelector('.save-poster')
+var showSavedButton = document.querySelector('.show-saved')
+var showMainButton = document.querySelector('.show-main')
+var backToMainButton = document.querySelector('.back-to-main')
 
-var showRandomPosterButton = document.querySelector(".show-random") 
-showRandomPosterButton.addEventListener("click", createsRandomPoster)
 window.addEventListener("load", createsRandomPoster)
 
+showRandomButton.addEventListener("click", createsRandomPoster)
+showFormButton.addEventListener("click", function() {
+  switchingViews(formView)
+})
+showSavedButton.addEventListener("click", function() {
+  switchingViews(savedPostersView)
+})
+savePosterButton.addEventListener("click", //this is a function to push posters into our empty array
+)
+
 // functions and event handlers go here 👇
+
+function switchingViews(goToView) {
+  currentPageView.classList.toggle('hidden')
+  goToView.classList.toggle('hidden')
+  currentPageView = goToView
+}
 
 function createsRandomPoster (){
   var imgIndex = getRandomIndex(images)
   var img = images[imgIndex]
   posterImage.src = img
-  
+
   var titleIndex = getRandomIndex(titles)
   var title = titles[titleIndex]
   posterTitle.innerText = title
