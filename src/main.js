@@ -1,10 +1,21 @@
 // query selector variables go here 👇
-var makeNewPoster = document.querySelector('.poster-form');
+var mainPoster = document.querySelector('.main-poster');
 var image = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 var homepage = document.querySelector('.main-poster');
-var makePosterButton = document.querySelector('.show-form')
+var showRandomButton = document.querySelector('.show-random');
+
+var makeOwnPosterButton = document.querySelector('.show-form')
+var makeOwnPosterForm = document.querySelector('.poster-form');
+var viewSavedPosterButton = document.querySelector('.show-saved');
+var savedPostersForm = document.querySelector('.saved-posters');
+var takeMeBackButton = document.querySelector('.show-main');
+
+var viewSavedButton = document.querySelector('.show-saved');
+var nevermindTakeMeButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+
 
 
 // we've provided you with some data to work with 👇
@@ -109,6 +120,11 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener('load', createNewPoster);
+showRandomButton.addEventListener('click', createNewPoster);
+makeOwnPosterButton.addEventListener('click', showMakeForm);
+viewSavedPosterButton.addEventListener('click', showSavedPosters);
+// takeMeBackButton.addEventListener('click,' functionToShowMain);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -116,11 +132,24 @@ function getRandomIndex(array) {
   var randomArrayIndex = Math.floor(Math.random() * array.length);
   return array[randomArrayIndex]
 }
-//iteration 0: display random image, title, and quote when the page loads
+
 // Access arrays with for loops
-function getRandomPoster(){
-  return new Poster (imageURL, title, quote)
+function createNewPoster() {
+  var newImage = getRandomIndex(images);
+  var newTitle = getRandomIndex(titles);
+  var newQuote = getRandomIndex(quotes);
+  currentPoster = new Poster(newImage, newTitle, newQuote)
+  image.src = newImage
+  title.innerText = newTitle
+  quote.innerText = newQuote
 }
-  //return values from the getRandom function, and store themas individual somewhere, and then push those new values into our variables deaclared above.
+
+function showMakeForm() {
+  makeOwnPosterForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
 }
-newImage.innerText = randomImage
+
+function showSavedPosters() {
+  mainPoster.classList.add('hidden');
+  savedPostersForm.classList.remove('hidden');
+}
