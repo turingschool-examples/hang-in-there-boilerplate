@@ -1,5 +1,3 @@
-// query selector variables go here 👇
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -98,14 +96,111 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+//---------------------------------> Query Selectors <-----------------------------------------
+var mainPoster = document.querySelector('.main-poster');
+var poster = document.querySelector('.poster');
+var posterImg = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var savePosterButton = document.querySelector('.save-poster');
+var showSavedButton = document.querySelector('.show-saved');
+var showRandomButton = document.querySelector('.show-random');
+var showFormButton = document.querySelector('.show-form');
+var posterForm = document.querySelector('.poster-form');
+var posterImageUrl = document.querySelector('#poster-image-url');
+var posterTitleForm = document.querySelector('#poster-title');
+var posterQuoteForm = document.querySelector('#poster-quote');
+var makePosterButton = document.querySelector('.make-poster');
+var showMainButton = document.querySelector('.show-main');
+var showSavedPosterPage = document.querySelector('.saved-posters');//may need to delete this
+var backToMainButton = document.querySelector('.back-to-main');
+
+
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
+//-------------------------------> Event Listeners <-------------------------------------------
 
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+window.addEventListener('load', createRandomPoster);
+showRandomButton.addEventListener('click', createRandomPoster);
+showFormButton.addEventListener('click', makeYourOwnPoster);
+// savePosterButton.addEventListener('click', function);
+showSavedButton.addEventListener('click', showSavedPosters);
+showMainButton.addEventListener('click', backToMain);
+backToMainButton.addEventListener('click', backToMain);
+
+
+
+//-------------------------------> Functions <-------------------------------------------------
+
+function show(elements) {
+  elements.classList.remove('hidden')
+}
+
+function hide(elements) {
+  elements.classList.add('hidden')
+}
+
+function createRandomPoster() {
+  currentPoster = new Poster ( 
+  images[getRandomIndex(images)], 
+  titles[getRandomIndex(titles)],
+  quotes[getRandomIndex(quotes)]
+  )
+displayPoster()
+}
+
+function displayPoster() {
+  posterImg.src = currentPoster.imageURL
+  posterTitle.innerText = currentPoster.title
+  posterQuote.innerText = currentPoster.quote
+ }
+
+ // we need to generate the get random idex(takes arrays and picks a random image, quote and title)do this inside of anothe instants of the poster class
+// we need to create a function that displays all of the properties from our instance
+
+function makeYourOwnPoster() {
+  hide(mainPoster)
+  hide(showRandomButton)
+  hide(showSavedButton)
+  hide(savePosterButton)
+  hide(showFormButton)
+  show(posterForm)
+  show(showMainButton)
+  show(makePosterButton)
+}
+
+function showSavedPosters() {
+  hide(mainPoster)
+  hide(showRandomButton)
+  hide(showSavedButton)
+  hide(savePosterButton)
+  hide(showFormButton)
+  hide(posterForm)
+  hide(showMainButton)
+  hide(makePosterButton)
+  show(backToMainButton)
+  show(showSavedPosterPage)
+}
+
+function backToMain() {
+  show(mainPoster)
+  show(showRandomButton)
+  show(showSavedButton)
+  show(savePosterButton)
+  show(showFormButton)
+}
+
+//-------------------------------> Misc Functions <-----------------------------------------
+ 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
+
+
+
+// Create an event listener that accesses the querySelector for makePosterButton
+// and hides the main page, 
 
