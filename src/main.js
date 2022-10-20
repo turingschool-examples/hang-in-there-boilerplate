@@ -106,6 +106,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+button.addEventListener('click', generateRandomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -116,11 +117,9 @@ function getRandomIndex(array) {
 poster.src = images[getRandomIndex(images)];
 title.innerText = titles[getRandomIndex(titles)];
 quote.innerText = quotes[getRandomIndex(quotes)];
-// make a function to use in event listener
+// create a function to use in event listener
 function generateRandomPoster () {
   poster.src = images[getRandomIndex(images)];
   title.innerText = titles[getRandomIndex(titles)];
   quote.innerText = quotes[getRandomIndex(quotes)];
 }
-
-button.addEventListener('click', generateRandomPoster);
