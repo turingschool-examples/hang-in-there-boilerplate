@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-
+var randomTitle = document.querySelector(".poster-title")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -101,6 +101,14 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+// Generates a random title
+var random2 = titles[Math.floor(Math.random() * titles.length)];
+console.log(random2)
+
+randomTitle.innerText = random2
+
+
+
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
@@ -108,4 +116,3 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
