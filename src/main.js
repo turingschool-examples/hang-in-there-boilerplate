@@ -121,5 +121,3 @@ posterImage.src = images[imageIndexNum];
 posterTitle.innerText = titles[titleIndexNum];
 posterQuote.innerText = quotes[quoteIndexNum];
 
-
-
