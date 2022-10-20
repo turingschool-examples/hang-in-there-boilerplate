@@ -96,7 +96,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-// query selector variables go here 👇
+//---------------------------------> Query Selectors <-----------------------------------------
 var mainPoster = document.querySelector('.main-poster');
 var poster = document.querySelector('.poster');
 var posterImg = document.querySelector('.poster-img');
@@ -119,33 +119,32 @@ var backToMainButton = document.querySelector('.backToMain');
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
+//-------------------------------> Event Listeners <-------------------------------------------
+
 window.addEventListener('load', createRandomPoster)
 showRandomButton.addEventListener('click', createRandomPoster)
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 
+//-------------------------------> Functions <-------------------------------------------------
+
+function createRandomPoster() {
+  currentPoster = new Poster ( 
+  images[getRandomIndex(images)], 
+  titles[getRandomIndex(titles)],
+  quotes[getRandomIndex(quotes)]
+  )
+displayPoster()
+}
 
 // we need to generate the get random idex(takes arrays and picks a random image, quote and title)do this inside of anothe instants of the poster class
-
-function getRandomIndex(array) {
-  var randomArray = Math.floor(Math.random() * array.length);
-    return array[randomArray]
-}
-
-function displayPoster(){
-  var currentPoster = new Poster( 
-    getRandomIndex(images),
-    getRandomIndex(titles),
-    getRandomIndex(quotes)
-  )
-posterImg.src = currentPoster.imageURL
-posterTitle.innerText = currentPoster.title
-posterQuote.innerText = currentPoster.quote
-}
 // we need to create a function that displays all of the properties from our instance
 
-function createRandomPoster(){
+function displayPoster() {
+  posterImg.src = currentPoster.imageURL
+  posterTitle.innerText = currentPoster.title
+  posterQuote.innerText = currentPoster.quote
+ }
+//-------------------------------> Misc Functions <-----------------------------------------
  
-  displayPoster()
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
