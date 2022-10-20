@@ -113,6 +113,7 @@ var takeMeBackButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
 var posterForm = document.querySelector('.poster-form');
 var mainPoster = document.querySelector('.main-poster');
+var savedPostersView = document.querySelector('.saved-posters')
 
 // event listeners go here 👇
 window.addEventListener('load', getRandomPoster);
@@ -149,7 +150,9 @@ function showMakePostersView() {
 }
 
 function showSavedPostersView() {
-alert('Hi!')
+  mainPoster.classList.add('hidden');
+  posterForm.classList.add('hidden');
+  savedPostersView.classList.remove('hidden');
 }
 
 function showMainPostersSection() {
