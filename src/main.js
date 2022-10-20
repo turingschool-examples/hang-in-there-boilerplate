@@ -1,11 +1,14 @@
 // query selector variables go here 👇
+//initial load
 var poster = document.querySelector('.poster');
 var randomButton = document.querySelector('.show-random');
 
+//pages
 var mainPosterPage = document.querySelector('.main-poster')
 var posterFormPage = document.querySelector('.poster-form')
 var savedPosterPage = document.querySelector('.saved-posters')
 
+//buttons
 var makePosterButton = document.querySelector('.show-form')
 var showSavedButton = document.querySelector('.show-saved')
 var takeMeBackButton = document.querySelector('.show-main')
@@ -117,9 +120,12 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+
+//initial load
 window.addEventListener('load', pageLoad);
 randomButton.addEventListener('click', pageLoad);
 
+//change page clicks
 makePosterButton.addEventListener('click', goToFormPage);
 showSavedButton.addEventListener('click', goToSavedPage);
 takeMeBackButton.addEventListener('click', takeMeBack);
@@ -135,9 +141,13 @@ backToMainButton.addEventListener('click', XXXX);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+//randomize index number
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+//initial page load
 function pageLoad() {
   // poster.innerHTML = null
   var imageIndex = getRandomIndex(images)
