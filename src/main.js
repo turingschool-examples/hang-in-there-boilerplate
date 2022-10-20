@@ -1,7 +1,10 @@
 // query selector variables go here 👇
 var poster = document.querySelector('.poster');
-
 var randomButton = document.querySelector('.show-random');
+
+//main-poster
+//poster-form
+//saved-posters
 
 // declare var poster = document.querySelector(".poster") 
 
@@ -108,10 +111,9 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', pageLoad);
-
 randomButton.addEventListener('click', pageLoad);
 
-//poster.addEventListener("load", nameOfFunctionForPageLoad())
+//addEventListener('click', hidePage)
 
 
 // functions and event handlers go here 👇
@@ -134,7 +136,9 @@ function pageLoad() {
   <h1 class="poster-title">${newPoster.title}</h1>
   <h3 class="poster-quote">${newPoster.quote}</h3>`
 }
-//We probably need a queryselector for the show-random button
+//one function for each page. Hides unhidden page and unhides clicked page
+//do we want to access innerHTML to remove the word hidden (similar to changing the string above?)
+//https://attacomsian.com/blog/javascript-hide-show-elements-using-css-class
 
 
 //function pageLoadFunction() {
