@@ -10,11 +10,11 @@ var makeOwnPosterButton = document.querySelector('.show-form')
 var makeOwnPosterForm = document.querySelector('.poster-form');
 var viewSavedPosterButton = document.querySelector('.show-saved');
 var savedPostersForm = document.querySelector('.saved-posters');
-var takeMeBackButton = document.querySelector('.show-main');
+var takeMeBackButtonFromMake = document.querySelector('.show-main');
 
 var viewSavedButton = document.querySelector('.show-saved');
 var nevermindTakeMeButton = document.querySelector('.show-main');
-var backToMainButton = document.querySelector('.back-to-main');
+var backToMainButtonFromSaved = document.querySelector('.back-to-main');
 
 
 
@@ -124,7 +124,8 @@ window.addEventListener('load', createNewPoster);
 showRandomButton.addEventListener('click', createNewPoster);
 makeOwnPosterButton.addEventListener('click', showMakeForm);
 viewSavedPosterButton.addEventListener('click', showSavedPosters);
-// takeMeBackButton.addEventListener('click,' functionToShowMain);
+takeMeBackButtonFromMake.addEventListener('click', goBackToMainMake);
+backToMainButtonFromSaved.addEventListener('click', goBackToMainSaved)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -133,7 +134,6 @@ function getRandomIndex(array) {
   return array[randomArrayIndex]
 }
 
-// Access arrays with for loops
 function createNewPoster() {
   var newImage = getRandomIndex(images);
   var newTitle = getRandomIndex(titles);
@@ -149,7 +149,17 @@ function showMakeForm() {
   mainPoster.classList.add('hidden');
 }
 
+function goBackToMainMake(){
+  makeOwnPosterForm.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
+}
+
 function showSavedPosters() {
   mainPoster.classList.add('hidden');
   savedPostersForm.classList.remove('hidden');
+}
+
+function goBackToMainSaved(){
+  savedPostersForm.classList.add('hidden');
+  mainPoster.classList.remove('hidden');
 }
