@@ -1,5 +1,7 @@
 // query selector variables go here 👇
-var poster = document.querySelector('.poster')
+var poster = document.querySelector('.poster');
+
+var randomButton = document.querySelector('.show-random');
 
 // declare var poster = document.querySelector(".poster") 
 
@@ -105,11 +107,11 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-poster.addEventListener('load', pageLoad())
+window.addEventListener('load', pageLoad);
+
+randomButton.addEventListener('click', pageLoad);
 
 //poster.addEventListener("load", nameOfFunctionForPageLoad())
-
-
 
 
 // functions and event handlers go here 👇
@@ -127,16 +129,14 @@ function pageLoad() {
     quote: quotes[quoteIndex],
     title: titles[titleIndex],
   }
-  console.log("Hey, I'm refreshing")
-  console.log(imageIndex, quoteIndex, titleIndex)
-  console.log(newPoster.image)
-  console.log(newPoster.title)
-  console.log(newPoster.quote)
+
   poster.innerHTML = `<img class="poster-img" src=${newPoster.image} alt="Poster image">
   <h1 class="poster-title">${newPoster.title}</h1>
   <h3 class="poster-quote">${newPoster.quote}</h3>`
 }
 //We probably need a queryselector for the show-random button
+
+
 //function pageLoadFunction() {
   //instantiate poster
   //var indexForArray = getRandomIndex(pickAnArray);
