@@ -2,9 +2,10 @@
 var shownImage = document.querySelector('.poster-img')
 var shownTitle = document.querySelector('.poster-title')
 var shownQuote = document.querySelector('.poster-quote')
-var mainPoster = document.querySelector('.main-poster')
-var savedPoster = document.querySelector('.saved-poster')
-var makePoster = document.querySelector('.poster-form hidden')
+var mainPosterPage = document.querySelector('.main-poster')
+var savedPosterPage = document.querySelector('.saved-posters')
+var makePosterPage = document.querySelector('.poster-form')
+
 var savePosterButton = document.querySelector('.save-poster')
 var showSavedPostersButton = document.querySelector('.show-saved')
 var showRandomButton = document.querySelector('.show-random')
@@ -115,9 +116,11 @@ var currentPoster;
 
 // event listeners go here 👇
 showRandomButton.addEventListener('click', randomize)
-make
 
 makePosterButton.addEventListener('click',displayMakePoster)
+
+showSavedPostersButton.addEventListener('click', viewSavedPoster)
+
 // functions and event handlers go here 👇
 
 shownImage.src = images[getRandomIndex(images)]
@@ -130,14 +133,21 @@ shownTitle.innerText = titles[getRandomIndex(titles)]
 shownQuote.innerText =quotes [getRandomIndex(quotes)]
 }
 
+function viewSavedPoster() {
+  savedPosterPage.classList.toggle("hidden")
+  mainPosterPage.classList.toggle("hidden")
+  console.log("Hello")
+}
+
 function displayMakePoster() {
-  mainPoster.classList.replace("main-poster", "main-poster hidden")
-  makePoster.classList.replace("poster-form hidden", "poster-form ")
+  mainPosterPage.classList.toggle("hidden")
+  makePosterPage.classList.toggle("hidden")
+  console.log("Howdy")
   
 }
 
 function displaySavedPoster() {
-  savedPoster.classList.replace("save-poster hidden", "save-poster")
+  savedPosterPage.classList.replace("save-poster hidden", "save-poster")
 }
 
 
@@ -145,4 +155,4 @@ function displaySavedPoster() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-console.log(getRandomIndex(images))
+
