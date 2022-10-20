@@ -2,6 +2,7 @@
 var randomImages = document.querySelector(".poster-img")
 var randomTitles = document.querySelector(".poster-title")
 var randomQuotes = document.querySelector(".poster-quote")
+var randomPosterBtn = document.querySelector('.show-random')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,11 +111,12 @@ console.log(random1)
 
 randomImages.src = random1
 
+////////////////////////
 var random2 = titles[Math.floor(Math.random() * titles.length)];
 console.log(random2)
 
 randomTitles.innerText = random2
-
+////////////////////////
 var random3 = quotes[Math.floor(Math.random() * quotes.length)];
 console.log(random3)
 
@@ -123,6 +125,14 @@ randomQuotes.innerText = random3
 
 
 // event listeners go here 👇
+
+randomPosterBtn.addEventListener('click', changePoster);
+
+function changePoster() {
+  var random1 = images[Math.floor(Math.random() * images.length)];
+  randomImages.src = random1;
+  return random1
+}
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
