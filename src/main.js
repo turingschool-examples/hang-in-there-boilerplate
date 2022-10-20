@@ -121,7 +121,7 @@ randomPosterButton.addEventListener('click', getRandomPoster);
 makePostersButton.addEventListener('click', showMakePostersView);
 showSavedPostersButton.addEventListener('click', showSavedPostersView);
 takeMeBackButton.addEventListener('click', showMainPostersSection);
-backtoMainButton.addEventListener('click', showMainPostersSection)
+backToMainButton.addEventListener('click', showMainPostersSection)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -147,6 +147,7 @@ function getRandomPoster() {
 function showMakePostersView() {
   mainPoster.classList.add('hidden');
   posterForm.classList.remove('hidden');
+  savedPostersView.classList.add('hidden');
 }
 
 function showSavedPostersView() {
@@ -156,5 +157,7 @@ function showSavedPostersView() {
 }
 
 function showMainPostersSection() {
-alert('Hi!')
+  mainPoster.classList.remove('hidden');
+  posterForm.classList.add('hidden');
+  savedPostersView.classList.add('hidden');
 }
