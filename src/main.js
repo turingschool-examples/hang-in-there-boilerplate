@@ -1,4 +1,8 @@
 // query selector variables go here 👇
+var poster = document.querySelector(".poster-img");
+var title = document.querySelector(".poster-title");
+var quote = document.querySelector(".poster-quote");
+var button = document.querySelector(".show-random");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -109,3 +113,14 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+poster.src = images[getRandomIndex(images)];
+title.innerText = titles[getRandomIndex(titles)];
+quote.innerText = quotes[getRandomIndex(quotes)];
+// make a function to use in event listener
+function generateRandomPoster () {
+  poster.src = images[getRandomIndex(images)];
+  title.innerText = titles[getRandomIndex(titles)];
+  quote.innerText = quotes[getRandomIndex(quotes)];
+}
+
+button.addEventListener('click', generateRandomPoster);
