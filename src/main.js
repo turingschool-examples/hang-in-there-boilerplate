@@ -111,6 +111,8 @@ window.addEventListener('load', getRandomPoster);
 randomPosterButton.addEventListener('click', getRandomPoster);
 // functions and event handlers go here 👇
 function getRandomPoster() {
+  currentPoster = new Poster(randomTitle, randomQuote, randomImage);
+
   var randomTitleNumber = getRandomIndex(titles);
   var randomTitle = titles[randomTitleNumber];
   posterTitle.innerText = randomTitle;
