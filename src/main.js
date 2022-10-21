@@ -212,7 +212,6 @@ function saveUserPoster(){
   var newUserTitle = inputFieldForTitle.value;
   var newUserQuote = inputFieldForQuote.value;
   var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
-
   savedPosters.push({newUserPoster})
   // create variables for user input fields query selectors
   // push variables into arrays
