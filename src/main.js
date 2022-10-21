@@ -136,10 +136,15 @@ takeMeBackButtonFromMake.addEventListener('click', goBackToMainMake);
 backToMainButtonFromSaved.addEventListener('click', goBackToMainSaved);
 makeOwnPosterButton.addEventListener('click', showMakeForm);
 //Iteration 2
+
 showMyPosterButton.addEventListener('click', showUserPoster);
 // Iteration 3
 savedPosterButton.addEventListener('click', saveUserPoster);
 viewSavedPosterButton.addEventListener('click', /*function*/)
+
+
+savePosterButton.addEventListener('click', )
+showMyPosterButton.addEventListener('click', showUserPoster);
 
 
 
@@ -216,6 +221,7 @@ function saveUserPoster(){
   var newUserTitle = inputFieldForTitle.value;
   var newUserQuote = inputFieldForQuote.value;
   var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
+
   savedPosters.push({newUserPoster});
   // if a user poster is saved more than once, .pop(newUserPoster)
   // return savedPosters
@@ -224,7 +230,7 @@ function saveUserPoster(){
   // push new poster to saved posters arrays by calling the showUserPoster function?
   // create new object to push into the saved posters arrays
   //
-}
+
 
 function saveExistingPoster(){
     grid.innerHTML = currentPoster;
