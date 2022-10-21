@@ -143,26 +143,25 @@ backToMainButton.addEventListener('click', function () {
 // )
 makePosterButton.addEventListener("click", function(event) {
   event.preventDefault()
-  console.log('hello?')
   makeMyPoster(titleInput, quoteInput, imageInput)
+  pushInputsToData(titleInput, quoteInput, imageInput)
   switchingViews(mainPageView)
   
 })
 
 // functions and event handlers go here 👇
 
-// function switchToMain() {
-//   mainPageView.classList.toggle('hidden')
-// }
-function makeMyPoster(titleInput, quoteInput, imageInput) {
-  var userNewPoster = new Poster(titleInput.value, quoteInput.value, imageInput.value)
-  console.log(userNewPoster)
-  savedPosters.push(userNewPoster)
-  console.log(savedPosters)
-  images.push(imageInput.value)
+
+function pushInputsToData() {
   titles.push(titleInput.value)
   quotes.push(quoteInput.value)
-  console.log(images, titles, quotes)
+  images.push(imageInput.value)
+}
+
+function makeMyPoster(titleInput, quoteInput, imageInput) {
+  var userNewPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value)
+  createPoster(userNewPoster.title, userNewPoster.quote, userNewPoster.imageURL)
+  
 }
 
 function switchingViews(goToView) {
@@ -172,17 +171,22 @@ function switchingViews(goToView) {
 }
 
 function createsRandomPoster (){
-  var imgIndex = getRandomIndex(images)
-  var img = images[imgIndex]
-  posterImage.src = img
-
   var titleIndex = getRandomIndex(titles)
   var title = titles[titleIndex]
-  posterTitle.innerText = title
   
   var quoteIndex = getRandomIndex(quotes)
   var quote = quotes[quoteIndex]
+
+  var imgIndex = getRandomIndex(images)
+  var img = images[imgIndex]
+
+  createPoster(title, quote, img)
+}
+
+function createPoster(title, quote, img) {
+  posterTitle.innerText = title
   posterQuote.innerText = quote 
+  posterImage.src = img
 }
 
 
