@@ -119,7 +119,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
+var savedPosters = []; //array of custom posters; includes array of images, titles, ITERATION 1 to push
 var currentPoster;
 
 // event listeners go here 👇
@@ -160,6 +160,21 @@ function goBackToMainMake(){
   mainPoster.classList.remove('hidden');
 }
 
+// function createNewPoster(getRandomIndexArray){
+//   return new Poster (three arguments here)
+// }
+
+
+function displayRandomPoster(currentPoster) {
+  currentPoster = new Poster(newImage, newTitle, newQuote)
+    newImage.src = getRandomIndex(images)
+    newTitle.innerText = getRandomIndex(titles)
+    newQuote.innerText = getRandomIndex(quotes)
+  return currentPoster
+
+//   }
+}
+
 function showSavedPosters() {
   mainPoster.classList.add('hidden');
   savedPostersForm.classList.remove('hidden');
@@ -169,6 +184,7 @@ function goBackToMainSaved(){
   savedPostersForm.classList.add('hidden');
   mainPoster.classList.remove('hidden');
 }
+
 
 //Iteration 2
 function showUserPoster(){
