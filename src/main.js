@@ -134,10 +134,13 @@ takeMeBackButtonFromMake.addEventListener('click', goBackToMainMake);
 backToMainButtonFromSaved.addEventListener('click', goBackToMainSaved);
 makeOwnPosterButton.addEventListener('click', showMakeForm);
 //Iteration 2
+savePosterButton.addEventListener('click', saveUserPoster);
 showMyPosterButton.addEventListener('click', function(){
   showUserPoster();
   saveUserPoster();
 });
+// Iteration 3
+savePosterButton.addEventListener('click', saveUserPoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -226,7 +229,8 @@ function displayUserPoster(){
   var newUserQuote = inputFieldForQuote.value;
   var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote)
   //display newUserPoster to grid
-  //newUserPoster is an object
+  // .InnerHTML
+  //newUserPoster is an object; pushed to the variable grid.
 }
 
 //save poster in array in a separate function; add stuff to the saved posters grid because there's nothing there to push stuff into;
