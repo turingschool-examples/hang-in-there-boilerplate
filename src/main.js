@@ -15,9 +15,6 @@ var takeMeBackButton = document.querySelector('.show-main')
 var backToMainButton = document.querySelector('.back-to-main')
 var showMyPosterButton = document.querySelector('.make-poster')
 
-
-// declare var poster = document.querySelector(".poster") 
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -133,14 +130,9 @@ takeMeBackButton.addEventListener('click', takeMeBack);
 showMyPosterButton.addEventListener('click', function(event) {
   event.preventDefault()
   showMyPoster()
+  savePoster()
 })
 
-//make your own poster button- add event listener 'click' connected to function that hides main poster and unhides form
-//view saved posters button - add event listener 'click' connected to function that hides main poster and unhides saved posters
-//never mind take me back button - add event listener 'click' connected to function that hides form and unhides main poster
-//back to main button - add event listener 'click' connected to function that hides saved posters and unhides main
-
-//addEventListener('click', hidePage)
 
 
 // functions and event handlers go here 👇
@@ -190,55 +182,27 @@ function showMyPoster() {
   var newUserImage = document.querySelector('#poster-image-url').value
   var newUserTitle = document.querySelector('#poster-title').value
   var newUserQuote = document.querySelector('#poster-quote').value
-  images.push(newUserImage)
-  titles.push(newUserTitle)
-  quotes.push(newUserQuote)
-  var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote)
+
   poster.innerHTML = `<img class="poster-img" src=${newUserImage} alt="Poster image">
   <h1 class="poster-title">${newUserTitle}</h1>
   <h3 class="poster-quote">${newUserQuote}</h3>`
   backToMain()
-  // savedPosters.push(newUserPoster) - don't need this little guy
+}
+ 
+function savePoster() {
+  var newUserImage = document.querySelector('#poster-image-url').value
+  var newUserTitle = document.querySelector('#poster-title').value
+  var newUserQuote = document.querySelector('#poster-quote').value
+    
+  images.push(newUserImage)
+  titles.push(newUserTitle)
+  quotes.push(newUserQuote)
 
-// create functions that create the poster, and one that displays it. Saving is a separate function after that. 
-//Left off here, console log not printing user input values 
-// We need to refer to the poster class from poster.js so that we can send new objects (new user posters) to it
-// Use the values from the inputs to create a new instance of our Poster class (part of your data model)
+  var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote)
 
-// Save the submitted data into the respective arrays (image URL into the images array, etc - all part of your data model) so that future random posters can use the user-created data
-
-// Change back to the main poster view (hiding the form view again)
-
-// Use the new instance of the Poster class (part of your data model) to display the newly created poster image, title, and quote in the main view on the DOM
+  savedPosters.push(newUserPoster)
+  console.log("Saved Posters Array" + savedPosters);
+  console.log("user input ", images[images.length - 1], titles[titles.length - 1], quotes[quotes.length - 1]);
 }
 
 
-//never mind take me back button - function that hides form and unhides main poster
-//back to main button - function that hides saved posters and unhides main
-
-
-//one function for each page. Hides unhidden page and unhides clicked page
-//do we want to access innerHTML to remove the word hidden (similar to changing the string above?)
-//https://attacomsian.com/blog/javascript-hide-show-elements-using-css-class
-
-
-
-
-//function pageLoadFunction() {
-  //instantiate poster
-  //var indexForArray = getRandomIndex(pickAnArray);
-  //pass value at each index 
-//}
-
-
-
-//-----------------//
-//1st. bullet point of iteration 0
-//when page loads we should see a poster with a randomly selected image title and quote
-//listen for page load
-//create a poster (instantiate a class or pull individual pieces from the datamodel and send them individually to the DOM(but better to use class))
-  //poster needs random image, title, quote (random generator Math floor)
-  //instantiated poster is created in the datamodel and needs to be sent to the DOM (link poster.js to main.js)
-
-
-  //use innerHTML to send the poster to the DOM
