@@ -1,9 +1,9 @@
 
 
 // .query selector variables go here 👇
-var posterQuoteInput = document.querySelector("#poster-quote");
-var posterTitleInput = document.querySelector("#poster-title");
-var posterImageInput = document.querySelector("#poster-img-url");
+// var posterQuoteInput = document.querySelector("#poster-quote");
+// var posterTitleInput = document.querySelector("#poster-title");
+// var posterImageInput = document.querySelector("#poster-img-url");
 
 var hideMainPosterPage = document.querySelector(".main-poster");
 var formCreatePoster = document.querySelector(".poster-form");
@@ -15,7 +15,7 @@ var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
 var posterImage = document.querySelector(".poster-img");
 var randomPosterButton = document.querySelector(".show-random");
-var imageUrl = document.querySelector("poster-image-url")
+//var imageUrl = document.querySelector("poster-image-url")
 
 
 
@@ -127,7 +127,7 @@ window.addEventListener('load', homePage)
 randomPosterButton.addEventListener('click', homePage)
 showFormButton.addEventListener('click', openFormPage)
 takeMeBack.addEventListener('click', openMainPage)
-//showMyPosterButton.addEventListener('click',homePage)
+showMyPosterButton.addEventListener('click',displayMyPoster)
 //functions and event handlers go here 👇
 
 var imgIndex = getRandomIndex(images);
@@ -145,9 +145,9 @@ posterQuote.innerText = quotes[getRandomIndex(quotes)]
   function displayMyPoster(){
     formCreatePoster.classList.add('hidden')
     hideMainPosterPage.classList.remove('hidden')
-    posterImage.src = posterImageInput.value
-    posterTitle.innerText = posterTitleInput.value
-    posterQuote.innerText = posterQuoteInput.value
+    posterImage.src = posterImage.value
+    posterTitle.innerText = posterTitle.value
+    posterQuote.innerText = posterQuote.value
 
   }
 
