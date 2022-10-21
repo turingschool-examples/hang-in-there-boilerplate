@@ -1,4 +1,6 @@
-// .query selector variables go here 👇
+
+
+// .query selector variables go here 👇 HEAD
 //iteration 0
 var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
