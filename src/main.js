@@ -1,17 +1,22 @@
 
 
 // .query selector variables go here 👇
+var posterQuoteInput = document.querySelector("#poster-quote");
+var posterTitleInput = document.querySelector("#poster-title");
+var posterImageInput = document.querySelector("#poster-img-url");
 
-var hideMainPosterPage = document.querySelector(".main-poster")
-var formCreatePoster = document.querySelector(".poster-form hidden");
+var hideMainPosterPage = document.querySelector(".main-poster");
+var formCreatePoster = document.querySelector(".poster-form");
 var titleMYO = document.querySelector("h2");
 var showMyPosterButton = document.querySelector(".make-poster");
-var createButton = document.querySelector(".show-form");
+var showFormButton = document.querySelector(".show-form");
 var takeMeBack = document.querySelector(".show-main");
 var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
 var posterImage = document.querySelector(".poster-img");
 var randomPosterButton = document.querySelector(".show-random");
+var imageUrl = document.querySelector("poster-image-url")
+
 
 
 // we've provided you with some data to work with 👇
@@ -120,9 +125,9 @@ var currentPoster;
 //formCreatePoster.addEventListener('load', openFormPage)
 window.addEventListener('load', homePage)
 randomPosterButton.addEventListener('click', homePage)
-//createButton.addEventListener('click', customPoster)
-//takeMeBackbutton.addEventListener('click', homePage)
-//showMyPosterButton.addEventListener('click', ####homePage####)
+showFormButton.addEventListener('click', openFormPage)
+takeMeBack.addEventListener('click', openMainPage)
+//showMyPosterButton.addEventListener('click',homePage)
 //functions and event handlers go here 👇
 
 var imgIndex = getRandomIndex(images);
@@ -134,19 +139,29 @@ posterImage.src = images[getRandomIndex(images)]
 posterTitle.innerText = titles[getRandomIndex(titles)]
 posterQuote.innerText = quotes[getRandomIndex(quotes)]
 }
-//console.log(imgIndex);
-function customPoster() {
-  titleMYO.innerText = 'Create Your Own Motivational Poster'
-console.log(titleMYO)
-  }
 
-  //function to load formCreatePoster
+  //function to load formCreatePosters
+
+  function displayMyPoster(){
+    formCreatePoster.classList.add('hidden')
+    hideMainPosterPage.classList.remove('hidden')
+    posterImage.src = posterImageInput.value
+    posterTitle.innerText = posterTitleInput.value
+    posterQuote.innerText = posterQuoteInput.value
+
+  }
 
   function openFormPage(){
-    formCreatePoster.hidden.remove(hidden)
-    hideMainPosterPage.posterForm.add(hidden)
+    console.log('openForm')
+    hideMainPosterPage.classList.add('hidden')
+    formCreatePoster.classList.remove('hidden')
   }
 
+  function openMainPage(){
+    console.log('openForm')
+    hideMainPosterPage.classList.remove('hidden')
+    formCreatePoster.classList.add('hidden')
+  }
 // (we've provided one for you to get you started)!
 //function newRandomPoster() {
 
