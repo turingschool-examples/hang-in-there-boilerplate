@@ -202,7 +202,14 @@ function showUserPoster(){
   // quotes.push(newUserQuote);
   // goBackToMainMake();
 }
-
+// Iteration 3
+function pushUserPosterToArray(){
+  // create variables for user input fields query selectors
+  // push variables into arrays
+  // push new poster to saved posters arrays by calling the showUserPoster function?
+  // create new object to push into the saved posters arrays
+  //
+}
 //save poster in array in a separate function; add stuff to the saved posters grid because there's nothing there to push stuff into;
 //function to display user poster, and call it in the showUserPoster function FIRST, then invoke the function Save poster to push it into the arrays. Saved poster is what we want to display.
 
