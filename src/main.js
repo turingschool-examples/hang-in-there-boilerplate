@@ -111,7 +111,7 @@ var posterTitleForm = document.querySelector('#poster-title');
 var posterQuoteForm = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector('.make-poster');
 var showMainButton = document.querySelector('.show-main');
-var showSavedPosterPage = document.querySelector('.saved-posters');//may need to delete this
+var showSavedPosterPage = document.querySelector('.saved-posters-grid');
 var backToMainButton = document.querySelector('.back-to-main');
 
 var savedPosters = [];
@@ -190,6 +190,16 @@ function displayPoster() {
   console.log(savedPosters)
   }
 };
+
+function viewSavedPosert() {
+  showSavedPosterPage.innerHTML = ""
+  for(var i = 0; i < savedPosters.length; i++)
+    showSavedPosterPage.innerHTML =`
+        <section class="mini-poster" id=${savedPosters[i].id}>
+        <img src=${savedPosters[i].imageURL}>
+        <h2>${savedPosters[i].title}</h2>
+        <h4>${savedPosters[i].quote}</h4></section>`
+}
 
 function makeYourOwnPoster() {
   hide(mainPoster)
