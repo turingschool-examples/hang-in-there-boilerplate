@@ -189,18 +189,18 @@ function goBackToMainSaved(){
 
 //Iteration 2
 function showUserPoster(){
-  event.preventDefault()
-  var newUserImage = inputFieldForImage.value;
-  var newUserTitle = inputFieldForTitle.value;
-  var newUserQuote = inputFieldForQuote.value;
-  var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
-  image.src = newUserImage;
-  title.innerText = newUserTitle;
-  quote.innerText = newUserQuote;
-  images.push(newUserImage);
-  titles.push(newUserTitle);
-  quotes.push(newUserQuote);
-  goBackToMainMake();
+  // event.preventDefault()
+  // var newUserImage = inputFieldForImage.value;
+  // var newUserTitle = inputFieldForTitle.value;
+  // var newUserQuote = inputFieldForQuote.value;
+  // var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
+  // image.src = newUserImage;
+  // title.innerText = newUserTitle;
+  // quote.innerText = newUserQuote;
+  // images.push(newUserImage);
+  // titles.push(newUserTitle);
+  // quotes.push(newUserQuote);
+  // goBackToMainMake();
 }
 
 //save poster in array in a separate function; add stuff to the saved posters grid because there's nothing there to push stuff into;
