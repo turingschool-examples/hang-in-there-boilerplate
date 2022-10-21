@@ -128,7 +128,7 @@ showFormButton.addEventListener('click', makeYourOwnPoster);
 showSavedButton.addEventListener('click', showSavedPosters);
 showMainButton.addEventListener('click', backToMain);
 backToMainButton.addEventListener('click', backToMain);
-
+makePosterButton.addEventListener('click', createUserPoster)
 
 
 //-------------------------------> Functions <-------------------------------------------------
@@ -149,6 +149,32 @@ function createRandomPoster() {
   )
 displayPoster()
 }
+function createUserPoster(event){
+  event.preventDefault()
+  currentPoster = new Poster (
+    posterImageUrl.value,
+    posterTitleForm.value,
+    posterQuoteForm.value
+    )
+    
+  storePosterData()
+  displayPoster()
+
+  hide(posterForm)
+  show(mainPoster)
+  show(savePosterButton)
+  show(showSavedButton)
+  show(showRandomButton)
+  show(showFormButton)
+}
+function storePosterData() {
+  images.push(currentPoster.imageURL);
+  titles.push(currentPoster.title);
+  quotes.push(currentPoster.quote);
+
+}
+
+
 
 function displayPoster() {
   posterImg.src = currentPoster.imageURL
