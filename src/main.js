@@ -153,7 +153,6 @@ function openFormPage(){
     hideMainPosterPage.classList.remove('hidden')
     formCreatePoster.classList.add('hidden')
   }
-  //function to load formCreatePosters
 
   function displayMyPoster(){
     event.preventDefault()
