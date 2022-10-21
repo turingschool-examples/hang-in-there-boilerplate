@@ -98,8 +98,8 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
+var savedPosters = []
+var currentPoster
 var currentPageView = document.querySelector('.main-poster')
 var mainPageView = document.querySelector('.main-poster')
 var formView = document.querySelector('.poster-form')
@@ -127,6 +127,7 @@ var imageInput = document.querySelector('#poster-image-url')
 window.addEventListener("load", createsRandomPoster)
 
 showRandomButton.addEventListener("click", createsRandomPoster)
+
 showFormButton.addEventListener("click", function() {
   switchingViews(formView)
 })
@@ -139,8 +140,8 @@ showMainButton.addEventListener('click', function () {
 backToMainButton.addEventListener('click', function () {
   switchingViews(mainPageView)
 })
-// savePosterButton.addEventListener("click", //this is a function to push posters into our empty array
-// )
+savePosterButton.addEventListener("click", saveCurrentPoster)
+
 makePosterButton.addEventListener("click", function(event) {
   event.preventDefault()
   makeMyPoster(titleInput, quoteInput, imageInput)
@@ -161,7 +162,6 @@ function pushInputsToData() {
 function makeMyPoster(titleInput, quoteInput, imageInput) {
   var userNewPoster = new Poster(imageInput.value, titleInput.value, quoteInput.value)
   createPoster(userNewPoster.title, userNewPoster.quote, userNewPoster.imageURL)
-  
 }
 
 function switchingViews(goToView) {
@@ -187,6 +187,18 @@ function createPoster(title, quote, img) {
   posterTitle.innerText = title
   posterQuote.innerText = quote 
   posterImage.src = img
+  var saveInstance = new Poster(img, title, quote)
+  currentPoster = saveInstance
+}
+
+
+// var savedPosters = [currentPoster]
+// var currentPoster
+
+function saveCurrentPoster(){
+  savedPosters.push(currentPoster)
+  // for(var i = 0; i < ; i ++)
+console.log(savedPosters)
 }
 
 
