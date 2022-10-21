@@ -13,7 +13,7 @@ var makePosterButton = document.querySelector('.show-form')
 var showSavedButton = document.querySelector('.show-saved')
 var takeMeBackButton = document.querySelector('.show-main')
 var backToMainButton = document.querySelector('.back-to-main')
-
+var showMyPosterButton = document.querySelector('.make-poster')
 
 
 // declare var poster = document.querySelector(".poster") 
@@ -129,7 +129,11 @@ randomButton.addEventListener('click', pageLoad);
 makePosterButton.addEventListener('click', goToFormPage);
 showSavedButton.addEventListener('click', goToSavedPage);
 takeMeBackButton.addEventListener('click', takeMeBack);
-backToMainButton.addEventListener('click', XXXX);
+// backToMainButton.addEventListener('click', XXXX);
+showMyPosterButton.addEventListener('click', function(event) {
+  event.preventDefault()
+  showMyPoster()
+})
 
 //make your own poster button- add event listener 'click' connected to function that hides main poster and unhides form
 //view saved posters button - add event listener 'click' connected to function that hides main poster and unhides saved posters
@@ -181,7 +185,32 @@ function backToMain() {
   mainPosterPage.classList.remove('hidden');
   savedPosterPage.classList.add('hidden');
 }
+function showMyPoster() {
+  
+  var newUserImage = document.querySelector('#poster-image-url').value
+  var newUserTitle = document.querySelector('#poster-title').value
+  var newUserQuote = document.querySelector('#poster-quote').value
+  images.push(newUserImage)
+  titles.push(newUserTitle)
+  quotes.push(newUserQuote)
+  var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote)
+  poster.innerHTML = `<img class="poster-img" src=${newUserImage} alt="Poster image">
+  <h1 class="poster-title">${newUserTitle}</h1>
+  <h3 class="poster-quote">${newUserQuote}</h3>`
+  backToMain()
+  // savedPosters.push(newUserPoster) - don't need this little guy
 
+// create functions that create the poster, and one that displays it. Saving is a separate function after that. 
+//Left off here, console log not printing user input values 
+// We need to refer to the poster class from poster.js so that we can send new objects (new user posters) to it
+// Use the values from the inputs to create a new instance of our Poster class (part of your data model)
+
+// Save the submitted data into the respective arrays (image URL into the images array, etc - all part of your data model) so that future random posters can use the user-created data
+
+// Change back to the main poster view (hiding the form view again)
+
+// Use the new instance of the Poster class (part of your data model) to display the newly created poster image, title, and quote in the main view on the DOM
+}
 
 
 //never mind take me back button - function that hides form and unhides main poster
