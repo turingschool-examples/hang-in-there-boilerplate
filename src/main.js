@@ -14,6 +14,8 @@ var showSavedButton = document.querySelector('.show-saved')
 var takeMeBackButton = document.querySelector('.show-main')
 var backToMainButton = document.querySelector('.back-to-main')
 var showMyPosterButton = document.querySelector('.make-poster')
+var saveThisPosterButton = document.querySelector('.save-poster')
+var savedPosterGrid = document.querySelector('.saved-posters-grid')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -130,9 +132,10 @@ takeMeBackButton.addEventListener('click', takeMeBack);
 showMyPosterButton.addEventListener('click', function(event) {
   event.preventDefault()
   showMyPoster()
-  savePoster()
+  pushUserInput()
 })
 
+saveThisPosterButton.addEventListener('click', XXXX)
 
 
 // functions and event handlers go here 👇
@@ -189,7 +192,7 @@ function showMyPoster() {
   backToMain()
 }
  
-function savePoster() {
+function pushUserInput() {
   var newUserImage = document.querySelector('#poster-image-url').value
   var newUserTitle = document.querySelector('#poster-title').value
   var newUserQuote = document.querySelector('#poster-quote').value
@@ -201,8 +204,15 @@ function savePoster() {
   var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote)
 
   savedPosters.push(newUserPoster)
-  console.log("Saved Posters Array" + savedPosters);
-  console.log("user input ", images[images.length - 1], titles[titles.length - 1], quotes[quotes.length - 1]);
+  // console.log("Saved Posters Array" + savedPosters);
+  // console.log("user input ", images[images.length - 1], titles[titles.length - 1], quotes[quotes.length - 1]);
 }
 
-
+function savePoster() {
+// refactor showMyPoster and pageLoad to be object instances instead of interpolation and then push that object instance to saved array
+}
+//-card for each poster instance
+//-create HTML sections with interpolation for each index of the card to provide values.
+//-number of cards = saved posters.length
+//-innerHTML between article saved poster grid (class). Use saved poster grid query selector to access innerHTML
+//-interpolated HTML change class info to match mini posters for IMG and headers.
