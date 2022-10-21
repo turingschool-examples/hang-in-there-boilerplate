@@ -1,21 +1,24 @@
 // query selector variables go here 👇
 //initial load
-var poster = document.querySelector('.poster');
+// var poster = document.querySelector('.poster');
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
 var randomButton = document.querySelector('.show-random');
 
 //pages
-var mainPosterPage = document.querySelector('.main-poster')
-var posterFormPage = document.querySelector('.poster-form')
-var savedPosterPage = document.querySelector('.saved-posters')
+var mainPosterPage = document.querySelector('.main-poster');
+var posterFormPage = document.querySelector('.poster-form');
+var savedPosterPage = document.querySelector('.saved-posters');
 
 //buttons
-var makePosterButton = document.querySelector('.show-form')
-var showSavedButton = document.querySelector('.show-saved')
-var takeMeBackButton = document.querySelector('.show-main')
-var backToMainButton = document.querySelector('.back-to-main')
-var showMyPosterButton = document.querySelector('.make-poster')
-var saveThisPosterButton = document.querySelector('.save-poster')
-var savedPosterGrid = document.querySelector('.saved-posters-grid')
+var makePosterButton = document.querySelector('.show-form');
+var showSavedButton = document.querySelector('.show-saved');
+var takeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var showMyPosterButton = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector('.save-poster');
+var savedPosterGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -135,7 +138,7 @@ showMyPosterButton.addEventListener('click', function(event) {
   pushUserInput()
 })
 
-saveThisPosterButton.addEventListener('click', XXXX)
+//saveThisPosterButton.addEventListener('click', XXXX)
 
 
 // functions and event handlers go here 👇
@@ -148,19 +151,26 @@ function getRandomIndex(array) {
 
 //initial page load
 function pageLoad() {
-  // poster.innerHTML = null
   var imageIndex = getRandomIndex(images)
-  var quoteIndex = getRandomIndex(quotes)
   var titleIndex = getRandomIndex(titles)
+  var quoteIndex = getRandomIndex(quotes)
+
   var newPoster = {
     image: images[imageIndex],
-    quote: quotes[quoteIndex],
     title: titles[titleIndex],
+    quote: quotes[quoteIndex],
   }
+  var newUserPoster = new Poster(newPoster.image, newPoster.title, newPoster.quote)
+  posterImage.src = newUserPoster.imageURL;
+  posterTitle.innerText = newUserPoster.title;
+  posterQuote.innerText  = newUserPoster.quote;
 
-  poster.innerHTML = `<img class="poster-img" src=${newPoster.image} alt="Poster image">
-  <h1 class="poster-title">${newPoster.title}</h1>
-  <h3 class="poster-quote">${newPoster.quote}</h3>`
+  console.log("Image Index: ", imageIndex);
+  console.log("img src: ", newPoster.image);
+  console.log("whats in the onject instance: ", newUserPoster.imageURL);
+  // poster.innerHTML = `<img class="poster-img" src=${newPoster.image} alt="Poster image">
+  // <h1 class="poster-title">${newPoster.title}</h1>
+  // <h3 class="poster-quote">${newPoster.quote}</h3>`
 }
 
 //change page functions. REFACTOR: CAN THEY BE COMBINED?
@@ -186,9 +196,14 @@ function showMyPoster() {
   var newUserTitle = document.querySelector('#poster-title').value
   var newUserQuote = document.querySelector('#poster-quote').value
 
-  poster.innerHTML = `<img class="poster-img" src=${newUserImage} alt="Poster image">
-  <h1 class="poster-title">${newUserTitle}</h1>
-  <h3 class="poster-quote">${newUserQuote}</h3>`
+  var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote)
+  posterImage.src = newUserPoster.imageURL;
+  posterTitle.innerText = newUserPoster.title;
+  posterQuote.innerText  = newUserPoster.quote;
+
+  // poster.innerHTML = `<img class="poster-img" src=${newUserImage} alt="Poster image">
+  // <h1 class="poster-title">${newUserTitle}</h1>
+  // <h3 class="poster-quote">${newUserQuote}</h3>`
   backToMain()
 }
  
