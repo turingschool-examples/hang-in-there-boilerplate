@@ -130,7 +130,10 @@ makePosterButton.addEventListener('click', goToFormPage);
 showSavedButton.addEventListener('click', goToSavedPage);
 takeMeBackButton.addEventListener('click', takeMeBack);
 // backToMainButton.addEventListener('click', XXXX);
-showMyPosterButton.addEventListener('click', showMyPoster)
+showMyPosterButton.addEventListener('click', function(event) {
+  event.preventDefault()
+  showMyPoster()
+})
 
 //make your own poster button- add event listener 'click' connected to function that hides main poster and unhides form
 //view saved posters button - add event listener 'click' connected to function that hides main poster and unhides saved posters
@@ -183,16 +186,23 @@ function backToMain() {
   savedPosterPage.classList.add('hidden');
 }
 function showMyPoster() {
+  
   var newUserImage = document.querySelector('#poster-image-url').value
   var newUserTitle = document.querySelector('#poster-title').value
   var newUserQuote = document.querySelector('#poster-quote').value
   images.push(newUserImage)
   titles.push(newUserTitle)
   quotes.push(newUserQuote)
+  var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote)
+  poster.innerHTML = `<img class="poster-img" src=${newUserImage} alt="Poster image">
+  <h1 class="poster-title">${newUserTitle}</h1>
+  <h3 class="poster-quote">${newUserQuote}</h3>`
+  backToMain()
+  // savedPosters.push(newUserPoster) - don't need this little guy
+
+// create functions that create the poster, and one that displays it. Saving is a separate function after that. 
 //Left off here, console log not printing user input values 
 // We need to refer to the poster class from poster.js so that we can send new objects (new user posters) to it
-  console.log(images[images.length - 1], titles[titles.length - 1], quotes[quotes.length - 1])
-
 // Use the values from the inputs to create a new instance of our Poster class (part of your data model)
 
 // Save the submitted data into the respective arrays (image URL into the images array, etc - all part of your data model) so that future random posters can use the user-created data
