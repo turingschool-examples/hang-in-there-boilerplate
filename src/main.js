@@ -11,11 +11,14 @@ var makeOwnPosterForm = document.querySelector('.poster-form');
 var viewSavedPosterButton = document.querySelector('.show-saved');
 var savedPostersForm = document.querySelector('.saved-posters');
 var takeMeBackButtonFromMake = document.querySelector('.show-main');
-
 var viewSavedButton = document.querySelector('.show-saved');
 var nevermindTakeMeButton = document.querySelector('.show-main');
 var backToMainButtonFromSaved = document.querySelector('.back-to-main');
-
+//Iteration 2
+var showMyPosterButton = document.querySelector('.make-poster');
+var inputFieldForImage = document.querySelector('#poster-image-url');
+var inputFieldForTitle = document.querySelector('#poster-title');
+var inputFieldForQuote = document.querySelector('#poster-quote');
 
 
 // we've provided you with some data to work with 👇
@@ -120,13 +123,16 @@ var savedPosters = []; //array of custom posters; includes array of images, titl
 var currentPoster;
 
 // event listeners go here 👇
+//Iteration 0
 window.addEventListener('load', createNewPoster);
 showRandomButton.addEventListener('click', createNewPoster);
-makeOwnPosterButton.addEventListener('click', showMakeForm);
+//Iteration 1
 viewSavedPosterButton.addEventListener('click', showSavedPosters);
 takeMeBackButtonFromMake.addEventListener('click', goBackToMainMake);
-backToMainButtonFromSaved.addEventListener('click', goBackToMainSaved)
-
+backToMainButtonFromSaved.addEventListener('click', goBackToMainSaved);
+makeOwnPosterButton.addEventListener('click', showMakeForm);
+//Iteration 2
+showMyPosterButton.addEventListener('click', showUserPoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -143,7 +149,7 @@ function createNewPoster() {
   title.innerText = newTitle
   quote.innerText = newQuote
 }
-
+//iteration 1
 function showMakeForm() {
   makeOwnPosterForm.classList.remove('hidden');
   mainPoster.classList.add('hidden');
@@ -180,3 +186,13 @@ function goBackToMainSaved(){
 }
 
 
+//Iteration 2
+function showUserPoster(){
+  var newUserImage = inputFieldForImage.value
+  var newUserTitle = inputFieldForTitle.value
+  var newUserQuote = inputFieldForQuote.value
+  var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
+  showMyPosterButton.
+  savedPosters.push(newUserPoster);
+}
+//capture the automatic refresh of the page, .preventDefault() on the function to stop it from automatically loading to the main page; the user image should display on the DOM/Main.
