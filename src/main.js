@@ -1,4 +1,3 @@
-// we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -115,7 +114,6 @@ var showMainButton = document.querySelector('.show-main');
 var showSavedPosterPage = document.querySelector('.saved-posters');//may need to delete this
 var backToMainButton = document.querySelector('.back-to-main');
 
-
 var savedPosters = [];
 var currentPoster;
 
@@ -124,22 +122,21 @@ var currentPoster;
 window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
 showFormButton.addEventListener('click', makeYourOwnPoster);
-// savePosterButton.addEventListener('click', function);
+savePosterButton.addEventListener('click', savePoster);
 showSavedButton.addEventListener('click', showSavedPosters);
 showMainButton.addEventListener('click', backToMain);
 backToMainButton.addEventListener('click', backToMain);
-
-
+makePosterButton.addEventListener('click', createUserPoster)
 
 //-------------------------------> Functions <-------------------------------------------------
 
 function show(elements) {
   elements.classList.remove('hidden')
-}
+};
 
 function hide(elements) {
   elements.classList.add('hidden')
-}
+};
 
 function createRandomPoster() {
   currentPoster = new Poster ( 
@@ -148,16 +145,45 @@ function createRandomPoster() {
   quotes[getRandomIndex(quotes)]
   )
 displayPoster()
-}
+};
+
+function createUserPoster(event){
+  event.preventDefault()
+  currentPoster = new Poster (
+    posterImageUrl.value,
+    posterTitleForm.value,
+    posterQuoteForm.value
+  )
+    
+  storePosterData()
+  displayPoster()
+
+  hide(posterForm)
+  show(mainPoster)
+  show(savePosterButton)
+  show(showSavedButton)
+  show(showRandomButton)
+  show(showFormButton)
+};
+
+function storePosterData() {
+  images.push(currentPoster.imageURL);
+  titles.push(currentPoster.title);
+  quotes.push(currentPoster.quote);
+};
 
 function displayPoster() {
   posterImg.src = currentPoster.imageURL
   posterTitle.innerText = currentPoster.title
   posterQuote.innerText = currentPoster.quote
- }
+ };
 
- // we need to generate the get random idex(takes arrays and picks a random image, quote and title)do this inside of anothe instants of the poster class
-// we need to create a function that displays all of the properties from our instance
+ function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+  console.log(savedPosters)
+  }
+};
 
 function makeYourOwnPoster() {
   hide(mainPoster)
@@ -168,7 +194,7 @@ function makeYourOwnPoster() {
   show(posterForm)
   show(showMainButton)
   show(makePosterButton)
-}
+};
 
 function showSavedPosters() {
   hide(mainPoster)
@@ -181,7 +207,7 @@ function showSavedPosters() {
   hide(makePosterButton)
   show(backToMainButton)
   show(showSavedPosterPage)
-}
+};
 
 function backToMain() {
   show(mainPoster)
@@ -189,18 +215,13 @@ function backToMain() {
   show(showSavedButton)
   show(savePosterButton)
   show(showFormButton)
-}
+};
 
 //-------------------------------> Misc Functions <-----------------------------------------
  
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
 
-
-
-
-// Create an event listener that accesses the querySelector for makePosterButton
-// and hides the main page, 
 
