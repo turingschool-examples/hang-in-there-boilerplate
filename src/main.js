@@ -12,7 +12,6 @@ var viewSavedPosterButton = document.querySelector('.show-saved');
 var savedPostersForm = document.querySelector('.saved-posters');
 var takeMeBackButtonFromMake = document.querySelector('.show-main');
 var nevermindTakeMeButton = document.querySelector('.show-main');
-
 var backToMainButtonFromSaved = document.querySelector('.back-to-main');
 //Iteration 2
 var showMyPosterButton = document.querySelector('.make-poster');
@@ -140,10 +139,10 @@ makeOwnPosterButton.addEventListener('click', showMakeForm);
 showMyPosterButton.addEventListener('click', showUserPoster);
 // Iteration 3
 savedPosterButton.addEventListener('click', saveUserPoster);
-viewSavedPosterButton.addEventListener('click', /*function*/)
-
-
-savePosterButton.addEventListener('click', )
+// viewSavedPosterButton.addEventListener('click', /*function*/)
+//
+//
+// savePosterButton.addEventListener('click', )
 showMyPosterButton.addEventListener('click', showUserPoster);
 
 
@@ -176,7 +175,8 @@ function goBackToMainMake(){
 }
 
 function displayRandomPoster(currentPoster) {
-  currentPoster = new Poster(newImage, newTitle, newQuote)
+
+    currentPoster = new Poster(newImage, newTitle, newQuote)
     newImage.src = getRandomIndex(images)
     newTitle.innerText = getRandomIndex(titles)
     newQuote.innerText = getRandomIndex(quotes)
