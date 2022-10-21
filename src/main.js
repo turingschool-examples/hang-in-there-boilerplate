@@ -192,7 +192,13 @@ function showUserPoster(){
   var newUserTitle = inputFieldForTitle.value
   var newUserQuote = inputFieldForQuote.value
   var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
-  showMyPosterButton.
-  savedPosters.push(newUserPoster);
+    images.push(newUserImage)
+    titles.push(newUserTitle)
+    quotes.push(newUserQuote)
+  showMyPosterButton.addEventListener('click', function(event){
+    event.preventDefault()
+  });
+  goBackToMainMake();
+  return newUserPoster
 }
 //capture the automatic refresh of the page, .preventDefault() on the function to stop it from automatically loading to the main page; the user image should display on the DOM/Main.
