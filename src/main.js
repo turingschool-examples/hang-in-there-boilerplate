@@ -19,6 +19,7 @@ var showMyPosterButton = document.querySelector('.make-poster');
 var inputFieldForImage = document.querySelector('#poster-image-url');
 var inputFieldForTitle = document.querySelector('#poster-title');
 var inputFieldForQuote = document.querySelector('#poster-quote');
+var mainPosterClass = document.querySelector('.poster');
 
 
 // we've provided you with some data to work with 👇
@@ -188,17 +189,23 @@ function goBackToMainSaved(){
 
 //Iteration 2
 function showUserPoster(){
-  var newUserImage = inputFieldForImage.value
-  var newUserTitle = inputFieldForTitle.value
-  var newUserQuote = inputFieldForQuote.value
+  event.preventDefault()
+  var newUserImage = inputFieldForImage.value;
+  var newUserTitle = inputFieldForTitle.value;
+  var newUserQuote = inputFieldForQuote.value;
   var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
-    images.push(newUserImage)
-    titles.push(newUserTitle)
-    quotes.push(newUserQuote)
-  showMyPosterButton.addEventListener('click', function(event){
-    event.preventDefault()
-  });
+  image.src = newUserImage;
+  title.innerText = newUserTitle;
+  quote.innerText = newUserQuote;
+  images.push(newUserImage);
+  titles.push(newUserTitle);
+  quotes.push(newUserQuote);
   goBackToMainMake();
-  return newUserPoster
 }
+
+//save poster in array in a separate function; add stuff to the saved posters grid because there's nothing there to push stuff into;
+//function to display user poster, and call it in the showUserPoster function FIRST, then invoke the function Save poster to push it into the arrays. Saved poster is what we want to display.
+
 //capture the automatic refresh of the page, .preventDefault() on the function to stop it from automatically loading to the main page; the user image should display on the DOM/Main.
+//push the new user info into the main poster fields
+//prevent the window.addEventLister from running (createNewPoster)
