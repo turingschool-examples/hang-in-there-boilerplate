@@ -109,12 +109,20 @@ var savedPostersView = document.querySelector('.saved-posters')
 var posterTitle = document.querySelector(".poster-title")
 var posterQuote = document.querySelector(".poster-quote")
 var posterImage = document.querySelector(".poster-img")
+
+// buttons
 var showRandomButton = document.querySelector(".show-random") 
 var showFormButton = document.querySelector('.show-form')
 var savePosterButton = document.querySelector('.save-poster')
 var showSavedButton = document.querySelector('.show-saved')
 var showMainButton = document.querySelector('.show-main')
 var backToMainButton = document.querySelector('.back-to-main')
+var makePosterButton = document.querySelector('.make-poster')
+
+// Form inputs
+var titleInput = document.querySelector('#poster-title')
+var quoteInput = document.querySelector('#poster-quote')
+var imageInput = document.querySelector('#poster-image-url')
 
 window.addEventListener("load", createsRandomPoster)
 
@@ -131,15 +139,31 @@ showMainButton.addEventListener('click', function () {
 backToMainButton.addEventListener('click', function () {
   switchingViews(mainPageView)
 })
-savePosterButton.addEventListener("click", //this is a function to push posters into our empty array
-)
+// savePosterButton.addEventListener("click", //this is a function to push posters into our empty array
+// )
+makePosterButton.addEventListener("click", function(event) {
+  event.preventDefault()
+  console.log('hello?')
+  makeMyPoster(titleInput, quoteInput, imageInput)
+  switchingViews(mainPageView)
+  
+})
 
 // functions and event handlers go here 👇
 
 // function switchToMain() {
 //   mainPageView.classList.toggle('hidden')
 // }
-
+function makeMyPoster(titleInput, quoteInput, imageInput) {
+  var userNewPoster = new Poster(titleInput.value, quoteInput.value, imageInput.value)
+  console.log(userNewPoster)
+  savedPosters.push(userNewPoster)
+  console.log(savedPosters)
+  images.push(imageInput.value)
+  titles.push(titleInput.value)
+  quotes.push(quoteInput.value)
+  console.log(images, titles, quotes)
+}
 
 function switchingViews(goToView) {
   currentPageView.classList.toggle('hidden')
