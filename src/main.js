@@ -199,3 +199,14 @@ function saveCurrentPoster() {
     savedPosters.push(currentPoster);
   }
 }
+
+function displaySavedPosters() {
+  savedPostersGrid.innerHTML = ''
+   for (var i = 0; i < savedPosters.length; i++) {
+     savedPostersGrid.innerHTML += `<article class="mini-poster">
+     <img id="${savedPosters[i].id}" src="${savedPosters[i].imageURL}" alt="${savedPosters[i].title}">
+     <h1 class="mini-poster-title">${savedPosters[i].title}</h1>
+     <h3 class="mini-poster-quote">${savedPosters[i].quote}</h3>
+  </article>`
+   }
+ }
