@@ -22,6 +22,7 @@ var inputFieldForQuote = document.querySelector('#poster-quote');
 var mainPosterClass = document.querySelector('.poster');
 // Iteration 3
 var grid = document.querySelector('.saved-posters-grid');
+var savedPosterButton = document.querySelector('.save-poster')
 
 // we've provided you with some data to work with 👇
 var images = [ //this is accessing the assets directory (images that will be used later on when we make a new class of Poster!)
@@ -134,13 +135,12 @@ takeMeBackButtonFromMake.addEventListener('click', goBackToMainMake);
 backToMainButtonFromSaved.addEventListener('click', goBackToMainSaved);
 makeOwnPosterButton.addEventListener('click', showMakeForm);
 //Iteration 2
-savePosterButton.addEventListener('click', saveUserPoster);
-showMyPosterButton.addEventListener('click', function(){
-  showUserPoster();
-  saveUserPoster();
-});
+showMyPosterButton.addEventListener('click', showUserPoster);
 // Iteration 3
-savePosterButton.addEventListener('click', saveUserPoster);
+savedPosterButton.addEventListener('click', saveUserPoster);
+viewSavedPosterButton.addEventListener('click', )
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -215,7 +215,9 @@ function saveUserPoster(){
   var newUserTitle = inputFieldForTitle.value;
   var newUserQuote = inputFieldForQuote.value;
   var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
-  savedPosters.push({newUserPoster})
+  savedPosters.push({newUserPoster});
+  // if a user poster is saved more than once, .pop(newUserPoster)
+  // return savedPosters
   // create variables for user input fields query selectors
   // push variables into arrays
   // push new poster to saved posters arrays by calling the showUserPoster function?
@@ -223,15 +225,34 @@ function saveUserPoster(){
   //
 }
 
+function saveExistingPoster(){
+    grid.innerHTML = currentPoster;
+    savedPosters.push({newRandomPoster});
+}
+
 function displayUserPoster(){
   var newUserImage = inputFieldForImage.value;
   var newUserTitle = inputFieldForTitle.value;
   var newUserQuote = inputFieldForQuote.value;
-  var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote)
+  var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
+  // push newUserPoster to grid
+  // hide main page and show grid
+  grid.innerHTML = newUserPoster
+  //InnerHTML
+  //
+  showSavedPosters();
+  // function createBoxes(numBox){
+  //   grid.style.gridTemplateColumns = `repeat(${numBox}, 1fr)`;
+  //   for(let i = 0;i < numBox*numBox;i++){
+  //       const square = document.createElement('div');
+  //       square.classList.add('box');
+  //       container.appendChild(square);
+  //   }
+}
   //display newUserPoster to grid
   // .InnerHTML
   //newUserPoster is an object; pushed to the variable grid.
-}
+
 
 //save poster in array in a separate function; add stuff to the saved posters grid because there's nothing there to push stuff into;
 //function to display user poster, and call it in the showUserPoster function FIRST, then invoke the function Save poster to push it into the arrays. Saved poster is what we want to display.
