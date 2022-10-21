@@ -11,8 +11,8 @@ var makeOwnPosterForm = document.querySelector('.poster-form');
 var viewSavedPosterButton = document.querySelector('.show-saved');
 var savedPostersForm = document.querySelector('.saved-posters');
 var takeMeBackButtonFromMake = document.querySelector('.show-main');
-var viewSavedButton = document.querySelector('.show-saved');
 var nevermindTakeMeButton = document.querySelector('.show-main');
+
 var backToMainButtonFromSaved = document.querySelector('.back-to-main');
 //Iteration 2
 var showMyPosterButton = document.querySelector('.make-poster');
@@ -20,6 +20,7 @@ var inputFieldForImage = document.querySelector('#poster-image-url');
 var inputFieldForTitle = document.querySelector('#poster-title');
 var inputFieldForQuote = document.querySelector('#poster-quote');
 var mainPosterClass = document.querySelector('.poster');
+var savePosterButton = document.querySelector('.save-poster');
 // Iteration 3
 var grid = document.querySelector('.saved-posters-grid');
 var savedPosterButton = document.querySelector('.save-poster')
@@ -138,7 +139,8 @@ makeOwnPosterButton.addEventListener('click', showMakeForm);
 showMyPosterButton.addEventListener('click', showUserPoster);
 // Iteration 3
 savedPosterButton.addEventListener('click', saveUserPoster);
-viewSavedPosterButton.addEventListener('click', )
+viewSavedPosterButton.addEventListener('click', /*function*/)
+
 
 
 // functions and event handlers go here 👇
@@ -168,24 +170,23 @@ function goBackToMainMake(){
   mainPoster.classList.remove('hidden');
 }
 
-// function createNewPoster(getRandomIndexArray){
-//   return new Poster (three arguments here)
-// }
-
-
 function displayRandomPoster(currentPoster) {
   currentPoster = new Poster(newImage, newTitle, newQuote)
     newImage.src = getRandomIndex(images)
     newTitle.innerText = getRandomIndex(titles)
     newQuote.innerText = getRandomIndex(quotes)
   return currentPoster
-
-//   }
 }
 
 function showSavedPosters() {
   mainPoster.classList.add('hidden');
   savedPostersForm.classList.remove('hidden');
+
+  currentPoster = new Poster(newImage, newTitle, newQuote)
+    newImage.src = getRandomIndex(images)
+    newTitle.innerText = getRandomIndex(titles)
+    newQuote.innerText = getRandomIndex(quotes)
+  return currentPoster
 }
 
 function goBackToMainSaved(){
@@ -197,16 +198,16 @@ function goBackToMainSaved(){
 //Iteration 2
 function showUserPoster(){
   event.preventDefault()
-  var newUserImage = inputFieldForImage.value;
-  var newUserTitle = inputFieldForTitle.value;
-  var newUserQuote = inputFieldForQuote.value;
   var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
-  image.src = newUserImage;
-  title.innerText = newUserTitle;
-  quote.innerText = newUserQuote;
-  images.push(newUserImage);
-  titles.push(newUserTitle);
-  quotes.push(newUserQuote);
+    var newUserImage = inputFieldForImage.value;
+    var newUserTitle = inputFieldForTitle.value;
+    var newUserQuote = inputFieldForQuote.value;
+      image.src = newUserImage;
+      title.innerText = newUserTitle;
+      quote.innerText = newUserQuote;
+    images.push(newUserImage);
+    titles.push(newUserTitle);
+    quotes.push(newUserQuote);
   goBackToMainMake();
 }
 // Iteration 3
