@@ -175,7 +175,7 @@ function goBackToMainMake(){
 }
 
 function displayRandomPoster(currentPoster) {
-  
+
     currentPoster = new Poster(newImage, newTitle, newQuote)
     newImage.src = getRandomIndex(images)
     newTitle.innerText = getRandomIndex(titles)
