@@ -154,17 +154,23 @@ function createUserPoster(event){
     posterTitleForm.value,
     posterQuoteForm.value
   )
-    
-  storePosterData()
-  displayPoster()
-
   hide(posterForm)
   show(mainPoster)
   show(savePosterButton)
   show(showSavedButton)
   show(showRandomButton)
-  show(showFormButton)
+  show(showFormButton) 
+  
+  storePosterData()
+  displayPoster()
+  clearPosterForm()
 };
+
+function clearPosterForm() {
+  posterImageUrl.value = ""
+  posterTitleForm.value = ""
+  posterQuoteForm.value = ""
+}
 
 function storePosterData() {
   images.push(currentPoster.imageURL);
