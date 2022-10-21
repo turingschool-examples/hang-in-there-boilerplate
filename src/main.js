@@ -111,9 +111,13 @@ var showSavedPostersButton = document.querySelector('.show-saved');
 var makePostersButton = document.querySelector('.show-form');
 var takeMeBackButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+var showFormPosterButton = document.querySelector('.make-poster');
 var posterForm = document.querySelector('.poster-form');
 var mainPoster = document.querySelector('.main-poster');
-var savedPostersView = document.querySelector('.saved-posters')
+var savedPostersView = document.querySelector('.saved-posters');
+var posterImageInput = document.querySelector('#poster-image-url');
+var posterTitleInput = document.querySelector('#poster-title');
+var posterQuoteInput = document.querySelector('#poster-quote');
 
 // event listeners go here 👇
 window.addEventListener('load', getRandomPoster);
@@ -121,7 +125,8 @@ randomPosterButton.addEventListener('click', getRandomPoster);
 makePostersButton.addEventListener('click', showMakePostersView);
 showSavedPostersButton.addEventListener('click', showSavedPostersView);
 takeMeBackButton.addEventListener('click', showMainPostersSection);
-backToMainButton.addEventListener('click', showMainPostersSection)
+backToMainButton.addEventListener('click', showMainPostersSection);
+showFormPosterButton.addEventListener('click', displayUserMadePoster);
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -160,4 +165,20 @@ function showMainPostersSection() {
   mainPoster.classList.remove('hidden');
   posterForm.classList.add('hidden');
   savedPostersView.classList.add('hidden');
+}
+
+function displayUserMadePoster(event) {
+  event.preventDefault();
+
+  currentPoster = new Poster(posterTitleInput.value, posterQuoteInput.value, posterImageInput.value);
+
+  posterTitle.innerText = posterTitleInput.value;
+  posterQuote.innerText = posterQuoteInput.value;
+  posterImage.src = posterImageInput.value;
+
+  titles.push(posterTitleInput.value);
+  quotes.push(posterQuoteInput.value);
+  images.push(posterImageInput.value);
+
+  showMainPostersSection();
 }
