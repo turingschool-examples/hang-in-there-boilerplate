@@ -1,6 +1,7 @@
 // query selector variables go here 👇
 
 
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -104,6 +105,8 @@ var currentPoster;
 
 // event listeners go here 👇
 
+
+
 var randomImageNumber = getRandomIndex(images);
 // ^^ returns random number
 // randomImageNumber = a random number
@@ -139,8 +142,42 @@ var quote = document.querySelector('h3');
 quote.innerText = randomQuote;
 
 
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
+// var square = document.querySelector('div');
+
+// square.addEventListener('click', changeColor);
+
+// function changeColor(){
+//   square.classList.add('pink');
+// }
+
+
+
+var randomPosterButton = document.querySelector('.show-random');
+
+randomPosterButton.addEventListener('click', randomPoster);
+
+function randomPoster() {
+  var randomPosterNumber = getRandomIndex(images);
+
+  var randomPosterURL = images[randomPosterNumber];
+  return randomPosterURL;
+}
+
+
+
+
+
+
+
+
+
+
+
