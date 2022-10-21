@@ -149,3 +149,35 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+
+// var square = document.querySelector('div');
+
+// square.addEventListener('click', changeColor);
+
+// function changeColor(){
+//   square.classList.add('pink');
+// }
+
+
+
+var randomPosterButton = document.querySelector('.show-random');
+
+randomPosterButton.addEventListener('click', randomPoster);
+
+function randomPoster() {
+  var randomPosterNumber = getRandomIndex(images);
+
+  var randomPosterURL = images[randomPosterNumber];
+  return randomPosterURL;
+}
+
+
+
+
+
+
+
+
+
+
+
