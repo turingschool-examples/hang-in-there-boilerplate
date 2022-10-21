@@ -135,7 +135,8 @@ takeMeBackButtonFromMake.addEventListener('click', goBackToMainMake);
 backToMainButtonFromSaved.addEventListener('click', goBackToMainSaved);
 makeOwnPosterButton.addEventListener('click', showMakeForm);
 //Iteration 2
-savePosterButton.addEventListener('click', saveUserPoster);showMyPosterButton.addEventListener('click', showUserPoster);
+savePosterButton.addEventListener('click', )
+showMyPosterButton.addEventListener('click', showUserPoster);
 
 
 // functions and event handlers go here 👇
@@ -211,17 +212,15 @@ function saveUserPoster(){
   var newUserTitle = inputFieldForTitle.value;
   var newUserQuote = inputFieldForQuote.value;
   var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
-
   savedPosters.push({newUserPoster})
-  console.log(savedPosters)
-  return savedPosters
-  
+}
+
   // create variables for user input fields query selectors
   // push variables into arrays
   // push new poster to saved posters arrays by calling the showUserPoster function?
   // create new object to push into the saved posters arrays
   //
-}
+
 
 function displayUserPoster(){
   var newUserImage = inputFieldForImage.value;
