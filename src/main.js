@@ -1,6 +1,5 @@
 
 
-<<<<<<< HEAD
 // .query selector variables go here 👇
 // var posterQuoteInput = document.querySelector("#poster-quote");
 // var posterTitleInput = document.querySelector("#poster-title");
@@ -12,31 +11,12 @@ var titleMYO = document.querySelector("h2");
 var showMyPosterButton = document.querySelector(".make-poster");
 var showFormButton = document.querySelector(".show-form");
 var takeMeBack = document.querySelector(".show-main");
-=======
-// .query selector variables go here 👇 HEAD
-//iteration 0
->>>>>>> d0d9d28bb623bdb2d972e7765837f39bc6c243b5
 var posterQuote = document.querySelector(".poster-quote");
 var posterTitle = document.querySelector(".poster-title");
 var posterImage = document.querySelector(".poster-img");
 var randomPosterButton = document.querySelector(".show-random");
-<<<<<<< HEAD
 //var imageUrl = document.querySelector("poster-image-url")
 
-=======
-//iteration 1 -
-var hideMainPosterPage = document.querySelector(".main-poster");
-var formCreatePoster = document.querySelector(".poster-form");
-var showMyPosterButton = document.querySelector(".make-poster");
-var showFormButton = document.querySelector(".show-form");
-var takeMeBack = document.querySelector(".show-main");
-var posterQuoteInput = document.querySelector("#poster-quote");
-var posterTitleInput = document.querySelector("#poster-title");
-var imageUrlInput = document.querySelector("#poster-image-url");
-var backToMainButton = document.querySelector(".back-to-main")
-var showSavedPageButton = document.querySelector('.show-saved')
-var showSavedPosters = document.querySelector('.saved-posters')
->>>>>>> d0d9d28bb623bdb2d972e7765837f39bc6c243b5
 
 
 // we've provided you with some data to work with 👇
@@ -147,14 +127,7 @@ randomPosterButton.addEventListener('click', homePage)
 //Iteration 1
 showFormButton.addEventListener('click', openFormPage)
 takeMeBack.addEventListener('click', openMainPage)
-<<<<<<< HEAD
 showMyPosterButton.addEventListener('click',displayMyPoster)
-=======
-showMyPosterButton.addEventListener('click', displayMyPoster)
-formCreatePoster.addEventListener('load', openFormPage)
-backToMainButton.addEventListener('click', backToMainPage)
-showSavedPageButton.addEventListener('click', openSavedPosterPage)
->>>>>>> d0d9d28bb623bdb2d972e7765837f39bc6c243b5
 //functions and event handlers go here 👇
 
 var imgIndex = getRandomIndex(images);
@@ -184,16 +157,10 @@ function openFormPage(){
     event.preventDefault()
     formCreatePoster.classList.add('hidden')
     hideMainPosterPage.classList.remove('hidden')
-<<<<<<< HEAD
     posterImage.src = posterImage.value
     posterTitle.innerText = posterTitle.value
     posterQuote.innerText = posterQuote.value
 
-=======
-    posterImage.src = imageUrlInput.value
-    posterTitle.innerText = posterTitleInput.value
-    posterQuote.innerText = posterQuoteInput.value
->>>>>>> d0d9d28bb623bdb2d972e7765837f39bc6c243b5
   }
   function openSavedPosterPage() {
   hideMainPosterPage.classList.add('hidden')
