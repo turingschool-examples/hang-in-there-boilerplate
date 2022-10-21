@@ -140,7 +140,10 @@ showMainButton.addEventListener('click', function () {
 backToMainButton.addEventListener('click', function () {
   switchingViews(mainPageView)
 })
-savePosterButton.addEventListener("click", saveCurrentPoster)
+savePosterButton.addEventListener("click", function (){
+  saveCurrentPoster()
+})
+console.log("updated")
 
 makePosterButton.addEventListener("click", function(event) {
   event.preventDefault()
@@ -196,9 +199,9 @@ function createPoster(title, quote, img) {
 // var currentPoster
 
 function saveCurrentPoster(){
-  savedPosters.push(currentPoster)
-  // for(var i = 0; i < ; i ++)
-console.log(savedPosters)
+  if(!savedPosters.includes(currentPoster)){
+    savedPosters.push(currentPoster)
+  }
 }
 
 
