@@ -154,6 +154,21 @@ function goBackToMainMake(){
   mainPoster.classList.remove('hidden');
 }
 
+// function createNewPoster(getRandomIndexArray){
+//   return new Poster (three arguments here)
+// }
+
+
+function displayRandomPoster(currentPoster) {
+  currentPoster = new Poster(newImage, newTitle, newQuote)
+    newImage.src = getRandomIndex(images)
+    newTitle.innerText = getRandomIndex(titles)
+    newQuote.innerText = getRandomIndex(quotes)
+  return currentPoster
+
+//   }
+}
+
 function showSavedPosters() {
   mainPoster.classList.add('hidden');
   savedPostersForm.classList.remove('hidden');
@@ -164,16 +179,4 @@ function goBackToMainSaved(){
   mainPoster.classList.remove('hidden');
 }
 
-// function createNewPoster(getRandomIndexArray){
-//   return new Poster (three arguments here)
-// }
 
-
-function displayRandomPoster() {
-  newImage.src = getRandomIndex(images)
-  newTitle.innerText = getRandomIndex(titles)
-  newQuote.innerText = getRandomIndex(quotes)
-
-
-//   }
-}
