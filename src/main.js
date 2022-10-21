@@ -15,8 +15,9 @@ var takeMeBack = document.querySelector(".show-main");
 var posterQuoteInput = document.querySelector("#poster-quote");
 var posterTitleInput = document.querySelector("#poster-title");
 var imageUrlInput = document.querySelector("#poster-image-url");
-
-
+var backToMainButton = document.querySelector(".back-to-main")
+var showSavedPageButton = document.querySelector('.show-saved')
+var showSavedPosters = document.querySelector('.saved-posters')
 
 
 // we've provided you with some data to work with 👇
@@ -129,6 +130,8 @@ showFormButton.addEventListener('click', openFormPage)
 takeMeBack.addEventListener('click', openMainPage)
 showMyPosterButton.addEventListener('click', displayMyPoster)
 formCreatePoster.addEventListener('load', openFormPage)
+backToMainButton.addEventListener('click', backToMainPage)
+showSavedPageButton.addEventListener('click', openSavedPosterPage)
 //functions and event handlers go here 👇
 
 var imgIndex = getRandomIndex(images);
@@ -161,7 +164,14 @@ function openFormPage(){
     posterImage.src = imageUrlInput.value
     posterTitle.innerText = posterTitleInput.value
     posterQuote.innerText = posterQuoteInput.value
-
+  }
+  function openSavedPosterPage() {
+  hideMainPosterPage.classList.add('hidden')
+  showSavedPosters.classList.remove('hidden')
+  }
+  function backToMainPage() {
+  hideMainPosterPage.classList.remove('hidden')
+  showSavedPosters.classList.add('hidden')
   }
 // (we've provided one for you to get you started)!
 //function newRandomPoster() {
