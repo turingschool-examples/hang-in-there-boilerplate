@@ -111,7 +111,7 @@ var posterTitleForm = document.querySelector('#poster-title');
 var posterQuoteForm = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector('.make-poster');
 var showMainButton = document.querySelector('.show-main');
-var showSavedPosterPage = document.querySelector('.saved-posters-grid');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 var backToMainButton = document.querySelector('.back-to-main');
 var savedPostersDisplay = document.querySelector('.saved-posters')
 
@@ -124,7 +124,6 @@ window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
 showFormButton.addEventListener('click', makeYourOwnPoster);
 savePosterButton.addEventListener('click', savePoster);
-// showSavedButton.addEventListener('click', showSavedPosters);
 showMainButton.addEventListener('click', backToMain);
 backToMainButton.addEventListener('click', backToMain);
 makePosterButton.addEventListener('click', createUserPoster);
@@ -194,18 +193,16 @@ function displayPoster() {
 };
 
 function viewSavedPosters() {
-  showSavedPosterPage.innerHTML = ""
+  savedPostersGrid.html = "";
   for(var i = 0; i < savedPosters.length; i++){
-    showSavedPosterPage.innerHTML =`
-        <section class="mini-poster" id="${savedPosters[i].id}">
-        <image class="poster-img" src=${savedPosters[i].imageURL}>
+    savedPostersGrid.innerHTML +=`
+        <section class="mini-poster" id=${savedPosters[i].id}>
+        <img class="poster-img" src=${savedPosters[i].imageURL}>
         <h2 class="poster-title">${savedPosters[i].title}</h2>
         <h4 class="poster-quote">${savedPosters[i].quote}</h4></section>`
   }
   hide(mainPoster)
   show(savedPostersDisplay)
-  // show(showSavedPosterPage)
-  
 };
 
 function makeYourOwnPoster() {
@@ -219,18 +216,6 @@ function makeYourOwnPoster() {
   show(makePosterButton)
 };
 
-// function showSavedPosters() {
-//   hide(mainPoster)
-//   hide(showRandomButton)
-//   hide(showSavedButton)
-//   hide(savePosterButton)
-//   hide(showFormButton)
-//   hide(posterForm)
-//   hide(showMainButton)
-//   hide(makePosterButton)
-//   show(backToMainButton)
-//   show(showSavedPosterPage)
-// };
 
 function backToMain() {
   show(mainPoster)
@@ -238,6 +223,7 @@ function backToMain() {
   show(showSavedButton)
   show(savePosterButton)
   show(showFormButton)
+  hide(savedPostersDisplay)
 };
 
 //-------------------------------> Misc Functions <-----------------------------------------
