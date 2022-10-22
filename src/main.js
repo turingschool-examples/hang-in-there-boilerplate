@@ -18,8 +18,8 @@ var imageUrlInput = document.querySelector("#poster-image-url");
 var backToMainButton = document.querySelector(".back-to-main")
 var showSavedPageButton = document.querySelector('.show-saved')
 var showSavedPosters = document.querySelector('.saved-posters')
-
-
+var saveThisPosterGrid = document.querySelector('.saved-posters-grid')
+var saveThisPosterButton = document.querySelector('.save-poster')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -120,18 +120,22 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-
+// var picture = `${posterQuote} + ${posterTitle} + ${posterImage}`
 // event listeners go here 👇
 //Iteration 0
 window.addEventListener('load', homePage)
 randomPosterButton.addEventListener('click', homePage)
-//Iteration 1
+//Iteration 1 & 2
 showFormButton.addEventListener('click', openFormPage)
 takeMeBack.addEventListener('click', openMainPage)
+//showMyPosterButton.addEventListener('click', displayMyPoster)
 showMyPosterButton.addEventListener('click', displayMyPoster)
 formCreatePoster.addEventListener('load', openFormPage)
 backToMainButton.addEventListener('click', backToMainPage)
 showSavedPageButton.addEventListener('click', openSavedPosterPage)
+//Iteration 3
+saveThisPosterGrid.addEventListener('click', gridDisplay)
+saveThisPosterButton.addEventListener('click', saveMyPoster)
 //functions and event handlers go here 👇
 
 var imgIndex = getRandomIndex(images);
@@ -140,7 +144,6 @@ var titleIndex = getRandomIndex(titles);
 
 //iteratrion 0
 function homePage() {
-
 posterImage.src = images[getRandomIndex(images)]
 posterTitle.innerText = titles[getRandomIndex(titles)]
 posterQuote.innerText = quotes[getRandomIndex(quotes)]
@@ -161,10 +164,43 @@ function openFormPage(){
     event.preventDefault()
     formCreatePoster.classList.add('hidden')
     hideMainPosterPage.classList.remove('hidden')
-    posterImage.src = imageUrlInput.value
-    posterTitle.innerText = posterTitleInput.value
-    posterQuote.innerText = posterQuoteInput.value
+    currentPoster = new Poster(newImage, newTitle, newQuote)
+    var newImage = imageUrlInput.value
+    var newTitle = posterTitleInput.value
+    var newQuote = posterQuoteInput.value
+    posterImage.src = newImage
+    posterTitle.innerText = newTitle
+    posterQuote.innerText = newQuote
+    images.push(newImage)
+    titles.push(newTitle)
+    quotes.push(newQuote)
   }
+  function saveMyPoster() {
+    console.log('hello', saveMyPoster)
+    if (!savedPosters.includes(currentPoster)) {
+      savedPosters.push(currentPoster)
+    }
+    function gridDisplay() {
+    openSavedPosterPage()
+    }
+    document
+    getElementsByClassName(savedPostersGrid)
+    saveThisPosterGrid.innerHTML = savedPosters
+    console.log(savedPosters)
+  }
+
+  //if !savedPosters does not include current push into array
+//current poster interpilated
+// function saveCreated() {
+//   currentPoster = new Poster(posterImage, posterTitle, posterQuote)
+//   posterImage = imageUrlInput.value
+//   posterTitle = posterTitleInput.value
+//   posterQuote = posterQuoteInput.value
+//   images.push(posterImage)
+//   titles.push(posterTitle)
+//   quotes.push(posterQuote)
+// }
+
   function openSavedPosterPage() {
   hideMainPosterPage.classList.add('hidden')
   showSavedPosters.classList.remove('hidden')
@@ -172,6 +208,13 @@ function openFormPage(){
   function backToMainPage() {
   hideMainPosterPage.classList.remove('hidden')
   showSavedPosters.classList.add('hidden')
+  }
+  function saveThisPosterPage() {
+  hideMainPosterPage.classList.add('hidden')
+  showSavedPosters.classList.remove('hidden')
+
+
+  //savedPosters.push(saveThisPosterButton)
   }
 // (we've provided one for you to get you started)!
 //function newRandomPoster() {
