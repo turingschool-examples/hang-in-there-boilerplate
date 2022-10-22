@@ -1,3 +1,5 @@
+// var Poster = require('./poster');
+
 // query selector variables go here 👇
 var poster = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
@@ -10,6 +12,12 @@ var savePosterButton = document.querySelector(".show-saved");
 var savedPosterPage = document.querySelector(".saved-posters");
 var takeMeBackButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+// isolate the show my poster button
+// isolate all of the input fields
+var showMyPosterButton = document.querySelector('.make-poster');
+var imageURL = document.querySelector('#poster-image-url');
+var posterTitle = document.querySelector('#poster-title');
+var posterQuote = document.querySelector('#poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -118,18 +126,20 @@ makePosterButton.addEventListener('click', toggleForm);
 savePosterButton.addEventListener('click', toggleSavePoster);
 takeMeBackButton.addEventListener('click', takeMeBack);
 backToMainButton.addEventListener('click', goBackToMain)
+//make event listener for the show my poster button
+showMyPosterButton.addEventListener('click', createNewPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+} 
 
 // come back to refactor with onload method
 poster.src = images[getRandomIndex(images)];
 title.innerText = titles[getRandomIndex(titles)];
 quote.innerText = quotes[getRandomIndex(quotes)];
-
+// showMyPosterButton.preventDefaut();
 function generateRandomPoster () {
   poster.src = images[getRandomIndex(images)];
   title.innerText = titles[getRandomIndex(titles)];
@@ -137,8 +147,10 @@ function generateRandomPoster () {
 }
 
 function toggleForm () {
+  // event.preventDefault();
   mainPoster.classList.add("hidden");
   posterForm.classList.remove("hidden");
+  
 }
 
 function toggleSavePoster () {
@@ -158,3 +170,29 @@ function goBackToMain () {
   posterForm.classList.add("hidden");
   savedPosterPage.classList.add("hidden");
 }
+
+//when button is clicked, generate new poster with the data entered into the 3 text boxes
+//image url, title, quote
+function createNewPoster () {
+  event.preventDefault();
+  mainPoster.classList.remove("hidden");
+  posterForm.classList.add("hidden");
+  savedPosterPage.classList.add("hidden");
+  poster.src = imageURL.value;
+  title.innerText = posterTitle.value;
+  quote.innerText = posterQuote.value;
+  if (!images.includes(poster.src)){
+    images.push(poster.src);
+  }
+  if (!titles.includes(title.innerText)) {
+    titles.push(title.innerText);
+  }
+  if (!quotes.includes(quote.innerText)) {
+    quotes.push(quote.innerText);
+  }
+  // var newPoster = new Poster(poster.src, title.innerText, quote.innerText);
+}
+
+
+//Need to add new poster data to our posters (array)
+
