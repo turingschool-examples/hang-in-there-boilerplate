@@ -104,6 +104,7 @@ var currentPageView = document.querySelector('.main-poster')
 var mainPageView = document.querySelector('.main-poster')
 var formView = document.querySelector('.poster-form')
 var savedPostersView = document.querySelector('.saved-posters')
+var savePosterGrid = document.querySelector('.saved-posters-grid')
 
 // event listeners go here 👇
 var posterTitle = document.querySelector(".poster-title")
@@ -133,6 +134,7 @@ showFormButton.addEventListener("click", function() {
 })
 showSavedButton.addEventListener("click", function() {
   switchingViews(savedPostersView)
+  showSavedPosters()
 })
 showMainButton.addEventListener('click', function () {
   switchingViews(mainPageView)
@@ -150,11 +152,8 @@ makePosterButton.addEventListener("click", function(event) {
   makeMyPoster(titleInput, quoteInput, imageInput)
   pushInputsToData(titleInput, quoteInput, imageInput)
   switchingViews(mainPageView)
-  
 })
-
 // functions and event handlers go here 👇
-
 
 function pushInputsToData() {
   titles.push(titleInput.value)
@@ -171,6 +170,18 @@ function switchingViews(goToView) {
   currentPageView.classList.toggle('hidden')
   goToView.classList.toggle('hidden')
   currentPageView = goToView
+}
+
+function showSavedPosters() {
+  savePosterGrid.innerHTML = ""
+  for(var i = 0; i < savedPosters.length; i++){
+  var showGridDisplay = `<article class="mini-poster"> 
+  <img src="${savedPosters[i].imageURL}" alt="mini nothin' to see here">
+  <h2>${savedPosters[i].title}</h2>
+  <h4>${savedPosters[i].quote}</h4> 
+  </article>`
+  savePosterGrid.innerHTML += showGridDisplay
+  }
 }
 
 function createsRandomPoster (){
@@ -194,17 +205,11 @@ function createPoster(title, quote, img) {
   currentPoster = saveInstance
 }
 
-
-// var savedPosters = [currentPoster]
-// var currentPoster
-
 function saveCurrentPoster(){
   if(!savedPosters.includes(currentPoster)){
     savedPosters.push(currentPoster)
   }
 }
-
-
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
