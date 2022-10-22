@@ -113,6 +113,7 @@ var makePosterButton = document.querySelector('.make-poster');
 var showMainButton = document.querySelector('.show-main');
 var showSavedPosterPage = document.querySelector('.saved-posters-grid');
 var backToMainButton = document.querySelector('.back-to-main');
+var savedPostersDisplay = document.querySelector('.saved-posters')
 
 var savedPosters = [];
 var currentPoster;
@@ -123,10 +124,11 @@ window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
 showFormButton.addEventListener('click', makeYourOwnPoster);
 savePosterButton.addEventListener('click', savePoster);
-showSavedButton.addEventListener('click', showSavedPosters);
+// showSavedButton.addEventListener('click', showSavedPosters);
 showMainButton.addEventListener('click', backToMain);
 backToMainButton.addEventListener('click', backToMain);
-makePosterButton.addEventListener('click', createUserPoster)
+makePosterButton.addEventListener('click', createUserPoster);
+showSavedButton.addEventListener('click', viewSavedPosters);
 
 //-------------------------------> Functions <-------------------------------------------------
 
@@ -191,15 +193,20 @@ function displayPoster() {
   }
 };
 
-function viewSavedPosert() {
+function viewSavedPosters() {
   showSavedPosterPage.innerHTML = ""
-  for(var i = 0; i < savedPosters.length; i++)
+  for(var i = 0; i < savedPosters.length; i++){
     showSavedPosterPage.innerHTML =`
-        <section class="mini-poster" id=${savedPosters[i].id}>
-        <img src=${savedPosters[i].imageURL}>
-        <h2>${savedPosters[i].title}</h2>
-        <h4>${savedPosters[i].quote}</h4></section>`
-}
+        <section class="mini-poster" id="${savedPosters[i].id}">
+        <image class="poster-img" src=${savedPosters[i].imageURL}>
+        <h2 class="poster-title">${savedPosters[i].title}</h2>
+        <h4 class="poster-quote">${savedPosters[i].quote}</h4></section>`
+  }
+  hide(mainPoster)
+  show(savedPostersDisplay)
+  // show(showSavedPosterPage)
+  
+};
 
 function makeYourOwnPoster() {
   hide(mainPoster)
@@ -212,18 +219,18 @@ function makeYourOwnPoster() {
   show(makePosterButton)
 };
 
-function showSavedPosters() {
-  hide(mainPoster)
-  hide(showRandomButton)
-  hide(showSavedButton)
-  hide(savePosterButton)
-  hide(showFormButton)
-  hide(posterForm)
-  hide(showMainButton)
-  hide(makePosterButton)
-  show(backToMainButton)
-  show(showSavedPosterPage)
-};
+// function showSavedPosters() {
+//   hide(mainPoster)
+//   hide(showRandomButton)
+//   hide(showSavedButton)
+//   hide(savePosterButton)
+//   hide(showFormButton)
+//   hide(posterForm)
+//   hide(showMainButton)
+//   hide(makePosterButton)
+//   show(backToMainButton)
+//   show(showSavedPosterPage)
+// };
 
 function backToMain() {
   show(mainPoster)
