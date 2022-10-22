@@ -126,7 +126,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = []; //array of custom posters; includes array of images, titles, ITERATION 1 to push
-var currentPoster;
+var currentPoster = new Poster(image, title, quote);
 
 // event listeners go here 👇
 //Iteration 0
@@ -179,15 +179,7 @@ function showSavedPosters() {
   mainPoster.classList.add('hidden');
   savedPostersForm.classList.remove('hidden');
 }
-    // for (var i = 0; i < savedPoster.length; i++){
-    // grid.innerHTML += `
-    //   <article class="poster">
-    //     <img class="poster-img" src="${savedPoster[i].image}" alt="nothin' to see here">
-    //     <h1 class="poster-title">${savedPoster[i].title}</h1>
-    //     <h3 class="poster-quote">${savedPoster[i].quote}</h3>
-    //   </article>
-    // `
-    // }
+
 
 function goBackToMainSaved(){
   savedPostersForm.classList.add('hidden');
@@ -211,43 +203,20 @@ function showUserPoster(){
 }
 // Iteration 3
 function saveUserPoster() {
-  var poster = new Poster(image.src, title.innerText, quote.innerText)
-  // for (var i = 0; i < savedPosters.length; i++) {
-    // if(savedPosters[i].image === poster.imageURL && savedPosters[i].title === poster.title && savedPosters[i].quote === poster.quote){
-      if(!savedPosters.includes(poster)) {
-        return savedPosters.push(poster)
-        // savedPosters.pop(poster)
-      // }
+  if(!savedPosters.includes(currentPoster)) {
+    return savedPosters.push(currentPoster)
   }
 }
 
 
-
-// function saveExistingPoster(){
-//   for (var i = 0; i < savedPoster.length; i++){
-//   if(!savedPoster[i].image === currentPoster.image && !savedPoster[i].title === currentPoster.title && !savedPoster[i].quote === currentPoster.quote){
-//     savedPosters.push({currentPoster});
-//     }
-//   }
-// }
 
 function displayUserPoster(){
   var newUserImage = inputFieldForImage.value;
   var newUserTitle = inputFieldForTitle.value;
   var newUserQuote = inputFieldForQuote.value;
   var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
-  // push newUserPoster to grid
-  // hide main page and show grid
   grid.innerHTML = newUserPoster
-  //InnerHTML
   showSavedPosters();
-  // function createBoxes(numBox){
-  //   grid.style.gridTemplateColumns = `repeat(${numBox}, 1fr)`;
-  //   for(let i = 0;i < numBox*numBox;i++){
-  //       const square = document.createElement('div');
-  //       square.classList.add('box');
-  //       container.appendChild(square);
-  //   }
 }
 
 function displaySaved(){
