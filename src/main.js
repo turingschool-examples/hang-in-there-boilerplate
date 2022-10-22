@@ -142,22 +142,37 @@ var randomPosterButton = document.querySelector('.show-random');
 
 randomPosterButton.addEventListener('click', randomPoster);
 
+var makePosterButton = document.querySelector('.show-form');
+
+makePosterButton.addEventListener('click', openForm);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function openForm() {
+  var posterForm = document.querySelector('.poster-form');
+  posterForm.classList.remove('hidden');
+  console.log(posterForm);
+
+  var mainPoster = document.querySelector('.main-poster');
+  mainPoster.classList.add('hidden');
+  console.log(mainPoster);
+}
+
+// need another function to go back to main page
+// when click "nevermind" button, 
+// switch hidden class, remove from main and add to form
+
+// need 4 functions that move hidden class
+
+
 function randomPoster() {
-
   var randomNum = getRandomIndex(images);
-
   var randomURL = images[randomNum];
-
   var poster = document.querySelector('img');
-
   poster.src = randomURL;
 }
