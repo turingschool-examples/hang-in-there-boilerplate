@@ -1,21 +1,25 @@
 // query selector variables go here 👇
 //initial load
 var poster = document.querySelector('.poster');
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
 var randomButton = document.querySelector('.show-random');
 
 //pages
-var mainPosterPage = document.querySelector('.main-poster')
-var posterFormPage = document.querySelector('.poster-form')
-var savedPosterPage = document.querySelector('.saved-posters')
+var mainPosterPage = document.querySelector('.main-poster');
+var posterFormPage = document.querySelector('.poster-form');
+var savedPosterPage = document.querySelector('.saved-posters');
 
 //buttons
-var makePosterButton = document.querySelector('.show-form')
-var showSavedButton = document.querySelector('.show-saved')
-var takeMeBackButton = document.querySelector('.show-main')
-var backToMainButton = document.querySelector('.back-to-main')
-var showMyPosterButton = document.querySelector('.make-poster')
-var saveThisPosterButton = document.querySelector('.save-poster')
-var savedPosterGrid = document.querySelector('.saved-posters-grid')
+var makePosterButton = document.querySelector('.show-form');
+var showSavedButton = document.querySelector('.show-saved');
+var takeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var showMyPosterButton = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector('.save-poster');
+var savedPosterGrid = document.querySelector('.saved-posters-grid');
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -116,7 +120,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster; //replace local instantiatinsdsfdsf with this
 
 // event listeners go here 👇
 
@@ -134,8 +138,7 @@ showMyPosterButton.addEventListener('click', function(event) {
   showMyPoster()
   pushUserInput()
 })
-
-saveThisPosterButton.addEventListener('click', XXXX)
+saveThisPosterButton.addEventListener('click', savePoster);
 
 
 // functions and event handlers go here 👇
@@ -148,19 +151,20 @@ function getRandomIndex(array) {
 
 //initial page load
 function pageLoad() {
-  // poster.innerHTML = null
   var imageIndex = getRandomIndex(images)
-  var quoteIndex = getRandomIndex(quotes)
   var titleIndex = getRandomIndex(titles)
+  var quoteIndex = getRandomIndex(quotes)
+
   var newPoster = {
     image: images[imageIndex],
-    quote: quotes[quoteIndex],
     title: titles[titleIndex],
+    quote: quotes[quoteIndex],
   }
+  currentPoster = new Poster(newPoster.image, newPoster.title, newPoster.quote)
 
-  poster.innerHTML = `<img class="poster-img" src=${newPoster.image} alt="Poster image">
-  <h1 class="poster-title">${newPoster.title}</h1>
-  <h3 class="poster-quote">${newPoster.quote}</h3>`
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText  = currentPoster.quote;
 }
 
 //change page functions. REFACTOR: CAN THEY BE COMBINED?
@@ -186,33 +190,42 @@ function showMyPoster() {
   var newUserTitle = document.querySelector('#poster-title').value
   var newUserQuote = document.querySelector('#poster-quote').value
 
-  poster.innerHTML = `<img class="poster-img" src=${newUserImage} alt="Poster image">
-  <h1 class="poster-title">${newUserTitle}</h1>
-  <h3 class="poster-quote">${newUserQuote}</h3>`
-  backToMain()
+  currentPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
+
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText  = currentPoster.quote;
+
+  backToMain();
 }
  
 function pushUserInput() {
-  var newUserImage = document.querySelector('#poster-image-url').value
-  var newUserTitle = document.querySelector('#poster-title').value
-  var newUserQuote = document.querySelector('#poster-quote').value
+  var newUserImage = document.querySelector('#poster-image-url').value;
+  var newUserTitle = document.querySelector('#poster-title').value;
+  var newUserQuote = document.querySelector('#poster-quote').value;
     
-  images.push(newUserImage)
-  titles.push(newUserTitle)
-  quotes.push(newUserQuote)
+  images.push(newUserImage);
+  titles.push(newUserTitle);
+  quotes.push(newUserQuote);
 
-  var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote)
-
-  savedPosters.push(newUserPoster)
-  // console.log("Saved Posters Array" + savedPosters);
-  // console.log("user input ", images[images.length - 1], titles[titles.length - 1], quotes[quotes.length - 1]);
+  //var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote) //currentPoster  
 }
 
 function savePoster() {
-// refactor showMyPoster and pageLoad to be object instances instead of interpolation and then push that object instance to saved array
+  if (!savedPosters.includes(currentPoster)) {
+
+  savedPosters.push(currentPoster);
+  }  
+
 }
+//savedPosters[i].image === currentPosters[i].imageURL && savedPosters[i].title === currentPosters[i].title && savedPosters[i].quote
+
 //-card for each poster instance
 //-create HTML sections with interpolation for each index of the card to provide values.
 //-number of cards = saved posters.length
 //-innerHTML between article saved poster grid (class). Use saved poster grid query selector to access innerHTML
 //-interpolated HTML change class info to match mini posters for IMG and headers.
+
+  // poster.innerHTML = `<img class="poster-img" src=${newUserImage} alt="Poster image">
+  // <h1 class="poster-title">${newUserTitle}</h1>
+  // <h3 class="poster-quote">${newUserQuote}</h3>`
