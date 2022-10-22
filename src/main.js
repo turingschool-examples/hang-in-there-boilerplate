@@ -133,15 +133,18 @@ var currentPoster;
 window.addEventListener('load', createNewPoster);
 showRandomButton.addEventListener('click', createNewPoster);
 //Iteration 1
-viewSavedPosterButton.addEventListener('click', showSavedPosters);
+showSavedPosterButton.addEventListener('click', function(){
+  showSavedPosters();
+  displaySaved();
+});
 takeMeBackButtonFromMake.addEventListener('click', goBackToMainMake);
 backToMainButtonFromSaved.addEventListener('click', goBackToMainSaved);
 makeOwnPosterButton.addEventListener('click', showMakeForm);
 //Iteration 2
 makeOwnButton.addEventListener('click', showUserPoster);
 // Iteration 3
-savePosterButton.addEventListener('click', saveUserPoster)
-showSavedPosterButton.addEventListener('click', displaySaved);
+savePosterButton.addEventListener('click', saveUserPoster);
+
 
 
 
@@ -176,6 +179,15 @@ function showSavedPosters() {
   mainPoster.classList.add('hidden');
   savedPostersForm.classList.remove('hidden');
 }
+    // for (var i = 0; i < savedPoster.length; i++){
+    // grid.innerHTML += `
+    //   <article class="poster">
+    //     <img class="poster-img" src="${savedPoster[i].image}" alt="nothin' to see here">
+    //     <h1 class="poster-title">${savedPoster[i].title}</h1>
+    //     <h3 class="poster-quote">${savedPoster[i].quote}</h3>
+    //   </article>
+    // `
+    // }
 
 function goBackToMainSaved(){
   savedPostersForm.classList.add('hidden');
@@ -199,25 +211,29 @@ function showUserPoster(){
 }
 // Iteration 3
 function saveUserPoster(){
-  var newUserImage = inputFieldForImage.value;
-  var newUserTitle = inputFieldForTitle.value;
-  var newUserQuote = inputFieldForQuote.value;
-  var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
+  // var newUserImage = inputFieldForImage.value;
+  // var newUserTitle = inputFieldForTitle.value;
+  // var newUserQuote = inputFieldForQuote.value;
+  // var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
+  var poster = new Poster(image.src, title.innerText, quote.innerText)
+  console.log("Random", poster);
+  savedPosters.push(poster)
   for (var i = 0; i < savedPosters.length; i++){
-  if(!savedPoster[i].image === newUserImage && savedPoster[i].title ===     newUserTitle && savedPoster[i].quote === newUserQuote){
-    savedPosters.push({newUserPoster})
+    if(!savedPosters[i].image === poster.image && !savedPosters[i].title === poster.title && !savedPosters[i].quote === poster.quote){
+      console.log('Random 2')
+      savedPosters.pop(poster)
     }
   }
 }
 
 
-function saveExistingPoster(){
-  for (var i = 0; i < savedPoster.length; i++){
-  if(!savedPoster[i].image === currentPoster.image && savedPoster[i].title ===     currentPoster.title && savedPoster[i].quote === currentPoster.quote){
-    savedPosters.push({currentPoster});
-    }
-  }
-}
+// function saveExistingPoster(){
+//   for (var i = 0; i < savedPoster.length; i++){
+//   if(!savedPoster[i].image === currentPoster.image && !savedPoster[i].title === currentPoster.title && !savedPoster[i].quote === currentPoster.quote){
+//     savedPosters.push({currentPoster});
+//     }
+//   }
+// }
 
 function displayUserPoster(){
   var newUserImage = inputFieldForImage.value;
@@ -237,15 +253,17 @@ function displayUserPoster(){
   //       container.appendChild(square);
   //   }
 }
+
 function displaySaved(){
-  for (var i = 0; i < savedPoster.length; i++){
+  for (var i = 0; i < savedPosters.length; i++){
+    console.log(savedPosters[i])
   grid.innerHTML += `
     <article class="poster">
-      <img class="poster-img" src="${savedPoster[i].image}" alt="nothin' to see here">
-      <h1 class="poster-title">${savedPoster[i].title}</h1>
-      <h3 class="poster-quote">${savedPoster[i].quote}</h3>
+      <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+      <h1 class="poster-title">${savedPosters[i].title}</h1>
+      <h3 class="poster-quote">${savedPosters[i].quote}</h3>
     </article>
-  `
+  `;
   }
 }
 
