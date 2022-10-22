@@ -133,7 +133,7 @@ formCreatePoster.addEventListener('load', openFormPage)
 backToMainButton.addEventListener('click', backToMainPage)
 showSavedPageButton.addEventListener('click', changeGrid)
 //Iteration 3
-//saveThisPosterGrid.addEventListener('click', gridDisplay)
+saveThisPosterGrid.addEventListener('dblclick', deleteSavedPoster)
 saveThisPosterButton.addEventListener('click', saveMyPoster)
 //functions and event handlers go here 👇
 
@@ -198,13 +198,7 @@ function openFormPage(){
     }
   }
 
-    // function gridDisplay() {
-    // openSavedPosterPage()
-    // }
-    // document
-    // getElementsByClassName(savedPostersGrid)
-    // saveThisPosterGrid.innerHTML = savedPosters
-    //console.log(savedPosters)
+
 
 
   //if !savedPosters does not include current push into array
@@ -230,10 +224,18 @@ function openFormPage(){
   function saveThisPosterPage() {
   hideMainPosterPage.classList.add('hidden')
   showSavedPosters.classList.remove('hidden')
-
-
   //savedPosters.push(saveThisPosterButton)
   }
+
+  function deleteSavedPoster(event){
+    console.log('hello friends')
+    for (var i = 0; i < savedPostersArray.length; i++) {
+    if(savedPostersArray[i].id === event.target.id){
+      event.target.remove()
+     }
+    }
+  }
+
 // (we've provided one for you to get you started)!
 //function newRandomPoster() {
 
