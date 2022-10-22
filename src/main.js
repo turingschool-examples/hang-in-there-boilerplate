@@ -11,6 +11,8 @@ var mainPosterPage = document.querySelector('.main-poster');
 var posterFormPage = document.querySelector('.poster-form');
 var savedPosterPage = document.querySelector('.saved-posters');
 
+//<article class="saved-posters-grid"></article> query selector for saved poster grid
+
 //buttons
 var makePosterButton = document.querySelector('.show-form');
 var showSavedButton = document.querySelector('.show-saved');
@@ -218,14 +220,26 @@ function savePoster() {
   }  
 
 }
-//savedPosters[i].image === currentPosters[i].imageURL && savedPosters[i].title === currentPosters[i].title && savedPosters[i].quote
+//load function for Saved Poster Page?
 
-//-card for each poster instance
-//-create HTML sections with interpolation for each index of the card to provide values.
-//-number of cards = saved posters.length
+//-card for each poster instance - create HTML sections with interpolation for each index of the card to provide values.
+//GRIDQUERYSELECTOR.innerHTML = null;
+//for(var i = 0; i < savedPosters.length; i++) {
+  // GRIDQUERYSELECTOR.innerHTML += `<img class="mini-poster img" src=${savedPosters[i].imageURL} alt="Poster image">
+  // <h1 class="mini-poster h2">${savedPosters[i].title}</h1>
+  // <h3 class="mini-poster h4">${savedPosters[i].quotes}</h3>`
+  //}
+
+
+
+
 //-innerHTML between article saved poster grid (class). Use saved poster grid query selector to access innerHTML
+
+//-number of cards = saved posters.length
+
 //-interpolated HTML change class info to match mini posters for IMG and headers.
 
   // poster.innerHTML = `<img class="poster-img" src=${newUserImage} alt="Poster image">
   // <h1 class="poster-title">${newUserTitle}</h1>
   // <h3 class="poster-quote">${newUserQuote}</h3>`
+
