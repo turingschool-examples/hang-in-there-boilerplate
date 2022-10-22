@@ -216,15 +216,17 @@ function saveUserPoster(){
   // var newUserQuote = inputFieldForQuote.value;
   // var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
   var poster = new Poster(image.src, title.innerText, quote.innerText)
-  console.log("Random", poster);
-  savedPosters.push(poster)
-  for (var i = 0; i < savedPosters.length; i++){
-    if(!savedPosters[i].image === poster.image && !savedPosters[i].title === poster.title && !savedPosters[i].quote === poster.quote){
-      console.log('Random 2')
-      savedPosters.pop(poster)
+  console.log('here', poster)
+  // savedPosters.push(poster)
+  // for (var i = 0; i < savedPosters.length; i++){
+    // if(savedPosters[i].image === poster.imageURL && savedPosters[i].title === poster.title && savedPosters[i].quote === poster.quote){
+      if(!savedPosters.includes(poster)) {
+        savedPosters.push(poster)
+        console.log('works!', poster)
+        // savedPosters.pop(poster)
     }
   }
-}
+
 
 
 // function saveExistingPoster(){
