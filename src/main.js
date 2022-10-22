@@ -139,16 +139,18 @@ quote.innerText = randomQuote;
 // event listeners go here 👇
 
 var randomPosterButton = document.querySelector('.show-random');
-
 randomPosterButton.addEventListener('click', randomPoster);
 
 var makePosterButton = document.querySelector('.show-form');
-
 makePosterButton.addEventListener('click', openForm);
+
+var viewPostersButton = document.querySelector('.show-saved');
+viewPostersButton.addEventListener('click', openSavedPosters);
 
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -156,23 +158,22 @@ function getRandomIndex(array) {
 function openForm() {
   var posterForm = document.querySelector('.poster-form');
   posterForm.classList.remove('hidden');
-  console.log(posterForm);
 
   var mainPoster = document.querySelector('.main-poster');
   mainPoster.classList.add('hidden');
-  console.log(mainPoster);
 }
-
-// need another function to go back to main page
-// when click "nevermind" button, 
-// switch hidden class, remove from main and add to form
-
-// need 4 functions that move hidden class
-
 
 function randomPoster() {
   var randomNum = getRandomIndex(images);
   var randomURL = images[randomNum];
   var poster = document.querySelector('img');
   poster.src = randomURL;
+}
+
+function openSavedPosters() {
+  var savedPosters = document.querySelector('.saved-posters');
+  savedPosters.classList.remove('hidden');
+
+  var mainPoster = document.querySelector('.main-poster');
+  mainPoster.classList.add('hidden');
 }
