@@ -145,7 +145,6 @@ backToMainButton.addEventListener('click', function () {
 savePosterButton.addEventListener("click", function (){
   saveCurrentPoster()
 })
-console.log("updated")
 
 makePosterButton.addEventListener("click", function(event) {
   event.preventDefault()
@@ -153,11 +152,27 @@ makePosterButton.addEventListener("click", function(event) {
   pushInputsToData(titleInput, quoteInput, imageInput)
   switchingViews(mainPageView)
 })
+
+savePosterGrid.addEventListener('dblclick', function(event) {
+  // console.log(event.target.closest('.mini-poster').id) 
+  var id = event.target.closest('.mini-poster').id
+  deletePoster(id)
+})
+
 // functions and event handlers go here 👇
+
+function deletePoster(id) {
+  for(var i = 0; i < savedPosters.length; i++) {
+    if(savedPosters[i].id === +id) {
+      savedPosters.splice(i, 1)
+    }
+  }
+  showSavedPosters()
+}
 
 function pushInputsToData() {
   titles.push(titleInput.value)
-  quotes.push(quoteInput.value)
+  quotes.push(quoteInput.value) 
   images.push(imageInput.value)
 }
 
@@ -175,13 +190,16 @@ function switchingViews(goToView) {
 function showSavedPosters() {
   savePosterGrid.innerHTML = ""
   for(var i = 0; i < savedPosters.length; i++){
-  var showGridDisplay = `<article class="mini-poster"> 
+  var showGridDisplay = `<article class="mini-poster" id="${savedPosters[i].id}"> 
   <img src="${savedPosters[i].imageURL}" alt="mini nothin' to see here">
   <h2>${savedPosters[i].title}</h2>
   <h4>${savedPosters[i].quote}</h4> 
   </article>`
   savePosterGrid.innerHTML += showGridDisplay
   }
+  // console.log(savePosterGrid.innerHTML)
+  console.log('poster.id', currentPoster.id)
+
 }
 
 function createsRandomPoster (){
