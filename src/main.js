@@ -103,9 +103,6 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
-
-
 
 var randomImageNumber = getRandomIndex(images);
 // ^^ returns random number
@@ -113,7 +110,6 @@ var randomImageNumber = getRandomIndex(images);
 
 var randomImageURL = images[randomImageNumber];
 // ^^ returns a random element in the images array (image URL)
-
 
 var randomTitleNumber = getRandomIndex(titles);
 // ^^ returns random number 
@@ -133,51 +129,35 @@ var randomQuote = quotes[randomQuoteNumber];
 var title = document.querySelector('h1');
 title.innerText = randomTitle;
 
-
 var image = document.querySelector('img');
 image.src = randomImageURL;
-
 
 var quote = document.querySelector('h3');
 quote.innerText = randomQuote;
 
 
-
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-
-// var square = document.querySelector('div');
-
-// square.addEventListener('click', changeColor);
-
-// function changeColor(){
-//   square.classList.add('pink');
-// }
-
-
+// event listeners go here 👇
 
 var randomPosterButton = document.querySelector('.show-random');
 
 randomPosterButton.addEventListener('click', randomPoster);
 
-function randomPoster() {
-  var randomPosterNumber = getRandomIndex(images);
 
-  var randomPosterURL = images[randomPosterNumber];
-  return randomPosterURL;
+// functions and event handlers go here 👇
+// (we've provided one for you to get you started)!
+
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
 
+function randomPoster() {
 
+  var randomNum = getRandomIndex(images);
 
+  var randomURL = images[randomNum];
 
+  var poster = document.querySelector('img');
 
-
-
-
-
-
-
+  poster.src = randomURL;
+}
