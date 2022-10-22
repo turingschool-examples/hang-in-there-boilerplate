@@ -147,6 +147,12 @@ makePosterButton.addEventListener('click', openForm);
 var viewPostersButton = document.querySelector('.show-saved');
 viewPostersButton.addEventListener('click', openSavedPosters);
 
+var nevermindButton = document.querySelector('.show-main');
+nevermindButton.addEventListener('click', returnFromNevermind);
+
+var backToMainButton = document.querySelector('.back-to-main');
+backToMainButton.addEventListener('click', backToMain);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -176,4 +182,20 @@ function openSavedPosters() {
 
   var mainPoster = document.querySelector('.main-poster');
   mainPoster.classList.add('hidden');
+}
+
+function returnFromNevermind() {
+  var nevermind = document.querySelector('.poster-form');
+  nevermind.classList.add('hidden');
+
+  var mainPoster = document.querySelector('.main-poster');
+  mainPoster.classList.remove('hidden');
+}
+
+function backToMain() {
+  var toMain = document.querySelector('.saved-posters')
+  toMain.classList.add('hidden');
+
+  var mainPoster = document.querySelector('.main-poster');
+  mainPoster.classList.remove('hidden');
 }
