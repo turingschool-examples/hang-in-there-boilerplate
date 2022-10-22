@@ -210,21 +210,17 @@ function showUserPoster(){
   goBackToMainMake();
 }
 // Iteration 3
-function saveUserPoster(){
-  // var newUserImage = inputFieldForImage.value;
-  // var newUserTitle = inputFieldForTitle.value;
-  // var newUserQuote = inputFieldForQuote.value;
-  // var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
+function saveUserPoster() {
   var poster = new Poster(image.src, title.innerText, quote.innerText)
-  console.log("Random", poster);
-  savedPosters.push(poster)
-  for (var i = 0; i < savedPosters.length; i++){
-    if(!savedPosters[i].image === poster.image && !savedPosters[i].title === poster.title && !savedPosters[i].quote === poster.quote){
-      console.log('Random 2')
-      savedPosters.pop(poster)
-    }
+  // for (var i = 0; i < savedPosters.length; i++) {
+    // if(savedPosters[i].image === poster.imageURL && savedPosters[i].title === poster.title && savedPosters[i].quote === poster.quote){
+      if(!savedPosters.includes(poster)) {
+        return savedPosters.push(poster)
+        // savedPosters.pop(poster)
+      // }
   }
 }
+
 
 
 // function saveExistingPoster(){
