@@ -128,6 +128,7 @@ showMainButton.addEventListener('click', backToMain);
 backToMainButton.addEventListener('click', backToMain);
 makePosterButton.addEventListener('click', createUserPoster);
 showSavedButton.addEventListener('click', viewSavedPosters);
+savedPostersDisplay.addEventListener('dblick', deleteEachPoster)
 
 //-------------------------------> Functions <-------------------------------------------------
 
@@ -194,7 +195,7 @@ function displayPoster() {
 
 function viewSavedPosters() {
   savedPostersGrid.html = "";
-  for(var i = 0; i < savedPosters.length; i++){
+  for (var i = 0; i < savedPosters.length; i++){
     savedPostersGrid.innerHTML +=`
         <section class="mini-poster" id=${savedPosters[i].id}>
         <img class="poster-img" src=${savedPosters[i].imageURL}>
@@ -203,6 +204,16 @@ function viewSavedPosters() {
   }
   hide(mainPoster)
   show(savedPostersDisplay)
+};
+
+function deleteEachPoster() {
+  var deletedPoster = e.target.id;
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id.toString() === deletedPoster) {
+      savedPosters.splice(i, 1)
+    }
+  }
+viewSavedPosters()
 };
 
 function makeYourOwnPoster() {
@@ -215,7 +226,6 @@ function makeYourOwnPoster() {
   show(showMainButton)
   show(makePosterButton)
 };
-
 
 function backToMain() {
   show(mainPoster)
