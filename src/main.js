@@ -163,7 +163,7 @@ function createNewPoster() {
   title.innerText = newTitle
   quote.innerText = newQuote
 }
-//iteration 1
+
 function showMakeForm() {
   makeOwnPosterForm.classList.remove('hidden');
   mainPoster.classList.add('hidden');
@@ -174,31 +174,15 @@ function goBackToMainMake(){
   mainPoster.classList.remove('hidden');
 }
 
-function displayRandomPoster(currentPoster) {
-
-    currentPoster = new Poster(newImage, newTitle, newQuote)
-    newImage.src = getRandomIndex(images)
-    newTitle.innerText = getRandomIndex(titles)
-    newQuote.innerText = getRandomIndex(quotes)
-  return currentPoster
-}
-
 function showSavedPosters() {
   mainPoster.classList.add('hidden');
   savedPostersForm.classList.remove('hidden');
-
-  currentPoster = new Poster(newImage, newTitle, newQuote)
-    newImage.src = getRandomIndex(images)
-    newTitle.innerText = getRandomIndex(titles)
-    newQuote.innerText = getRandomIndex(quotes)
-  return currentPoster
 }
 
 function goBackToMainSaved(){
   savedPostersForm.classList.add('hidden');
   mainPoster.classList.remove('hidden');
 }
-
 
 //Iteration 2
 function showUserPoster(){
@@ -230,7 +214,7 @@ function saveUserPoster(){
   // push new poster to saved posters arrays by calling the showUserPoster function?
   // create new object to push into the saved posters arrays
   //
-
+}
 
 function saveExistingPoster(){
     grid.innerHTML = currentPoster;
@@ -246,7 +230,6 @@ function displayUserPoster(){
   // hide main page and show grid
   grid.innerHTML = newUserPoster
   //InnerHTML
-  //
   showSavedPosters();
   // function createBoxes(numBox){
   //   grid.style.gridTemplateColumns = `repeat(${numBox}, 1fr)`;
