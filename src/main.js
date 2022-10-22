@@ -1,5 +1,3 @@
-
-
 // .query selector variables go here 👇 HEAD
 //iteration 0
 var posterQuote = document.querySelector(".poster-quote");
@@ -145,9 +143,19 @@ var titleIndex = getRandomIndex(titles);
 
 //iteratrion 0
 function homePage() {
-posterImage.src = images[getRandomIndex(images)]
-posterTitle.innerText = titles[getRandomIndex(titles)]
-posterQuote.innerText = quotes[getRandomIndex(quotes)]
+  var imgIndex = getRandomIndex(images);
+  var quoteIndex = getRandomIndex(quotes);
+  var titleIndex = getRandomIndex(titles);
+  var newPoster = {
+    image: images[imgIndex],
+    title: titles[titleIndex],
+    quote: quotes[quoteIndex],
+  }
+currentPoster = new Poster(newPoster.image, newPoster.title, newPoster.quote)
+posterImage.src = currentPoster.imageURL
+posterTitle.innerText = currentPoster.title
+posterQuote.innerText = currentPoster.quote
+saveMyPoster(currentPoster)
 }
 
 //Iteration 1
@@ -160,24 +168,33 @@ function openFormPage(){
     hideMainPosterPage.classList.remove('hidden')
     formCreatePoster.classList.add('hidden')
   }
+  // function homePage() {
+  //   var imgIndex = getRandomIndex(images);
+  //   var quoteIndex = getRandomIndex(quotes);
+  //   var titleIndex = getRandomIndex(titles);
+  //   var newPoster = {
+  //     image: images[imgIndex],
+  //     title: titles[titleIndex],
+  //     quote: quotes[quoteIndex],
+  //   }
+  // currentPoster = new Poster(newPoster.image, newPoster.title, newPoster.quote)
+  // posterImage.src = currentPoster.imageURL
+  // posterTitle.innerText = currentPoster.title
+  // posterQuote.innerText = currentPoster.quote
 
-  function displayMyPoster(){
+  function displayMyPoster(event){
     event.preventDefault()
     formCreatePoster.classList.add('hidden')
     hideMainPosterPage.classList.remove('hidden')
-    var newImage = imageUrlInput.value
-    var newTitle = posterTitleInput.value
-    var newQuote = posterQuoteInput.value
-    currentPoster = new Poster(newImage, newTitle, newQuote)
-    posterImage.src = newImage
-    posterTitle.innerText = newTitle
-    posterQuote.innerText = newQuote
-    images.push(newImage)
-    titles.push(newTitle)
-    quotes.push(newQuote)
+    currentPoster = new Poster(posterImage, posterTitle, posterQuote)
+    posterImage.src = currentPoster.imageURL
+    posterTitle.innerText = currentPoster.title
+    posterQuote.innerText = currentPoster.quote
+    images.push(imageUrlInput)
+    titles.push(posterTitleInput)
+    quotes.push(posterQuoteInput)
   }
   function saveMyPoster() {
-    console.log('hello', saveMyPoster)
     if (!savedPostersArray.includes(currentPoster)) {
       savedPostersArray.push(currentPoster)
     }
@@ -185,20 +202,18 @@ function openFormPage(){
     function changeGrid() {
       // saveThisPosterGrid.innerHTML = "";
       console.log(savedPostersArray)
-      formCreatePoster.classList.add('hidden')
       showSavedPosters.classList.remove('hidden')
       hideMainPosterPage.classList.add('hidden')
       console.log('hi)')
-      for (var i = 0; i < savedPostersArray.length; i++) {
-        console.log(savedPostersArray[i].newTitle)
-    saveThisPosterGrid.innerHTML = `
-      <article class="mini-poster" id = ${savedPostersArray[i].id}>
-        <img class="poster-img" src=${savedPostersArray[i].imageURL} alt="nothin' to see here">
-        <h2 class="poster-title">${savedPostersArray[i].title}</h2>
-        <h4 class="poster-quote">${savedPostersArray[i].quote}</h4></article>
+      // for (var i = 0; i < savedPostersArray.length; i++) {
+    saveThisPosterGrid.innerHTML += `
+      <article class="mini-poster">
+        <img class="poster-img" src="${currentPoster.imageURL}" alt="nothin' to see here">
+        <h2 class="poster-title">${currentPoster.title}</h2>
+        <h4 class="poster-quote">${currentPoster.quote}</h4></article>
     `
     }
-  }
+  //}
 
     // function gridDisplay() {
     // openSavedPosterPage()
