@@ -132,9 +132,12 @@ randomButton.addEventListener('click', pageLoad);
 
 //change page clicks
 makePosterButton.addEventListener('click', goToFormPage);
-showSavedButton.addEventListener('click', goToSavedPage);
+showSavedButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  goToSavedPage();
+});
 takeMeBackButton.addEventListener('click', takeMeBack);
-// backToMainButton.addEventListener('click', XXXX);
+backToMainButton.addEventListener('click', backToMain);
 showMyPosterButton.addEventListener('click', function(event) {
   event.preventDefault()
   showMyPoster()
@@ -176,7 +179,8 @@ function goToFormPage() {
 }
 function goToSavedPage() {
   mainPosterPage.classList.add('hidden');
-  showSavedButton.classList.remove('hidden');
+  savedPosterPage.classList.remove('hidden');
+  loadSavedGrid();
 }
 function takeMeBack() {
   mainPosterPage.classList.remove('hidden');
@@ -221,6 +225,18 @@ function savePoster() {
 
 }
 //load function for Saved Poster Page?
+function loadSavedGrid() {
+  savedPosterGrid.innerHTML = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPosterGrid.innerHTML += `<article class="mini-poster"> 
+    <img class="mini-poster-img" src=${savedPosters[i].imageURL} alt="Poster image">
+    <h2 class="mini-poster-title">${savedPosters[i].title}</h2>
+    <h4 class="mini-poster-quote">${savedPosters[i].quote}</h4>
+    </article>`
+
+      }
+}
+
 
 //-card for each poster instance - create HTML sections with interpolation for each index of the card to provide values.
 //GRIDQUERYSELECTOR.innerHTML = null;
