@@ -96,6 +96,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 //---------------------------------> Query Selectors <-----------------------------------------
+
 var mainPoster = document.querySelector('.main-poster');
 var poster = document.querySelector('.poster');
 var posterImg = document.querySelector('.poster-img');
@@ -111,8 +112,9 @@ var posterTitleForm = document.querySelector('#poster-title');
 var posterQuoteForm = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector('.make-poster');
 var showMainButton = document.querySelector('.show-main');
-var showSavedPosterPage = document.querySelector('.saved-posters');//may need to delete this
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 var backToMainButton = document.querySelector('.back-to-main');
+var savedPostersDisplay = document.querySelector('.saved-posters');
 
 var savedPosters = [];
 var currentPoster;
@@ -123,20 +125,13 @@ window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
 showFormButton.addEventListener('click', makeYourOwnPoster);
 savePosterButton.addEventListener('click', savePoster);
-showSavedButton.addEventListener('click', showSavedPosters);
 showMainButton.addEventListener('click', backToMain);
 backToMainButton.addEventListener('click', backToMain);
-makePosterButton.addEventListener('click', createUserPoster)
+makePosterButton.addEventListener('click', createUserPoster);
+showSavedButton.addEventListener('click', viewSavedPosters);
+savedPostersGrid.addEventListener('dblclick', deleteEachPoster);
 
 //-------------------------------> Functions <-------------------------------------------------
-
-function show(elements) {
-  elements.classList.remove('hidden')
-};
-
-function hide(elements) {
-  elements.classList.add('hidden')
-};
 
 function createRandomPoster() {
   currentPoster = new Poster ( 
@@ -154,16 +149,22 @@ function createUserPoster(event){
     posterTitleForm.value,
     posterQuoteForm.value
   )
-    
-  storePosterData()
-  displayPoster()
-
   hide(posterForm)
   show(mainPoster)
   show(savePosterButton)
   show(showSavedButton)
   show(showRandomButton)
-  show(showFormButton)
+  show(showFormButton) 
+  
+  storePosterData()
+  displayPoster()
+  clearPosterForm()
+};
+
+function clearPosterForm() {
+  posterImageUrl.value = ""
+  posterTitleForm.value = ""
+  posterQuoteForm.value = ""
 };
 
 function storePosterData() {
@@ -176,13 +177,35 @@ function displayPoster() {
   posterImg.src = currentPoster.imageURL
   posterTitle.innerText = currentPoster.title
   posterQuote.innerText = currentPoster.quote
- };
+};
 
  function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)
-  console.log(savedPosters)
   }
+};
+
+function viewSavedPosters() {
+  savedPostersGrid.innerHTML = "";
+    for (var i = 0; i < savedPosters.length; i++){
+      savedPostersGrid.innerHTML +=`
+        <article class="mini-poster" id = ${savedPosters[i].id}>
+        <img class="poster-img" src=${savedPosters[i].imageURL}>
+        <h2 class="poster-title">${savedPosters[i].title}</h2>
+        <h4 class="poster-quote">${savedPosters[i].quote}</h4></article>`
+  }
+  hide(mainPoster)
+  hide(posterForm)
+  show(savedPostersDisplay)
+};
+
+function deleteEachPoster(event) {
+  for (i = 0; i < savedPosters.length; i ++) {
+    if (savedPosters[i].id === Number(event.target.parentNode.id)) {
+      savedPosters.splice(i, 1)
+    }
+  }
+viewSavedPosters()
 };
 
 function makeYourOwnPoster() {
@@ -196,25 +219,13 @@ function makeYourOwnPoster() {
   show(makePosterButton)
 };
 
-function showSavedPosters() {
-  hide(mainPoster)
-  hide(showRandomButton)
-  hide(showSavedButton)
-  hide(savePosterButton)
-  hide(showFormButton)
-  hide(posterForm)
-  hide(showMainButton)
-  hide(makePosterButton)
-  show(backToMainButton)
-  show(showSavedPosterPage)
-};
-
 function backToMain() {
   show(mainPoster)
   show(showRandomButton)
   show(showSavedButton)
   show(savePosterButton)
   show(showFormButton)
+  hide(savedPostersDisplay)
 };
 
 //-------------------------------> Misc Functions <-----------------------------------------
@@ -223,5 +234,10 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
+function show(elements) {
+  elements.classList.remove('hidden')
+};
 
-
+function hide(elements) {
+  elements.classList.add('hidden')
+};
