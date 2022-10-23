@@ -152,6 +152,9 @@ nevermindButton.addEventListener('click', returnFromNevermind);
 var backToMainButton = document.querySelector('.back-to-main');
 backToMainButton.addEventListener('click', backToMain);
 
+var savePosterButton = document.querySelector('.save-poster');
+savePosterButton.addEventListener('click', showSavedPosters);
+
 
 
 
@@ -253,6 +256,19 @@ function showUserPoster() {
   newUserQuote.innerText = userCreatedPoster.quote;
 
   backToMain();
+}
 
 
+
+
+
+
+
+// var savePosterButton = document.querySelector('.save-poster');
+// savePosterButton.addEventListener('click', )
+
+
+
+function showSavedPosters(){
+console.log('hi')
 }
