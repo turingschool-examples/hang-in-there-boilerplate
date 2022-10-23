@@ -20,12 +20,22 @@ Open up https://github.com/rae-107/hang-in-there-project repository. From this p
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+We are currently in mod 1. We have spent about 4-5 hours per day for 3 days.
 
 ### Contributors:
 [//]: <> (Who worked on this application? Link to their GitHubs.)
+Tim Pendarvis: https://github.com/Trpendarvis
+Ian Nordby: https://github.com/nordbyi
+Rae Gebhart: https://github.com/rae-107
 
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
+Write clean, DRY JavaScript. Use a provided class by creating object instances using the new keyword.
+Manipulate the page after it has loaded adding, removing, and updating elements on the DOM. Begin to understand the connection between HTML, CSS and JavaScript. Practice reading, understanding, and using provided code. Build an understanding of writing code collaboratively. Document changes with atomic commits & thorough code reviews. Communicate, troubleshoot, and plan effectively as a team.
 
 ### Wins + Challenges:
 [//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+Win 1: We have successfully completed all 5 iterations and no one died.
+Win 2: Successfully able to collaborate as a team 🌈. 
+Win 3: We were able to implement code and features that we were not taught in class. 
+Win 4: We all know what our code means.
