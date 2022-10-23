@@ -17,7 +17,8 @@ In your terminal, navigate to your project repo
 Run the command open index.html
 
 ### Preview of App:
-[//]: <> 
+[//]: <> ![hanginthere (1)](https://user-images.githubusercontent.com/111818942/197369405-80ee8dfc-e365-4ced-b1cc-61971de85c41.gif)
+
 
 ### Context:
 [//]: <> This project was our first Mod 1 pairing project. The project was assigned at the beginning of the week and we spent the full week to complete the project by saturday evening. 
