@@ -1,7 +1,5 @@
 // query selector variables go here 👇
 
-
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -23,6 +21,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+
 var titles = [
   "determination",
   "success",
@@ -60,6 +59,7 @@ var titles = [
   "understanding",
   "wisdom"
 ];
+
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
@@ -100,43 +100,42 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 
 
-var randomImageNumber = getRandomIndex(images);
-// ^^ returns random number
-// randomImageNumber = a random number
+function loadRandom() {
+  var randomImageNumber = getRandomIndex(images);
+  var randomImageURL = images[randomImageNumber];
 
-var randomImageURL = images[randomImageNumber];
-// ^^ returns a random element in the images array (image URL)
+  var randomTitleNumber = getRandomIndex(titles);
+  var randomTitle = titles[randomTitleNumber];
 
-var randomTitleNumber = getRandomIndex(titles);
-// ^^ returns random number 
-// randomTitleNumber = a random number
-
-var randomTitle = titles[randomTitleNumber];
-// ^^ returns a random title from the titles array
+  var randomQuoteNumber = getRandomIndex(quotes);
+  var randomQuote = quotes[randomQuoteNumber];
 
 
-var randomQuoteNumber = getRandomIndex(quotes);
-//^^ returns a random number in the context of quotes
+  var title = document.querySelector('h1');
+  title.innerText = randomTitle;
 
-var randomQuote = quotes[randomQuoteNumber];
-//^^ returns an element from the quotes array, which so happens to be a quote
+  var image = document.querySelector('img');
+  image.src = randomImageURL;
 
 
-var title = document.querySelector('h1');
-title.innerText = randomTitle;
+  var quote = document.querySelector('h3');
+  quote.innerText = randomQuote;
+}
 
-var image = document.querySelector('img');
-image.src = randomImageURL;
 
-var quote = document.querySelector('h3');
-quote.innerText = randomQuote;
+
+
+
 
 
 // event listeners go here 👇
+
+window.addEventListener('load', loadRandom);
 
 var randomPosterButton = document.querySelector('.show-random');
 randomPosterButton.addEventListener('click', randomPoster);
@@ -152,6 +151,25 @@ nevermindButton.addEventListener('click', returnFromNevermind);
 
 var backToMainButton = document.querySelector('.back-to-main');
 backToMainButton.addEventListener('click', backToMain);
+
+
+
+
+var showPosterButton = document.querySelector('.make-poster');
+showPosterButton.addEventListener('click', function (event) {
+
+  event.preventDefault();
+
+  showUserPoster();
+
+});
+
+
+
+
+
+
+
 
 
 // functions and event handlers go here 👇
@@ -170,10 +188,20 @@ function openForm() {
 }
 
 function randomPoster() {
-  var randomNum = getRandomIndex(images);
-  var randomURL = images[randomNum];
-  var poster = document.querySelector('img');
-  poster.src = randomURL;
+  var randomImageNum = getRandomIndex(images);
+  var randomURL = images[randomImageNum];
+  var posterImage = document.querySelector('img');
+  posterImage.src = randomURL;
+
+  var randomTitleNum = getRandomIndex(titles);
+  var randomTitle = titles[randomTitleNum];
+  var posterTitle = document.querySelector('h1');
+  posterTitle.innerText = randomTitle;
+
+  var randomQuoteNum = getRandomIndex(quotes);
+  var randomQuote = quotes[randomQuoteNum];
+  var posterQuote = document.querySelector('h3');
+  posterQuote.innerText = randomQuote;
 }
 
 function openSavedPosters() {
@@ -198,4 +226,29 @@ function backToMain() {
 
   var mainPoster = document.querySelector('.main-poster');
   mainPoster.classList.remove('hidden');
+}
+
+function showUserPoster() {
+
+  var userImageURL = document.querySelector('#poster-image-url');
+  var userTitle = document.querySelector('#poster-title');
+  var userQuote = document.querySelector('#poster-quote');
+
+  var userCreatedPoster = new Poster(userImageURL.value, userTitle.value, userQuote.value);
+
+  images.push(userCreatedPoster.imageURL);
+  titles.push(userCreatedPoster.title);
+  quotes.push(userCreatedPoster.quote);
+
+  var newUserImage = document.querySelector('.poster-img');
+  newUserImage.src = userCreatedPoster.imageURL;
+
+  var newUserTitle = document.querySelector('.poster-title');
+  newUserTitle.innerText = userCreatedPoster.title;
+
+  var newUserQuote = document.querySelector('.poster-quote');
+  newUserQuote.innerText = userCreatedPoster.quote;
+
+
+  backToMain();
 }
