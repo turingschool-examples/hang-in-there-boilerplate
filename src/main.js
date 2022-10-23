@@ -231,7 +231,7 @@ function openFormPage(){
     console.log('hello friends')
     for (var i = 0; i < savedPostersArray.length; i++) {
     if(savedPostersArray[i].id === event.target.id){
-      event.target.remove()
+      event.target.remove(id)
      }
     }
   }
