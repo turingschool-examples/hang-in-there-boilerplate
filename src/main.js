@@ -221,11 +221,14 @@ function returnFromNevermind() {
 }
 
 function backToMain() {
-  var toMain = document.querySelector('.saved-posters')
+  var toMain = document.querySelector('.saved-posters');
   toMain.classList.add('hidden');
 
   var mainPoster = document.querySelector('.main-poster');
   mainPoster.classList.remove('hidden');
+
+  var userPosterForm = document.querySelector('.poster-form');
+  userPosterForm.classList.add('hidden');
 }
 
 function showUserPoster() {
@@ -249,6 +252,7 @@ function showUserPoster() {
   var newUserQuote = document.querySelector('.poster-quote');
   newUserQuote.innerText = userCreatedPoster.quote;
 
-
   backToMain();
+
+
 }
