@@ -264,11 +264,25 @@ function showUserPoster() {
 
 
 
-// var savePosterButton = document.querySelector('.save-poster');
-// savePosterButton.addEventListener('click', )
+
+
+
+
+
+
+
+
 
 
 
 function showSavedPosters(){
-console.log('hi')
+  var mainImage = document.querySelector('.poster-img');
+  var mainTitle = document.querySelector('.poster-title');
+  var mainQuote = document.querySelector('.poster-quote');
+
+  var mainPoster = new Poster(mainImage.src, mainTitle.innerText, mainQuote.innerText);
+
+  savedPosters.push(mainPoster);
+  console.log(savedPosters);
 }
+
