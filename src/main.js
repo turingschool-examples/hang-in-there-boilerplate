@@ -195,6 +195,7 @@ function viewSavedPosters() {
         <h4 class="poster-quote">${savedPosters[i].quote}</h4></article>`
   }
   hide(mainPoster)
+  hide(posterForm)
   show(savedPostersDisplay)
 };
 
@@ -240,4 +241,3 @@ function show(elements) {
 function hide(elements) {
   elements.classList.add('hidden')
 };
-
