@@ -11,8 +11,6 @@ var mainPosterPage = document.querySelector('.main-poster');
 var posterFormPage = document.querySelector('.poster-form');
 var savedPosterPage = document.querySelector('.saved-posters');
 
-//<article class="saved-posters-grid"></article> query selector for saved poster grid
-
 //buttons
 var makePosterButton = document.querySelector('.show-form');
 var showSavedButton = document.querySelector('.show-saved');
@@ -122,7 +120,8 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster; //replace local instantiatinsdsfdsf with this
+var currentPoster;
+var posterIcons =[];
 
 // event listeners go here 👇
 
@@ -139,11 +138,12 @@ showSavedButton.addEventListener('click', function(event) {
 takeMeBackButton.addEventListener('click', takeMeBack);
 backToMainButton.addEventListener('click', backToMain);
 showMyPosterButton.addEventListener('click', function(event) {
-  event.preventDefault()
-  showMyPoster()
-  pushUserInput()
+  event.preventDefault();
+  showMyPoster();
+  pushUserInput();
 })
 saveThisPosterButton.addEventListener('click', savePoster);
+savedPosterGrid.addEventListener('dblclick', deleteSavedPoster);
 
 
 // functions and event handlers go here 👇
@@ -156,9 +156,9 @@ function getRandomIndex(array) {
 
 //initial page load
 function pageLoad() {
-  var imageIndex = getRandomIndex(images)
-  var titleIndex = getRandomIndex(titles)
-  var quoteIndex = getRandomIndex(quotes)
+  var imageIndex = getRandomIndex(images);
+  var titleIndex = getRandomIndex(titles);
+  var quoteIndex = getRandomIndex(quotes);
 
   var newPoster = {
     image: images[imageIndex],
@@ -172,13 +172,14 @@ function pageLoad() {
   posterQuote.innerText  = currentPoster.quote;
 }
 
-//change page functions. REFACTOR: CAN THEY BE COMBINED?
+//change page functions
 function goToFormPage() {
   mainPosterPage.classList.add('hidden');
   posterFormPage.classList.remove('hidden');
 }
 function goToSavedPage() {
   mainPosterPage.classList.add('hidden');
+  posterFormPage.classList.add('hidden');
   savedPosterPage.classList.remove('hidden');
   loadSavedGrid();
 }
@@ -190,11 +191,13 @@ function backToMain() {
   mainPosterPage.classList.remove('hidden');
   savedPosterPage.classList.add('hidden');
 }
+
+//display, save, and delete poster functions
 function showMyPoster() {
-  
-  var newUserImage = document.querySelector('#poster-image-url').value
-  var newUserTitle = document.querySelector('#poster-title').value
-  var newUserQuote = document.querySelector('#poster-quote').value
+  //display user-created poster on main page
+  var newUserImage = document.querySelector('#poster-image-url').value;
+  var newUserTitle = document.querySelector('#poster-title').value;
+  var newUserQuote = document.querySelector('#poster-quote').value;
 
   currentPoster = new Poster(newUserImage, newUserTitle, newUserQuote);
 
@@ -206,6 +209,7 @@ function showMyPoster() {
 }
  
 function pushUserInput() {
+  //push individual inputs to respective arrays for further use
   var newUserImage = document.querySelector('#poster-image-url').value;
   var newUserTitle = document.querySelector('#poster-title').value;
   var newUserQuote = document.querySelector('#poster-quote').value;
@@ -213,49 +217,36 @@ function pushUserInput() {
   images.push(newUserImage);
   titles.push(newUserTitle);
   quotes.push(newUserQuote);
-
-  //var newUserPoster = new Poster(newUserImage, newUserTitle, newUserQuote) //currentPoster  
 }
 
 function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
-
   savedPosters.push(currentPoster);
   }  
-
 }
-//load function for Saved Poster Page?
 function loadSavedGrid() {
+  //displayPosters
   savedPosterGrid.innerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
-    savedPosterGrid.innerHTML += `<article class="mini-poster"> 
+    savedPosterGrid.innerHTML += `<article id="${savedPosters[i].id}" class="mini-poster"> 
     <img class="mini-poster-img" src=${savedPosters[i].imageURL} alt="Poster image">
     <h2 class="mini-poster-title">${savedPosters[i].title}</h2>
     <h4 class="mini-poster-quote">${savedPosters[i].quote}</h4>
     </article>`
-
-      }
+    }
+}
+function deleteSavedPoster(event) {
+  //target parent of the element clicked and remove it from innerHTML
+  event.target.parentElement.remove();
+  //remove poster object from saved array
+  for(var i = 0; i < savedPosters.length; i++) {
+    if(savedPosters[i].id.toString() === event.target.parentElement.id) {
+      savedPosters.splice(i, 1);
+    }
+  }
 }
 
 
-//-card for each poster instance - create HTML sections with interpolation for each index of the card to provide values.
-//GRIDQUERYSELECTOR.innerHTML = null;
-//for(var i = 0; i < savedPosters.length; i++) {
-  // GRIDQUERYSELECTOR.innerHTML += `<img class="mini-poster img" src=${savedPosters[i].imageURL} alt="Poster image">
-  // <h1 class="mini-poster h2">${savedPosters[i].title}</h1>
-  // <h3 class="mini-poster h4">${savedPosters[i].quotes}</h3>`
-  //}
 
 
-
-
-//-innerHTML between article saved poster grid (class). Use saved poster grid query selector to access innerHTML
-
-//-number of cards = saved posters.length
-
-//-interpolated HTML change class info to match mini posters for IMG and headers.
-
-  // poster.innerHTML = `<img class="poster-img" src=${newUserImage} alt="Poster image">
-  // <h1 class="poster-title">${newUserTitle}</h1>
-  // <h3 class="poster-quote">${newUserQuote}</h3>`
 
