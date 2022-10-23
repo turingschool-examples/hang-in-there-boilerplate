@@ -119,15 +119,16 @@ var quotes = [
 ];
 var savedPostersArray = [];
 var currentPoster;
-// var picture = `${posterQuote} + ${posterTitle} + ${posterImage}`
+var imgIndex = getRandomIndex(images);
+var quoteIndex = getRandomIndex(quotes);
+var titleIndex = getRandomIndex(titles);
 // event listeners go here 👇
 //Iteration 0
-window.addEventListener('load', homePage)
-randomPosterButton.addEventListener('click', homePage)
+window.addEventListener('load', showRandomPoster)
+randomPosterButton.addEventListener('click', showRandomPoster)
 //Iteration 1 & 2
 showFormButton.addEventListener('click', openFormPage)
 takeMeBack.addEventListener('click', openMainPage)
-//showMyPosterButton.addEventListener('click', displayMyPoster)
 showMyPosterButton.addEventListener('click', displayMyPoster)
 formCreatePoster.addEventListener('load', openFormPage)
 backToMainButton.addEventListener('click', backToMainPage)
@@ -136,13 +137,8 @@ showSavedPageButton.addEventListener('click', changeGrid)
 saveThisPosterGrid.addEventListener('dblclick', deleteSavedPoster)
 saveThisPosterButton.addEventListener('click', saveMyPoster)
 //functions and event handlers go here 👇
-
-var imgIndex = getRandomIndex(images);
-var quoteIndex = getRandomIndex(quotes);
-var titleIndex = getRandomIndex(titles);
-
 //iteratrion 0
-function homePage() {
+function showRandomPoster() {
   var imgIndex = getRandomIndex(images);
   var quoteIndex = getRandomIndex(quotes);
   var titleIndex = getRandomIndex(titles);
@@ -155,7 +151,6 @@ currentPoster = new Poster(newPoster.image, newPoster.title, newPoster.quote)
 posterImage.src = currentPoster.imageURL
 posterTitle.innerText = currentPoster.title
 posterQuote.innerText = currentPoster.quote
-saveMyPoster(currentPoster)
 }
 
 //Iteration 1
@@ -186,7 +181,7 @@ function openFormPage(){
     event.preventDefault()
     formCreatePoster.classList.add('hidden')
     hideMainPosterPage.classList.remove('hidden')
-    currentPoster = new Poster(posterImage, posterTitle, posterQuote)
+    currentPoster = new Poster(imageUrlInput.value, posterTitleInput.value, posterQuoteInput.value)
     posterImage.src = currentPoster.imageURL
     posterTitle.innerText = currentPoster.title
     posterQuote.innerText = currentPoster.quote
@@ -200,20 +195,21 @@ function openFormPage(){
     }
   }
     function changeGrid() {
-      // saveThisPosterGrid.innerHTML = "";
+      var displaySavedPosters = [];
       console.log(savedPostersArray)
       showSavedPosters.classList.remove('hidden')
       hideMainPosterPage.classList.add('hidden')
       console.log('hi)')
-      // for (var i = 0; i < savedPostersArray.length; i++) {
-    saveThisPosterGrid.innerHTML += `
-      <article class="mini-poster">
-        <img class="poster-img" src="${currentPoster.imageURL}" alt="nothin' to see here">
-        <h2 class="poster-title">${currentPoster.title}</h2>
-        <h4 class="poster-quote">${currentPoster.quote}</h4></article>
+      for (var i = 0; i < savedPostersArray.length; i++) {
+    displaySavedPosters += `
+      <article class="mini-poster" id="${savedPostersArray[i].id}">
+        <img class="poster-img" src="${savedPostersArray[i].imageURL}" alt="nothin' to see here">
+        <h2 class="poster-title">${savedPostersArray[i].title}</h2>
+        <h4 class="poster-quote">${savedPostersArray[i].quote}</h4></article>
     `
+    saveThisPosterGrid.innerHTML = displaySavedPosters
     }
-  //}
+  }
 
 
 
@@ -247,16 +243,15 @@ function openFormPage(){
   function deleteSavedPoster(event){
     console.log('hello friends')
     for (var i = 0; i < savedPostersArray.length; i++) {
-    if(savedPostersArray[i].id === event.target.id){
-      event.target.remove()
-     }
-    }
+    if(savedPostersArray[i].id == event.target.parentNode.id)
+      savedPostersArray.splice(i, 1)
+      event.target.parentNode.remove(event.target)
+      }
+
+    console.log(savedPostersArray)
+    changeGrid()
   }
-
 // (we've provided one for you to get you started)!
-//function newRandomPoster() {
-
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
