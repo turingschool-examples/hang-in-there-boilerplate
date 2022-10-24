@@ -122,15 +122,11 @@ function loadRandom() {
   var image = document.querySelector('img');
   image.src = randomImageURL;
 
-
   var quote = document.querySelector('h3');
   quote.innerText = randomQuote;
+
+  currentPoster = new Poster(randomImageURL, randomTitle, randomQuote);
 }
-
-
-
-
-
 
 
 // event listeners go here 👇
@@ -155,9 +151,6 @@ backToMainButton.addEventListener('click', backToMain);
 var savePosterButton = document.querySelector('.save-poster');
 savePosterButton.addEventListener('click', showSavedPosters);
 
-
-
-
 var showPosterButton = document.querySelector('.make-poster');
 showPosterButton.addEventListener('click', function (event) {
 
@@ -166,13 +159,6 @@ showPosterButton.addEventListener('click', function (event) {
   showUserPoster();
 
 });
-
-
-
-
-
-
-
 
 
 // functions and event handlers go here 👇
@@ -205,6 +191,8 @@ function randomPoster() {
   var randomQuote = quotes[randomQuoteNum];
   var posterQuote = document.querySelector('h3');
   posterQuote.innerText = randomQuote;
+
+
 }
 
 function openSavedPosters() {
@@ -241,6 +229,7 @@ function showUserPoster() {
   var userQuote = document.querySelector('#poster-quote');
 
   var userCreatedPoster = new Poster(userImageURL.value, userTitle.value, userQuote.value);
+  currentPoster = userCreatedPoster;
 
   images.push(userCreatedPoster.imageURL);
   titles.push(userCreatedPoster.title);
@@ -258,31 +247,14 @@ function showUserPoster() {
   backToMain();
 }
 
+function showSavedPosters() {
+  // var mainImage = document.querySelector('.poster-img');
+  // var mainTitle = document.querySelector('.poster-title');
+  // var mainQuote = document.querySelector('.poster-quote');
 
+  // var mainPoster = new Poster(mainImage.src, mainTitle.innerText, mainQuote.innerText);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function showSavedPosters(){
-  var mainImage = document.querySelector('.poster-img');
-  var mainTitle = document.querySelector('.poster-title');
-  var mainQuote = document.querySelector('.poster-quote');
-
-  var mainPoster = new Poster(mainImage.src, mainTitle.innerText, mainQuote.innerText);
-
-  savedPosters.push(mainPoster);
-  console.log(savedPosters);
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 }
-
