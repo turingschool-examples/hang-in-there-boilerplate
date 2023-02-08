@@ -1,5 +1,7 @@
 // query selector variables go here 👇
-
+var posterImage = document.querySelector('.poster-img')
+var posterTitle = document.querySelector('.poster-title')
+var posterQuote = document.querySelector('.poster-quote')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -99,13 +101,43 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
+//Going to want to push posters i want into here
+// going to look like .savedPosters.push()
+// 
 var currentPoster;
 
 // event listeners go here 👇
-
+// window.addEventListener('load', )
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+function getRandomIndex(images) {
+  return Math.floor(Math.random() * images.length);
 }
-
+var randomPosterImage = images[getRandomIndex(images)]
+function useRandomImage() {
+posterImage.src = randomPosterImage
+}
+console.log(useRandomImage())
+// randomPosterImage is now confirming a random image each time!
+console.log('line 116', randomPosterImage)
+for(i = 0; i < images.length; i++) {
+  var randomIndex = getRandomIndex(images);
+  if (!savedPosters.includes(images[randomIndex])) { // to make sure there arent multiples
+    savedPosters.push(images[randomIndex])
+  }
+}
+console.log(savedPosters, "images line 120")
+function getRandomIndex(titles) {
+  return Math.floor(Math.random() * titles.length);
+}
+for(i = 0; i < titles.length; i++) {
+  var randomIndex = getRandomIndex(titles);
+  if (!savedPosters.includes(titles[randomIndex])) { // i dont think this will be exactly how we store images
+    // i think it will be similar as the store
+    savedPosters.push(titles[randomIndex])
+  }
+}
+console.log(savedPosters, "titles line 130")
+posterImage.src = images[getRandomIndex(images)]
+posterTitle.innerText = titles[getRandomIndex(titles)]
+posterQuote.innerText = quotes[getRandomIndex(quotes)]
