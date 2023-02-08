@@ -109,18 +109,19 @@ window.addEventListener("load", loadHomePage)
 
 function loadHomePage() {
   createRandomPoster() 
-  showPoster()
+  
 }
 function createRandomPoster() {
   var fetchImage = images[getRandomIndex(images)]
   var fetchTitle = titles[getRandomIndex(titles)]
-  var fetchQuotes = quotes[getRandomIndex(quotes)]
-  currentPoster = new Poster(fetchImage,fetchTitle,fetchQuotes)
+  var fetchQuote = quotes[getRandomIndex(quotes)]
+  currentPoster = new Poster(fetchImage, fetchTitle, fetchQuote)
+  posterImg.src = currentPoster.imageURL
+  posterTitle.innerText = currentPoster.title
+  posterQuote.innerText = currentPoster.quote
 }
 
-function showPoster() {
-  currentPoster.imageURL = posterImg.src
-}
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
