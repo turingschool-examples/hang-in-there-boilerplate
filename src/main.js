@@ -3,6 +3,13 @@ var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 var showRandomBtn = document.querySelector('.show-random');
+var makeYourOwnBtn = document.querySelector('.show-form');
+var form = document.querySelector('.poster-form');
+var mainPosterView = document.querySelector('.main-poster');
+var showSavedBtn = document.querySelector('.show-saved');
+var savedPostersView = document.querySelector('.saved-posters');
+var takeMeBackBtn = document.querySelector('.show-main');
+var backToMainBtn = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,9 +115,12 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener("load", loadHomePage);
 showRandomBtn.addEventListener("click", loadHomePage);
+makeYourOwnBtn.addEventListener("click", showForm);
+showSavedBtn.addEventListener("click", showSaved)
+takeMeBackBtn.addEventListener("click", showMain);
+backToMainBtn.addEventListener("click", showMain);
 
 // functions and event handlers go here 👇
-
 function loadHomePage() {
   createRandomPoster(); 
 }
@@ -125,6 +135,22 @@ function createRandomPoster() {
   posterImg.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
+}
+
+function showForm() {
+  form.classList.remove("hidden");
+  mainPosterView.classList.add("hidden");
+}
+
+function showSaved() {
+  savedPostersView.classList.remove("hidden");
+  mainPosterView.classList.add("hidden");
+}
+
+function showMain() {
+  form.classList.add("hidden");
+  savedPostersView.classList.add("hidden");
+  mainPosterView.classList.remove("hidden");
 }
 
 // (we've provided one for you to get you started)!
