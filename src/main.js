@@ -128,6 +128,7 @@ showMyPosterBtn.addEventListener("click", showUserPoster)
 // functions and event handlers go here 👇
 function loadHomePage() {
   createRandomPoster(); 
+  showPoster();
 }
 
 function createRandomPoster() {
@@ -136,10 +137,6 @@ function createRandomPoster() {
   var fetchQuote = quotes[getRandomIndex(quotes)];
 
   currentPoster = new Poster(fetchImage, fetchTitle, fetchQuote);
-
-  posterImg.src = currentPoster.imageURL;
-  posterTitle.innerText = currentPoster.title;
-  posterQuote.innerText = currentPoster.quote;
 }
 
 function showForm() {
@@ -156,6 +153,7 @@ function showMain() {
   form.classList.add("hidden");
   savedPostersView.classList.add("hidden");
   mainPosterView.classList.remove("hidden");
+  loadHomePage();
 }
 
 function showUserPoster(event) {
@@ -169,6 +167,14 @@ function showUserPoster(event) {
 
   form.classList.add("hidden");
   mainPosterView.classList.remove("hidden");
+
+  showPoster();
+}
+
+function showPoster() {
+  posterImg.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
 }
 
 
