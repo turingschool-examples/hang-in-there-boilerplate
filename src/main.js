@@ -109,3 +109,20 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+var randomTitle = titles[getRandomIndex(titles)];
+var randomQuote = quotes[getRandomIndex(quotes)];
+var randomImage = images[getRandomIndex(images)];
+
+function makeNewPoster(image, title, quote) {
+   var poster = new Poster(image, title, quote);
+   return poster;
+}
+
+currentPoster = makeNewPoster(randomImage, randomTitle, randomQuote);
+
+var posterTitle = document.querySelector(".poster-title");
+posterTitle.innerText = currentPoster.title;
+var posterQuote = document.querySelector(".poster-quote");
+posterQuote.innerText = currentPoster.quote;
+var posterImage = document.querySelector(".poster-img");
+posterImage.src = currentPoster.imageURL;
