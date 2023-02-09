@@ -1,4 +1,8 @@
 // query selector variables go here 👇
+var randomPosterButton = document.querySelector(".show-random");
+var posterTitle = document.querySelector(".poster-title");
+var posterQuote = document.querySelector(".poster-quote");
+var posterImage = document.querySelector(".poster-img");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -100,29 +104,42 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+// var randomTitle = titles[getRandomIndex(titles)];
+// var randomQuote = quotes[getRandomIndex(quotes)];
+// var randomImage = images[getRandomIndex(images)];
 
 // event listeners go here 👇
-
+randomPosterButton.addEventListener("click", displayRandomPoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-var randomTitle = titles[getRandomIndex(titles)];
-var randomQuote = quotes[getRandomIndex(quotes)];
-var randomImage = images[getRandomIndex(images)];
-
 function makeNewPoster(image, title, quote) {
    var poster = new Poster(image, title, quote);
    return poster;
 }
 
-currentPoster = makeNewPoster(randomImage, randomTitle, randomQuote);
+function randomizePoster() {
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  var randomImage = images[getRandomIndex(images)];
+  
+  var randomPoster = makeNewPoster(randomImage, randomTitle, randomQuote);
+  return randomPoster;
+}
 
-var posterTitle = document.querySelector(".poster-title");
+function displayRandomPoster() {
+  var newRandomPoster = randomizePoster();
+  posterTitle.innerText = newRandomPoster.title;
+  posterQuote.innerText = newRandomPoster.quote;
+  posterImage.src = newRandomPoster.imageURL;
+}
+
+currentPoster = randomizePoster();
+
 posterTitle.innerText = currentPoster.title;
-var posterQuote = document.querySelector(".poster-quote");
 posterQuote.innerText = currentPoster.quote;
-var posterImage = document.querySelector(".poster-img");
 posterImage.src = currentPoster.imageURL;
+
