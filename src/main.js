@@ -1,4 +1,5 @@
 // query selector variables go here 👇
+// var Poster = require('./poster')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -101,11 +102,30 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+var mainPosterImage = document.querySelector('.poster-img');
+
 // event listeners go here 👇
+
+window.addEventListener('load', function(){
+  randomPoster()
+  addRandomPoster()
+})
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+function randomPoster() {
+  var randomImage = getRandomIndex(images);
+  var randomTitle = getRandomIndex(titles);
+  var randomQuote = getRandomIndex(quotes);
+  currentPoster = new Poster(images[randomImage], titles[randomTitle], quotes[randomQuote]);
+};
+
+function addRandomPoster() {
+  mainPosterImage.src = currentPoster.imageURL
+};
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
