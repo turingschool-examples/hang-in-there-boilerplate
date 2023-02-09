@@ -103,8 +103,12 @@ var savedPosters = [];
 var currentPoster;
 
 var mainPosterImage = document.querySelector('.poster-img');
-var mainPosterTitle = document.querySelector('.poster-title')
-var mainPosterQuote = document.querySelector('.poster-quote')
+var mainPosterTitle = document.querySelector('.poster-title');
+var mainPosterQuote = document.querySelector('.poster-quote');
+var makeYourOwnButton = document.querySelector('.show-form');
+var showSavedButton = document.querySelector('.show-saved');
+var showRandomButton = document.querySelector('show-random');
+var savePosterButton = document.querySelector('.save-poster');
 
 
 
@@ -118,6 +122,10 @@ window.addEventListener('load', function(){
 document.querySelector('.show-random').addEventListener('click', function(){
   randomPoster()
   addRandomPoster()
+})
+document.querySelector('.show-form').addEventListener('click', function() {
+  document.querySelector('.poster-form').classList.remove('hidden')
+  document.querySelector('.main-poster').classList.add('hidden')
 })
 
 // functions and event handlers go here 👇
