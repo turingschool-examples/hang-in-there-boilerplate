@@ -6,16 +6,20 @@ var showRandomButton = document.querySelector('.show-random')
 var mainPoster = document.querySelector('.main-poster')
 var posterForm = document.querySelector('.poster-form')
 var showMain = document.querySelector('.show-main')
+
 //make own poster section
-
-
 var makePosterButton = document.querySelector('.show-form')
 var ownPosterImg = document.querySelector('.poster-img')
 var ownPosterTitle = document.querySelector('.poster-title')
 var ownPosterQuote = document.querySelector('.poster-quote')
 console.log(ownPosterImg, ownPosterTitle, ownPosterQuote, 'line14')
 
+//show saved posters button
+var showSavedButton = document.querySelector('.show-saved')
+var savedPoster = document.querySelector('.saved-posters')
 
+
+// var  = document.querySelector()
 
 // console.log(makePosterButton, 'line 7')
 // console.log(ownPosterForm, 'line 9')
@@ -132,8 +136,11 @@ var currentPoster;
 window.addEventListener('load',displayRandomPoster)
 showRandomButton.addEventListener('click', displayRandomPoster)
 makePosterButton.addEventListener('click', ownPosterButton)
-showMain.addEventListener('click' , returnToMain )
+showMain.addEventListener('click', returnToMain)
+// savedPoster.addEventListener('click', )
 
+showSavedButton.addEventListener('click', showSavedPosters)
+savedPoster.addEventListener('click', returnToMainFromSavedPosters)
 
  // functions and event handlers go here 👇
 // function makeOwnPoster() {
@@ -166,7 +173,7 @@ function getRandomIndex(array) {
 // randomPosterImage is now confirming a random image each time!
 
 function displayRandomPoster() {
-  console.log('RAHHHHHHHHHH')
+  // console.log('RAHHHHHHHHHH')
   currentPoster = new Poster (images[getRandomIndex(images)],titles[getRandomIndex(titles)],
   quotes[getRandomIndex(quotes)])
   posterImage.src = currentPoster.imageURL;
@@ -182,6 +189,16 @@ function ownPosterButton() {
 
 function returnToMain() {
   hide(posterForm)
+  show(mainPoster)
+}
+
+function showSavedPosters() {
+  hide(mainPoster)
+  show(savedPoster)
+}
+
+function returnToMainFromSavedPosters() {
+  hide(savedPoster)
   show(mainPoster)
 }
 // for(i = 0; i < titles.length; i++) {
