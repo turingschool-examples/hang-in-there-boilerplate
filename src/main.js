@@ -3,6 +3,23 @@ var posterImage = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
 var showRandomButton = document.querySelector('.show-random')
+var mainPoster = document.querySelector('.main-poster')
+var posterForm = document.querySelector('.poster-form')
+var showMain = document.querySelector('.show-main')
+//make own poster section
+
+
+var makePosterButton = document.querySelector('.show-form')
+var ownPosterImg = document.querySelector('.poster-img')
+var ownPosterTitle = document.querySelector('.poster-title')
+var ownPosterQuote = document.querySelector('.poster-quote')
+console.log(ownPosterImg, ownPosterTitle, ownPosterQuote, 'line14')
+
+
+
+// console.log(makePosterButton, 'line 7')
+// console.log(ownPosterForm, 'line 9')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -105,49 +122,85 @@ var savedPosters = [];
 //Going to want to push posters i want into here
 // going to look like .savedPosters.push()
 // 
+
 var currentPoster;
 
-// event listeners go here 👇
- window.addEventListener('load',displayRandomPoster)
- showRandomButton.addEventListener('click', displayRandomPoster)
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
-function getRandomIndex(images) {
-  return Math.floor(Math.random() * images.length);
-}
-var randomPosterImage = images[getRandomIndex(images)]
-function useRandomImage() {
-posterImage.src = randomPosterImage
-}
-console.log(useRandomImage())
-// randomPosterImage is now confirming a random image each time!
-console.log('line 116', randomPosterImage)
-for(i = 0; i < images.length; i++) {
-  var randomIndex = getRandomIndex(images);
-  if (!savedPosters.includes(images[randomIndex])) { // to make sure there arent multiples
-    savedPosters.push(images[randomIndex])
-  }
-}
-console.log(savedPosters, "images line 120")
-function getRandomIndex(titles) {
-  return Math.floor(Math.random() * titles.length);
-}
-for(i = 0; i < titles.length; i++) {
-  var randomIndex = getRandomIndex(titles);
-  if (!savedPosters.includes(titles[randomIndex])) { // i dont think this will be exactly how we store images
-    // i think it will be similar as the store
-    savedPosters.push(titles[randomIndex])
-  }
-}
-console.log(savedPosters, "titles line 130")
 
+
+// event listeners go here 👇
+ 
+window.addEventListener('load',displayRandomPoster)
+showRandomButton.addEventListener('click', displayRandomPoster)
+makePosterButton.addEventListener('click', ownPosterButton)
+showMain.addEventListener('click' , returnToMain )
+
+
+ // functions and event handlers go here 👇
+// function makeOwnPoster() {
+// ownPosterImg.src = currentPoster.imageURL
+// ownPosterTitle.innerText = currentPoster.title
+// ownPosterQuote.innerText = currentPoster.quote
+// return currentPoster
+// }
+const hide = (element) => {
+  element.classList.add("hidden");
+}
+
+const show = (element) => {
+  element.classList.remove("hidden");
+}
+
+
+
+
+classList.add
+
+// (we've provided one for you to get you started)!
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+
+
+// randomPosterImage is now confirming a random image each time!
 
 function displayRandomPoster() {
   console.log('RAHHHHHHHHHH')
   currentPoster = new Poster (images[getRandomIndex(images)],titles[getRandomIndex(titles)],
   quotes[getRandomIndex(quotes)])
-posterImage.src = currentPoster.imageURL;
-posterTitle.innerText = currentPoster.title;
-posterQuote.innerText = currentPoster.quote;
-return currentPoster
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+  return currentPoster
 }
+function ownPosterButton() {
+  console.log("ive been clicked")
+ hide(mainPoster)
+ show(posterForm)
+}
+
+function returnToMain() {
+  hide(posterForm)
+  show(mainPoster)
+}
+// for(i = 0; i < titles.length; i++) {
+  //   var randomIndex = getRandomIndex(titles);
+  //   if (!savedPosters.includes(titles[randomIndex])) { // i dont think this will be exactly how we store images
+//     // i think it will be similar as the store
+//     savedPosters.push(titles[randomIndex])
+//   }
+// }
+// console.log(savedPosters, "titles line 130")
+
+// console.log('line 116', randomPosterImage)
+// for(i = 0; i < images.length; i++) {
+//   var randomIndex = getRandomIndex(images);
+//   if (!savedPosters.includes(images[randomIndex])) { // to make sure there arent multiples
+//     savedPosters.push(images[randomIndex])
+//   }
+// }
+// console.log(savedPosters, "images line 120")
+
+
+
