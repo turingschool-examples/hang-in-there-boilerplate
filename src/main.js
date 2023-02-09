@@ -14,6 +14,8 @@ var showMyPosterBtn = document.querySelector('.make-poster');
 var userImageURL = document.getElementById('poster-image-url');
 var userTitle = document.getElementById('poster-title');
 var userQuote = document.getElementById('poster-quote');
+var savePosterBtn = document.querySelector('.save-poster');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -123,7 +125,8 @@ makeYourOwnBtn.addEventListener("click", showForm);
 showSavedBtn.addEventListener("click", showSaved)
 takeMeBackBtn.addEventListener("click", showMain);
 backToMainBtn.addEventListener("click", showMain);
-showMyPosterBtn.addEventListener("click", showUserPoster)
+showMyPosterBtn.addEventListener("click", showUserPoster);
+savePosterBtn.addEventListener("click", addToSavedPosters);
 
 // functions and event handlers go here 👇
 function loadHomePage() {
@@ -137,6 +140,12 @@ function createRandomPoster() {
   var fetchQuote = quotes[getRandomIndex(quotes)];
 
   currentPoster = new Poster(fetchImage, fetchTitle, fetchQuote);
+}
+
+function showPoster() {
+  posterImg.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
 }
 
 function showForm() {
@@ -171,15 +180,20 @@ function showUserPoster(event) {
   showPoster();
 }
 
-function showPoster() {
-  posterImg.src = currentPoster.imageURL;
-  posterTitle.innerText = currentPoster.title;
-  posterQuote.innerText = currentPoster.quote;
-}
+function addToSavedPosters() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
 
+    savedPostersGrid.innerHTML += 
+    `<section class="mini-poster">
+      <img class="poster-img" src="${currentPoster.imageURL}">
+      <h2 class="poster-title">${currentPoster.title}</h2>
+      <h4 class="poster-quote">${currentPoster.quote}</h4>
+    </section>`
+  } 
+}
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
