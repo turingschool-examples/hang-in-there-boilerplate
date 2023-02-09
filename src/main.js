@@ -1,4 +1,9 @@
 // query selector variables go here 👇
+randomTitle = document.querySelector('h1')
+randomQuote = document.querySelector('h3')
+randomImage = document.querySelector('.poster-img')
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -105,7 +110,24 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+//this is returning an index position, but we want 
+//it to return the actual string/value
 
+//do we need a "window" event listener?
+
+var randomTitle = getRandomIndex(titles)
+var randomQuote = getRandomIndex(quotes)
+var randomImage = getRandomIndex(images)
+
+var poster1 = new Poster(randomImage, randomTitle, randomQuote)
+
+title.innerText = poster1.randomTitle
+quote.innerText = poster1.randomQuote
+imageURL.innerText = poster1.randomImage
+//is this syntactically correct?
+//remember to console.log to check work (better)
+//within devtools
