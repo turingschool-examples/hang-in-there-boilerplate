@@ -103,7 +103,8 @@ var savedPosters = [];
 var currentPoster;
 
 var mainPosterImage = document.querySelector('.poster-img');
-
+var mainPosterTitle = document.querySelector('.poster-title')
+var mainPosterQuote = document.querySelector('.poster-quote')
 // event listeners go here 👇
 
 window.addEventListener('load', function(){
@@ -123,6 +124,8 @@ function randomPoster() {
 
 function addRandomPoster() {
   mainPosterImage.src = currentPoster.imageURL
+  mainPosterTitle.innerText = currentPoster.title
+  mainPosterQuote.innerText = currentPoster.quote
 };
 
 function getRandomIndex(array) {
