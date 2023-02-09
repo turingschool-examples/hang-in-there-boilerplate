@@ -6,3 +6,4 @@ class Poster {
     this.quote = quote;
   }
 }
+
