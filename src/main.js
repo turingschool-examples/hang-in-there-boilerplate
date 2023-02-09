@@ -1,5 +1,3 @@
-//If a user clicks the “Save This Poster” more than once on a single poster, it will still only be saved once (no duplicates)
-
 // query selector variables go here 👇
 var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
@@ -17,6 +15,7 @@ var userImageURL = document.getElementById('poster-image-url');
 var userTitle = document.getElementById('poster-title');
 var userQuote = document.getElementById('poster-quote');
 var savePosterBtn = document.querySelector('.save-poster');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -182,11 +181,19 @@ function showUserPoster(event) {
 }
 
 function addToSavedPosters() {
-  savedPosters.push(currentPoster);
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+
+    savedPostersGrid.innerHTML += 
+    `<section class="mini-poster">
+      <img class="poster-img" src="${currentPoster.imageURL}">
+      <h2 class="poster-title">${currentPoster.title}</h2>
+      <h4 class="poster-quote">${currentPoster.quote}</h4>
+    </section>`
+  } 
 }
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
