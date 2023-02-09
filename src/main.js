@@ -3,6 +3,14 @@ var randomPosterButton = document.querySelector(".show-random");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 var posterImage = document.querySelector(".poster-img");
+var makeYourOwnPoster = document.querySelector(".show-form");
+var viewSavedPoster = document.querySelector(".show-saved");
+var nevermindButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
+var mainPoster = document.querySelector(".main-poster");
+var savedPostersPage = document.querySelector(".saved-posters");
+var posterForm = document.querySelector(".poster-form");
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,6 +118,10 @@ var currentPoster;
 
 // event listeners go here 👇
 randomPosterButton.addEventListener("click", displayRandomPoster);
+makeYourOwnPoster.addEventListener("click", takeToPosterForm);
+viewSavedPoster.addEventListener("click", takeToSavedPosters);
+nevermindButton.addEventListener("click", takeMeBack);
+backToMainButton.addEventListener("click", backToMain);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -136,6 +148,28 @@ function displayRandomPoster() {
   posterQuote.innerText = newRandomPoster.quote;
   posterImage.src = newRandomPoster.imageURL;
 }
+
+function takeToPosterForm() {
+  mainPoster.classList.toggle("hidden");
+  posterForm.classList.toggle("hidden");
+}
+
+function takeToSavedPosters() {
+  mainPoster.classList.toggle("hidden");
+  savedPostersPage.classList.toggle("hidden");
+}
+
+function takeMeBack() {
+  posterForm.classList.toggle("hidden");
+  mainPoster.classList.toggle("hidden");
+}
+
+function backToMain() {
+  savedPostersPage.classList.toggle("hidden");
+  mainPoster.classList.toggle("hidden");
+}
+
+
 
 currentPoster = randomizePoster();
 
