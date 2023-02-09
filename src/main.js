@@ -105,9 +105,17 @@ var currentPoster;
 var mainPosterImage = document.querySelector('.poster-img');
 var mainPosterTitle = document.querySelector('.poster-title')
 var mainPosterQuote = document.querySelector('.poster-quote')
-// event listeners go here 👇
+
+
+
+//Eventlisteners
 
 window.addEventListener('load', function(){
+  randomPoster()
+  addRandomPoster()
+})
+
+document.querySelector('.show-random').addEventListener('click', function(){
   randomPoster()
   addRandomPoster()
 })
@@ -116,10 +124,10 @@ window.addEventListener('load', function(){
 // (we've provided one for you to get you started)!
 
 function randomPoster() {
-  var randomImage = getRandomIndex(images);
-  var randomTitle = getRandomIndex(titles);
-  var randomQuote = getRandomIndex(quotes);
-  currentPoster = new Poster(images[randomImage], titles[randomTitle], quotes[randomQuote]);
+  var randomImage = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(randomImage, randomTitle, randomQuote);
 };
 
 function addRandomPoster() {
