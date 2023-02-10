@@ -6,6 +6,7 @@ var showRandomButton = document.querySelector('.show-random')
 var mainPoster = document.querySelector('.main-poster')
 var posterForm = document.querySelector('.poster-form')
 var showMain = document.querySelector('.show-main')
+var showMain2 = document.querySelector('.back-to-main')
 
 //make own poster section
 var makePosterButton = document.querySelector('.show-form')
@@ -17,10 +18,9 @@ console.log(ownPosterImg, ownPosterTitle, ownPosterQuote, 'line14')
 //show saved posters button
 var showSavedButton = document.querySelector('.show-saved')
 var savedPoster = document.querySelector('.saved-posters')
+var saveThisPoster = document.querySelector('.save-poster')
 
-
-// var  = document.querySelector()
-
+var savedPosterGrid = document.querySelector('.saved-posters-grid')
 // console.log(makePosterButton, 'line 7')
 // console.log(ownPosterForm, 'line 9')
 
@@ -122,10 +122,9 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-//Going to want to push posters i want into here
-// going to look like .savedPosters.push()
-// 
+var savedPosters = []
+
+
 
 var currentPoster;
 
@@ -137,18 +136,12 @@ window.addEventListener('load',displayRandomPoster)
 showRandomButton.addEventListener('click', displayRandomPoster)
 makePosterButton.addEventListener('click', ownPosterButton)
 showMain.addEventListener('click', returnToMain)
-// savedPoster.addEventListener('click', )
-
+showMain2.addEventListener('click', returnToMain)
 showSavedButton.addEventListener('click', showSavedPosters)
-savedPoster.addEventListener('click', returnToMainFromSavedPosters)
-
+saveThisPoster.addEventListener('click', savePosterArray)
+savedPosterGrid.addEventListener('dblclick', deletePoster)
  // functions and event handlers go here 👇
-// function makeOwnPoster() {
-// ownPosterImg.src = currentPoster.imageURL
-// ownPosterTitle.innerText = currentPoster.title
-// ownPosterQuote.innerText = currentPoster.quote
-// return currentPoster
-// }
+
 const hide = (element) => {
   element.classList.add("hidden");
 }
@@ -201,6 +194,38 @@ returnToMain()
 
 
 
+function savePosterArray() {
+  //  var posterImage = document.querySelector('.poster-img').src;
+  //  var posterTitle = document.querySelector('.poster-title').textContent;
+  //  var posterQuote = document.querySelector('.poster-quote').textContent;
+ 
+  // currentPoster = new Poster(posterImage, posterTitle, posterQuote)
+  //console.log('line 210', currentPoster)
+if (!savedPosters.includes(currentPoster)) {
+  savedPosters.push(currentPoster)
+  } else {
+  alert('This poster has already been saved!') 
+  }
+  // console.log('line 212', savedPosters)
+}
+function showSavedGrid() {
+  var savedPosterHTML = ''
+  for (var i = 0; i < savedPosters.length; i++) {
+    //console.log('savedposters[i]', savedPosters[i].imageURL)
+    savedPosterHTML += `
+      <div class="mini-poster" id=${savedPosters[i].id}>      
+        <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
+        <h2>${savedPosters[i].title}</h2>
+        <h4>${savedPosters[i].quote}</h4>
+      </div>
+    
+    `
+  }
+  savedPosterGrid.innerHTML = savedPosterHTML
+}
+
+
+  
 
 
 
@@ -214,10 +239,10 @@ function getRandomIndex(array) {
 
 
 
-// randomPosterImage is now confirming a random image each time!
+
 
 function displayRandomPoster() {
-  // console.log('RAHHHHHHHHHH')
+  
   currentPoster = new Poster (images[getRandomIndex(images)],titles[getRandomIndex(titles)],
   quotes[getRandomIndex(quotes)])
   posterImage.src = currentPoster.imageURL;
@@ -233,12 +258,17 @@ function ownPosterButton() {
 
 function returnToMain() {
   hide(posterForm)
+  hide(savedPoster)
   show(mainPoster)
 }
 
 function showSavedPosters() {
   hide(mainPoster)
   show(savedPoster)
+  showSavedGrid()
+//this is where the new function is iteration 3
+// looking at savedPosters array(for loop)
+// innerHTML will be used
 }
 
 function returnToMainFromSavedPosters() {
@@ -265,3 +295,13 @@ function returnToMainFromSavedPosters() {
 
 
 
+function deletePoster(event) {
+  var splicePoster = event.target.id
+  console.log(splicePoster, "line 305")
+  for (i = 0; i < savedPosters.length; i++) {
+if (savedPosters[i].id === splicePoster) {
+  savedPosters.splice(i,1)
+}
+}
+  
+}
