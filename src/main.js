@@ -14,6 +14,7 @@ var posterImageInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title')
 var posterQuoteInput = document.querySelector('#poster-quote')
 var makePosterButton = document.querySelector('.make-poster')
+var savePosterButton = document.querySelector(".save-poster");
 
 
 // we've provided you with some data to work with 👇
@@ -128,6 +129,7 @@ makeYourOwnPoster.addEventListener("click", takeToPosterForm);
 viewSavedPoster.addEventListener("click", takeToSavedPosters);
 nevermindButton.addEventListener("click", takeMeBack);
 backToMainButton.addEventListener("click", backToMain);
+savePosterButton.addEventListener("click", savePoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -144,8 +146,9 @@ function randomizePoster() {
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
   var randomImage = images[getRandomIndex(images)];
-  var randomPoster = makeNewPoster(randomImage, randomTitle, randomQuote);
-  return randomPoster;
+  var randomPoster = makeNewPoster(randomImage, randomTitle, randomQuote)
+  currentPoster = randomPoster
+  return currentPoster;
 }
 
 function createOwnPoster() {
@@ -157,7 +160,8 @@ function createOwnPoster() {
   images.push(ownPoster.imageURL);
   titles.push(ownPoster.title);
   quotes.push(ownPoster.quote);
-  return ownPoster
+  currentPoster = ownPoster
+  return currentPoster
 }
 
 function displayRandomPoster() {
@@ -187,7 +191,34 @@ function backToMain() {
   mainPoster.classList.toggle("hidden");
 }
 
+function savePoster() {
+  if(!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+    makePosterGrid();
+   }
+ }
+
+
+// I don't think this needs to be in a for loop and maybe they just need to get added to the grid every time someone hits save poster vs. doing the whole array at once.
+function makePosterGrid(){
+    var posterDiv = document.createElement('div');
+    posterDiv.classList.add('mini-poster')
+    document.querySelector('.saved-posters-grid').appendChild(posterDiv);
+    var miniPosterImage = document.createElement('img')
+    miniPosterImage.src = currentPoster['imageURL']
+    posterDiv.appendChild(miniPosterImage)
+    var miniPosterTitle = document.createElement('h2')
+    miniPosterTitle.innerText = currentPoster['title']
+    posterDiv.appendChild(miniPosterTitle)
+    var miniPosterQuote = document.createElement('h4')
+    miniPosterQuote.innerText = currentPoster['quote']
+    posterDiv.appendChild(miniPosterQuote)
+}
+
+
+
 posterTitle.innerText = currentPoster.title;
 posterQuote.innerText = currentPoster.quote;
 posterImage.src = currentPoster.imageURL;
+
 
