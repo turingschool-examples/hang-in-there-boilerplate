@@ -3,7 +3,16 @@
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 var image = document.querySelector('.poster-img');
-var button = document.querySelector('.show-random');
+
+var savedPostersButton = document.querySelector('.show-saved');
+var randomPosterButton = document.querySelector('.show-random');
+var makePosterButton = document.querySelector('.show-form');
+var nevermindButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+
+var mainPosterPage = document.querySelector('.main-poster');
+var posterFormPage = document.querySelector('.poster-form');
+var savedPostersPage = document.querySelector('.saved-posters');
 
 
 // we've provided you with some data to work with 👇
@@ -104,16 +113,24 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
+
 var currentPoster;
+var savedPosters = [];
+
 
 title.innerText = (getRandomTitle(titles))
 quote.innerText = (getRandomQuote(quotes))
 image.src = (getRandomImage(images))
 
+
 // event listeners go here 👇
 
-button.addEventListener("click", showAnotherPoster);
+randomPosterButton.addEventListener("click", getRandomPoster);
+makePosterButton.addEventListener("click", switchToForm);
+nevermindButton.addEventListener("click", switchToMain);
+savedPostersButton.addEventListener("click", switchToSaved);
+backToMainButton.addEventListener("click", backToMain);
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -144,13 +161,30 @@ function getRandomQuote(quotes) {
 }
 getRandomQuote(quotes);
 
-function showAnotherPoster()  {
-  title.innerText = (getRandomTitle(titles))
-  quote.innerText = (getRandomQuote(quotes))
-  image.src = (getRandomImage(images))
+function getRandomPoster()  {
+  title.innerText = (getRandomTitle(titles));
+  quote.innerText = (getRandomQuote(quotes));
+  image.src = (getRandomImage(images));
+  image.alt = "randomized photo of motivational animal";
 }
 
+function switchToForm() {
+  mainPosterPage.classList.add("hidden");
+  posterFormPage.classList.remove("hidden");
+}
 
+function switchToMain() {
+  posterFormPage.classList.add("hidden");
+  mainPosterPage.classList.remove("hidden");
+}
 
+function switchToSaved()  {
+  mainPosterPage.classList.add("hidden");
+  savedPostersPage.classList.remove("hidden");
+}
 
+function backToMain() {
+  savedPostersPage.classList.add("hidden");
+  mainPosterPage.classList.remove("hidden");
+}
 
