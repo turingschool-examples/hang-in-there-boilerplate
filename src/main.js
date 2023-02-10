@@ -5,6 +5,9 @@
 // var caption = document.querySelector('.caption');
 
 var random = document.querySelector('.show-random');
+var showFormButton = document.querySelector('.show-form');
+var nevermindButton = document.querySelector('.show-main');
+var hideMain = document.querySelector('.main-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,6 +113,15 @@ var currentPoster;
 // event listeners go here 👇
 random.addEventListener('click', randomize);
 document.addEventListener("DOMContentLoaded",randomize);
+showFormButton.addEventListener('click', formPoster);
+nevermindButton.addEventListener('click',takeMeBack);
+
+
+
+  
+  // Use the input values to update the poster elements
+  // ...
+
 
 // your code here });
 
@@ -133,6 +145,21 @@ function randomize() {
  var randomQuoteIndex = getRandomIndex(quotes);
  var randomQuote = quotes[randomQuoteIndex];
  document.querySelector('.poster-quote').textContent = randomQuote;
+}
+function formPoster() {
+  var form = document.querySelector('.poster-form');
+  form.classList.remove('hidden');
+  hideMainPoster();
+}
+
+function hideMainPoster() {
+  hideMain.classList.add('hidden');
+}
+
+function takeMeBack(){
+  var form = document.querySelector('.poster-form');
+  form.classList.add('hidden'); 
+  hideMain.classList.remove('hidden');
 }
 
 // function saveImg(currentPoster, savedPosters) {
