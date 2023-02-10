@@ -3,10 +3,9 @@
 // var randomImgs = document.querySelector("img")
 // var posterImages = document.querySelector('.poster-img');
 // var caption = document.querySelector('.caption');
+
 var random = document.querySelector('.show-random');
-// caption.textContent = quotes[0];
-// posterImages.src = images[0]
-// posterImages.alt = titles[0]
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -110,19 +109,32 @@ var currentPoster;
 
 // event listeners go here 👇
 random.addEventListener('click', randomize);
+document.addEventListener("DOMContentLoaded",randomize);
+
+// your code here });
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function getRandomIndex(images) {
-  return Math.floor(Math.random() * images.length);
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
 
 function randomize() {
-  var randomIndex = getRandomIndex(images);
-  var randomImage = images[randomIndex];
-  document.querySelector('.poster-img').src = randomImage;
+ var randomImageIndex = getRandomIndex(images);
+ var randomImage = images[randomImageIndex];
+ document.querySelector('.poster-img').src = randomImage;
+ 
+ var randomTitleIndex = getRandomIndex(titles);
+ var randomTitle = titles[randomTitleIndex];
+ document.querySelector('.poster-title').textContent = randomTitle;
+ 
+ var randomQuoteIndex = getRandomIndex(quotes);
+ var randomQuote = quotes[randomQuoteIndex];
+ document.querySelector('.poster-quote').textContent = randomQuote;
 }
 
-function saveImg(currentPoster, savedPosters) {
-  currentPoster.push(savedPosters)
-}
+// function saveImg(currentPoster, savedPosters) {
+//   currentPoster.push(savedPosters)
+// }
