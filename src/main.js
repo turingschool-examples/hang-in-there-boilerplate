@@ -121,7 +121,7 @@ window.addEventListener('load', function(){
   randomPoster()
   addRandomPoster()
 })
-
+// navigation functions
 document.querySelector('.show-random').addEventListener('click', function(){
   randomPoster()
   addRandomPoster()
@@ -146,10 +146,19 @@ document.querySelector('.back-to-main').addEventListener('click', function(){
   document.querySelector('.main-poster').classList.remove('hidden')
 })
 
-document.querySelector('.save-poster').addEventListener('click', function(){
-  if (savedPosters.includes(currentPoster.id))
-})
 
+// make poster funciton 
+
+document.querySelector('.make-poster').addEventListener('click', function(){
+  preventDefault()
+  makeUserPoster()
+  document.querySelector('.main-poster').classList.remove('hidden')
+  document.querySelector('.show-form').classList.add('hidden')
+} )
+
+// document.querySelector('.save-poster').addEventListener('click', function(){
+//   if (savedPosters.includes(currentPoster.id))
+// })
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -166,6 +175,13 @@ function addRandomPoster() {
   mainPosterTitle.innerText = currentPoster.title
   mainPosterQuote.innerText = currentPoster.quote
 };
+
+function makeUserPoster(){
+  var userImage = document.querySelector('#poster-image-url').value
+  var userQuote = document.querySelector('#poster-quote').value
+  var userTitle = document.querySelector('#poster-title').value
+  currentPoster = new Poster(userImage, userTitle, UserQuote)
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
