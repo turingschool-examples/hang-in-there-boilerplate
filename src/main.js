@@ -16,6 +16,7 @@ var userTitle = document.getElementById('poster-title');
 var userQuote = document.getElementById('poster-quote');
 var savePosterBtn = document.querySelector('.save-poster');
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
+var miniPoster = document.querySelector('.mini-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -127,6 +128,7 @@ takeMeBackBtn.addEventListener("click", showMain);
 backToMainBtn.addEventListener("click", showMain);
 showMyPosterBtn.addEventListener("click", showUserPoster);
 savePosterBtn.addEventListener("click", addToSavedPosters);
+miniPoster.addEventListener("dblclick", removeSavedPoster);
 
 // functions and event handlers go here 👇
 function loadHomePage() {
@@ -185,12 +187,22 @@ function addToSavedPosters() {
     savedPosters.push(currentPoster);
 
     savedPostersGrid.innerHTML += 
-    `<section class="mini-poster">
+    `<section class="mini-poster" id="${currentPoster.id}">
       <img class="poster-img" src="${currentPoster.imageURL}">
       <h2 class="poster-title">${currentPoster.title}</h2>
       <h4 class="poster-quote">${currentPoster.quote}</h4>
     </section>`
   } 
+}
+
+function removeSavedPoster(event) {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (event.target.parentElement.id === savedPosters[i].id ) {
+      savedPosters.splice(i,1)
+    }
+  }
+  event.target.parentElement.remove();
+
 }
 
 // (we've provided one for you to get you started)!
