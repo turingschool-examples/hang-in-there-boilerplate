@@ -1,13 +1,21 @@
 // query selector variables go here 👇
 
 var poster = document.querySelector('.poster')
-
-
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
 var posterImage = document.querySelector('.poster-img')
 
-var randomButton = document.querySelector('.show-random');
+
+var form = document.querySelector('.poster-form')
+var mainPoster = document.querySelector('.main-poster')
+var savedPostersPage = document.querySelector('.saved-posters')
+
+var makeYourOwnButton = document.querySelector('.show-form')
+var backToMainButton = document.querySelector('.back-to-main')
+var showSavedPostersButton = document.querySelector('.show-saved')
+var randomButton = document.querySelector('.show-random')
+var nevermindButton = document.querySelector('.show-main')
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -111,26 +119,26 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.onload = createNewPoster()
+randomButton.addEventListener('click', createNewPoster)
+makeYourOwnButton.addEventListener('click', makeYourOwnPoster)
+showSavedPostersButton.addEventListener('click', viewSavedPosters)
+nevermindButton.addEventListener('click', goBackToMain)
+backToMainButton.addEventListener('click', goBackToMain)
+
 
 randomButton.addEventListener('click', createNewPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
-
-
-var poster1 = new Poster(getRandomImage(), getRandomTitle(), getRandomQuote());
-
-posterTitle.innerText = poster1.title
-posterQuote.innerText = poster1.quote
-posterImage.src = poster1.imageURL
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// ******* Iteration 0 *****************
 function getRandomTitle() {
-    return titles[getRandomIndex(titles)]
+  return titles[getRandomIndex(titles)]
 }
 
 function getRandomQuote() {
@@ -142,6 +150,27 @@ function getRandomImage() {
 }
 
 function createNewPoster() {
-  window.location.reload()
-  currentPoster.push
+  var poster1 = new Poster(getRandomImage(), getRandomTitle(), getRandomQuote());
+
+  posterTitle.innerText = poster1.title
+  posterQuote.innerText = poster1.quote
+  posterImage.src = poster1.imageURL
 }
+// *********** Iteration 1 ***************
+
+function makeYourOwnPoster() {
+  form.classList.remove("hidden")
+  mainPoster.classList.add("hidden")
+}
+
+function goBackToMain() {
+  form.classList.add("hidden")
+  mainPoster.classList.remove("hidden")
+}
+
+function viewSavedPosters() {
+  mainPoster.classList.add("hidden")
+  savedPostersPage.classList.remove("hidden")
+}
+// *********** Iteration 2 *****************
+
