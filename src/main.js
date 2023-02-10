@@ -2,8 +2,19 @@
 var img = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
-var showRandomButton = document.querySelector('.show-random');
 
+var mainPosterView = document.querySelector('.main-poster');
+var savedPosterView = document.querySelector('.saved-posters');
+var posterFormView = document.querySelector('.poster-form');
+// BUTTONS
+var showRandomButton = document.querySelector('.show-random');
+var makePosterButton = document.querySelector("show-form")
+var viewSavedButton = document.querySelector("show-saved")
+var savePosterButton = document.querySelector("save-poster")
+var showMainButton = document.querySelector("show-main")
+var backToMainButton = document.querySelector("back-to-main")
+
+var showRandomButton = document.querySelector('.show-random');
 
 
 // we've provided you with some data to work with 👇
@@ -111,14 +122,49 @@ var currentPoster;
 window.addEventListener('load', createRandomPoster);
 showRandomButton.addEventListener('click', createRandomPoster);
 
+window.addEventListener('load', createRandomPoster);
+showRandomButton.addEventListener('click', createRandomPoster);
+makePosterButton.addEventListener('click', viewMainPosterSection);
+makePosterButton.addEventListener('click', viewMakeYourOwnPoster);
+
+// When a user clicks the “Make Your Own Poster” button, 
+   // we should see the form, and the main poster should be hidden
+// When a user clicks the “View Saved Posters” button, 
+   // we should see the saved posters area, and the main poster should be hidden
+// When a user clicks the “Nevermind, take me back!” 
+   // or “Back to Main” buttons, we should only see the main poster section
+// In summary: Be able to switch between the three views 
+   // (main poster, form, and saved posters) on the correct button clicks
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
+function createRandomPoster(){
+  title.innerText =titles[getRandomIndex(titles)]
+  img.src = images[getRandomIndex(images)]
+  quote.innerHTML = quotes[getRandomIndex(images)]
+  }
+
+  
+function viewMakeYourOwnPoster(){
+  posterFormView.classList.remove('hidden')
+  console.log(posterFormView.classList)
+  mainPosterView.classList.add('hidden')
+  console.log(mainPosterView.classList)
+}
+
+
+function viewMainPosterSection(){
+mainPosterView.classList.add('hidden')
+}
+
 
 // Event Handlerrs
 
 
 
 //Functions
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
