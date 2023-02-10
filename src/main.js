@@ -8,6 +8,10 @@ var buttonShow = document.querySelector('.show-saved');
 var buttonRandom = document.querySelector('.show-random');
 var buttonMake = document.querySelector('.show-form');
 
+var mainPage = document.querySelector('.main-poster');
+var makePage = document.querySelector('.poster-form');
+var savedPage = document.querySelector('.saved-posters');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -113,9 +117,9 @@ var currentPoster;
 
 window.addEventListener('load', getLoadPoster);
 // buttonSave.addEventListener('click', savePoster);
-// buttonShow.addEventListener('click', showSaved);
+buttonShow.addEventListener('click', showSaved);
 buttonRandom.addEventListener('click', getLoadPoster);
-// buttonMake.addEventListener('click', showMake);
+buttonMake.addEventListener('click', showMake);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -140,11 +144,25 @@ function getLoadPoster() {
   randomLoadPoster();
 };
 
-// function savePoster() {
-// };
+// function savePoster() {};
+// push the currentPoster into the array of savedPosters
 
-// function showSaved() {
-// };
+function showSaved() {
+  mainPage.classList.add('hidden');
+  savedPage.classList.remove('hidden');
+  // need to add "back" button functionally
+};
 
-// function showMake() {
-// };
+function showMake() {
+  mainPage.classList.add('hidden');
+  makePage.classList.remove('hidden');
+  // need to add "back" button functionally
+};
+
+// Make form:
+// need query selector, event listener, handler function
+// handler function will be similar to below:
+  // randomImage.src = currentPoster.imageURL;
+  // randomTitle.innerText = currentPoster.title;
+  // randomQuote.innerText = currentPoster.quote;
+// also need "back" button functionally -> add hidden to makePage, remove hidden from mainPage
