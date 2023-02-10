@@ -3,15 +3,18 @@
 var randomPosterImg = document.querySelector('.poster-img')
 var randomPosterTitle = document.querySelector('.poster-title')
 var randomPosterQuote = document.querySelector('.poster-quote')
-var randomPosterBtn = document.querySelector('.show-random')
-var makePosterBtn = document.querySelector('.show-form');
+var posterGrid = document.querySelector('.saved-posters-grid');
+
 var viewForm = document.querySelector('.poster-form');
 var viewHome = document.querySelector('.main-poster');
-var savePosterBtn = document.querySelector('.show-saved');
 var savedPage = document.querySelector('.saved-posters');
+
+var randomPosterBtn = document.querySelector('.show-random')
+var makePosterBtn = document.querySelector('.show-form');
 var backToMainBtn = document.querySelector('.back-to-main');
 var takeMeBackBtn = document.querySelector('.show-main');
-var showPosterBtn = document.querySelector('.make-poster')
+var savePosterViewBtn = document.querySelector('.show-saved');
+var showUserPosterBtn = document.querySelector('.make-poster')
 
 var userURL = document.querySelector('#poster-image-url')
 var userTitle = document.querySelector('#poster-title')
@@ -27,10 +30,10 @@ var currentPoster;
 window.addEventListener('load', randomPoster)
 randomPosterBtn.addEventListener('click', randomPoster)
 makePosterBtn.addEventListener('click', changeViewToForm);
-savePosterBtn.addEventListener('click', viewSavedPoster);
+savePosterViewBtn.addEventListener('click', viewSavedPoster);
 backToMainBtn.addEventListener('click', changeViewToHome);
 takeMeBackBtn.addEventListener('click', changeViewToHome);
-showPosterBtn.addEventListener('click', function(event) {
+showUserPosterBtn.addEventListener('click', function(event) {
   makeMyPoster()
   event.preventDefault()
 })
