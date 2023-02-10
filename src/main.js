@@ -1,5 +1,11 @@
 // query selector variables go here 👇
 
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
+var image = document.querySelector('.poster-img');
+var button = document.querySelector('.show-random');
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -101,11 +107,50 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+title.innerText = (getRandomTitle(titles))
+quote.innerText = (getRandomQuote(quotes))
+image.src = (getRandomImage(images))
+
 // event listeners go here 👇
+
+button.addEventListener("click", showAnotherPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+getRandomIndex(images);
+
+function getRandomImage(images) {
+  var randomImage = images[getRandomIndex(images)];
+  console.log(randomImage);
+  return randomImage;
+}
+getRandomImage(images);
+
+function getRandomTitle(titles) {
+  var randomTitle = titles[getRandomIndex(images)];
+  console.log(randomTitle);
+  return randomTitle;
+}
+getRandomTitle(titles);
+
+function getRandomQuote(quotes) {
+  var randomQuote = quotes[getRandomIndex(images)];
+  console.log(randomQuote);
+  return randomQuote;
+}
+getRandomQuote(quotes);
+
+function showAnotherPoster()  {
+  title.innerText = (getRandomTitle(titles))
+  quote.innerText = (getRandomQuote(quotes))
+  image.src = (getRandomImage(images))
+}
+
+
+
+
 
