@@ -7,6 +7,8 @@ var buttonSave = document.querySelector('.save-poster');
 var buttonShow = document.querySelector('.show-saved');
 var buttonRandom = document.querySelector('.show-random');
 var buttonMake = document.querySelector('.show-form');
+var buttonBackFromSaved = document.querySelector('.back-to-main');
+var buttonBackFromMake = document.querySelector('.show-main');
 
 var mainPage = document.querySelector('.main-poster');
 var makePage = document.querySelector('.poster-form');
@@ -115,11 +117,14 @@ var currentPoster;
 
 // event listeners go here 👇
 
-window.addEventListener('load', getLoadPoster);
+window.addEventListener('load', loadRandomPoster);
 // buttonSave.addEventListener('click', savePoster);
 buttonShow.addEventListener('click', showSaved);
-buttonRandom.addEventListener('click', getLoadPoster);
+buttonRandom.addEventListener('click', loadRandomPoster);
 buttonMake.addEventListener('click', showMake);
+buttonBackFromSaved.addEventListener('click', backToMain);
+buttonBackFromMake.addEventListener('click', backToMain);
+//show poster button
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -129,20 +134,35 @@ function getRandomIndex(array) {
   return array[arrayIndex];
 };
 
-function loadRandomPoster() {
+function loadPosterInstance() {
   currentPoster = new Poster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes));
 };
 
-function randomLoadPoster() {
+function sendPosterToHtml() {
   randomImage.src = currentPoster.imageURL;
   randomTitle.innerText = currentPoster.title;
   randomQuote.innerText = currentPoster.quote;
 };
 
-function getLoadPoster() {
-  loadRandomPoster();
-  randomLoadPoster();
+function loadRandomPoster() {
+  loadPosterInstance();
+  sendPosterToHtml();
 };
+
+function backToMain() {
+  mainPage.classList.remove('hidden'); 
+  
+  if (!makePage.classList.contains('hidden')) {
+    makePage.classList.add('hidden');
+  }
+  if (!savedPage.classList.contains('hidden')) {
+    savedPage.classList.add('hidden');
+  } 
+
+  loadRandomPoster();
+};
+
+
 
 // function savePoster() {};
 // push the currentPoster into the array of savedPosters
@@ -150,19 +170,20 @@ function getLoadPoster() {
 function showSaved() {
   mainPage.classList.add('hidden');
   savedPage.classList.remove('hidden');
-  // need to add "back" button functionally
+  //unhide array of saved posters
 };
 
 function showMake() {
   mainPage.classList.add('hidden');
   makePage.classList.remove('hidden');
-  // need to add "back" button functionally
+
 };
 
-// Make form:
+// showMake()
 // need query selector, event listener, handler function
 // handler function will be similar to below:
   // randomImage.src = currentPoster.imageURL;
   // randomTitle.innerText = currentPoster.title;
   // randomQuote.innerText = currentPoster.quote;
-// also need "back" button functionally -> add hidden to makePage, remove hidden from mainPage
+//reassign event listeners/handlers from "show my poster button to
+//the "take me back button" 
