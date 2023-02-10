@@ -6,16 +6,20 @@ var quote = document.querySelector('.poster-quote');
 var mainPosterView = document.querySelector('.main-poster');
 var savedPosterView = document.querySelector('.saved-posters');
 var posterFormView = document.querySelector('.poster-form');
+
 // BUTTONS
 var showRandomButton = document.querySelector('.show-random');
-var makePosterButton = document.querySelector("show-form")
-var viewSavedButton = document.querySelector("show-saved")
-var savePosterButton = document.querySelector("save-poster")
-var showMainButton = document.querySelector("show-main")
-var backToMainButton = document.querySelector("back-to-main")
+var makePosterButton = document.querySelector('.show-form');
+var viewSavedButton = document.querySelector('.show-saved');
+var savePosterButton = document.querySelector('.save-poster');
+var showMainButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var showMyPosterButton = document.querySelector('.make-poster');
 
-var showRandomButton = document.querySelector('.show-random');
-
+//Inputs
+var formImage = document.querySelector('#poster-image-url');
+var formTitle = document.querySelector('#poster-title');
+var formQuote = document.querySelector('#poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -115,70 +119,81 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+//>>>>>>>>>>>>Iteration 2 Requirements>>>>>>>>>>>>//
+
+
+
+// When the Show My Poster button is clicked, several things will happen:
+// Use the values from the inputs to create a new instance of our Poster class (part of your data model)
+
+// Save the submitted data into the respective arrays (image URL into the images array, etc - all part of your data model) so that future random posters can use the user-created data
+/// 1. Push to  values into titles, quotes, & images arrays 
+//      - push only if new 
+
+// Change back to the main poster view (hiding the form view again)
+// Use the new instance of the Poster class (part of your data model) to display the newly created poster image, title, and quote in the main view on the DOM
+
+// var formImage = document.querySelector('#poster-image-url');
+// var formTitle = document.querySelector('#poster-title');
+// var formQuote = document.querySelector('#poster-quote');
+
 var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster);
-showRandomButton.addEventListener('click', createRandomPoster);
-
-window.addEventListener('load', createRandomPoster);
-showRandomButton.addEventListener('click', createRandomPoster);
-makePosterButton.addEventListener('click', viewMainPosterSection);
-makePosterButton.addEventListener('click', viewMakeYourOwnPoster);
-
-// When a user clicks the “Make Your Own Poster” button, 
-   // we should see the form, and the main poster should be hidden
-// When a user clicks the “View Saved Posters” button, 
-   // we should see the saved posters area, and the main poster should be hidden
-// When a user clicks the “Nevermind, take me back!” 
-   // or “Back to Main” buttons, we should only see the main poster section
-// In summary: Be able to switch between the three views 
-   // (main poster, form, and saved posters) on the correct button clicks
+showRandomButton.addEventListener('click',createRandomPoster);
+makePosterButton.addEventListener('click',viewMakeYourOwnPoster);
+viewSavedButton.addEventListener('click',viewSavedPosters);
+showMainButton.addEventListener('click',viewMainPage );
+backToMainButton.addEventListener('click',viewMainPage);
+showMyPosterButton.addEventListener('click', showMyPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
-function createRandomPoster(){
-  title.innerText =titles[getRandomIndex(titles)]
-  img.src = images[getRandomIndex(images)]
-  quote.innerHTML = quotes[getRandomIndex(images)]
-  }
-
-  
-function viewMakeYourOwnPoster(){
-  posterFormView.classList.remove('hidden')
-  console.log(posterFormView.classList)
-  mainPosterView.classList.add('hidden')
-  console.log(mainPosterView.classList)
-}
-
-
-function viewMainPosterSection(){
-mainPosterView.classList.add('hidden')
-}
-
-
-// Event Handlerrs
-
-
-
-//Functions
-
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+// In process function(s)
+//function showMyPoster(){
+//return "arg"
+// userNewPoster = new Poster(formImage.value, formTitle.value, formQuote.value) 
+// console.log('userPoster', userNewPoster)
+//}
 
-function createRandomPoster(){
-title.innerText =titles[getRandomIndex(titles)]
-img.src = images[getRandomIndex(images)]
-quote.innerHTML = quotes[getRandomIndex(images)]
+// Button Functions
+
+function createRandomPoster() {
+  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(images)]);
+
+  title.innerText = currentPoster.title;
+  img.src = currentPoster.imageURL;
+  quote.innerText = currentPoster.quote;
+}
+ function viewMakeYourOwnPoster() {
+  posterFormView.classList.remove('hidden');
+  mainPosterView.classList.add('hidden');
+  savedPosterView.classList.add('hidden');
 }
 
-window.addEventListener('load', newPoster);
-randomButton.addEventListener('click', newPoster);
+function viewSavedPosters(){
+  posterFormView.classList.add('hidden');
+  mainPosterView.classList.add('hidden');
+  savedPosterView.classList.remove('hidden');
+}
 
-  
+function viewMainPage() {
+  posterFormView.classList.add('hidden');
+  mainPosterView.classList.remove('hidden');
+  savedPosterView.classList.add('hidden');
+}
+
+
+
+
+
+
+
 
 
