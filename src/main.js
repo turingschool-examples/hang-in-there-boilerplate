@@ -5,6 +5,8 @@ var title = document.querySelector('h1')
 var quote = document.querySelector('h3')
 var makeYourOwnPosterButton = document.querySelector('.show-form')
 var showAnotherRandomPosterButton = document.querySelector('.show-random')
+var mainPosterView = document.querySelector('.main-poster')
+var viewFormPage = document.querySelector('.poster-form')
 
 var images = [
   "./assets/bees.jpg",
@@ -151,7 +153,11 @@ function showRandomPoster(){
 
 // Iteration 1 functions
 function viewForm(){
-  homeButton.classlist.remove('view')
+  makeYourOwnPosterButton.classList.add('hidden')
+  mainPosterView.classList.add('hidden')
+  viewFormPage.classList.remove('hidden')
+  
+  console.log("FIRE")
 }
 
 
