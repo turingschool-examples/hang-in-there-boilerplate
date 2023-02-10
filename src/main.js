@@ -5,6 +5,7 @@ var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
 var posterImage = document.querySelector('.poster-img')
 
+
 var form = document.querySelector('.poster-form')
 var mainPoster = document.querySelector('.main-poster')
 var savedPostersPage = document.querySelector('.saved-posters')
@@ -126,6 +127,8 @@ nevermindButton.addEventListener('click', goBackToMain)
 backToMainButton.addEventListener('click', goBackToMain)
 
 
+randomButton.addEventListener('click', createNewPoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -145,7 +148,6 @@ function getRandomQuote() {
 function getRandomImage() {
   return images[getRandomIndex(images)]
 }
-
 
 function createNewPoster() {
   var poster1 = new Poster(getRandomImage(), getRandomTitle(), getRandomQuote());
@@ -171,3 +173,4 @@ function viewSavedPosters() {
   savedPostersPage.classList.remove("hidden")
 }
 // *********** Iteration 2 *****************
+
