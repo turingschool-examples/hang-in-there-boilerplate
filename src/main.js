@@ -10,6 +10,10 @@ var backToMainButton = document.querySelector(".back-to-main");
 var mainPoster = document.querySelector(".main-poster");
 var savedPostersPage = document.querySelector(".saved-posters");
 var posterForm = document.querySelector(".poster-form");
+var posterImageInput = document.querySelector('#poster-image-url');
+var posterTitleInput = document.querySelector('#poster-title')
+var posterQuoteInput = document.querySelector('#poster-quote')
+var makePosterButton = document.querySelector('.make-poster')
 
 
 // we've provided you with some data to work with 👇
@@ -111,17 +115,20 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
-// var randomTitle = titles[getRandomIndex(titles)];
-// var randomQuote = quotes[getRandomIndex(quotes)];
-// var randomImage = images[getRandomIndex(images)];
+var currentPoster = randomizePoster(); 
 
 // event listeners go here 👇
+// query selectors
+
+// event listener
+makePosterButton.addEventListener('click', function(event){event.preventDefault()
+createOwnPoster()});
 randomPosterButton.addEventListener("click", displayRandomPoster);
 makeYourOwnPoster.addEventListener("click", takeToPosterForm);
 viewSavedPoster.addEventListener("click", takeToSavedPosters);
 nevermindButton.addEventListener("click", takeMeBack);
 backToMainButton.addEventListener("click", backToMain);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -137,9 +144,20 @@ function randomizePoster() {
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
   var randomImage = images[getRandomIndex(images)];
-  
   var randomPoster = makeNewPoster(randomImage, randomTitle, randomQuote);
   return randomPoster;
+}
+
+function createOwnPoster() {
+  var ownPoster = new Poster (posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
+  takeMeBack();
+  posterTitle.innerText = ownPoster.title;
+  posterQuote.innerText = ownPoster.quote;
+  posterImage.src = ownPoster.imageURL;
+  images.push(ownPoster.imageURL);
+  titles.push(ownPoster.title);
+  quotes.push(ownPoster.quote);
+  return ownPoster
 }
 
 function displayRandomPoster() {
@@ -168,10 +186,6 @@ function backToMain() {
   savedPostersPage.classList.toggle("hidden");
   mainPoster.classList.toggle("hidden");
 }
-
-
-
-currentPoster = randomizePoster();
 
 posterTitle.innerText = currentPoster.title;
 posterQuote.innerText = currentPoster.quote;
