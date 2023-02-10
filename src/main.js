@@ -1,11 +1,19 @@
 // query selector variables go here 👇
 
 var poster = document.querySelector('.poster')
-
-
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
 var posterImage = document.querySelector('.poster-img')
+
+var form = document.querySelector('.poster-form')
+var mainPoster = document.querySelector('.main-poster')
+var savedPostersPage = document.querySelector('.saved-posters')
+
+var makeYourOwnButton = document.querySelector('.show-form')
+var backToMainButton = document.querySelector('.back-to-main')
+var showSavedPostersButton = document.querySelector('.show-saved')
+var randomButton = document.querySelector('.show-random')
+var nevermindButton = document.querySelector('.show-main')
 
 
 // we've provided you with some data to work with 👇
@@ -110,24 +118,24 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.onload = createNewPoster()
+randomButton.addEventListener('click', createNewPoster)
+makeYourOwnButton.addEventListener('click', makeYourOwnPoster)
+showSavedPostersButton.addEventListener('click', viewSavedPosters)
+nevermindButton.addEventListener('click', goBackToMain)
+backToMainButton.addEventListener('click', goBackToMain)
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-
-
-
-var poster1 = new Poster(getRandomImage(), getRandomTitle(), getRandomQuote());
-
-posterTitle.innerText = poster1.title
-posterQuote.innerText = poster1.quote
-posterImage.src = poster1.imageURL
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// ******* Iteration 0 *****************
 function getRandomTitle() {
-    return titles[getRandomIndex(titles)]
+  return titles[getRandomIndex(titles)]
 }
 
 function getRandomQuote() {
@@ -139,25 +147,27 @@ function getRandomImage() {
 }
 
 
-//When the page loads, we should see a poster with a randomly
-// selected image, title, and quote
+function createNewPoster() {
+  var poster1 = new Poster(getRandomImage(), getRandomTitle(), getRandomQuote());
 
-//On load, we see the first itstance of that class
+  posterTitle.innerText = poster1.title
+  posterQuote.innerText = poster1.quote
+  posterImage.src = poster1.imageURL
+}
+// *********** Iteration 1 ***************
 
-// Create an instance of the class Poster by choosing a title, picture, and quote
-// try to get that on the website using query selectors
+function makeYourOwnPoster() {
+  form.classList.remove("hidden")
+  mainPoster.classList.add("hidden")
+}
 
-//class Poster {
-//   constructor(imageURL, title, quote) {
-//     this.id = Date.now();
-//     this.imageURL = imageURL;
-//     this.title = title;
-//     this.quote = quote;
-//   }
-// }
+function goBackToMain() {
+  form.classList.add("hidden")
+  mainPoster.classList.remove("hidden")
+}
 
-// poster.innerHTML = `
-//   <img>${poster1.imageURL}</img>
-//   <h1>${poster1.title}</h1>
-//   <h3>${poster1.quote}</h3>
-// `
+function viewSavedPosters() {
+  mainPoster.classList.add("hidden")
+  savedPostersPage.classList.remove("hidden")
+}
+// *********** Iteration 2 *****************
