@@ -1,5 +1,11 @@
 // query selector variables go here 👇
 
+var currentTitle = document.querySelector('.poster-title');
+var currentQuote = document.querySelector('.poster-quote');
+var currentImage = document.querySelector('.poster-img');
+var randomPosterButton = document.querySelector('.show-random');
+var makePosterButton = document.querySelector('.show-form')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -103,9 +109,45 @@ var currentPoster;
 
 // event listeners go here 👇
 
+window.addEventListener('load', showRandomPoster)
+randomPosterButton.addEventListener('click', showRandomPoster)
+makePosterButton.addEventListener('click', formPage)
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function getRandomPoster() {
+  currentPoster = new Poster(images[getRandomIndex(images)],
+   titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
+} 
+
+function showRandomPoster() {
+  getRandomPoster();
+  currentTitle.innerText = currentPoster.title;
+  currentImage.src = currentPoster.imageURL;
+  currentQuote.innerText = currentPoster.quote;
+}
+
+
+
+
+// function formPage() {
+//   hidePage();
+//   formPage.classList.remove("hidden");
+// }
+
+// function mainPage() {
+//   hidePage();
+//   mainPage.classList.remove("hidden");
+// }
+
+
+// function hidePage() {
+//   formPage.classList.add("hidden");
+//   hidePage.classList.add("hidden");
+//   mainPage.classList.add("hidden");
+// }
