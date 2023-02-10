@@ -99,6 +99,9 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+// Variables 
+
 var savedPosters = [];
 var currentPoster;
 
@@ -112,7 +115,7 @@ var savePosterButton = document.querySelector('.save-poster');
 
 
 
-//Eventlisteners
+//Event Listeners
 
 window.addEventListener('load', function(){
   randomPoster()
@@ -127,6 +130,26 @@ document.querySelector('.show-form').addEventListener('click', function() {
   document.querySelector('.poster-form').classList.remove('hidden')
   document.querySelector('.main-poster').classList.add('hidden')
 })
+
+document.querySelector('.show-saved').addEventListener('click', function(){
+  document.querySelector('.saved-posters').classList.remove('hidden')
+  document.querySelector('.main-poster').classList.add('hidden')
+})
+
+document.querySelector('.show-main').addEventListener('click', function(){
+  document.querySelector('.poster-form').classList.add('hidden')
+  document.querySelector('.main-poster').classList.remove('hidden')
+})
+
+document.querySelector('.back-to-main').addEventListener('click', function(){
+  document.querySelector('.saved-posters').classList.add('hidden')
+  document.querySelector('.main-poster').classList.remove('hidden')
+})
+
+document.querySelector('.save-poster').addEventListener('click', function(){
+  if (savedPosters.includes(currentPoster.id))
+})
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
