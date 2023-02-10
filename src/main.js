@@ -11,8 +11,11 @@ var savePosterBtn = document.querySelector('.show-saved');
 var savedPage = document.querySelector('.saved-posters');
 var backToMainBtn = document.querySelector('.back-to-main');
 var takeMeBackBtn = document.querySelector('.show-main');
+var showPosterBtn = document.querySelector('.make-poster')
 
-
+var userURL = document.querySelector('#poster-image-url')
+var userTitle = document.querySelector('#poster-title')
+var userQuote = document.querySelector('#poster-quote')
 
 // we've provided you with some data to work with 👇
 
@@ -27,6 +30,11 @@ makePosterBtn.addEventListener('click', changeViewToForm);
 savePosterBtn.addEventListener('click', viewSavedPoster);
 backToMainBtn.addEventListener('click', changeViewToHome);
 takeMeBackBtn.addEventListener('click', changeViewToHome);
+showPosterBtn.addEventListener('click', function(event) {
+  makeMyPoster()
+  event.preventDefault()
+})
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -45,6 +53,15 @@ randomPosterTitle.innerText = currentPoster.title
 randomPosterQuote.innerText = currentPoster.quote
 }
 
+function makeMyPoster() {
+currentPoster = new Poster(userURL.value, userTitle.value, userQuote.value)
+images.push(userURL.value)
+titles.push(userTitle.value)
+quotes.push(userQuote.value)
+changeViewToHome()
+addPosterToDom()
+}
+
 function changeViewToForm(){
 viewForm.classList.remove('hidden');
 viewHome.classList.add('hidden');
@@ -55,7 +72,7 @@ viewHome.classList.add('hidden');
 
 }
 function changeViewToHome(){
-  viewHome.classList.remove('hidden');
-  viewForm.classList.add('hidden');
-  savedPage.classList.add('hidden');
+viewHome.classList.remove('hidden');
+viewForm.classList.add('hidden');
+savedPage.classList.add('hidden');
 }
