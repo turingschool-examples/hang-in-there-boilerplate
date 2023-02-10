@@ -3,7 +3,10 @@ var randomTitle = document.querySelector('h1')
 var randomQuote = document.querySelector('h3')
 var randomImage = document.querySelector('.poster-img')
 
-
+var buttonSave = document.querySelector('.save-poster');
+var buttonShow = document.querySelector('.show-saved');
+var buttonRandom = document.querySelector('.show-random');
+var buttonMake = document.querySelector('.show-form');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -107,28 +110,41 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-// ADD EVENT LISTENERS
+
+window.addEventListener('load', getLoadPoster);
+// buttonSave.addEventListener('click', savePoster);
+// buttonShow.addEventListener('click', showSaved);
+buttonRandom.addEventListener('click', getLoadPoster);
+// buttonMake.addEventListener('click', showMake);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-//this is returning an index position, but we want 
-//it to return the actual string/value
+  var arrayIndex = Math.floor(Math.random() * array.length);
+  return array[arrayIndex];
+};
 
-//do we need a "window" event listener? ->YES
+function loadRandomPoster() {
+  currentPoster = new Poster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes));
+};
 
-var randomTitle = getRandomIndex(titles)
-var randomQuote = getRandomIndex(quotes)
-var randomImage = getRandomIndex(images)
+function randomLoadPoster() {
+  randomImage.src = currentPoster.imageURL;
+  randomTitle.innerText = currentPoster.title;
+  randomQuote.innerText = currentPoster.quote;
+};
 
-var poster1 = new Poster(randomImage, randomTitle, randomQuote)
+function getLoadPoster() {
+  loadRandomPoster();
+  randomLoadPoster();
+};
 
-title.innerText = poster1.randomTitle
-quote.innerText = poster1.randomQuote
-imageURL.innerText = poster1.randomImage
-//is this syntactically correct?
-//remember to console.log to check work (better)
-//within devtools
+// function savePoster() {
+// };
+
+// function showSaved() {
+// };
+
+// function showMake() {
+// };
