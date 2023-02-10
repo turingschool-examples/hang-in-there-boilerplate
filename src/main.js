@@ -147,13 +147,12 @@ document.querySelector('.back-to-main').addEventListener('click', function(){
 })
 
 
+
 // make poster funciton 
 
 document.querySelector('.make-poster').addEventListener('click', function(){
-  preventDefault()
-  makeUserPoster()
-  document.querySelector('.main-poster').classList.remove('hidden')
-  document.querySelector('.show-form').classList.add('hidden')
+  makeUserPoster(event)
+
 } )
 
 // document.querySelector('.save-poster').addEventListener('click', function(){
@@ -176,11 +175,18 @@ function addRandomPoster() {
   mainPosterQuote.innerText = currentPoster.quote
 };
 
-function makeUserPoster(){
+function makeUserPoster(event) {
+  event.preventDefault()
+  document.querySelector('.main-poster').classList.remove('hidden')
+  document.querySelector('.show-form').classList.add('hidden')
   var userImage = document.querySelector('#poster-image-url').value
   var userQuote = document.querySelector('#poster-quote').value
   var userTitle = document.querySelector('#poster-title').value
-  currentPoster = new Poster(userImage, userTitle, UserQuote)
+  currentPoster = new Poster(userImage, userTitle, userQuote)
+  mainPosterTitle.innerText = currentPoster.title
+  mainPosterImage.src = currentPoster.imageURL
+  mainPosterQuote.innerText = currentPoster.quote
+
 }
 
 function getRandomIndex(array) {
