@@ -1,20 +1,27 @@
 // query selector variables go here 👇
 
-var poster = document.querySelector('.poster')
-var posterTitle = document.querySelector('.poster-title')
-var posterQuote = document.querySelector('.poster-quote')
-var posterImage = document.querySelector('.poster-img')
+var poster = document.querySelector('.poster');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var posterImage = document.querySelector('.poster-img');
+
+var urlInput = document.querySelector('#poster-image-url');
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
+
+var form = document.querySelector('.poster-form');
+var mainPoster = document.querySelector('.main-poster');
+var savedPostersPage = document.querySelector('.saved-posters');
+
+var makeYourOwnButton = document.querySelector('.show-form');
+var backToMainButton = document.querySelector('.back-to-main');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var randomButton = document.querySelector('.show-random');
+var nevermindButton = document.querySelector('.show-main');
+var makeMyPosterButton = document.querySelector('.make-poster');
 
 
-var form = document.querySelector('.poster-form')
-var mainPoster = document.querySelector('.main-poster')
-var savedPostersPage = document.querySelector('.saved-posters')
 
-var makeYourOwnButton = document.querySelector('.show-form')
-var backToMainButton = document.querySelector('.back-to-main')
-var showSavedPostersButton = document.querySelector('.show-saved')
-var randomButton = document.querySelector('.show-random')
-var nevermindButton = document.querySelector('.show-main')
 
 
 // we've provided you with some data to work with 👇
@@ -128,6 +135,7 @@ backToMainButton.addEventListener('click', goBackToMain)
 
 
 randomButton.addEventListener('click', createNewPoster);
+makeMyPosterButton.addEventListener('click', makeMyPoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -174,3 +182,18 @@ function viewSavedPosters() {
 }
 // *********** Iteration 2 *****************
 
+function makeMyPoster(event) {
+  event.preventDefault()
+  var userPoster = new Poster(urlInput.value, titleInput.value, quoteInput.value);
+
+  posterTitle.innerText = userPoster.title
+  posterQuote.innerText = userPoster.quote
+  posterImage.src = userPoster.imageURL
+
+  images.push(urlInput.value);
+  titles.push(titleInput.value);
+  quotes.push(quoteInput.value);
+  
+  goBackToMain()
+
+}
