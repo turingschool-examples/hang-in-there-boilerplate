@@ -136,6 +136,20 @@ document.querySelector('.show-saved').addEventListener('click', function(){
   document.querySelector('.main-poster').classList.add('hidden')
 })
 
+document.querySelector('.show-main').addEventListener('click', function(){
+  document.querySelector('.poster-form').classList.add('hidden')
+  document.querySelector('.main-poster').classList.remove('hidden')
+})
+
+document.querySelector('.back-to-main').addEventListener('click', function(){
+  document.querySelector('.saved-posters').classList.add('hidden')
+  document.querySelector('.main-poster').classList.remove('hidden')
+})
+
+document.querySelector('.save-poster').addEventListener('click', function(){
+  if (savedPosters.includes(currentPoster.id))
+})
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
