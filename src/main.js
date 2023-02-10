@@ -128,7 +128,7 @@ takeMeBackBtn.addEventListener("click", showMain);
 backToMainBtn.addEventListener("click", showMain);
 showMyPosterBtn.addEventListener("click", showUserPoster);
 savePosterBtn.addEventListener("click", addToSavedPosters);
-miniPoster.addEventListener("dblclick", removeSavedPoster);
+savedPostersGrid.addEventListener("dblclick", removeSavedPoster);
 
 // functions and event handlers go here 👇
 function loadHomePage() {
@@ -197,12 +197,11 @@ function addToSavedPosters() {
 
 function removeSavedPoster(event) {
   for (var i = 0; i < savedPosters.length; i++) {
-    if (event.target.parentElement.id === savedPosters[i].id ) {
+    if (event.target.parentElement.id === savedPosters[i].id) {
       savedPosters.splice(i,1)
     }
   }
   event.target.parentElement.remove();
-
 }
 
 // (we've provided one for you to get you started)!
