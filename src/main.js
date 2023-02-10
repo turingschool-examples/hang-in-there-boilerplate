@@ -1,10 +1,11 @@
 // query selector variables go here 👇
 
-var posterImages = document.querySelector(".poster-img")
- var title = document.querySelector('h1')
- var quote = document.querySelector('h3')
-//var createRandomPoster = document.querySelector(".poster-title")
-// we've provided you with some data to work with 👇
+var posterImages = document.querySelector('.poster-img')
+var title = document.querySelector('h1')
+var quote = document.querySelector('h3')
+var makeYourOwnPosterButton = document.querySelector('.show-form')
+var showAnotherRandomPosterButton = document.querySelector('.show-random')
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -111,11 +112,15 @@ var currentPoster;
 window.addEventListener("load", randomPoster)
 window.addEventListener("load", randomTitle )
 window.addEventListener("load", randomQuote)
+makeYourOwnPosterButton.addEventListener('click', viewForm)
+showAnotherRandomPosterButton.addEventListener('click', showRandomPoster)
 console.log(createPoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
+
 function createPoster(){
   currentPoster = new Poster (images[getRandomIndex(images)])
+  
 }
 
 function randomPoster(){
@@ -124,25 +129,32 @@ function randomPoster(){
 
 }
 
-function createTitle() {
-  currentPoster = new Poster (titles[getRandomIndex(titles)])
-}
-
 
 function randomTitle() {
-  createTitle()
+  // createTitle()
   title.innerText =  (titles[getRandomIndex(titles)])
 } 
 
 
-function createQuote() {
-  currentPoster = new Poster (quotes[getRandomIndex(quotes)])
-}
-
 function randomQuote() {
-  createQuote()
+  // createQuote()
   quote.innerText = (quotes[getRandomIndex(quotes)])
 }
+
+function showRandomPoster(){
+  currentPoster = new Poster (titles[getRandomIndex(titles)])
+  currentPoster = new Poster (images[getRandomIndex(images)])
+  quote.innerText = (quotes[getRandomIndex(quotes)])
+  title.innerText =  (titles[getRandomIndex(titles)])
+  posterImages.src = currentPoster.imageURL
+}
+
+// Iteration 1 functions
+function viewForm(){
+  homeButton.classlist.remove('view')
+}
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
