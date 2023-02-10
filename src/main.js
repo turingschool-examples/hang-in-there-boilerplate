@@ -1,7 +1,7 @@
 // query selector variables go here 👇
-randomTitle = document.querySelector('h1')
-randomQuote = document.querySelector('h3')
-randomImage = document.querySelector('.poster-img')
+var randomTitle = document.querySelector('h1')
+var randomQuote = document.querySelector('h3')
+var randomImage = document.querySelector('.poster-img')
 
 
 
@@ -107,6 +107,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+// ADD EVENT LISTENERS
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -117,7 +118,7 @@ function getRandomIndex(array) {
 //this is returning an index position, but we want 
 //it to return the actual string/value
 
-//do we need a "window" event listener?
+//do we need a "window" event listener? ->YES
 
 var randomTitle = getRandomIndex(titles)
 var randomQuote = getRandomIndex(quotes)
