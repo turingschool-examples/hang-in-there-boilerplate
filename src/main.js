@@ -7,6 +7,9 @@ var makeYourOwnPosterButton = document.querySelector('.show-form')
 var showAnotherRandomPosterButton = document.querySelector('.show-random')
 var mainPosterView = document.querySelector('.main-poster')
 var viewFormPage = document.querySelector('.poster-form')
+var viewSavedPostersPage = document.querySelector('.saved-posters')
+var savedPosterButton = document.querySelector('.show-saved')
+var backToMainButton = document.querySelector('.back-to-main')
 
 var images = [
   "./assets/bees.jpg",
@@ -116,7 +119,9 @@ window.addEventListener("load", randomTitle )
 window.addEventListener("load", randomQuote)
 makeYourOwnPosterButton.addEventListener('click', viewForm)
 showAnotherRandomPosterButton.addEventListener('click', showRandomPoster)
-console.log(createPoster)
+savedPosterButton.addEventListener('click', viewSavedPoster)
+backToMainButton.addEventListener('click', viewMainPage)
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
@@ -160,7 +165,16 @@ function viewForm(){
   console.log("FIRE")
 }
 
+function viewSavedPoster() {
+  viewSavedPostersPage.classList.remove('hidden')
+  mainPosterView.classList.add('hidden')
+}
 
+function viewMainPage() {
+  mainPosterView.classList.remove('hidden')
+  backToMainButton.classList.add('hidden')
+  viewSavedPostersPage.classList.add('hidden')
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
