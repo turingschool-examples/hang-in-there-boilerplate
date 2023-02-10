@@ -157,10 +157,54 @@ const show = (element) => {
   element.classList.remove("hidden");
 }
 
+// on html files for this lines 22-36
+var selfImageInput = document.querySelector('#poster-image-url')
+var selfTitleInput = document.querySelector('#poster-title')
+var selfQuoteInput = document.querySelector('#poster-quote')
+var showOwnPoster = document.querySelector('.make-poster')
+//console.log(selfImageUrl, selfPosterTitle, selfPosterQuote, showOwnPoster, "line 165")
+
+showOwnPoster.addEventListener('click', function(){
+  createOwnPoster(event)
+})
+// this function should be able to register the inputs
+// these inputs then should be registered into a class!
+//'parameters in poster insinuation should be the new variables set
+// then inside of our Current poster class there should be 
+// variables equal to the parameters set?
+// the left value from 180 on = the 'linked' value
+function goHome() {
+  showMain.classList.remove('hidden')
+  posterForm.classList.add('hidden')
+  savedPoster.classList.add('hidden')
+}
+function createOwnPoster(event) {
+  event.preventDefault() 
+var userSelfImage = selfImageInput.value
+var userSelfTitle = selfTitleInput.value
+var userSelfQuote = selfQuoteInput.value
+  
+currentPoster = new Poster(userSelfImage, userSelfTitle, userSelfQuote)
+var selfImage = document.querySelector('.poster-img')
+var selfTitle = document.querySelector('.poster-title')
+var selfQuote = document.querySelector('.poster-quote')
+
+selfImage.src = currentPoster.imageURL
+selfTitle.innerText = currentPoster.title
+selfQuote.innerText = currentPoster.quote
+
+images.push(userSelfImage)
+titles.push(userSelfTitle)
+quotes.push(userSelfQuote)
+returnToMain()
+}
 
 
 
-classList.add
+
+
+
+
 
 // (we've provided one for you to get you started)!
 
