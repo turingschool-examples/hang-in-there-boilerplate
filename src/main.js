@@ -135,6 +135,13 @@ backToMainButton.addEventListener("click", backToMain);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 
+const hide = (element) => {
+  element.classList.add('hidden');
+}
+const show = (element) => {
+  element.classList.remove('hidden');
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -169,22 +176,21 @@ function getRandomPoster()  {
 }
 
 function switchToForm() {
-  mainPosterPage.classList.add("hidden");
-  posterFormPage.classList.remove("hidden");
+  hide(mainPosterPage);
+  show(posterFormPage);
 }
 
 function switchToMain() {
-  posterFormPage.classList.add("hidden");
-  mainPosterPage.classList.remove("hidden");
+  hide(posterFormPage);
+  show(mainPosterPage);
 }
 
 function switchToSaved()  {
-  mainPosterPage.classList.add("hidden");
-  savedPostersPage.classList.remove("hidden");
+  hide(mainPosterPage);
+  show(savedPostersPage);
 }
 
 function backToMain() {
-  savedPostersPage.classList.add("hidden");
-  mainPosterPage.classList.remove("hidden");
+  hide(savedPostersPage);
+  show(mainPosterPage);
 }
-
