@@ -4,8 +4,9 @@ var quote = document.querySelector('.poster-quote');
 var title = document.querySelector('.poster-title');
 var button = document.querySelector('.show-random');
 var makeButton = document.querySelector('.show-form');
-var posterForm = document.querySelector('.poster-form')
-var mainPoster = document.querySelector('.main-poster')
+var posterForm = document.querySelector('.poster-form');
+var mainPoster = document.querySelector('.main-poster');
+var neverMind = document.querySelector('.show-main')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -114,6 +115,7 @@ poster.src = images[getRandomIndex(images)];
 // event listeners go here 👇
 button.addEventListener('click', showRandomPoster);
 makeButton.addEventListener('click', showForm)
+neverMind.addEventListener('click', hideForm)
 
 function hide (element)  {
   element.classList.add("hidden");
@@ -127,6 +129,10 @@ function showForm() {
   show(posterForm)
  
   }
+function hideForm(){
+  hide(posterForm)
+  show(mainPoster)
+}
 //event.prevent default
 
 
