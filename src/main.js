@@ -133,9 +133,9 @@ var quotes = [
 // Change back to the main poster view (hiding the form view again)
 // Use the new instance of the Poster class (part of your data model) to display the newly created poster image, title, and quote in the main view on the DOM
 
-// var formImage = document.querySelector('#poster-image-url');
-// var formTitle = document.querySelector('#poster-title');
-// var formQuote = document.querySelector('#poster-quote');
+var formImage = document.querySelector('#poster-image-url');
+var formTitle = document.querySelector('#poster-title');
+var formQuote = document.querySelector('#poster-quote');
 
 var savedPosters = [];
 var currentPoster;
@@ -148,6 +148,7 @@ viewSavedButton.addEventListener('click',viewSavedPosters);
 showMainButton.addEventListener('click',viewMainPage );
 backToMainButton.addEventListener('click',viewMainPage);
 showMyPosterButton.addEventListener('click', showMyPoster);
+savePosterButton.addEventListener('click', saveMainPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -155,16 +156,38 @@ showMyPosterButton.addEventListener('click', showMyPoster);
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 // In process function(s)
-//function showMyPoster(){
-//return "arg"
-// userNewPoster = new Poster(formImage.value, formTitle.value, formQuote.value) 
-// console.log('userPoster', userNewPoster)
-//}
+
+function saveMainPoster() {
+if(!savedPosters.includes(currentPoster)){
+  savedPosters.push(currentPoster)
+  console.log(savedPosters)
+}
+}
+
+  function showMyPoster(){
+    event.preventDefault()
+    currentPoster = new Poster(formImage.value, formTitle.value, formQuote.value)
+    if(!images.includes(currentPoster.imageURL)){
+        images.push(currentPoster.imageURL)
+    }
+    if(!quotes.includes(currentPoster.quote)){
+      quotes.push(currentPoster.quote)
+    }
+    if(!titles.includes(currentPoster.title)){
+      titles.push(currentPoster.title)
+    }
+    viewMainPage()
+    title.innerText = currentPoster.title;
+    img.src = currentPoster.imageURL;
+    quote.innerText = currentPoster.quote;
+    }
 
 // Button Functions
 
 function createRandomPoster() {
+  console.log(event.target)
   currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(images)]);
 
   title.innerText = currentPoster.title;
