@@ -3,12 +3,17 @@ var randomTitle = document.querySelector('h1')
 var randomQuote = document.querySelector('h3')
 var randomImage = document.querySelector('.poster-img')
 
+var inputTitle = document.querySelector('#poster-title')
+var inputQuote = document.querySelector('#poster-quote')
+var inputImage = document.querySelector('#poster-image-url')
+
 var buttonSave = document.querySelector('.save-poster');
 var buttonShow = document.querySelector('.show-saved');
 var buttonRandom = document.querySelector('.show-random');
 var buttonMake = document.querySelector('.show-form');
 var buttonBackFromSaved = document.querySelector('.back-to-main');
 var buttonBackFromMake = document.querySelector('.show-main');
+var buttonMakePoster = document.querySelector('.make-poster');
 
 var mainPage = document.querySelector('.main-poster');
 var makePage = document.querySelector('.poster-form');
@@ -118,13 +123,13 @@ var currentPoster;
 // event listeners go here 👇
 
 window.addEventListener('load', loadRandomPoster);
-// buttonSave.addEventListener('click', savePoster);
+//buttonSave.addEventListener('click', savePoster);
 buttonShow.addEventListener('click', showSaved);
 buttonRandom.addEventListener('click', loadRandomPoster);
 buttonMake.addEventListener('click', showMake);
 buttonBackFromSaved.addEventListener('click', backToMain);
 buttonBackFromMake.addEventListener('click', backToMain);
-//show poster button
+buttonMakePoster.addEventListener('click', loadCustomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -132,6 +137,24 @@ buttonBackFromMake.addEventListener('click', backToMain);
 function getRandomIndex(array) {
   var arrayIndex = Math.floor(Math.random() * array.length);
   return array[arrayIndex];
+};
+
+function loadCustomInstance() {
+  currentPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value);
+};
+
+function sendCustomPosterToHtml() {
+  inputImage.src = currentPoster.imageURL;
+  inputTitle.innerText = currentPoster.title;
+  inputQuote.innerText = currentPoster.quote;
+};
+
+
+function loadCustomPoster() {
+  loadCustomInstance();
+  sendCustomPosterToHtml();
+  mainPage.classList.remove('hidden');
+  makePage.classList.add('hidden');
 };
 
 function loadPosterInstance() {
@@ -149,6 +172,7 @@ function loadRandomPoster() {
   sendPosterToHtml();
 };
 
+
 function backToMain() {
   mainPage.classList.remove('hidden'); 
   
@@ -162,8 +186,6 @@ function backToMain() {
   loadRandomPoster();
 };
 
-
-
 // function savePoster() {};
 // push the currentPoster into the array of savedPosters
 
@@ -176,14 +198,14 @@ function showSaved() {
 function showMake() {
   mainPage.classList.add('hidden');
   makePage.classList.remove('hidden');
-
 };
 
-// showMake()
-// need query selector, event listener, handler function
+
+
+
+
 // handler function will be similar to below:
-  // randomImage.src = currentPoster.imageURL;
-  // randomTitle.innerText = currentPoster.title;
-  // randomQuote.innerText = currentPoster.quote;
+  
 //reassign event listeners/handlers from "show my poster button to
 //the "take me back button" 
+//push new input values into respective arrays
