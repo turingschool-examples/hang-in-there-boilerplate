@@ -14,7 +14,8 @@ var makePosterBtn = document.querySelector('.show-form');
 var backToMainBtn = document.querySelector('.back-to-main');
 var takeMeBackBtn = document.querySelector('.show-main');
 var savePosterViewBtn = document.querySelector('.show-saved');
-var showUserPosterBtn = document.querySelector('.make-poster')
+var showUserPosterBtn = document.querySelector('.make-poster');
+var saveThisPosterBtn = document.querySelector('.save-poster');
 
 var userURL = document.querySelector('#poster-image-url')
 var userTitle = document.querySelector('#poster-title')
@@ -37,6 +38,7 @@ showUserPosterBtn.addEventListener('click', function(event) {
   makeMyPoster()
   event.preventDefault()
 })
+saveThisPosterBtn.addEventListener('click', savePoster);
 
 
 // functions and event handlers go here 👇
@@ -64,7 +66,20 @@ quotes.push(userQuote.value)
 changeViewToHome()
 addPosterToDom()
 }
-
+function savePoster(){
+  if(!savedPosters.includes(currentPoster)){
+    savedPosters.push(currentPoster);
+    changeHTML()
+  }
+}
+function changeHTML(){
+  posterGrid.innerHTML +=
+  `<section class="mini-poster">
+      <img class="poster-img" src="${currentPoster.imageURL}" alt="nothin' to see here">
+      <h2 class="poster-title">${currentPoster.title}</h2>
+      <h3 class="poster-quote">${currentPoster.quote}</h3>
+  </section>`
+}
 function changeViewToForm(){
 viewForm.classList.remove('hidden');
 viewHome.classList.add('hidden');
