@@ -124,7 +124,7 @@ var currentPoster;
 // event listeners go here 👇
 
 window.addEventListener('load', loadRandomPoster);
-//buttonSave.addEventListener('click', savePoster);
+buttonSave.addEventListener('click', savePoster);
 buttonShow.addEventListener('click', showSaved);
 buttonRandom.addEventListener('click', loadRandomPoster);
 buttonMake.addEventListener('click', showMake);
@@ -192,8 +192,14 @@ function backToMain() {
   loadRandomPoster();
 };
 
-// function savePoster() {};
-// push the currentPoster into the array of savedPosters
+function savePoster() {
+  if (savedPosters.includes(currentPoster) === false) {
+    savedPosters.push(currentPoster)
+  } 
+};
+
+//add functionality that evaluates the object as a duplicate or not
+
 
 function showSaved() {
   mainPage.classList.add('hidden');
@@ -205,3 +211,8 @@ function showMake() {
   mainPage.classList.add('hidden');
   makePage.classList.remove('hidden');
 };
+
+//are there functions that do the same thing that we can combine?
+//add args and params to functions?
+//make default poster if user doesn't input three values
+//debug input fields to clear on page load
