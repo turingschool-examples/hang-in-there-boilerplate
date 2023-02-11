@@ -1,22 +1,26 @@
-// query selector variables go here 👇
-
-
-var random = document.querySelector('.show-random');
-var showFormButton = document.querySelector('.show-form');
-var nevermindButton = document.querySelector('.show-main');
-var backToMainButton = document.querySelector('.back-to-main');
-var hideMain = document.querySelector('.main-poster');
-var form = document.querySelector('.poster-form');
-var showSavedButton = document.querySelector('.show-saved');
-var saved = document.querySelector('.saved-posters');
-var showMyPosterButton = document.querySelector('.make-poster');
-var myOwnPosterImage = document.querySelector('#poster-image-url');
-var myOwnPosterTitle = document.querySelector('#poster-title');
-var myOwnPosterQuote = document.querySelector('#poster-quote');
-var showUpdatedPoster = document.querySelector('.make-poster');
+//mainpage
 var mainImgUrl = document.querySelector('.poster-img');
 var mainTitle = document.querySelector('.poster-title');
 var mainQuote = document.querySelector('.poster-quote');
+var hideMain = document.querySelector('.main-poster');
+
+//buttons 
+var randomButton = document.querySelector('.show-random');
+var showFormButton = document.querySelector('.show-form');
+var nevermindButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var showMyPosterButton = document.querySelector('.make-poster');
+var showSavedButton = document.querySelector('.show-saved');
+var saveThisPosterButton = document.querySelector('.save-poster')
+
+//createyourownposter
+var form = document.querySelector('.poster-form');
+var saved = document.querySelector('.saved-posters');
+var myOwnPosterImage = document.querySelector('#poster-image-url');
+var myOwnPosterTitle = document.querySelector('#poster-title');
+var myOwnPosterQuote = document.querySelector('#poster-quote');
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -120,17 +124,23 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-random.addEventListener('click', randomize);
+randomButton.addEventListener('click', randomize);
 document.addEventListener("DOMContentLoaded",randomize);
 showFormButton.addEventListener('click', formPoster);
 nevermindButton.addEventListener('click',takeMeBack);
 backToMainButton.addEventListener('click',backToMain)
 showSavedButton.addEventListener('click', showSave);
 showMyPosterButton.addEventListener('click',function() {posterShow(event)});
+saveThisPosterButton.addEventListener('click', saveThisPoster);
 // showMyPosterButton.addEventListener('click',hideMainPoster;)
 
-
-
+function saveThisPoster(savePoster) {
+savePoster = new Poster (mainImgUrl, mainTitle, mainQuote) 
+ if (!savedPosters.includes(savePoster))
+ { savedPosters.push(savePoster)
+return savedPosters
+}
+}
 
 
 // functions and event handlers go here 👇
