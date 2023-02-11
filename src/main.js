@@ -18,6 +18,7 @@ var ownTitle = document.querySelector('#poster-title')
 var ownQuote = document.querySelector('#poster-quote')
 var showPosterButton = document.querySelector('.make-poster')
 
+var saveThisPosterButton = document.querySelector('.save-poster')
 
 var images = [
   "./assets/bees.jpg",
@@ -132,6 +133,7 @@ backToMainButton.addEventListener('click', viewMainPage)
 nvmTakeMeBackButton.addEventListener('click', showMainPage)
 showPosterButton.addEventListener('click', ownPosterMainPage)
 
+saveThisPosterButton.addEventListener('click', savePoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -217,6 +219,14 @@ function ownPosterMainPage(event){
   viewFormPage.classList.add('hidden')
   makeYourOwnPosterButton.classList.remove('hidden')
 
+}
+
+//Iteration 3
+//We are going to take the current poster values 
+//and once we click the "save this poster" button
+//we will push all the current poster values into a saved posters empty array
+function savePoster() {
+  
 }
 
 function getRandomIndex(array) {
