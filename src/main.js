@@ -10,7 +10,7 @@ var viewFormPage = document.querySelector('.poster-form')
 var viewSavedPostersPage = document.querySelector('.saved-posters')
 var savedPosterButton = document.querySelector('.show-saved')
 var backToMainButton = document.querySelector('.back-to-main')
-var takeMeBackButton = document.querySelector('.show-main')
+var nvmTakeMeBackButton = document.querySelector('.show-main')
 
 
 var images = [
@@ -123,7 +123,7 @@ makeYourOwnPosterButton.addEventListener('click', viewForm)
 showAnotherRandomPosterButton.addEventListener('click', showRandomPoster)
 savedPosterButton.addEventListener('click', viewSavedPoster)
 backToMainButton.addEventListener('click', viewMainPage)
-takeMeBackButton.addEventListener('click', viewMainPage )
+nvmTakeMeBackButton.addEventListener('click', showMainPage)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -171,14 +171,18 @@ function viewForm(){
 function viewSavedPoster() {
   viewSavedPostersPage.classList.remove('hidden')
   mainPosterView.classList.add('hidden')
+  backToMainButton.classList.remove('hidden')
 }
 
 function viewMainPage() {
   mainPosterView.classList.remove('hidden')
   backToMainButton.classList.add('hidden')
-  viewSavedPostersPage.classList.add('hidden')
-  viewFormPage.classList.add('hidden')
-  makeYourOwnPosterButton.remove('hidden')
+
+}
+
+
+function showMainPage() {
+ 
 }
 
 function getRandomIndex(array) {
