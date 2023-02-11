@@ -134,6 +134,7 @@ document.querySelector('.show-form').addEventListener('click', function() {
 })
 
 document.querySelector('.show-saved').addEventListener('click', function(){
+  deleteSavedPosterHTML() 
   renderSavedPosters()
   document.querySelector('.saved-posters').classList.remove('hidden')
   document.querySelector('.main-poster').classList.add('hidden')
@@ -147,7 +148,6 @@ document.querySelector('.show-main').addEventListener('click', function(){
 document.querySelector('.back-to-main').addEventListener('click', function(){
   document.querySelector('.saved-posters').classList.add('hidden')
   document.querySelector('.main-poster').classList.remove('hidden')
-  deleteSavedPosterHTML() 
 })
 
 document.querySelector('.make-poster').addEventListener('click', function(){
@@ -158,7 +158,6 @@ savedPostersGrid.addEventListener('dblclick', function(event){
   event.target.closest('div').remove()
   savedPosters.splice(event.target.closest('div'), 1)
 })
-
 
 // functions and event handlers go here 👇
 
@@ -182,8 +181,6 @@ function makeSavedPosterHTML(posterInst){
   makeSavedPosterHTML(savedPosters[i])
  }
 
-
-
 function randomPoster() {
   var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
@@ -204,9 +201,9 @@ function addSavedPoster(){
 }
 
 function makeUserPoster(event) {
-  event.preventDefault()
   document.querySelector('.main-poster').classList.remove('hidden')
-  document.querySelector('.show-form').classList.add('hidden')
+  document.querySelector('.poster-form').classList.add('hidden')
+  event.preventDefault()
   var userImage = document.querySelector('#poster-image-url').value
   var userQuote = document.querySelector('#poster-quote').value
   var userTitle = document.querySelector('#poster-title').value
