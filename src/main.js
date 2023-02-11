@@ -175,14 +175,19 @@ function viewSavedPoster() {
 }
 
 function viewMainPage() {
-  mainPosterView.classList.remove('hidden')
-  backToMainButton.classList.add('hidden')
-
+   mainPosterView.classList.remove('hidden')
+   backToMainButton.classList.add('hidden')
+   makeYourOwnPosterButton.classList.add('view')
+   viewFormPage.classList.add('hidden')
 }
 
 
 function showMainPage() {
- 
+ mainPosterView.classList.remove('hidden')
+ backToMainButton.classList.add('hidden')
+ viewFormPage.classList.add('hidden')
+ makeYourOwnPosterButton.classList.remove('hidden')
+ //makeYourOwnPosterButton.classList.add('view')
 }
 
 function getRandomIndex(array) {
