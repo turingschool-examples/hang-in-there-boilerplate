@@ -1,6 +1,3 @@
-// query selector variables go here 👇
-// var Poster = require('./poster')
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -105,6 +102,8 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+// query selector variables go here 👇
+
 var mainPosterImage = document.querySelector('.poster-img');
 var mainPosterTitle = document.querySelector('.poster-title');
 var mainPosterQuote = document.querySelector('.poster-quote');
@@ -117,20 +116,13 @@ savePosterButton.addEventListener('click', function(){
   addSavedPoster()
 })
 
-function addSavedPoster(){
-  if(!savedPosters.includes(currentPoster)){
-    savedPosters.push(currentPoster)
-  }
-}
-
-
 //Event Listeners
 
 window.addEventListener('load', function(){
   randomPoster()
   addRandomPoster()
 })
-// navigation functions
+
 document.querySelector('.show-random').addEventListener('click', function(){
   randomPoster()
   addRandomPoster()
@@ -160,12 +152,28 @@ document.querySelector('.make-poster').addEventListener('click', function(){
 
 } )
 
-// document.querySelector('.save-poster').addEventListener('click', function(){
-//   if (savedPosters.includes(currentPoster.id))
-// })
 
 // functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+
+//make event handler that targets the "saved postsers class"
+
+// function makeSavedPosterHTML(){
+//   //   // create a <article> using document.createElement ('article')or (maybe 'div)
+/// variable  = <<>>A<asdasd> ${currentposter.imageURL} asd<>
+// //   // and append the entire element <img ....>  + miniPosters Class 
+// //   // ...'saved-posters-hidden').appendChild(newDiv)
+// //   //getelementbyID  . appendChild
+// //   // add this function to the page navigation AEL
+// }
+
+// function renderSavedPosters(){
+    /// iterate over the array of saved posters .forEach loop
+  // use our new "show saved poster" function over each one
+// }
+
+// function deleteTargetPoster(E){
+  //find target.ID and delete using that
+// }
 
 function randomPoster() {
   var randomImage = images[getRandomIndex(images)];
@@ -179,6 +187,12 @@ function addRandomPoster() {
   mainPosterTitle.innerText = currentPoster.title
   mainPosterQuote.innerText = currentPoster.quote
 };
+
+function addSavedPoster(){
+  if(!savedPosters.includes(currentPoster)){
+    savedPosters.push(currentPoster)
+  }
+}
 
 function makeUserPoster(event) {
   event.preventDefault()
