@@ -151,37 +151,32 @@ document.querySelector('.back-to-main').addEventListener('click', function(){
 
 document.querySelector('.make-poster').addEventListener('click', function(){
   makeUserPoster(event)
+})
 
-} )
+savedPostersGrid.addEventListener('dblclick', function(event){
+  event.target.closest('article').remove()
+})
 
 
 // functions and event handlers go here 👇
 
-//make event handler that targets the "saved postsers class"
-
 function makeSavedPosterHTML(posterInst){
-  // var emptyTags = document.createElement('article')
   var posterTemplate = `
   <article class="mini-poster">
-  <img src="${posterInst.imageURL}" alt="nothin' to see here">
-  <h2> ${posterInst.title}</h2>
-  <h4> ${posterInst.quote}</h4>
+    <img src="${posterInst.imageURL}" alt="nothin' to see here">
+    <h2> ${posterInst.title}</h2>
+    <h4> ${posterInst.quote}</h4>
   </article>
   `
-  // console.log(posterTemplate)
-  // var newSavedPoster = emptyTags.innerHTML(posterTemplate)
   savedPostersGrid.innerHTML += posterTemplate
 }
 
  function renderSavedPosters(){
   for (var i = 0; i < savedPosters.length; i++)
   makeSavedPosterHTML(savedPosters[i])
-
  }
 
-// function deleteTargetPoster(E){
-  //find target.ID and delete using that
-// }
+
 
 function randomPoster() {
   var randomImage = images[getRandomIndex(images)];
