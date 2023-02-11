@@ -162,15 +162,15 @@ document.querySelector('.make-poster').addEventListener('click', function(){
 function makeSavedPosterHTML(posterInst){
   // var emptyTags = document.createElement('article')
   var posterTemplate = `
-  <article>
-  <img class="mini-poster" src="${posterInst.imageURL}" alt="nothin' to see here">
-  <h1 class="mini-poster">${posterInst.title}</h1>
-  <h3 class="mini-poster">${posterInst.quote}</h3>
+  <article class="mini-poster">
+  <img src="${posterInst.imageURL}" alt="nothin' to see here">
+  <h2> ${posterInst.title}</h2>
+  <h4> ${posterInst.quote}</h4>
   </article>
   `
   // console.log(posterTemplate)
   // var newSavedPoster = emptyTags.innerHTML(posterTemplate)
-  savedPostersGrid.innerHTML = posterTemplate
+  savedPostersGrid.innerHTML += posterTemplate
 }
 
  function renderSavedPosters(){
