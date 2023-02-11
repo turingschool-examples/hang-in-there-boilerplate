@@ -2,7 +2,9 @@
 var img = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
+var savedGrid = document.querySelector('.saved-posters-grid')
 
+// Views
 var mainPosterView = document.querySelector('.main-poster');
 var savedPosterView = document.querySelector('.saved-posters');
 var posterFormView = document.querySelector('.poster-form');
@@ -119,19 +121,6 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-//>>>>>>>>>>>>Iteration 2 Requirements>>>>>>>>>>>>//
-
-
-
-// When the Show My Poster button is clicked, several things will happen:
-// Use the values from the inputs to create a new instance of our Poster class (part of your data model)
-
-// Save the submitted data into the respective arrays (image URL into the images array, etc - all part of your data model) so that future random posters can use the user-created data
-/// 1. Push to  values into titles, quotes, & images arrays 
-//      - push only if new 
-
-// Change back to the main poster view (hiding the form view again)
-// Use the new instance of the Poster class (part of your data model) to display the newly created poster image, title, and quote in the main view on the DOM
 
 var formImage = document.querySelector('#poster-image-url');
 var formTitle = document.querySelector('#poster-title');
@@ -142,11 +131,11 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster);
-showRandomButton.addEventListener('click',createRandomPoster);
-makePosterButton.addEventListener('click',viewMakeYourOwnPoster);
-viewSavedButton.addEventListener('click',viewSavedPosters);
-showMainButton.addEventListener('click',viewMainPage );
-backToMainButton.addEventListener('click',viewMainPage);
+showRandomButton.addEventListener('click', createRandomPoster);
+makePosterButton.addEventListener('click', viewMakeYourOwnPoster);
+viewSavedButton.addEventListener('click', viewSavedPosters);
+showMainButton.addEventListener('click', viewMainPage);
+backToMainButton.addEventListener('click', viewMainPage);
 showMyPosterButton.addEventListener('click', showMyPoster);
 savePosterButton.addEventListener('click', saveMainPoster);
 
@@ -157,32 +146,42 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// In process function(s)
+
+function populateSavedGrid() {
+  savedGrid.innerHTML = '';
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedGrid.innerHTML +=
+      `<article class='mini-poster'>
+      <img src=${savedPosters[i].imageURL}>
+      <h2> ${savedPosters[i].title} </h2>
+      <h4> ${savedPosters[i].quote} </h4>
+      </article>`
+  }
+}
 
 function saveMainPoster() {
-if(!savedPosters.includes(currentPoster)){
-  savedPosters.push(currentPoster)
-  console.log(savedPosters)
-}
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+  }
 }
 
-  function showMyPoster(){
-    event.preventDefault()
-    currentPoster = new Poster(formImage.value, formTitle.value, formQuote.value)
-    if(!images.includes(currentPoster.imageURL)){
-        images.push(currentPoster.imageURL)
-    }
-    if(!quotes.includes(currentPoster.quote)){
-      quotes.push(currentPoster.quote)
-    }
-    if(!titles.includes(currentPoster.title)){
-      titles.push(currentPoster.title)
-    }
-    viewMainPage()
-    title.innerText = currentPoster.title;
-    img.src = currentPoster.imageURL;
-    quote.innerText = currentPoster.quote;
-    }
+function showMyPoster() {
+  event.preventDefault()
+  currentPoster = new Poster(formImage.value, formTitle.value, formQuote.value)
+  if (!images.includes(currentPoster.imageURL)) {
+    images.push(currentPoster.imageURL)
+  }
+  if (!quotes.includes(currentPoster.quote)) {
+    quotes.push(currentPoster.quote)
+  }
+  if (!titles.includes(currentPoster.title)) {
+    titles.push(currentPoster.title)
+  }
+  viewMainPage()
+  title.innerText = currentPoster.title;
+  img.src = currentPoster.imageURL;
+  quote.innerText = currentPoster.quote;
+}
 
 // Button Functions
 
@@ -194,16 +193,18 @@ function createRandomPoster() {
   img.src = currentPoster.imageURL;
   quote.innerText = currentPoster.quote;
 }
- function viewMakeYourOwnPoster() {
+function viewMakeYourOwnPoster() {
   posterFormView.classList.remove('hidden');
   mainPosterView.classList.add('hidden');
   savedPosterView.classList.add('hidden');
 }
 
-function viewSavedPosters(){
+function viewSavedPosters() {
   posterFormView.classList.add('hidden');
   mainPosterView.classList.add('hidden');
   savedPosterView.classList.remove('hidden');
+  populateSavedGrid()
+
 }
 
 function viewMainPage() {
