@@ -3,20 +3,21 @@
 var posterImages = document.querySelector('.poster-img')
 var title = document.querySelector('h1')
 var quote = document.querySelector('h3')
-var makeYourOwnPosterButton = document.querySelector('.show-form')
-var showAnotherRandomPosterButton = document.querySelector('.show-random')
+// Main functionality variables
 var mainPosterView = document.querySelector('.main-poster')
 var viewFormPage = document.querySelector('.poster-form')
 var viewSavedPostersPage = document.querySelector('.saved-posters')
+var showAnotherRandomPosterButton = document.querySelector('.show-random')
+var makeYourOwnPosterButton = document.querySelector('.show-form')
 var savedPosterButton = document.querySelector('.show-saved')
 var backToMainButton = document.querySelector('.back-to-main')
 var nvmTakeMeBackButton = document.querySelector('.show-main')
-
-
+// Make your own poster varibles
 var ownPosterImages = document.querySelector('#poster-image-url')
 var ownTitle = document.querySelector('#poster-title')
 var ownQuote = document.querySelector('#poster-quote')
 var showPosterButton = document.querySelector('.make-poster')
+
 
 var images = [
   "./assets/bees.jpg",
@@ -148,13 +149,11 @@ function randomPoster(){
 
 
 function randomTitle() {
-  // createTitle()
   title.innerText =  (titles[getRandomIndex(titles)])
 } 
 
 
 function randomQuote() {
-  // createQuote()
   quote.innerText = (quotes[getRandomIndex(quotes)])
 }
 
@@ -172,8 +171,6 @@ function viewForm(){
   mainPosterView.classList.add('hidden')
   viewFormPage.classList.remove('hidden')
   viewSavedPostersPage.classList.add('hidden')
-  console.log("FIRE")
-  console.log(ownTitle)
 }
 
 function viewSavedPoster() {
@@ -195,7 +192,6 @@ function showMainPage() {
  backToMainButton.classList.add('hidden')
  viewFormPage.classList.add('hidden')
  makeYourOwnPosterButton.classList.remove('hidden')
- //makeYourOwnPosterButton.classList.add('view')
 }
 
 // Iteration 2
@@ -209,7 +205,6 @@ function ownPoster(event){
   posterImages.src = currentPoster.imageURL
   ownTitle.innerText = currentPoster.title
   ownQuote.innerText = currentPoster.quote
-  console.log(ownTitle.value, ownQuote.value)
 }
 
 function ownPosterMainPage(event){
