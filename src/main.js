@@ -147,6 +147,7 @@ document.querySelector('.show-main').addEventListener('click', function(){
 document.querySelector('.back-to-main').addEventListener('click', function(){
   document.querySelector('.saved-posters').classList.add('hidden')
   document.querySelector('.main-poster').classList.remove('hidden')
+  deleteSavedPosterHTML() 
 })
 
 document.querySelector('.make-poster').addEventListener('click', function(){
@@ -160,6 +161,10 @@ savedPostersGrid.addEventListener('dblclick', function(event){
 
 
 // functions and event handlers go here 👇
+
+function deleteSavedPosterHTML() {
+  savedPostersGrid.innerHTML = ''
+}
 
 function makeSavedPosterHTML(posterInst){
   var posterTemplate = `
