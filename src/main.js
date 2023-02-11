@@ -198,19 +198,24 @@ function savePoster() {
   } 
 };
 
-//add functionality that evaluates the object as a duplicate or not
-
-
 function showSaved() {
   mainPage.classList.add('hidden');
   savedPage.classList.remove('hidden');
-  //unhide array of saved posters
+  // //unhide array of saved posters
+  // for(var i = 0; i < savedPosters.length; i++){
+  //   //currentPoster.src = savedPosters[i];}
+  //   console.log(savedPosters[i]);
+  //check the thread of sarahs work in slack
 };
 
 function showMake() {
   mainPage.classList.add('hidden');
   makePage.classList.remove('hidden');
 };
+
+// view saved posters: function that sends poster object instances(s) to html and loads poster object instance(s)
+//css that stylistically displays posters on grid
+
 
 //are there functions that do the same thing that we can combine?
 //add args and params to functions?
