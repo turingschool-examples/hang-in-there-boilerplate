@@ -111,6 +111,7 @@ var makeYourOwnButton = document.querySelector('.show-form');
 var showSavedButton = document.querySelector('.show-saved');
 var showRandomButton = document.querySelector('show-random');
 var savePosterButton = document.querySelector('.save-poster');
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
 
 savePosterButton.addEventListener('click', function(){
   addSavedPoster()
@@ -133,6 +134,7 @@ document.querySelector('.show-form').addEventListener('click', function() {
 })
 
 document.querySelector('.show-saved').addEventListener('click', function(){
+  renderSavedPosters()
   document.querySelector('.saved-posters').classList.remove('hidden')
   document.querySelector('.main-poster').classList.add('hidden')
 })
@@ -157,19 +159,25 @@ document.querySelector('.make-poster').addEventListener('click', function(){
 
 //make event handler that targets the "saved postsers class"
 
-// function makeSavedPosterHTML(){
-//   //   // create a <article> using document.createElement ('article')or (maybe 'div)
-/// variable  = <<>>A<asdasd> ${currentposter.imageURL} asd<>
-// //   // and append the entire element <img ....>  + miniPosters Class 
-// //   // ...'saved-posters-hidden').appendChild(newDiv)
-// //   //getelementbyID  . appendChild
-// //   // add this function to the page navigation AEL
-// }
+function makeSavedPosterHTML(posterInst){
+  // var emptyTags = document.createElement('article')
+  var posterTemplate = `
+  <article>
+  <img class="mini-poster" src="${posterInst.imageURL}" alt="nothin' to see here">
+  <h1 class="mini-poster">${posterInst.title}</h1>
+  <h3 class="mini-poster">${posterInst.quote}</h3>
+  </article>
+  `
+  // console.log(posterTemplate)
+  // var newSavedPoster = emptyTags.innerHTML(posterTemplate)
+  savedPostersGrid.innerHTML = posterTemplate
+}
 
-// function renderSavedPosters(){
-    /// iterate over the array of saved posters .forEach loop
-  // use our new "show saved poster" function over each one
-// }
+ function renderSavedPosters(){
+  for (var i = 0; i < savedPosters.length; i++)
+  makeSavedPosterHTML(savedPosters[i])
+
+ }
 
 // function deleteTargetPoster(E){
   //find target.ID and delete using that
