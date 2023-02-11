@@ -1,8 +1,5 @@
 // query selector variables go here 👇
-// var button = document.querySelector('.save-poster');
-// var randomImgs = document.querySelector("img")
-// var posterImages = document.querySelector('.poster-img');
-// var caption = document.querySelector('.caption');
+
 
 var random = document.querySelector('.show-random');
 var showFormButton = document.querySelector('.show-form');
@@ -12,6 +9,14 @@ var hideMain = document.querySelector('.main-poster');
 var form = document.querySelector('.poster-form');
 var showSavedButton = document.querySelector('.show-saved');
 var saved = document.querySelector('.saved-posters');
+var showMyPosterButton = document.querySelector('.make-poster');
+var myOwnPosterImage = document.querySelector('#poster-image-url');
+var myOwnPosterTitle = document.querySelector('#poster-title');
+var myOwnPosterQuote = document.querySelector('#poster-quote');
+var showUpdatedPoster = document.querySelector('.make-poster');
+var mainImgUrl = document.querySelector('.poster-img');
+var mainTitle = document.querySelector('.poster-title');
+var mainQuote = document.querySelector('.poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -121,15 +126,11 @@ showFormButton.addEventListener('click', formPoster);
 nevermindButton.addEventListener('click',takeMeBack);
 backToMainButton.addEventListener('click',backToMain)
 showSavedButton.addEventListener('click', showSave);
+showMyPosterButton.addEventListener('click',function() {posterShow(event)});
+// showMyPosterButton.addEventListener('click',hideMainPoster;)
 
 
 
-  
-  // Use the input values to update the poster elements
-  // ...
-
-
-// your code here });
 
 
 // functions and event handlers go here 👇
@@ -170,7 +171,6 @@ function showSave(){
 function backToMain() {
   hideMain.classList.remove('hidden')
   saved.classList.add('hidden')
-  
 }
 
 function takeMeBack(){
@@ -178,10 +178,29 @@ function takeMeBack(){
   hideMain.classList.remove('hidden');
 }
 
+function posterShow(event) {
+  event.preventDefault();
+  var userImageUrl = myOwnPosterImage.value;
+  var userTitle = myOwnPosterTitle.value;
+  var userQuote = myOwnPosterQuote.value;
+
+  currentPoster = new Poster (userImageUrl, userTitle, userQuote) 
+
+  mainImgUrl.src = currentPoster.imageURL
+  mainTitle.innerText = currentPoster.title
+  mainQuote.innerText = currentPoster.quote
+
+  images.push(userImageUrl)
+  titles.push(userTitle)
+  quotes.push(userQuote)
+
+  backToMain()
+}
 
 
 
 
-// function saveImg(currentPoster, savedPosters) {
-//   currentPoster.push(savedPosters)
-// }
+
+
+
+
