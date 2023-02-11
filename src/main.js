@@ -193,7 +193,9 @@ function backToMain() {
 };
 
 function savePoster() {
-  savedPosters.push(currentPoster)
+  if (savedPosters.includes(currentPoster) === false) {
+    savedPosters.push(currentPoster)
+  } 
 };
 
 //add functionality that evaluates the object as a duplicate or not
@@ -213,3 +215,4 @@ function showMake() {
 //are there functions that do the same thing that we can combine?
 //add args and params to functions?
 //make default poster if user doesn't input three values
+//debug input fields to clear on page load
