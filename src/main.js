@@ -129,7 +129,7 @@ showAnotherRandomPosterButton.addEventListener('click', showRandomPoster)
 savedPosterButton.addEventListener('click', viewSavedPoster)
 backToMainButton.addEventListener('click', viewMainPage)
 nvmTakeMeBackButton.addEventListener('click', showMainPage)
-showPosterButton.addEventListener('click', ownPoster)
+showPosterButton.addEventListener('click', ownPosterMainPage)
 
 
 // functions and event handlers go here 👇
@@ -201,18 +201,27 @@ function showMainPage() {
 // Iteration 2
 
 function ownPoster(event){
-  event.preventDefault()
-  currentPoster = new Poster (inputImage.value, ownTitle.value, ownQuote.value )
   
-  images.push(inputImage.value)
+  currentPoster = new Poster (ownPosterImages.value, ownTitle.value, ownQuote.value )
+  images.push(ownPosterImages.value)
   titles.push(ownTitle.value)
   quotes.push(ownQuote.value)
-  viewFormPage.classList.remove('view')
   posterImages.src = currentPoster.imageURL
   ownTitle.innerText = currentPoster.title
   ownQuote.innerText = currentPoster.quote
-  
-  console.log(ownTitle.value)
+  console.log(ownTitle.value, ownQuote.value)
+}
+
+function ownPosterMainPage(event){
+  event.preventDefault()
+  ownPoster()
+  posterImages.src = currentPoster.imageURL
+  title.innerText = currentPoster.title
+  quote.innerText = currentPoster.quote
+  mainPosterView.classList.remove('hidden')
+  viewFormPage.classList.add('hidden')
+  makeYourOwnPosterButton.classList.remove('hidden')
+
 }
 
 function getRandomIndex(array) {
