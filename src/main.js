@@ -16,6 +16,10 @@ var formPosterPage = document.querySelector('.poster-form');
 var mainPosterPage = document.querySelector('.main-poster');
 var savedPosterPage = document.querySelector('.saved-posters');
 
+var userPosterImage = document.querySelector('#poster-image-url');
+var userPosterTitle = document.querySelector('#poster-title');
+var userPosterQuote = document.querySelector('#poster-quote');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -125,6 +129,7 @@ showFormButton.addEventListener('click', showPosterPage)
 takeMeBackButton.addEventListener('click', showMainPage)
 showSavedButton.addEventListener('click', showSavedPosters)
 backToMainButton.addEventListener('click', returnMainPage)
+showMyPosterButton.addEventListener('click', showUserPoster)
 // showMyPosterButton.addEventListener('click', )
 
 // functions and event handlers go here 👇
@@ -171,3 +176,13 @@ function returnMainPage() {
   mainPosterPage.classList.remove("hidden");
 }
 
+function pushUserInfo() {
+  images.push(userPosterImage[value]);
+  quotes.push(userPosterQuote[value]);
+  titles.push(userPosterTitle[value]);
+}
+
+function showUserPoster() {
+  currentPoster = new Poster(userPosterImage[value], userPosterQuote[value], userPosterTitle[value])
+
+}
