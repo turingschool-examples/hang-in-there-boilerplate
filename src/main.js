@@ -176,13 +176,15 @@ function returnMainPage() {
   mainPosterPage.classList.remove("hidden");
 }
 
-function pushUserInfo() {
-  images.push(userPosterImage[value]);
-  quotes.push(userPosterQuote[value]);
-  titles.push(userPosterTitle[value]);
-}
-
-function showUserPoster() {
-  currentPoster = new Poster(userPosterImage[value], userPosterQuote[value], userPosterTitle[value])
-
+function showUserPoster(event) {
+  currentPoster = new Poster(userPosterImage.value, 
+     userPosterTitle.value, userPosterQuote.value);
+    currentTitle.innerText = currentPoster.title;
+    currentImage.src = currentPoster.imageURL;
+    currentQuote.innerText = currentPoster.quote;
+    images.push(userPosterImage.value);
+    quotes.push(userPosterQuote.value);
+    titles.push(userPosterTitle.value);
+    event.preventDefault();
+    showMainPage();
 }
