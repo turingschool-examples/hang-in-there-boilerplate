@@ -2,6 +2,7 @@
 var titleLocation = document.querySelector('h1')
 var quoteLocation = document.querySelector('h3')
 var imageLocation = document.querySelector('.poster-img')
+// add query selector for saved-posters view to be able to display them
 
 var inputTitle = document.querySelector('#poster-title')
 var inputQuote = document.querySelector('#poster-quote')
@@ -178,43 +179,52 @@ function loadRandomPoster() {
   sendPosterToHtml();
 };
 
-
 function backToMain() {
   mainPage.classList.remove('hidden'); 
   
   if (!makePage.classList.contains('hidden')) {
     makePage.classList.add('hidden');
-  }
+  };
   if (!savedPage.classList.contains('hidden')) {
     savedPage.classList.add('hidden');
-  } 
+  };
 
   loadRandomPoster();
 };
 
 function savePoster() {
-  if (savedPosters.includes(currentPoster) === false) {
+  if (savedPosters.length === 0) {
     savedPosters.push(currentPoster)
-  } 
+  };
+    // For Moop thru savedPoster array
+    // for each iteration, can we check all 3 properties
+    // against currentPoster?
+  for (var i = 0; i < savedPosters.length; i++) {
+    // console.log(savedPosters[i]);
+
+    if (savedPosters[i].imageURL !== currentPoster.imageURL && savedPosters[i].title !== currentPoster.title && savedPosters[i].quote !== currentPoster.quote) {
+      savedPosters.push(currentPoster);
+    };
+  };
 };
 
 function showSaved() {
   mainPage.classList.add('hidden');
   savedPage.classList.remove('hidden');
-  // //unhide array of saved posters
+  // unhide array of saved posters
   // for(var i = 0; i < savedPosters.length; i++){
   //   //currentPoster.src = savedPosters[i];}
   //   console.log(savedPosters[i]);
   //check the thread of sarahs work in slack
+
+  // view saved posters: function that sends poster object instances(s) to html and loads poster object instance(s)
+  //css that stylistically displays posters on grid
 };
 
 function showMake() {
   mainPage.classList.add('hidden');
   makePage.classList.remove('hidden');
 };
-
-// view saved posters: function that sends poster object instances(s) to html and loads poster object instance(s)
-//css that stylistically displays posters on grid
 
 
 //are there functions that do the same thing that we can combine?
