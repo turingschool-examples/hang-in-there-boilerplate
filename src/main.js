@@ -11,10 +11,12 @@ var showFormButton = document.querySelector('.show-form');
 var showMyPosterButton = document.querySelector('.make-poster');
 var takeMeBackButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+var saveThisPosterButton = document.querySelector('.save-poster');
 
 var formPosterPage = document.querySelector('.poster-form');
 var mainPosterPage = document.querySelector('.main-poster');
 var savedPosterPage = document.querySelector('.saved-posters');
+var savedPosterGrid = document.querySelector('.saved-posters-grid');
 
 var userPosterImage = document.querySelector('#poster-image-url');
 var userPosterTitle = document.querySelector('#poster-title');
@@ -130,6 +132,7 @@ takeMeBackButton.addEventListener('click', showMainPage)
 showSavedButton.addEventListener('click', showSavedPosters)
 backToMainButton.addEventListener('click', returnMainPage)
 showMyPosterButton.addEventListener('click', showUserPoster)
+saveThisPosterButton.addEventListener('click', saveThisPoster)
 // showMyPosterButton.addEventListener('click', )
 
 // functions and event handlers go here 👇
@@ -187,4 +190,10 @@ function showUserPoster(event) {
     titles.push(userPosterTitle.value);
     event.preventDefault();
     showMainPage();
+}
+
+function saveThisPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+  }
 }
