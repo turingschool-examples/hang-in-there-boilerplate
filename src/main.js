@@ -193,19 +193,14 @@ function backToMain() {
 };
 
 function savePoster() {
-  if (savedPosters.length === 0) {
-    savedPosters.push(currentPoster)
-  };
-    // For Moop thru savedPoster array
-    // for each iteration, can we check all 3 properties
-    // against currentPoster?
   for (var i = 0; i < savedPosters.length; i++) {
-    // console.log(savedPosters[i]);
-
-    if (savedPosters[i].imageURL !== currentPoster.imageURL && savedPosters[i].title !== currentPoster.title && savedPosters[i].quote !== currentPoster.quote) {
-      savedPosters.push(currentPoster);
+    if (savedPosters[i].imageURL === currentPoster.imageURL && savedPosters[i].title === currentPoster.title && savedPosters[i].quote === currentPoster.quote) {
+      alert("Oops, this already exists in your Saved Posters!")
+      return;
     };
   };
+
+  savedPosters.push(currentPoster);
 };
 
 function showSaved() {
