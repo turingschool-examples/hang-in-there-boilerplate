@@ -1,4 +1,4 @@
-// query selector variables go here 👇
+// query selector variables go here :point_down:
 
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
@@ -9,13 +9,19 @@ var randomPosterButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
 var nevermindButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+var showMyPosterButton = document.querySelector('.make-poster');
 
 var mainPosterPage = document.querySelector('.main-poster');
 var posterFormPage = document.querySelector('.poster-form');
 var savedPostersPage = document.querySelector('.saved-posters');
 
+var motivationalTitleInput = document.querySelector('#poster-title');
+var motivationalQuoteInput = document.querySelector('#poster-quote');
+var motivationalImageInput = document.querySelector('#poster-image-url');
 
-// we've provided you with some data to work with 👇
+
+
+// we've provided you with some data to work with :point_down:
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -74,7 +80,7 @@ var titles = [
   "wisdom"
 ];
 var quotes = [
-  "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
+  "Don't downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
   "The one who has confidence gains the confidence of others.",
@@ -101,7 +107,7 @@ var quotes = [
   "It is never too late to be what you might have been.",
   "Happiness often sneaks in through a door you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
-  "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
+  "Never limit yourself because of others' limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
   "Let us make our future now, and let us make our dreams tomorrow's reality.",
   "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
@@ -114,7 +120,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-var currentPoster;
+var currentPoster 
 var savedPosters = [];
 
 
@@ -123,16 +129,18 @@ quote.innerText = (getRandomQuote(quotes))
 image.src = (getRandomImage(images))
 
 
-// event listeners go here 👇
+// event listeners go here :point_down:
 
 randomPosterButton.addEventListener("click", getRandomPoster);
 makePosterButton.addEventListener("click", switchToForm);
 nevermindButton.addEventListener("click", switchToMain);
 savedPostersButton.addEventListener("click", switchToSaved);
 backToMainButton.addEventListener("click", backToMain);
+showMyPosterButton.addEventListener("click", function(){createPoster(event)});
 
 
-// functions and event handlers go here 👇
+
+// functions and event handlers go here :point_down:
 // (we've provided one for you to get you started)!
 
 const hide = (element) => {
@@ -193,4 +201,19 @@ function switchToSaved()  {
 function backToMain() {
   hide(savedPostersPage);
   show(mainPosterPage);
+}
+
+function createPoster(event) {
+  event.preventDefault()
+  var userImageURL = motivationalImageInput.value;
+  var userTitle = motivationalTitleInput.value;
+  var userQuote = motivationalQuoteInput.value;
+  currentPoster = new Poster (userImageURL, userTitle, userQuote);
+  title.innerText = currentPoster.title;
+  quote.innerText = currentPoster.quote;
+  image.src = currentPoster.imageURL;
+  images.push(userImageURL);
+  titles.push(userTitle);
+  quotes.push(userQuote);
+  switchToMain();
 }
