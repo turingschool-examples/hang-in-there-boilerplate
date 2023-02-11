@@ -13,6 +13,11 @@ var backToMainButton = document.querySelector('.back-to-main')
 var nvmTakeMeBackButton = document.querySelector('.show-main')
 
 
+var ownPosterImages = document.querySelector('#poster-image-url')
+var ownTitle = document.querySelector('#poster-title')
+var ownQuote = document.querySelector('#poster-quote')
+var showPosterButton = document.querySelector('.make-poster')
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -124,6 +129,8 @@ showAnotherRandomPosterButton.addEventListener('click', showRandomPoster)
 savedPosterButton.addEventListener('click', viewSavedPoster)
 backToMainButton.addEventListener('click', viewMainPage)
 nvmTakeMeBackButton.addEventListener('click', showMainPage)
+showPosterButton.addEventListener('click', ownPoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -164,8 +171,9 @@ function viewForm(){
   makeYourOwnPosterButton.classList.add('hidden')
   mainPosterView.classList.add('hidden')
   viewFormPage.classList.remove('hidden')
-  
+  viewSavedPostersPage.classList.add('hidden')
   console.log("FIRE")
+  console.log(ownTitle)
 }
 
 function viewSavedPoster() {
@@ -188,6 +196,23 @@ function showMainPage() {
  viewFormPage.classList.add('hidden')
  makeYourOwnPosterButton.classList.remove('hidden')
  //makeYourOwnPosterButton.classList.add('view')
+}
+
+// Iteration 2
+
+function ownPoster(event){
+  event.preventDefault()
+  currentPoster = new Poster (inputImage.value, ownTitle.value, ownQuote.value )
+  
+  images.push(inputImage.value)
+  titles.push(ownTitle.value)
+  quotes.push(ownQuote.value)
+  viewFormPage.classList.remove('view')
+  posterImages.src = currentPoster.imageURL
+  ownTitle.innerText = currentPoster.title
+  ownQuote.innerText = currentPoster.quote
+  
+  console.log(ownTitle.value)
 }
 
 function getRandomIndex(array) {
