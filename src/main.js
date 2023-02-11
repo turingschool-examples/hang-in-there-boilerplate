@@ -147,6 +147,7 @@ document.querySelector('.show-main').addEventListener('click', function(){
 document.querySelector('.back-to-main').addEventListener('click', function(){
   document.querySelector('.saved-posters').classList.add('hidden')
   document.querySelector('.main-poster').classList.remove('hidden')
+  deleteSavedPosterHTML() 
 })
 
 document.querySelector('.make-poster').addEventListener('click', function(){
@@ -154,19 +155,24 @@ document.querySelector('.make-poster').addEventListener('click', function(){
 })
 
 savedPostersGrid.addEventListener('dblclick', function(event){
-  event.target.closest('article').remove()
+  event.target.closest('div').remove()
+  savedPosters.splice(event.target.closest('div'), 1)
 })
 
 
 // functions and event handlers go here 👇
 
+function deleteSavedPosterHTML() {
+  savedPostersGrid.innerHTML = ''
+}
+
 function makeSavedPosterHTML(posterInst){
   var posterTemplate = `
-  <article class="mini-poster">
+  <div class="mini-poster" id=${posterInst.id}>
     <img src="${posterInst.imageURL}" alt="nothin' to see here">
     <h2> ${posterInst.title}</h2>
     <h4> ${posterInst.quote}</h4>
-  </article>
+  </div>
   `
   savedPostersGrid.innerHTML += posterTemplate
 }
