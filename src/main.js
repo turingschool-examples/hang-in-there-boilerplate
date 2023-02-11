@@ -3,14 +3,20 @@
 var posterImages = document.querySelector('.poster-img')
 var title = document.querySelector('h1')
 var quote = document.querySelector('h3')
-var makeYourOwnPosterButton = document.querySelector('.show-form')
-var showAnotherRandomPosterButton = document.querySelector('.show-random')
+// Main functionality variables
 var mainPosterView = document.querySelector('.main-poster')
 var viewFormPage = document.querySelector('.poster-form')
 var viewSavedPostersPage = document.querySelector('.saved-posters')
+var showAnotherRandomPosterButton = document.querySelector('.show-random')
+var makeYourOwnPosterButton = document.querySelector('.show-form')
 var savedPosterButton = document.querySelector('.show-saved')
 var backToMainButton = document.querySelector('.back-to-main')
 var nvmTakeMeBackButton = document.querySelector('.show-main')
+// Make your own poster varibles
+var ownPosterImages = document.querySelector('#poster-image-url')
+var ownTitle = document.querySelector('#poster-title')
+var ownQuote = document.querySelector('#poster-quote')
+var showPosterButton = document.querySelector('.make-poster')
 
 
 var images = [
@@ -124,6 +130,8 @@ showAnotherRandomPosterButton.addEventListener('click', showRandomPoster)
 savedPosterButton.addEventListener('click', viewSavedPoster)
 backToMainButton.addEventListener('click', viewMainPage)
 nvmTakeMeBackButton.addEventListener('click', showMainPage)
+showPosterButton.addEventListener('click', ownPosterMainPage)
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -141,13 +149,11 @@ function randomPoster(){
 
 
 function randomTitle() {
-  // createTitle()
   title.innerText =  (titles[getRandomIndex(titles)])
 } 
 
 
 function randomQuote() {
-  // createQuote()
   quote.innerText = (quotes[getRandomIndex(quotes)])
 }
 
@@ -164,8 +170,7 @@ function viewForm(){
   makeYourOwnPosterButton.classList.add('hidden')
   mainPosterView.classList.add('hidden')
   viewFormPage.classList.remove('hidden')
-  
-  console.log("FIRE")
+  viewSavedPostersPage.classList.add('hidden')
 }
 
 function viewSavedPoster() {
@@ -187,7 +192,31 @@ function showMainPage() {
  backToMainButton.classList.add('hidden')
  viewFormPage.classList.add('hidden')
  makeYourOwnPosterButton.classList.remove('hidden')
- //makeYourOwnPosterButton.classList.add('view')
+}
+
+// Iteration 2
+
+function ownPoster(event){
+  
+  currentPoster = new Poster (ownPosterImages.value, ownTitle.value, ownQuote.value )
+  images.push(ownPosterImages.value)
+  titles.push(ownTitle.value)
+  quotes.push(ownQuote.value)
+  posterImages.src = currentPoster.imageURL
+  ownTitle.innerText = currentPoster.title
+  ownQuote.innerText = currentPoster.quote
+}
+
+function ownPosterMainPage(event){
+  event.preventDefault()
+  ownPoster()
+  posterImages.src = currentPoster.imageURL
+  title.innerText = currentPoster.title
+  quote.innerText = currentPoster.quote
+  mainPosterView.classList.remove('hidden')
+  viewFormPage.classList.add('hidden')
+  makeYourOwnPosterButton.classList.remove('hidden')
+
 }
 
 function getRandomIndex(array) {
