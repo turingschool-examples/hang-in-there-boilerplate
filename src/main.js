@@ -213,10 +213,11 @@ function showUserPoster(event) {
 }
 
 function deletePoster(event) {
-  var removePoster = event.target("div").remove;
+  var removePoster = event.target.closest("div");
+  event.target.closest("div").remove();
   for (var i = 0; i < savedPosters.length; i++) {
   if (savedPosters[i].id === removePoster.id){
     savedPosters.splice(i, 1);
     }
-  } alert ('hi')
+  } 
 }
