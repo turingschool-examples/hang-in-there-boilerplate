@@ -21,6 +21,7 @@ var showPosterButton = document.querySelector('.make-poster')
 var saveThisPosterButton = document.querySelector('.save-poster')
 var viewPostersGrid = document.querySelector('.saved-posters-grid')
 
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -160,16 +161,16 @@ function randomTitle() {
 
 function randomQuote() {
   quote.innerText = (quotes[getRandomIndex(quotes)])
+
 }
 
 function showRandomPoster(){
-  //currentPoster = new Poster (titles[getRandomIndex(titles)])
-  //currentPoster = new Poster (images[getRandomIndex(images)])
+  // currentPoster = new Poster (titles.innerText)
+  // currentPoster = new Poster (images[getRandomIndex(images)])
+  // currentPoster = new Poster (quote[getRandomIndex(quote)])
   quote.innerText = (quotes[getRandomIndex(quotes)])
   title.innerText =  (titles[getRandomIndex(titles)])
   posterImages.src = (images[getRandomIndex(images)])
-  //posterImages.src = currentPoster.imageURL
-  currentPoster = new Poster (quote.innerText, title.innerText, posterImages.src)
 }
 
 // Iteration 1 functions
@@ -203,7 +204,7 @@ function showMainPage() {
 
 // Iteration 2
 
-function ownPoster(event){
+function ownPoster(){
   
   currentPoster = new Poster (ownPosterImages.value, ownTitle.value, ownQuote.value )
   images.push(ownPosterImages.value)
@@ -232,20 +233,23 @@ function ownPosterMainPage(event){
 //we will push all the current poster values into a saved posters empty array
 function savePoster() {
   var smallPoster = ''
+  currentPoster = new Poster (posterImages.src, title.innerText, quote.innerText,)
+
   savedPosters.push(currentPoster)
   viewPostersGrid.innerHTML = ''
   for (var i = 0; i < savedPosters.length; i++) {
-    smallPoster =  `<section class="small-poster"id=${savedPosters[i].id}>
+    smallPoster = 
+   `<section class="mini-poster"id=${savedPosters[i].id}>
     <article class="poster">
-      <img class="poster-img" src=${savedPosters[i].imageURL}" alt="nothin' to see here">
+      <img class="poster-img" src=${savedPosters[i].imageURL}>
       <h1 class="poster-title">${savedPosters[i].title}</h1>
       <h3 class="poster-quote">${savedPosters[i].quote}</h3>
     </article>`
     
     viewPostersGrid.innerHTML += smallPoster
-    console.log(currentPoster)
-   
-  }
+    }
+    
+
 
 }
 
