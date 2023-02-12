@@ -9,7 +9,7 @@ var viewFormPage = document.querySelector(".poster-form");
 var viewSavedPostersPage = document.querySelector(".saved-posters");
 var showAnotherRandomPosterButton = document.querySelector(".show-random");
 var makeYourOwnPosterButton = document.querySelector(".show-form");
-var savedPosterButton = document.querySelector(".show-saved");
+var showSavedButton = document.querySelector(".show-saved");
 var backToMainButton = document.querySelector(".back-to-main");
 var nvmTakeMeBackButton = document.querySelector(".show-main");
 // Make your own poster varibles
@@ -125,27 +125,28 @@ var currentPoster;
 
 window.addEventListener("load", loadRandomPoster);
 makeYourOwnPosterButton.addEventListener("click", viewForm);
-showAnotherRandomPosterButton.addEventListener("click", showRandomPoster);
-savedPosterButton.addEventListener("click", viewSavedPoster);
+showAnotherRandomPosterButton.addEventListener("click", loadRandomPoster);
+showSavedButton.addEventListener("click", savePoster);
 backToMainButton.addEventListener("click", viewMainPage);
 nvmTakeMeBackButton.addEventListener("click", showMainPage);
 showPosterButton.addEventListener("click", ownPosterMainPage);
 
-saveThisPosterButton.addEventListener("click", savePoster);
+saveThisPosterButton.addEventListener("click", singleSave);
 
 
 function loadRandomPoster() {
   posterImages.src = images[getRandomIndex(images)];
   title.innerText = titles[getRandomIndex(titles)];
   quote.innerText = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(
+    posterImages.src,
+    title.innerText,
+    quote.innerText
+  )
+  
 }
 
 
-function showRandomPoster() {
-  quote.innerText = quotes[getRandomIndex(quotes)];
-  title.innerText = titles[getRandomIndex(titles)];
-  posterImages.src = images[getRandomIndex(images)];
-}
 
 // Iteration 1 functions
 function viewForm() {
@@ -203,29 +204,27 @@ function ownPosterMainPage(event) {
 }
 
 //Iteration 3
-//We are going to take the current poster values
-//and once we click the "save this poster" button
-//we will push all the current poster values into a saved posters empty array
-function savePoster() {
-  var smallPoster = "";
-  currentPoster = new Poster(
-    posterImages.src,
-    title.innerText,
-    quote.innerText
-  );
-  if (!savedPosters.includes(currentPoster)) {
+
+function singleSave(){
+ if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
+}
 
+
+function savePoster() {
+  viewSavedPoster()
+  var smallPoster = "";
   viewPostersGrid.innerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
-    smallPoster = `<section class="poster"id=${savedPosters[i].id}>
+    smallPoster = 
+  `<section class="mini-poster"id=${savedPosters[i].id}>
     <article class="mini-poster">
       <img class="mini-poster-img" src=${savedPosters[i].imageURL}>
       <h1 class="mini-poster-title">${savedPosters[i].title}</h1>
       <h3 class="mini-poster-quote">${savedPosters[i].quote}</h3>
-    </article>`;
-
+    </article>
+  </section>`;
     viewPostersGrid.innerHTML += smallPoster;
   }
 }
