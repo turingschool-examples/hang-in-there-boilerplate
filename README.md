@@ -21,8 +21,7 @@ To view/run the application on their own machine:
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
 
-![gif of button functionality in the custom poster section]
-(https://giphy.com/gifs/application-5kcgF3CbPYbqaEGpT1)
+![gif of button functionality in the custom poster section] (readme-imgs/App-example.mov)
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
