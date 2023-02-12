@@ -134,6 +134,9 @@ buttonMakePoster.addEventListener('click', function(event) {
   loadCustomPoster();
   event.preventDefault();
 });
+inputImage.addEventListener('input', buttonMakePosterState);
+inputQuote.addEventListener('input', buttonMakePosterState);
+inputTitle.addEventListener('input', buttonMakePosterState);
 
 savedPosterGrid.addEventListener('dblclick', function(event){
   deleteSavedPoster();
@@ -160,7 +163,16 @@ function loadRandomPoster() {
   sendCurrentPosterToHTML();
 };
 
+function buttonMakePosterState() {
+  if (inputImage.value == "" || inputTitle.value == "" || inputQuote.value == "") {
+    buttonMakePoster.disabled = true;
+  } else {
+    buttonMakePoster.disabled = false;
+  }
+}
+
 function loadCustomInstance() {
+
     currentPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value);
 
     images.push(inputImage.value);
@@ -179,6 +191,11 @@ function loadCustomPoster() {
 function showFormPage() {
   mainPage.classList.add('hidden');
   makePage.classList.remove('hidden');
+  buttonMakePoster.disabled = true;
+
+  inputImage.value = "";
+  inputQuote.value = "";
+  inputTitle.value = "";
 };
 
 function backToMain() {
@@ -241,21 +258,3 @@ function deleteSavedPoster() {
 // Complete ReadMe (20 mins)
 // Debug input fields to clear on page load -> if value input is empty, use placeholder string instead (1 hour)
 
-
-  // var inputFieldsAllFilled = true
-  // document.querySelector('.make-poster').addAttribute('disabled')
-
-  // if (inputImage.value == "" || inputTitle.value == "" || inputQuote.value == "") {
-  //   alert("Please enter all fields to continue.")
-  //   document.querySelector('.make-poster').addAttribute('disabled')
-  //   return false
-  // } else if (inputImage.value != "" && inputTitle.value != "" && inputQuote.value != "") {
-  //   document.querySelector('.make-poster').removeAttribute('disabled')
-  //   // document.getElementById('send').disabled = false
-
-  //   currentPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value);
-
-  //   images.push(inputImage.value);
-  //   titles.push(inputTitle.value);
-  //   quotes.push(inputQuote.value);
-  // }
