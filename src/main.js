@@ -129,11 +129,11 @@ window.addEventListener('load', showRandomPoster)
 randomPosterButton.addEventListener('click', showRandomPoster)
 showFormButton.addEventListener('click', showPosterPage)
 takeMeBackButton.addEventListener('click', showMainPage)
-showSavedButton.addEventListener('click', showSavedPosters)
+showSavedButton.addEventListener('click', showSavedGrid)
 backToMainButton.addEventListener('click', returnMainPage)
 showMyPosterButton.addEventListener('click', showUserPoster)
 saveThisPosterButton.addEventListener('click', saveThisPoster)
-// showMyPosterButton.addEventListener('click', )
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -164,6 +164,25 @@ function showPosterPage() {
   formPosterPage.classList.remove("hidden");
 }
 
+function saveThisPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+  }
+}
+
+function showSavedGrid() {
+  savedPosterGrid.innerHTML = ""
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPosterGrid.innerHTML += `<div class = "mini-poster" 
+    id=${savedPosters[i]}>
+    <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
+    <h1>${savedPosters[i].title}</h1>
+    <h3>${savedPosters[i].quote}</h3>`
+
+  }
+  showSavedPosters();
+}
+
 function showSavedPosters() {
   hideMainPage();
   savedPosterPage.classList.remove("hidden");
@@ -190,10 +209,4 @@ function showUserPoster(event) {
     titles.push(userPosterTitle.value);
     event.preventDefault();
     showMainPage();
-}
-
-function saveThisPoster() {
-  if (!savedPosters.includes(currentPoster)) {
-    savedPosters.push(currentPoster)
-  }
 }
