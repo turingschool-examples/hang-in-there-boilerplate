@@ -1,26 +1,25 @@
 // query selector variables go here 👇
 
-var posterImages = document.querySelector('.poster-img')
-var title = document.querySelector('h1')
-var quote = document.querySelector('h3')
+var posterImages = document.querySelector(".poster-img");
+var title = document.querySelector("h1");
+var quote = document.querySelector("h3");
 // Main functionality variables
-var mainPosterView = document.querySelector('.main-poster')
-var viewFormPage = document.querySelector('.poster-form')
-var viewSavedPostersPage = document.querySelector('.saved-posters')
-var showAnotherRandomPosterButton = document.querySelector('.show-random')
-var makeYourOwnPosterButton = document.querySelector('.show-form')
-var savedPosterButton = document.querySelector('.show-saved')
-var backToMainButton = document.querySelector('.back-to-main')
-var nvmTakeMeBackButton = document.querySelector('.show-main')
+var mainPosterView = document.querySelector(".main-poster");
+var viewFormPage = document.querySelector(".poster-form");
+var viewSavedPostersPage = document.querySelector(".saved-posters");
+var showAnotherRandomPosterButton = document.querySelector(".show-random");
+var makeYourOwnPosterButton = document.querySelector(".show-form");
+var savedPosterButton = document.querySelector(".show-saved");
+var backToMainButton = document.querySelector(".back-to-main");
+var nvmTakeMeBackButton = document.querySelector(".show-main");
 // Make your own poster varibles
-var ownPosterImages = document.querySelector('#poster-image-url')
-var ownTitle = document.querySelector('#poster-title')
-var ownQuote = document.querySelector('#poster-quote')
-var showPosterButton = document.querySelector('.make-poster')
+var ownPosterImages = document.querySelector("#poster-image-url");
+var ownTitle = document.querySelector("#poster-title");
+var ownQuote = document.querySelector("#poster-quote");
+var showPosterButton = document.querySelector(".make-poster");
 
-var saveThisPosterButton = document.querySelector('.save-poster')
-var viewPostersGrid = document.querySelector('.saved-posters-grid')
-
+var saveThisPosterButton = document.querySelector(".save-poster");
+var viewPostersGrid = document.querySelector(".saved-posters-grid");
 
 var images = [
   "./assets/bees.jpg",
@@ -40,7 +39,7 @@ var images = [
   "./assets/runner.jpg",
   "./assets/squirrel.jpg",
   "./assets/tiger.jpg",
-  "./assets/turtle.jpg"
+  "./assets/turtle.jpg",
 ];
 var titles = [
   "determination",
@@ -77,7 +76,7 @@ var titles = [
   "smile",
   "trust",
   "understanding",
-  "wisdom"
+  "wisdom",
 ];
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
@@ -117,147 +116,120 @@ var quotes = [
   "If you have good thoughts they will shine out of your face like sunbeams and you will always look lovely.",
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
-  "A champion is defined not by their wins but by how they can recover when they fall."
+  "A champion is defined not by their wins but by how they can recover when they fall.",
 ];
 var savedPosters = [];
 var currentPoster;
 
-
-
-
 // event listeners go here 👇
 
-window.addEventListener("load", randomPoster)
-window.addEventListener("load", randomTitle )
-window.addEventListener("load", randomQuote)
-makeYourOwnPosterButton.addEventListener('click', viewForm)
-showAnotherRandomPosterButton.addEventListener('click', showRandomPoster)
-savedPosterButton.addEventListener('click', viewSavedPoster)
-backToMainButton.addEventListener('click', viewMainPage)
-nvmTakeMeBackButton.addEventListener('click', showMainPage)
-showPosterButton.addEventListener('click', ownPosterMainPage)
+window.addEventListener("load", loadRandomPoster);
+makeYourOwnPosterButton.addEventListener("click", viewForm);
+showAnotherRandomPosterButton.addEventListener("click", showRandomPoster);
+savedPosterButton.addEventListener("click", viewSavedPoster);
+backToMainButton.addEventListener("click", viewMainPage);
+nvmTakeMeBackButton.addEventListener("click", showMainPage);
+showPosterButton.addEventListener("click", ownPosterMainPage);
 
-saveThisPosterButton.addEventListener('click', savePoster)
+saveThisPosterButton.addEventListener("click", savePoster);
 
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 
-function createPoster(){
-  currentPoster = new Poster (images[getRandomIndex(images)])
-  
-}
-
-function randomPoster(){
-  createPoster()
-  posterImages.src = currentPoster.imageURL
-
+function loadRandomPoster() {
+  posterImages.src = images[getRandomIndex(images)];
+  title.innerText = titles[getRandomIndex(titles)];
+  quote.innerText = quotes[getRandomIndex(quotes)];
 }
 
 
-function randomTitle() {
-  title.innerText =  (titles[getRandomIndex(titles)])
-} 
-
-
-function randomQuote() {
-  quote.innerText = (quotes[getRandomIndex(quotes)])
-
-}
-
-function showRandomPoster(){
-  // currentPoster = new Poster (titles.innerText)
-  // currentPoster = new Poster (images[getRandomIndex(images)])
-  // currentPoster = new Poster (quote[getRandomIndex(quote)])
-  quote.innerText = (quotes[getRandomIndex(quotes)])
-  title.innerText =  (titles[getRandomIndex(titles)])
-  posterImages.src = (images[getRandomIndex(images)])
+function showRandomPoster() {
+  quote.innerText = quotes[getRandomIndex(quotes)];
+  title.innerText = titles[getRandomIndex(titles)];
+  posterImages.src = images[getRandomIndex(images)];
 }
 
 // Iteration 1 functions
-function viewForm(){
-  makeYourOwnPosterButton.classList.add('hidden')
-  mainPosterView.classList.add('hidden')
-  viewFormPage.classList.remove('hidden')
-  viewSavedPostersPage.classList.add('hidden')
+function viewForm() {
+  makeYourOwnPosterButton.classList.add("hidden");
+  mainPosterView.classList.add("hidden");
+  viewFormPage.classList.remove("hidden");
+  viewSavedPostersPage.classList.add("hidden");
 }
 
 function viewSavedPoster() {
-  viewSavedPostersPage.classList.remove('hidden')
-  mainPosterView.classList.add('hidden')
-  backToMainButton.classList.remove('hidden')
+  viewSavedPostersPage.classList.remove("hidden");
+  mainPosterView.classList.add("hidden");
+  backToMainButton.classList.remove("hidden");
 }
 
 function viewMainPage() {
-   mainPosterView.classList.remove('hidden')
-   backToMainButton.classList.add('hidden')
-   makeYourOwnPosterButton.classList.add('view')
-   viewFormPage.classList.add('hidden')
+  mainPosterView.classList.remove("hidden");
+  backToMainButton.classList.add("hidden");
+  makeYourOwnPosterButton.classList.add("view");
+  viewFormPage.classList.add("hidden");
 }
 
-
 function showMainPage() {
- mainPosterView.classList.remove('hidden')
- backToMainButton.classList.add('hidden')
- viewFormPage.classList.add('hidden')
- makeYourOwnPosterButton.classList.remove('hidden')
+  mainPosterView.classList.remove("hidden");
+  backToMainButton.classList.add("hidden");
+  viewFormPage.classList.add("hidden");
+  makeYourOwnPosterButton.classList.remove("hidden");
 }
 
 // Iteration 2
 
-function ownPoster(){
-  
-  currentPoster = new Poster (ownPosterImages.value, ownTitle.value, ownQuote.value )
-  images.push(ownPosterImages.value)
-  titles.push(ownTitle.value)
-  quotes.push(ownQuote.value)
-  posterImages.src = currentPoster.imageURL
-  ownTitle.innerText = currentPoster.title
-  ownQuote.innerText = currentPoster.quote
+function ownPoster() {
+  currentPoster = new Poster(
+    ownPosterImages.value,
+    ownTitle.value,
+    ownQuote.value
+  );
+  images.push(ownPosterImages.value);
+  titles.push(ownTitle.value);
+  quotes.push(ownQuote.value);
+  posterImages.src = currentPoster.imageURL;
+  ownTitle.innerText = currentPoster.title;
+  ownQuote.innerText = currentPoster.quote;
 }
 
-function ownPosterMainPage(event){
-  event.preventDefault()
-  ownPoster()
-  posterImages.src = currentPoster.imageURL
-  title.innerText = currentPoster.title
-  quote.innerText = currentPoster.quote
-  mainPosterView.classList.remove('hidden')
-  viewFormPage.classList.add('hidden')
-  makeYourOwnPosterButton.classList.remove('hidden')
-
+function ownPosterMainPage(event) {
+  event.preventDefault();
+  ownPoster();
+  posterImages.src = currentPoster.imageURL;
+  title.innerText = currentPoster.title;
+  quote.innerText = currentPoster.quote;
+  mainPosterView.classList.remove("hidden");
+  viewFormPage.classList.add("hidden");
+  makeYourOwnPosterButton.classList.remove("hidden");
 }
 
 //Iteration 3
-//We are going to take the current poster values 
+//We are going to take the current poster values
 //and once we click the "save this poster" button
 //we will push all the current poster values into a saved posters empty array
 function savePoster() {
-  var smallPoster = ''
-  currentPoster = new Poster (posterImages.src, title.innerText, quote.innerText,)
+  var smallPoster = "";
+  currentPoster = new Poster(
+    posterImages.src,
+    title.innerText,
+    quote.innerText
+  );
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 
-  savedPosters.push(currentPoster)
-  viewPostersGrid.innerHTML = ''
+  viewPostersGrid.innerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
-    smallPoster = 
-   `<section class="mini-poster"id=${savedPosters[i].id}>
-    <article class="poster">
-      <img class="poster-img" src=${savedPosters[i].imageURL}>
-      <h1 class="poster-title">${savedPosters[i].title}</h1>
-      <h3 class="poster-quote">${savedPosters[i].quote}</h3>
-    </article>`
-    
-    viewPostersGrid.innerHTML += smallPoster
-    }
-    
+    smallPoster = `<section class="poster"id=${savedPosters[i].id}>
+    <article class="mini-poster">
+      <img class="mini-poster-img" src=${savedPosters[i].imageURL}>
+      <h1 class="mini-poster-title">${savedPosters[i].title}</h1>
+      <h3 class="mini-poster-quote">${savedPosters[i].quote}</h3>
+    </article>`;
 
-
+    viewPostersGrid.innerHTML += smallPoster;
+  }
 }
-
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-
-
