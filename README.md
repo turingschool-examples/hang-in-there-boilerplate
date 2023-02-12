@@ -8,8 +8,7 @@ Just click this [link](https://devynnem.github.io/really-great-advice/)!!!
 
 ### Preview of App:
 
-
-(Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
+![alt text](https://github.com/devynnem/really-great-advice/blob/main/CreatePosterForm.png?raw=true)
 
 ### Context:
 As we are only two weeks into the Turing program, this project took us approximately 16 hours spread over 5 days. We also did about 6 hours of personal research and practice.

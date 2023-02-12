@@ -113,9 +113,6 @@ var showRandomButton = document.querySelector('show-random');
 var savePosterButton = document.querySelector('.save-poster');
 var savedPostersGrid = document.querySelector('.saved-posters-grid')
 
-savePosterButton.addEventListener('click', function(){
-  addSavedPoster()
-})
 
 //Event Listeners
 
@@ -158,6 +155,11 @@ savedPostersGrid.addEventListener('dblclick', function(event){
   event.target.closest('div').remove()
   savedPosters.splice(event.target.closest('div'), 1)
 })
+
+savePosterButton.addEventListener('click', function(){
+  addSavedPoster()
+})
+
 
 // functions and event handlers go here 👇
 
