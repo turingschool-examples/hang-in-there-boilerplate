@@ -19,6 +19,7 @@ var ownQuote = document.querySelector('#poster-quote')
 var showPosterButton = document.querySelector('.make-poster')
 
 var saveThisPosterButton = document.querySelector('.save-poster')
+var viewPostersGrid = document.querySelector('.saved-posters-grid')
 
 var images = [
   "./assets/bees.jpg",
@@ -121,6 +122,8 @@ var savedPosters = [];
 var currentPoster;
 
 
+
+
 // event listeners go here 👇
 
 window.addEventListener("load", randomPoster)
@@ -160,11 +163,13 @@ function randomQuote() {
 }
 
 function showRandomPoster(){
-  currentPoster = new Poster (titles[getRandomIndex(titles)])
-  currentPoster = new Poster (images[getRandomIndex(images)])
+  //currentPoster = new Poster (titles[getRandomIndex(titles)])
+  //currentPoster = new Poster (images[getRandomIndex(images)])
   quote.innerText = (quotes[getRandomIndex(quotes)])
   title.innerText =  (titles[getRandomIndex(titles)])
-  posterImages.src = currentPoster.imageURL
+  posterImages.src = (images[getRandomIndex(images)])
+  //posterImages.src = currentPoster.imageURL
+  currentPoster = new Poster (quote.innerText, title.innerText, posterImages.src)
 }
 
 // Iteration 1 functions
@@ -226,8 +231,25 @@ function ownPosterMainPage(event){
 //and once we click the "save this poster" button
 //we will push all the current poster values into a saved posters empty array
 function savePoster() {
-  
+  var smallPoster = ''
+  savedPosters.push(currentPoster)
+  viewPostersGrid.innerHTML = ''
+  for (var i = 0; i < savedPosters.length; i++) {
+    smallPoster =  `<section class="small-poster"id=${savedPosters[i].id}>
+    <article class="poster">
+      <img class="poster-img" src=${savedPosters[i].imageURL}" alt="nothin' to see here">
+      <h1 class="poster-title">${savedPosters[i].title}</h1>
+      <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+    </article>`
+    
+    viewPostersGrid.innerHTML += smallPoster
+    console.log(currentPoster)
+   
+  }
+
 }
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
