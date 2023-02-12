@@ -1,18 +1,17 @@
 // query selector variables go here 👇
-var titleLocation = document.querySelector('h1')
-var quoteLocation = document.querySelector('h3')
-var imageLocation = document.querySelector('.poster-img')
-var savedPostersLocation = document.querySelector('.saved-posters-grid')
+var titleDisplay = document.querySelector('h1');
+var quoteDisplay = document.querySelector('h3');
+var imageDisplay = document.querySelector('.poster-img');
+var savedPosterGrid = document.querySelector('.saved-posters-grid');
 
-var inputTitle = document.querySelector('#poster-title')
-var inputQuote = document.querySelector('#poster-quote')
-var inputImage = document.querySelector('#poster-image-url')
-// console.log(inputTitle, inputQuote, inputImage)
+var inputTitle = document.querySelector('#poster-title');
+var inputQuote = document.querySelector('#poster-quote');
+var inputImage = document.querySelector('#poster-image-url');
 
 var buttonSave = document.querySelector('.save-poster');
-var buttonShow = document.querySelector('.show-saved');
+var buttonShowSaved = document.querySelector('.show-saved');
 var buttonRandom = document.querySelector('.show-random');
-var buttonMake = document.querySelector('.show-form');
+var buttonToFormPage = document.querySelector('.show-form');
 var buttonBackFromSaved = document.querySelector('.back-to-main');
 var buttonBackFromMake = document.querySelector('.show-main');
 var buttonMakePoster = document.querySelector('.make-poster');
@@ -126,14 +125,19 @@ var currentPoster;
 
 window.addEventListener('load', loadRandomPoster);
 buttonSave.addEventListener('click', savePoster);
-buttonShow.addEventListener('click', showSaved);
+buttonShowSaved.addEventListener('click', showSaved);
 buttonRandom.addEventListener('click', loadRandomPoster);
-buttonMake.addEventListener('click', showMake);
+buttonToFormPage.addEventListener('click', showFormPage);
 buttonBackFromSaved.addEventListener('click', backToMain);
 buttonBackFromMake.addEventListener('click', backToMain);
 buttonMakePoster.addEventListener('click', function(event) {
-  loadCustomPoster()
-  event.preventDefault() 
+  loadCustomPoster();
+  event.preventDefault();
+});
+
+savedPosterGrid.addEventListener('dblclick', function(event){
+  deleteSavedPoster();
+  event.target();
 });
 
 // functions and event handlers go here 👇
@@ -144,39 +148,37 @@ function getRandomIndex(array) {
   return array[arrayIndex];
 };
 
-function loadCustomInstance() {
-  currentPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value);
-  images.push(inputImage.value);
-  titles.push(inputTitle.value);
-  quotes.push(inputQuote.value);
+function sendCurrentPosterToHTML() {
+  imageDisplay.src = currentPoster.imageURL;
+  titleDisplay.innerText = currentPoster.title;
+  quoteDisplay.innerText = currentPoster.quote;
 };
 
-function sendCustomPosterToHtml() {
-  imageLocation.src = currentPoster.imageURL;
-  titleLocation.innerText = currentPoster.title;
-  quoteLocation.innerText = currentPoster.quote;
+function loadRandomPoster() {
+  currentPoster = new Poster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes));
+
+  sendCurrentPosterToHTML();
 };
+
+function loadCustomInstance() {
+    currentPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value);
+
+    images.push(inputImage.value);
+    titles.push(inputTitle.value);
+    quotes.push(inputQuote.value);
+    // if we don't change this function, it can be combined with loadCustomPoster
+  };
 
 function loadCustomPoster() {
   loadCustomInstance();
-  sendCustomPosterToHtml();
+  sendCurrentPosterToHTML();
   mainPage.classList.remove('hidden');
   makePage.classList.add('hidden');
 };
 
-function loadPosterInstance() {
-  currentPoster = new Poster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes));
-};
-
-function sendPosterToHtml() {
-  imageLocation.src = currentPoster.imageURL;
-  titleLocation.innerText = currentPoster.title;
-  quoteLocation.innerText = currentPoster.quote;
-};
-
-function loadRandomPoster() {
-  loadPosterInstance();
-  sendPosterToHtml();
+function showFormPage() {
+  mainPage.classList.add('hidden');
+  makePage.classList.remove('hidden');
 };
 
 function backToMain() {
@@ -195,7 +197,7 @@ function backToMain() {
 function savePoster() {
   for (var i = 0; i < savedPosters.length; i++) {
     if (savedPosters[i].imageURL === currentPoster.imageURL && savedPosters[i].title === currentPoster.title && savedPosters[i].quote === currentPoster.quote) {
-      alert("Oops, this already exists in your Saved Posters!")
+      alert("Oops, this already exists in your Saved Posters!");
       return;
     };
   };
@@ -207,11 +209,11 @@ function showSaved() {
   mainPage.classList.add('hidden');
   savedPage.classList.remove('hidden');
 
-  savedPostersLocation.innerHTML = ``;
+  savedPosterGrid.innerHTML = ``;
 
   for(var i = 0; i < savedPosters.length; i++){
-    savedPostersLocation.innerHTML += `
-      <article class="mini-poster">
+    savedPosterGrid.innerHTML += `
+      <article class="mini-poster" id="${savedPosters[i].id}">
         <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
         <h2 class="poster-title">${savedPosters[i].title}</h2>
         <h4 class="poster-quote">${savedPosters[i].quote}</h4>
@@ -220,20 +222,40 @@ function showSaved() {
   };
 };
 
-// DELETE SAVED POSTERS
-// use For loop to create an event listener for each element in the array?
-  // add to every mini: miniPoster.addEventListener('dblclick', )
-// need to be able to identify which poster (element) was clicked on
-// and then splice that element
+function deleteSavedPoster() {
+  var posterToBeDeleted = event.target.closest('.mini-poster');
+  
+  if (posterToBeDeleted !== null) {
+    for (var i = 0; i < savedPosters.length; i++) {
+      if (savedPosters[i].id == posterToBeDeleted.id) {       
+        savedPosters.splice(i, 1);
+      };
+    };
 
-
-function showMake() {
-  mainPage.classList.add('hidden');
-  makePage.classList.remove('hidden');
+    posterToBeDeleted.remove();
+  };
 };
 
 
-//are there functions that do the same thing that we can combine?
-//add args and params to functions?
-//make default poster if user doesn't input three values
-//debug input fields to clear on page load
+// REMAINING TASKS:
+// Complete ReadMe (20 mins)
+// Debug input fields to clear on page load -> if value input is empty, use placeholder string instead (1 hour)
+
+
+  // var inputFieldsAllFilled = true
+  // document.querySelector('.make-poster').addAttribute('disabled')
+
+  // if (inputImage.value == "" || inputTitle.value == "" || inputQuote.value == "") {
+  //   alert("Please enter all fields to continue.")
+  //   document.querySelector('.make-poster').addAttribute('disabled')
+  //   return false
+  // } else if (inputImage.value != "" && inputTitle.value != "" && inputQuote.value != "") {
+  //   document.querySelector('.make-poster').removeAttribute('disabled')
+  //   // document.getElementById('send').disabled = false
+
+  //   currentPoster = new Poster(inputImage.value, inputTitle.value, inputQuote.value);
+
+  //   images.push(inputImage.value);
+  //   titles.push(inputTitle.value);
+  //   quotes.push(inputQuote.value);
+  // }
