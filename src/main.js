@@ -20,6 +20,8 @@ var showPosterButton = document.querySelector(".make-poster");
 
 var saveThisPosterButton = document.querySelector(".save-poster");
 var viewPostersGrid = document.querySelector(".saved-posters-grid");
+var miniPoster = document.querySelector(".mini-poster")
+
 
 var images = [
   "./assets/bees.jpg",
@@ -167,6 +169,7 @@ function viewMainPage() {
   backToMainButton.classList.add("hidden");
   makeYourOwnPosterButton.classList.add("view");
   viewFormPage.classList.add("hidden");
+  viewSavedPostersPage.classList.add('hidden')
 }
 
 function showMainPage() {
@@ -219,15 +222,37 @@ function savePoster() {
   for (var i = 0; i < savedPosters.length; i++) {
     smallPoster = 
   `<section class="mini-poster"id=${savedPosters[i].id}>
-    <article class="mini-poster">
       <img class="mini-poster-img" src=${savedPosters[i].imageURL}>
       <h1 class="mini-poster-title">${savedPosters[i].title}</h1>
       <h3 class="mini-poster-quote">${savedPosters[i].quote}</h3>
-    </article>
   </section>`;
     viewPostersGrid.innerHTML += smallPoster;
   }
+  var allSavedPosters = document.querySelectorAll(".mini-poster", "h3", "h1", ".mini-poster-img");
+  for (var i = 0; i < allSavedPosters.length; i++) {
+    allSavedPosters[i].addEventListener("dblclick", deletePoster);
+  }
 }
+
+function deletePoster(event) {
+  {
+    viewPostersGrid.removeChild(event.target.parentNode);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
