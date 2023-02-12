@@ -22,7 +22,7 @@ To view/run the application on their own machine:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
 
 ![gif of button functionality in the custom poster section]
-(<iframe src="https://giphy.com/embed/5kcgF3CbPYbqaEGpT1" width="480" height="384" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/application-5kcgF3CbPYbqaEGpT1">via GIPHY</a></p>)
+(https://giphy.com/gifs/application-5kcgF3CbPYbqaEGpT1)
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
