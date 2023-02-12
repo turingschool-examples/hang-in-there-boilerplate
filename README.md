@@ -1,46 +1,32 @@
-# Hang In There
-
-A boilerplate repo. 
-
-## Set Up
-
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
-
-Project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-1/hang-in-there.html)
-
-To view your project:
-
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
-  
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
-______________________________________________________  
-
 # Hang in There  
 
 ### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+We built a motivational poster generater application. It is created to inspire and embolden users when the feel down. Our application solves that problem by generating funny and/or uplifting messages and images. Users can save their favorite posters and create their very own!
 
 ### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
+Just click this [link](https://devynnem.github.io/really-great-advice/)!!!
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
+
+
+(Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
 
 ### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+As we are only two weeks into the Turing program, this project took us approximately 16 hours spread over 5 days. We also did about 6 hours of personal research and practice.
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to their GitHubs.)
+[Adam Meza](https://github.com/adam-meza) 
+[Devynne Marshall](https://github.com/devynnem)
+
+ (Who worked on this application? Link to their GitHubs.)
 
 ### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
+The learning goals of this project were to learn to write easily readable JavaScript, learning how to manipulate HTML and CSS using the Dom, build understanding of writing code collaboratively, and performing GitHub workflow effectively. We also used VSCode, tuple, Zoom, and the built in dev tools.
+
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+Wins: Got more comfortable with pseudocoding, doing real time bug fixes, getting better at using the DOM
+Challenges: Navigating each others' schedule and time zone differences, figuring syntaxes for new languages.
+
+We reached out to the resources available to us, our personal mentors, our rock, and our cohort.
+
