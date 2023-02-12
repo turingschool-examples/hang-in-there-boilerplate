@@ -19,9 +19,9 @@ As we are only two weeks into the first module of Turings' software design progr
 
 ### Contributors:
 
-[###Adam Meza](https://github.com/adam-meza) 
+###[Adam Meza](https://github.com/adam-meza) 
 
-[###Devynne Marshall](https://github.com/devynnem)
+###[Devynne Marshall](https://github.com/devynnem)
 
 ### Learning Goals:
 The learning goals of this project were to learn to write easily readable JavaScript, learning how to manipulate HTML and CSS using the DOM, build understanding of writing code collaboratively, and performing GitHub workflow effectively. We also used VSCode, Tuple, Zoom, and the built in dev tools.
