@@ -2,12 +2,12 @@
 var titleLocation = document.querySelector('h1')
 var quoteLocation = document.querySelector('h3')
 var imageLocation = document.querySelector('.poster-img')
-// add query selector for saved-posters view to be able to display them
+var savedPostersLocation = document.querySelector('.saved-posters-grid')
 
 var inputTitle = document.querySelector('#poster-title')
 var inputQuote = document.querySelector('#poster-quote')
 var inputImage = document.querySelector('#poster-image-url')
-console.log(inputTitle, inputQuote, inputImage)
+// console.log(inputTitle, inputQuote, inputImage)
 
 var buttonSave = document.querySelector('.save-poster');
 var buttonShow = document.querySelector('.show-saved');
@@ -206,15 +206,26 @@ function savePoster() {
 function showSaved() {
   mainPage.classList.add('hidden');
   savedPage.classList.remove('hidden');
-  // unhide array of saved posters
-  // for(var i = 0; i < savedPosters.length; i++){
-  //   //currentPoster.src = savedPosters[i];}
-  //   console.log(savedPosters[i]);
-  //check the thread of sarahs work in slack
 
-  // view saved posters: function that sends poster object instances(s) to html and loads poster object instance(s)
-  //css that stylistically displays posters on grid
+  savedPostersLocation.innerHTML = ``;
+
+  for(var i = 0; i < savedPosters.length; i++){
+    savedPostersLocation.innerHTML += `
+      <article class="mini-poster">
+        <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+        <h2 class="poster-title">${savedPosters[i].title}</h2>
+        <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+      </article>
+    `;
+  };
 };
+
+// DELETE SAVED POSTERS
+// use For loop to create an event listener for each element in the array?
+  // add to every mini: miniPoster.addEventListener('dblclick', )
+// need to be able to identify which poster (element) was clicked on
+// and then splice that element
+
 
 function showMake() {
   mainPage.classList.add('hidden');
