@@ -103,6 +103,8 @@ var currentPoster;
 
 // event listeners go here 👇
 
+// testing branch functionality MainPage
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
