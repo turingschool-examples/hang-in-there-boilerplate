@@ -1,5 +1,4 @@
 // query selector variables go here 👇
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -19,7 +18,7 @@ var images = [
   "./assets/runner.jpg",
   "./assets/squirrel.jpg",
   "./assets/tiger.jpg",
-  "./assets/turtle.jpg"
+  "./assets/turtle.jpg",
 ];
 var titles = [
   "determination",
@@ -102,7 +101,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+document.addEventListener("load", generateRandomPoster());
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -116,3 +115,24 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+function generateRandomPoster() {
+  var imageIndex = getRandomIndex(images)
+  var titleIndex = getRandomIndex(titles)
+  var quoteIndex = getRandomIndex(quotes)
+  currentPoster = createPoster(images[imageIndex], titles[titleIndex], quotes[quoteIndex])
+  populatePosterFields();
+}
+
+function populatePosterFields() {
+  // var posterBlock = document.querySelector('.poster');
+  // next steps: populate the index.html fields for poster lines 12-16 with object data returned below
+  console.log(currentPoster);
+  //  var imageSrc = imgBlock.getElementsByClassName('poster-img')
+  // "img[value=something]"
+}
+
+// reason why document / window were coming back as undefined in the console is due to node being browserless environment
+// document / window are only accessible from a browser. All testing of code functionality should be checked against the 
+// localhost browser as you will have access to document.querySelector
+// research for method to replace node attribute (src)
