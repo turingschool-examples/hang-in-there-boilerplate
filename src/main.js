@@ -3,6 +3,10 @@
 var singleImage = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
+var savePoster = document.querySelector('.save-poster');
+var showPoster = document.querySelector('.show-poster');
+var showRandom = document.querySelector('.show-random');
+var showForm = document.querySelector('.show-form');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -134,3 +138,6 @@ singleImage.src = getRandomIndex(images)
 title.innerText = getRandomIndex(titles)
 
 quote.innerText = getRandomIndex(quotes)
+
+// show random poster button
+
