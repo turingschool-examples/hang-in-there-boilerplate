@@ -131,6 +131,6 @@ function createPoster(imageURL, title, quote) {
 // getRandomIndex(images)
 singleImage.src = getRandomIndex(images)
 
-title.innerText = 'cool'
+title.innerText = getRandomIndex(titles)
 
-quote.innerText = 'this is wild'
+quote.innerText = getRandomIndex(quotes)
