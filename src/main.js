@@ -1,3 +1,4 @@
+// Iteration 0
 // query selector variables go here 👇
 // we've provided you with some data to work with 👇
 var images = [
@@ -99,9 +100,14 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var randomizeButton = document.querySelector('.show-random');
+// var makePosterButton = document.querySelector('.make-poster')
 
 // event listeners go here 👇
 document.addEventListener("load", generateRandomPoster());
+randomizeButton.addEventListener("click", generateRandomPoster);
+// makePosterButton.addEventListener("click", unhideMakeOwnPoster());
+// addEventListener('click', clickHandler)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -121,18 +127,24 @@ function generateRandomPoster() {
   var titleIndex = getRandomIndex(titles)
   var quoteIndex = getRandomIndex(quotes)
   currentPoster = createPoster(images[imageIndex], titles[titleIndex], quotes[quoteIndex])
-  populatePosterFields();
+  return populatePosterFields()
 }
 
 function populatePosterFields() {
-  // var posterBlock = document.querySelector('.poster');
-  // next steps: populate the index.html fields for poster lines 12-16 with object data returned below
-  console.log(currentPoster);
-  //  var imageSrc = imgBlock.getElementsByClassName('poster-img')
-  // "img[value=something]"
+   var imageSrc = document.getElementsByClassName('poster-img')
+   var titleSrc = document.getElementsByClassName('poster-title')
+   var quoteSrc = document.getElementsByClassName('poster-quote')
+
+  imageSrc[0].setAttribute("src",currentPoster.imageURL);
+  titleSrc[0].innerText = currentPoster.title
+  quoteSrc[0].innerText = currentPoster.quote
 }
 
-// reason why document / window were coming back as undefined in the console is due to node being browserless environment
-// document / window are only accessible from a browser. All testing of code functionality should be checked against the 
-// localhost browser as you will have access to document.querySelector
-// research for method to replace node attribute (src)
+///////////////////////////////////////////////////////////////////////////////////////////
+// Iteration 1
+  // job of this function is to find the new-form and remove the hidden class
+  // also find the current poster class and add the hidden class
+// function unhideMakePosterForm(unhide){
+//   var unhide = document.getElementsByClassName('poster-form hidden')[0];
+//       return unhide.style.display = 'none';
+// }
