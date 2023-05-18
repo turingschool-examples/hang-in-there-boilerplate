@@ -1,5 +1,11 @@
 // query selector variables go here 👇
 
+  //assuming this is what goes here and then we just add 
+// var title = document.querySelector('.call-to-action');
+var randomPosterButton = document.querySelector('.show-random');   // thinking this might be right for the 0 iteration? 
+
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -103,6 +109,11 @@ var currentPoster;
 
 // event listeners go here 👇
 
+// again just following the lesson and inputting what might go here for iteration 0
+randomButton.addEventListener('click', showRandomPoster);
+window.addEventListener('load', showRandomPoster);
+
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -117,4 +128,30 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-// Hey this a test comment for our test branch! //
+
+// 👇 added some code that doesn't work quite yet chatted in study hall but got stuck here 👇
+function showRandomPoster () {
+  currentPoster = new poster(
+  posterImg.src = images[getRandomIndex(images)];
+  posterImg.src = images[getRandomIndex(titles)];
+  posterImg.src = images[getRandomIndex(quotes)];
+  );
+  newPoster();
+}
+
+
+
+👇
+//functions/buttons we might need to create://
+  //1 show my poster
+  // 2 nevermind take me back
+  // 3 back to main
+  // 4 save this poster
+  // 5 show saved posters 
+  // 6 show another random poster
+  // 7 make your own poster
+  // 8 create poster
+  // 9 get random poster /randomizer   
+  
+  //just went through the assignment and looked at the buttons on the example and in the rubric!//
+  //brainstorming!
