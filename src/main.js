@@ -99,6 +99,19 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
+var currentPoster;
+var title = document.querySelector('.title')
+var mainPoster = document.querySelector('.main-poster')
+var poster = document.querySelector('.poster')
+var posterImg = document.querySelector('.poster-img')
+var posterTitle = document.querySelector('.poster-title')
+var posterQuote = document.querySelector('.poster-quote')
+var savePosterButton = document.querySelector('.save-poster')
+var showSavedPosterButton = document.querySelector('.show-saved')
+var showRandomPosterButton = document.querySelector('.show-random')
+var makeOwnPoster = document.querySelector('.show-form')
+var posterFormHidden = document.querySelector('.poster-form hidden')
+var headingTwo = document.querySelector('h2')
 
 // event listeners go here 👇
 
