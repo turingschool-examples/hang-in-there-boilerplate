@@ -1,4 +1,16 @@
+// Some tips and tricks to keep in mind while we work through this!
+// step 1: Capture elements that I want to work with (buttons, images, etc.) -> query selector 
+// step 2: Add event listener to 'listen' for interactions to the DOM elements 
+//          it will then run function that we decide will be 
+// step 3: Do the thing. Have event liistener invoke the function we give 
+
+
 // query selector variables go here 👇
+
+// Creates a variable to hold the html code for main poster title 
+var posterTitle = document.querySelector('.poster-title');
+var savePosterButton = document.querySelector('.save-poster');
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -59,7 +71,7 @@ var titles = [
   "wisdom"
 ];
 var quotes = [
-  "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
+  "Don/'t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
   "The one who has confidence gains the confidence of others.",
@@ -86,7 +98,7 @@ var quotes = [
   "It is never too late to be what you might have been.",
   "Happiness often sneaks in through a door you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
-  "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
+  "Never limit yourself because of others/' limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
   "Let us make our future now, and let us make our dreams tomorrow's reality.",
   "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
@@ -122,13 +134,15 @@ function getRandomIndex(quotes) {
   return Math.floor(Math.random() * quotes.length); 
 }
 
-var randomQuote = getRandomIndex(quotes)
-var posterQuote = document.querySelector('.poster-quote')
-posterQuote.innerText = quotes[randomQuote]
+function createPoster(imageURL, title, quote) {
+  return {
+    id: Date.now(), 
+    imageURL: imageURL, 
+    title: title, 
+    quote: quote}
+}
 
-
-
-
-
-// var posterQuote = document.querySelector('.poster-quote')
-// posterQuote.innerText = 'Don\'t wait. The time will never be just right.'
+// This variable generates a random title deom the 'titles' array
+ var randomTitle = titles[getRandomIndex(titles)];
+// This variable generates
+ posterTitle.innerText = randomTitle;
