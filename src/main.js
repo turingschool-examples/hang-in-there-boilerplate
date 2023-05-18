@@ -1,8 +1,11 @@
 // query selector variables go here 👇
 
+var mainPoster = document.querySelector('.main-poster');
 var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+
+var posterForm = document.querySelector('.poster-form');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -155,11 +158,19 @@ function changePosterTitle(title) {
 }
 
 function changePosterQuote(quote) {
-	posterQuote.innerText = quote;
+  posterQuote.innerText = quote;
 }
 
 function renderRandomPoster() {
-	changePosterImg(randomPoster.imageURL);
-	changePosterTitle(randomPoster.title);
-	changePosterQuote(randomPoster.quote);
+  changePosterImg(randomPoster.imageURL);
+  changePosterTitle(randomPoster.title);
+  changePosterQuote(randomPoster.quote);
+}
+
+function toggleMainPoster() {
+  mainPoster.classList.toggle('hidden');
+}
+
+function toggleForm() {
+  posterForm.classList.toggle('hidden');
 }
