@@ -110,10 +110,8 @@ var savedPosters = [];
 var currentPoster;
 
 
-
-
 // event listeners go here 👇
-// showRandom.addEventListeners('click', buttonClick)
+showRandom.addEventListener('click', buttonClick)
 
 
 // functions and event handlers go here 👇
@@ -131,18 +129,23 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
+var someName = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
+
 
 // this is iteration 0 stuff
-singleImage.src = getRandomIndex(images)
-  
-title.innerText = getRandomIndex(titles)
-
-quote.innerText = getRandomIndex(quotes)
+singleImage.src = someName.imageURL
+title.innerText = someName.title
+quote.innerText = someName.quote
 
 // show random poster button
 
 // function buttonClick(event) {
-// console.log('yeah mf!')
+//   singleImage.src 
+  title.innerText 
+  quote.innerText 
 
-// }
-// buttonClick()
+}
+// = getRandomIndex(quotes)
+// = getRandomIndex(titles)
+// = getRandomIndex(images)
+.
