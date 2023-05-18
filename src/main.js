@@ -1,4 +1,8 @@
 // query selector variables go here 👇
+//we are querying the poster classes from lines 13 - 15 in the HTML code, under the Main Poster Section - becayse we are querying the class, that is why we used the "." in front.
+var randomPosterImg = document.querySelector('.poster-img');
+var randomPosterTitle = document.querySelector('.poster-title');
+var randomPosterQuote = document.querySelector('.poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
