@@ -120,3 +120,34 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+function getPosterAssets() {
+  var randomAssetGroup = {
+    randomImage: getRandomIndex(images),
+    randomTitles: getRandomIndex(titles),
+    randomQuotes: getRandomIndex(quotes)
+  }
+//  return randomPosterImg.innerText = randomAssetGroup.randomImage
+ return randomPosterTitle.innerText = randomAssetGroup.randomTitles
+  // return randomAssetGroup
+}
+
+/* Pseudocode:
+***************Done*********************
+DONE!!! Create a function that will return random assets:
+- images
+- titles
+- quotes
+DONE!!! We will need to use the getRandomIndex function to choose each random asset
+NOPE - didn't need this because we just had to call the function to getRandomIndex and then populate that into an Objecty (We think we will need three separate for loops to run through the three different arrays)
+**********************************************
+
+Then, we will use the object from "getPosterAssets" to populate the arguments of the createPoster function (imageURL, title, quote) - will need to use an event listener as well
+
+We have to do something with the outome of the object in "getPosterAssets" to convert the random index number to the string associated with that index number
+
+We need to create another function that uses .innerHTML and .innerText, to change the values of the poster - will use .src to target the image URL
+
+// function randomCover() {
+//   randomPosterImg.innerText = getPosterAssets(randomAssetGroup.randomImage)
+} */
