@@ -148,3 +148,4 @@ function buttonClick(event) {
 // = getRandomIndex(quotes)
 // = getRandomIndex(titles)
 // = getRandomIndex(images)
+.
