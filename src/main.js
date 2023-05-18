@@ -112,6 +112,12 @@ var showRandomPosterButton = document.querySelector('.show-random')
 var makeOwnPoster = document.querySelector('.show-form')
 var posterFormHidden = document.querySelector('.poster-form hidden')
 var headingTwo = document.querySelector('h2')
+var posterImageUrl = document.querySelector('#poster-image-url')
+var makePoster = document.querySelector('.make-poster')
+var showMainButton = document.querySelector('.show-main')
+var savedPostersHidden = document.querySelector('.saved-posters hidden')
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
+var backToMainButton = document.querySelector('.back-to-main')
 
 // event listeners go here 👇
 
