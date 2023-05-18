@@ -8,6 +8,8 @@ var posterForm = document.querySelector('.poster-form');
 
 var randomPosterButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
+var takeMeBackButton = document.querySelector('.show-main')
+var backToMainButton = document.querySelector('.back-to-main')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -117,6 +119,8 @@ randomPosterButton.addEventListener('click', displayRandomPoster);
 
 makePosterButton.addEventListener('click', displayForm);
 
+takeMeBackButton.addEventListener('click', goToMain);
+
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -143,4 +147,9 @@ function displayRandomPoster() {
 function displayForm() {
   mainPoster.hidden = true;
   posterForm.classList.remove('hidden');
+}
+
+function goToMain(){
+  mainPoster.hidden = false;
+  posterForm.classList.add('hidden');
 }
