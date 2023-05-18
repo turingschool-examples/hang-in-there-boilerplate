@@ -114,6 +114,16 @@ function getImageURL(imgArray) {
   return imgArray[randomNum];
 }
 
+function getRandomQuote(quoteArray) {
+  var randomIndex = getRandomIndex(quoteArray);
+  return quoteArray[randomIndex];
+}
+
+function getRandomTitle(titleArray) {
+  var randomIndex = getRandomIndex(titleArray);
+  return titleArray[randomIndex];
+}
+
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
