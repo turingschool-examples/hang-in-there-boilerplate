@@ -100,22 +100,31 @@ var quotes = [
 // we've provided you with some data to work with 👇
 //query Selectors and variables here 
 var savedPosters = [];
-var currentPoster;
 
-currentPoster = document.querySelector('.poster-img');
-currentTitle = document.querySelector('.poster-title');
-currentQuote = document.querySelector('.poster-quote');
+var randomPoster;
+var randomButton = document.querySelector('.show-random');
+var currentPoster = document.querySelector('.poster-img');
+var currentTitle = document.querySelector('.poster-title');
+var currentQuote = document.querySelector('.poster-quote');
 randomPoster = createRandomPoster();
 currentPoster.src = randomPoster.imageURL;
 currentTitle.innerText = randomPoster.title;
 currentQuote.innerText = randomPoster.quote;
 
-// event listeners go here 👇
 
+// event listeners go here 👇
+randomButton.addEventListener('click', showRandomPoster);
 // event handlers go here 👇
 
 // functions here 
 // (we've provided two to get you started)!
+function showRandomPoster(){
+  var randomPoster = createRandomPoster();
+  currentPoster.src = randomPoster.imageURL;
+  currentTitle.innerText = randomPoster.title;
+  currentQuote.innerText = randomPoster.quote;
+  }
+
 function createRandomPoster(){
   var randImg = images[getRandomIndex(images)];
   var randTitle = titles[getRandomIndex(titles)];
