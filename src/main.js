@@ -1,5 +1,5 @@
+// Iteration 0
 // query selector variables go here 👇
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -19,7 +19,7 @@ var images = [
   "./assets/runner.jpg",
   "./assets/squirrel.jpg",
   "./assets/tiger.jpg",
-  "./assets/turtle.jpg"
+  "./assets/turtle.jpg",
 ];
 var titles = [
   "determination",
@@ -100,9 +100,15 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var randomizeButton = document.querySelector('.show-random');
+var makePosterButton = document.querySelector('.make-poster');
 
 // event listeners go here 👇
-
+document.addEventListener("load", generateRandomPoster());
+randomizeButton.addEventListener("click", generateRandomPoster);
+makePosterButton.addEventListener("click", unhideMakeOwnPoster());
+;
+// addEventListener('click', clickHandler)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -116,3 +122,31 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+function generateRandomPoster() {
+  var imageIndex = getRandomIndex(images)
+  var titleIndex = getRandomIndex(titles)
+  var quoteIndex = getRandomIndex(quotes)
+  currentPoster = createPoster(images[imageIndex], titles[titleIndex], quotes[quoteIndex])
+  return populatePosterFields()
+}
+
+function populatePosterFields() {
+   var imageSrc = document.getElementsByClassName('poster-img')
+   var titleSrc = document.getElementsByClassName('poster-title')
+   var quoteSrc = document.getElementsByClassName('poster-quote')
+
+  imageSrc[0].setAttribute("src",currentPoster.imageURL);
+  titleSrc[0].innerText = currentPoster.title
+  quoteSrc[0].innerText = currentPoster.quote
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Iteration 1
+  // job of this function is to find the new-form and remove the hidden class
+  // also find the current poster class and add the hidden class
+
+
+
+
+// var hide = document.getElementsByClassName('show-random').hidden = true
