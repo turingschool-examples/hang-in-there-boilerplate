@@ -100,6 +100,10 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var savePoster = document.querySelector(".save-poster")
+var showPoster = document.querySelector(".show-saved")
+var showRandPoster = document.querySelector(".show-random")
+var makePoster = document.querySelector(".show-form")
 
 // event listeners go here 👇
 
