@@ -1,5 +1,6 @@
 // query selector variables go here 👇
-
+var randomPosterButton = document.querySelector(".show-random")
+ 
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -100,12 +101,29 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-
 // event listeners go here 👇
 
-// testing branch functionality MainPage
+randomPosterButton.addEventListener("click", createPoster)
 
 // functions and event handlers go here 👇
+var index = {}
+function getAllIndexes(){
+    index = {
+    poster: images[getRandomIndex(images)],
+    title: titles[getRandomIndex(titles)], 
+    quote: quotes[getRandomIndex(quotes)], 
+  }
+  return index
+}
+getAllIndexes()
+console.log("getAllIndexes: ", getAllIndexes())
+console.log("getAllIndexes: ", getAllIndexes())
+
+var imageURL = index.poster
+var title = index.title
+var quote = index.quote
+
+
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -113,7 +131,7 @@ function getRandomIndex(array) {
 
 function createPoster(imageURL, title, quote) {
   return {
-    id: Date.now(), 
+    id: Date.now(),
     imageURL: imageURL, 
     title: title, 
     quote: quote}
