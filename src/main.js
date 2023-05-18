@@ -141,7 +141,7 @@ function showRandomPoster () {
 
 
 
-👇
+
 //functions/buttons we might need to create://
   //1 show my poster
   // 2 nevermind take me back
