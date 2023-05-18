@@ -5,6 +5,8 @@ var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 
+var makePosterBtn = document.querySelector('.show-form');
+
 var posterForm = document.querySelector('.poster-form');
 
 // we've provided you with some data to work with 👇
@@ -111,6 +113,11 @@ var currentPoster;
 // event listeners go here 👇
 
 window.addEventListener('load', renderRandomPoster);
+
+makePosterBtn.addEventListener('click', () => {
+  toggleForm();
+  toggleMainPoster();
+});
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
