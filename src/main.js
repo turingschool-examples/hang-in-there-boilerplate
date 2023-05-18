@@ -101,12 +101,13 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 var randomizeButton = document.querySelector('.show-random');
-// var makePosterButton = document.querySelector('.make-poster')
+var makePosterButton = document.querySelector('.make-poster');
 
 // event listeners go here 👇
 document.addEventListener("load", generateRandomPoster());
 randomizeButton.addEventListener("click", generateRandomPoster);
-// makePosterButton.addEventListener("click", unhideMakeOwnPoster());
+makePosterButton.addEventListener("click", unhideMakeOwnPoster());
+;
 // addEventListener('click', clickHandler)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -144,7 +145,8 @@ function populatePosterFields() {
 // Iteration 1
   // job of this function is to find the new-form and remove the hidden class
   // also find the current poster class and add the hidden class
-// function unhideMakePosterForm(unhide){
-//   var unhide = document.getElementsByClassName('poster-form hidden')[0];
-//       return unhide.style.display = 'none';
-// }
+
+
+
+
+// var hide = document.getElementsByClassName('show-random').hidden = true
