@@ -105,14 +105,30 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+
+// function getRandomIndex(array) {
+//   return Math.floor(Math.random() * array.length);
+// }
+
+// function createPoster(imageURL, title, quote) {
+//   return {
+//     id: Date.now(), 
+//     imageURL: imageURL, 
+//     title: title, 
+//     quote: quote}
+// }
+
+function getRandomIndex(quotes) {
+  return Math.floor(Math.random() * quotes.length); 
 }
 
-function createPoster(imageURL, title, quote) {
-  return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
-}
+var randomQuote = getRandomIndex(quotes)
+var posterQuote = document.querySelector('.poster-quote')
+posterQuote.innerText = quotes[randomQuote]
+
+
+
+
+
+// var posterQuote = document.querySelector('.poster-quote')
+// posterQuote.innerText = 'Don\'t wait. The time will never be just right.'
