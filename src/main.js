@@ -9,8 +9,9 @@
 
 // Creates a variable to hold the html code for main poster title 
 var posterTitle = document.querySelector('.poster-title');
-var savePosterButton = document.querySelector('.save-poster');
-
+//var savePosterButton = document.querySelector('.save-poster');
+var img = document.querySelector('.poster-img')
+var posterQuote= document.querySelector('.poster-quote')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -71,7 +72,7 @@ var titles = [
   "wisdom"
 ];
 var quotes = [
-  "Don/'t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
+  "Don\'t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
   "The one who has confidence gains the confidence of others.",
@@ -98,7 +99,7 @@ var quotes = [
   "It is never too late to be what you might have been.",
   "Happiness often sneaks in through a door you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
-  "Never limit yourself because of others/' limited imagination; never limit others because of your own limited imagination.",
+  "Never limit yourself because of others\' limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
   "Let us make our future now, and let us make our dreams tomorrow's reality.",
   "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
@@ -118,9 +119,9 @@ var currentPoster;
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
-// function getRandomIndex(array) {
-//   return Math.floor(Math.random() * array.length);
-// }
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
 
 // function createPoster(imageURL, title, quote) {
 //   return {
@@ -130,9 +131,13 @@ var currentPoster;
 //     quote: quote}
 // }
 
-function getRandomIndex(quotes) {
-  return Math.floor(Math.random() * quotes.length); 
-}
+// function getRandomIndex(quotes) {
+//   return Math.floor(Math.random() * quotes.length); 
+// }
+
+// function getRandomIndex(images) {
+//  return Math.floor(Math.random() * images.length);
+// }
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -146,3 +151,14 @@ function createPoster(imageURL, title, quote) {
  var randomTitle = titles[getRandomIndex(titles)];
 // This variable generates
  posterTitle.innerText = randomTitle;
+
+ // This variable holds the random index of 'images' array
+ var randomImages = images[getRandomIndex(images)]
+ // This generates random images
+ img.src = randomImages
+
+ // This variable holds the random index of 'quotes' array
+ var randomQuotes = quotes[getRandomIndex(quotes)]
+ // This generates random quotes
+posterQuote.innerText = randomQuotes
+
