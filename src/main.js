@@ -141,8 +141,8 @@ quote.innerText = getRandomIndex(quotes)
 
 // show random poster button
 
-function buttonClick(event) {
-console.log('yeah mf!')
+// function buttonClick(event) {
+// console.log('yeah mf!')
 
-}
-buttonClick()
+// }
+// buttonClick()
