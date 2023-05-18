@@ -100,6 +100,12 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var savePosterButton = document.querySelector('.save-poster')
+
+// step 1: Capture elements that I want to work with (buttons, images, etc.) -> query selector 
+// step 2: Add event listener to 'listen' for interactions to the DOM elements 
+//          it will then run function that we decide will be 
+// step 3: Do the thing. Have event liistener invoke the function we give 
 
 // event listeners go here 👇
 
@@ -116,3 +122,16 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+// This function will return a randomly generated 
+// title from the var 'titles' 
+function changeMainTitle(titleArray){
+  var randomIndexValue = Math.floor(Math.random() * titleArray.length); 
+  var randomTitle = titleArray[randomIndexValue]
+  return randomTitle
+}
+var currentRandomTitle = changeMainTitle(titles);
+
+
+//This function will change the main title in the html file 
+ 
