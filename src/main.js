@@ -10,7 +10,7 @@ var mySavedPosters = document.querySelector(".saved-posters")
 var showMyPosters = document.querySelector(".show-saved")
 var neverMindButton = document.querySelector(".show-main")
 var backToMainButton = document.querySelector(".back-to-main")
-
+var showMyPosterButton  = document.querySelector(".makd-poster")
 
 
 // we've provided you with some data to work with 👇
@@ -123,7 +123,9 @@ makePoster.addEventListener("click", makePosterForm)
 showMyPosters.addEventListener("click", showSaved)
 neverMindButton.addEventListener("click", backFromMake)
 backToMainButton.addEventListener("click", backFromSaved)
-
+showMyPosterButton.addEventListener("click", uniquePoster(randomPoster) {
+  randomPoster.preventDefault()
+})
 
 
 // functions and event handlers go here 👇
@@ -167,7 +169,9 @@ function backFromSaved() {
   mySavedPosters.classList.add("hidden")
 }
 
-
+function uniquePoster() {
+console.log("hello")
+}
 
 
 function getRandomIndex(array) {
