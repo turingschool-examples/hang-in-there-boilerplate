@@ -108,30 +108,6 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-var getRandoImageIndex = getRandomIndex(images)
-var getRandoTitleIndex = getRandomIndex(titles)
-var getRandoQuoteIndex = getRandomIndex(quotes)
-var randoPoster = images[getRandoImageIndex]
-var randoTitle = titles[getRandoTitleIndex]
-var randoQuote = quotes[getRandoQuoteIndex]
-
->>>>>>> 3834bb519027faf03675ce65a75ad9a0297881c5
-// event listeners go here 👇
-
-
-document.addEventListener("load", array())
-showRandPoster.addEventListener("click", newRandPoster())
-
-
-// functions and event handlers go here 👇
-// (we've provided two to get you started)!
-<<<<<<< HEAD
-=======
-
-
 // event listeners go here 👇
 
 
@@ -152,36 +128,9 @@ function array() {
     posterImg.src = randoPoster
     title.innerText = randoTitle
     quote.innerText = randoQuote
-  
-}
-
-// function newRandPoster()  {
-//   posterImg.src = randoPoster
-//   title.innerText = randoTitle
-//   quote.innerText = randoQuote
-//   createPoster(posterImg.src,title.innerText,quote.innerText);
-// }
-
-
->>>>>>> Stashed changes
-=======
-
-function array() {
-  posterImg.src = randoPoster
-  title.innerText = randoTitle
-  quote.innerText = randoQuote
-  createPoster(posterImg.src,title.innerText,quote.innerText);
-}
-
-function newRandPoster()  {
-  posterImg.src = randoPoster
-  title.innerText = randoTitle
-  quote.innerText = randoQuote
-  createPoster(posterImg.src,title.innerText,quote.innerText);
 }
 
 
->>>>>>> 3834bb519027faf03675ce65a75ad9a0297881c5
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
