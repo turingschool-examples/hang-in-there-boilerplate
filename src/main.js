@@ -1,14 +1,16 @@
 // query selector variables go here 👇
 
 var mainPage = document.querySelector('.main-poster');
+var savePage = document.querySelector('.saved-posters')
 var singleImage = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 var savePoster = document.querySelector('.save-poster');
-var showPoster = document.querySelector('.show-poster');
+var showSaved = document.querySelector('.show-saved');
 var showRandom = document.querySelector('.show-random');
 var showForm = document.querySelector('.show-form');
 var posterForm = document.querySelector('.poster-form');
+var backToMain = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -115,6 +117,9 @@ var currentPoster;
 // event listeners go here 👇
 showRandom.addEventListener('click', buttonClick)
 showForm.addEventListener('click', makePosterButton)
+showSaved.addEventListener('click', showSavedPosterButton)
+backToMain.addEventListener('click', backToMainButton)
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -153,7 +158,6 @@ function show(element) {
 }
 
 function hide(element) {
-  console.log(element)
   element.classList.add('hidden')
 }
 
@@ -161,6 +165,16 @@ function hide(element) {
 function makePosterButton() {    
   show(posterForm)
   hide(mainPage)
+}
+
+function showSavedPosterButton() {
+show(savePage)
+hide(mainPage)
+}
+
+function backToMainButton() {
+show(mainPage)
+hide(savePage)
 }
 
 
