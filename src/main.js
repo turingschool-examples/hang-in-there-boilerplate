@@ -1,9 +1,8 @@
 // query selector variables go here 👇
+var showRandPoster = document.querySelector(".show-random")
 var savePoster = document.querySelector(".save-poster")
 var showPoster = document.querySelector(".show-saved")
-var showRandPoster = document.querySelector(".show-random")
 var makePoster = document.querySelector(".show-form")
-
 var posterImg = document.querySelector(".poster-img")
 var title = document.querySelector(".poster-title")
 var quote = document.querySelector(".poster-quote")
@@ -118,8 +117,10 @@ var randoQuote = quotes[getRandoQuoteIndex]
 
 // event listeners go here 👇
 
-// showRandPoster.addEventListener("click", createPoster)
+
 document.addEventListener("load", array())
+showRandPoster.addEventListener("click", newRandPoster())
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -128,7 +129,13 @@ function array() {
   posterImg.src = randoPoster
   title.innerText = randoTitle
   quote.innerText = randoQuote
-  console.log(randoPoster);
+  createPoster(posterImg.src,title.innerText,quote.innerText);
+}
+
+function newRandPoster()  {
+  posterImg.src = randoPoster
+  title.innerText = randoTitle
+  quote.innerText = randoQuote
   createPoster(posterImg.src,title.innerText,quote.innerText);
 }
 
