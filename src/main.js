@@ -125,6 +125,8 @@ takeMeBackButton.addEventListener('click', goToMain);
 
 showSavedButton.addEventListener('click', displaySavedPosters);
 
+backToMainButton.addEventListener('click', goToMain);
+
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
