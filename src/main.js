@@ -1,11 +1,12 @@
 // query selector variables go here 👇
 var showRandPoster = document.querySelector(".show-random")
-var savePoster = document.querySelector(".save-poster")
-var showPoster = document.querySelector(".show-saved")
 var makePoster = document.querySelector(".show-form")
 var posterImg = document.querySelector(".poster-img")
 var title = document.querySelector(".poster-title")
 var quote = document.querySelector(".poster-quote")
+var mainPoster = document.querySelector(".main-poster")
+var makePosterView = document.querySelector(".poster-form")
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -111,14 +112,15 @@ var currentPoster;
 // event listeners go here 👇
 
 
-window.addEventListener("load", array)
-showRandPoster.addEventListener("click", array)
+window.addEventListener("load", randomPoster)
+showRandPoster.addEventListener("click", randomPoster)
+makePoster.addEventListener("click", makePosterForm)
 
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
-function array() {
+function randomPoster() {
   var getRandoImageIndex = getRandomIndex(images)
   var getRandoTitleIndex = getRandomIndex(titles)
   var getRandoQuoteIndex = getRandomIndex(quotes)
@@ -128,6 +130,17 @@ function array() {
     posterImg.src = randoPoster
     title.innerText = randoTitle
     quote.innerText = randoQuote
+}
+
+// hide mainPoster and switch to form view
+// remove "hidden" from the page we want to see
+// variable.classList.add("hidden")
+// variable.classList.remove("hidden")
+
+function makePosterForm() {
+  mainPoster.classList.add("hidden")
+  makePoster.classList.remove("hidden")
+  makePosterView.classList.remove("hidden")
 }
 
 
@@ -151,3 +164,8 @@ function createPoster(imageURL, title, quote) {
 
 //3. different numbers all random. plug them into each array names using bracket notion. this will give us the string, then we assign that to a variable. put this variable into the value part of the object keys.
 
+// Extra Tips
+/* access event objects in event listener and pass events as a parameter. event.target to get specific ID's
+event something in the event object called preventDefault - overrides functionality of
+whatever it things the event should do. Target is separate from preventDefault
+*/
