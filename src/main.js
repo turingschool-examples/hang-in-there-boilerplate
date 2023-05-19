@@ -1,4 +1,4 @@
-// query selector variables go here 👇
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -97,29 +97,72 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-// we've provided you with some data to work with 👇
+//we've provided you with some data to work with 👇
 //query Selectors and variables here 
 var savedPosters = [];
 
 var randomPoster;
+var createPosterButton = document.querySelector('.show-form');
 var randomButton = document.querySelector('.show-random');
 var currentPoster = document.querySelector('.poster-img');
 var currentTitle = document.querySelector('.poster-title');
 var currentQuote = document.querySelector('.poster-quote');
-randomPoster = createRandomPoster();
-currentPoster.src = randomPoster.imageURL;
-currentTitle.innerText = randomPoster.title;
-currentQuote.innerText = randomPoster.quote;
+var mainPoster = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form');
+var showPosterButton = document.querySelector('.make-poster');
+var imageInput = document.querySelector('#poster-image-url');
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
+var backButton = document.querySelector('.show-main');
+var saveButton = document.querySelector('.save-poster');
+
+showRandomPoster();
+
 
 
 // event listeners go here 👇
 randomButton.addEventListener('click', showRandomPoster);
+
+createPosterButton.addEventListener('click', makeOwnPoster)
+
+showPosterButton.addEventListener('click', createOwnPoster);
+
+backButton.addEventListener('click', returnHome);
+
 // event handlers go here 👇
 
 // functions here 
 // (we've provided two to get you started)!
+
+function returnHome(){
+  hide(posterForm);
+  show(mainPoster);
+}
+function hide(element){
+  element.classList.add('hidden');
+}
+
+function show(element){
+  element.classList.remove('hidden');
+}
+
+
+function createOwnPoster(){
+  currentPoster.src = imageInput.value;
+  currentTitle.innerText = titleInput.value;
+  currentQuote.innerText = quoteInput.value;
+  
+}
+
+function makeOwnPoster(){
+  hide(mainPoster);
+  show(posterForm);
+  
+}
+
+
 function showRandomPoster(){
-  var randomPoster = createRandomPoster();
+  randomPoster = createRandomPoster();
   currentPoster.src = randomPoster.imageURL;
   currentTitle.innerText = randomPoster.title;
   currentQuote.innerText = randomPoster.quote;
