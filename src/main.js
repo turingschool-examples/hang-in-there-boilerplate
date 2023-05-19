@@ -125,7 +125,7 @@ randomButton.addEventListener('click', showRandomPoster);
 
 createPosterButton.addEventListener('click', makeOwnPoster)
 
-showPosterButton.addEventListener('click', createOwnPoster);
+showPosterButton.addEventListener('click', createOwnPoster, false);
 
 backButton.addEventListener('click', returnHome);
 
@@ -147,11 +147,17 @@ function show(element){
 }
 
 
-function createOwnPoster(){
-  currentPoster.src = imageInput.value;
-  currentTitle.innerText = titleInput.value;
-  currentQuote.innerText = quoteInput.value;
-  
+function createOwnPoster(event){
+  var input = imageInput.value;
+  var text = titleInput.value;
+  var quote = quoteInput.value;
+  var newPoster = createPoster(input,text,quote);
+  currentPoster.src = newPoster.imageURL;
+  currentTitle.innerText = newPoster.title;
+  currentQuote.innerText = newPoster.quote;
+  event.preventDefault();
+  hide(posterForm);
+  show(mainPoster);
 }
 
 function makeOwnPoster(){
