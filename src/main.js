@@ -135,7 +135,10 @@ showSavedButton.addEventListener('click', displaySavedPosters);
 
 backToMainButton.addEventListener('click', goToMain);
 
-showMyPosterButton.addEventListener('click', createOwnPoster)
+showMyPosterButton.addEventListener('click', function(e){
+  e.preventDefault();
+  createOwnPoster();
+});
 
 
 // functions and event handlers go here 👇
@@ -177,7 +180,6 @@ function displaySavedPosters() {
 }
 
 function createOwnPoster() {
-  console.log("I'M HERE")
   var imageURL = imageInput.value;
   var title = titleInput.value;
   var quote = quoteInput.value;
@@ -186,6 +188,6 @@ function createOwnPoster() {
   images.push(userPoster.imageURL);
   titles.push(userPoster.title);
   quotes.push(userPoster.quotes);
-  
+
   return userPoster
 }
