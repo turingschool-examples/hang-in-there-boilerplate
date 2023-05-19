@@ -177,11 +177,15 @@ function displaySavedPosters() {
 }
 
 function createOwnPoster() {
+  console.log("I'M HERE")
   var imageURL = imageInput.value;
   var title = titleInput.value;
   var quote = quoteInput.value;
 
   var userPoster = createPoster(imageURL, title, quote) 
-  titles.push(userPoster.title) 
-      return userPoster
+  images.push(userPoster.imageURL);
+  titles.push(userPoster.title);
+  quotes.push(userPoster.quotes);
+  
+  return userPoster
 }
