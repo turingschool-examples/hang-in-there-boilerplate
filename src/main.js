@@ -129,8 +129,18 @@ var currentPoster;
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
+  for (var i = 0; i < array.length; i++) 
   return Math.floor(Math.random() * array.length);
 }
+var randomIndexImages = getRandomIndex(images);
+var randomIndexQuotes = getRandomIndex(quotes);
+var randomIndexTitles = getRandomIndex(titles);
+
+function generateRandomPoster() {
+  
+}
+
+
 
 function createPoster(imageURL, title, quote) {
   return {
