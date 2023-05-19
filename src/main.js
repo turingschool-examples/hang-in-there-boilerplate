@@ -107,12 +107,16 @@ var formPage = document.querySelector('.poster-form');
 var makePosterButton = document.querySelector('.show-form');
 var savedPosterPage = document.querySelector('.saved-posters');
 var showSavedPostersBtn = document.querySelector('.show-saved');
+var neverMindBtn = document.querySelector('.show-main');
+var backToMainBtn = document.querySelector('.back-to-main');
 
 // event listeners go here 👇
 document.addEventListener("load", generateRandomPoster());
 randomizeButton.addEventListener("click", generateRandomPoster);
 makePosterButton.addEventListener("click", togglePages);
 showSavedPostersBtn.addEventListener("click", showSavedHideMain);
+neverMindBtn.addEventListener('click', showMainPage);
+backToMainBtn.addEventListener('click', showMainPage);
 
 // addEventListener('click', clickHandler)
 // functions and event handlers go here 👇
@@ -160,6 +164,11 @@ function showSavedHideMain() {
   savedPosterPage.classList.remove('hidden');
 }
   
+function showMainPage() {
+  mainPage.classList.remove('hidden');
+  savedPosterPage.classList.add('hidden');
+  formPage.classList.add('hidden');
+}
   
   
   // togglePages();
