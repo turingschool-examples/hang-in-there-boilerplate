@@ -16,7 +16,7 @@ var img = document.querySelector('.poster-img');
 var posterQuote = document.querySelector('.poster-quote');
 var randomButton = document.querySelector('.show-random');
 
-
+var makeYourOwnPosterButton = document.querySelector('.show-form');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -123,10 +123,13 @@ var currentPoster;
 window.addEventListener('load', displayRandomPoster)
 randomButton.addEventListener('click', displayRandomPoster);
 
-
+makeYourOwnPosterButton.addEventListener('click', openFormInNewTab) 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
+function openFormInNewTab(){
+  console.log('hi')
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
