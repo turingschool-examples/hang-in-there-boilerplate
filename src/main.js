@@ -3,7 +3,13 @@ var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuotes = document.querySelector('.poster-quote');
 var randomPosterButton = document.querySelector('.show-random');  
-var backToMain = document.querySelector('.show-hidden');
+
+var makeYourOwnPosterButton = document.querySelector('.show-form')
+var displayForm = document.querySelector('.poster-form hidden')
+var backToMain = document.querySelector('.back-to-main')
+
+// var backToMain = document.querySelector('.show-hidden');
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,9 +116,11 @@ var currentPoster;
 
 randomPosterButton.addEventListener('click', showRandomPoster);
 window.addEventListener('load', showRandomPoster);
-backToMain.addEventListener('click', showBacktoMain);
+makeYourOwnPosterButton.addEventListener('click', displayForm);
+takeMeBackButton.addEventListener('click', goToMain);
 
 
+// backToMainButton.addEventListener('click', showBacktoMain);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -138,12 +146,24 @@ posterQuotes.innerText = quotes[getRandomIndex(quotes)];
 
 function backToMain() {
   mainPoster.hidden = false;
+posterForm.classList.add('hidden');
   posterForm.classList.add('hidden');
 }
 
-// function displayForm() {
-//   mainPoster.hidden = true;
-//   posterForm.classList.remove('hidden');
+function displayForm() {
+  mainPoster.hidden = true;
+  posterForm.classList.remove('hidden');
+}
+
+function displaySavedPoster() {
+  mainPOster.hidden = true;
+  savedPosterPage.classList.remore('hidden');
+}
+
+// function showBacktoMain() {
+//   mainPoster.hidden = false;
+//   posterForm.classList.add('hidden');
+//   savedPosterPage.classList.add('hidden');
 // }
 
 
@@ -159,6 +179,3 @@ function backToMain() {
   // 7 make your own poster
   // 8 create poster
   
-  
-  //just went through the assignment and looked at the buttons on the example and in the rubric!//
-  //brainstorming!
