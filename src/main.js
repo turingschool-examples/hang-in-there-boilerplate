@@ -5,6 +5,7 @@ var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 
+var randomPosterButton = document.querySelector('.show-random');
 var makePosterBtn = document.querySelector('.show-form');
 
 var posterForm = document.querySelector('.poster-form');
@@ -112,6 +113,8 @@ var currentPoster;
 
 // event listeners go here 👇
 
+randomPosterButton.addEventListener('click', renderRandomPoster);
+
 window.addEventListener('load', renderRandomPoster);
 
 makePosterBtn.addEventListener('click', () => {
@@ -140,10 +143,6 @@ function getRandomTitle(titleArray) {
   return titleArray[randomIndex];
 }
 
-var randomImageURL = getImageURL(images);
-var randomQuote = getRandomQuote(quotes);
-var randomTitle = getRandomTitle(titles);
-
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(),
@@ -152,9 +151,6 @@ function createPoster(imageURL, title, quote) {
     quote: quote,
   };
 }
-
-var randomPoster = createPoster(randomImageURL, randomTitle, randomQuote);
-console.log(randomPoster);
 
 function changePosterImg(image) {
   posterImg.src = image;
@@ -169,9 +165,11 @@ function changePosterQuote(quote) {
 }
 
 function renderRandomPoster() {
-  changePosterImg(randomPoster.imageURL);
-  changePosterTitle(randomPoster.title);
-  changePosterQuote(randomPoster.quote);
+  currentPoster = createPoster(getImageURL(images), getRandomTitle(titles), getRandomQuote(quotes));
+
+  changePosterImg(currentPoster.imageURL);
+  changePosterTitle(currentPoster.title);
+  changePosterQuote(currentPoster.quote);
 }
 
 function toggleMainPoster() {
