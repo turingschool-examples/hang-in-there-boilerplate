@@ -18,8 +18,8 @@ var randomButton = document.querySelector('.show-random');
 var savePosterButton = document.querySelector('.show-saved');
 var hiddenSavedPosters = document.querySelector('.saved-posters');
 var wholePage = document.querySelector('.main-poster');
-var makeYourOwnPosterButton = document.querySelector('show-form');
-
+var makeYourOwnPosterButton = document.querySelector('.show-form');
+var hiddenPosterForm = document.querySelector('.poster-form');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -160,22 +160,8 @@ function showSavedPosters() {
   hiddenSavedPosters.classList.remove('hidden')
 }
 
-
 function openForm(){
-  // hide current poster 
-  console.log('hi')
-  // wholePage.classList.add('hidden')
-  // wholePage.hidden = true
-  // makeYourOwnPosterButton.hidden = false
-  //show form 
-      //add class hidden, and hidden (html) boolean
-
+  wholePage.classList.add('hidden')
+  hiddenPosterForm.classList.remove('hidden')
 }
-// document.getElementById("okButton").addEventListener(
-//   "click",
-//   () => {
-//     document.getElementById("welcome").hidden = true;
-//     document.getElementById("awesome").hidden = false;
-//   },
-//   false
-// );
+
