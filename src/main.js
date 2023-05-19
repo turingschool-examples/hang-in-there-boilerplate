@@ -1,6 +1,10 @@
 // query selector variables go here 👇
 var randomPosterButton = document.querySelector(".show-random")
- 
+var posterImage = document.querySelector(".poster-img")
+var posterTitle = document.querySelector(".poster-title")
+var posterQuote = document.querySelector(".poster-quote")
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -103,36 +107,44 @@ var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
 
-randomPosterButton.addEventListener("click", createPoster)
-
+randomPosterButton.addEventListener("click", createNewPoster)
+window.addEventListener("load", createNewPoster)
 // functions and event handlers go here 👇
-var index = {}
-function getAllIndexes(){
-    index = {
-    poster: images[getRandomIndex(images)],
-    title: titles[getRandomIndex(titles)], 
-    quote: quotes[getRandomIndex(quotes)], 
-  }
-  return index
-}
-getAllIndexes()
-console.log("getAllIndexes: ", getAllIndexes())
-console.log("getAllIndexes: ", getAllIndexes())
-
-var imageURL = index.poster
-var title = index.title
-var quote = index.quote
-
-
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  var result = Math.floor(Math.random() * array.length);
+  return array[result]
+}
+
+function createNewPoster() {
+  var newPosterInfo = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
+  displayPoster(newPosterInfo)
+  return newPosterInfo
 }
 
 function createPoster(imageURL, title, quote) {
-  return {
+    return {
     id: Date.now(),
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
+    quote: quote,
+  }
 }
+
+function displayPoster(poster){
+  posterImage.src = poster.imageURL
+  posterTitle.innerText = poster.title
+  posterQuote.innerText = poster.quote
+}
+
+
+
+//  function buttonClick(event) {
+//     posterImage.src 
+//     posterTitle.innerText
+//     posterQuote.innerText
+//     console.log("hello")
+//     console.log(event)
+//     // location.reload() // this allows us to refresh page
+//   }
+
