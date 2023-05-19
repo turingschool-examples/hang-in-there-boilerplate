@@ -8,6 +8,8 @@ var mainPoster = document.querySelector(".main-poster")
 var makePosterView = document.querySelector(".poster-form")
 var mySavedPosters = document.querySelector(".saved-posters")
 var showMyPosters = document.querySelector(".show-saved")
+var neverMindButton = document.querySelector(".show-main")
+var backToMainButton = document.querySelector(".back-to-main")
 
 
 
@@ -119,6 +121,8 @@ window.addEventListener("load", randomPoster)
 showRandPoster.addEventListener("click", randomPoster)
 makePoster.addEventListener("click", makePosterForm)
 showMyPosters.addEventListener("click", showSaved)
+neverMindButton.addEventListener("click", backFromMake)
+backToMainButton.addEventListener("click", backFromSaved)
 
 
 
@@ -151,6 +155,16 @@ function makePosterForm() {
 function showSaved() {
   mySavedPosters.classList.remove("hidden")
   mainPoster.classList.add("hidden")
+}
+
+function backFromMake() {
+  mainPoster.classList.remove("hidden")
+  makePosterView.classList.add("hidden")
+}
+
+function backFromSaved() {
+  mainPoster.classList.remove("hidden")
+  mySavedPosters.classList.add("hidden")
 }
 
 
