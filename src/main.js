@@ -137,7 +137,7 @@ var randomIndexQuotes = getRandomIndex(quotes);
 var randomIndexTitles = getRandomIndex(titles);
 
 function generateRandomPoster() {
-  
+  console.log(randomIndexImages)
 }
 
 
