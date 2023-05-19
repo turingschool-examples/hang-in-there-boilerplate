@@ -158,6 +158,7 @@ function displayForm() {
 function goToMain(){
   mainPoster.hidden = false;
   posterForm.classList.add('hidden');
+  savedPosterPage.classList.add('hidden');
 }
 
 function displaySavedPosters() {
