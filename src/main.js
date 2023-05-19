@@ -6,6 +6,9 @@ var title = document.querySelector(".poster-title")
 var quote = document.querySelector(".poster-quote")
 var mainPoster = document.querySelector(".main-poster")
 var makePosterView = document.querySelector(".poster-form")
+var mySavedPosters = document.querySelector(".saved-posters")
+var showMyPosters = document.querySelector(".show-saved")
+
 
 
 // we've provided you with some data to work with 👇
@@ -115,6 +118,8 @@ var currentPoster;
 window.addEventListener("load", randomPoster)
 showRandPoster.addEventListener("click", randomPoster)
 makePoster.addEventListener("click", makePosterForm)
+showMyPosters.addEventListener("click", showSaved)
+
 
 
 // functions and event handlers go here 👇
@@ -142,6 +147,13 @@ function makePosterForm() {
   makePoster.classList.remove("hidden")
   makePosterView.classList.remove("hidden")
 }
+
+function showSaved() {
+  mySavedPosters.classList.remove("hidden")
+  mainPoster.classList.add("hidden")
+}
+
+
 
 
 function getRandomIndex(array) {
