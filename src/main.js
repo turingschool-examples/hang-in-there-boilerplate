@@ -108,35 +108,26 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-var getRandoImageIndex = getRandomIndex(images)
-var getRandoTitleIndex = getRandomIndex(titles)
-var getRandoQuoteIndex = getRandomIndex(quotes)
-var randoPoster = images[getRandoImageIndex]
-var randoTitle = titles[getRandoTitleIndex]
-var randoQuote = quotes[getRandoQuoteIndex]
-
 // event listeners go here 👇
 
 
-document.addEventListener("load", array())
-showRandPoster.addEventListener("click", newRandPoster())
+window.addEventListener("load", array)
+showRandPoster.addEventListener("click", array)
 
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
 function array() {
-  posterImg.src = randoPoster
-  title.innerText = randoTitle
-  quote.innerText = randoQuote
-  createPoster(posterImg.src,title.innerText,quote.innerText);
-}
-
-function newRandPoster()  {
-  posterImg.src = randoPoster
-  title.innerText = randoTitle
-  quote.innerText = randoQuote
-  createPoster(posterImg.src,title.innerText,quote.innerText);
+  var getRandoImageIndex = getRandomIndex(images)
+  var getRandoTitleIndex = getRandomIndex(titles)
+  var getRandoQuoteIndex = getRandomIndex(quotes)
+  var randoPoster = images[getRandoImageIndex]
+  var randoTitle = titles[getRandoTitleIndex]
+  var randoQuote = quotes[getRandoQuoteIndex]
+    posterImg.src = randoPoster
+    title.innerText = randoTitle
+    quote.innerText = randoQuote
 }
 
 
