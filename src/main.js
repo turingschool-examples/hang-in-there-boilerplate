@@ -178,3 +178,13 @@ function showMainPage() {
 
 
 // var hide = document.getElementsByClassName('show-random').hidden = true
+
+// Iteration 2: 
+// create DOM targets for 3 input fields
+// add event listener, "click", btn
+// make poster btn class= "make-poster"
+// image url, id= "poster-image-url"
+// title, id= "poster-title"
+// quote, id= "poster-quote"
+
+
