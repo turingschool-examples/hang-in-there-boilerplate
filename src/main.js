@@ -124,12 +124,10 @@ window.addEventListener('load', displayRandomPoster)
 randomButton.addEventListener('click', displayRandomPoster);
 
 makeYourOwnPosterButton.addEventListener('click', openFormInNewTab) 
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
-function openFormInNewTab(){
-  console.log('hi')
-}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -151,4 +149,11 @@ function displayRandomPoster() {
       posterQuote.innerText = randomQuote
       img.src = randomImage
       posterTitle.innerText = randomTitle;
+}
+
+function openFormInNewTab(){
+  //open a new tab and then
+  var formTab = window.open('', _blank);
+  return formTab
+  // make it so the hidden form shows
 }
