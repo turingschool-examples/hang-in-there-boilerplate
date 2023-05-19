@@ -20,6 +20,8 @@ var hiddenSavedPosters = document.querySelector('.saved-posters');
 var wholePage = document.querySelector('.main-poster');
 var makeYourOwnPosterButton = document.querySelector('.show-form');
 var hiddenPosterForm = document.querySelector('.poster-form');
+var nvmTakeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -124,11 +126,12 @@ var currentPoster;
 
 
 // event listeners go here 👇
-window.addEventListener('load', displayRandomPoster)
+window.addEventListener('load', displayRandomPoster);
 randomButton.addEventListener('click', displayRandomPoster);
 savePosterButton.addEventListener('click', showSavedPosters);
-
 makeYourOwnPosterButton.addEventListener('click', openForm);
+nvmTakeMeBackButton.addEventListener('click', showMainPage);
+backToMainButton.addEventListener('click', showMainPage);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -150,18 +153,24 @@ function displayRandomPoster() {
       var randomImage = images[getRandomIndex(images)];
       var randomTitle = titles[getRandomIndex(titles)];
 
-      posterQuote.innerText = randomQuote
-      img.src = randomImage
+      posterQuote.innerText = randomQuote;
+      img.src = randomImage;
       posterTitle.innerText = randomTitle;
 }
 
 function showSavedPosters() {
-  wholePage.classList.add('hidden')
-  hiddenSavedPosters.classList.remove('hidden')
+  wholePage.classList.add('hidden');
+  hiddenSavedPosters.classList.remove('hidden');
 }
 
 function openForm(){
-  wholePage.classList.add('hidden')
-  hiddenPosterForm.classList.remove('hidden')
+  wholePage.classList.add('hidden');
+  hiddenPosterForm.classList.remove('hidden');
+}
+
+function showMainPage() {
+  if (wholePage.hasClass('hidden')) {
+    wholePage.classList.remove('hidden');
+  }
 }
 
