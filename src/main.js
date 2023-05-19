@@ -184,10 +184,14 @@ function createOwnPoster() {
   var title = titleInput.value;
   var quote = quoteInput.value;
 
-  var userPoster = createPoster(imageURL, title, quote) 
-  images.push(userPoster.imageURL);
-  titles.push(userPoster.title);
-  quotes.push(userPoster.quotes);
+  var poster = createPoster(imageURL, title, quote) 
+  images.push(poster.imageURL);
+  titles.push(poster.title);
+  quotes.push(poster.quote);
 
-  return userPoster
+  posterTitle.innerText = poster.title;
+  posterImage.src = poster.imageURL;
+  posterQuote.innerText = poster.quote;
+
+  goToMain()
 }
