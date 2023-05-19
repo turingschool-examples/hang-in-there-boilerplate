@@ -1,5 +1,28 @@
 // query selector variables go here 👇
 
+var returnMainFromMakeButton = document.querySelector('.show-main')
+var returnMainFromSavedButton = document.querySelector('.back-to-main')
+
+var mainPosterPage = document.querySelector('.main-poster')
+var savedPostersPage = = document.querySelector('.saved-posters')
+var makePosterPage = document.querySelector('.poster-form')
+
+var posterImg = document.querySelector('.poster-img')
+var poster = document.querySelector('.poster')
+var posterTitle = document.querySelector('.poster-title')
+var posterQuote = document.querySelector('.poster-quote')
+
+var posterImageUrlInput = document.querySelector('#poster-image-url')
+var posterTitleInput = document.querySelector('#poster-title')
+var posterQuoteInput = document.querySelector('#poster-quote')
+
+var savePosterButton = document.querySelector('.save-poster')
+var showSavedPosterButton = document.querySelector('.show-saved')
+var showRandomPosterButton = document.querySelector('.show-random')
+
+var makeOwnPosterFormButton = document.querySelector('.show-form')                           
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -106,8 +129,18 @@ var currentPoster;
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
+  for (var i = 0; i < array.length; i++) 
   return Math.floor(Math.random() * array.length);
 }
+var randomIndexImages = getRandomIndex(images);
+var randomIndexQuotes = getRandomIndex(quotes);
+var randomIndexTitles = getRandomIndex(titles);
+
+function generateRandomPoster() {
+  console.log(randomIndexImages)
+}
+
+
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -116,3 +149,4 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
