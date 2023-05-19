@@ -101,10 +101,46 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+<<<<<<< Updated upstream
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+=======
+
+
+// event listeners go here 👇
+
+
+window.addEventListener("load", array)
+showRandPoster.addEventListener("click", array)
+
+
+// functions and event handlers go here 👇
+// (we've provided two to get you started)!
+
+function array() {
+  var getRandoImageIndex = getRandomIndex(images)
+  var getRandoTitleIndex = getRandomIndex(titles)
+  var getRandoQuoteIndex = getRandomIndex(quotes)
+  var randoPoster = images[getRandoImageIndex]
+  var randoTitle = titles[getRandoTitleIndex]
+  var randoQuote = quotes[getRandoQuoteIndex]
+    posterImg.src = randoPoster
+    title.innerText = randoTitle
+    quote.innerText = randoQuote
+  
+}
+
+// function newRandPoster()  {
+//   posterImg.src = randoPoster
+//   title.innerText = randoTitle
+//   quote.innerText = randoQuote
+//   createPoster(posterImg.src,title.innerText,quote.innerText);
+// }
+
+
+>>>>>>> Stashed changes
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
