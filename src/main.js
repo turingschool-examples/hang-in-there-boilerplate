@@ -1,5 +1,28 @@
 // query selector variables go here 👇
 
+var returnMainFromMakeButton = document.querySelector('.show-main')
+var returnMainFromSavedButton = document.querySelector('.back-to-main')
+
+var mainPosterPage = document.querySelector('.main-poster')
+var savedPostersPage = = document.querySelector('.saved-posters')
+var makePosterPage = document.querySelector('.poster-form')
+
+var posterImg = document.querySelector('.poster-img')
+var poster = document.querySelector('.poster')
+var posterTitle = document.querySelector('.poster-title')
+var posterQuote = document.querySelector('.poster-quote')
+
+var posterImageUrlInput = document.querySelector('#poster-image-url')
+var posterTitleInput = document.querySelector('#poster-title')
+var posterQuoteInput = document.querySelector('#poster-quote')
+
+var savePosterButton = document.querySelector('.save-poster')
+var showSavedPosterButton = document.querySelector('.show-saved')
+var showRandomPosterButton = document.querySelector('.show-random')
+
+var makeOwnPosterFormButton = document.querySelector('.show-form')                           
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -100,24 +123,6 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-var title = document.querySelector('.title')
-var mainPoster = document.querySelector('.main-poster')
-var poster = document.querySelector('.poster')
-var posterImg = document.querySelector('.poster-img')
-var posterTitle = document.querySelector('.poster-title')
-var posterQuote = document.querySelector('.poster-quote')
-var savePosterButton = document.querySelector('.save-poster')
-var showSavedPosterButton = document.querySelector('.show-saved')
-var showRandomPosterButton = document.querySelector('.show-random')
-var makeOwnPoster = document.querySelector('.show-form')
-var posterFormHidden = document.querySelector('.poster-form hidden')
-var headingTwo = document.querySelector('h2')
-var posterImageUrl = document.querySelector('#poster-image-url')
-var makePoster = document.querySelector('.make-poster')
-var showMainButton = document.querySelector('.show-main')
-var savedPostersHidden = document.querySelector('.saved-posters hidden')
-var savedPostersGrid = document.querySelector('.saved-posters-grid')
-var backToMainButton = document.querySelector('.back-to-main')
 
 // event listeners go here 👇
 
@@ -135,4 +140,3 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-Testing
