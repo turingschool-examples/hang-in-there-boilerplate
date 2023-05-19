@@ -1,5 +1,6 @@
 // query selector variables go here 👇
 
+var mainPage = document.querySelector('.main-poster');
 var singleImage = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
@@ -7,6 +8,7 @@ var savePoster = document.querySelector('.save-poster');
 var showPoster = document.querySelector('.show-poster');
 var showRandom = document.querySelector('.show-random');
 var showForm = document.querySelector('.show-form');
+var posterForm = document.querySelector('.poster-form');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -112,7 +114,7 @@ var currentPoster;
 
 // event listeners go here 👇
 showRandom.addEventListener('click', buttonClick)
-
+showForm.addEventListener('click', makePosterButton)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -139,13 +141,27 @@ quote.innerText = someName.quote
 
 // show random poster button
 
-function buttonClick(event) {
-  singleImage.src 
-  title.innerText 
-  quote.innerText 
+function buttonClick() {
+  singleImage.src = getRandomIndex(images)
+  title.innerText = getRandomIndex(titles)
+  quote.innerText = getRandomIndex(quotes)
 
 }
-// = getRandomIndex(quotes)
-// = getRandomIndex(titles)
-// = getRandomIndex(images)
-.
+
+function show(element) {
+  element.classList.remove('hidden')
+}
+
+function hide(element) {
+  console.log(element)
+  element.classList.add('hidden')
+}
+
+
+function makePosterButton() {    
+  show(posterForm)
+  hide(mainPage)
+}
+
+
+// we need to unhide line 24, hide line 11
