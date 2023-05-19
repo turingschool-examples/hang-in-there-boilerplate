@@ -15,8 +15,12 @@ var posterTitle = document.querySelector('.poster-title');
 var img = document.querySelector('.poster-img');
 var posterQuote = document.querySelector('.poster-quote');
 var randomButton = document.querySelector('.show-random');
+var savePosterButton = document.querySelector('.show-saved');
+var hiddenSavedPosters = document.querySelector('.saved-posters');
+var wholePage = document.querySelector('.main-poster');
+var makeYourOwnPosterButton = document.querySelector('show-form');
 
-var makeYourOwnPosterButton = document.querySelector('.show-form');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -122,12 +126,12 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', displayRandomPoster)
 randomButton.addEventListener('click', displayRandomPoster);
+savePosterButton.addEventListener('click', showSavedPosters);
 
-makeYourOwnPosterButton.addEventListener('click', openFormInNewTab) 
+makeYourOwnPosterButton.addEventListener('click', openForm);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -151,9 +155,27 @@ function displayRandomPoster() {
       posterTitle.innerText = randomTitle;
 }
 
-function openFormInNewTab(){
-  //open a new tab and then
-  var formTab = window.open('', _blank);
-  return formTab
-  // make it so the hidden form shows
+function showSavedPosters() {
+  wholePage.classList.add('hidden')
+  hiddenSavedPosters.classList.remove('hidden')
 }
+
+
+function openForm(){
+  // hide current poster 
+  console.log('hi')
+  // wholePage.classList.add('hidden')
+  // wholePage.hidden = true
+  // makeYourOwnPosterButton.hidden = false
+  //show form 
+      //add class hidden, and hidden (html) boolean
+
+}
+// document.getElementById("okButton").addEventListener(
+//   "click",
+//   () => {
+//     document.getElementById("welcome").hidden = true;
+//     document.getElementById("awesome").hidden = false;
+//   },
+//   false
+// );
