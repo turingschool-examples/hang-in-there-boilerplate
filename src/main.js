@@ -182,5 +182,6 @@ function createOwnPoster() {
   var quote = quoteInput.value;
 
   var userPoster = createPoster(imageURL, title, quote) 
-    return userPoster
+  titles.push(userPoster.title) 
+      return userPoster
 }
