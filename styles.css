@@ -29,6 +29,8 @@ button:hover {
   background: darkslateblue;
 }
 
+/* Possibly put this at the bottom because css won't read it */
+
 .hidden {
   display: none!important;
 }
