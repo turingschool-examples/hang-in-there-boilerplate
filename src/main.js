@@ -1,10 +1,9 @@
 // query selector variables go here 👇
-
-  //assuming this is what goes here and then we just add 
-// var title = document.querySelector('.call-to-action');
-var randomPosterButton = document.querySelector('.show-random');   // thinking this might be right for the 0 iteration? 
-
-
+var posterImg = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuotes = document.querySelector('.poster-quote');
+var randomPosterButton = document.querySelector('.show-random');  
+var backToMain = document.querySelector('.show-hidden');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -109,9 +108,10 @@ var currentPoster;
 
 // event listeners go here 👇
 
-// again just following the lesson and inputting what might go here for iteration 0
-randomButton.addEventListener('click', showRandomPoster);
+randomPosterButton.addEventListener('click', showRandomPoster);
 window.addEventListener('load', showRandomPoster);
+backToMain.addEventListener('click', showBacktoMain);
+
 
 
 // functions and event handlers go here 👇
@@ -128,16 +128,23 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-
-// 👇 added some code that doesn't work quite yet chatted in study hall but got stuck here 👇
 function showRandomPoster () {
-  currentPoster = new poster(
-  posterImg.src = images[getRandomIndex(images)];
-  posterImg.src = images[getRandomIndex(titles)];
-  posterImg.src = images[getRandomIndex(quotes)];
-  );
-  newPoster();
+posterImg.src = images[getRandomIndex(images)];
+posterTitle.innerText = titles[getRandomIndex(titles)];
+posterQuotes.innerText = quotes[getRandomIndex(quotes)];
+ createPoster(posterImg.src, posterTitle.innerText, posterQuotes.innerText) 
+
 }
+
+function backToMain() {
+  mainPoster.hidden = false;
+  posterForm.classList.add('hidden');
+}
+
+// function displayForm() {
+//   mainPoster.hidden = true;
+//   posterForm.classList.remove('hidden');
+// }
 
 
 
@@ -151,7 +158,7 @@ function showRandomPoster () {
   // 6 show another random poster
   // 7 make your own poster
   // 8 create poster
-  // 9 get random poster /randomizer   
+  
   
   //just went through the assignment and looked at the buttons on the example and in the rubric!//
   //brainstorming!
