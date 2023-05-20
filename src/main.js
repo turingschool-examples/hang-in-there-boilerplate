@@ -133,7 +133,7 @@ backToMain.addEventListener('click', backToMainButton)
 nvmBackToMain.addEventListener('click', nvmButton)
 showMyPoster.addEventListener('click', function (event){
   event.preventDefault()
-  saveUserPoster()
+  displayUserInputPoster()
 })
 
 
@@ -190,11 +190,14 @@ function show(element) {
 function hide(element) {
   element.classList.add('hidden')
 }
-function saveUserPoster() {
-  userInputPoster = createPoster(userInputImage.value, userInputTitle.value, userInputQuote.value)
-  
-
-  // 
+function displayUserInputPoster() {
+  var userInputPoster = createPoster(userInputImage.value, userInputTitle.value, userInputQuote.value)
+  singleImage.src = userInputPoster.imageURL
+  title.innerText = userInputPoster.title
+  quote.innerText = userInputPoster.quote
+  hide(posterForm)
+  show(mainPage)
+  // return userInputPoster
   }
 
 
