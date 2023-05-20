@@ -212,23 +212,42 @@ function makeNewPoster() {
 
 function addToSavedPostersArray() {
 
-  if (savedPosters.length === 0){
-    savedPosters.push(currentPoster)
-    return 
-  } 
+  // if (savedPosters.length === 0){
+  //   savedPosters.push(currentPoster)
+  //   return 
+  // } 
 
   for (var i = 0; i < savedPosters.length; i++ ){
-    if (savedPosters[i].imageURL !== currentPoster.imageURL
-      && savedPosters[i].quote !== currentPoster.quote
-      && savedPosters[i].title !== currentPoster.title) {
-          savedPosters.push(currentPoster)
-          return
+    if (savedPosters[i].imageURL === currentPoster.imageURL
+       && savedPosters[i].quote === currentPoster.quote
+       && savedPosters[i].title === currentPoster.title) {
+          //  savedPosters.push(currentPoster)
+      // ((savedPosters[i].imageURL).includes(currentPoster.imageURL)    
+      // && (savedPosters[i].quote).includes(currentPoster.quote)
+      // && (savedPosters[i].title).includes(currentPoster.title) ) {
+    return
           // console.log(savedPosters.includes)
     } 
     // saveThisPosterButton.removeEventListener('click', addToSavedPostersArray)
   }
-
+ savedPosters.push(currentPoster)
 }
+
+
+function addMenuItem(pizza, foodType) {    
+  if (foodType.type === "lunch" && !(pizza.menus.lunch).includes(foodType)) {
+    pizza.menus.lunch.push(foodType) 
+  } else if (foodType.type === "breakfast" && !(pizza.menus.breakfast).includes(foodType)) {
+    pizza.menus.breakfast.push(foodType)
+  } else if (foodType.type === "dinner" && !(pizza.menus.dinner).includes(foodType)){
+    pizza.menus.dinner.push(foodType)
+  }
+}
+function addMenuItem(pizza, foodType) {
+  if (!pizza.menus[foodType.type].includes(foodType)) {
+    pizza.menus[foodType.type].push(foodType);
+  } 
+};
 
 // Iteration 3
 // Iteration 3 - Saving & Viewing Posters
