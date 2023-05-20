@@ -10,8 +10,10 @@ var mySavedPosters = document.querySelector(".saved-posters")
 var showMyPosters = document.querySelector(".show-saved")
 var neverMindButton = document.querySelector(".show-main")
 var backToMainButton = document.querySelector(".back-to-main")
-var showMyPosterButton  = document.querySelector(".makd-poster")
-
+var showMyPosterButton = document.querySelector(".make-poster")
+var userPosterImgUrl = document.querySelector("#poster-image-url")
+var userPosterTitle = document.querySelector("#poster-title")
+var userPoserQuote = document.querySelector("#poster-quote")
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -123,9 +125,7 @@ makePoster.addEventListener("click", makePosterForm)
 showMyPosters.addEventListener("click", showSaved)
 neverMindButton.addEventListener("click", backFromMake)
 backToMainButton.addEventListener("click", backFromSaved)
-showMyPosterButton.addEventListener("click", uniquePoster(randomPoster) {
-  randomPoster.preventDefault()
-})
+showMyPosterButton.addEventListener("click", uniquePoster)
 
 
 // functions and event handlers go here 👇
@@ -170,9 +170,25 @@ function backFromSaved() {
 }
 
 function uniquePoster() {
-console.log("hello")
+  event.preventDefault();
+  var inputUrl = userPosterImgUrl.value
+  var inputMotivationalTitle = userPosterTitle.value
+  var inputMotivationalQuote = userPoserQuote.value
+  var cover = createPoster(inputUrl, inputMotivationalTitle, inputMotivationalQuote)
+  displayPoster(cover);
+  backFromMake();
 }
 
+
+function displayPoster(param1) {
+  posterImg.src=param1.imageURL
+  title.innerText=param1.title
+  quote.innerText=param1.quote
+}
+
+
+
+// event prevent inside of a function. put it inside of function connected to event listener. 
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
