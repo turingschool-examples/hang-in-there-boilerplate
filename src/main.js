@@ -146,6 +146,7 @@ function randomPoster() {
     posterImg.src = randoPoster
     title.innerText = randoTitle
     quote.innerText = randoQuote
+  currentPoster = createPoster(randoPoster, randoTitle, randoQuote)
 }
 
 function makePosterForm() {
@@ -184,21 +185,19 @@ function uniquePoster() {
   titles.push(titleValue);
   var quoteValue = document.getElementById("poster-quote").value
   quotes.push(quoteValue);
-  createPoster(imgValue, titleValue, quoteValue);
-  return createPoster
-}
 
+  currentPoster = createPoster(imgValue, titleValue, quoteValue)
+}
 
 function saveFavoritesPoster() {
-  var currentMainPoster = document.getElementsByClassName("poster")
-  if(!savedPosters.includes(currentMainPoster)) {
-    savedPosters.push(currentMainPoster)
-    console.log(savedPosters)
-   for(var i =0; i < savedPosters.length; i++) {
-    return savedPosters[i]
-   }
-  }
+  for (i =0; i < savedPosters.length; i++){
+    if (currentPoster.id === savedPosters[i].id) {
+      return
+    }
+  } 
+  savedPosters.push(currentPoster)
 }
+
 
 
 
@@ -239,3 +238,12 @@ function createPoster(imageURL, title, quote) {
 event something in the event object called preventDefault - overrides functionality of
 whatever it things the event should do. Target is separate from preventDefault
 // */
+
+
+// function saveFavoritesPoster() {
+//   for(var i =0; i < savedPosters.length; i++) {
+//      if (currentPoster.id === savedPosters[i]){}
+//  }
+//   savedPosters.push(currentPoster)
+//  }
+// }
