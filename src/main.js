@@ -179,11 +179,11 @@ function displaySavedPosters() {
   mainPoster.hidden = true;
   savedPosterPage.classList.remove('hidden');
   for (var i = 0; i < savedPosters.length; i++) {
-    savedPosterGrid.innerHTML = `<article class='mini-poster'>
+    savedPosterGrid.insertAdjacentHTML('afterbegin', `<article class='mini-poster'>
       <img class='mini-poster img' src=${savedPosters[i].imageURL} alt='Your saved poster'> 
       <h2>${savedPosters[i].title}</h2> 
       <h4>${savedPosters[i].quote}</h4> 
-      </article>`;
+      </article>`);
   }
 }
 
