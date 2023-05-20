@@ -193,8 +193,10 @@ function uniquePoster() {
 
 function saveFavoritesPoster() {
   var currentMainPoster = document.getElementsByClassName("poster")
-  savedPosters.push(currentMainPoster)
-  console.log(savedPosters)
+  if(!savedPosters.includes(currentMainPoster)) {
+    savedPosters.push(currentMainPoster)
+    console.log(savedPosters)
+  }
 }
 
 
