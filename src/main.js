@@ -104,7 +104,7 @@ var randomizeButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.make-poster');
 var mainPage = document.querySelector('.main-poster');
 var formPage = document.querySelector('.poster-form');
-var makePosterButton = document.querySelector('.show-form');
+var showPosterForm = document.querySelector('.show-form');
 var savedPosterPage = document.querySelector('.saved-posters');
 var showSavedPostersBtn = document.querySelector('.show-saved');
 var neverMindBtn = document.querySelector('.show-main');
@@ -113,10 +113,11 @@ var backToMainBtn = document.querySelector('.back-to-main');
 // event listeners go here 👇
 document.addEventListener("load", generateRandomPoster());
 randomizeButton.addEventListener("click", generateRandomPoster);
-makePosterButton.addEventListener("click", togglePages);
+showPosterForm.addEventListener("click", togglePages);
 showSavedPostersBtn.addEventListener("click", showSavedHideMain);
 neverMindBtn.addEventListener('click', showMainPage);
 backToMainBtn.addEventListener('click', showMainPage);
+makePosterButton.addEventListener("click", createUserPoster);
 
 // addEventListener('click', clickHandler)
 // functions and event handlers go here 👇
@@ -180,11 +181,33 @@ function showMainPage() {
 // var hide = document.getElementsByClassName('show-random').hidden = true
 
 // Iteration 2: 
-// create DOM targets for 3 input fields
-// add event listener, "click", btn
-// make poster btn class= "make-poster"
-// image url, id= "poster-image-url"
-// title, id= "poster-title"
-// quote, id= "poster-quote"
 
+// The preventDefault() method handles stopping the page from refreshing, we then are 
+// using the getElementById().value to get the user input. The addUserInputToArray
+// function pushes the user input into their respective arrays if they don't already exist in them.
+// We are then assigning the current poster to the poster returned from the create poster function. 
+// we then use the populatePosterFields function and then call the show main page function
+// to unhide the form / poster.
+function createUserPoster(event) {
+  event.preventDefault();
+  var imageURL = document.getElementById('poster-image-url').value
+  var title = document.getElementById('poster-title').value
+  var quote = document.getElementById('poster-quote').value
+  addUserInputToArrays(imageURL, title, quote);
+  currentPoster = createPoster(imageURL, title, quote);
+  populatePosterFields();
+  showMainPage();
+}
 
+// 
+function addUserInputToArrays(imageUrl, title, quote) {
+  if(!images.includes(imageUrl)) {
+    images.push(imageUrl);
+  }
+  if(!titles.includes(title)) {
+    titles.push(title);
+  }
+  if(!quotes.includes(quote)) {
+    quotes.push(quote);
+  }
+}
