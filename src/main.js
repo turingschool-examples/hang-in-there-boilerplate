@@ -22,6 +22,7 @@ var makeYourOwnPosterButton = document.querySelector('.show-form');
 var hiddenPosterForm = document.querySelector('.poster-form');
 var nvmTakeMeBackButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+var makePosterButton = document.querySelector('make-poster')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -132,7 +133,10 @@ savePosterButton.addEventListener('click', showSavedPosters);
 makeYourOwnPosterButton.addEventListener('click', openForm);
 nvmTakeMeBackButton.addEventListener('click', showMainPage);
 backToMainButton.addEventListener('click', showMainPage);
-
+makePosterButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    makeNewPoster();
+  });
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -169,8 +173,14 @@ function openForm(){
 }
 
 function showMainPage() {
-  if (wholePage.hasClass('hidden')) {
-    wholePage.classList.remove('hidden');
-  }
+  hiddenSavedPosters.classList.add('hidden')
+  hiddenPosterForm.classList.add('hidden')
+  wholePage.classList.remove('hidden')
+}
+
+function makeNewPoster() {
+  
+
+
 }
 
