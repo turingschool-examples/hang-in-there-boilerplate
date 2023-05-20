@@ -134,6 +134,9 @@ showMyPosterButton.addEventListener('click', function(e){
   createOwnPoster();
 });
 savePosterButton.addEventListener('click', savePoster);
+savedPosterGrid.addEventListener('dblclick', function(poster){
+  deletePoster(poster);
+})
 
 
 // functions and event handlers go here 👇
@@ -212,4 +215,14 @@ function savePoster() {
     } 
   }
   savedPosters.push(currentPoster);
+}
+
+function deletePoster(poster) {
+  
+  
+
+
+
+  console.log('Im here')
+
 }
