@@ -3,7 +3,7 @@ var posterTitle = document.querySelector('.poster-title');
 var posterImage = document.querySelector('.poster-img');
 var posterQuote = document.querySelector('.poster-quote');
 
-var savedPosterPage = document.querySelector('.saved-posters')
+var savedPosterPage = document.querySelector('.saved-posters');
 var mainPoster = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 
@@ -148,7 +148,11 @@ function createPoster(imageURL, title, quote) {
 }
 
 function displayRandomPoster() {
-  var poster = createPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  var randomImage = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+
+  var poster = createPoster(randomImage, randomTitle, randomQuote);
   
   posterTitle.innerText = poster.title;
   posterImage.src = poster.imageURL;
@@ -160,7 +164,7 @@ function displayForm() {
   posterForm.classList.remove('hidden');
 }
 
-function goToMain(){
+function goToMain() {
   mainPoster.hidden = false;
   posterForm.classList.add('hidden');
   savedPosterPage.classList.add('hidden');
@@ -172,11 +176,7 @@ function displaySavedPosters() {
 }
 
 function createOwnPoster() {
-  var imageURL = imageInput.value;
-  var title = titleInput.value;
-  var quote = quoteInput.value;
-
-  var poster = createPoster(imageURL, title, quote) 
+  var poster = createPoster(imageInput.value, titleInput.value, quoteInput.value) 
   images.push(poster.imageURL);
   titles.push(poster.title);
   quotes.push(poster.quote);
@@ -185,5 +185,5 @@ function createOwnPoster() {
   posterImage.src = poster.imageURL;
   posterQuote.innerText = poster.quote;
 
-  goToMain()
+  goToMain();
 }
