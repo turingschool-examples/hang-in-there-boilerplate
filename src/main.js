@@ -13,9 +13,9 @@ var backToMainButton = document.querySelector(".back-to-main")
 var showMyPosterButton = document.querySelector(".make-poster")
 var userPosterImgUrl = document.querySelector("#poster-image-url")
 var userPosterTitle = document.querySelector("#poster-title")
-var userPoserQuote = document.querySelector("#poster-quote")
+var userPosterQuote = document.querySelector("#poster-quote")
 var saveMyPosterButton = document.querySelector(".save-poster")
-var currentMainPoster = document.querySelector(".poster")
+// var currentMainPoster = document.querySelector(".poster")
 
 
 
@@ -148,11 +148,6 @@ function randomPoster() {
     quote.innerText = randoQuote
 }
 
-// hide mainPoster and switch to form view
-// remove "hidden" from the page we want to see
-// variable.classList.add("hidden")
-// variable.classList.remove("hidden")
-
 function makePosterForm() {
   mainPoster.classList.add("hidden")
   makePoster.classList.remove("hidden")
@@ -178,28 +173,42 @@ function uniquePoster() {
   event.preventDefault();
   var inputUrl = userPosterImgUrl.value
   var inputMotivationalTitle = userPosterTitle.value
-  var inputMotivationalQuote = userPoserQuote.value
+  var inputMotivationalQuote = userPosterQuote.value
   posterImg.src=inputUrl
   title.innerText=inputMotivationalTitle
   quote.innerText=inputMotivationalQuote
   backFromMake();
   var imgValue = document.getElementById("poster-image-url").value
   images.push(imgValue);
-  varartitleValue = document.getElementById("poster-title").value
+  var titleValue = document.getElementById("poster-title").value
   titles.push(titleValue);
   var quoteValue = document.getElementById("poster-quote").value
   quotes.push(quoteValue);
+  createPoster(imgValue, titleValue, quoteValue);
+  return createPoster
 }
+
 
 function saveFavoritesPoster() {
   var currentMainPoster = document.getElementsByClassName("poster")
   if(!savedPosters.includes(currentMainPoster)) {
     savedPosters.push(currentMainPoster)
     console.log(savedPosters)
+   for(var i =0; i < savedPosters.length; i++) {
+    return savedPosters[i]
+   }
   }
 }
 
 
+
+// var posterImg = document.querySelector(".poster-img")
+// var title = document.querySelector(".poster-title")
+// var quote = document.querySelector(".poster-quote")
+
+// posterImg.src = 
+// title.innerText = 
+// quote.innerText = 
 
 
 
@@ -229,4 +238,4 @@ function createPoster(imageURL, title, quote) {
 /* access event objects in event listener and pass events as a parameter. event.target to get specific ID's
 event something in the event object called preventDefault - overrides functionality of
 whatever it things the event should do. Target is separate from preventDefault
-*/
+// */
