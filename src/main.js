@@ -195,14 +195,10 @@ function createOwnPoster() {
 }
 
 function savePoster() {
-  if (!savedPosters) {
-    savedPosters.push(currentPoster);
-  } else {
-    for (var i = 0; i < savedPosters.length; i++) {
-      if(savedPosters[i].id === currentPoster.id) {
-        return;
-      } 
-    }
-    savedPosters.push(currentPoster);
+  for (var i = 0; i < savedPosters.length; i++) {
+    if(savedPosters[i].id === currentPoster.id) {
+      return;
+    } 
   }
+  savedPosters.push(currentPoster);
 }
