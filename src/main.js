@@ -166,9 +166,11 @@ function displayRandomPoster() {
       var randomImage = images[getRandomIndex(images)];
       var randomTitle = titles[getRandomIndex(titles)];
 
-      posterQuote.innerText = randomQuote;
-      img.src = randomImage;
-      posterTitle.innerText = randomTitle;
+      currentPoster = createPoster(randomImage, randomTitle, randomQuote);
+
+      posterQuote.innerText = currentPoster.quote;
+      img.src = currentPoster.imageURL;
+      posterTitle.innerText = currentPoster.title;
 }
 
 function showSavedPosters() {
@@ -203,21 +205,47 @@ function makeNewPoster() {
   img.src = newPoster.imageURL;
   posterTitle.innerText = newPoster.title;
 
- showMainPage();
- return newPoster
+  showMainPage();
+
+  currentPoster = newPoster
 }
 
 function addToSavedPostersArray() {
-  var newNewPoster = makeNewPoster()
-  savedPosters.push(newNewPoster)
-  saveThisPosterButton.removeEventListener('click', addToSavedPostersArray)
+
+  if (savedPosters.length === 0){
+    savedPosters.push(currentPoster)
+    return 
+  } 
+
+  for (var i = 0; i < savedPosters.length; i++ ){
+    if (savedPosters[i].imageURL !== currentPoster.imageURL
+      && savedPosters[i].quote !== currentPoster.quote
+      && savedPosters[i].title !== currentPoster.title) {
+          savedPosters.push(currentPoster)
+          return
+          // console.log(savedPosters.includes)
+    } 
+    // saveThisPosterButton.removeEventListener('click', addToSavedPostersArray)
+  }
+
 }
+
+// Iteration 3
+// Iteration 3 - Saving & Viewing Posters
+// When a user clicks the “Save This Poster” button, 
+    // the current main poster will be added to the savedPosters array.
+// If a user clicks the “Save This Poster” more than once on a single 
+//      poster, it will still only be saved once (no duplicates)
+// When a user clicks the “Show Saved Posters” button, we should see 
+//      the saved posters section
+// All the posters in the savedPosters array should be displayed in 
+//      the saved posters grid section
 
 function showSavedPosters() {
   wholePage.classList.add('hidden')
   hiddenSavedPosters.classList.remove('hidden')
   for (var i = 0; i < savedPosters.length; i++) {
-    savedPosters[i]
+    savedPosters.push(i)
   }
   //call savedposters and only one object shows up
 
