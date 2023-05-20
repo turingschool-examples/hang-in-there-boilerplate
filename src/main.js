@@ -7,13 +7,17 @@ var quote = document.querySelector(".poster-quote")
 var mainPoster = document.querySelector(".main-poster")
 var makePosterView = document.querySelector(".poster-form")
 var mySavedPosters = document.querySelector(".saved-posters")
-var showMyPosters = document.querySelector(".show-saved")
+var showSavedPostersButton = document.querySelector(".show-saved")
 var neverMindButton = document.querySelector(".show-main")
 var backToMainButton = document.querySelector(".back-to-main")
 var showMyPosterButton = document.querySelector(".make-poster")
 var userPosterImgUrl = document.querySelector("#poster-image-url")
 var userPosterTitle = document.querySelector("#poster-title")
 var userPoserQuote = document.querySelector("#poster-quote")
+var saveMyPosterButton = document.querySelector(".save-poster")
+var currentMainPoster = document.querySelector(".poster")
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -122,10 +126,11 @@ var currentPoster;
 window.addEventListener("load", randomPoster)
 showRandPoster.addEventListener("click", randomPoster)
 makePoster.addEventListener("click", makePosterForm)
-showMyPosters.addEventListener("click", showSaved)
+showSavedPostersButton.addEventListener("click", showSaved)
 neverMindButton.addEventListener("click", backFromMake)
 backToMainButton.addEventListener("click", backFromSaved)
 showMyPosterButton.addEventListener("click", uniquePoster)
+saveMyPosterButton.addEventListener("click", saveFavoritesPoster)
 
 
 // functions and event handlers go here 👇
@@ -184,6 +189,12 @@ function uniquePoster() {
   titles.push(titleValue);
   var quoteValue = document.getElementById("poster-quote").value
   quotes.push(quoteValue);
+}
+
+function saveFavoritesPoster() {
+  var currentMainPoster = document.getElementsByClassName("poster")
+  savedPosters.push(currentMainPoster)
+  console.log(savedPosters)
 }
 
 
