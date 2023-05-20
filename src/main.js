@@ -26,7 +26,9 @@ var makePosterButton = document.querySelector('.make-poster');
 var imageInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
-
+var saveThisPosterButton = document.querySelector('.save-poster')
+var showSavedPostersButton = document.querySelector('.show-saved')
+var posterGrid = document.querySelector('.saved-posters-grid')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -141,6 +143,9 @@ makePosterButton.addEventListener('click', function(e) {
     e.preventDefault();
     makeNewPoster();
   });
+saveThisPosterButton.addEventListener('click', addToSavedPostersArray)
+showSavedPostersButton.addEventListener('click', showSavedPosters)
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -199,5 +204,27 @@ function makeNewPoster() {
   posterTitle.innerText = newPoster.title;
 
  showMainPage();
+ return newPoster
 }
 
+function addToSavedPostersArray() {
+  var newNewPoster = makeNewPoster()
+  savedPosters.push(newNewPoster)
+  saveThisPosterButton.removeEventListener('click', addToSavedPostersArray)
+}
+
+function showSavedPosters() {
+  wholePage.classList.add('hidden')
+  hiddenSavedPosters.classList.remove('hidden')
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPosters[i]
+  }
+  //call savedposters and only one object shows up
+
+  // //hiddenSavedPosters.innerHTML = savedPosters[i].
+  // hiddenSavedPosters.appendChild(savedPosters[i])
+  hiddenSavedPosters.posterGrid.innerHTML = `<img${savedPosters[i].imageURL}>`
+  hiddenSavedPosters.posterGrid.innerHTML = `<h1>${savedPosters[i].title}</h1>`
+  hiddenSavedPosters.posterGrid.innerHTML = `<h3>${savedPosters[i].quotes}</h3>`
+}
+//inject it in saved-posters grid
