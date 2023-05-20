@@ -168,6 +168,10 @@ function showSavedPosters(){
   savedPostersPage.classList.remove("hidden")
   posterPage.classList.add("hidden")
 }
+function saveThisPoster(){
+  savedPostersPage.classList.remove("hidden")
+  posterPage.classList.add("hidden")
+}
 
 //   posterFormPageHidden.classList.remove("poster-form hidden")
 //   posterFormHidden.classList.add("poster-form")
