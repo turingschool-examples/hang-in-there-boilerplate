@@ -2,15 +2,24 @@
 
 var mainPage = document.querySelector('.main-poster');
 var savePage = document.querySelector('.saved-posters')
+
 var singleImage = document.querySelector('.poster-img');
 var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
+
 var savePoster = document.querySelector('.save-poster');
 var showSaved = document.querySelector('.show-saved');
 var showRandom = document.querySelector('.show-random');
 var showForm = document.querySelector('.show-form');
 var posterForm = document.querySelector('.poster-form');
 var backToMain = document.querySelector('.back-to-main');
+var showMyPoster = document.querySelector('.make-poster');
+
+var userInputImage = document.querySelector('#poster-image-url')
+var userInputTitle = document.querySelector('#poster-title')
+var userInputQuote = document.querySelector('#poster-quote')
+
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,6 +128,10 @@ showRandom.addEventListener('click', buttonClick)
 showForm.addEventListener('click', makePosterButton)
 showSaved.addEventListener('click', showSavedPosterButton)
 backToMain.addEventListener('click', backToMainButton)
+showMyPoster.addEventListener('click', function (event){
+  event.preventDefault()
+  save()
+})
 
 
 // functions and event handlers go here 👇
@@ -137,7 +150,7 @@ function createPoster(imageURL, title, quote) {
 }
 
 var someName = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
-
+// var savePoster = save(createPoster())
 
 // this is iteration 0 stuff
 singleImage.src = someName.imageURL
@@ -160,6 +173,11 @@ function show(element) {
 function hide(element) {
   element.classList.add('hidden')
 }
+function save() {
+  UserInputPoster = createPoster(userInputImage.value, userInputTitle.value, userInputQuote.value)
+  
+  }
+
 
 
 function makePosterButton() {    
@@ -168,14 +186,24 @@ function makePosterButton() {
 }
 
 function showSavedPosterButton() {
-show(savePage)
-hide(mainPage)
+  show(savePage)
+  hide(mainPage)
 }
 
 function backToMainButton() {
-show(mainPage)
-hide(savePage)
+  show(mainPage)
+  hide(savePage)
 }
 
+
+
+
+// create an object OR connect to given object somehow
+// display users new poster on button click
+// event.preventDefault() apply where necessary
+// hide the randomized poster that is usually on the main page
+// push users input into the given array (savedposters)
+// temp store-empty [] function( {var array = []}) (currentposter)
+// .mini posters
 
 // we need to unhide line 24, hide line 11
