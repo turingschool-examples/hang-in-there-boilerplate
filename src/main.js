@@ -1,4 +1,3 @@
-
 // var images = [
 //   "./assets/bees.jpg",
 //   "./assets/bridge.jpg",
@@ -19,7 +18,6 @@
 //   "./assets/tiger.jpg",
 //   "./assets/turtle.jpg"
 // ];
-
 // var titles = [
 //   "determination",
 //   "success",
@@ -97,7 +95,6 @@
 //   "Each person must live their life as a model for others.",
 //   "A champion is defined not by their wins but by how they can recover when they fall."
 // ];
-//we've provided you with some data to work with 👇
 
 //query Selectors and variables here 
 var savedPosters = [];
@@ -120,11 +117,13 @@ var saveButton = document.querySelector('.save-poster');
 var showSavedButton = document.querySelector('.show-saved');
 var backToMainButton = document.querySelector('.back-to-main');
 var savedGrid = document.querySelector('.saved-posters-grid');
-showRandomPoster();
+
+
 
 
 
 // event listeners go here 👇
+window.addEventListener('load', showRandomPoster);
 randomButton.addEventListener('click', showRandomPoster);
 
 createPosterButton.addEventListener('click', makeOwnPoster)
@@ -152,10 +151,19 @@ function backMain(){
 function showSaved(){
   hide(mainPoster);
   show(savedForm);
-  //savedGrid.innerHTML = <img class="mini-poster" src="" alt="nothing to see"/>
-  //savedGrid.src = savedPosters[0].imageURL;
-//h4 class='mini-poser h2'>Title</h4>
-}
+
+  savedGrid.innerHTML = ''
+      for (var i = 0; i < savedPosters.length; i++) {
+        savedGrid.innerHTML += `
+        <article class="mini-posters" id="${savedPosters[i].id}">
+          <img class="mini-poster img" src="${savedPosters[i].imageURL}">
+          <h2 class="mini-poster-title"> ${savedPosters[i].title}</h2>
+          <h4 class="poster-quote"> ${savedPosters[i].quote}</h4>
+        </article>`
+      }
+};
+
+
 
 
 function savePoster(){
@@ -191,10 +199,14 @@ function createOwnPoster(event){
   images.push(image);
   titles.push(title);
   quotes.push(quote);
-  var newPoster = createPoster(image,title,quote);
-  currentImage.src = newPoster.imageURL;
-  currentTitle.innerText = newPoster.title;
-  currentQuote.innerText = newPoster.quote;
+  // var newPoster = createPoster(image, title, quote);
+  // currentImage.src = newPoster.imageURL;
+  // currentTitle.innerText = newPoster.title;
+  // currentQuote.innerText = newPoster.quote;
+  currentPoster = createPoster(image, title, quote);
+  currentImage.src = currentPoster.imageURL;
+  currentTitle.innerText = currentPoster.title;
+  currentQuote.innerText = currentPoster.quote;
   event.preventDefault();
   hide(posterForm);
   show(mainPoster);
@@ -215,6 +227,7 @@ function showRandomPoster(){
   }
 
 function createRandomPoster(){
+  console.log(images)
   var randImg = images[getRandomIndex(images)];
   var randTitle = titles[getRandomIndex(titles)];
   var randQuote = quotes[getRandomIndex(quotes)];
