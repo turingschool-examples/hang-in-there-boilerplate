@@ -243,6 +243,8 @@ var savedPostersGrid = document.querySelector('.saved-posters-grid');
 saveThisPosterButton.addEventListener("click", loadGrid);
 
 function loadGrid() {
+  savedPostersGrid.innerHTML = ''; // reset the HTML
+
   for (var i = 0; i < savedPosters.length; i ++) {
     savedPostersGrid.innerHTML += `<article class="poster">
       <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
