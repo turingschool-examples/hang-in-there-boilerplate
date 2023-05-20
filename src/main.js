@@ -189,6 +189,9 @@ function showSavedPosters() {
 function openForm(){
   wholePage.classList.add('hidden');
   hiddenPosterForm.classList.remove('hidden');
+  imageInput.value = ''
+  titleInput.value = ''
+  quoteInput.value = ''
 }
 
 function showMainPage() {
