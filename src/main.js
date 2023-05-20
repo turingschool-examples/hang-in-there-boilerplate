@@ -14,10 +14,11 @@ var showForm = document.querySelector('.show-form');
 var posterForm = document.querySelector('.poster-form');
 var backToMain = document.querySelector('.back-to-main');
 var showMyPoster = document.querySelector('.make-poster');
+var nvmBackToMain = document.querySelector('.show-main');
 
-var userInputImage = document.querySelector('#poster-image-url')
-var userInputTitle = document.querySelector('#poster-title')
-var userInputQuote = document.querySelector('#poster-quote')
+var userInputImage = document.querySelector('#poster-image-url');
+var userInputTitle = document.querySelector('#poster-title');
+var userInputQuote = document.querySelector('#poster-quote');
 
 
 
@@ -124,13 +125,15 @@ var currentPoster;
 
 
 // event listeners go here 👇
+document.addEventListener('DOMContentLoaded', mainPageLoad)
 showRandom.addEventListener('click', buttonClick)
 showForm.addEventListener('click', makePosterButton)
 showSaved.addEventListener('click', showSavedPosterButton)
 backToMain.addEventListener('click', backToMainButton)
+nvmBackToMain.addEventListener('click', nvmButton)
 showMyPoster.addEventListener('click', function (event){
   event.preventDefault()
-  save()
+  saveUserPoster()
 })
 
 
@@ -149,17 +152,31 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-var someName = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
+var randomPoster = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
 // var savePoster = save(createPoster())
 
 // this is iteration 0 stuff
-singleImage.src = someName.imageURL
-title.innerText = someName.title
-quote.innerText = someName.quote
 
 // show random poster button
 
+function mainPageLoad () {
+  singleImage.src = randomPoster.imageURL
+  title.innerText = randomPoster.title
+  quote.innerText = randomPoster.quote
+  singleImage.src = getRandomIndex(images)
+  title.innerText = getRandomIndex(titles)
+  quote.innerText = getRandomIndex(quotes)
+}
+
+function nvmButton () {
+  show(mainPage)
+  hide(posterForm)
+}
+
 function buttonClick() {
+  singleImage.src = randomPoster.imageURL
+  title.innerText = randomPoster.title
+  quote.innerText = randomPoster.quote
   singleImage.src = getRandomIndex(images)
   title.innerText = getRandomIndex(titles)
   quote.innerText = getRandomIndex(quotes)
@@ -173,9 +190,11 @@ function show(element) {
 function hide(element) {
   element.classList.add('hidden')
 }
-function save() {
-  UserInputPoster = createPoster(userInputImage.value, userInputTitle.value, userInputQuote.value)
+function saveUserPoster() {
+  userInputPoster = createPoster(userInputImage.value, userInputTitle.value, userInputQuote.value)
   
+
+  // 
   }
 
 
