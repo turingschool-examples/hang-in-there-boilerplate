@@ -118,7 +118,7 @@ var backButton = document.querySelector('.show-main');
 var saveButton = document.querySelector('.save-poster');
 var showSavedButton = document.querySelector('.show-saved');
 var backToMainButton = document.querySelector('.back-to-main');
-
+var savedGrid = document.querySelector('.saved-posters-grid');
 showRandomPoster();
 
 
@@ -151,6 +151,9 @@ function backMain(){
 function showSaved(){
   hide(mainPoster);
   show(savedForm);
+  //savedGrid.innerHTML = <img class="mini-poster" src="" alt="nothing to see"/>
+  //savedGrid.src = savedPosters[0].imageURL;
+//h4 class='mini-poser h2'>Title</h4>
 }
 
 
@@ -181,10 +184,13 @@ function show(element){
 
 
 function createOwnPoster(event){
-  var input = imageInput.value;
-  var text = titleInput.value;
+  var image = imageInput.value;
+  var title = titleInput.value;
   var quote = quoteInput.value;
-  var newPoster = createPoster(input,text,quote);
+  images.push(image);
+  titles.push(title);
+  quotes.push(quote);
+  var newPoster = createPoster(image,title,quote);
   currentImage.src = newPoster.imageURL;
   currentTitle.innerText = newPoster.title;
   currentQuote.innerText = newPoster.quote;
