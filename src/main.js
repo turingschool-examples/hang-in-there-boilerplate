@@ -4,11 +4,13 @@ var posterTitle = document.querySelector('.poster-title');
 var posterQuotes = document.querySelector('.poster-quote');
 var randomPosterButton = document.querySelector('.show-random');  
 
-var makeYourOwnPosterButton = document.querySelector('.show-form')
-var displayForm = document.querySelector('.poster-form')
-var backToMainButton = document.querySelector('.back-to-main')
-var mainPoster = document.querySelector('.main-poster')
-
+var makeYourOwnPosterButton = document.querySelector('.show-form');
+var posterForm = document.querySelector('.poster-form');
+var backToMainButton = document.querySelector('.back-to-main');
+var mainPoster = document.querySelector('.main-poster');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var hiddenSavedPosters = document.querySelector('.saved-posters');
+var nevermindTakeMeBack = document.querySelector('.show-main');
 // var backToMain = document.querySelector('.show-hidden');
 
 
@@ -110,13 +112,13 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
+
 function displayForm() {
-  console.log("displayForm")
   mainPoster.hidden = true;
 // posterForm.classList.remove('hidden');
-
 }
 
 // event listeners go here 👇
@@ -124,9 +126,10 @@ function displayForm() {
 randomPosterButton.addEventListener('click', showRandomPoster);
 window.addEventListener('load', showRandomPoster);
 makeYourOwnPosterButton.addEventListener('click', displayForm);
-// takeMeBackButton.addEventListener('click', goToMain);
-
-
+showSavedPostersButton.addEventListener('click', showSavedPosters);
+backToMainButton.addEventListener('click', goToMain);
+nevermindTakeMeBack.addEventListener('click', goToMain);
+// var nevermindTakeMeBack = document.querySelector('.show-main');
 // backToMainButton.addEventListener('click', showBacktoMain);
 
 // functions and event handlers go here 👇
@@ -134,7 +137,6 @@ makeYourOwnPosterButton.addEventListener('click', displayForm);
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -148,29 +150,26 @@ function showRandomPoster () {
 posterImg.src = images[getRandomIndex(images)];
 posterTitle.innerText = titles[getRandomIndex(titles)];
 posterQuotes.innerText = quotes[getRandomIndex(quotes)];
- createPoster(posterImg.src, posterTitle.innerText, posterQuotes.innerText) 
-
+createPoster(posterImg.src, posterTitle.innerText, posterQuotes.innerText) 
 }
-
-// function backToMain() {
-//   mainPoster.hidden = false;
-// posterForm.classList.add('hidden');
-// posterForm.classList.add('hidden');
-// }
 
 function displayForm() {
   console.log("displayForm")
   mainPoster.hidden = true;
-// posterForm.classList.remove('hidden');
-
+  posterForm.classList.remove('hidden');
 }
 
-// function displaySavedPoster() {
-//   mainPOster.hidden = true;
-//   savedPosterPage.classList.remove('hidden');
-// }
+function showSavedPosters() {
+  // wholePage.classList.add('hidden')
+  mainPoster.hidden = true;
+  hiddenSavedPosters.classList.remove('hidden')
+}
 
-
+function goToMain() {
+  mainPoster.hidden = false;
+  posterForm.classList.add('hidden');
+  hiddenSavedPosters.classList.add('hidden');
+}
 
 // function showBacktoMain() {
 //   mainPoster.hidden = false;
@@ -178,8 +177,20 @@ function displayForm() {
 //   savedPosterPage.classList.add('hidden');
 // }
 
+// function backToMain() {
+//   mainPoster.hidden = false;
+// posterForm.classList.add('hidden');
+// posterForm.classList.add('hidden');
+// }
 
+// function displaySavedPoster() {
+//   mainPoster.hidden = true;
+//   savedPosterPage.classList.remove('hidden');
+// }
 
+// var showSavedPostersButton = document.querySelector('.show-saved');
+// var hiddenSavedPosters = document.querySelector('.saved-posters');
+// showSavedPostersButton.addEventListener('click', showSavedPosters);
 
 //functions/buttons we might need to create://
   //1 show my poster
