@@ -216,7 +216,11 @@ function addUserInputToArrays(imageUrl, title, quote) {
 
 
 // Iteration 3:
-// Bullet 1
+// bullet 1 -3:
+// made the query Selector for the Save This Poster Button
+// added an event listener to run the addCurrentPosterToArray function when the button is clicked
+// invoked the showSavedHideMain function to hide the main page and show the Saved Poster Page
+
 var saveThisPosterButton = document.querySelector('.save-poster');
 saveThisPosterButton.addEventListener("click", addCurrentPosterToArray);
 
@@ -232,5 +236,27 @@ function addCurrentPosterToArray() {
   showSavedHideMain()
 }
 
+// Bullet 4:
+// 
+
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
+saveThisPosterButton.addEventListener("click", loadGrid);
+
+function loadGrid() {
+  for (var i = 0; i < savedPosters.length; i ++) {
+    savedPostersGrid.innerHTML += `<article class="poster">
+      <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+      <h1 class="poster-title">${savedPosters[i].title}</h1>
+      <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+    </article>`
+  }
+}
 
 
+
+// `
+//     <section class = "posters">
+//       <img src = ${savedPosters[i].imageURL}/>
+//       <quote> = ${savedPosters[i].quote}</quote>
+//       <title> = ${savedPosters[i].title}</title>
+//     </section>`
