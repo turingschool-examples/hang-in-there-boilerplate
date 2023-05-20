@@ -178,7 +178,7 @@ function uniquePoster() {
   title.innerText=inputMotivationalTitle
   quote.innerText=inputMotivationalQuote
   backFromMake();
-  var i"mgValue = document.getElementById("poster-image-url").value
+  var imgValue = document.getElementById("poster-image-url").value
   images.push(imgValue);
   varartitleValue = document.getElementById("poster-title").value
   titles.push(titleValue);
