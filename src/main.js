@@ -22,7 +22,11 @@ var makeYourOwnPosterButton = document.querySelector('.show-form');
 var hiddenPosterForm = document.querySelector('.poster-form');
 var nvmTakeMeBackButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
-var makePosterButton = document.querySelector('.make-poster')
+var makePosterButton = document.querySelector('.make-poster');
+var imageInput = document.querySelector('#poster-image-url');
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -179,8 +183,21 @@ function showMainPage() {
 }
 
 function makeNewPoster() {
-  
 
+  var newImage = imageInput.value;
+  var newTitle = titleInput.value;
+  var newQuote = quoteInput.value;
 
+  images.push(newImage);
+  titles.push(newTitle);
+  quotes.push(newQuote);
+
+  var newPoster = createPoster(newImage, newTitle, newQuote);
+
+  posterQuote.innerText = newPoster.quote;
+  img.src = newPoster.imageURL;
+  posterTitle.innerText = newPoster.title;
+
+ showMainPage();
 }
 
