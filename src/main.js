@@ -211,3 +211,26 @@ function addUserInputToArrays(imageUrl, title, quote) {
     quotes.push(quote);
   }
 }
+
+
+
+
+// Iteration 3:
+// Bullet 1
+var saveThisPosterButton = document.querySelector('.save-poster');
+saveThisPosterButton.addEventListener("click", addCurrentPosterToArray);
+
+// var imageURL = document.getElementById('poster-image');
+// var title = document.getElementsByClassName('poster-title');
+// var quote = document.getElementsByClassName('poster-quote');
+
+
+function addCurrentPosterToArray() {
+  if(!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+  showSavedHideMain()
+}
+
+
+
