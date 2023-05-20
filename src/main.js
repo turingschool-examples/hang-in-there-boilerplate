@@ -15,7 +15,6 @@ var userPosterImgUrl = document.querySelector("#poster-image-url")
 var userPosterTitle = document.querySelector("#poster-title")
 var userPosterQuote = document.querySelector("#poster-quote")
 var saveMyPosterButton = document.querySelector(".save-poster")
-// var currentMainPoster = document.querySelector(".poster")
 
 
 
@@ -197,9 +196,6 @@ function saveFavoritesPoster() {
   } 
   savedPosters.push(currentPoster)
 }
-
-
-// event prevent inside of a function. put it inside of function connected to event listener. 
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
