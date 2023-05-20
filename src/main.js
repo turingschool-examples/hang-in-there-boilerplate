@@ -163,9 +163,6 @@ function showSaved(){
       }
 };
 
-
-
-
 function savePoster(){
   // console.log(currentPoster.id);
   // for(var i = 0; i <savedPosters.lengh ; i++){
@@ -199,10 +196,6 @@ function createOwnPoster(event){
   images.push(image);
   titles.push(title);
   quotes.push(quote);
-  // var newPoster = createPoster(image, title, quote);
-  // currentImage.src = newPoster.imageURL;
-  // currentTitle.innerText = newPoster.title;
-  // currentQuote.innerText = newPoster.quote;
   currentPoster = createPoster(image, title, quote);
   currentImage.src = currentPoster.imageURL;
   currentTitle.innerText = currentPoster.title;
