@@ -176,7 +176,7 @@ function displayRandomPoster() {
 function showSavedPosters() {
   wholePage.classList.add('hidden');
   hiddenSavedPosters.classList.remove('hidden');
-
+  
     for (var i = 0; i < savedPosters.length; i++) {
       posterGrid.insertAdjacentHTML('afterbegin',
           `<article class='mini-poster'>
@@ -195,6 +195,7 @@ function showMainPage() {
   hiddenSavedPosters.classList.add('hidden')
   hiddenPosterForm.classList.add('hidden')
   wholePage.classList.remove('hidden')
+  posterGrid.innerHTML = ''
 }
 
 
@@ -209,7 +210,7 @@ function makeNewPoster() {
   titles.push(newTitle);
   quotes.push(newQuote);
 
-  currentPoster = createPoster(newImage, newTitle, newQuote);
+ currentPoster = createPoster(newImage, newTitle, newQuote);
 
   posterQuote.innerText = currentPoster.quote;
   img.src = currentPoster.imageURL;
