@@ -176,15 +176,13 @@ function displayRandomPoster() {
 function showSavedPosters() {
   wholePage.classList.add('hidden');
   hiddenSavedPosters.classList.remove('hidden');
+
     for (var i = 0; i < savedPosters.length; i++) {
-      // posterGrid.insertAdjacentHTML('afterbegin', `<img${savedPosters[i].imageURL}>`)
-      // posterGrid.insertAdjacentHTML('afterbegin', `<h1>${savedPosters[i].title}</h1>`)
-      // posterGrid.insertAdjacentHTML('afterbegin', `<h3>${savedPosters[i].quotes}</h3>`)
       posterGrid.insertAdjacentHTML('afterbegin',
           `<article class='mini-poster'>
           <img class='mini-poster img' src='${savedPosters[i].imageURL}' alt='Inspirational poster'>
           <h2>${savedPosters[i].title}</h2>
-          <h4>${savedPosters[i].quotes}</h4></article>`)
+          <h4>${savedPosters[i].quote}</h4></article>`)
   }
 }
 
@@ -211,7 +209,7 @@ function makeNewPoster() {
   titles.push(newTitle);
   quotes.push(newQuote);
 
-  var currentPoster = createPoster(newImage, newTitle, newQuote);
+  currentPoster = createPoster(newImage, newTitle, newQuote);
 
   posterQuote.innerText = currentPoster.quote;
   img.src = currentPoster.imageURL;
