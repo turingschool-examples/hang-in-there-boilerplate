@@ -199,18 +199,6 @@ function saveFavoritesPoster() {
 }
 
 
-
-
-// var posterImg = document.querySelector(".poster-img")
-// var title = document.querySelector(".poster-title")
-// var quote = document.querySelector(".poster-quote")
-
-// posterImg.src = 
-// title.innerText = 
-// quote.innerText = 
-
-
-
 // event prevent inside of a function. put it inside of function connected to event listener. 
 
 function getRandomIndex(array) {
@@ -225,25 +213,8 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-
-
-// 1. once we have rand number, set them as index numbers for each of arrays to find out what is at those index numbers. 
-
-// 2. create new function that returns what's at the index postion at each of the arrays. pull out the string to set as the value the for createPoster function parameters. 
-
-//3. different numbers all random. plug them into each array names using bracket notion. this will give us the string, then we assign that to a variable. put this variable into the value part of the object keys.
-
 // Extra Tips
 /* access event objects in event listener and pass events as a parameter. event.target to get specific ID's
 event something in the event object called preventDefault - overrides functionality of
 whatever it things the event should do. Target is separate from preventDefault
 // */
-
-
-// function saveFavoritesPoster() {
-//   for(var i =0; i < savedPosters.length; i++) {
-//      if (currentPoster.id === savedPosters[i]){}
-//  }
-//   savedPosters.push(currentPoster)
-//  }
-// }
