@@ -5,8 +5,9 @@ var posterQuotes = document.querySelector('.poster-quote');
 var randomPosterButton = document.querySelector('.show-random');  
 
 var makeYourOwnPosterButton = document.querySelector('.show-form')
-var displayForm = document.querySelector('.poster-form hidden')
-var backToMain = document.querySelector('.back-to-main')
+var displayForm = document.querySelector('.poster-form')
+var backToMainButton = document.querySelector('.back-to-main')
+var mainPoster = document.querySelector('.main-poster')
 
 // var backToMain = document.querySelector('.show-hidden');
 
@@ -111,13 +112,19 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+function displayForm() {
+  console.log("displayForm")
+  mainPoster.hidden = true;
+// posterForm.classList.remove('hidden');
+
+}
 
 // event listeners go here 👇
 
 randomPosterButton.addEventListener('click', showRandomPoster);
 window.addEventListener('load', showRandomPoster);
 makeYourOwnPosterButton.addEventListener('click', displayForm);
-takeMeBackButton.addEventListener('click', goToMain);
+// takeMeBackButton.addEventListener('click', goToMain);
 
 
 // backToMainButton.addEventListener('click', showBacktoMain);
@@ -127,6 +134,7 @@ takeMeBackButton.addEventListener('click', goToMain);
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -144,21 +152,25 @@ posterQuotes.innerText = quotes[getRandomIndex(quotes)];
 
 }
 
-function backToMain() {
-  mainPoster.hidden = false;
-posterForm.classList.add('hidden');
-  posterForm.classList.add('hidden');
-}
+// function backToMain() {
+//   mainPoster.hidden = false;
+// posterForm.classList.add('hidden');
+// posterForm.classList.add('hidden');
+// }
 
 function displayForm() {
+  console.log("displayForm")
   mainPoster.hidden = true;
-  posterForm.classList.remove('hidden');
+// posterForm.classList.remove('hidden');
+
 }
 
-function displaySavedPoster() {
-  mainPOster.hidden = true;
-  savedPosterPage.classList.remore('hidden');
-}
+// function displaySavedPoster() {
+//   mainPOster.hidden = true;
+//   savedPosterPage.classList.remove('hidden');
+// }
+
+
 
 // function showBacktoMain() {
 //   mainPoster.hidden = false;
