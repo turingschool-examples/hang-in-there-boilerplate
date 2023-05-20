@@ -189,6 +189,8 @@ function showMainPage() {
   wholePage.classList.remove('hidden')
 }
 
+
+////////////Iteration 2/////////////////////////
 function makeNewPoster() {
 
   var newImage = imageInput.value;
@@ -199,79 +201,47 @@ function makeNewPoster() {
   titles.push(newTitle);
   quotes.push(newQuote);
 
-  var newPoster = createPoster(newImage, newTitle, newQuote);
+  var currentPoster = createPoster(newImage, newTitle, newQuote);
 
-  posterQuote.innerText = newPoster.quote;
-  img.src = newPoster.imageURL;
-  posterTitle.innerText = newPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+  img.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
 
   showMainPage();
 
-  currentPoster = newPoster
+
 }
 
+/////////Iteration 3/////////////////////
 function addToSavedPostersArray() {
-
-  // if (savedPosters.length === 0){
-  //   savedPosters.push(currentPoster)
-  //   return 
-  // } 
 
   for (var i = 0; i < savedPosters.length; i++ ){
     if (savedPosters[i].imageURL === currentPoster.imageURL
        && savedPosters[i].quote === currentPoster.quote
        && savedPosters[i].title === currentPoster.title) {
-          //  savedPosters.push(currentPoster)
-      // ((savedPosters[i].imageURL).includes(currentPoster.imageURL)    
-      // && (savedPosters[i].quote).includes(currentPoster.quote)
-      // && (savedPosters[i].title).includes(currentPoster.title) ) {
     return
-          // console.log(savedPosters.includes)
     } 
-    // saveThisPosterButton.removeEventListener('click', addToSavedPostersArray)
   }
  savedPosters.push(currentPoster)
 }
 
-
-function addMenuItem(pizza, foodType) {    
-  if (foodType.type === "lunch" && !(pizza.menus.lunch).includes(foodType)) {
-    pizza.menus.lunch.push(foodType) 
-  } else if (foodType.type === "breakfast" && !(pizza.menus.breakfast).includes(foodType)) {
-    pizza.menus.breakfast.push(foodType)
-  } else if (foodType.type === "dinner" && !(pizza.menus.dinner).includes(foodType)){
-    pizza.menus.dinner.push(foodType)
-  }
-}
-function addMenuItem(pizza, foodType) {
-  if (!pizza.menus[foodType.type].includes(foodType)) {
-    pizza.menus[foodType.type].push(foodType);
-  } 
-};
-
 // Iteration 3
 // Iteration 3 - Saving & Viewing Posters
-// When a user clicks the “Save This Poster” button, 
-    // the current main poster will be added to the savedPosters array.
-// If a user clicks the “Save This Poster” more than once on a single 
-//      poster, it will still only be saved once (no duplicates)
-// When a user clicks the “Show Saved Posters” button, we should see 
-//      the saved posters section
+
+
 // All the posters in the savedPosters array should be displayed in 
 //      the saved posters grid section
 
-function showSavedPosters() {
-  wholePage.classList.add('hidden')
-  hiddenSavedPosters.classList.remove('hidden')
-  for (var i = 0; i < savedPosters.length; i++) {
-    savedPosters.push(i)
-  }
-  //call savedposters and only one object shows up
 
-  // //hiddenSavedPosters.innerHTML = savedPosters[i].
+  // for (var i = 0; i < savedPosters.length; i++) {
+  //   savedPosters.push(i)
+  // }
+  // call savedposters and only one object shows up
+
+  // hiddenSavedPosters.innerHTML = savedPosters[i].
   // hiddenSavedPosters.appendChild(savedPosters[i])
-  hiddenSavedPosters.posterGrid.innerHTML = `<img${savedPosters[i].imageURL}>`
-  hiddenSavedPosters.posterGrid.innerHTML = `<h1>${savedPosters[i].title}</h1>`
-  hiddenSavedPosters.posterGrid.innerHTML = `<h3>${savedPosters[i].quotes}</h3>`
-}
+  // hiddenSavedPosters.posterGrid.innerHTML = `<img${savedPosters[i].imageURL}>`
+  // hiddenSavedPosters.posterGrid.innerHTML = `<h1>${savedPosters[i].title}</h1>`
+  // hiddenSavedPosters.posterGrid.innerHTML = `<h3>${savedPosters[i].quotes}</h3>`
+
 //inject it in saved-posters grid
