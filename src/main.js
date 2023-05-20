@@ -7,15 +7,13 @@ var savedPosterPage = document.querySelector('.saved-posters')
 var mainPoster = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 
-var showSavedButton = document.querySelector('.show-saved');
 var randomPosterButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
-//save this poster button
-
+var showSavedButton = document.querySelector('.show-saved');
 var backToMainButton = document.querySelector('.back-to-main');
-
 var showMyPosterButton = document.querySelector('.make-poster');
 var takeMeBackButton = document.querySelector('.show-main');
+//save poster button
 
 var titleInput = document.querySelector('#poster-title');
 var imageInput = document.querySelector('#poster-image-url');
@@ -124,17 +122,11 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', displayRandomPoster);
-
 randomPosterButton.addEventListener('click', displayRandomPoster);
-
 makePosterButton.addEventListener('click', displayForm);
-
 takeMeBackButton.addEventListener('click', goToMain);
-
 showSavedButton.addEventListener('click', displaySavedPosters);
-
 backToMainButton.addEventListener('click', goToMain);
-
 showMyPosterButton.addEventListener('click', function(e){
   e.preventDefault();
   createOwnPoster();
