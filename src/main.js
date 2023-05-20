@@ -22,7 +22,7 @@ var makeYourOwnPosterButton = document.querySelector('.show-form');
 var hiddenPosterForm = document.querySelector('.poster-form');
 var nvmTakeMeBackButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
-var makePosterButton = document.querySelector('make-poster')
+var makePosterButton = document.querySelector('.make-poster')
 
 // we've provided you with some data to work with 👇
 var images = [
