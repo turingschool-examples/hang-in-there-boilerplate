@@ -176,6 +176,8 @@ function goToMain() {
 function displaySavedPosters() {
   mainPoster.hidden = true;
   savedPosterPage.classList.remove('hidden');
+  savedPosterPage.classList.add('mini-poster');
+
 }
 
 function createOwnPoster() {
