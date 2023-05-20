@@ -174,17 +174,19 @@ function uniquePoster() {
   var inputUrl = userPosterImgUrl.value
   var inputMotivationalTitle = userPosterTitle.value
   var inputMotivationalQuote = userPoserQuote.value
-  var cover = createPoster(inputUrl, inputMotivationalTitle, inputMotivationalQuote)
-  displayPoster(cover);
+  posterImg.src=inputUrl
+  title.innerText=inputMotivationalTitle
+  quote.innerText=inputMotivationalQuote
   backFromMake();
+  var imgValue = document.getElementById("poster-image-url").value
+  images.push(imgValue);
+  varartitleValue = document.getElementById("poster-title").value
+  titles.push(titleValue);
+  var quoteValue = document.getElementById("poster-quote").value
+  quotes.push(quoteValue);
 }
 
 
-function displayPoster(param1) {
-  posterImg.src=param1.imageURL
-  title.innerText=param1.title
-  quote.innerText=param1.quote
-}
 
 
 
