@@ -38,7 +38,6 @@ createPosterButton.addEventListener('click', makeOwnPoster)
 
 showPosterButton.addEventListener('click', function(event) {
   createOwnPoster(event)
-
 });
 
 backButton.addEventListener('click', returnHome);
@@ -126,7 +125,9 @@ function deletePoster(e) {
   for (var i = 0; i < savedPosters.length; i++) {
     if (parseInt(e.target.closest('article').id) === savedPosters[i].id) {
       savedPosters.splice(i, 1);
+      console.log(savedPosters)
     }
+    hide()
   }
   showSaved()
 }
