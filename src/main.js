@@ -166,14 +166,24 @@ function displayRandomPoster() {
       var randomImage = images[getRandomIndex(images)];
       var randomTitle = titles[getRandomIndex(titles)];
 
-      posterQuote.innerText = randomQuote;
-      img.src = randomImage;
-      posterTitle.innerText = randomTitle;
+      currentPoster = createPoster(randomImage, randomTitle, randomQuote);
+
+      posterQuote.innerText = currentPoster.quote;
+      img.src = currentPoster.imageURL;
+      posterTitle.innerText = currentPoster.title;
 }
 
 function showSavedPosters() {
   wholePage.classList.add('hidden');
   hiddenSavedPosters.classList.remove('hidden');
+  
+    for (var i = 0; i < savedPosters.length; i++) {
+      posterGrid.insertAdjacentHTML('afterbegin',
+          `<article class='mini-poster'>
+          <img class='mini-poster img' src='${savedPosters[i].imageURL}' alt='Inspirational poster'>
+          <h2>${savedPosters[i].title}</h2>
+          <h4>${savedPosters[i].quote}</h4></article>`)
+  }
 }
 
 function openForm(){
@@ -185,8 +195,11 @@ function showMainPage() {
   hiddenSavedPosters.classList.add('hidden')
   hiddenPosterForm.classList.add('hidden')
   wholePage.classList.remove('hidden')
+  posterGrid.innerHTML = ''
 }
 
+
+////////////Iteration 2/////////////////////////
 function makeNewPoster() {
 
   var newImage = imageInput.value;
@@ -197,34 +210,46 @@ function makeNewPoster() {
   titles.push(newTitle);
   quotes.push(newQuote);
 
-  var newPoster = createPoster(newImage, newTitle, newQuote);
+ currentPoster = createPoster(newImage, newTitle, newQuote);
 
-  posterQuote.innerText = newPoster.quote;
-  img.src = newPoster.imageURL;
-  posterTitle.innerText = newPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+  img.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
 
- showMainPage();
- return newPoster
+  showMainPage();
 }
 
+/////////Iteration 3/////////////////////
 function addToSavedPostersArray() {
-  var newNewPoster = makeNewPoster()
-  savedPosters.push(newNewPoster)
-  saveThisPosterButton.removeEventListener('click', addToSavedPostersArray)
-}
 
-function showSavedPosters() {
-  wholePage.classList.add('hidden')
-  hiddenSavedPosters.classList.remove('hidden')
-  for (var i = 0; i < savedPosters.length; i++) {
-    savedPosters[i]
+  for (var i = 0; i < savedPosters.length; i++ ){
+    if (savedPosters[i].imageURL === currentPoster.imageURL
+       && savedPosters[i].quote === currentPoster.quote
+       && savedPosters[i].title === currentPoster.title) {
+    return
+    } 
   }
-  //call savedposters and only one object shows up
-
-  // //hiddenSavedPosters.innerHTML = savedPosters[i].
-  // hiddenSavedPosters.appendChild(savedPosters[i])
-  hiddenSavedPosters.posterGrid.innerHTML = `<img${savedPosters[i].imageURL}>`
-  hiddenSavedPosters.posterGrid.innerHTML = `<h1>${savedPosters[i].title}</h1>`
-  hiddenSavedPosters.posterGrid.innerHTML = `<h3>${savedPosters[i].quotes}</h3>`
+ savedPosters.push(currentPoster)
 }
-//inject it in saved-posters grid
+
+// Iteration 3
+// Iteration 3 - Saving & Viewing Posters
+
+
+// All the posters in the savedPosters array should be displayed in 
+//      the saved posters grid section
+
+
+  // for (var i = 0; i < savedPosters.length; i++) {
+  //   savedPosters.push(i)
+  // }
+  // call savedposters and only one object shows up
+
+  // hiddenSavedPosters.innerHTML = savedPosters[i].
+  // hiddenSavedPosters.appendChild(savedPosters[i])
+  // hiddenSavedPosters.posterGrid.innerHTML = `<img${savedPosters[i].imageURL}>`
+  // hiddenSavedPosters.posterGrid.innerHTML = `<h1>${savedPosters[i].title}</h1>`
+  // hiddenSavedPosters.posterGrid.innerHTML = `<h3>${savedPosters[i].quotes}</h3>`
+
+
+
