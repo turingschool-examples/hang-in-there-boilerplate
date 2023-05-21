@@ -8,7 +8,6 @@ var savedPosterGrid = document.querySelector('.saved-posters-grid');
 var mainPoster = document.querySelector('.main-poster');
 var posterForm = document.querySelector('.poster-form');
 
-
 var randomPosterButton = document.querySelector('.show-random');
 var makePosterButton = document.querySelector('.show-form');
 var showSavedButton = document.querySelector('.show-saved');
@@ -134,6 +133,10 @@ showMyPosterButton.addEventListener('click', function(e){
   createOwnPoster();
 });
 savePosterButton.addEventListener('click', savePoster);
+savedPosterGrid.addEventListener('dblclick', function(event) {
+  deletePoster(event)
+ });
+
 
 
 // functions and event handlers go here 👇
@@ -178,14 +181,15 @@ function goToMain() {
 }
 
 function displaySavedPosters() {
-  mainPoster.hidden = true;
+  savedPosterGrid.innerHTML = ''
+  mainPoster.classList.add('hidden');
   savedPosterPage.classList.remove('hidden');
   for (var i = 0; i < savedPosters.length; i++) {
-    savedPosterGrid.insertAdjacentHTML('afterbegin', `<article class='mini-poster'>
-      <img class='mini-poster img' src=${savedPosters[i].imageURL} alt='Your saved poster'> 
-      <h2>${savedPosters[i].title}</h2> 
-      <h4>${savedPosters[i].quote}</h4> 
-      </article>`);
+    savedPosterGrid.innerHTML +=
+    `<article class='mini-poster' id = '${savedPosters[i].id}'>
+    <img class='mini-poster img' src='${savedPosters[i].imageURL}' alt='Inspirational poster'>
+    <h2>${savedPosters[i].title}</h2>
+    <h4>${savedPosters[i].quote}</h4></article>`
   }
 }
 
@@ -212,4 +216,13 @@ function savePoster() {
     } 
   }
   savedPosters.push(currentPoster);
+}
+
+function deletePoster(event){
+  for (var i = 0; i < savedPosters.length; i++) {
+    if(parseInt(event.target.closest('article').id) === savedPosters[i].id) {
+    savedPosters.splice(i, 1);
+    }
+  }
+  displaySavedPosters()
 }
