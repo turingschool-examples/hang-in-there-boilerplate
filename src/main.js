@@ -22,8 +22,8 @@ var imageInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
 var savedGrid = document.querySelector('.saved-posters-grid');
-// var miniPoster = document.querySelector('.mini-poster')
-
+var id = document.querySelector("[id='${savedPosters[i]']")
+// console.log(id)
 
 // event listeners go here 👇
 window.addEventListener('load', showRandomPoster);
@@ -31,6 +31,7 @@ window.addEventListener('load', showRandomPoster);
 randomButton.addEventListener('click', showRandomPoster);
 
 savedPosterView.addEventListener('dblclick', function(e) {
+  console.log(e)
   deletePoster(e)
 });
 
@@ -61,18 +62,18 @@ function backMain(){
 }
 
 function showSaved(){
-  savedGrid.innerHtml = ''
+  savedGrid.innerHTML = ''
   hide(mainView);
   show(savedPosterView);
-      for (var i = 0; i < savedPosters.length; i++) {
-        console.log(savedPosters)
-        savedGrid.innerHTML += `
-        <article class="mini-poster" id="${savedPosters[i].id}">
-          <img class="mini-poster img" src="${savedPosters[i].imageURL}">
-          <h2 class="mini-poster-title"> ${savedPosters[i].title}</h2>
-          <h4 class="poster-quote"> ${savedPosters[i].quote}</h4>
-        </article>`
-      }
+  for (var i = 0; i < savedPosters.length; i++) {
+    console.log(savedPosters)
+    savedGrid.innerHTML += `
+    <article class="mini-poster" id="${savedPosters[i].id}">
+      <img class="mini-poster img" src="${savedPosters[i].imageURL}">
+      <h2 class="mini-poster-title"> ${savedPosters[i].title}</h2>
+      <h4 class="poster-quote"> ${savedPosters[i].quote}</h4>
+    </article>`
+  }
 };
 
 function savePoster(){
@@ -112,6 +113,9 @@ function createOwnPoster(event){
   currentImage.src = currentPoster.imageURL;
   currentTitle.innerText = currentPoster.title;
   currentQuote.innerText = currentPoster.quote;
+  imageInput.value = ''
+  titleInput.value = ''
+  quoteInput.value = ''
   hide(posterForm);
   show(mainView);
 }
@@ -126,7 +130,6 @@ function deletePoster(e) {
     if (parseInt(e.target.closest('article').id) === savedPosters[i].id) {
       savedPosters.splice(i, 1);
     }
-    hide()
   }
   showSaved()
 }
