@@ -118,6 +118,9 @@ showSavedPostersBtn.addEventListener("click", showSavedHideMain);
 neverMindBtn.addEventListener('click', showMainPage);
 backToMainBtn.addEventListener('click', showMainPage);
 makePosterButton.addEventListener("click", createUserPoster);
+savedPostersGrid.addEventListener('dblclick', function(event){
+  deleteSavedPoster(event)
+})
 
 // addEventListener('click', clickHandler)
 // functions and event handlers go here 👇
@@ -231,7 +234,7 @@ function addCurrentPosterToArray() {
   if(!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
-  showSavedHideMain()
+  showSavedHideMain()  
 }
 
 // Bullet 4:
@@ -243,25 +246,29 @@ saveThisPosterButton.addEventListener("click", loadGrid);
 function loadGrid() {
   savedPostersGrid.innerHTML = ''; // reset the HTML
 
-  for (var i = 0; i < savedPosters.length; i ++) {
-    savedPostersGrid.innerHTML += `<article class="poster">
-      <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
-      <h1 class="poster-title">${savedPosters[i].title}</h1>
-      <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+for (var i = 0; i < savedPosters.length; i ++) {
+  savedPostersGrid.innerHTML += `<article class="poster" id="${savedPosters[i].id}">
+    <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+    <h1 class="poster-title">${savedPosters[i].title}</h1>
+    <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+    <h3 class="poster-section-${i}"></h3>
+    <button class ="back-to-main">DOUBLE CLICK TO DELETE</button>
     </article>`
-  }
 }
+}
+
 
 
 // Iteration 4
-savedPostersGrid.addEventListener('dblclick', deleteSavedPoster)
 
 function deleteSavedPoster(event) {
-  if (event.target.classList.contains('poster')) {
+  console.log(event);
+  // if (event.target.classList.contains('poster')) {
     for(var i = 0; i < savedPosters.length; i++) {
-      if (savedPosters[i] === event.target.innerText) {
+      if (parseInt(event.target.closest('article').id) === savedPosters[i].id) {
         savedPosters.splice(i, 1); /* Updating the Data Model */
       }
     }
+   loadGrid()
   }
-}
+// }
