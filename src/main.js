@@ -118,9 +118,6 @@ showSavedPostersBtn.addEventListener("click", showSavedHideMain);
 neverMindBtn.addEventListener('click', showMainPage);
 backToMainBtn.addEventListener('click', showMainPage);
 makePosterButton.addEventListener("click", createUserPoster);
-savedPostersGrid.addEventListener('dblclick', function(event){
-  deleteSavedPoster(event)
-})
 
 // addEventListener('click', clickHandler)
 // functions and event handlers go here 👇
@@ -260,6 +257,9 @@ for (var i = 0; i < savedPosters.length; i ++) {
 
 
 // Iteration 4
+savedPostersGrid.addEventListener('dblclick', function(event){
+  deleteSavedPoster(event)
+})
 
 function deleteSavedPoster(event) {
   console.log(event);
