@@ -37,4 +37,4 @@ Wins:
 - successfully deleting motivational posters after double clicking on it
 
 Challenges:
-- realizing we had some bugs in our code from iterations 1 and 2 when we got to iterations 3 and 4 and we got over them by collaborating with peers
+- realizing we had some bugs in our code from iterations 1 and 2 when we got to iterations 3 and 4 and we got over them by collaborating with peers 
