@@ -25,6 +25,10 @@ button {
   color: white;
 }
 
+/* add disabled class */
+/* remove hover state */
+/* property: mouseEvent - none - research */
+
 button:hover {
   background: darkslateblue;
 }
@@ -144,3 +148,4 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+

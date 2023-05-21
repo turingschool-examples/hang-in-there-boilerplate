@@ -27,6 +27,7 @@ var quoteInput = document.querySelector('#poster-quote');
 var savedGrid = document.querySelector('.saved-posters-grid');
 
 
+
 // Event listeners go here 👇
 window.addEventListener('load', showRandomPoster);
 savedPosterView.addEventListener('dblclick', function(event) {
@@ -41,8 +42,12 @@ showPosterButton.addEventListener('click', function(event) {
 });
 backButton.addEventListener('click', returnHome);
 saveButton.addEventListener('click', savePoster);
-showSavedButton.addEventListener('click', showSaved);
+showSavedButton.addEventListener('click', showOwnPoster);
 backToMainButton.addEventListener('click', backMain);
+
+imageInput.addEventListener('change', checkInput)
+titleInput.addEventListener('change', checkInput)
+quoteInput.addEventListener('change', checkInput)
 
 // Event handlers go here 👇
 function showRandomPoster() {
@@ -82,27 +87,30 @@ function savePoster() {
   savedPosters.push(currentPoster);
 };
 
-function showSaved() {
+function showOwnPoster() {
   savedGrid.innerHTML = ''
   hide(mainView);
   show(savedPosterView);
   for (var i = 0; i < savedPosters.length; i++) {
-    savedGrid.innerHTML += `
-    <article class="mini-poster" id="${savedPosters[i].id}">
-      <img class="mini-poster img" src="${savedPosters[i].imageURL}">
-      <h2 class="mini-poster-title"> ${savedPosters[i].title}</h2>
-      <h4 class="poster-quote"> ${savedPosters[i].quote}</h4>
+    savedGrid.innerHTML += 
+    
+    `<article class="mini-poster" id="${savedPosters[i].id}">
+      <img src="${savedPosters[i].imageURL}"> 
+      <h2> ${savedPosters[i].title}</h2>
+      <h4> ${savedPosters[i].quote}</h4>
     </article>`
   }
 };
 
 function deletePoster(event) {
   for (var i = 0; i < savedPosters.length; i++) {
+    console.log(savedPosters)
     if (parseInt(event.target.closest('article').id) === savedPosters[i].id) {
+      console.log(savedPosters)
       savedPosters.splice(i, 1);
     }
   }
-  showSaved();
+  showOwnPoster();
 };
 
 // functions here 👇
@@ -155,4 +163,12 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 };
     
+function checkInput() {
+  showPosterButton.disabled = true;
+    if (document.querySelector('.text').value === '') {
+      showPosterButton.disabled = true 
+    } else {
+      showPosterButton.disabled = false 
+    }
+}
 
