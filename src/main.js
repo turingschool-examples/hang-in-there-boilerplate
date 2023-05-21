@@ -160,7 +160,7 @@ showSavedPostersButton.addEventListener('click', showSavedPosters);
 
 // double clicking mini-poster event listener 
 posterGrid.addEventListener('dblclick', function(event) {
- deleteMiniPoster(event)
+ deleteMiniPoster(event);
 });
 
 // functions and event handlers go here 👇
@@ -193,7 +193,7 @@ function displayRandomPoster() {
 
 //........................ iteration 1 ..........................
 function showSavedPosters() {
-  posterGrid.innerHTML = ''
+  posterGrid.innerHTML = '';
   wholePage.classList.add('hidden');
   hiddenSavedPosters.classList.remove('hidden');
   
@@ -209,16 +209,16 @@ function showSavedPosters() {
 function openForm(){
   wholePage.classList.add('hidden');
   hiddenPosterForm.classList.remove('hidden');
-  imageInput.value = ''
-  titleInput.value = ''
-  quoteInput.value = ''
+  imageInput.value = '';
+  titleInput.value = '';
+  quoteInput.value = '';
 }
 
 function showMainPage() {
-  hiddenSavedPosters.classList.add('hidden')
-  hiddenPosterForm.classList.add('hidden')
-  wholePage.classList.remove('hidden')
-  posterGrid.innerHTML = ''
+  hiddenSavedPosters.classList.add('hidden');
+  hiddenPosterForm.classList.add('hidden');
+  wholePage.classList.remove('hidden');
+  posterGrid.innerHTML = '';
 }
 
 //........................ iteration 2 ..........................
@@ -248,10 +248,10 @@ function addToSavedPostersArray() {
     if (savedPosters[i].imageURL === currentPoster.imageURL
        && savedPosters[i].quote === currentPoster.quote
        && savedPosters[i].title === currentPoster.title) {
-    return
+    return;
     } 
   }
- savedPosters.push(currentPoster)
+ savedPosters.push(currentPoster);
 }
 
 //........................ iteration 4 ..........................
@@ -261,6 +261,6 @@ function deleteMiniPoster(event){
     savedPosters.splice(i, 1);
     }
   }
-  showSavedPosters()
+  showSavedPosters();
 }
 
