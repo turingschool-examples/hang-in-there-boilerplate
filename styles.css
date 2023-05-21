@@ -25,10 +25,6 @@ button {
   color: white;
 }
 
-/* add disabled class */
-/* remove hover state */
-/* property: mouseEvent - none - research */
-
 button:hover {
   background: darkslateblue;
 }
