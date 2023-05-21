@@ -213,8 +213,6 @@ function addUserInputToArrays(imageUrl, title, quote) {
 }
 
 
-
-
 // Iteration 3:
 // bullet 1 -3:
 // made the query Selector for the Save This Poster Button
@@ -255,10 +253,15 @@ function loadGrid() {
 }
 
 
+// Iteration 4
+savedPostersGrid.addEventListener('dblclick', deleteSavedPoster)
 
-// `
-//     <section class = "posters">
-//       <img src = ${savedPosters[i].imageURL}/>
-//       <quote> = ${savedPosters[i].quote}</quote>
-//       <title> = ${savedPosters[i].title}</title>
-//     </section>`
+function deleteSavedPoster(event) {
+  if (event.target.classList.contains('poster')) {
+    for(var i = 0; i < savedPosters.length; i++) {
+      if (savedPosters[i] === event.target.innerText) {
+        savedPosters.splice(i, 1); /* Updating the Data Model */
+      }
+    }
+  }
+}
