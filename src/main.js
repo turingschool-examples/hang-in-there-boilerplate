@@ -119,6 +119,10 @@ function checkInput() {
 }
 
 // functions here 👇
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+};
+
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
@@ -162,8 +166,4 @@ function resetForm() {
 function makeOwnPoster(){
   hide(mainView);
   show(posterForm);
-};
-
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
 };
