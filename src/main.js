@@ -134,12 +134,7 @@ showMyPosterButton.addEventListener('click', function(e){
 });
 savePosterButton.addEventListener('click', savePoster);
 savedPosterGrid.addEventListener('dblclick', function(event) {
-  var target = event.target;
-    if (target.className === 'mini-poster' || target.className === 'img' || target.className === 'quote')
-    console.log(target.className)
-    {
-      deletePoster(event);
-    }
+  deletePoster(event)
  });
 
 
@@ -186,14 +181,15 @@ function goToMain() {
 }
 
 function displaySavedPosters() {
-  mainPoster.hidden = true;
+  savedPosterGrid.innerHTML = ''
+  mainPoster.classList.add('hidden');
   savedPosterPage.classList.remove('hidden');
   for (var i = 0; i < savedPosters.length; i++) {
-    savedPosterGrid.insertAdjacentHTML('afterbegin', `<article class='mini-poster'>
-      <img class='mini-poster img' src=${savedPosters[i].imageURL} alt='Your saved poster'> 
-      <h2>${savedPosters[i].title}</h2> 
-      <h4>${savedPosters[i].quote}</h4> 
-      </article>`);
+    savedPosterGrid.innerHTML +=
+    `<article class='mini-poster' id = '${savedPosters[i].id}'>
+    <img class='mini-poster img' src='${savedPosters[i].imageURL}' alt='Inspirational poster'>
+    <h2>${savedPosters[i].title}</h2>
+    <h4>${savedPosters[i].quote}</h4></article>`
   }
 }
 
@@ -222,8 +218,11 @@ function savePoster() {
   savedPosters.push(currentPoster);
 }
 
-function deletePoster(event) {
-
-  console.log('hi')
-
+function deletePoster(event){
+  for (var i = 0; i < savedPosters.length; i++) {
+    if(parseInt(event.target.closest('article').id) === savedPosters[i].id) {
+    savedPosters.splice(i, 1);
+    }
+  }
+  displaySavedPosters()
 }
