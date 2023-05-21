@@ -245,20 +245,31 @@ saveThisPosterButton.addEventListener("click", loadGrid);
 function loadGrid() {
   savedPostersGrid.innerHTML = ''; // reset the HTML
 
-  for (var i = 0; i < savedPosters.length; i ++) {
-    savedPostersGrid.innerHTML += `<article class="poster">
-      <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
-      <h1 class="poster-title">${savedPosters[i].title}</h1>
-      <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+for (var i = 0; i < savedPosters.length; i ++) {
+  savedPostersGrid.innerHTML += `<article class="poster" id="${savedPosters[i].id}">
+    <img class="poster-img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
+    <h1 class="poster-title">${savedPosters[i].title}</h1>
+    <h3 class="poster-quote">${savedPosters[i].quote}</h3>
+    <h3 class="poster-section-${i}"></h3>
+    <button class ="back-to-main">DOUBLE CLICK TO DELETE</button>
     </article>`
-  }
+}
 }
 
 
 
-// `
-//     <section class = "posters">
-//       <img src = ${savedPosters[i].imageURL}/>
-//       <quote> = ${savedPosters[i].quote}</quote>
-//       <title> = ${savedPosters[i].title}</title>
-//     </section>`
+// Iteration 4
+savedPostersGrid.addEventListener('dblclick', function(event){
+  deleteSavedPoster(event)
+})
+
+function deleteSavedPoster(event) {
+  console.log(event);
+  // if (event.target.classList.contains('poster')) {
+    for(var i = 0; i < savedPosters.length; i++) {
+      if (parseInt(event.target.closest('article').id) === savedPosters[i].id) {
+        savedPosters.splice(i, 1); /* Updating the Data Model */
+      }
+    }
+   loadGrid()
+  }
