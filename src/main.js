@@ -9,10 +9,15 @@ var showSavedButton = document.querySelector(".show-saved")
 var saveThisButton = document.querySelector(".save-poster")
 var nevermindButton = document.querySelector(".show-main")
 var backToMainButton= document.querySelector(".back-to-main")
+var showMyPosterButton = document.querySelector(".make-poster")
 
 var posterFormPage = document.querySelector(".poster-form")
 var posterPage = document.querySelector(".main-poster")
 var savedPostersPage = document.querySelector(".saved-posters")
+
+var imageInput = document.querySelector("#poster-image-url")
+var titleInput = document.querySelector("#poster-title")
+var quoteInput = document.querySelector("#poster-quote")
 
 
 
@@ -120,11 +125,23 @@ var currentPoster;
 
 randomPosterButton.addEventListener("click", createNewPoster)
 window.addEventListener("load", createNewPoster)
+
 makeYourOwnButton.addEventListener("click", showForm)
 nevermindButton.addEventListener("click", goBackToMain)
 showSavedButton.addEventListener("click", showSavedPosters)
 backToMainButton.addEventListener("click", goBackToMain)
 saveThisButton.addEventListener("click", saveThisPoster)
+
+showMyPosterButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  showMyPoster();
+})
+
+
+
+
+
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -135,7 +152,7 @@ function getRandomIndex(array) {
 
 function createNewPoster() {
   var newPosterInfo = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
-  displayPoster(newPosterInfo)
+  displayPoster(newPosterInfo);
   return newPosterInfo
 }
 
@@ -172,6 +189,27 @@ function saveThisPoster(){
   savedPostersPage.classList.remove("hidden")
   posterPage.classList.add("hidden")
 }
+
+function showMyPoster() {
+  var userImage = imageInput.value;
+  var userTitle = titleInput.value;
+  var userQuote = quoteInput.value;
+
+  images.push(userImage)
+  titles.push(userTitle)
+  quotes.push(userQuote)
+  
+  var userPoster = createPoster(userImage, userTitle, userQuote)
+
+  posterImage.src = userPoster.imageURL
+  posterTitle.innerText = userPoster.title
+  posterQuote.innerText = userPoster.quote
+  goBackToMain()
+
+return userPoster
+}
+
+
 
 //   posterFormPageHidden.classList.remove("poster-form hidden")
 //   posterFormHidden.classList.add("poster-form")
