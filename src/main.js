@@ -21,11 +21,10 @@ var currentQuote = document.querySelector('.poster-quote');
 // Form view 👇
 var posterForm = document.querySelector('.poster-form');
 var savedPosterView = document.querySelector('.saved-posters');
+var savedGrid = document.querySelector('.saved-posters-grid');
 var imageInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
-var savedGrid = document.querySelector('.saved-posters-grid');
-
 
 // Event listeners go here 👇
 window.addEventListener('load', showRandomPoster);
@@ -41,8 +40,12 @@ showPosterButton.addEventListener('click', function(event) {
 });
 backButton.addEventListener('click', returnHome);
 saveButton.addEventListener('click', savePoster);
-showSavedButton.addEventListener('click', showSaved);
+showSavedButton.addEventListener('click', showOwnPoster);
 backToMainButton.addEventListener('click', backMain);
+
+imageInput.addEventListener('change', checkInput)
+titleInput.addEventListener('change', checkInput)
+quoteInput.addEventListener('change', checkInput)
 
 // Event handlers go here 👇
 function showRandomPoster() {
@@ -82,16 +85,17 @@ function savePoster() {
   savedPosters.push(currentPoster);
 };
 
-function showSaved() {
+function showOwnPoster() {
   savedGrid.innerHTML = ''
   hide(mainView);
   show(savedPosterView);
   for (var i = 0; i < savedPosters.length; i++) {
-    savedGrid.innerHTML += `
-    <article class="mini-poster" id="${savedPosters[i].id}">
-      <img class="mini-poster img" src="${savedPosters[i].imageURL}">
-      <h2 class="mini-poster-title"> ${savedPosters[i].title}</h2>
-      <h4 class="poster-quote"> ${savedPosters[i].quote}</h4>
+    savedGrid.innerHTML += 
+    
+    `<article class="mini-poster" id="${savedPosters[i].id}">
+      <img src="${savedPosters[i].imageURL}" alt="user generated poster">
+      <h2> ${savedPosters[i].title}</h2>
+      <h4> ${savedPosters[i].quote}</h4>
     </article>`
   }
 };
@@ -102,10 +106,39 @@ function deletePoster(event) {
       savedPosters.splice(i, 1);
     }
   }
-  showSaved();
+  showOwnPoster();
 };
 
+function checkInput() {
+  showPosterButton.disabled = true
+  if (imageInput.value && titleInput.value && quoteInput.value) {
+    showPosterButton.disabled = false 
+  } else {
+    showPosterButton.disabled = true 
+  }
+}
+
 // functions here 👇
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+};
+
+function createPoster(imageURL, title, quote) {
+  return {
+    id: Date.now(), 
+    imageURL: imageURL, 
+    title: title, 
+    quote: quote}
+};
+
+function createRandomPoster(){
+  var randImg = images[getRandomIndex(images)];
+  var randTitle = titles[getRandomIndex(titles)];
+  var randQuote = quotes[getRandomIndex(quotes)];
+  var randomPoster = createPoster(randImg, randTitle, randQuote);
+  return randomPoster;
+};
+
 function hide(element) {
   element.classList.add('hidden');
 };
@@ -134,25 +167,3 @@ function makeOwnPoster(){
   hide(mainView);
   show(posterForm);
 };
-
-function createRandomPoster(){
-  var randImg = images[getRandomIndex(images)];
-  var randTitle = titles[getRandomIndex(titles)];
-  var randQuote = quotes[getRandomIndex(quotes)];
-  var randomPoster = createPoster(randImg, randTitle, randQuote);
-  return randomPoster;
-};
-
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-};
-
-function createPoster(imageURL, title, quote) {
-  return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
-};
-    
-
