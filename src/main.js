@@ -26,9 +26,9 @@ var makePosterButton = document.querySelector('.make-poster');
 var imageInput = document.querySelector('#poster-image-url');
 var titleInput = document.querySelector('#poster-title');
 var quoteInput = document.querySelector('#poster-quote');
-var saveThisPosterButton = document.querySelector('.save-poster')
-var showSavedPostersButton = document.querySelector('.show-saved')
-var posterGrid = document.querySelector('.saved-posters-grid')
+var saveThisPosterButton = document.querySelector('.save-poster');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var posterGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -139,12 +139,15 @@ savePosterButton.addEventListener('click', showSavedPosters);
 makeYourOwnPosterButton.addEventListener('click', openForm);
 nvmTakeMeBackButton.addEventListener('click', showMainPage);
 backToMainButton.addEventListener('click', showMainPage);
-makePosterButton.addEventListener('click', function(e) {
-    e.preventDefault();
+makePosterButton.addEventListener('click', function(event) {
+    event.preventDefault();
     makeNewPoster();
   });
-saveThisPosterButton.addEventListener('click', addToSavedPostersArray)
-showSavedPostersButton.addEventListener('click', showSavedPosters)
+saveThisPosterButton.addEventListener('click', addToSavedPostersArray);
+showSavedPostersButton.addEventListener('click', showSavedPosters);
+posterGrid.addEventListener('dblclick', function(event) {
+ deletePoster(event)
+});
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -235,24 +238,19 @@ function addToSavedPostersArray() {
  savedPosters.push(currentPoster)
 }
 
-// Iteration 3
-// Iteration 3 - Saving & Viewing Posters
+////////////Iteration 4////////////
 
 
-// All the posters in the savedPosters array should be displayed in 
-//      the saved posters grid section
 
+// miniPoster.insertAdjacentHTML('afterbegin', )
 
-  // for (var i = 0; i < savedPosters.length; i++) {
-  //   savedPosters.push(i)
-  // }
-  // call savedposters and only one object shows up
+//   posterGrid.insertAdjacentHTML('afterbegin',
+//       `<article class='mini-poster'> <mini-poster> ${onclick=function}`)
 
-  // hiddenSavedPosters.innerHTML = savedPosters[i].
-  // hiddenSavedPosters.appendChild(savedPosters[i])
-  // hiddenSavedPosters.posterGrid.innerHTML = `<img${savedPosters[i].imageURL}>`
-  // hiddenSavedPosters.posterGrid.innerHTML = `<h1>${savedPosters[i].title}</h1>`
-  // hiddenSavedPosters.posterGrid.innerHTML = `<h3>${savedPosters[i].quotes}</h3>`
-
-
+function deletePoster(){
+  // delete specified poster without depeting others
+  // remove child?
+// miniPoster.remove()
+console.log('hi')
+}
 
