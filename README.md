@@ -81,5 +81,5 @@ Learning Goals
 We had some great wins along the way:
 1. It was a long road to getting our Saved Posters to populate and show in the Saved Posters Grid.  After several long hours, we finally got the code to work.
 
-2. Iteation 4!!!  ALL OF IT!
+2. ITERATION 4!!!  ALL OF IT!
 
