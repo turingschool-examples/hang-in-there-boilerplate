@@ -177,15 +177,16 @@ function displayRandomPoster() {
 }
 
 function showSavedPosters() {
+  posterGrid.innerHTML = ''
   wholePage.classList.add('hidden');
   hiddenSavedPosters.classList.remove('hidden');
   
     for (var i = 0; i < savedPosters.length; i++) {
-      posterGrid.insertAdjacentHTML('afterbegin',
-          `<article class='mini-poster'>
+      posterGrid.innerHTML +=
+          `<article class='mini-poster' id = '${savedPosters[i].id}'>
           <img class='mini-poster img' src='${savedPosters[i].imageURL}' alt='Inspirational poster'>
           <h2>${savedPosters[i].title}</h2>
-          <h4>${savedPosters[i].quote}</h4></article>`)
+          <h4>${savedPosters[i].quote}</h4></article>`
   }
 }
 
@@ -240,17 +241,12 @@ function addToSavedPostersArray() {
 
 ////////////Iteration 4////////////
 
-
-
-// miniPoster.insertAdjacentHTML('afterbegin', )
-
-//   posterGrid.insertAdjacentHTML('afterbegin',
-//       `<article class='mini-poster'> <mini-poster> ${onclick=function}`)
-
-function deletePoster(){
-  // delete specified poster without depeting others
-  // remove child?
-// miniPoster.remove()
-console.log('hi')
+function deletePoster(event){
+  for (var i = 0; i < savedPosters.length; i++) {
+    if(parseInt(event.target.closest('article').id) === savedPosters[i].id) {
+    savedPosters.splice(i, 1);
+    }
+  }
+  showSavedPosters()
 }
 
