@@ -29,6 +29,10 @@ button:hover {
   background: darkslateblue;
 }
 
+button:disabled {
+  background: rgb(164, 163, 166)
+}
+
 .hidden {
   display: none!important;
 }
@@ -37,7 +41,6 @@ button:hover {
 .main-poster {
   height: 100vh;
 }
-
 .poster {
   background: black;
   display: flex;
@@ -144,3 +147,4 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
