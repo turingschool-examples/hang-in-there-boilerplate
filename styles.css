@@ -32,6 +32,7 @@ button:hover {
 button:disabled {
   background: rgb(164, 163, 166)
 }
+
 .hidden {
   display: none!important;
 }
