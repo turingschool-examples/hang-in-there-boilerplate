@@ -111,7 +111,6 @@ function deletePoster(event) {
 function checkInput() {
   if (imageInput.value && titleInput.value && quoteInput.value) {
     makePoster.disabled = false 
-    // now all three have some value you can removed diabled class styles 
   }
 }
 
@@ -161,6 +160,7 @@ function resetForm() {
 };
 
 function createPosterView() {
+  makePoster.disabled = true 
   hide(mainView);
   show(posterForm);
 };
