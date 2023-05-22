@@ -6,7 +6,7 @@ var currentPoster;
 // Button querySelectors 👇
 var createPosterButton = document.querySelector('.show-form');
 var randomButton = document.querySelector('.show-random');
-var showPosterButton = document.querySelector('.make-poster');
+var makePoster = document.querySelector('.make-poster');
 var backButton = document.querySelector('.show-main');
 var saveButton = document.querySelector('.save-poster');
 var showSavedButton = document.querySelector('.show-saved');
@@ -34,14 +34,16 @@ savedPosterView.addEventListener('dblclick', function(event) {
 
 // Event listeners for buttons 👇
 randomButton.addEventListener('click', showRandomPoster);
-createPosterButton.addEventListener('click', makeOwnPoster)
-showPosterButton.addEventListener('click', function(event) {
+createPosterButton.addEventListener('click', createPosterView);
+makePoster.addEventListener('click', function(event) {
   createOwnPoster(event)
 });
 backButton.addEventListener('click', returnHome);
 saveButton.addEventListener('click', savePoster);
-showSavedButton.addEventListener('click', showOwnPoster);
+showSavedButton.addEventListener('click', showSaved);
 backToMainButton.addEventListener('click', backMain);
+
+// showOwnPoster
 
 imageInput.addEventListener('change', checkInput)
 titleInput.addEventListener('change', checkInput)
@@ -55,7 +57,7 @@ function showRandomPoster() {
   currentQuote.innerText = currentPoster.quote;
   };
 
-function createOwnPoster(event){
+function createOwnPoster(event) {
     event.preventDefault();
     var image = imageInput.value;
     var title = titleInput.value;
@@ -73,25 +75,21 @@ function createOwnPoster(event){
 };
 
 function savePoster() {
-  if (savedPosters.length === 0){
-      savedPosters.push(currentPoster);
-        return;
-  }
     for (var i = 0; i <savedPosters.length ; i++) {
       if(savedPosters[i].id === currentPoster.id) {
         return;
     }
   }
+  console.log(savedPosters)
   savedPosters.push(currentPoster);
 };
 
-function showOwnPoster() {
-  savedGrid.innerHTML = ''
+function showSaved() {
   hide(mainView);
+  savedGrid.innerHTML = ''
   show(savedPosterView);
   for (var i = 0; i < savedPosters.length; i++) {
     savedGrid.innerHTML += 
-    
     `<article class="mini-poster" id="${savedPosters[i].id}">
       <img src="${savedPosters[i].imageURL}" alt="user generated poster">
       <h2> ${savedPosters[i].title}</h2>
@@ -99,6 +97,7 @@ function showOwnPoster() {
     </article>`
   }
 };
+    
 
 function deletePoster(event) {
   for (var i = 0; i < savedPosters.length; i++) {
@@ -106,15 +105,13 @@ function deletePoster(event) {
       savedPosters.splice(i, 1);
     }
   }
-  showOwnPoster();
+  showSaved();
 };
 
 function checkInput() {
-  showPosterButton.disabled = true
   if (imageInput.value && titleInput.value && quoteInput.value) {
-    showPosterButton.disabled = false 
-  } else {
-    showPosterButton.disabled = true 
+    makePoster.disabled = false 
+    // now all three have some value you can removed diabled class styles 
   }
 }
 
@@ -163,7 +160,7 @@ function resetForm() {
   quoteInput.value = ''
 };
 
-function makeOwnPoster(){
+function createPosterView() {
   hide(mainView);
   show(posterForm);
 };
