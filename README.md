@@ -2,13 +2,23 @@
 
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
-We built a webpage that allows users to view randomly generated motivational posters with a title, quote, and image. It also allows users to create their own motivational posters by inputting their own title, quote, and image address. The users can also save their chosen motivational posters to view later and also delete it.
+This application will allow users to view randomly generated motivational posters with a title, quote, and image. It also allows users to create their own motivational posters by inputting their own title, quote, and image address. The users can also save their chosen motivational posters to view later and also delete it.
 
 This app solves users' potential bad mood by displaying a motivational poster.
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
-Unfortunately, this app is web-based and will only work on a browswer. To access it, they would need the link: https://jwensloff.github.io/poster-project-JYJW/
+Unfortunately, this app is web-based and will only work on a browser. To access it, they will need follow several steps: 
+
+To clone down this repository to your local machine:
+* Fork the Tick-Tack-Toe repository
+* Clone down the repository to your local machine
+* `cd` into the repository on your local machine
+* Open the repository in your text editor
+* From there you should be able to open the Javascript, CSS, and HTML files, as well as the functioning appplication through a web browser using the command `open index.html`. 
+
+Alternatively, a user can demo the application using the following link:
+ https://jwensloff.github.io/poster-project-JYJW/ 
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
@@ -16,12 +26,12 @@ Unfortunately, this app is web-based and will only work on a browswer. To access
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
-We worked on it for approximately four days and we are two weeks into Module 1.
+This was completed by students who were in week 2 of module 1 in Turing School of Software and Design's curriculum. 
 
 ### Contributors:
 [//]: <> (Who worked on this application? Link to their GitHubs.)
-Jocelyn Wensloff: https://github.com/Jwensloff
-Judy Ye: https://github.com/judy0ye
+- Jocelyn Wensloff: https://github.com/Jwensloff
+- Judy Ye: https://github.com/judy0ye
 
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
