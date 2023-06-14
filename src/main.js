@@ -1,4 +1,42 @@
+// Some tips and tricks to keep in mind while we work through this!
+// step 1: Capture elements that I want to work with (buttons, images, etc.) -> query selector 
+// step 2: Add event listener to 'listen' for interactions to the DOM elements 
+//          it will then run function that we decide will be 
+// step 3: Do the thing. Have event liistener invoke the function we give 
+// **Keep everything inside of a function so it can be invoked!!!!!
+
+
+
 // query selector variables go here 👇
+
+// poster elements
+var posterTitle = document.querySelector('.poster-title');
+var img = document.querySelector('.poster-img');
+var posterQuote = document.querySelector('.poster-quote');
+
+// buttons elements 
+var randomButton = document.querySelector('.show-random');
+var savePosterButton = document.querySelector('.show-saved');
+var makeYourOwnPosterButton = document.querySelector('.show-form');
+
+var nvmTakeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var makePosterButton = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector('.save-poster');
+var showSavedPostersButton = document.querySelector('.show-saved');
+
+// page elements 
+var wholePage = document.querySelector('.main-poster');
+var hiddenPosterForm = document.querySelector('.poster-form');
+var hiddenSavedPosters = document.querySelector('.saved-posters');
+
+// user input for 'create your own poster' form elements 
+var imageInput = document.querySelector('#poster-image-url');
+var titleInput = document.querySelector('#poster-title');
+var quoteInput = document.querySelector('#poster-quote');
+
+// poster grid for mini posters elements 
+var posterGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -59,7 +97,7 @@ var titles = [
   "wisdom"
 ];
 var quotes = [
-  "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
+  "Don\'t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
   "The one who has confidence gains the confidence of others.",
@@ -86,7 +124,7 @@ var quotes = [
   "It is never too late to be what you might have been.",
   "Happiness often sneaks in through a door you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
-  "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
+  "Never limit yourself because of others\' limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
   "Let us make our future now, and let us make our dreams tomorrow's reality.",
   "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
@@ -101,10 +139,33 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+
 // event listeners go here 👇
+
+// window load event listener
+window.addEventListener('load', displayRandomPoster);
+
+// button event listeners
+randomButton.addEventListener('click', displayRandomPoster);
+savePosterButton.addEventListener('click', showSavedPosters);
+makeYourOwnPosterButton.addEventListener('click', openForm);
+nvmTakeMeBackButton.addEventListener('click', showMainPage);
+backToMainButton.addEventListener('click', showMainPage);
+makePosterButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    makeNewPoster();
+  });
+saveThisPosterButton.addEventListener('click', addToSavedPostersArray);
+showSavedPostersButton.addEventListener('click', showSavedPosters);
+
+// double clicking mini-poster event listener 
+posterGrid.addEventListener('dblclick', function(event) {
+ deleteMiniPoster(event);
+});
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -116,3 +177,90 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+//........................ iteration 0 ..........................
+function displayRandomPoster() {
+      var randomQuote = quotes[getRandomIndex(quotes)];
+      var randomImage = images[getRandomIndex(images)];
+      var randomTitle = titles[getRandomIndex(titles)];
+
+      currentPoster = createPoster(randomImage, randomTitle, randomQuote);
+
+      posterQuote.innerText = currentPoster.quote;
+      img.src = currentPoster.imageURL;
+      posterTitle.innerText = currentPoster.title;
+}
+
+//........................ iteration 1 ..........................
+function showSavedPosters() {
+  posterGrid.innerHTML = '';
+  wholePage.classList.add('hidden');
+  hiddenSavedPosters.classList.remove('hidden');
+  
+    for (var i = 0; i < savedPosters.length; i++) {
+      posterGrid.innerHTML +=
+          `<article class='mini-poster' id = '${savedPosters[i].id}'>
+          <img class='mini-poster img' src='${savedPosters[i].imageURL}' alt='Inspirational poster'>
+          <h2>${savedPosters[i].title}</h2>
+          <h4>${savedPosters[i].quote}</h4></article>`
+  }
+}
+
+function openForm(){
+  wholePage.classList.add('hidden');
+  hiddenPosterForm.classList.remove('hidden');
+  imageInput.value = '';
+  titleInput.value = '';
+  quoteInput.value = '';
+}
+
+function showMainPage() {
+  hiddenSavedPosters.classList.add('hidden');
+  hiddenPosterForm.classList.add('hidden');
+  wholePage.classList.remove('hidden');
+  posterGrid.innerHTML = '';
+}
+
+//........................ iteration 2 ..........................
+function makeNewPoster() {
+
+  var newImage = imageInput.value;
+  var newTitle = titleInput.value;
+  var newQuote = quoteInput.value;
+
+  images.push(newImage);
+  titles.push(newTitle);
+  quotes.push(newQuote);
+
+ currentPoster = createPoster(newImage, newTitle, newQuote);
+
+  posterQuote.innerText = currentPoster.quote;
+  img.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+
+  showMainPage();
+}
+
+//........................ iteration 3 ..........................
+function addToSavedPostersArray() {
+
+  for (var i = 0; i < savedPosters.length; i++ ){
+    if (savedPosters[i].imageURL === currentPoster.imageURL
+       && savedPosters[i].quote === currentPoster.quote
+       && savedPosters[i].title === currentPoster.title) {
+    return;
+    } 
+  }
+ savedPosters.push(currentPoster);
+}
+
+//........................ iteration 4 ..........................
+function deleteMiniPoster(event){
+  for (var i = 0; i < savedPosters.length; i++) {
+    if(parseInt(event.target.closest('article').id) === savedPosters[i].id) {
+    savedPosters.splice(i, 1);
+    }
+  }
+  showSavedPosters();
+}
+
