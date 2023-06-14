@@ -8,10 +8,10 @@ This app solves users' potential bad mood by displaying a motivational poster.
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
-Unfortunately, this app is web-based and will only work on a browser. To access it, they will need follow several steps: 
+Unfortunately, this app is web-based and will only work on a browser. To access it, they will need to follow several steps: 
 
 To clone down this repository to your local machine:
-* Fork the Tick-Tack-Toe repository
+* Fork the poster-project-JYJW repository
 * Clone down the repository to your local machine
 * `cd` into the repository on your local machine
 * Open the repository in your text editor
