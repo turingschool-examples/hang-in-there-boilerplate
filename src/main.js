@@ -1,5 +1,8 @@
 // query selector variables go here 👇
 var saveButton = document.querySelector(".save-poster")
+var showSaved = document.querySelector(".show-saved")
+var showRandom = document.querySelector(".show-random")
+var showForm = document.querySelector(".show-form")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -103,7 +106,16 @@ var currentPoster;
 
 // event listeners go here 👇
 
+
+// var saveButton = document.querySelector(".save-poster")
+// var showSaved = document.querySelector(".show-saved")
+// var showRandom = document.querySelector(".show-random")
+// var showForm = document.querySelector(".show-form")
 // functions and event handlers go here 👇
+saveButton.addEventListener("click",savePoster)
+showSaved.addEventListener("click",displaySaved)
+showRandom.addEventListener("click",displayRandom)
+showForm.addEventListener("click",createCustom)
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -117,7 +129,18 @@ function createPoster(imageURL, title, quote) {
     quote: quote,
   };
 }
+function savePoster(){
 
+}
+function displaySaved(){
+
+}
+function displayRandom(){
+
+}
+function createCustom(){
+  
+}
 /* iteration 0 planning:
 When the page loads, we should see a poster with a randomly selected image, title, and quote
 ~~~~~~~~~~~
@@ -149,4 +172,4 @@ When a user clicks the “Nevermind, take me back!” or “Back to Main” butt
 In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
 
 ***go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place
-
+*/
