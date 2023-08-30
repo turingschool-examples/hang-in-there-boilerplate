@@ -112,10 +112,7 @@ showRandomPoster.addEventListener("click", function() {
   createRandomPoster(images, titles, quotes);
   displayPoster(currentPoster);
 })
-posterContainer.addEventListener("load", function(){
-  createRandomPoster(images, titles, quotes);
-  displayPoster(currentPoster);
-});
+posterContainer.addEventListener("load", createRandomPoster(images, titles, quotes), displayPoster(currentPoster));
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
