@@ -1,16 +1,15 @@
 // query selector variables go here 👇
-//Here, we are creating a variable named createPoster1 (maybe rename it to be more functional?)
+//Here, we are creating a variable named mainPoster
 //to access the DOM. the '.main-poster' is the class used that is the main poster on the webpage
 //we will reassign createPoster1.innerHTML to be the currentPoster (which is the return value of invoking
 // the function createPoster)
 //repeat the same process with title and quote replacing values to correlate with title and quote
+//create a variable randomPosterButton and assign it the document.queryselector('.show-random')
 var mainPoster = document.querySelector('.main-poster');
-console.log(mainPoster, 'this is createPoste');
-//mainPoster.innerHTML = currentPoster.imageURL;
+console.log(mainPoster, 'this is mainPoster');
 var titleOnPoster = document.querySelector('.poster-quote');
-//titleOnPoster.innerHTML = currentPoster.title;
 var quoteOnPoster = document.querySelector('.poster-title');
-//quoteOnPoster.innerHTML = currentPoster.quote;
+var randomPosterButton = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -115,8 +114,13 @@ var currentPoster;
 
 // event listeners go here 👇
 
+randomPosterButton.addEventListener('click', changePoster);
+
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -125,7 +129,6 @@ function getRandomIndex(array) {
 //Every time the user clicks the Show Random Poster button, a new random poster is displayed.
 //Add functionality to createPoster to achieve above 
 function createPoster(imageURL, title, quote) {
-  //we need to iterate through the three passed in arguments (array of strings) and use the callback function getRandomIndex() 
    var imagesIndex = getRandomIndex(imageURL);
    var newPoster = imageURL[imagesIndex];
    var titleIndex = getRandomIndex(title);
@@ -138,9 +141,17 @@ function createPoster(imageURL, title, quote) {
     title: newTitle, 
     quote: newQuote }
 }
-//invoke function createPoster here
+
+currentPoster = createPoster(images, titles, quotes);
+console.log(currentPoster);
+
+function changePoster() {
+  mainPoster.innerHTML = currentPoster.imageURL;
+  titleOnPoster.innerHTML = currentPoster.title;
+  quoteOnPoster.innerText = currentPoster.quote;
+}
+
+
+
 //console.log(quotes.length, images.length, titles.length); //quotes length = 38, images length = 18, titles length = 35
 //console.log(createPoster(images, titles, quotes));
-
-
-console.log(currentPoster);
