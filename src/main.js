@@ -109,6 +109,8 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+
+
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
