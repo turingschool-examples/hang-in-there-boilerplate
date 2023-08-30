@@ -1,5 +1,9 @@
 // query selector variables go here 👇
 var showRandomPoster = document.querySelector(".show-random");
+var posterContainer = document.querySelector(".poster")
+var posterImage = document.querySelector(".poster-image");
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector(".poster-quote");
 
 
 // we've provided you with some data to work with 👇
@@ -101,12 +105,14 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {};
 
 // event listeners go here 👇
-showRandomPoster.addEventListener("click", function(event){
-  console.log(event);
+showRandomPoster.addEventListener("click", function() {
+  createRandomPoster(images, titles, quotes);
+  displayPoster(currentPoster);
 })
+posterContainer.addEventListener("load", createRandomPoster(images, titles, quotes), displayPoster(currentPoster));
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -119,15 +125,23 @@ function createPoster(imageURL, title, quote) {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
+    quote: quote
+  }
 }
 
 //Takes in 3 arrays and gets and uses the random function to create a randomn poster
 function createRandomPoster(imageURL, title, quote) {
   //Should we just return the createposter call?
-  var randomPoster = {};
-  randomPoster = createPoster((imageURL[getRandomIndex(imageURL)]), 
-                              (title[getRandomIndex(title)]), 
-                              (quote[getRandomIndex(quote)]));
-  return randomPoster;
+  currentPoster = createPoster((imageURL[getRandomIndex(images)]), 
+                              (title[getRandomIndex(titles)]), 
+                              (quote[getRandomIndex(quotes)]));
+  return currentPoster;
+}
+
+function displayPoster(currentPoster) {
+  posterContainer.innerHTML = ""
+  posterContainer.innerHTML += `<img class="poster-img" src=${currentPoster.imageURL} alt=${currentPoster.title}/>
+  <h1 class="poster-title">${currentPoster.title}</h1>
+  <h3 class="poster-quote">${currentPoster.quote}</h3>`
+  return posterContainer;
 }
