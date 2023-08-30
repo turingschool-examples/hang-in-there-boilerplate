@@ -135,9 +135,20 @@ function savePoster(){
 function displaySaved(){
 
 }
-function displayRandom(){
 
+function displayRandom(images,titles,quote){
+  var randomImage = getRandomIndex(images)
+  var randomTitle = getRandomIndex(titles)
+  var randomQuote = getRandomIndex(quote)
+
+  var imageURL = images[randomImage]
+  var titles = titles[randomTitle]
+  var quote = quote[randomQuote]
+
+  var poster = createPoster(imageURL,titles,quote)
+  return poster
 }
+
 function createCustom(){
   
 }
