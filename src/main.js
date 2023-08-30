@@ -105,7 +105,7 @@ var currentPoster;
 
 // event listeners go here 👇
 showRandomPoster.addEventListener("click", function(event){
-  
+  console.log(event);
 })
 
 // functions and event handlers go here 👇
