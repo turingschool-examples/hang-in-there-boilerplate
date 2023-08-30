@@ -116,3 +116,13 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+//Takes in 3 arrays and gets and uses the random function to create a randomn poster
+function createRandomPoster(imageURL, title, quote) {
+  //Should we just return the createposter call?
+  var randomPoster = {};
+  randomPoster = createPoster((imageURL[getRandomIndex(imageURL)]), 
+                              (title[getRandomIndex(title)]), 
+                              (quote[getRandomIndex(quote)]));
+  return randomPoster;
+}
