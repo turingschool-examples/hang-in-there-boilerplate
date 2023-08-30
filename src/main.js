@@ -1,4 +1,16 @@
 // query selector variables go here 👇
+//Here, we are creating a variable named createPoster1 (maybe rename it to be more functional?)
+//to access the DOM. the '.main-poster' is the class used that is the main poster on the webpage
+//we will reassign createPoster1.innerHTML to be the currentPoster (which is the return value of invoking
+// the function createPoster)
+//repeat the same process with title and quote replacing values to correlate with title and quote
+var mainPoster = document.querySelector('.main-poster');
+console.log(mainPoster, 'this is createPoste');
+//mainPoster.innerHTML = currentPoster.imageURL;
+var titleOnPoster = document.querySelector('.poster-quote');
+//titleOnPoster.innerHTML = currentPoster.title;
+var quoteOnPoster = document.querySelector('.poster-title');
+//quoteOnPoster.innerHTML = currentPoster.quote;
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -130,5 +142,5 @@ function createPoster(imageURL, title, quote) {
 //console.log(quotes.length, images.length, titles.length); //quotes length = 38, images length = 18, titles length = 35
 //console.log(createPoster(images, titles, quotes));
 
-currentPoster = createPoster(images, titles, quotes);
+
 console.log(currentPoster);
