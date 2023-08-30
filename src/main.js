@@ -104,7 +104,9 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+showRandomPoster.addEventListener("click", function(event){
+  
+})
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
