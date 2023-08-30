@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-
+var saveButton = document.querySelector(".save-poster")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -19,7 +19,7 @@ var images = [
   "./assets/runner.jpg",
   "./assets/squirrel.jpg",
   "./assets/tiger.jpg",
-  "./assets/turtle.jpg"
+  "./assets/turtle.jpg",
 ];
 var titles = [
   "determination",
@@ -56,7 +56,7 @@ var titles = [
   "smile",
   "trust",
   "understanding",
-  "wisdom"
+  "wisdom",
 ];
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
@@ -96,7 +96,7 @@ var quotes = [
   "If you have good thoughts they will shine out of your face like sunbeams and you will always look lovely.",
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
-  "A champion is defined not by their wins but by how they can recover when they fall."
+  "A champion is defined not by their wins but by how they can recover when they fall.",
 ];
 var savedPosters = [];
 var currentPoster;
@@ -111,8 +111,42 @@ function getRandomIndex(array) {
 
 function createPoster(imageURL, title, quote) {
   return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
+    id: Date.now(),
+    imageURL: imageURL,
+    title: title,
+    quote: quote,
+  };
 }
+
+/* iteration 0 planning:
+When the page loads, we should see a poster with a randomly selected image, title, and quote
+~~~~~~~~~~~
+on page load, have random image and phrases appear in the DOM
+--> event listener for page load 
+--> randomize function for image
+--> randomize function for title
+--> randomize function for quote
+
+Every time the user clicks the Show Random Poster button, a new random poster is displayed
+--> event listener for random button
+---->  interacts w the DOM 
+------> engages the random functions for image, title, and quote
+
+iteration 1
+~~~~~~~~~~
+When a user clicks the “Make Your Own Poster” button, we should see the form, and the main poster should be hidden
+--> event listener for make your own poster button
+----> toggle function for showing the form & hiding the landing page
+
+When a user clicks the “View Saved Posters” button, we should see the saved posters area, and the main poster should be hidden
+--> event listener for the view saved posters button
+----> toggle function for showing the saved posters and hiding the main poster
+
+When a user clicks the “Nevermind, take me back!” or “Back to Main” buttons, we should only see the main poster section
+--> event listener for the return button
+----> toggle function to hide the posters and show main page
+
+In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
+
+***go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place
+
