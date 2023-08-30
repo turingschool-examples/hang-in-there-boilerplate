@@ -108,11 +108,27 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
+//console.log(getRandomIndex(images));
+//When the page loads, we should see a poster with a randomly selected image, title, and quote
+//Every time the user clicks the Show Random Poster button, a new random poster is displayed.
+//Add functionality to createPoster to achieve above 
 function createPoster(imageURL, title, quote) {
+  //we need to iterate through the three passed in arguments (array of strings) and use the callback function getRandomIndex() 
+   var imagesIndex = getRandomIndex(imageURL);
+   var newPoster = imageURL[imagesIndex];
+   var titleIndex = getRandomIndex(title);
+   var newTitle = title[titleIndex];
+   var quoteIndex = getRandomIndex(quote);
+   var newQuote = quote[quoteIndex];
   return {
     id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
+    imageURL: newPoster, 
+    title: newTitle, 
+    quote: newQuote }
 }
+//invoke function createPoster here
+//console.log(quotes.length, images.length, titles.length); //quotes length = 38, images length = 18, titles length = 35
+//console.log(createPoster(images, titles, quotes));
+
+currentPoster = createPoster(images, titles, quotes);
+console.log(currentPoster);
