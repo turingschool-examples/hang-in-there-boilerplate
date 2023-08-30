@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-
+var saveButton = document.querySelector(".save-poster")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -132,6 +132,8 @@ Every time the user clicks the Show Random Poster button, a new random poster is
 ---->  interacts w the DOM 
 ------> engages the random functions for image, title, and quote
 
+iteration 1
+~~~~~~~~~~
 When a user clicks the “Make Your Own Poster” button, we should see the form, and the main poster should be hidden
 --> event listener for make your own poster button
 ----> toggle function for showing the form & hiding the landing page
