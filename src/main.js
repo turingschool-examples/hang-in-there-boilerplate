@@ -1,5 +1,3 @@
-// query selector variables go here 👇
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -19,7 +17,7 @@ var images = [
   "./assets/runner.jpg",
   "./assets/squirrel.jpg",
   "./assets/tiger.jpg",
-  "./assets/turtle.jpg"
+  "./assets/turtle.jpg",
 ];
 var titles = [
   "determination",
@@ -56,7 +54,7 @@ var titles = [
   "smile",
   "trust",
   "understanding",
-  "wisdom"
+  "wisdom",
 ];
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
@@ -96,23 +94,47 @@ var quotes = [
   "If you have good thoughts they will shine out of your face like sunbeams and you will always look lovely.",
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
-  "A champion is defined not by their wins but by how they can recover when they fall."
+  "A champion is defined not by their wins but by how they can recover when they fall.",
 ];
 var savedPosters = [];
 var currentPoster;
 
+// query selector variables go here 👇
+var posterImg = document.querySelector(".poster-img")
+var title = document.querySelector(".poster-title")
+var quote = document.querySelector(".poster-quote")
+// var showRandomPoster = document.querySelector(".show-random")
+
+
 // event listeners go here 👇
+window.addEventListener("load", randomPoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+function randomPoster() {
+  var getRandomImageIndex = getRandomIndex(images)
+  var getRandomTitleIndex = getRandomIndex(titles)
+  var getRandomQuoteIndex = getRandomIndex(quotes)
+  var randomPoster = images[getRandomImageIndex]
+  var randomTitle = titles[getRandomTitleIndex]
+  var randomQuote = quotes[getRandomQuoteIndex]
+  posterImg.src = randomPoster
+  title.innerText = randomTitle
+  quote.innerText = randomQuote
+  currentPoster = createPoster(randomPoster, randomTitle, randomQuote)
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
 function createPoster(imageURL, title, quote) {
   return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
+    id: Date.now(),
+    imageURL: imageURL,
+    title: title,
+    quote: quote,
+  };
 }
