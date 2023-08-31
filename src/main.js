@@ -28,7 +28,9 @@ accessTitle.innerText = newPoster.title;
 //QUESTION: can you give us more examples of what to use inner HTML for? **update multiple items within it** like <section>
 var accessQuote = document.querySelector('.poster-quote'); //gives us access to <h3>Quote</h3>
 accessQuote.innerText = newPoster.quote;
-//QUESTION!!!!!!: what else do we do??
+//QUESTION!!!!!!: lost, what to do now?
+//QUESTION!!!!!!: how do we see what we do on the webpage? Nothing is showing up open html.js so I don't know
+// I'm doing anything!
 
 // Every time the user clicks the Show Random Poster button, a new random poster is displayed.
 //1. the querySelector can used to select the button Show random poster
