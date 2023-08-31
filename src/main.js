@@ -1,12 +1,15 @@
 // query selector variables go here 👇
 var imageOnPoster = document.querySelector('.poster-img');
-var titleOnPoster = document.querySelector('.poster-quote');
-var quoteOnPoster = document.querySelector('.poster-title');
+var titleOnPoster = document.querySelector('.poster-title');
+var quoteOnPoster = document.querySelector('.poster-quote');
 var randomPosterButton = document.querySelector('.show-random');
 var makeYourOwnPosterButton = document.querySelector('.show-form');
 var showSavedPostersButton = document.querySelector('.show-saved');
 var nvmTakeMeBackButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+var posterFormSection = document.querySelector('.poster-form');
+var mainPosterSection = document.querySelector('.main-poster');
+var savedPostersSection = document.querySelector('.saved-posters');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -125,8 +128,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-// Creates a poster using randomized images, titles, and quotes
-// Then returns a poster in the currentPoster variable
+// Creates a poster using randomized images, titles, and quotes, then returns a poster in the currentPoster variable
 function createPoster(imageURL, title, quote) {
   var imagesIndex = getRandomIndex(imageURL);
   var newImage = imageURL[imagesIndex];
@@ -151,25 +153,27 @@ function changePoster() {
   quoteOnPoster.innerText = currentPoster.quote;
 };
 
+// var posterForm = document.querySelector('.poster-form');
+// var mainPoster = document.querySelector('.main-poster');
+// var savedPosters = document.querySelector('.saved-posters');
 
 // Create a function to switch user to 'Make Your Own Poster' view
 function makeYourOwnPosterView() {
-  document.querySelector('.poster-form').classList.remove('hidden');
-  document.querySelector('.main-poster').classList.add('hidden');
-  document.querySelector('.saved-posters').classList.add('hidden');
+  posterFormSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden');
+  savedPostersSection.classList.add('hidden');
 };
 
 // Create a function to switch user to 'Show Saved Posters' view
 function showSavedPostersView() {
-  document.querySelector('.saved-posters').classList.remove('hidden');
-  document.querySelector('.main-poster').classList.add('hidden');
-  document.querySelector('.poster-form').classList.add('hidden');
+  savedPostersSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden');
+  posterFormSection.classList.add('hidden');
 };
 
 // Create a function to switch user to main view
 function showMainPosterView() {
-  document.querySelector('.main-poster').classList.remove('hidden');
-  document.querySelector('.saved-posters').classList.add('hidden');
-  document.querySelector('.poster-form').classList.add('hidden');
-  
+  mainPosterSection.classList.remove('hidden');
+  savedPostersSection.classList.add('hidden');
+  posterFormSection.classList.add('hidden');
 };
