@@ -2,6 +2,8 @@
 //already done in HTML: script src="path-to-your-script.js"></script>
 
 // QUERY SELECTOR VARIABLES go here 👇
+//in doc/DOM object, we'll query select for element that has a class with a value of '.value' = '.poster-img' 
+//attributes usu are key:value pairs
 var accessImage = document.querySelector('.poster-img'); //accesses element src ="" where you put image URL
 var accessTitle = document.querySelector('.poster-title');
 var accessQuote = document.querySelector('.poster-quote'); //gives us access to <h3>Quote</h3>
@@ -11,6 +13,11 @@ var accessQuote = document.querySelector('.poster-quote'); //gives us access to 
 
 //calls and selects Show Another Random Poster element:
 var ShowRandomPosterButton = document.querySelector('.show-random');
+
+
+var makeOwnPosterButton = document.querySelector('.show-form');
+var showSavedPostersButton = document.querySelector('.show-saved')
+var nevermindTakeMeBackButton = document.querySelector('.show-main')
 
 // DATA PROVIDED 👇
 var images = [
@@ -111,8 +118,8 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
+var savedPosters = [];//it 2 and 3
+var currentPoster//global variable, use that to store current poster data in that variable
 
 //EVENT LISTENERS HERE! 👇 TELLING COMPUTER TO LISTEN TO CLICK:
 
@@ -120,6 +127,22 @@ var currentPoster;
 window.addEventListener('load',randomPoster)
 // Every time the user clicks the Show Random Poster button, a new random poster is displayed.
 ShowRandomPosterButton.addEventListener('click', randomPoster)
+
+
+//When a user clicks the “Make Your Own Poster” button, we should see the form,
+// and the main poster should be hidden
+//hide it show new content
+makeOwnPosterButton.addEventListener('click',generateForm) //next step to generate form, and the main poster should be hidden
+
+//When a user clicks the “Show Saved Posters” button, 
+//we should see the saved posters area, and the main poster should be hidden
+
+showSavedPostersButton.addEventListener('click', showSavedPoster) //=> should see the saved posters area, and the main poster should be hidden
+
+//When a user clicks the “Nevermind, take me back!” or “Back to Main” 
+//buttons, we should only see the main poster section
+nevermindTakeMeBackButton.addEventListener('click', randomPoster)
+//In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
 
 // FUNCTIONS AND EVENT HANDLERS GO HERE 👇
 
@@ -137,17 +160,20 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 } //returns object..
 
+//current poster value is random image, title wuote
+//global variable, use that to store current poster data in that variable
+// var currentPoster = {
+//   newImageURL: images[getRandomIndex(images)],
+//   newTitle: titles[getRandomIndex(titles)],
+//   newQuote: quotes[getRandomIndex(quotes)] 
+// }
 function randomPoster() {
-  var randomIndexForImages = getRandomIndex(images) //QUESTION: how do we console.log(imageURL), idk what that is, and what that prints out to?
-  var newImageURL = images[randomIndexForImages] //new image
+ //QUESTION: how do we console.log(imageURL), idk what that is, and what that prints out to?
+  var newImageURL = images[getRandomIndex(images)] //new image
   // console.log(newImageURL)
-
-  var randomIndexForTitle = getRandomIndex(titles)
-  var newTitle = titles[randomIndexForTitle] //new random title
+  var newTitle = titles[getRandomIndex(titles)] //new random title
   //console.log(newTitle)
-
-  var randomIndexForQuotes = getRandomIndex(quotes)
-  var newQuote = quotes[randomIndexForQuotes] 
+  var newQuote = quotes[getRandomIndex(quotes)] 
 
   var newPoster = createPoster(newImageURL, newTitle, newQuote); //returns the entire object
   accessImage.src = newPoster.imageURL; //assigns to newImageURL value = random image in images array.
@@ -155,7 +181,29 @@ function randomPoster() {
   accessQuote.innerText = newPoster.quote;
 }
 
+var makeOwnPosterButton = document.querySelector('.show-form');
+var showSavedPostersButton = document.querySelector('.show-saved')
+var nevermindTakeMeBackButton = document.querySelector('.show-main')
 
 
+
+function generateForm() {
+//should see the form, and the main poster should be hidden - hide it show new content
+//BEST PRACTICE: hide first
+// var mainPosterSection = document.querySelector('.main-poster')
+//selecting HTML element which is an object by class main-poster: class="main-poster" = style="width 200vw";visibility: hidden
+//
+// document.querySelector('.main-poster').style.visibility = "hidden";
+//if I had word hidden in class then use it
+
+//Class selectors - watch for this class, then do its thing!
+
+//hidden means something here: bc it in our CSS style.css class selector there is a 
+//class selector hidden that applies that rule to all elements with a class that has the word hidden in it
+document.querySelector('.main-poster').classList.add("hidden"); //add rule to hide poster
+document.querySelector('.poster-form').classList.remove("hidden")
+}
+
+//.style = inline CSS, go in CSS in HTML 
 //TIPS:
 //Pay attention with SCOPE: has to do with scope!

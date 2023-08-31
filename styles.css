@@ -18,18 +18,18 @@ input {
   padding: 10px 20px;
 }
 
-button {
+button { /*every element selected that is type button */
   background: black;
   border: none;
   border-radius: 10px;
   color: white;
 }
 
-button:hover {
+button:hover { /* : = applies to user state, applies rule on any button element if it has the state of hover, */
   background: darkslateblue;
 }
 
-.hidden {
+.hidden { /*element selected by class */
   display: none!important;
 }
 
