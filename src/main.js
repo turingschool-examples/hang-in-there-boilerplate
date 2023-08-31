@@ -3,6 +3,10 @@ var imageOnPoster = document.querySelector('.poster-img');
 var titleOnPoster = document.querySelector('.poster-quote');
 var quoteOnPoster = document.querySelector('.poster-title');
 var randomPosterButton = document.querySelector('.show-random');
+var makeYourOwnPosterButton = document.querySelector('.show-form');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var nvmTakeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,6 +112,10 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', changePoster);
 randomPosterButton.addEventListener('click', changePoster);
+makeYourOwnPosterButton.addEventListener('click', makeYourOwnPosterView);
+showSavedPostersButton.addEventListener('click', showSavedPostersView);
+nvmTakeMeBackButton.addEventListener('click', showMainPosterView);
+backToMainButton.addEventListener('click', showMainPosterView);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -141,4 +149,27 @@ function changePoster() {
   imageOnPoster.src = currentPoster.imageURL;
   titleOnPoster.innerText = currentPoster.title;
   quoteOnPoster.innerText = currentPoster.quote;
+};
+
+
+// Create a function to switch user to 'Make Your Own Poster' view
+function makeYourOwnPosterView() {
+  document.querySelector('.poster-form').classList.remove('hidden');
+  document.querySelector('.main-poster').classList.add('hidden');
+  document.querySelector('.saved-posters').classList.add('hidden');
+};
+
+// Create a function to switch user to 'Show Saved Posters' view
+function showSavedPostersView() {
+  document.querySelector('.saved-posters').classList.remove('hidden');
+  document.querySelector('.main-poster').classList.add('hidden');
+  document.querySelector('.poster-form').classList.add('hidden');
+};
+
+// Create a function to switch user to main view
+function showMainPosterView() {
+  document.querySelector('.main-poster').classList.remove('hidden');
+  document.querySelector('.saved-posters').classList.add('hidden');
+  document.querySelector('.poster-form').classList.add('hidden');
+  
 };
