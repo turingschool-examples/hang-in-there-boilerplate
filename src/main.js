@@ -110,7 +110,9 @@ var currentPoster;
 // event listeners go here 👇
 
 var randomButton = document.querySelector('.show-random');
-
+var makePoster = document.querySelector('.show-form');
+var showSaved = document.querySelector('.show-saved');
+var savePoster = document.querySelector('.save-poster');
 
 
 // functions and event handlers go here 👇
