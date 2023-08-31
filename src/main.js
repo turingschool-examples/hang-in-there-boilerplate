@@ -1,12 +1,5 @@
 // query selector variables go here 👇
-//Here, we are creating a variable named mainPoster
-//to access the DOM. the '.main-poster' is the class used that is the main poster on the webpage
-//we will reassign createPoster1.innerHTML to be the currentPoster (which is the return value of invoking
-// the function createPoster)
-//repeat the same process with title and quote replacing values to correlate with title and quote
-//create a variable randomPosterButton and assign it the document.queryselector('.show-random')
-var mainPoster = document.querySelector('.main-poster');
-console.log(mainPoster, 'this is mainPoster');
+var imageOnPoster = document.querySelector('.poster-img');
 var titleOnPoster = document.querySelector('.poster-quote');
 var quoteOnPoster = document.querySelector('.poster-title');
 var randomPosterButton = document.querySelector('.show-random');
@@ -113,45 +106,39 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+window.addEventListener('load', changePoster);
 randomPosterButton.addEventListener('click', changePoster);
-
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
-
+// Outputs a randomized index in the given array
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
-//console.log(getRandomIndex(images));
-//When the page loads, we should see a poster with a randomly selected image, title, and quote
-//Every time the user clicks the Show Random Poster button, a new random poster is displayed.
-//Add functionality to createPoster to achieve above 
+};
+
+// Creates a poster using randomized images, titles, and quotes
+// Then returns a poster in the currentPoster variable
 function createPoster(imageURL, title, quote) {
-   var imagesIndex = getRandomIndex(imageURL);
-   var newPoster = imageURL[imagesIndex];
-   var titleIndex = getRandomIndex(title);
-   var newTitle = title[titleIndex];
-   var quoteIndex = getRandomIndex(quote);
-   var newQuote = quote[quoteIndex];
-  return {
-    id: Date.now(), 
-    imageURL: newPoster, 
-    title: newTitle, 
-    quote: newQuote }
-}
+  var imagesIndex = getRandomIndex(imageURL);
+  var newImage = imageURL[imagesIndex];
+  var titleIndex = getRandomIndex(title);
+  var newTitle = title[titleIndex];
+  var quoteIndex = getRandomIndex(quote);
+  var newQuote = quote[quoteIndex];
+  currentPoster = {
+      id: Date.now(), 
+      imageURL: newImage, 
+      title: newTitle, 
+      quote: newQuote 
+    }
+  return currentPoster;
+};
 
-currentPoster = createPoster(images, titles, quotes);
-console.log(currentPoster);
-
+// Invokes the function to create a poster and then reassigns each query selector variable to have the values from the currentPoster variable
 function changePoster() {
-  mainPoster.innerHTML = currentPoster.imageURL;
-  titleOnPoster.innerHTML = currentPoster.title;
+  createPoster(images, titles, quotes);
+  imageOnPoster.src = currentPoster.imageURL;
+  titleOnPoster.innerText = currentPoster.title;
   quoteOnPoster.innerText = currentPoster.quote;
-}
-
-
-
-//console.log(quotes.length, images.length, titles.length); //quotes length = 38, images length = 18, titles length = 35
-//console.log(createPoster(images, titles, quotes));
+};
