@@ -1,9 +1,5 @@
 // query selector variables go here 👇
 
-// document.querySelector('.poster-img').src = posterImage;
-// document.querySelector('.poster-title').innerText = posterTitle;
-// document.querySelector('.poster-quote').innerText = posterQuote;
-
 
 
 // we've provided you with some data to work with 👇
@@ -109,10 +105,59 @@ var currentPoster;
 
 // event listeners go here 👇
 
-var randomButton = document.querySelector('.show-random');
-var makePoster = document.querySelector('.show-form');
-var showSaved = document.querySelector('.show-saved');
-var savePoster = document.querySelector('.save-poster');
+
+
+//  DOM elements
+var randomBtn = document.querySelector('.show-random');
+var mainPoster = document.querySelector('.main-poster');
+var posterForm = document.querySelector('.poster-form'); //allready hidden
+var savedPosters = document.querySelector('.saved-posters'); //allready hidden
+var makePosterBtnForm = document.querySelector('.show-form');
+var showSavedBtn = document.querySelector('.show-saved');
+var neverMindBtn = document.querySelector('.show-main'); 
+var backToMainBtn = document.querySelector('.back-to-main'); 
+
+// function to hide all sections
+function hideAllSections() {
+  mainPoster.classList.add('hidden');
+  posterForm.classList.add('hidden');
+  savedPosters.classList.add('hidden');
+}
+
+// Event listeners for each button 
+
+makePosterBtnForm.addEventListener('click', function() {
+  hideAllSections();
+  posterForm.classList.remove('hidden');
+});
+
+showSavedBtn.addEventListener('click', function() {
+  hideAllSections();
+  savedPosters.classList.remove('hidden');
+});
+
+neverMindBtn.addEventListener('click', function() {
+  hideAllSections();
+  mainPoster.classList.remove('hidden');
+});
+
+backToMainBtn.addEventListener('click', function() {
+  hideAllSections();
+  mainPoster.classList.remove('hidden');
+});
+
+
+
+
+// Get load and random button
+document.addEventListener('DOMContentLoaded', function() {
+  displayRandomPoster();
+});
+
+randomBtn.addEventListener('click', displayRandomPoster);
+
+
+
 
 
 // functions and event handlers go here 👇
@@ -120,8 +165,6 @@ var savePoster = document.querySelector('.save-poster');
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-
 
 function createPoster(imageURL, title, quote) {
   var poster = {
@@ -134,6 +177,8 @@ return poster
 }
 
 // function to display a random poster
+
+
 function displayRandomPoster() {
   var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
@@ -143,3 +188,7 @@ function displayRandomPoster() {
   document.querySelector('.poster-title').innerText = randomTitle;
   document.querySelector('.poster-quote').innerText = randomQuote;
 }
+
+// functions to run buttons
+
+
