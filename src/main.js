@@ -1,8 +1,15 @@
 // query selector variables go here 👇
 var imageOnPoster = document.querySelector('.poster-img');
-var titleOnPoster = document.querySelector('.poster-quote');
-var quoteOnPoster = document.querySelector('.poster-title');
+var titleOnPoster = document.querySelector('.poster-title');
+var quoteOnPoster = document.querySelector('.poster-quote');
 var randomPosterButton = document.querySelector('.show-random');
+var makeYourOwnPosterButton = document.querySelector('.show-form');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var nvmTakeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var posterFormSection = document.querySelector('.poster-form');
+var mainPosterSection = document.querySelector('.main-poster');
+var savedPostersSection = document.querySelector('.saved-posters');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -108,6 +115,10 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', changePoster);
 randomPosterButton.addEventListener('click', changePoster);
+makeYourOwnPosterButton.addEventListener('click', makeYourOwnPosterView);
+showSavedPostersButton.addEventListener('click', showSavedPostersView);
+nvmTakeMeBackButton.addEventListener('click', showMainPosterView);
+backToMainButton.addEventListener('click', showMainPosterView);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -117,8 +128,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-// Creates a poster using randomized images, titles, and quotes
-// Then returns a poster in the currentPoster variable
+// Creates a poster using randomized images, titles, and quotes, then returns a poster in the currentPoster variable
 function createPoster(imageURL, title, quote) {
   var imagesIndex = getRandomIndex(imageURL);
   var newImage = imageURL[imagesIndex];
@@ -141,4 +151,25 @@ function changePoster() {
   imageOnPoster.src = currentPoster.imageURL;
   titleOnPoster.innerText = currentPoster.title;
   quoteOnPoster.innerText = currentPoster.quote;
+};
+
+// Create a function to switch user to 'Make Your Own Poster' view
+function makeYourOwnPosterView() {
+  posterFormSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden');
+  savedPostersSection.classList.add('hidden');
+};
+
+// Create a function to switch user to 'Show Saved Posters' view
+function showSavedPostersView() {
+  savedPostersSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden');
+  posterFormSection.classList.add('hidden');
+};
+
+// Create a function to switch user to main view
+function showMainPosterView() {
+  mainPosterSection.classList.remove('hidden');
+  savedPostersSection.classList.add('hidden');
+  posterFormSection.classList.add('hidden');
 };
