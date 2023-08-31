@@ -20,6 +20,7 @@ var accessImage = document.querySelector('.poster-img'); //accesses element src 
 //so we can access imageURL with dot notation
 var newPoster = createPoster(imageURL, title, quote); //returns the entire object
 accessImage.src = newPoster.imageURL; //assigns to newImageURL value = random image in images array.
+console.log(accessImage)
 //QUESTION is a void element <img class="poster-img" src="" alt="nothin' to see here"> an OBJECT? line 13
 //Yes, the <img> element with the class="poster-img" is an HTML element, and in the context of JavaScript, it can be considered an object.
 var accessTitle = document.querySelector('.poster-title');
