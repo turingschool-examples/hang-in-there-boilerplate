@@ -110,7 +110,9 @@ var currentPoster;
 // event listeners go here 👇
 
 var randomButton = document.querySelector('.show-random');
-
+var makePoster = document.querySelector('.show-form');
+var showSaved = document.querySelector('.show-saved');
+var savePoster = document.querySelector('.save-poster');
 
 
 // functions and event handlers go here 👇
@@ -141,14 +143,3 @@ function displayRandomPoster() {
   document.querySelector('.poster-title').innerText = randomTitle;
   document.querySelector('.poster-quote').innerText = randomQuote;
 }
-
-
-// event listener for the "Show Another Random Poster" button a function to return 'click' is the even displayRandomPosters is the function that will execute!
-randomButton.addEventListener('click', displayRandomPoster);
-// function workShowRandomButton(){
-  // showRandomButton.addEventListener('click, displayRandomPostert')
-
-
-// workShowRandomButton()
-// display a random poster as soon as the page loads
-displayRandomPoster(); 
