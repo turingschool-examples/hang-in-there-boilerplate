@@ -153,10 +153,6 @@ function changePoster() {
   quoteOnPoster.innerText = currentPoster.quote;
 };
 
-// var posterForm = document.querySelector('.poster-form');
-// var mainPoster = document.querySelector('.main-poster');
-// var savedPosters = document.querySelector('.saved-posters');
-
 // Create a function to switch user to 'Make Your Own Poster' view
 function makeYourOwnPosterView() {
   posterFormSection.classList.remove('hidden');
