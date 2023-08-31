@@ -103,12 +103,12 @@ var currentPoster;
 var posterImg = document.querySelector(".poster-img")
 var title = document.querySelector(".poster-title")
 var quote = document.querySelector(".poster-quote")
-// var showRandomPoster = document.querySelector(".show-random")
+var showRandomPoster = document.querySelector(".show-random")
 
 
 // event listeners go here 👇
 window.addEventListener("load", randomPoster)
-
+showRandomPoster.addEventListener("click", randomPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
