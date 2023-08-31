@@ -1,6 +1,18 @@
-// query selector variables go here 👇
+//how to link Javascript file in HTML? 👇
+//already done in HTML: script src="path-to-your-script.js"></script>
 
-// we've provided you with some data to work with 👇
+// QUERY SELECTOR VARIABLES go here 👇
+var accessImage = document.querySelector('.poster-img'); //accesses element src ="" where you put image URL
+var accessTitle = document.querySelector('.poster-title');
+var accessQuote = document.querySelector('.poster-quote'); //gives us access to <h3>Quote</h3>
+//QUESTION!!!!!!: lost, what to do now?
+//QUESTION!!!!!!: how do we see what we do on the webpage? Nothing is showing up open html.js so I don't know
+// I'm doing anything!
+
+//calls and selects Show Another Random Poster element:
+var ShowRandomPosterButton = document.querySelector('.show-random');
+
+// DATA PROVIDED 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -21,6 +33,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+
 var titles = [
   "determination",
   "success",
@@ -101,18 +114,48 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
+//EVENT LISTENERS HERE! 👇 TELLING COMPUTER TO LISTEN TO CLICK:
 
-// functions and event handlers go here 👇
+// When the page loads, we should see a poster with a randomly selected image, title, and quote
+window.addEventListener('load',randomPoster)
+// Every time the user clicks the Show Random Poster button, a new random poster is displayed.
+ShowRandomPosterButton.addEventListener('click', randomPoster)
+
+// FUNCTIONS AND EVENT HANDLERS GO HERE 👇
+
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+//Math. = random decimal b/t 0-1   -> Math.floor - .floor brings it down to nearest whole number
 
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
-    imageURL: imageURL, 
+    imageURL: imageURL, //change bc our return value has to give us random image
     title: title, 
     quote: quote}
+} //returns object..
+
+function randomPoster() {
+  var randomIndexForImages = getRandomIndex(images) //QUESTION: how do we console.log(imageURL), idk what that is, and what that prints out to?
+  var newImageURL = images[randomIndexForImages] //new image
+  // console.log(newImageURL)
+
+  var randomIndexForTitle = getRandomIndex(titles)
+  var newTitle = titles[randomIndexForTitle] //new random title
+  //console.log(newTitle)
+
+  var randomIndexForQuotes = getRandomIndex(quotes)
+  var newQuote = quotes[randomIndexForQuotes] 
+
+  var newPoster = createPoster(newImageURL, newTitle, newQuote); //returns the entire object
+  accessImage.src = newPoster.imageURL; //assigns to newImageURL value = random image in images array.
+  accessTitle.innerText = newPoster.title;
+  accessQuote.innerText = newPoster.quote;
 }
+
+
+
+//TIPS:
+//Pay attention with SCOPE: has to do with scope!
