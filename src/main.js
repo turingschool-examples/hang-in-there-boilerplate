@@ -176,4 +176,4 @@ When a user clicks the “Nevermind, take me back!” or “Back to Main” butt
 In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
 
 ***go check out the HTML and CSS files to see how the form and saved posters sections are being hidden in the first place
-*/
+
