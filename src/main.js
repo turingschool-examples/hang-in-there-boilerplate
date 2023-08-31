@@ -1,8 +1,11 @@
 // query selector variables go here 👇
 var saveButton = document.querySelector(".save-poster")
-var showSaved = document.querySelector(".show-saved")
-var showRandom = document.querySelector(".show-random")
-var showForm = document.querySelector(".show-form")
+var showSavedBtn = document.querySelector(".show-saved")
+var showRandomBtn = document.querySelector(".show-random")
+var showFormBtn = document.querySelector(".show-form")
+var posterImg = document.querySelector(".poster-img")
+var posterTitle = document.querySelector(".poster-title")
+var posterQuote = document.querySelector(".poster-quote")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -105,17 +108,15 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
-
-// var saveButton = document.querySelector(".save-poster")
-// var showSaved = document.querySelector(".show-saved")
-// var showRandom = document.querySelector(".show-random")
-// var showForm = document.querySelector(".show-form")
-// functions and event handlers go here 👇
+window.addEventListener("load",displayRandom)
 saveButton.addEventListener("click",savePoster)
-showSaved.addEventListener("click",displaySaved)
-showRandom.addEventListener("click",displayRandom)
-showForm.addEventListener("click",createCustom)
+showSavedBtn.addEventListener("click",displaySaved)
+showRandomBtn.addEventListener("click",displayRandom)
+showFormBtn.addEventListener("click",createCustom)
+
+
+// functions and event handlers go here 👇
+
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -136,17 +137,20 @@ function displaySaved(){
 
 }
 
-function displayRandom(images,titles,quote){
-  var randomImage = getRandomIndex(images)
-  var randomTitle = getRandomIndex(titles)
-  var randomQuote = getRandomIndex(quote)
+function generateRandom(){
+  var imageURL= getRandomIndex(images)
+  var title = getRandomIndex(titles)
+  var quote = getRandomIndex(quotes)
 
-  var imageURL = images[randomImage]
-  var titles = titles[randomTitle]
-  var quote = quote[randomQuote]
+  return createPoster(imageURL,title,quote)
+}
 
-  var poster = createPoster(imageURL,titles,quote)
-  return poster
+function displayRandom(){
+  var randomPoster = generateRandom()
+  posterImg.src
+  posterTitle.innerHTML;
+  posterQuote.innerHTML
+  return
 }
 
 function createCustom(){
