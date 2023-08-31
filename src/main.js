@@ -10,6 +10,10 @@ var backToMainButton = document.querySelector('.back-to-main');
 var posterFormSection = document.querySelector('.poster-form');
 var mainPosterSection = document.querySelector('.main-poster');
 var savedPostersSection = document.querySelector('.saved-posters');
+var showMyPosterButton = document.querySelector('.make-poster');
+var imageUrlInput = document.querySelector('#poster-image-url');
+var motivationalTitleInput = document.querySelector('#poster-title');
+var motivationalQuoteInput = document.querySelector('#poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,6 +123,7 @@ makeYourOwnPosterButton.addEventListener('click', makeYourOwnPosterView);
 showSavedPostersButton.addEventListener('click', showSavedPostersView);
 nvmTakeMeBackButton.addEventListener('click', showMainPosterView);
 backToMainButton.addEventListener('click', showMainPosterView);
+showMyPosterButton.addEventListener('click', createYourOwnPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -173,3 +178,24 @@ function showMainPosterView() {
   savedPostersSection.classList.add('hidden');
   posterFormSection.classList.add('hidden');
 };
+
+// Create a function to allow a user to create their own poster
+function createYourOwnPoster(event) {
+  imageOnPoster.src = imageUrlInput.value;
+  titleOnPoster.innerText = motivationalTitleInput.value;
+  quoteOnPoster.innerText = motivationalQuoteInput.value; 
+  images.push(imageUrlInput.value);
+  titles.push(motivationalTitleInput.value);
+  quotes.push(motivationalQuoteInput.value);
+  var userCurrentPoster = {
+    id: Date.now(), 
+    imageURL: imageOnPoster,
+    title: titleOnPoster,
+    quote: quoteOnPoster
+  };
+  currentPoster = userCurrentPoster; 
+  event.preventDefault();
+  showMainPosterView();
+
+}
+
