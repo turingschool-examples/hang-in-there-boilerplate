@@ -111,9 +111,9 @@ var nevermindButton = document.querySelector(".show-main")
 var savedPostersButton = document.querySelector(".show-saved")
 var backToMain = document.querySelector(".back-to-main")
 var savedPosters = document.querySelector(".saved-posters")
-var uniquePosterImage = document.querySelector(".poster-image-url")
-var uniquePosterTitle = document.querySelector(".poster-title")
-var uniquePosterQuote = document.querySelector(".poster-quote")
+var uniquePosterImage = document.querySelector("#poster-image-url")
+var uniquePosterTitle = document.querySelector("#poster-title")
+var uniquePosterQuote = document.querySelector("#poster-quote")
 var showUniquePoster = document.querySelector(".make-poster")
 
 // event listeners go here 👇
@@ -166,16 +166,63 @@ function getRandomIndex(array) {
 }
 
 function showNewPoster(event) {
-  event.preventDefault();
+
   var newImage = uniquePosterImage.value
   var newTitle = uniquePosterTitle.value
   var newQuote = uniquePosterQuote.value
-  newImage.push(images)
-  newTitle.push(titles)
-  newQuote.push(quotes)
+  images.push(newImage)
+  titles.push(newTitle)
+  quotes.push(newQuote)
   posterImg.src = newImage
   title.innerText = newTitle
   quote.innerText = newQuote
-  current = createPoster(newImage, newTitle, newQuote)
+  
+  currentPoster = createPoster(newImage, newTitle, newQuote)
+  
+  mainPoster.classList.remove("hidden")
+  makePosterView.classList.add("hidden")
+  // newImage.push(images)
+  // newTitle.push(titles)
+  // newQuote.push(quotes)
   event.preventDefault();
 }
+
+// function saveArray(){
+
+//   var newImage = uniquePosterImage.value
+//   var newTitle = uniquePosterTitle.value
+//   var newQuote = uniquePosterQuote.value
+
+//   newImage.push(images)
+//   newTitle.push(titles)
+//   newQuote.push(quotes)
+// }
+
+
+//DO NOT USE
+// function addMenuItem() {
+//   for(var i = 0; i < images.length; i++){ 
+//     var insertImage = 
+//     if(images[i] === images[i]) { 
+//       return
+//     }
+//   }
+//   newArray.push(items)
+// }
+//DO NOT USE
+function createPoster(imageURL, title, quote) {
+  return {
+    id: Date.now(),
+    imageURL: imageURL,
+    title: title,
+    quote: quote,
+  };
+}
+
+
+
+
+
+
+
+
