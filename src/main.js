@@ -156,7 +156,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 randomBtn.addEventListener('click', displayRandomPoster);
 
+var savePosterBtn = document.querySelector('.save-poster');
 
+savePosterBtn.addEventListener('click', saveCurrentPoster);
 
 
 
