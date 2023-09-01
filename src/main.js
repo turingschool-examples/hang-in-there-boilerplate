@@ -1,17 +1,25 @@
 //how to link Javascript file in HTML? 👇 //already done in HTML: script src="path-to-your-script.js"></script>
 
 // QUERY SELECTOR VARIABLES go here 👇
+//iteration 0:
 var accessImage = document.querySelector('.poster-img'); //accesses element src ="" where you put image URL
 var accessTitle = document.querySelector('.poster-title');
 var accessQuote = document.querySelector('.poster-quote'); //gives us access to <h3>Quote</h3>
 var ShowRandomPosterButton = document.querySelector('.show-random');
 
-
+//iteration 1:
 var makeOwnPosterButton = document.querySelector('.show-form');
 var showSavedPostersButton = document.querySelector('.show-saved'); 
 var saveAPosterButton = document.querySelector('.save-poster')
 var nevermindTakeMeBackButton = document.querySelector('.show-main'); 
 var backToMainButton = document.querySelector('.back-to-main');
+
+var mainPoster = document.querySelector('.main-poster'); 
+var createOwnPosterForm = document.querySelector('.poster-form');
+var savedPosters = document.querySelector('.saved-posters'); //hidden in string in index.html so to view it have to classList.remove("hidden")
+
+//iteration 2:
+
 // DATA PROVIDED 👇
 var images = [
   "./assets/bees.jpg",
@@ -33,7 +41,6 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
-
 var titles = [
   "determination",
   "success",
@@ -115,7 +122,6 @@ var savedPosters = [];//it 2 and 3
 var currentPoster = document.querySelector('.poster') // var currentPoster
 
 //EVENT LISTENERS HERE! 👇 TELLING COMPUTER TO LISTEN TO CLICK:
-
 window.addEventListener('load',randomPoster)
 ShowRandomPosterButton.addEventListener('click', randomPoster)
 makeOwnPosterButton.addEventListener('click',generateForm) //next step to generate form, and the main poster should be hidden
@@ -127,8 +133,7 @@ saveAPosterButton.addEventListener('click', savePoster)
 // FUNCTIONS AND EVENT HANDLERS GO HERE 👇 (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
-//Math. = random decimal b/t 0-1   -> Math.floor - .floor brings it down to nearest whole number
+} //Math. = random decimal b/t 0-1   -> Math.floor - .floor brings it down to nearest whole number
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -138,13 +143,6 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 } //returns object..
 
-//current poster value is random image, title wuote
-//global variable, use that to store current poster data in that variable
-// var currentPoster = {
-//   newImageURL: images[getRandomIndex(images)],
-//   newTitle: titles[getRandomIndex(titles)],
-//   newQuote: quotes[getRandomIndex(quotes)] 
-// }
 function randomPoster() {
   var newImageURL = images[getRandomIndex(images)] // console.log(newImageURL)
   var newTitle = titles[getRandomIndex(titles)] 
@@ -156,13 +154,10 @@ function randomPoster() {
   accessTitle.innerText = newPoster.title;
   accessQuote.innerText = newPoster.quote;
 }
-var makeOwnPosterButton = document.querySelector('.show-form');
-var showSavedPostersButton = document.querySelector('.show-saved')
-var nevermindTakeMeBackButton = document.querySelector('.show-main')
 
 function generateForm() {
-document.querySelector('.main-poster').classList.add("hidden"); //add rule to hide poster
-document.querySelector('.poster-form').classList.remove("hidden")
+  mainPoster.classList.add("hidden"); //add rule to hide poster
+  createOwnPosterForm.classList.remove("hidden")
 } //Best practice to hide first. To hide, add hidden string rule Class selectors rule book?
 
 function savePoster() {
@@ -179,19 +174,18 @@ function showSavedPoster() {
   //   console.log(document.querySelector('.saved-posters-grid'))
   //go into the grid element and add a child for every item in savedPosters array.
   // }
-  document.querySelector('.main-poster').classList.add("hidden"); //add rule to hide poster
-  document.querySelector('.saved-posters').classList.remove("hidden")
+  mainPoster.classList.add("hidden"); //add rule to hide poster
+  savedPosters.classList.remove("hidden")
 } 
 
-// When a user clicks the “Nevermind, take me back!” 
-//or “Back to Main” buttons, we should only see the main poster section
-
+// When a user clicks the “Nevermind, take me back!” or “Back to Main” buttons, we should only see the main poster section
 function backToMainPoster() {
   console.log('Taking me back to main poster')
-  document.querySelector('.main-poster').classList.remove("hidden");
-  document.querySelector('.show-main').classList.add("hidden");
-  document.querySelector('.poster-form').classList.add("hidden")
+  mainPoster.classList.remove("hidden");
+  nevermindTakeMeBackButton.classList.add("hidden"); //hide that button
+  createOwnPosterForm.classList.add("hidden"); //hide that createOwnPosterForm!
 }
+
 
 
 
@@ -202,4 +196,8 @@ function backToMainPoster() {
 
 //.style = inline CSS, go in CSS in HTML 
 //TIPS:
-//Pay attention with SCOPE: has to do with scope!
+//- Pay attention with SCOPE: has to do with scope!
+//- Math. = random decimal b/t 0-1   -> Math.floor - .floor brings it down to nearest whole number
+//-Best practice to hide first. To hide, add hidden string rule Class selectors rule book?
+//-Best practice not to querySelector in a function.
+
