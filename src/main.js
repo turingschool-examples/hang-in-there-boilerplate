@@ -104,11 +104,21 @@ var posterImg = document.querySelector(".poster-img")
 var title = document.querySelector(".poster-title")
 var quote = document.querySelector(".poster-quote")
 var showRandomPoster = document.querySelector(".show-random")
-
+var mainPoster = document.querySelector(".main-poster")
+var makePoster = document.querySelector(".show-form")
+var makePosterView = document.querySelector(".poster-form")
+var nevermindButton = document.querySelector(".show-main")
+var savedPostersButton = document.querySelector(".show-saved")
+var backToMain = document.querySelector(".back-to-main")
+var savedPosters = document.querySelector(".saved-posters")
 
 // event listeners go here 👇
 window.addEventListener("load", randomPoster)
 showRandomPoster.addEventListener("click", randomPoster)
+makePoster.addEventListener("click", makePosterForm)
+nevermindButton.addEventListener("click", backFromMake)
+savedPostersButton.addEventListener("click", showSaved)
+backToMain.addEventListener("click", backFromSaved)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -124,6 +134,27 @@ function randomPoster() {
   title.innerText = randomTitle
   quote.innerText = randomQuote
   currentPoster = createPoster(randomPoster, randomTitle, randomQuote)
+}
+
+function makePosterForm() {
+  mainPoster.classList.add("hidden")
+  makePoster.classList.remove("hidden")
+  makePosterView.classList.remove("hidden")
+}
+
+function backFromMake() {
+  mainPoster.classList.remove("hidden")
+  makePosterView.classList.add("hidden")
+}
+
+function backFromSaved() {
+  mainPoster.classList.remove("hidden")
+  savedPosters.classList.add("hidden")
+}
+
+function showSaved() {
+  savedPosters.classList.remove("hidden")
+  mainPoster.classList.add("hidden") 
 }
 
 function getRandomIndex(array) {
