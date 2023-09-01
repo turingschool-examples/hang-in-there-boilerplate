@@ -14,6 +14,8 @@ var showMyPosterButton = document.querySelector('.make-poster');
 var imageUrlInput = document.querySelector('#poster-image-url');
 var motivationalTitleInput = document.querySelector('#poster-title');
 var motivationalQuoteInput = document.querySelector('#poster-quote');
+var saveThisPosterButton = document.querySelector('.save-poster');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -124,6 +126,7 @@ showSavedPostersButton.addEventListener('click', showSavedPostersView);
 nvmTakeMeBackButton.addEventListener('click', showMainPosterView);
 backToMainButton.addEventListener('click', showMainPosterView);
 showMyPosterButton.addEventListener('click', createYourOwnPoster);
+saveThisPosterButton.addEventListener('click', saveThisPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -133,7 +136,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-// Creates a poster using randomized images, titles, and quotes, then returns a poster in the currentPoster variable
+// Create a poster using randomized images, titles, and quotes, then return a poster in the currentPoster variable
 function createPoster(imageURL, title, quote) {
   var imagesIndex = getRandomIndex(imageURL);
   var newImage = imageURL[imagesIndex];
@@ -150,7 +153,7 @@ function createPoster(imageURL, title, quote) {
   return currentPoster;
 };
 
-// Invokes the function to create a poster and then reassigns each query selector variable to have the values from the currentPoster variable
+// Invoke the function to create a poster and then reassign each query selector variable to have the values from the currentPoster variable
 function changePoster() {
   createPoster(images, titles, quotes);
   imageOnPoster.src = currentPoster.imageURL;
@@ -158,44 +161,63 @@ function changePoster() {
   quoteOnPoster.innerText = currentPoster.quote;
 };
 
-// Create a function to switch user to 'Make Your Own Poster' view
+// Switch user to 'Make Your Own Poster' view
 function makeYourOwnPosterView() {
   posterFormSection.classList.remove('hidden');
   mainPosterSection.classList.add('hidden');
   savedPostersSection.classList.add('hidden');
 };
 
-// Create a function to switch user to 'Show Saved Posters' view
+// Switch user to 'Show Saved Posters' view
 function showSavedPostersView() {
   savedPostersSection.classList.remove('hidden');
   mainPosterSection.classList.add('hidden');
   posterFormSection.classList.add('hidden');
+
+  savedPostersGrid.innerHTML = '';
+
+  for (var i = 0; i < savedPosters.length; i++) {
+    var poster = savedPosters[i];
+    var posterElement = document.createElement('div');
+    posterElement.classList.add('mini-poster');
+    posterElement.innerHTML = `<img src="${poster.imageURL}" alt="Saved Poster"><h2>${poster.title}</h2><p>${poster.quote}</p>`;
+    savedPostersGrid.appendChild(posterElement);
+  }
 };
 
-// Create a function to switch user to main view
+// Switch user to main view
 function showMainPosterView() {
   mainPosterSection.classList.remove('hidden');
   savedPostersSection.classList.add('hidden');
   posterFormSection.classList.add('hidden');
 };
 
-// Create a function to allow a user to create their own poster
-function createYourOwnPoster(event) {
-  imageOnPoster.src = imageUrlInput.value;
-  titleOnPoster.innerText = motivationalTitleInput.value;
-  quoteOnPoster.innerText = motivationalQuoteInput.value; 
+// Allow a user to create their own poster
+function createYourOwnPoster(event) { 
   images.push(imageUrlInput.value);
   titles.push(motivationalTitleInput.value);
   quotes.push(motivationalQuoteInput.value);
   var userCurrentPoster = {
     id: Date.now(), 
-    imageURL: imageOnPoster,
-    title: titleOnPoster,
-    quote: quoteOnPoster
+    imageURL: imageOnPoster.src = imageUrlInput.value,
+    title: titleOnPoster.innerText = motivationalTitleInput.value,
+    quote: quoteOnPoster.innerText = motivationalQuoteInput.value
   };
   currentPoster = userCurrentPoster; 
+  console.log(imageOnPoster);
+  console.log(titleOnPoster);
+  console.log(quoteOnPoster);
   event.preventDefault();
   showMainPosterView();
+  console.log(currentPoster);
+  return currentPoster;
+};
 
-}
-
+// Save posters to saved poster view
+function saveThisPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+    console.log(savedPosters);
+  }
+  return savedPosters;
+};
