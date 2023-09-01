@@ -128,11 +128,7 @@ nvmTakeMeBackButton.addEventListener('click', showMainPosterView);
 backToMainButton.addEventListener('click', showMainPosterView);
 showMyPosterButton.addEventListener('click', createYourOwnPoster);
 saveThisPosterButton.addEventListener('click', saveThisPoster);
-savedPostersGrid.addEventListener('dblclick', function(event){
-  if(event.target.tagName === 'DIV') {
-    event.target.remove();
-  }
-});
+savedPostersGrid.addEventListener('dblclick', deleteSavedPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -223,12 +219,10 @@ function saveThisPoster() {
   return savedPosters;
 };
 
-//Iteration 4:
-//When a user double clicks a savedPoster it will be deleted. Use the eventListener - dblclick
-//querySelecter = '.mini-poster'
-// function deleteSavedPoster(event) {
-//   if (event.target.tagName === 'div') {
-//     event.target.remove();
-//   }
-// } 
+// Delete a saved poster when double clicked
+function deleteSavedPoster(event) {
+  if (event.target.tagName === 'DIV') {
+    event.target.remove();
+  }
+} 
 
