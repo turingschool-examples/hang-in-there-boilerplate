@@ -124,6 +124,7 @@ nevermindButton.addEventListener("click", backFromMake)
 savedPostersButton.addEventListener("click", showSaved)
 backToMain.addEventListener("click", backFromSaved)
 showUniquePoster.addEventListener("click", showNewPoster)
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -170,6 +171,9 @@ function showNewPoster(event) {
   var newImage = uniquePosterImage.value
   var newTitle = uniquePosterTitle.value
   var newQuote = uniquePosterQuote.value
+  images.push(newImage)
+  titles.push(newTitle)
+  quotes.push(newQuote)
   posterImg.src = newImage
   title.innerText = newTitle
   quote.innerText = newQuote
@@ -178,8 +182,22 @@ function showNewPoster(event) {
   
   mainPoster.classList.remove("hidden")
   makePosterView.classList.add("hidden")
+  // newImage.push(images)
+  // newTitle.push(titles)
+  // newQuote.push(quotes)
   event.preventDefault();
 }
+
+// function saveArray(){
+
+//   var newImage = uniquePosterImage.value
+//   var newTitle = uniquePosterTitle.value
+//   var newQuote = uniquePosterQuote.value
+
+//   newImage.push(images)
+//   newTitle.push(titles)
+//   newQuote.push(quotes)
+// }
 
 
 //DO NOT USE
