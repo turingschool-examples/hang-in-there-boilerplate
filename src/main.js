@@ -9,9 +9,9 @@ var ShowRandomPosterButton = document.querySelector('.show-random');
 
 var makeOwnPosterButton = document.querySelector('.show-form');
 var showSavedPostersButton = document.querySelector('.show-saved'); 
-var nevermindTakeMeBackButton = document.querySelector('.show-main'); 
 var saveAPosterButton = document.querySelector('.save-poster')
-
+var nevermindTakeMeBackButton = document.querySelector('.show-main'); 
+var backToMainButton = document.querySelector('.back-to-main');
 // DATA PROVIDED 👇
 var images = [
   "./assets/bees.jpg",
@@ -120,7 +120,8 @@ window.addEventListener('load',randomPoster)
 ShowRandomPosterButton.addEventListener('click', randomPoster)
 makeOwnPosterButton.addEventListener('click',generateForm) //next step to generate form, and the main poster should be hidden
 showSavedPostersButton.addEventListener('click', showSavedPoster) //=> should see the saved posters area, and the main poster should be hidden
-nevermindTakeMeBackButton.addEventListener('click', backToMainPoster)
+nevermindTakeMeBackButton.addEventListener('click',backToMainPoster)
+backToMainButton.addEventListener('click',backToMainPoster)
 saveAPosterButton.addEventListener('click', savePoster)
 
 // FUNCTIONS AND EVENT HANDLERS GO HERE 👇 (we've provided two to get you started)!
@@ -169,7 +170,6 @@ function savePoster() {
   savedPosters.push(currentPoster) //make an array of HTML element
 }
 
-
 function showSavedPoster() {
   //show the array of posters
   //add array into a class selector: class or id
@@ -192,6 +192,9 @@ function backToMainPoster() {
   document.querySelector('.show-main').classList.add("hidden");
   document.querySelector('.poster-form').classList.add("hidden")
 }
+
+
+
 
 // Go through code to create global variables so every function can access it
 //var mainPoster = document.querySelector('.main-poster')
