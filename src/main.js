@@ -16,7 +16,6 @@ var motivationalTitleInput = document.querySelector('#poster-title');
 var motivationalQuoteInput = document.querySelector('#poster-quote');
 var saveThisPosterButton = document.querySelector('.save-poster');
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
-//var deleteMiniPoster = document.querySelector('.mini-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -131,7 +130,6 @@ saveThisPosterButton.addEventListener('click', saveThisPoster);
 savedPostersGrid.addEventListener('dblclick', deleteSavedPoster);
 
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
 
 // Outputs a randomized index in the given array
 function getRandomIndex(array) {
@@ -155,7 +153,7 @@ function createPoster(imageURL, title, quote) {
   return currentPoster;
 };
 
-// Invoke the function to create a poster and then reassign each query selector variable to have the values from the currentPoster variable
+// Change poster to another random poster
 function changePoster() {
   createPoster(images, titles, quotes);
   imageOnPoster.src = currentPoster.imageURL;
@@ -217,12 +215,12 @@ function saveThisPoster() {
     savedPosters.push(currentPoster);
   }
   return savedPosters;
-};
+}
 
 // Delete a saved poster when double clicked
 function deleteSavedPoster(event) {
   if (event.target.tagName === 'DIV') {
     event.target.remove();
   }
-} 
+}
 
