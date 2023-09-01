@@ -180,7 +180,7 @@ function showSavedPostersView() {
     var poster = savedPosters[i];
     var posterElement = document.createElement('div');
     posterElement.classList.add('mini-poster');
-    posterElement.innerHTML = `<img src="${poster.imageURL}" alt="Saved Poster"><h2>${poster.title}</h2><p>${poster.quote}</p>`;
+    posterElement.innerHTML = `<img src="${poster.imageURL}" alt="Saved Poster"><h2>${poster.title}</h2><h4>${poster.quote}</h4>`;
     savedPostersGrid.appendChild(posterElement);
   }
 };
