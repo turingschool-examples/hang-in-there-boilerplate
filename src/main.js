@@ -16,6 +16,7 @@ var motivationalTitleInput = document.querySelector('#poster-title');
 var motivationalQuoteInput = document.querySelector('#poster-quote');
 var saveThisPosterButton = document.querySelector('.save-poster');
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
+//var deleteMiniPoster = document.querySelector('.mini-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -127,6 +128,11 @@ nvmTakeMeBackButton.addEventListener('click', showMainPosterView);
 backToMainButton.addEventListener('click', showMainPosterView);
 showMyPosterButton.addEventListener('click', createYourOwnPoster);
 saveThisPosterButton.addEventListener('click', saveThisPoster);
+savedPostersGrid.addEventListener('dblclick', function(event){
+  if(event.target.tagName === 'DIV') {
+    event.target.remove();
+  }
+});
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -204,12 +210,8 @@ function createYourOwnPoster(event) {
     quote: quoteOnPoster.innerText = motivationalQuoteInput.value
   };
   currentPoster = userCurrentPoster; 
-  console.log(imageOnPoster);
-  console.log(titleOnPoster);
-  console.log(quoteOnPoster);
   event.preventDefault();
   showMainPosterView();
-  console.log(currentPoster);
   return currentPoster;
 };
 
@@ -217,7 +219,16 @@ function createYourOwnPoster(event) {
 function saveThisPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
-    console.log(savedPosters);
   }
   return savedPosters;
 };
+
+//Iteration 4:
+//When a user double clicks a savedPoster it will be deleted. Use the eventListener - dblclick
+//querySelecter = '.mini-poster'
+// function deleteSavedPoster(event) {
+//   if (event.target.tagName === 'div') {
+//     event.target.remove();
+//   }
+// } 
+
