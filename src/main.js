@@ -111,6 +111,10 @@ var nevermindButton = document.querySelector(".show-main")
 var savedPostersButton = document.querySelector(".show-saved")
 var backToMain = document.querySelector(".back-to-main")
 var savedPosters = document.querySelector(".saved-posters")
+var uniquePosterImage = document.querySelector(".poster-image-url")
+var uniquePosterTitle = document.querySelector(".poster-title")
+var uniquePosterQuote = document.querySelector(".poster-quote")
+var showUniquePoster = document.querySelector(".make-poster")
 
 // event listeners go here 👇
 window.addEventListener("load", randomPoster)
@@ -119,7 +123,7 @@ makePoster.addEventListener("click", makePosterForm)
 nevermindButton.addEventListener("click", backFromMake)
 savedPostersButton.addEventListener("click", showSaved)
 backToMain.addEventListener("click", backFromSaved)
-
+showUniquePoster.addEventListener("click", showNewPoster)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -161,6 +165,30 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function showNewPoster(event) {
+
+  var newImage = uniquePosterImage.value
+  var newTitle = uniquePosterTitle.value
+  var newQuote = uniquePosterQuote.value
+  posterImg.src = newImage
+  title.innerText = newTitle
+  quote.innerText = newQuote
+  current = createPoster(newImage, newTitle, newQuote)
+  event.preventDefault();
+}
+
+
+//DO NOT USE
+// function addMenuItem() {
+//   for(var i = 0; i < images.length; i++){ 
+//     var insertImage = 
+//     if(images[i] === images[i]) { 
+//       return
+//     }
+//   }
+//   newArray.push(items)
+// }
+//DO NOT USE
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(),
