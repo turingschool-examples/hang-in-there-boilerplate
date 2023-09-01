@@ -160,7 +160,9 @@ var savePosterBtn = document.querySelector('.save-poster');
 
 savePosterBtn.addEventListener('click', saveCurrentPoster);
 
+var showMyPosterBtn = document.querySelector('.show-my-poster');
 
+showMyPosterBtn.addEventListener('click', createCustomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
