@@ -124,7 +124,6 @@ nevermindButton.addEventListener("click", backFromMake)
 savedPostersButton.addEventListener("click", showSaved)
 backToMain.addEventListener("click", backFromSaved)
 showUniquePoster.addEventListener("click", showNewPoster)
-
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -143,7 +142,7 @@ function randomPoster() {
 
 function makePosterForm() {
   mainPoster.classList.add("hidden")
-  makePoster.classList.remove("hidden")
+  // makePoster.classList.remove("hidden")
   makePosterView.classList.remove("hidden")
 }
 
