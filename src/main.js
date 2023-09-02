@@ -110,12 +110,13 @@ var makePosterView = document.querySelector(".poster-form");
 var nevermindButton = document.querySelector(".show-main");
 var savedPostersButton = document.querySelector(".show-saved");
 var backToMain = document.querySelector(".back-to-main");
-var savedPosters = document.querySelector(".saved-posters");
+var savedPostersView = document.querySelector(".saved-posters");
 var uniquePosterImage = document.querySelector("#poster-image-url");
 var uniquePosterTitle = document.querySelector("#poster-title");
 var uniquePosterQuote = document.querySelector("#poster-quote");
 var showUniquePoster = document.querySelector(".make-poster");
 var savedPosterGrid = document.querySelector(".saved-posters-grid")
+var savePosterButton = document.querySelector(".save-poster")
 
 // event listeners go here 👇
 window.addEventListener("load", randomPoster);
@@ -125,6 +126,7 @@ nevermindButton.addEventListener("click", backFromMake);
 savedPostersButton.addEventListener("click", showSaved);
 backToMain.addEventListener("click", backFromSaved);
 showUniquePoster.addEventListener("click", showNewPoster);
+savePosterButton.addEventListener("click", saveFavoritePoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -155,27 +157,36 @@ function backFromMake() {
 
 function backFromSaved() {
   mainPoster.classList.remove("hidden");
-  savedPosters.classList.add("hidden");
+  savedPostersView.classList.add("hidden");
 }
 
 // function showSaved() {
-//   savedPosters.classList.remove("hidden");
+//   savedPostersView.classList.remove("hidden");
 //   mainPoster.classList.add("hidden");
 // }
 
 function showSaved() {
-  savedPosters.classList.remove("hidden");
+  savedPostersView.classList.remove("hidden");
   mainPoster.classList.add("hidden");
   savedPosterGrid.innerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
     savedPosterGrid.innerHTML += `
       <article class="mini-poster"><id=${savedPosters[i].id}>
-        <img src=${savedPosters[i].imageURL}>
+        <img src=${savedPosters[i].posterImg}>
         <h2>${savedPosters[i].title}</h2>
         <h4>${savedPosters[i].quote}</h4>
       </article>
     `
   }
+}
+
+function saveFavoritePoster() {
+  for (i =0; i < savedPosters.length; i++){
+    if (currentPoster.id === savedPosters[i].id) {
+      return
+    }
+  } 
+  savedPosters.push(currentPoster)
 }
 
 function getRandomIndex(array) {
