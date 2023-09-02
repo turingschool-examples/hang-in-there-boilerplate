@@ -1,6 +1,27 @@
-// query selector variables go here 👇
+//how to link Javascript file in HTML? 👇 //already done in HTML: script src="path-to-your-script.js"></script>
 
-// we've provided you with some data to work with 👇
+// QUERY SELECTOR VARIABLES go here 👇
+//iteration 0:
+var accessImage = document.querySelector('.poster-img'); //accesses element src ="" where you put image URL
+var accessTitle = document.querySelector('.poster-title');
+var accessQuote = document.querySelector('.poster-quote'); //gives us access to <h3>Quote</h3>
+var ShowRandomPosterButton = document.querySelector('.show-random');
+
+//iteration 1:
+var makeOwnPosterButton = document.querySelector('.show-form');
+var showSavedPostersButton = document.querySelector('.show-saved'); 
+var saveAPosterButton = document.querySelector('.save-poster')
+var nevermindTakeMeBackButton = document.querySelector('.show-main'); 
+var backToMainButton = document.querySelector('.back-to-main');
+
+var mainPoster = document.querySelector('.main-poster'); 
+var createOwnPosterForm = document.querySelector('.poster-form');
+var savedPostersButton = document.querySelector('.saved-posters'); //hidden in string in index.html so to view it have to classList.remove("hidden")
+
+//iteration 2:
+var showMyPoster = document.querySelector('.make-poster');
+
+// DATA PROVIDED 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -99,20 +120,168 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
-
-// event listeners go here 👇
-
-// functions and event handlers go here 👇
-// (we've provided two to get you started)!
+var currentPoster = document.querySelector('.poster') // current poster on main page
+var newPoster = {} //container, can pass an object
+//EVENT LISTENERS HERE! 👇 TELLING COMPUTER TO LISTEN TO CLICK:
+window.addEventListener('load',randomPoster);
+ShowRandomPosterButton.addEventListener('click', randomPoster);
+makeOwnPosterButton.addEventListener('click',generateForm); //next step to generate form, and the main poster should be hidden
+showSavedPostersButton.addEventListener('click', showSavedPoster); //=> should see the saved posters area, and the main poster should be hidden
+nevermindTakeMeBackButton.addEventListener('click',backToMainPoster);
+backToMainButton.addEventListener('click',backToMainPoster);
+saveAPosterButton.addEventListener('click', savePoster);
+showMyPoster.addEventListener('click',showUserInputPoster);
+// FUNCTIONS AND EVENT HANDLERS GO HERE 👇 (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+} //Math. = random decimal b/t 0-1   -> Math.floor - .floor brings it down to nearest whole number
 
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
-    imageURL: imageURL, 
+    imageURL: imageURL,
     title: title, 
     quote: quote}
+} //returns object..
+
+function randomPoster() {
+  var newImageURL = images[getRandomIndex(images)] // console.log(newImageURL)
+  var newTitle = titles[getRandomIndex(titles)] //console.log(newTitle)
+  var newQuote = quotes[getRandomIndex(quotes)] 
+  newPoster = createPoster(newImageURL, newTitle, newQuote); //returns the entire object
+  accessImage.src = newPoster.imageURL; //assigns to newImageURL value = random image in images array.
+  accessTitle.innerText = newPoster.title;
+  accessQuote.innerText = newPoster.quote;
 }
+
+function generateForm() {
+  mainPoster.classList.add("hidden"); //add rule to hide poster
+  createOwnPosterForm.classList.remove("hidden")
+} //Best practice to hide first. To hide, add hidden string rule Class selectors rule book?
+
+//savePoster fx already pushes all current posters up to array.
+
+//savePoster() function already pushes currentPoster into array
+//now we have to prevent click event from adding a duplicate item into array.
+//if statement
+function savePoster() { 
+  var isDuplicate = false
+  for (i=0; i < savedPosters.length; i++) {
+    if (savedPosters[i].isEqualNode(currentPoster)) { //going to every index in array, so if current poster is different then, it'll add that
+      isDuplicate = true; 
+      break; 
+    }
+  }
+    if (!isDuplicate) {
+      savedPosters.push(currentPoster.cloneNode(true))
+    }
+}  
+
+
+  //check if current poster is in array before pushing it!
+  //do this by using a unique identifier for each poster.... 
+  //if identifier is not present in savedPosters array
+  //then push
+  //current poster pushed to savePoster array.
+
+  //QUESTION!! It's not adding anything else to array but one of the posters!
+
+//QUESTION: WHY IS IT ONLY PUSHING 1 IMAGE??
+//   // var newCurrentPoster = currentPoster.innerText
+//   // console.log(newCurrentPoster, "newCurrentPost")
+//   // if (savedPosters.indexOf(newCurrentPoster) === -1)
+//   //   savedPosters.push(newCurrentPoster)
+//   //   console.log(savedPosters,"saved Posters")
+// }
+
+// for (i=0; i < savedPosters.length; i++) 
+// console.log(savedPosters[i])
+// if (savedPosters[i] !== currentPoster) {
+// console.log("hi")
+// return savedPosters.push(currentPoster) 
+// }
+
+
+// ["currentPoster", ]
+// if (array.length-1 !== curentPoster)
+// savedPosters.push(currentPoster)
+
+//1. push current poster into savedPoster array
+//2. after pushing 1st current poster, you're checking the array.length-1  and check array.length-2
+//3. if they are, remove
+//if user clicks savePoster button, more than once, it will only save it once, no dupes.
+  // console.log(savedPosters, "saved Poster Array")
+  // console.log(currentPoster, "current Poster")
+
+
+//we now want to display all the saved posters. 
+var posterGrid = document.querySelector('.saved-posters-grid')
+// iteration 3: go into savePoster function invoked in the savePosterButton function declaration when clicked
+//currentPoster will be pushed to savedPoster array
+//so every time there is a new current Poster, we want to push that into the saved poster array.
+
+  // show the array of posters
+  // add array into a class selector: class or id
+  // iteration 3 or 4
+function showSavedPoster() {
+  posterGrid.innerHTML = ""
+  for (var i=0; i < savedPosters.length; i++) {
+    var posterGridContainer = document.createElement('div');
+    posterGridContainer.classList.add('.saved-posters-grid');
+    posterGridContainer.appendChild(savedPosters[i].cloneNode(true));
+    posterGrid.appendChild(posterGridContainer)
+    console.log(document.querySelector('.saved-posters-grid')) // go into the grid element and add a child for every item in savedPosters array.
+  }
+  mainPoster.classList.add("hidden"); //add rule to hide poster
+  savedPostersButton.classList.remove("hidden")
+} 
+
+// When a user clicks the “Nevermind, take me back!” or “Back to Main” buttons, we should only see the main poster section
+function backToMainPoster() {
+  // console.log('Taking me back to main poster')
+  mainPoster.classList.remove("hidden");
+  nevermindTakeMeBackButton.classList.add("hidden"); //hide that button
+  createOwnPosterForm.classList.add("hidden"); //hide that createOwnPosterForm!
+}
+
+var inputForImageURL = document.querySelector('#poster-image-url')
+// var input = document.querySelector('input') //access 1st <input element>
+// var input1 = document.getElementById('poster-image-url') 
+// console.log(accessPosterImageURL,"accessPosterImageURL")
+var inputForTitle =  document.querySelector('#poster-title')
+var inputForQuote = document.querySelector('#poster-quote')
+
+function showUserInputPoster(event) { //prevent generateRandom from generating it
+  event.preventDefault()
+  var newImage = inputForImageURL.value
+  var newTitle = inputForTitle.value
+  var newQuote = inputForQuote.value
+ //change mainPoster image to input values
+  var poster = createPoster(newImage,newTitle,newQuote) //returns object to property
+  renderPoster(poster);
+  backToMainPoster(); //when showuser button pressed, assign 
+  //Change back to the main poster view (hiding the form view again)
+  //inspect input area, to return what value.
+  // id.
+}
+
+function renderPoster(poster) {
+  console.log(poster.imageURL)
+  accessImage.src = poster.imageURL
+  accessTitle.innerText = poster.title
+  accessQuote.innerText = poster.quote
+}
+
+
+
+// Go through code to create global variables so every function can access it
+//var mainPoster = document.querySelector('.main-poster')
+
+
+//.style = inline CSS, go in CSS in HTML 
+//TIPS:
+//- Pay attention with SCOPE: has to do with scope!
+//- Math. = random decimal b/t 0-1   -> Math.floor - .floor brings it down to nearest whole number
+//-Best practice to hide first. To hide, add hidden string rule Class selectors rule book?
+//-Best practice not to querySelector in a function.
+

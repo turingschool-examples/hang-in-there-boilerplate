@@ -36,8 +36,26 @@
   <section class="saved-posters hidden">
     <h2>Saved Posters</h2>
     <article class="saved-posters-grid"></article>
+
     <button class="back-to-main">Back to Main</button>
   </section>
   <script src="./src/main.js"></script>
+  
+  <!--this script tag references JS file. Should be place before closing </body>-->
+  <!--NOTE: script tag = HTML element used to include JS within HTML document. 
+  tells browswer to execute JS code contained in the tag. You could include JS directly with code:
+  This is an inline script Example (include JS code directly with script tag):
+  <script>
+  // JavaScript code goes here
+  console.log("Hello, world!");
+</script>
+
+OR External script - most common - makes things cleaner
+<script src="path-to-your-script.js"></script>
+
+COMMON practice: Placing the <script> tag just before the closing </body> tag 
+  so that JS doesn't delay rendering of page content bc it can block rendering of HTML code.
+-->
+
 </body>
 </html>
