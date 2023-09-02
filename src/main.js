@@ -115,8 +115,8 @@ var uniquePosterImage = document.querySelector("#poster-image-url");
 var uniquePosterTitle = document.querySelector("#poster-title");
 var uniquePosterQuote = document.querySelector("#poster-quote");
 var showUniquePoster = document.querySelector(".make-poster");
-var savedPosterGrid = document.querySelector(".saved-posters-grid")
-var savePosterButton = document.querySelector(".save-poster")
+var savedPosterGrid = document.querySelector(".saved-posters-grid");
+var savePosterButton = document.querySelector(".save-poster");
 
 // event listeners go here 👇
 window.addEventListener("load", randomPoster);
@@ -126,7 +126,7 @@ nevermindButton.addEventListener("click", backFromMake);
 savedPostersButton.addEventListener("click", showSaved);
 backToMain.addEventListener("click", backFromSaved);
 showUniquePoster.addEventListener("click", showNewPoster);
-savePosterButton.addEventListener("click", saveFavoritePoster)
+savePosterButton.addEventListener("click", saveFavoritePoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -160,11 +160,6 @@ function backFromSaved() {
   savedPostersView.classList.add("hidden");
 }
 
-// function showSaved() {
-//   savedPostersView.classList.remove("hidden");
-//   mainPoster.classList.add("hidden");
-// }
-
 function showSaved() {
   savedPostersView.classList.remove("hidden");
   mainPoster.classList.add("hidden");
@@ -176,17 +171,17 @@ function showSaved() {
         <h2>${savedPosters[i].title}</h2>
         <h4>${savedPosters[i].quote}</h4>
       </article>
-    `
+    `;
   }
 }
 
 function saveFavoritePoster() {
-  for (i = 0; i < savedPosters.length; i++){
+  for (i = 0; i < savedPosters.length; i++) {
     if (currentPoster.id === savedPosters[i].id) {
-      return
+      return;
     }
-  } 
-  savedPosters.push(currentPoster)
+  }
+  savedPosters.push(currentPoster);
 }
 
 function getRandomIndex(array) {
