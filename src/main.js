@@ -19,6 +19,7 @@ var createOwnPosterForm = document.querySelector('.poster-form');
 var savedPosters = document.querySelector('.saved-posters'); //hidden in string in index.html so to view it have to classList.remove("hidden")
 
 //iteration 2:
+var showMyPoster = document.querySelector('.make-poster');
 
 // DATA PROVIDED 👇
 var images = [
@@ -118,17 +119,21 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];//it 2 and 3
+var savedPosters = [];
 var currentPoster = document.querySelector('.poster') // var currentPoster
+var newPoster = {} //container, can pass an object
+
+//store into an object to store into different function
 
 //EVENT LISTENERS HERE! 👇 TELLING COMPUTER TO LISTEN TO CLICK:
-window.addEventListener('load',randomPoster)
-ShowRandomPosterButton.addEventListener('click', randomPoster)
-makeOwnPosterButton.addEventListener('click',generateForm) //next step to generate form, and the main poster should be hidden
-showSavedPostersButton.addEventListener('click', showSavedPoster) //=> should see the saved posters area, and the main poster should be hidden
-nevermindTakeMeBackButton.addEventListener('click',backToMainPoster)
-backToMainButton.addEventListener('click',backToMainPoster)
-saveAPosterButton.addEventListener('click', savePoster)
+window.addEventListener('load',randomPoster);
+ShowRandomPosterButton.addEventListener('click', randomPoster);
+makeOwnPosterButton.addEventListener('click',generateForm); //next step to generate form, and the main poster should be hidden
+showSavedPostersButton.addEventListener('click', showSavedPoster); //=> should see the saved posters area, and the main poster should be hidden
+nevermindTakeMeBackButton.addEventListener('click',backToMainPoster);
+backToMainButton.addEventListener('click',backToMainPoster);
+saveAPosterButton.addEventListener('click', savePoster);
+showMyPoster.addEventListener('click',showUserInputPoster);
 
 // FUNCTIONS AND EVENT HANDLERS GO HERE 👇 (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -146,10 +151,9 @@ function createPoster(imageURL, title, quote) {
 function randomPoster() {
   var newImageURL = images[getRandomIndex(images)] // console.log(newImageURL)
   var newTitle = titles[getRandomIndex(titles)] 
-  //console.log(newTitle)
+//console.log(newTitle)
   var newQuote = quotes[getRandomIndex(quotes)] 
-
-  var newPoster = createPoster(newImageURL, newTitle, newQuote); //returns the entire object
+  newPoster = createPoster(newImageURL, newTitle, newQuote); //returns the entire object
   accessImage.src = newPoster.imageURL; //assigns to newImageURL value = random image in images array.
   accessTitle.innerText = newPoster.title;
   accessQuote.innerText = newPoster.quote;
@@ -160,11 +164,19 @@ function generateForm() {
   createOwnPosterForm.classList.remove("hidden")
 } //Best practice to hide first. To hide, add hidden string rule Class selectors rule book?
 
+//savePoster fx already pushes all current posters up to array.
+//we now want to display all the saved posters. 
+//so call on that savePoster() function to get the array in another function below this
+//do for loop to be able to push every current poster in. So that every time user
+//clicks on button, it'll be pushed up to array, and then displayed
 function savePoster() {
 //should save a poster
   savedPosters.push(currentPoster) //make an array of HTML element
 }
 
+// iteration 3: go into savePoster function invoked in the savePosterButton function declaration when clicked
+//currentPoster will be pushed to savedPoster array
+//so every time there is a new current Poster, we want to push that into the saved poster array.
 function showSavedPoster() {
   //show the array of posters
   //add array into a class selector: class or id
@@ -180,13 +192,39 @@ function showSavedPoster() {
 
 // When a user clicks the “Nevermind, take me back!” or “Back to Main” buttons, we should only see the main poster section
 function backToMainPoster() {
-  console.log('Taking me back to main poster')
+  // console.log('Taking me back to main poster')
   mainPoster.classList.remove("hidden");
   nevermindTakeMeBackButton.classList.add("hidden"); //hide that button
   createOwnPosterForm.classList.add("hidden"); //hide that createOwnPosterForm!
 }
 
+var inputForImageURL = document.querySelector('#poster-image-url')
+// var input = document.querySelector('input') //access 1st <input element>
+// var input1 = document.getElementById('poster-image-url') 
+// console.log(accessPosterImageURL,"accessPosterImageURL")
+var inputForTitle =  document.querySelector('#poster-title')
+var inputForQuote = document.querySelector('#poster-quote')
 
+function showUserInputPoster(event) { //prevent generateRandom from generating it
+  event.preventDefault()
+  var newImage = inputForImageURL.value
+  var newTitle = inputForTitle.value
+  var newQuote = inputForQuote.value
+ //change mainPoster image to input values
+  var poster = createPoster(newImage,newTitle,newQuote) //returns object to property
+  renderPoster(poster);
+  backToMainPoster(); //when showuser button pressed, assign 
+  //Change back to the main poster view (hiding the form view again)
+  //inspect input area, to return what value.
+  // id.
+}
+
+function renderPoster(poster) {
+  console.log(poster.imageURL)
+  accessImage.src = poster.imageURL
+  accessTitle.innerText = poster.title
+  accessQuote.innerText = poster.quote
+}
 
 
 
