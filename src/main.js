@@ -172,7 +172,7 @@ function showSaved() {
   for (var i = 0; i < savedPosters.length; i++) {
     savedPosterGrid.innerHTML += `
       <article class="mini-poster"><id=${savedPosters[i].id}>
-        <img src=${savedPosters[i].posterImg}>
+        <img src=${savedPosters[i].imageURL}>
         <h2>${savedPosters[i].title}</h2>
         <h4>${savedPosters[i].quote}</h4>
       </article>
@@ -181,7 +181,7 @@ function showSaved() {
 }
 
 function saveFavoritePoster() {
-  for (i =0; i < savedPosters.length; i++){
+  for (i = 0; i < savedPosters.length; i++){
     if (currentPoster.id === savedPosters[i].id) {
       return
     }
