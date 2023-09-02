@@ -115,6 +115,7 @@ var uniquePosterImage = document.querySelector("#poster-image-url");
 var uniquePosterTitle = document.querySelector("#poster-title");
 var uniquePosterQuote = document.querySelector("#poster-quote");
 var showUniquePoster = document.querySelector(".make-poster");
+var savedPosterGrid = document.querySelector(".saved-posters-grid")
 
 // event listeners go here 👇
 window.addEventListener("load", randomPoster);
@@ -157,9 +158,24 @@ function backFromSaved() {
   savedPosters.classList.add("hidden");
 }
 
+// function showSaved() {
+//   savedPosters.classList.remove("hidden");
+//   mainPoster.classList.add("hidden");
+// }
+
 function showSaved() {
   savedPosters.classList.remove("hidden");
   mainPoster.classList.add("hidden");
+  savedPosterGrid.innerHTML = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPosterGrid.innerHTML += `
+      <article class="mini-poster"><id=${savedPosters[i].id}>
+        <img src=${savedPosters[i].imageURL}>
+        <h2>${savedPosters[i].title}</h2>
+        <h4>${savedPosters[i].quote}</h4>
+      </article>
+    `
+  }
 }
 
 function getRandomIndex(array) {
