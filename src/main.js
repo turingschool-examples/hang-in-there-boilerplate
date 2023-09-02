@@ -218,11 +218,3 @@ function createPoster(imageURL, title, quote) {
     quote: quote,
   };
 }
-
-
-
-
-
-
-
-
