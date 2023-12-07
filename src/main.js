@@ -109,10 +109,25 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+var randomImage = getRandomIndex(images)
+var randomTitle = getRandomIndex(titles)
+var randomQuote = getRandomIndex(quotes)
+
+
 function createPoster(imageURL, title, quote) {
-  return {
+   var poster = {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
-}
+    quote: quote
+  }; return poster
+} 
+
+var newPoster = createPoster(images[randomImage], titles[randomTitle], quotes[randomQuote])
+
+var posterTitle = document.querySelector('.poster-title')
+  posterTitle.innerText = newPoster.title;
+var posterQuote = document.querySelector('.poster-quote')
+  posterQuote.innerText = newPoster.quote;
+var posterImage = document.querySelector('.poster-img')
+  posterImage.setAttribute('src', newPoster.imageURL)
