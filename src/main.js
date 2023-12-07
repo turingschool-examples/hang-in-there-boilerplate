@@ -98,10 +98,17 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
+var randomImgBtn = document.querySelector(".show-random")
+var dispImg = document.querySelector(".poster-img")
+var dispQt = document.querySelector(".poster-quote")
+var dispTitle = document.querySelector(".poster-title")
 
 // event listeners go here 👇
+randomImgBtn.addEventListener('click',generateRandomImage)
+window.addEventListener('load',generateRandomImage)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -115,4 +122,10 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function generateRandomImage(){
+  dispImg.src = images[getRandomIndex(images)]
+  dispQt.innerText = quotes[getRandomIndex(quotes)]
+  dispTitle.innerText = titles[getRandomIndex(titles)]
 }
