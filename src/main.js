@@ -1,5 +1,8 @@
 // query selector variables go here 👇
-// var randomPoster = document.querySelector('.poster-img');
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -111,12 +114,19 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-var randomImage = getRandomIndex(images);
-var randomTitle = getRandomIndex(titles);
-var randomQuote = getRandomIndex(quotes);
+var randomImageIndex = getRandomIndex(images);
+var randomTitleIndex = getRandomIndex(titles);
+var randomQuoteIndex = getRandomIndex(quotes);
+
+var randomImage = images.slice(randomImageIndex, randomImageIndex+1)
+console.log('randomImage: ', randomImage);
+
+var randomTitle = titles.slice(randomTitleIndex, randomTitleIndex+1);
+
+var randomQuote = quotes.slice(randomQuoteIndex, randomQuoteIndex+1);
 
 
-console.log('getRandomIndex: ', getRandomIndex(quotes));
+console.log('RandomImageIndex: ', randomImageIndex);
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -124,5 +134,15 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
-}
+};
 
+var randomPoster = createPoster(randomImage, randomTitle, randomQuote);
+console.log('Random Poster: ', randomPoster);
+
+//reassign the value of the poster-img class to the value of randomImage [the image url in a string]
+//reassign the value of the poster-title class to the value of randomTitle
+//reassign the value of the poster-quote class to the value of randomQuote
+
+posterQuote.innerHTML = randomQuote;
+posterTitle.innerHTML = randomTitle;
+posterImage.src = randomImage;
