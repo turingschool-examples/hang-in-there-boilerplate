@@ -1,4 +1,5 @@
 // query selector variables go here 👇
+// var randomPoster = document.querySelector('.poster-img');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -103,11 +104,19 @@ var currentPoster;
 
 // event listeners go here 👇
 
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+var randomImage = getRandomIndex(images);
+var randomTitle = getRandomIndex(titles);
+var randomQuote = getRandomIndex(quotes);
+
+
+console.log('getRandomIndex: ', getRandomIndex(quotes));
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -116,3 +125,4 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
