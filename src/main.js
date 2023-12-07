@@ -100,11 +100,15 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-
+var mainPageImage = document.querySelector('.poster-img')
+var randomImageIndex = getRandomIndex(images)
+var actualRandomImage = images[randomImageIndex]
+console.log(actualRandomImage)
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -116,3 +120,12 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+mainPageImage.src = actualRandomImage
+console.log(typeof actualRandomImage)
+
+/*Goal: generate a random image onto the main page
+Take in the images array as a parameter for the function, iterate through that array,
+return a random image.
+Access the class poster image in the HTML document
+Questions - How do we specify that we're changing the poster image from the JS?
+- How do we randomize the selection?*/
