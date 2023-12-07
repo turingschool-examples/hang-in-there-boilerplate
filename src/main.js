@@ -1,4 +1,12 @@
 // query selector variables go here 👇
+// var image = document.querySelector('.poster-img');
+
+
+// We need to use a query selector to insert an image into to src in html
+// We need to see a randomly selected, title, and quote, so we need to research how to 
+// randomly select an image in js
+// We need to have a new random image everytime a user clicks the show another random
+//
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -105,9 +113,29 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+// We need to use a query selector to insert an image into to src in html
+// We need to see a randomly selected, title, and quote, so we need to research how to 
+// randomly select an image in js
+// We need to have a new random image everytime a user clicks the show another random
+// math.floor rounds down into whole number
+// math.random gives you a random number and needs a pretermined amount of elements to go through.
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+var randomImagesArray = getRandomIndex(images);
+var randomTitlesArray = getRandomIndex(titles);
+var randomQuotesArrays = getRandomIndex(quotes);
+
+var randomImage = images.slice(randomImagesArray, randomImagesArray += 1);
+var randomTitle = titles.slice(randomTitlesArray, randomTitlesArray += 1);
+var randomQuote = quotes.slice(randomQuotesArrays, randomQuotesArrays += 1);
+
+console.log(randomImage)
+console.log(randomQuote);
+console.log(randomTitle)
+
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -116,3 +144,5 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+var randomPoster = createPoster()
