@@ -102,13 +102,13 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-displayPoster()
-var randomButton = document.getElementsByClassName("show-random")
-/*
+displayPoster();
+
+var randomButton = document.querySelector(".show-random");
 if(randomButton){
-  randomButton.addEventListener("click", displayPoster)
+  randomButton.addEventListener("click", displayPoster);
 }
-*/
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -120,19 +120,19 @@ function createPoster(imageURL, title, quote) {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
+    quote: quote};
 }
 function createRandomPoster(){
-  var poster =createPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)],quotes[getRandomIndex(quotes)])
-  return poster
+  var poster = createPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)],quotes[getRandomIndex(quotes)]);
+  return poster;
 }
 function displayPoster(){
-  var poster = createRandomPoster()
-  var imageElement = document.querySelector(`.poster-img`)
-  var titleElement = document.querySelector(`.poster-title`)
-  var quoteElement = document.querySelector(`.poster-quote`)
-  titleElement.innerHTML = poster.title
-  imageElement.src = poster.imageURL
-  quoteElement.innerHTML = poster.quote
+  var poster = createRandomPoster();
+  var imageElement = document.querySelector(`.poster-img`);
+  var titleElement = document.querySelector(`.poster-title`);
+  var quoteElement = document.querySelector(`.poster-quote`);
+  titleElement.innerHTML = poster.title;
+  imageElement.src = poster.imageURL;
+  quoteElement.innerHTML = poster.quote;
 }
  
