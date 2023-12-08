@@ -120,7 +120,7 @@ var currentPoster = {
 };
 
 // event listeners go here 👇
-//on click, re
+
 newRandomPoster.addEventListener('click', makeRandomPoster);
 makeYourOwnPosterButton.addEventListener('click', switchToForm);
 showSavedPostersButton.addEventListener('click', switchToSavedPosters);
@@ -143,9 +143,10 @@ function createPoster(imageURL, title, quote) {
     quote: quote
   }
 };
+
 function newPosterObject() {
   currentPoster = createPoster (posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
-}
+};
 
 function makeMyPoster() {
   var currentImage = posterImageInput.value;
@@ -154,13 +155,13 @@ function makeMyPoster() {
   posterQuote.innerHTML = currentQuote;
   posterTitle.innerHTML = currentTitle;
   posterImage.src = currentImage;
-}
+};
 
 function pushToArrays() {
   images.push(currentPoster.imageURL)
   titles.push(currentPoster.title)
   quotes.push(currentPoster.quote)
-}
+};
 
 function handleAllEvents() {
   newPosterObject();
@@ -168,28 +169,7 @@ function handleAllEvents() {
   event.preventDefault();
   makeMyPoster();
   pushToArrays();
-}
-
-
-// function testThis() {
-//   var currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
-//   console.log(currentPoster);
-//   return currentPoster;
-// }
-// function showMyPosterHandler() {
-//   var currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
-//   console.log('current poster: ', currentPoster);
-//   return currentPoster
-// }
-
-//declare querySElectors variables for each poster element via id names
-//declare show my poster button variable
-//declare variables to store input values
-//pass the input values from the form as arguments in the createPoster function
-//push the input values to their respective arrays
-//store the createPoster return in the current poster variable [invoke as the value of currentPoster]
-//write event listener
-//create variables to 
+};
 
 function makeRandomPoster() {
   var randomImage = images[getRandomIndex(images)];
@@ -207,25 +187,15 @@ posterImage.alt = 'Motivational Poster Image';
 function switchToForm() {
   posterFormSection.classList.remove('hidden');
   mainPosterSection.classList.add('hidden');
-}
+};
 
 function switchToSavedPosters() {
   savedPostersSection.classList.remove('hidden');
   mainPosterSection.classList.add('hidden');
-}
+};
 
 function switchToMain() {
   mainPosterSection.classList.remove('hidden');
   posterFormSection.classList.add('hidden');
   savedPostersSection.classList.add('hidden');
-}
-
-//create a var for show-form class which accesses the button
-//create a function that will hide the main poster, and unhide create your poster form
-
-
-//create a var for show-main class
-//create a var for back-to-main class
-//
-
-
+};
