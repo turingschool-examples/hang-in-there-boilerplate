@@ -1,4 +1,11 @@
 // query selector variables go here 👇
+var poster = document.querySelector('.poster-img')
+var quote = document.querySelector('.poster-quote');
+var title = document.querySelector('.poster-title');
+var randomPosterButton = document.querySelector('.show-random');
+var formButton = document.querySelector('.show-form'); 
+var hiddenForm = document.querySelector('.poster-form hidden');
+var mainPoster = document.querySelector('.main-poster')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,17 +109,62 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+// poster.addEventListener('DOMContentLoaded', getRandomIndex)
 
-// functions and event handlers go here 👇
+// button.addEventListener("click", getRandomIndex);
+
+// formButton.addEventListener("click", goToHiddenForm); 
+
+// ___.addEventListener('submit', function(event){
+//   event.preventDefault()
+// })
+
+// ____.addEventListener("dblclick", (event){
+//   delete ...
+// }
+// functions and event handlers go here  👇
 // (we've provided two to get you started)!
+
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  return Math.floor(Math.random() * array.length); 
 }
+var getRandomImage = getRandomIndex(images);
+console.log(getRandomImage);
+
+var getRandomTitle = getRandomIndex(titles);
+console.log(getRandomTitle);
+
+var getRandomQuote = getRandomIndex(quotes);
+console.log(getRandomQuote);
+
+var titleIndexNumber = getRandomTitle; 
+var quoteIndexNumber = getRandomQuote; 
+poster.src = images[getRandomIndex(images)]
+title.innerText = titles[titleIndexNumber]; 
+quote.innerText = quotes[quoteIndexNumber]; 
 
 function createPoster(imageURL, title, quote) {
+  console.log({title})
   return {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
+    quote: quote
+  }
 }
+randomPosterButton.addEventListener('click', createRandomPoster)
+function createRandomPoster(){
+createPoster(images[getRandomImage], titles[getRandomTitle], quotes[getRandomQuote]);
+}
+
+// randomPosterButton.addEventListener('click', createRandomPoster)
+// function createRandomPoster() {
+//   var newPoster = createPoster(images[getRandomIndex(images)], titles[getRandomTitle], quotes[getRandomQuote])
+
+// GOAL: generate random image, quote, and title when a button is clicked. 
+// Want to querySelect the 'show me anotehr poster' button 
+// Use randomTitles
+// Use randomQUotes
+//  uSe randomImages
+// use the click addEventListener
+// 
