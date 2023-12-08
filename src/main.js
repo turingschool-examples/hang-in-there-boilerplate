@@ -13,7 +13,8 @@ var mainPosterSection = document.querySelector('.main-poster');
 var savedPostersSection = document.querySelector('.saved-posters');
 var posterImageInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
-var posterQuoteInput = document. querySelector('#poster-quote');
+var posterQuoteInput = document.querySelector('#poster-quote');
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -114,7 +115,9 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {
+
+};
 
 // event listeners go here 👇
 //on click, re
@@ -123,7 +126,7 @@ makeYourOwnPosterButton.addEventListener('click', switchToForm);
 showSavedPostersButton.addEventListener('click', switchToSavedPosters);
 backToMainButton.addEventListener('click', switchToMain);
 takeMeBackButton.addEventListener('click', switchToMain);
-showMyPosterButton.addEventListener('click', testThis)
+showMyPosterButton.addEventListener('click', handleAllEvents);
 
 
 // functions and event handlers go here 👇
@@ -140,12 +143,39 @@ function createPoster(imageURL, title, quote) {
     quote: quote
   }
 };
-
-function testThis() {
-  var currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
-  console.log(currentPoster);
-  return currentPoster;
+function newPosterObject() {
+  currentPoster = createPoster (posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
 }
+
+function makeMyPoster() {
+  var currentImage = posterImageInput.value;
+  var currentTitle = posterTitleInput.value;
+  var currentQuote = posterQuoteInput.value;
+  posterQuote.innerHTML = currentQuote;
+  posterTitle.innerHTML = currentTitle;
+  posterImage.src = currentImage;
+}
+
+function pushToArrays() {
+  images.push(currentPoster.imageURL)
+  titles.push(currentPoster.title)
+  quotes.push(currentPoster.quote)
+}
+
+function handleAllEvents() {
+  newPosterObject();
+  switchToMain();
+  event.preventDefault();
+  makeMyPoster();
+  pushToArrays();
+}
+
+
+// function testThis() {
+//   var currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
+//   console.log(currentPoster);
+//   return currentPoster;
+// }
 // function showMyPosterHandler() {
 //   var currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
 //   console.log('current poster: ', currentPoster);
