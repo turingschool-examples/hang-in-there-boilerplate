@@ -4,7 +4,6 @@ var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var newRandomPoster = document.querySelector('.show-random');
 
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -106,79 +105,63 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-    // event listeners go here 👇
+// event listeners go here 👇
 //on click, re
-newRandomPoster.addEventListener('click', function() {
-  console.log('randomQuote: ', randomQuote);
-  console.log('randomTitle: ', randomTitle);
-  console.log('randomImage: ', randomImage);
-  posterQuote.innerHTML = grabNewQuote();
-  posterTitle.innerHTML = grabNewTitle();
-  posterImage.src = grabNewImage();
-} )
-
-
-
-
-
+// newRandomPoster.addEventListener('click', function() {
+//   posterQuote.innerHTML = grabNewQuote();
+//   posterTitle.innerHTML = grabNewTitle();
+//   posterImage.src = grabNewImage();
+// } )
+newRandomPoster.addEventListener('click', makeRandomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-var randomImageIndex = getRandomIndex(images);
-var randomTitleIndex = getRandomIndex(titles);
-var randomQuoteIndex = getRandomIndex(quotes);
-
-var randomImage = images.slice(randomImageIndex, randomImageIndex+1)
-// console.log('randomImage: ', randomImage);
-
-var randomTitle = titles.slice(randomTitleIndex, randomTitleIndex+1);
-
-var randomQuote = quotes.slice(randomQuoteIndex, randomQuoteIndex+1);
-
-
-// console.log('RandomImageIndex: ', randomImageIndex);
+  return Math.floor(Math.random() * array.length)
+};
 
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
+    quote: quote
+  }
 };
 
-var randomPoster = createPoster(randomImage, randomTitle, randomQuote);
-// console.log('Random Poster: ', randomPoster);
+// var randomImage = images[getRandomIndex(images)];
+// var randomTitle = titles[getRandomIndex(titles)];
+// var randomQuote = quotes[getRandomIndex(quotes)];
 
-//reassign the value of the poster-img class to the value of randomImage [the image url in a string]
-//reassign the value of the poster-title class to the value of randomTitle
-//reassign the value of the poster-quote class to the value of randomQuote
+// posterQuote.innerHTML = randomQuote;
+// posterTitle.innerHTML = randomTitle;
+// posterImage.src = randomImage;
 
-posterQuote.innerHTML = randomQuote;
-posterTitle.innerHTML = randomTitle;
-posterImage.src = randomImage;
-
-//get random index from quotes array
-//slice a string from the the quotes array at the random index position
-//reassign that string to posterQuote.innerHTML
-
-function grabNewQuote() {
-  var randomQuoteIndex = getRandomIndex(quotes);
-  var randomQuote = quotes.slice(randomQuoteIndex, randomQuoteIndex+1);
-  return randomQuote
+function makeRandomPoster() {
+  var randomImage = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  posterQuote.innerHTML = randomQuote;
+  posterTitle.innerHTML = randomTitle;
+  posterImage.src = randomImage;
 };
+makeRandomPoster();
 
-function grabNewTitle() {
-  var randomTitleIndex = getRandomIndex(titles);
-  var randomTitle = titles.slice(randomTitleIndex, randomTitleIndex+1);
-  return randomTitle
-};
+// function grabNewQuote() {
+//   var randomQuoteIndex = getRandomIndex(quotes);
+//   var randomQuote = quotes.slice(randomQuoteIndex, randomQuoteIndex+1);
+//   return randomQuote
+// };
 
-function grabNewImage() {
-  var randomImageIndex = getRandomIndex(images);
-  var randomImage = images.slice(randomImageIndex, randomImageIndex+1);
-  return randomImage
-};
+// function grabNewTitle() {
+//   var randomTitleIndex = getRandomIndex(titles);
+//   var randomTitle = titles.slice(randomTitleIndex, randomTitleIndex+1);
+//   return randomTitle
+// };
+
+// function grabNewImage() {
+//   var randomImageIndex = getRandomIndex(images);
+//   var randomImage = images.slice(randomImageIndex, randomImageIndex+1);
+//   return randomImage
+// };
+
