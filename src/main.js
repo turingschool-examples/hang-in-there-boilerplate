@@ -8,12 +8,14 @@ var showSavedPostersButton = document.querySelector('.show-saved');
 var backToMainButton = document.querySelector('.back-to-main');
 var takeMeBackButton = document.querySelector('.show-main');
 var showMyPosterButton = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector('.save-poster');
 var posterFormSection = document.querySelector('.poster-form');
 var mainPosterSection = document.querySelector('.main-poster');
 var savedPostersSection = document.querySelector('.saved-posters');
 var posterImageInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
+var savedPostersGrid = document.querySelector('.saved-posters.grid');
 
 
 // we've provided you with some data to work with 👇
@@ -127,6 +129,7 @@ showSavedPostersButton.addEventListener('click', switchToSavedPosters);
 backToMainButton.addEventListener('click', switchToMain);
 takeMeBackButton.addEventListener('click', switchToMain);
 showMyPosterButton.addEventListener('click', handleAllEvents);
+saveThisPosterButton.addEventListener('click', savePoster);
 
 
 // functions and event handlers go here 👇
@@ -178,7 +181,10 @@ function makeRandomPoster() {
   posterQuote.innerHTML = randomQuote;
   posterTitle.innerHTML = randomTitle;
   posterImage.src = randomImage;
+  currentPoster = createPoster(randomImage, randomTitle, randomQuote);
+  // console.log('currentPoster: ', currentPoster)
 };
+
 
 makeRandomPoster();
 
@@ -199,3 +205,19 @@ function switchToMain() {
   posterFormSection.classList.add('hidden');
   savedPostersSection.classList.add('hidden');
 };
+
+function savePoster() {
+  savedPosters.push(currentPoster);
+  savedPosters.forEach((object) => {
+    console.log('savedPosters Array object: ', object)
+    })
+  };
+  //   savedPostersGrid.innerHTML = `<article>${document.savedPostersGrid.innerHTML.add(
+  //     <h1 class ="poster-title">`${savedPosters.title}`</h1>
+  //     <h3 class ="poster-quote">`${savedPosters.quote}`</h3>
+  // )}</article>`
+ 
+
+//create variable for save this poster button (class is 'save-poster')
+// create function that will push the current poster to the saved posters array
+//create event listener to run function on a click
