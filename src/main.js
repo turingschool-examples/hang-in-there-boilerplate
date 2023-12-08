@@ -3,9 +3,13 @@ var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var newRandomPoster = document.querySelector('.show-random');
-var makeYourOwnPosterButton = document.querySelector('.show-form')
-var posterFormSection = document.querySelector('.poster-form')
-var mainPosterSection = document.querySelector('.main-poster')
+var makeYourOwnPosterButton = document.querySelector('.show-form');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var backToMainButton = document.querySelector('.back-to-main');
+var takeMeBackButton = document.querySelector('.show-main');
+var posterFormSection = document.querySelector('.poster-form');
+var mainPosterSection = document.querySelector('.main-poster');
+var savedPostersSection = document.querySelector('.saved-posters');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -111,6 +115,10 @@ var currentPoster;
 // event listeners go here 👇
 //on click, re
 newRandomPoster.addEventListener('click', makeRandomPoster);
+makeYourOwnPosterButton.addEventListener('click', switchToForm);
+showSavedPostersButton.addEventListener('click', switchToSavedPosters);
+backToMainButton.addEventListener('click', switchToMain);
+takeMeBackButton.addEventListener('click', switchToMain);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -142,18 +150,26 @@ posterImage.alt = 'Motivational Poster Image';
 
 function switchToForm() {
   posterFormSection.classList.remove('hidden');
-  mainPosterSection.classList.add('hidden')
+  mainPosterSection.classList.add('hidden');
 }
 
-makeYourOwnPosterButton.addEventListener('click', switchToForm)
+function switchToSavedPosters() {
+  savedPostersSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden');
+}
 
+function switchToMain() {
+  mainPosterSection.classList.remove('hidden');
+  posterFormSection.classList.add('hidden');
+  savedPostersSection.classList.add('hidden');
+}
 
 //create a var for show-form class which accesses the button
 //create a function that will hide the main poster, and unhide create your poster form
 
 
-//create a var for show-saved class
 //create a var for show-main class
 //create a var for back-to-main class
+//
 
 
