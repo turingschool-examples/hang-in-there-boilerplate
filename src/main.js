@@ -13,6 +13,8 @@ var neverMindButton = document.querySelector('.show-main');
 var imageTextBox = document.querySelector('#poster-image-url')
 var titleTextBox = document.querySelector('#poster-title')
 var quoteTextBox = document.querySelector('#poster-quote')
+var makePosterButton = document.querySelector('.make-poster')
+var formForPoster = document.querySelector('formforposter')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -126,17 +128,21 @@ function hideMainPoster(){
   hidden.classList.remove('hidden')
 }
 
-showSavedPostersButton.addEventListener('click', showSavedPosters){
-  function createUniquePoster(){
-    
-  }
-}
+showSavedPostersButton.addEventListener('click', showSavedPosters)
 
-
-function showSavedPosters(){;
+function showSavedPosters(){
   frontPagePoster.className = "poster-main hidden";
-  hidden.classList.remove('hidden');
+
+  posterForm.className= 'poster-form hidden';
   }
+
+makePosterButton.addEventListener('click', revertPage)
+
+function revertPage(e){
+  e.preventDefault();
+  hidden.classList.add('hidden')
+  frontPagePoster.className = "poster-main";
+}
 
 neverMindButton.addEventListener('click', goToMainPage)
 
@@ -147,28 +153,16 @@ function goToMainPage(){
 
 var storedTitle; 
 storedTitle = titleTextBox.value; 
-console.log(storedTitle);
+// console.log(storedTitle);
 
 var storedQuote; 
 storedQuote = quoteTextBox.value;
-console.log(storedQuote);
+// console.log(storedQuote);
+title.innerHTML = storedTitle; 
+quote.innerHTML = storedQuote; 
 
-function createUniquePoster(){
-  title.innerHTML = storedTitle; 
-  quote.innerHTML = storedQuote; 
-}
 
-// var storedImage; 
-// storedImage = 
 
-//    var siteName;
-// function myFunction() {
-//   siteName= document.getElementById('firstid').value;
-//       localStorage.setItem('store1', siteName);
-//   }
-//   function myFunction2() {
-//       document.getElementById("2ndid").innerHTML = siteName;
-//   }
 // On the new poster form view, users should be able to fill out the three input fields and then hit the Show My Poster button
 // on poster form, users will be able to input values into the three text boxes. 
 // user will be able to click on the save poster button 
@@ -189,10 +183,10 @@ function getRandomIndex(array) {
 }
 
 var titleIndex = getRandomIndex(titles);
-console.log(titleIndex);
+// console.log(titleIndex);
 
 var quoteIndex = getRandomIndex(quotes);
-console.log(quoteIndex);
+// console.log(quoteIndex);
  
 poster.src = images[getRandomIndex(images)]
   title.innerText = titles[titleIndex]; 
@@ -207,7 +201,24 @@ function createPoster(imageURL, title, quote) {
   }
 }
 
+function createUniquePoster(imageURL, title, quote) {
+  return {
+    id: Date.now(), 
+    imageURL: imageURL, 
+    title: title, 
+    quote: quote
+  }
+}
+
+function createNewPoster(){
+  var userPoster = createUniquePoster(images, storedTitle, storedQuote)
+  title.innerHTML = storedTitle; 
+  quote.innerHTML = storedQuote; 
+  return userPoster; 
+}
+
 randomPosterButton.addEventListener('click', createRandomPoster)
+
 function createRandomPoster() {
   var newPoster = createPoster(images[getRandomIndex(images)], titles[titleIndex], quotes[quoteIndex])
   poster.src = images[getRandomIndex(images)]
