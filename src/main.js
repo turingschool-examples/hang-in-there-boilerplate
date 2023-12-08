@@ -105,6 +105,7 @@ var currentPoster;
 // event listeners go here 👇
 document.querySelector(".show-random").addEventListener('click',generateRandomImage)
 window.addEventListener('load',generateRandomImage)
+
 document.querySelector(".show-form").addEventListener('click', () => {
   showHiddenForm(document.querySelector(".show-form"))
   }
@@ -120,6 +121,10 @@ document.querySelector(".show-saved").addEventListener('click',  () => {
 document.querySelector(".back-to-main").addEventListener('click',  () => {
     showHiddenForm(document.querySelector(".back-to-main"))
   }
+)
+document.querySelector(".make-poster").addEventListener('click',  () => {
+  showHiddenForm(document.querySelector(".make-poster"))
+}
 )
 
 
@@ -161,6 +166,9 @@ function showHiddenForm(button) {
       document.querySelector(".saved-posters").classList.toggle('hidden')
       document.querySelector(".main-poster").classList.toggle('hidden')
     break;
+    case 'make-poster':
+      // document.querySelector(".poster-form").classList.toggle('hidden')
+      // document.querySelector(".main-poster").classList.toggle('hidden')
+    break;
   }
-
 }
