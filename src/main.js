@@ -98,104 +98,121 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
 
+//----------------------------------------------//
+// PAGES & ELEMENTS:
+// MAIN PAGE
+var posterMainPage = document.querySelector(".main-poster");
+// POSTER IMAGE ELEMENT
+var imageElement = document.querySelector(`.poster-img`);
+// POSTER TITLE ELEMENT
+var titleElement = document.querySelector(`.poster-title`);
+// POSTER QUOTE ELEMENT
+var quoteElement = document.querySelector(`.poster-quote`);
+
+// MAKE YOUR OWN POSTER PAGE
+var posterFormPage = document.querySelector(".poster-form");
+// SAVED POSTER PAGE
+var posterSavedPage = document.querySelector(".saved-posters");
+//----------------------------------------------//
+
+//----------------------------------------------//
+// BUTTONS: 
+// "Show Another Random Poster"
+var randomPosterButton = document.querySelector(".show-random");
+// "Make Your Own Poster"
+var formPosterButton = document.querySelector(".show-form");
+// "Back to Main"
+var backButton = document.querySelector(".back-to-main");
+// "Nevermind, take me back!"
+var nevermindButton = document.querySelector(".show-main");
+// "Show Saved Posters"
+var savedPosterButton = document.querySelector(".show-saved");
+// "Show my poster"
+var showMyPosterButton = document.querySelector(".make-poster");
+//----------------------------------------------//
+
+//----------------------------------------------//
+// USER INPUTS: 
+// IMAGE URL INPUT
+var customUrlInput = document.querySelector("#poster-image-url");
+// MOTIVATIONAL TITLE INPUT
+var customTitleInput = document.querySelector("#poster-title");
+// MOTIVATIONAL QUOTE INPUT
+var customQuoteInput = document.querySelector("#poster-quote");
+//----------------------------------------------//
+
+
 // event listeners go here 👇
 
-displayPoster()
+displayPoster();
+// "Show Another Random Poster" Button: Click Listener
+randomPosterButton.addEventListener("click", displayPoster);
+// "Make Your Own Poster" Button: Click Listener
+formPosterButton.addEventListener("click", displayPosterForm);
+// "Show Saved Posters" Button: Click Listener
+savedPosterButton.addEventListener("click", displaySavedPosters);
+// "Back to Main" Button: Click Listener
+backButton.addEventListener("click", displayMainPage);
+// "Nevermind, take me back!" Button: Click Listener
+nevermindButton.addEventListener("click", displayMainPage);
+// "Show my poster" Button: Click Listener
+showMyPosterButton.addEventListener("click", createCustomPoster);
 
-var randomButton = document.querySelector(".show-random");
-if(randomButton)
-{
-  randomButton.addEventListener("click", displayPoster);
-}
-var posterFormButton = document.querySelector(".show-form")
-if(posterFormButton)
-{
-  posterFormButton.addEventListener("click", displayPosterForm)
-}
-var mainPageButton = document.querySelector(".show-main")
-if(mainPageButton)
-{
-  mainPageButton.addEventListener("click", displayMainPage) 
-} 
-var makePosterButton = document.querySelector(".make-poster")
-if(makePosterButton)
-{
-  makePosterButton.addEventListener("click",createCustomPoster)
-}
 // functions and event handlers go here 👇
 
-function getRandomIndex(array) 
-{
+function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-function createPoster(imageURL, title, quote) 
-{
-  return(
-  {
+
+function createPoster(imageURL, title, quote) {
+  return {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
     quote: quote
-  })
+  }
 }
-function createRandomPoster()
-{
+
+function createRandomPoster() {
   var poster = createPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)],quotes[getRandomIndex(quotes)]);
   return poster;
 }
-function displayPoster()
-{
-  var imageElement = document.querySelector(`.poster-img`);
-  var titleElement = document.querySelector(`.poster-title`);
-  var quoteElement = document.querySelector(`.poster-quote`);
+
+function displayPoster() {
   var poster = createRandomPoster();
 
   titleElement.innerHTML = poster.title;
   imageElement.src = poster.imageURL;
   quoteElement.innerHTML = poster.quote;
-  
 }
-function displayPosterForm()
-{
-  var mainPoster = document.querySelector('.main-poster');
-  var posterForm = document.querySelector('.poster-form');
 
-  mainPoster.classList.add('hidden');
-  posterForm.classList.remove('hidden');
+function displayMainPage() {
+  posterMainPage.classList.remove('hidden');
+  posterSavedPage.classList.add('hidden');
+  posterFormPage.classList.add('hidden');
+}
+
+function displayPosterForm() {
+  posterFormPage.classList.remove("hidden");
+  posterMainPage.classList.add('hidden');
 } 
-function displayMainPage()
-{
-  var mainPoster = document.querySelector('.main-poster');
-  var posterForm = document.querySelector('.poster-form');
 
-  mainPoster.classList.remove('hidden');
-  posterForm.classList.add('hidden');
+function displaySavedPosters() {
+  posterSavedPage.classList.remove('hidden');
+  posterMainPage.classList.add('hidden');
 }
+
 function createCustomPoster() {
   event.preventDefault()
-  var customUrlInput = document.querySelector("#poster-image-url");
-  var customTitleInput = document.querySelector("#poster-title");
-  var customQuoteInput = document.querySelector("#poster-quote");
-  var mainPoster = document.querySelector('.main-poster');
-  var posterForm = document.querySelector('.poster-form');
-
-  var customUrl = customUrlInput.value;
-  var customTitle = customTitleInput.value;
-  var customQuote = customQuoteInput.value;
-
-  var imageElement = document.querySelector(`.poster-img`);
-  var titleElement = document.querySelector(`.poster-title`);
-  var quoteElement = document.querySelector(`.poster-quote`);
-  
-  var poster = createPoster(customUrl, customTitle, customQuote);
-  
-  mainPoster.classList.remove('hidden');
-  posterForm.classList.add('hidden');
+  var poster = createPoster(customUrlInput.value, customTitleInput.value, customQuoteInput.value);
+  posterMainPage.classList.remove('hidden');
+  posterFormPage.classList.add('hidden');
   titleElement.innerHTML = poster.title;
   imageElement.src = poster.imageURL;
   quoteElement.innerHTML = poster.quote;
-
 }
+
