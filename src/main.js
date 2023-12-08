@@ -15,6 +15,9 @@ var titleTextBox = document.querySelector('#poster-title')
 var quoteTextBox = document.querySelector('#poster-quote')
 var makePosterButton = document.querySelector('.make-poster')
 var formForPoster = document.querySelector('formforposter')
+var newSavedPosters = document.querySelector('.saved-posters')
+var newPosterForm = document.querySelector('.poster-form')
+var newMainPage = document.querySelector('.poster-main hidden')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -117,32 +120,26 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-// poster.addEventListener('DOMContentLoaded', getRandomIndex)
-
-// button.addEventListener("click", getRandomIndex);
 
 formButton.addEventListener('click', hideMainPoster) 
 
 function hideMainPoster(){
-  frontPagePoster.className = "poster-main hidden"
-  hidden.classList.remove('hidden')
+frontPagePoster.className = "poster-main hidden"
+hidden.classList.remove('hidden')
 }
 
 showSavedPostersButton.addEventListener('click', showSavedPosters)
 
 function showSavedPosters(){
-  frontPagePoster.className = "poster-main hidden";
-
-  posterForm.className= 'poster-form hidden';
+  // frontPagePoster.className = "poster-main hidden";
+  // // hidden.classList.remove('hidden');
+  // newMainPage.classList.toggle('saved-posters');
+  hidden.classList.toggle('hidden')
+  frontPagePoster.className = "poster-main hidden"
+  posterForm.classList.toggle('hidden')
   }
 
-makePosterButton.addEventListener('click', revertPage)
-
-function revertPage(e){
-  e.preventDefault();
-  hidden.classList.add('hidden')
-  frontPagePoster.className = "poster-main";
-}
+makePosterButton.addEventListener('click', createNewPoster)
 
 neverMindButton.addEventListener('click', goToMainPage)
 
@@ -151,26 +148,14 @@ function goToMainPage(){
   frontPagePoster.className = "poster-main";
 }
 
-var storedTitle; 
-storedTitle = titleTextBox.value; 
+var storedImage = imageTextBox.value; 
+var storedTitle = titleTextBox.value; 
 // console.log(storedTitle);
-
-var storedQuote; 
-storedQuote = quoteTextBox.value;
+var storedQuote = quoteTextBox.value;
 // console.log(storedQuote);
 title.innerHTML = storedTitle; 
 quote.innerHTML = storedQuote; 
-
-
-
-// On the new poster form view, users should be able to fill out the three input fields and then hit the Show My Poster button
-// on poster form, users will be able to input values into the three text boxes. 
-// user will be able to click on the save poster button 
-// will need to grab id/class for the 3 text boxes
-
-// ___.addEventListener('submit', function(event){
-//   event.preventDefault()
-// })
+poster.src = storedImage; 
 
 // ____.addEventListener("dblclick", (event){
 //   delete ...
@@ -178,19 +163,22 @@ quote.innerHTML = storedQuote;
 // functions and event handlers go here  👇
 // (we've provided two to get you started)!
 
+function saveUserPosters(){
+  savedPosters.push()
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length); 
 }
 
 var titleIndex = getRandomIndex(titles);
 // console.log(titleIndex);
-
 var quoteIndex = getRandomIndex(quotes);
 // console.log(quoteIndex);
  
 poster.src = images[getRandomIndex(images)]
-  title.innerText = titles[titleIndex]; 
-  quote.innerText = quotes[quoteIndex];
+title.innerText = titles[titleIndex]; 
+quote.innerText = quotes[quoteIndex];
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -201,20 +189,17 @@ function createPoster(imageURL, title, quote) {
   }
 }
 
-function createUniquePoster(imageURL, title, quote) {
-  return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote
-  }
-}
-
-function createNewPoster(){
-  var userPoster = createUniquePoster(images, storedTitle, storedQuote)
-  title.innerHTML = storedTitle; 
-  quote.innerHTML = storedQuote; 
-  return userPoster; 
+function createNewPoster(event){
+  var userPoster = createPoster(storedImage, storedTitle, storedQuote)
+  hidden.classList.add('hidden')
+  frontPagePoster.className = "poster-main";
+  poster.src = imageTextBox.value; 
+  title.innerHTML = titleTextBox.value; 
+  quote.innerHTML = quoteTextBox.value; 
+  images.push(storedImage);
+  quotes.push(storedQuote);
+  titles.push(storedTitle);
+  event.preventDefault(); 
 }
 
 randomPosterButton.addEventListener('click', createRandomPoster)
@@ -224,9 +209,5 @@ function createRandomPoster() {
   poster.src = images[getRandomIndex(images)]
   title.innerText = titles[getRandomIndex(titles)]; 
   quote.innerText = quotes[getRandomIndex(quotes)];
+  return newPoster; 
 }
-// When a user clicks the “Make Your Own Poster” button, we should see the form, and the main poster should be hidden
-// make your own poster button 
-// addEventListener click
-// when click the poster button, should show the form 
-// when click the poster butotn, the main poster should be hidden 
