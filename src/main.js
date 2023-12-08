@@ -167,4 +167,4 @@ createPoster(images[getRandomImage], titles[getRandomTitle], quotes[getRandomQuo
 // Use randomQUotes
 //  uSe randomImages
 // use the click addEventListener
-// 
+// fka;jdlkfjas;dlf
