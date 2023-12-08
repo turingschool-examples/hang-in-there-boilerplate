@@ -101,20 +101,26 @@ var quotes = [
 
 var savedPosters = [];
 var currentPoster;
-var randomImgBtn = document.querySelector(".show-random")
-var dispImg = document.querySelector(".poster-img")
-var dispQt = document.querySelector(".poster-quote")
-var dispTitle = document.querySelector(".poster-title")
-var showForm = document.querySelector(".show-form")
-var posterForm = document.querySelector(".poster-form")
-var mainPoster = document.querySelector(".main-poster")
-var hideForm = document.querySelector(".show-main")
 
 // event listeners go here 👇
-randomImgBtn.addEventListener('click',generateRandomImage)
+document.querySelector(".show-random").addEventListener('click',generateRandomImage)
 window.addEventListener('load',generateRandomImage)
-showForm.addEventListener('click', showHiddenForm)
-hideForm.addEventListener('click', showHiddenForm)
+document.querySelector(".show-form").addEventListener('click', () => {
+  showHiddenForm(document.querySelector(".show-form"))
+  }
+)
+document.querySelector(".show-main").addEventListener('click',  () => {
+  showHiddenForm(document.querySelector(".show-main"))
+  }
+)
+document.querySelector(".show-saved").addEventListener('click',  () => {
+    showHiddenForm(document.querySelector(".show-saved"))
+  }
+)
+document.querySelector(".back-to-main").addEventListener('click',  () => {
+    showHiddenForm(document.querySelector(".back-to-main"))
+  }
+)
 
 
 // functions and event handlers go here 👇
@@ -132,12 +138,29 @@ function createPoster(imageURL, title, quote) {
 }
 
 function generateRandomImage(){
-  dispImg.src = images[getRandomIndex(images)]
-  dispQt.innerText = quotes[getRandomIndex(quotes)]
-  dispTitle.innerText = titles[getRandomIndex(titles)]
+  document.querySelector(".poster-img").src = images[getRandomIndex(images)]
+  document.querySelector(".poster.quote").innerText = quotes[getRandomIndex(quotes)]
+  document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)]
 }
 
-function showHiddenForm() {
-  posterForm.classList.toggle('hidden')
-  mainPoster.classList.toggle('hidden')
+function showHiddenForm(button) {
+  switch(button.className){
+    case 'show-form':
+      document.querySelector(".poster-form").classList.toggle('hidden')
+      document.querySelector(".main-poster").classList.toggle('hidden')
+    break;
+    case 'show-main':
+      document.querySelector(".poster-form").classList.toggle('hidden')
+      document.querySelector(".main-poster").classList.toggle('hidden')
+    break;
+    case 'show-saved':
+      document.querySelector(".saved-posters").classList.toggle('hidden')
+      document.querySelector(".main-poster").classList.toggle('hidden')
+    break;
+    case 'back-to-main':
+      document.querySelector(".saved-posters").classList.toggle('hidden')
+      document.querySelector(".main-poster").classList.toggle('hidden')
+    break;
+  }
+
 }
