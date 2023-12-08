@@ -3,6 +3,9 @@ var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var newRandomPoster = document.querySelector('.show-random');
+var makeYourOwnPosterButton = document.querySelector('.show-form')
+var posterFormSection = document.querySelector('.poster-form')
+var mainPosterSection = document.querySelector('.main-poster')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -137,6 +140,20 @@ makeRandomPoster();
 
 posterImage.alt = 'Motivational Poster Image';
 
+function switchToForm() {
+  posterFormSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden')
+}
 
+makeYourOwnPosterButton.addEventListener('click', switchToForm)
+
+
+//create a var for show-form class which accesses the button
+//create a function that will hide the main poster, and unhide create your poster form
+
+
+//create a var for show-saved class
+//create a var for show-main class
+//create a var for back-to-main class
 
 
