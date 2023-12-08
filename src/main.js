@@ -18,6 +18,7 @@ var formForPoster = document.querySelector('formforposter')
 var newSavedPosters = document.querySelector('.saved-posters')
 var newPosterForm = document.querySelector('.poster-form')
 var newMainPage = document.querySelector('.poster-main hidden')
+var backToMainButton = document.querySelector('.back-to-main')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -131,15 +132,18 @@ hidden.classList.remove('hidden')
 showSavedPostersButton.addEventListener('click', showSavedPosters)
 
 function showSavedPosters(){
-  // frontPagePoster.className = "poster-main hidden";
-  // // hidden.classList.remove('hidden');
-  // newMainPage.classList.toggle('saved-posters');
-  hidden.classList.toggle('hidden')
-  frontPagePoster.className = "poster-main hidden"
-  posterForm.classList.toggle('hidden')
+frontPagePoster.classList.add('hidden')
+newSavedPosters.classList.remove('hidden')
   }
 
 makePosterButton.addEventListener('click', createNewPoster)
+
+backToMainButton.addEventListener('click', backToMain)
+
+function backToMain(){
+  frontPagePoster.classList.remove('hidden')
+  newSavedPosters.classList.add('hidden')
+}
 
 neverMindButton.addEventListener('click', goToMainPage)
 
@@ -211,3 +215,10 @@ function createRandomPoster() {
   quote.innerText = quotes[getRandomIndex(quotes)];
   return newPoster; 
 }
+
+// use this example for no duplicates:
+// function addMenuItem(restaurant, item){
+  // function addMenuItem(restaurant, item){
+  //   if(!restaurant.menus[item.type].includes(item)){
+  //   restaurant.menus[item.type].push(item)};
+  //     }
