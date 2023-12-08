@@ -4,9 +4,15 @@ var quote = document.querySelector('.poster-quote');
 var title = document.querySelector('.poster-title');
 var randomPosterButton = document.querySelector('.show-random');
 var formButton = document.querySelector('.show-form'); 
-var hiddenForm = document.querySelector('.poster-form hidden');
-var mainPoster = document.querySelector('.main-poster')
-
+var posterForm = document.querySelector('.poster-form hidden')
+var frontPagePoster = document.querySelector('.main-poster')
+var hidden = document.querySelector('.hidden');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var savedPosters = document.querySelector('.saved-posters hidden')
+var neverMindButton = document.querySelector('.show-main');
+var imageTextBox = document.querySelector('#poster-image-url')
+var titleTextBox = document.querySelector('#poster-title')
+var quoteTextBox = document.querySelector('#poster-quote')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -113,7 +119,60 @@ var currentPoster;
 
 // button.addEventListener("click", getRandomIndex);
 
-// formButton.addEventListener("click", goToHiddenForm); 
+formButton.addEventListener('click', hideMainPoster) 
+
+function hideMainPoster(){
+  frontPagePoster.className = "poster-main hidden"
+  hidden.classList.remove('hidden')
+}
+
+showSavedPostersButton.addEventListener('click', showSavedPosters){
+  function createUniquePoster(){
+    
+  }
+}
+
+
+function showSavedPosters(){;
+  frontPagePoster.className = "poster-main hidden";
+  hidden.classList.remove('hidden');
+  }
+
+neverMindButton.addEventListener('click', goToMainPage)
+
+function goToMainPage(){
+  hidden.classList.add('hidden')
+  frontPagePoster.className = "poster-main";
+}
+
+var storedTitle; 
+storedTitle = titleTextBox.value; 
+console.log(storedTitle);
+
+var storedQuote; 
+storedQuote = quoteTextBox.value;
+console.log(storedQuote);
+
+function createUniquePoster(){
+  title.innerHTML = storedTitle; 
+  quote.innerHTML = storedQuote; 
+}
+
+// var storedImage; 
+// storedImage = 
+
+//    var siteName;
+// function myFunction() {
+//   siteName= document.getElementById('firstid').value;
+//       localStorage.setItem('store1', siteName);
+//   }
+//   function myFunction2() {
+//       document.getElementById("2ndid").innerHTML = siteName;
+//   }
+// On the new poster form view, users should be able to fill out the three input fields and then hit the Show My Poster button
+// on poster form, users will be able to input values into the three text boxes. 
+// user will be able to click on the save poster button 
+// will need to grab id/class for the 3 text boxes
 
 // ___.addEventListener('submit', function(event){
 //   event.preventDefault()
@@ -128,23 +187,18 @@ var currentPoster;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length); 
 }
-var getRandomImage = getRandomIndex(images);
-console.log(getRandomImage);
 
-var getRandomTitle = getRandomIndex(titles);
-console.log(getRandomTitle);
+var titleIndex = getRandomIndex(titles);
+console.log(titleIndex);
 
-var getRandomQuote = getRandomIndex(quotes);
-console.log(getRandomQuote);
-
-var titleIndexNumber = getRandomTitle; 
-var quoteIndexNumber = getRandomQuote; 
+var quoteIndex = getRandomIndex(quotes);
+console.log(quoteIndex);
+ 
 poster.src = images[getRandomIndex(images)]
-title.innerText = titles[titleIndexNumber]; 
-quote.innerText = quotes[quoteIndexNumber]; 
+  title.innerText = titles[titleIndex]; 
+  quote.innerText = quotes[quoteIndex];
 
 function createPoster(imageURL, title, quote) {
-  console.log({title})
   return {
     id: Date.now(), 
     imageURL: imageURL, 
@@ -152,19 +206,16 @@ function createPoster(imageURL, title, quote) {
     quote: quote
   }
 }
+
 randomPosterButton.addEventListener('click', createRandomPoster)
-function createRandomPoster(){
-createPoster(images[getRandomImage], titles[getRandomTitle], quotes[getRandomQuote]);
+function createRandomPoster() {
+  var newPoster = createPoster(images[getRandomIndex(images)], titles[titleIndex], quotes[quoteIndex])
+  poster.src = images[getRandomIndex(images)]
+  title.innerText = titles[getRandomIndex(titles)]; 
+  quote.innerText = quotes[getRandomIndex(quotes)];
 }
-
-// randomPosterButton.addEventListener('click', createRandomPoster)
-// function createRandomPoster() {
-//   var newPoster = createPoster(images[getRandomIndex(images)], titles[getRandomTitle], quotes[getRandomQuote])
-
-// GOAL: generate random image, quote, and title when a button is clicked. 
-// Want to querySelect the 'show me anotehr poster' button 
-// Use randomTitles
-// Use randomQUotes
-//  uSe randomImages
-// use the click addEventListener
-// fka;jdlkfjas;dlf
+// When a user clicks the “Make Your Own Poster” button, we should see the form, and the main poster should be hidden
+// make your own poster button 
+// addEventListener click
+// when click the poster button, should show the form 
+// when click the poster butotn, the main poster should be hidden 
