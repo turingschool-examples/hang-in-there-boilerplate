@@ -168,7 +168,7 @@ function handleAllEvents() {
   event.preventDefault();
   makeMyPoster();
   pushToArrays();
-}
+};
 
 
 // function testThis() {
@@ -198,11 +198,11 @@ function makeRandomPoster() {
   posterQuote.innerHTML = randomQuote;
   posterTitle.innerHTML = randomTitle;
   posterImage.src = randomImage;
+  posterImage.alt = 'Motivational Poster Image';
 };
 
 makeRandomPoster();
 
-posterImage.alt = 'Motivational Poster Image';
 
 function switchToForm() {
   posterFormSection.classList.remove('hidden');
