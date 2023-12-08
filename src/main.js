@@ -7,9 +7,13 @@ var makeYourOwnPosterButton = document.querySelector('.show-form');
 var showSavedPostersButton = document.querySelector('.show-saved');
 var backToMainButton = document.querySelector('.back-to-main');
 var takeMeBackButton = document.querySelector('.show-main');
+var showMyPosterButton = document.querySelector('.make-poster');
 var posterFormSection = document.querySelector('.poster-form');
 var mainPosterSection = document.querySelector('.main-poster');
 var savedPostersSection = document.querySelector('.saved-posters');
+var posterImageInput = document.querySelector('#poster-image-url');
+var posterTitleInput = document.querySelector('#poster-title');
+var posterQuoteInput = document. querySelector('#poster-quote');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,6 +123,8 @@ makeYourOwnPosterButton.addEventListener('click', switchToForm);
 showSavedPostersButton.addEventListener('click', switchToSavedPosters);
 backToMainButton.addEventListener('click', switchToMain);
 takeMeBackButton.addEventListener('click', switchToMain);
+showMyPosterButton.addEventListener('click', testThis)
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -134,6 +140,26 @@ function createPoster(imageURL, title, quote) {
     quote: quote
   }
 };
+
+function testThis() {
+  var currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
+  console.log(currentPoster);
+  return currentPoster;
+}
+// function showMyPosterHandler() {
+//   var currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
+//   console.log('current poster: ', currentPoster);
+//   return currentPoster
+// }
+
+//declare querySElectors variables for each poster element via id names
+//declare show my poster button variable
+//declare variables to store input values
+//pass the input values from the form as arguments in the createPoster function
+//push the input values to their respective arrays
+//store the createPoster return in the current poster variable [invoke as the value of currentPoster]
+//write event listener
+//create variables to 
 
 function makeRandomPoster() {
   var randomImage = images[getRandomIndex(images)];
