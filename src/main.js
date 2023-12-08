@@ -107,11 +107,6 @@ var currentPoster;
 
 // event listeners go here 👇
 //on click, re
-// newRandomPoster.addEventListener('click', function() {
-//   posterQuote.innerHTML = grabNewQuote();
-//   posterTitle.innerHTML = grabNewTitle();
-//   posterImage.src = grabNewImage();
-// } )
 newRandomPoster.addEventListener('click', makeRandomPoster);
 
 // functions and event handlers go here 👇
@@ -129,14 +124,6 @@ function createPoster(imageURL, title, quote) {
   }
 };
 
-// var randomImage = images[getRandomIndex(images)];
-// var randomTitle = titles[getRandomIndex(titles)];
-// var randomQuote = quotes[getRandomIndex(quotes)];
-
-// posterQuote.innerHTML = randomQuote;
-// posterTitle.innerHTML = randomTitle;
-// posterImage.src = randomImage;
-
 function makeRandomPoster() {
   var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
@@ -145,23 +132,11 @@ function makeRandomPoster() {
   posterTitle.innerHTML = randomTitle;
   posterImage.src = randomImage;
 };
+
 makeRandomPoster();
 
-// function grabNewQuote() {
-//   var randomQuoteIndex = getRandomIndex(quotes);
-//   var randomQuote = quotes.slice(randomQuoteIndex, randomQuoteIndex+1);
-//   return randomQuote
-// };
+posterImage.alt = 'Motivational Poster Image';
 
-// function grabNewTitle() {
-//   var randomTitleIndex = getRandomIndex(titles);
-//   var randomTitle = titles.slice(randomTitleIndex, randomTitleIndex+1);
-//   return randomTitle
-// };
 
-// function grabNewImage() {
-//   var randomImageIndex = getRandomIndex(images);
-//   var randomImage = images.slice(randomImageIndex, randomImageIndex+1);
-//   return randomImage
-// };
+
 
