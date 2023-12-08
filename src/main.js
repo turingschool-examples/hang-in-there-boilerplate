@@ -105,10 +105,17 @@ var randomImgBtn = document.querySelector(".show-random")
 var dispImg = document.querySelector(".poster-img")
 var dispQt = document.querySelector(".poster-quote")
 var dispTitle = document.querySelector(".poster-title")
+var showForm = document.querySelector(".show-form")
+var posterForm = document.querySelector(".poster-form")
+var mainPoster = document.querySelector(".main-poster")
+var hideForm = document.querySelector(".show-main")
 
 // event listeners go here 👇
 randomImgBtn.addEventListener('click',generateRandomImage)
 window.addEventListener('load',generateRandomImage)
+showForm.addEventListener('click', showHiddenForm)
+hideForm.addEventListener('click', showHiddenForm)
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -128,4 +135,9 @@ function generateRandomImage(){
   dispImg.src = images[getRandomIndex(images)]
   dispQt.innerText = quotes[getRandomIndex(quotes)]
   dispTitle.innerText = titles[getRandomIndex(titles)]
+}
+
+function showHiddenForm() {
+  posterForm.classList.toggle('hidden')
+  mainPoster.classList.toggle('hidden')
 }
