@@ -196,7 +196,7 @@ function showHiddenForm(button) {
 
 function renderSavedPosters() {
   var postersGrid = document.querySelector('.saved-posters-grid');
-  postersGrid.innerHTML = ''; // Clear existing content
+  postersGrid.innerHTML = '';
 
   savedPosters.forEach(poster => {
     var posterHTML = `<div class="mini-poster" id=${poster.id}>
@@ -205,34 +205,24 @@ function renderSavedPosters() {
                         <h4>${poster.quote}</h4>
                       </div>`;
 
-    // Convert the posterHTML string to a DOM element
     var posterElement = document.createRange().createContextualFragment(posterHTML).firstElementChild;
 
-    // Add a click event listener to the generated div
     posterElement.addEventListener('click', function() {
-      // Handle the click event here
       console.log(`Clicked on poster with id: ${poster.id}`);
+      var divElement = document.getElementById(poster.id);
+      var imgSrc = divElement.getElementsByTagName('img')[0].src;
+      var titleText = divElement.getElementsByTagName('h2')[0].innerText;
+      var quoteText = divElement.getElementsByTagName('h4')[0].innerText;
+      document.querySelector(".poster-img").src = imgSrc;
+      document.querySelector(".poster-title").innerText = titleText;
+      document.querySelector(".poster-quote").innerText = quoteText;
+      document.querySelector(".saved-posters").classList.toggle('hidden');
+      document.querySelector(".main-poster").classList.toggle('hidden')
     });
 
-    // Append the generated div to the postersGrid
     postersGrid.appendChild(posterElement);
   });
 }
-
-// function renderSavedPosters() {
-//   var postersGrid = document.querySelector('.saved-posters-grid');
-//   postersGrid.innerHTML = ''; // Clear existing content
-
-//   savedPosters.forEach(poster => {
-//     var posterHTML = `<div class="mini-poster" id=${poster.id}>
-//                         <img src="${poster.imgURL}" alt="Saved Poster Image">
-//                         <h2>${poster.title}</h2>
-//                         <h4>${poster.quote}</h4>
-//                         </div>`;
-//     postersGrid.innerHTML += posterHTML;
-//     }
-//   )
-// };
 
 // function showSavedPosters() {
 //   var imageURL = document.querySelector('#poster-image-url').value;
