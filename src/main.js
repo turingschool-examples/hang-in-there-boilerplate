@@ -134,7 +134,6 @@ document.querySelector(".make-poster").addEventListener('click', function(event)
 );
 document.querySelector(".save-poster").addEventListener('click', saveThisPoster);
 
-
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -200,13 +199,45 @@ function renderSavedPosters() {
   postersGrid.innerHTML = ''; // Clear existing content
 
   savedPosters.forEach(poster => {
-    var posterHTML = `<div class="mini-poster savedPoster${poster.id}">
+    var posterHTML = `<div class="mini-poster" id=${poster.id}>
                         <img src="${poster.imgURL}" alt="Saved Poster Image">
                         <h2>${poster.title}</h2>
                         <h4>${poster.quote}</h4>
-                        <button class="button">View this poster</button>
-                        </div>`;
-    postersGrid.innerHTML += posterHTML;
-    }
-  )
-};
+                      </div>`;
+
+    // Convert the posterHTML string to a DOM element
+    var posterElement = document.createRange().createContextualFragment(posterHTML).firstElementChild;
+
+    // Add a click event listener to the generated div
+    posterElement.addEventListener('click', function() {
+      // Handle the click event here
+      console.log(`Clicked on poster with id: ${poster.id}`);
+    });
+
+    // Append the generated div to the postersGrid
+    postersGrid.appendChild(posterElement);
+  });
+}
+
+// function renderSavedPosters() {
+//   var postersGrid = document.querySelector('.saved-posters-grid');
+//   postersGrid.innerHTML = ''; // Clear existing content
+
+//   savedPosters.forEach(poster => {
+//     var posterHTML = `<div class="mini-poster" id=${poster.id}>
+//                         <img src="${poster.imgURL}" alt="Saved Poster Image">
+//                         <h2>${poster.title}</h2>
+//                         <h4>${poster.quote}</h4>
+//                         </div>`;
+//     postersGrid.innerHTML += posterHTML;
+//     }
+//   )
+// };
+
+// function showSavedPosters() {
+//   var imageURL = document.querySelector('#poster-image-url').value;
+//   var title = document.querySelector('#poster-title').value;
+//   var quote = document.querySelector('#poster-quote').value;    
+//   createPoster(imageURL, title, quote);
+//   showHiddenForm(this);
+// }
