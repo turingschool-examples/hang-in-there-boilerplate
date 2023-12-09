@@ -15,7 +15,7 @@ var savedPostersSection = document.querySelector('.saved-posters');
 var posterImageInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
-var savedPostersGrid = document.querySelector('.saved-posters.grid');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 
 // we've provided you with some data to work with 👇
@@ -206,15 +206,39 @@ function switchToMain() {
   savedPostersSection.classList.add('hidden');
 };
 
+
+// function addMiniPosterClass() {
+//   savedPostersGrid.innerHTML = `
+//   <div class="mini-poster"> </div>
+//   `
+// };
+
+// var miniPosters = document.querySelector('.mini-poster');
+
+// addMiniPosterClass();
+
 function savePoster() {
   savedPosters.push(currentPoster);
-  savedPosters.forEach((object) => {
-    console.log('savedPosters Array object: ', object)
+  savedPosters.forEach((savedPostersObject) => {
+    
+    savedPostersGrid.innerHTML = `
+    <div class="mini-poster">
+    <img src="${savedPostersObject.imageURL}" alt="motivational poster image">
+    <h2>${savedPostersObject.title}</h2>
+    <h4>${savedPostersObject.quote}</h4>
+    </div>
+    `
+    console.log('savedPosters Array object: ', savedPostersObject)
+    // console.log('savedPostersGrid element', savedPostersGrid);
     })
   };
+
+
+
+
   //   savedPostersGrid.innerHTML = `<article>${document.savedPostersGrid.innerHTML.add(
-  //     <h1 class ="poster-title">`${savedPosters.title}`</h1>
-  //     <h3 class ="poster-quote">`${savedPosters.quote}`</h3>
+  //     <h1 class ="poster-title">`${savedPosters[object]title}`</h1>
+  //     <h3 class ="poster-quote">`${savedPosters.object.quote}`</h3>
   // )}</article>`
  
 
