@@ -101,52 +101,82 @@ var quotes = [
 
 var savedPosters = [];
 var currentPoster;
+var holdPosters = [];
 
 // event listeners go here 👇
 document.querySelector(".show-random").addEventListener('click',generateRandomImage)
 window.addEventListener('load',generateRandomImage)
-
 document.querySelector(".show-form").addEventListener('click', () => {
   showHiddenForm(document.querySelector(".show-form"))
   }
-)
+);
 document.querySelector(".show-main").addEventListener('click',  () => {
   showHiddenForm(document.querySelector(".show-main"))
   }
-)
+);
 document.querySelector(".show-saved").addEventListener('click',  () => {
     showHiddenForm(document.querySelector(".show-saved"))
   }
-)
+);
 document.querySelector(".back-to-main").addEventListener('click',  () => {
     showHiddenForm(document.querySelector(".back-to-main"))
   }
-)
-document.querySelector(".make-poster").addEventListener('click',  () => {
-  showHiddenForm(document.querySelector(".make-poster"))
-}
-)
+);
+document.querySelector(".make-poster").addEventListener('click', function(event) {
+  event.preventDefault(); 
 
+    var imageURL = document.querySelector('#poster-image-url').value;
+    var title = document.querySelector('#poster-title').value;
+    var quote = document.querySelector('#poster-quote').value;
+    createPoster(imageURL, title, quote);
+    showHiddenForm(this);
+  }
+);
+document.querySelector(".save-poster").addEventListener('click', saveThisPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
 function createPoster(imageURL, title, quote) {
-  return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
+  var savedPoster ={
+    id: Date.now(),
+    imgURL: document.querySelector(".poster-img").src = imageURL,
+    title: document.querySelector(".poster-title").innerText = title,
+    quote: document.querySelector(".poster-quote").innerText = quote
+  }
+  images.push(savedPoster.imgURL)
+  titles.push(savedPoster.title)
+  quotes.push(savedPoster.quote)
+  return holdPoster(savedPoster)
+};
+
+function holdPoster(posterObject) {
+  return holdPosters.push(posterObject)
 }
 
-function generateRandomImage(){
-  document.querySelector(".poster-img").src = images[getRandomIndex(images)]
-  document.querySelector(".poster-quote").innerText = quotes[getRandomIndex(quotes)]
-  document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)]
-}
+function saveThisPoster() {
+  if(holdPoster.length > 0) {
+    savedPosters.push(holdPosters[0])
+  return holdPosters = []
+  }else{
+    alert("You have already saved this poster")
+  }
+};
+
+function generateRandomImage() {
+  var randomPoster = {
+    imgURL: images[getRandomIndex(images)],
+    quote: quotes[getRandomIndex(quotes)],
+    title: titles[getRandomIndex(titles)],
+  }
+  document.querySelector(".poster-img").src = randomPoster.imgURL
+  document.querySelector(".poster-quote").innerText = randomPoster.quote 
+  document.querySelector(".poster-title").innerText = randomPoster.title
+  return holdPoster(randomPoster)
+};
 
 function showHiddenForm(button) {
   switch(button.className){
@@ -161,14 +191,53 @@ function showHiddenForm(button) {
     case 'show-saved':
       document.querySelector(".saved-posters").classList.toggle('hidden')
       document.querySelector(".main-poster").classList.toggle('hidden')
+      renderSavedPosters()
     break;
     case 'back-to-main':
       document.querySelector(".saved-posters").classList.toggle('hidden')
       document.querySelector(".main-poster").classList.toggle('hidden')
     break;
     case 'make-poster':
-      document.querySelector(".poster-form").classList.toggle('hidden')
-      document.querySelector(".main-poster").classList.toggle('hidden')
+      document.querySelector(".poster-form").classList.toggle('hidden');
+      document.querySelector(".main-poster").classList.toggle('hidden');
     break;
   }
+};
+
+function renderSavedPosters() {
+  var postersGrid = document.querySelector('.saved-posters-grid');
+  postersGrid.innerHTML = '';
+
+  savedPosters.forEach(poster => {
+    var posterHTML = `<div class="mini-poster" id=${poster.id} name=${arrayIndex}>
+                        <img src="${poster.imgURL}" alt="Saved Poster Image">
+                        <h2>${poster.title}</h2>
+                        <h4>${poster.quote}</h4>
+                      </div>`;
+
+    var posterElement = document.createRange().createContextualFragment(posterHTML).firstElementChild;
+    
+    var arrayIndex = 0
+    arrayIndex++
+    
+    // posterElement.addEventListener('click', function() {
+    //   var divElement = document.getElementById(poster.id);
+    //   var imgSrc = divElement.getElementsByTagName('img')[0].src;
+    //   var titleText = divElement.getElementsByTagName('h2')[0].innerText;
+    //   var quoteText = divElement.getElementsByTagName('h4')[0].innerText;
+    //   document.querySelector(".poster-img").src = imgSrc;
+    //   document.querySelector(".poster-title").innerText = titleText;
+    //   document.querySelector(".poster-quote").innerText = quoteText;
+    //   document.querySelector(".saved-posters").classList.toggle('hidden');
+    //   document.querySelector(".main-poster").classList.toggle('hidden')
+    // });
+
+    posterElement.addEventListener('dblclick', function() {
+      console.log(`Clicked on poster with id: ${arrayIndex}`);
+      savedPosters.splice(arrayIndex, 1)
+      renderSavedPosters()
+    });
+
+    postersGrid.appendChild(posterElement);
+  });
 }
