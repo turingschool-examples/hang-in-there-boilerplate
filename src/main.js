@@ -8,12 +8,14 @@ var showSavedPostersButton = document.querySelector('.show-saved');
 var backToMainButton = document.querySelector('.back-to-main');
 var takeMeBackButton = document.querySelector('.show-main');
 var showMyPosterButton = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector('.save-poster');
 var posterFormSection = document.querySelector('.poster-form');
 var mainPosterSection = document.querySelector('.main-poster');
 var savedPostersSection = document.querySelector('.saved-posters');
 var posterImageInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 
 // we've provided you with some data to work with 👇
@@ -120,13 +122,14 @@ var currentPoster = {
 };
 
 // event listeners go here 👇
-//on click, re
+
 newRandomPoster.addEventListener('click', makeRandomPoster);
 makeYourOwnPosterButton.addEventListener('click', switchToForm);
 showSavedPostersButton.addEventListener('click', switchToSavedPosters);
 backToMainButton.addEventListener('click', switchToMain);
 takeMeBackButton.addEventListener('click', switchToMain);
 showMyPosterButton.addEventListener('click', handleAllEvents);
+saveThisPosterButton.addEventListener('click', savePoster);
 
 
 // functions and event handlers go here 👇
@@ -143,9 +146,10 @@ function createPoster(imageURL, title, quote) {
     quote: quote
   }
 };
+
 function newPosterObject() {
   currentPoster = createPoster (posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
-}
+};
 
 function makeMyPoster() {
   var currentImage = posterImageInput.value;
@@ -154,13 +158,13 @@ function makeMyPoster() {
   posterQuote.innerHTML = currentQuote;
   posterTitle.innerHTML = currentTitle;
   posterImage.src = currentImage;
-}
+};
 
 function pushToArrays() {
   images.push(currentPoster.imageURL)
   titles.push(currentPoster.title)
   quotes.push(currentPoster.quote)
-}
+};
 
 function handleAllEvents() {
   newPosterObject();
@@ -168,7 +172,7 @@ function handleAllEvents() {
   event.preventDefault();
   makeMyPoster();
   pushToArrays();
-};
+}
 
 
 // function testThis() {
@@ -198,8 +202,8 @@ function makeRandomPoster() {
   posterQuote.innerHTML = randomQuote;
   posterTitle.innerHTML = randomTitle;
   posterImage.src = randomImage;
-  posterImage.alt = 'Motivational Poster Image';
 };
+
 
 makeRandomPoster();
 
@@ -207,25 +211,81 @@ makeRandomPoster();
 function switchToForm() {
   posterFormSection.classList.remove('hidden');
   mainPosterSection.classList.add('hidden');
-}
+};
 
 function switchToSavedPosters() {
   savedPostersSection.classList.remove('hidden');
   mainPosterSection.classList.add('hidden');
-}
+};
 
 function switchToMain() {
   mainPosterSection.classList.remove('hidden');
   posterFormSection.classList.add('hidden');
   savedPostersSection.classList.add('hidden');
-}
+};
 
-//create a var for show-form class which accesses the button
-//create a function that will hide the main poster, and unhide create your poster form
+savedPostersGrid.innerHTML = `
+  <div class="mini-poster saved-posters-grid"> </div>
+  `;
+  
+var miniPosters = document.querySelector('.mini-poster');
+// };
+
+// var miniPosters = document.querySelector('.mini-poster');
+
+// addMiniPosterClass();
+
+// function savePoster() {
+//   savedPosters.push(currentPoster);
+//   savedPosters.forEach((savedPostersObject) => {
+//     savedPostersGrid.innerHTML = `
+//     <div class="mini-poster">
+//     <img src="${savedPostersObject.imageURL}" alt="motivational poster image">
+//     <h2>${savedPostersObject.title}</h2>
+//     <h4>${savedPostersObject.quote}</h4>
+//     </div>
+//      `
+//     })
+//   };
 
 
-//create a var for show-main class
-//create a var for back-to-main class
-//
+  function savePoster() {
+    savedPosters.push(currentPoster);
+    savedPosters.forEach((savedPostersObject) => {
+      miniPosters.insertAdjacentHTML('afterbegin', `
+      <div class="mini-poster">
+      <img src="${savedPostersObject.imageURL}" alt="motivational poster image">
+      <h2>${savedPostersObject.title}</h2>
+      <h4>${savedPostersObject.quote}</h4>
+      </div>
+       `
+    )
+      })
+    };
+  
+    // for (var i = 0; i < savedPosters.length; i++) {
+    //   savedPostersGrid.innerHTML = `
+    // <div class="mini-poster">
+    // <img src="${savedPosters[i].imageURL}" alt="motivational poster image">
+    // <h2>${savedPosters[i].title}</h2>
+    // <h4>${savedPosters[i].quote}</h4>
+    // </div>
+    // `
+    // };
+    // console.log('savedPosters Array object: ', savedPostersObject)
+    // console.log('savedPostersGrid element', savedPostersGrid);
+  
 
 
+
+
+
+  //   savedPostersGrid.innerHTML = `<article>${document.savedPostersGrid.innerHTML.add(
+  //     <h1 class ="poster-title">`${savedPosters[object]title}`</h1>
+  //     <h3 class ="poster-quote">`${savedPosters.object.quote}`</h3>
+  // )}</article>`
+ 
+
+//create variable for save this poster button (class is 'save-poster')
+// create function that will push the current poster to the saved posters array
+//create event listener to run function on a click
