@@ -101,7 +101,7 @@ var quotes = [
 
 var savedPosters = [];
 var currentPoster;
-var holdPoster = [];
+var holdPosters = [];
 
 // event listeners go here 👇
 document.querySelector(".show-random").addEventListener('click',generateRandomImage)
@@ -150,22 +150,32 @@ function createPoster(imageURL, title, quote) {
   images.push(savedPoster.imgURL)
   titles.push(savedPoster.title)
   quotes.push(savedPoster.quote)
-  return holdPoster.push(savedPoster)
+  return holdPoster(savedPoster)
 };
+
+function holdPoster(posterObject) {
+  return holdPosters.push(posterObject)
+}
 
 function saveThisPoster() {
   if(holdPoster.length > 0) {
-    savedPosters.push(holdPoster[0])
-  return holdPoster = []
+    savedPosters.push(holdPosters[0])
+  return holdPosters = []
   }else{
     alert("You have already saved this poster")
   }
 };
 
 function generateRandomImage() {
-  document.querySelector(".poster-img").src = images[getRandomIndex(images)]
-  document.querySelector(".poster-quote").innerText = quotes[getRandomIndex(quotes)]
-  document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)]
+  var randomPoster = {
+    imgURL: images[getRandomIndex(images)],
+    quote: quotes[getRandomIndex(quotes)],
+    title: titles[getRandomIndex(titles)],
+  }
+  document.querySelector(".poster-img").src = randomPoster.imgURL
+  document.querySelector(".poster-quote").innerText = randomPoster.quote 
+  document.querySelector(".poster-title").innerText = randomPoster.title
+  return holdPoster(randomPoster)
 };
 
 function showHiddenForm(button) {
