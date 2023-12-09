@@ -144,7 +144,7 @@ function createPoster(imageURL, title, quote) {
 
 function generateRandomImage(){
   document.querySelector(".poster-img").src = images[getRandomIndex(images)]
-  document.querySelector(".poster.quote").innerText = quotes[getRandomIndex(quotes)]
+  document.querySelector(".poster-quote").innerText = quotes[getRandomIndex(quotes)]
   document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)]
 }
 
@@ -167,8 +167,8 @@ function showHiddenForm(button) {
       document.querySelector(".main-poster").classList.toggle('hidden')
     break;
     case 'make-poster':
-      // document.querySelector(".poster-form").classList.toggle('hidden')
-      // document.querySelector(".main-poster").classList.toggle('hidden')
+      document.querySelector(".poster-form").classList.toggle('hidden')
+      document.querySelector(".main-poster").classList.toggle('hidden')
     break;
   }
 }
