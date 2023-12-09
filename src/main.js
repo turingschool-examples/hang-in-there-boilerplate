@@ -140,10 +140,14 @@ function getRandomIndex(array) {
 }
 
 function createPoster(imageURL, title, quote) {
-  document.querySelector(".poster-img").src = imageURL;
-  document.querySelector(".poster-title").innerText = title;
-  document.querySelector(".poster-quote").innerText = quote;
-}
+  var savedPoster ={
+    id: Date.now(),
+    imgURL: document.querySelector(".poster-img").src = imageURL,
+    title: document.querySelector(".poster-title").innerText = title,
+    quote: document.querySelector(".poster-quote").innerText = quote
+  }
+  return savedPosters.push(savedPoster)
+ }
 
 
 function generateRandomImage() {
@@ -164,6 +168,7 @@ function showHiddenForm(button) {
     case 'show-saved':
       document.querySelector(".saved-posters").classList.toggle('hidden')
       document.querySelector(".main-poster").classList.toggle('hidden')
+      renderSavedPosters()
     break;
     case 'back-to-main':
       document.querySelector(".saved-posters").classList.toggle('hidden')
@@ -174,6 +179,20 @@ function showHiddenForm(button) {
       document.querySelector(".main-poster").classList.toggle('hidden');
     break;
   }
+}
+
+function renderSavedPosters() {
+  var postersGrid = document.querySelector('.saved-posters-grid');
+  postersGrid.innerHTML = ''; // Clear existing content
+
+  savedPosters.forEach(poster => {
+    var posterHTML = `<div class="mini-poster">
+                        <img src="${poster.imgURL}" alt="Saved Poster Image">
+                        <h2>${poster.title}</h2>
+                        <h4>${poster.quote}</h4>
+                      </div>`;
+    postersGrid.innerHTML += posterHTML;
+  });
 }
 
 
@@ -187,3 +206,5 @@ function showHiddenForm(button) {
 // console.log(document.querySelector("#poster-image-url").addEventListener('focusout', () => {
 //     document.querySelector("#poster-image-url").innerText.checkValidity()
 //   }
+
+
