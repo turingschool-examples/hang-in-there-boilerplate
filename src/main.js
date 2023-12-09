@@ -101,6 +101,7 @@ var quotes = [
 
 var savedPosters = [];
 var currentPoster;
+var holdPoster = [];
 
 // event listeners go here 👇
 document.querySelector(".show-random").addEventListener('click',generateRandomImage)
@@ -108,19 +109,19 @@ window.addEventListener('load',generateRandomImage)
 document.querySelector(".show-form").addEventListener('click', () => {
   showHiddenForm(document.querySelector(".show-form"))
   }
-)
+);
 document.querySelector(".show-main").addEventListener('click',  () => {
   showHiddenForm(document.querySelector(".show-main"))
   }
-)
+);
 document.querySelector(".show-saved").addEventListener('click',  () => {
     showHiddenForm(document.querySelector(".show-saved"))
   }
-)
+);
 document.querySelector(".back-to-main").addEventListener('click',  () => {
     showHiddenForm(document.querySelector(".back-to-main"))
   }
-)
+);
 document.querySelector(".make-poster").addEventListener('click', function(event) {
   event.preventDefault(); 
 
@@ -131,13 +132,14 @@ document.querySelector(".make-poster").addEventListener('click', function(event)
     showHiddenForm(this);
   }
 );
+document.querySelector(".save-poster").addEventListener('click', saveThisPoster);
 
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
 function createPoster(imageURL, title, quote) {
   var savedPoster ={
@@ -146,15 +148,27 @@ function createPoster(imageURL, title, quote) {
     title: document.querySelector(".poster-title").innerText = title,
     quote: document.querySelector(".poster-quote").innerText = quote
   }
-  return savedPosters.push(savedPoster)
- }
+  images.push(savedPoster.imgURL)
+  titles.push(savedPoster.title)
+  quotes.push(savedPoster.quote)
+  return holdPoster.push(savedPoster)
+};
 
+function saveThisPoster() {
+  if(holdPoster.length > 0) {
+    savedPosters.push(holdPoster[0])
+  return holdPoster = []
+  }else{
+    alert("You have already saved this poster")
+  }
+};
 
 function generateRandomImage() {
   document.querySelector(".poster-img").src = images[getRandomIndex(images)]
   document.querySelector(".poster-quote").innerText = quotes[getRandomIndex(quotes)]
   document.querySelector(".poster-title").innerText = titles[getRandomIndex(titles)]
-}
+};
+
 function showHiddenForm(button) {
   switch(button.className){
     case 'show-form':
@@ -179,32 +193,20 @@ function showHiddenForm(button) {
       document.querySelector(".main-poster").classList.toggle('hidden');
     break;
   }
-}
+};
 
 function renderSavedPosters() {
   var postersGrid = document.querySelector('.saved-posters-grid');
   postersGrid.innerHTML = ''; // Clear existing content
 
   savedPosters.forEach(poster => {
-    var posterHTML = `<div class="mini-poster">
+    var posterHTML = `<div class="mini-poster savedPoster${poster.id}">
                         <img src="${poster.imgURL}" alt="Saved Poster Image">
                         <h2>${poster.title}</h2>
                         <h4>${poster.quote}</h4>
-                      </div>`;
+                        <button class="button">View this poster</button>
+                        </div>`;
     postersGrid.innerHTML += posterHTML;
-  });
-}
-
-
-// On the new poster form view, users should be able to fill out the 
-// three input fields and then hit the Show My Poster button
-
-
-
-    // (Implement data validation and error handling into the form 
-    // disable button, provide error messages if data entered is not correct, etc)
-// console.log(document.querySelector("#poster-image-url").addEventListener('focusout', () => {
-//     document.querySelector("#poster-image-url").innerText.checkValidity()
-//   }
-
-
+    }
+  )
+};
