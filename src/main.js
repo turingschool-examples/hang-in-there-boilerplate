@@ -129,7 +129,7 @@ showSavedPostersButton.addEventListener('click', switchToSavedPosters);
 backToMainButton.addEventListener('click', switchToMain);
 takeMeBackButton.addEventListener('click', switchToMain);
 showMyPosterButton.addEventListener('click', handleAllEvents);
-saveThisPosterButton.addEventListener('click', handleSaveClick);
+saveThisPosterButton.addEventListener('click', savePoster);
 
 
 // functions and event handlers go here 👇
@@ -218,27 +218,39 @@ var miniPosters = document.querySelector('.mini-poster');
     // savedPosters.forEach((object) => if (currentPoster.id !== object.id) {  
     // savedPosters.push(currentPoster)});
       // for (var i = -1; i < savedPosters.length; i++) {
-       var savedPosterCheck = savedPosters.find((object) => object.id === currentPoster.id)
-       if (savedPosterCheck = undefined) { 
+      //  var savedPosterCheck = savedPosters.find((object) => object.id === currentPoster.id)
+      //  if (savedPosterCheck = undefined) { 
         // if (currentPoster.id !== savedPosters[0].id) {
-          savedPosters.push(currentPoster)
-  }};
+        var arrayCheck = savedPosters.find(object => object.id === currentPoster.id);
+        if (arrayCheck === undefined) {
+          console.log('arrayCheck result: ', arrayCheck)
+          savedPosters.push(currentPoster);
+          miniPosters.insertAdjacentHTML('afterbegin', `
+            <div class="mini-poster">
+              <img src="${currentPoster.imageURL}" alt="motivational poster image">
+              <h2>${currentPoster.title}</h2>
+              <h4>${currentPoster.quote}</h4>
+            </div>
+            `)
+        };
+  // }
+};
   
       
 
-    function postCurrentPoster() {
-      miniPosters.insertAdjacentHTML('afterbegin', `
-      <div class="mini-poster">
-      <img src="${currentPoster.imageURL}" alt="motivational poster image">
-      <h2>${currentPoster.title}</h2>
-      <h4>${currentPoster.quote}</h4>
-      </div>
-       `
-    )
-    };
+    // function postCurrentPoster() {
+    //   miniPosters.insertAdjacentHTML('afterbegin', `
+    //   <div class="mini-poster">
+    //   <img src="${currentPoster.imageURL}" alt="motivational poster image">
+    //   <h2>${currentPoster.title}</h2>
+    //   <h4>${currentPoster.quote}</h4>
+    //   </div>
+    //    `
+    // )
+    // };
   
-    function handleSaveClick() {
-      savePoster();
-      postCurrentPoster();
-    };
+    // function handleSaveClick() {
+    //   savePoster();
+    //   postCurrentPoster();
+    // };
  
