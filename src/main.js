@@ -206,32 +206,58 @@ function switchToMain() {
   savedPostersSection.classList.add('hidden');
 };
 
-
-// function addMiniPosterClass() {
-//   savedPostersGrid.innerHTML = `
-//   <div class="mini-poster"> </div>
-//   `
+savedPostersGrid.innerHTML = `
+  <div class="mini-poster saved-posters-grid"> </div>
+  `;
+  
+var miniPosters = document.querySelector('.mini-poster');
 // };
 
 // var miniPosters = document.querySelector('.mini-poster');
 
 // addMiniPosterClass();
 
-function savePoster() {
-  savedPosters.push(currentPoster);
-  savedPosters.forEach((savedPostersObject) => {
-    
-    savedPostersGrid.innerHTML = `
-    <div class="mini-poster">
-    <img src="${savedPostersObject.imageURL}" alt="motivational poster image">
-    <h2>${savedPostersObject.title}</h2>
-    <h4>${savedPostersObject.quote}</h4>
-    </div>
-    `
-    console.log('savedPosters Array object: ', savedPostersObject)
+// function savePoster() {
+//   savedPosters.push(currentPoster);
+//   savedPosters.forEach((savedPostersObject) => {
+//     savedPostersGrid.innerHTML = `
+//     <div class="mini-poster">
+//     <img src="${savedPostersObject.imageURL}" alt="motivational poster image">
+//     <h2>${savedPostersObject.title}</h2>
+//     <h4>${savedPostersObject.quote}</h4>
+//     </div>
+//      `
+//     })
+//   };
+
+
+  function savePoster() {
+    savedPosters.push(currentPoster);
+    savedPosters.forEach((savedPostersObject) => {
+      miniPosters.insertAdjacentHTML('afterbegin', `
+      <div class="mini-poster">
+      <img src="${savedPostersObject.imageURL}" alt="motivational poster image">
+      <h2>${savedPostersObject.title}</h2>
+      <h4>${savedPostersObject.quote}</h4>
+      </div>
+       `
+    )
+      })
+    };
+  
+    // for (var i = 0; i < savedPosters.length; i++) {
+    //   savedPostersGrid.innerHTML = `
+    // <div class="mini-poster">
+    // <img src="${savedPosters[i].imageURL}" alt="motivational poster image">
+    // <h2>${savedPosters[i].title}</h2>
+    // <h4>${savedPosters[i].quote}</h4>
+    // </div>
+    // `
+    // };
+    // console.log('savedPosters Array object: ', savedPostersObject)
     // console.log('savedPostersGrid element', savedPostersGrid);
-    })
-  };
+  
+
 
 
 
