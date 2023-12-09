@@ -129,7 +129,7 @@ showSavedPostersButton.addEventListener('click', switchToSavedPosters);
 backToMainButton.addEventListener('click', switchToMain);
 takeMeBackButton.addEventListener('click', switchToMain);
 showMyPosterButton.addEventListener('click', handleAllEvents);
-saveThisPosterButton.addEventListener('click', savePoster);
+saveThisPosterButton.addEventListener('click', handleSaveClick);
 
 
 // functions and event handlers go here 👇
@@ -229,63 +229,34 @@ savedPostersGrid.innerHTML = `
   `;
   
 var miniPosters = document.querySelector('.mini-poster');
-// };
 
-// var miniPosters = document.querySelector('.mini-poster');
-
-// addMiniPosterClass();
-
-// function savePoster() {
-//   savedPosters.push(currentPoster);
-//   savedPosters.forEach((savedPostersObject) => {
-//     savedPostersGrid.innerHTML = `
-//     <div class="mini-poster">
-//     <img src="${savedPostersObject.imageURL}" alt="motivational poster image">
-//     <h2>${savedPostersObject.title}</h2>
-//     <h4>${savedPostersObject.quote}</h4>
-//     </div>
-//      `
-//     })
-//   };
-
+//what the hell is happening here?
 
   function savePoster() {
-    savedPosters.push(currentPoster);
-    savedPosters.forEach((savedPostersObject) => {
+    // savedPosters.forEach((object) => if (currentPoster.id !== object.id) {  
+    // savedPosters.push(currentPoster)});
+      // for (var i = -1; i < savedPosters.length; i++) {
+       var savedPosterCheck = savedPosters.find((object) => object.id === currentPoster.id)
+       if (savedPosterCheck = undefined) { 
+        // if (currentPoster.id !== savedPosters[0].id) {
+          savedPosters.push(currentPoster)
+  }};
+  
+      
+
+    function postCurrentPoster() {
       miniPosters.insertAdjacentHTML('afterbegin', `
       <div class="mini-poster">
-      <img src="${savedPostersObject.imageURL}" alt="motivational poster image">
-      <h2>${savedPostersObject.title}</h2>
-      <h4>${savedPostersObject.quote}</h4>
+      <img src="${currentPoster.imageURL}" alt="motivational poster image">
+      <h2>${currentPoster.title}</h2>
+      <h4>${currentPoster.quote}</h4>
       </div>
        `
     )
-      })
     };
   
-    // for (var i = 0; i < savedPosters.length; i++) {
-    //   savedPostersGrid.innerHTML = `
-    // <div class="mini-poster">
-    // <img src="${savedPosters[i].imageURL}" alt="motivational poster image">
-    // <h2>${savedPosters[i].title}</h2>
-    // <h4>${savedPosters[i].quote}</h4>
-    // </div>
-    // `
-    // };
-    // console.log('savedPosters Array object: ', savedPostersObject)
-    // console.log('savedPostersGrid element', savedPostersGrid);
-  
-
-
-
-
-
-  //   savedPostersGrid.innerHTML = `<article>${document.savedPostersGrid.innerHTML.add(
-  //     <h1 class ="poster-title">`${savedPosters[object]title}`</h1>
-  //     <h3 class ="poster-quote">`${savedPosters.object.quote}`</h3>
-  // )}</article>`
+    function handleSaveClick() {
+      savePoster();
+      postCurrentPoster();
+    };
  
-
-//create variable for save this poster button (class is 'save-poster')
-// create function that will push the current poster to the saved posters array
-//create event listener to run function on a click
