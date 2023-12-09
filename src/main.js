@@ -172,7 +172,28 @@ function handleAllEvents() {
   event.preventDefault();
   makeMyPoster();
   pushToArrays();
-};
+}
+
+
+// function testThis() {
+//   var currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
+//   console.log(currentPoster);
+//   return currentPoster;
+// }
+// function showMyPosterHandler() {
+//   var currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
+//   console.log('current poster: ', currentPoster);
+//   return currentPoster
+// }
+
+//declare querySElectors variables for each poster element via id names
+//declare show my poster button variable
+//declare variables to store input values
+//pass the input values from the form as arguments in the createPoster function
+//push the input values to their respective arrays
+//store the createPoster return in the current poster variable [invoke as the value of currentPoster]
+//write event listener
+//create variables to 
 
 function makeRandomPoster() {
   var randomImage = images[getRandomIndex(images)];
@@ -181,14 +202,11 @@ function makeRandomPoster() {
   posterQuote.innerHTML = randomQuote;
   posterTitle.innerHTML = randomTitle;
   posterImage.src = randomImage;
-  currentPoster = createPoster(randomImage, randomTitle, randomQuote);
-  // console.log('currentPoster: ', currentPoster)
 };
 
 
 makeRandomPoster();
 
-posterImage.alt = 'Motivational Poster Image';
 
 function switchToForm() {
   posterFormSection.classList.remove('hidden');
