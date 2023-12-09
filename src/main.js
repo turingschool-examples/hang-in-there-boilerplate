@@ -209,35 +209,36 @@ function renderSavedPosters() {
   postersGrid.innerHTML = '';
 
   savedPosters.forEach(poster => {
-    var posterHTML = `<div class="mini-poster" id=${poster.id}>
+    var posterHTML = `<div class="mini-poster" id=${poster.id} name=${arrayIndex}>
                         <img src="${poster.imgURL}" alt="Saved Poster Image">
                         <h2>${poster.title}</h2>
                         <h4>${poster.quote}</h4>
                       </div>`;
 
     var posterElement = document.createRange().createContextualFragment(posterHTML).firstElementChild;
+    
+    var arrayIndex = 0
+    arrayIndex++
+    
+    // posterElement.addEventListener('click', function() {
+    //   var divElement = document.getElementById(poster.id);
+    //   var imgSrc = divElement.getElementsByTagName('img')[0].src;
+    //   var titleText = divElement.getElementsByTagName('h2')[0].innerText;
+    //   var quoteText = divElement.getElementsByTagName('h4')[0].innerText;
+    //   document.querySelector(".poster-img").src = imgSrc;
+    //   document.querySelector(".poster-title").innerText = titleText;
+    //   document.querySelector(".poster-quote").innerText = quoteText;
+    //   document.querySelector(".saved-posters").classList.toggle('hidden');
+    //   document.querySelector(".main-poster").classList.toggle('hidden')
+    // });
 
-    posterElement.addEventListener('click', function() {
-      console.log(`Clicked on poster with id: ${poster.id}`);
-      var divElement = document.getElementById(poster.id);
-      var imgSrc = divElement.getElementsByTagName('img')[0].src;
-      var titleText = divElement.getElementsByTagName('h2')[0].innerText;
-      var quoteText = divElement.getElementsByTagName('h4')[0].innerText;
-      document.querySelector(".poster-img").src = imgSrc;
-      document.querySelector(".poster-title").innerText = titleText;
-      document.querySelector(".poster-quote").innerText = quoteText;
-      document.querySelector(".saved-posters").classList.toggle('hidden');
-      document.querySelector(".main-poster").classList.toggle('hidden')
+    posterElement.addEventListener('dblclick', function() {
+      console.log(`Clicked on poster with id: ${arrayIndex}`);
+      savedPosters.splice(arrayIndex, 1)
+      renderSavedPosters()
     });
 
     postersGrid.appendChild(posterElement);
   });
 }
 
-// function showSavedPosters() {
-//   var imageURL = document.querySelector('#poster-image-url').value;
-//   var title = document.querySelector('#poster-title').value;
-//   var quote = document.querySelector('#poster-quote').value;    
-//   createPoster(imageURL, title, quote);
-//   showHiddenForm(this);
-// }
