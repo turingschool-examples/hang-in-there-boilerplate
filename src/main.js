@@ -26,7 +26,6 @@ var savedPostersGridArticleHTMLElement = document.querySelector('.saved-posters-
  
 // Show my Poster page fields
 var showSavedButtonHTMLElement = document.querySelector('.show-saved');
- 
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -283,3 +282,5 @@ function displayRandomPoster() {
  
 // Main Execution Point
 displayRandomPoster();
+
+// Testing 
