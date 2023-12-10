@@ -1,5 +1,3 @@
-
-
 // query selector variables go here 👇
 // Image, Quote, Title
 var imageHTMLElement = document.querySelector('.poster-img')
@@ -29,7 +27,7 @@ var savedPostersGridArticleHTMLElement = document.querySelector('.saved-posters-
 // Show my Poster page fields
 var showSavedButtonHTMLElement = document.querySelector('.show-saved');
  
-
+ 
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -143,7 +141,7 @@ backButtonHTMLElement.addEventListener('click', onBackButtonClicked);
 // Show Saved Posters Page Event Listners
 backToMainButtonHTMLElement.addEventListener('click', onBackToMainButtonClicked);
  
-
+ 
 // functions and event handlers go here 👇
  
 function onRandomPosterButtonClicked() {
@@ -159,8 +157,8 @@ function onBackButtonClicked() {
   mainPosterSectionHTMLElement.classList.remove('hidden');
   makePosterSectionHTMLElement.classList.add('hidden');
 }
- //
- function onShowSavedButtonClicked() {
+//
+function onShowSavedButtonClicked() {
   savedPostersSectionHTMLElement.classList.remove('hidden');
   mainPosterSectionHTMLElement.classList.add('hidden');
   // First check if the article element already has the image
@@ -171,9 +169,10 @@ function onBackButtonClicked() {
     // Create an image element
     var image = document.createElement('img');
     image.src = savedPosters[i].imageURL;
+   
     // When image is double clicked it needs to be removed - so
     // add a listener that calls a function when double clicked
-    image.addEventListener('dblclick', onDoubleClickSavedPosterImage);
+    // image.addEventListener('dblclick', onDoubleClickSavedPosterImage);
    
     var h2 = document.createElement('h2');
     h2.innerText = savedPosters[i].title;
@@ -184,7 +183,7 @@ function onBackButtonClicked() {
     // Put the image, h2, h4 in a article element
     var articleElement = document.createElement('article');
     articleElement.setAttribute('class', 'mini-poster');
-       
+    articleElement.addEventListener('dblclick', onDoubleClickSavedPosterImage);
     articleElement.appendChild(image);
     articleElement.appendChild(h2);
     articleElement.appendChild(h4);
@@ -193,17 +192,19 @@ function onBackButtonClicked() {
     savedPostersGridArticleHTMLElement.appendChild(articleElement);
   }
 }
-
+ 
 function onDoubleClickSavedPosterImage(event) {
   // Iterate through the saved posters
   for(var i=0; i<savedPosters.length; i++) {
+    // Get the image URL from HTML to see if it matches the imageURL in savedPosters
+    var clickedImageElement = event.target.parentElement.querySelector('img');
     // Select the image in savedPosters array based on the image clicked
-  if(event.target.src === savedPosters[i].imageURL) {
+    if(clickedImageElement.src === savedPosters[i].imageURL) {
       // Remove the entire poster from the saved posters array
       savedPosters.splice(i, 1);
-   }
+    }
   }
-  // Refresh the page when invoked 
+  // Refresh the page when invoked
   onShowSavedButtonClicked();
 }
  
@@ -211,8 +212,8 @@ function onBackToMainButtonClicked() {
   mainPosterSectionHTMLElement.classList.remove('hidden');
   savedPostersSectionHTMLElement.classList.add('hidden');
 }
-
-
+ 
+ 
 function onShowMyPosterButtonClicked(event) {
   var imageURL = document.getElementById('poster-image-url').value;
   var title = document.getElementById('poster-title').value;
@@ -237,14 +238,14 @@ function onSavePosterButtonClicked() {
         return;        
       }
     }
-
-    
+ 
+   
     //then the image doesnt exist in the savedPosters array
     var poster = createPoster(imageHTMLElement.src, titleHTMLElement.innerText, quoteHTMLElement.innerText);
     // Add the poster to the array
     savedPosters.push(poster);
-
-
+ 
+ 
     alert('Saved Poster Successfully!');
 }
  
@@ -280,7 +281,7 @@ function displayPoster(newPoster) {
   quoteHTMLElement.innerText = newPoster.quote;
   //currentPoster = newPoster;
 }
- 7
+7
 // Get a Random Poster and Display it
 function displayRandomPoster() {
   var poster = getRandomPoster();
@@ -289,5 +290,3 @@ function displayRandomPoster() {
  
 // Main Execution Point
 displayRandomPoster();
-
-
