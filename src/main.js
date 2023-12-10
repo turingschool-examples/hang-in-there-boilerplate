@@ -201,7 +201,7 @@ function onDoubleClickSavedPosterImage(event) {
       savedPosters.splice(i, 1);
    }
   }
-  // Refresh the page
+  // Refresh the page when invoked 
   onShowSavedButtonClicked();
 }
  
