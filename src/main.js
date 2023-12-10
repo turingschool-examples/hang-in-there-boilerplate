@@ -1,3 +1,5 @@
+
+
 // query selector variables go here 👇
 // Image, Quote, Title
 var imageHTMLElement = document.querySelector('.poster-img')
