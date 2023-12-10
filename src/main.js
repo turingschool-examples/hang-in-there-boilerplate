@@ -279,8 +279,7 @@ function displayRandomPoster() {
   var poster = getRandomPoster();
   displayPoster(poster);
 }
- 
+
 // Main Execution Point
 displayRandomPoster();
 
-// Testing 
