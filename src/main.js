@@ -3,8 +3,6 @@ var posterImage = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
 
-console.log(posterImage)
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -121,3 +119,21 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+function getRandomContent(){
+  var imageIndex = getRandomIndex(images);
+  var randomImage = images[imageIndex];
+  
+  var titleIndex = getRandomIndex(titles);
+  var randomTitle = titles[titleIndex];
+
+  var quoteIndex = getRandomIndex(quotes);
+  var randomQuote = quotes[quoteIndex];
+
+  createPoster(randomImage, randomTitle, randomQuote)
+  posterImage.src = randomImage;
+  posterTitle.innerText = randomTitle;
+  posterQuote.innerText = randomQuote;
+}
+
+getRandomContent()
