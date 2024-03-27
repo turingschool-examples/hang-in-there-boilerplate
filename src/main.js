@@ -1,4 +1,11 @@
 // query selector variables go here 👇
+console.log('hello')
+var posterImage = document.querySelector('.poster-img')
+console.log("label1<<<>>>", posterImage)
+var posterTitle = document.querySelector('.poster-title')
+console.log("label2<<<>>>", posterTitle)
+var posterQuote = document.querySelector('.poster-quote')
+console.log("label3<<<>>>", posterQuote)
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -98,9 +105,10 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+
 var savedPosters = [];
 var currentPoster;
-
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
@@ -109,6 +117,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
@@ -116,3 +125,18 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+function getRandomContent() {
+  var imageIndex = getRandomIndex(images);
+  var randomImage =images[imageIndex]
+  var titleIndex = getRandomIndex(titles);
+  var randomTitle = titles[titleIndex];
+  var quotesIndex = getRandomIndex(quotes);
+  var randomQuote = quotes[quotesIndex];
+  createPoster(randomImage, randomTitle, randomQuote);
+  posterImage.src = randomImage
+  posterTitle.innerText = randomTitle;
+  posterQuote.innerText = randomQuote;
+}
+
+getRandomContent();
