@@ -115,7 +115,7 @@ var savedPosters = [];
 randomPosterButton.addEventListener('click', createRandomPoster);
 addEventListener("load", createRandomPoster);
 
-userPoster.addEventListener('click', makeUserPoster)
+userPoster.addEventListener('click', changeViews(posterForm, mainPoster, posterForm))
 
 savedPoster.addEventListener('click', showSavedPosters)
 
@@ -145,13 +145,25 @@ function createRandomPoster(){
   <h3 class="poster-quote">"${newPoster.quote}"</h3>`
 }
 
-function makeUserPoster() {
-posterForm.classList.remove('hidden')
-mainPoster.classList.add('hidden')
-}
+// function makeUserPoster() {
+// posterForm.classList.remove('hidden')
+// mainPoster.classList.add('hidden')
+// }
 
-function showSavedPosters() {
-  savedPoster.classList.remove('hidden') 
-  mainPoster.classList.add('hidden')
-  posterForm.classList.add('hidden') 
+function changeViews(view1, view2, flipView, view3, view4, view5, view6) {
+ if(flipView === true) {
+  view1.classList.remove('hidden')
+  view2.classList.add('hidden')
+  view3.classList.remove('hidden')
+  view4.classList.add('hidden')
+  view5.classList.add('hidden')
+  view6.classList.add('hidden')
+ } else {
+  view1.classList.add('hidden')
+  view2.classList.remove('hidden')
+  view3.classList.add('hidden')
+  view4.classList.remove('hidden')
+  view5.classList.remove('hidden')
+  view6.classList.remove('hidden')
+  }
 }
