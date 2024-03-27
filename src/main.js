@@ -3,6 +3,13 @@ var randomPosterButton = document.querySelector(".show-random");
 var image = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote");
+var currentPoster = document.querySelector(".poster");
+var userPoster = document.querySelector(".show-form");
+var posterForm = document.querySelector(".poster-form")
+var mainPoster = document.querySelector(".main-poster")
+var customPoster = document.querySelector(".make-poster")
+var savedPoster = document.querySelector(".show-saved")
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -102,11 +109,17 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster = document.querySelector(".poster");
+
 
 // event listeners go here 👇
 randomPosterButton.addEventListener('click', createRandomPoster);
 addEventListener("load", createRandomPoster);
+
+userPoster.addEventListener('click', makeUserPoster)
+
+savedPoster.addEventListener('click', showSavedPosters)
+
+customPoster.addEventListener('click', )
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -130,4 +143,15 @@ function createRandomPoster(){
   `<img class="poster-img" src="${newPoster.imageURL}" alt="nothin' to see here">
   <h1 class="poster-title">"${newPoster.title}"</h1>
   <h3 class="poster-quote">"${newPoster.quote}"</h3>`
+}
+
+function makeUserPoster() {
+posterForm.classList.remove('hidden')
+mainPoster.classList.add('hidden')
+}
+
+function showSavedPosters() {
+  savedPoster.classList.remove('hidden') 
+  mainPoster.classList.add('hidden')
+  posterForm.classList.add('hidden') 
 }
