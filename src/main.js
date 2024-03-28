@@ -2,6 +2,11 @@
 var posterImage = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
+//iteration 1
+var makeYourOwnPosterButton = document.querySelector(".show-form")
+var mainPosterPage = document.querySelector(".main-poster")
+var makeYourOwnPosterPage = document.querySelector(".poster-form")
+var savedPostersPage = document.querySelector(".saved-posters")
 
 
 
@@ -142,18 +147,16 @@ getRandomContent();
 
 var randomButton = document.querySelector(".show-random") 
 randomButton.addEventListener('click', getRandomContent)
-
-/* function getRandomContent () {
-  randomButton.classList
-} */
  
+var makeOwnPosterButton = document.querySelector(".show-form")
+makeOwnPosterButton.addEventListener('click', makeOwnPoster)
 
-
-////////// interation 1 ////////////
-
-var homeButton = document.querySelector(".show-form")
-
-function createPoster() {
-  homeButton.classList.add('hidden')
+function makeOwnPoster() {
+  mainPosterPage.classList.add('hidden')
+  makeYourOwnPosterPage.classList.remove('hidden')
   }
-  
+
+function showSavedPosters(){
+  mainPosterPage.classList.add('hidden')
+  savedPostersPage.classList.remove('hidden')
+}
