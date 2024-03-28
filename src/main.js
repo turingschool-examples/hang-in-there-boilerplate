@@ -151,6 +151,13 @@ randomButton.addEventListener('click', getRandomContent)
 var makeOwnPosterButton = document.querySelector(".show-form")
 makeOwnPosterButton.addEventListener('click', makeOwnPoster)
 
+var savedPostersButton = document.querySelector(".show-saved")
+savedPostersButton.addEventListener('click', showSavedPosters)
+
+var nevermindButton = document.querySelector('.show-main')
+nevermindButton.addEventListener('click', returnToMainPage)
+
+
 function makeOwnPoster() {
   mainPosterPage.classList.add('hidden')
   makeYourOwnPosterPage.classList.remove('hidden')
@@ -159,4 +166,8 @@ function makeOwnPoster() {
 function showSavedPosters(){
   mainPosterPage.classList.add('hidden')
   savedPostersPage.classList.remove('hidden')
+}
+
+function returnToMainPage() {
+  mainPosterPage.classList.remove('hidden')
 }
