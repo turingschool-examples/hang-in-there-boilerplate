@@ -107,7 +107,7 @@ var currentPoster;
 //When the page loads, we should see a poster with a randomly selected image, title, and quote
 //Every time the user clicks the Show Random Poster button, a new random poster is displayed.
 // event listeners go here 👇
-image.src = getRandomIndex(images)
+image.src = images[getRandomIndex(images)]
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
