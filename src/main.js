@@ -137,5 +137,13 @@ function getRandomContent(){
   posterTitle.innerText = randomTitle;
   posterQuote.innerText = randomQuote;
 }
+getRandomContent();
 
-getRandomContent()
+
+var randomButton = document.querySelector(".show-random") 
+randomButton.addEventListener('click', getRandomContent)
+
+/* function getRandomContent () {
+  randomButton.classList
+} */
+ 
