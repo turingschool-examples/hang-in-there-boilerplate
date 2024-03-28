@@ -4,9 +4,10 @@ var savePoster = document.querySelector('.save-poster');
 var showSavePoster = document.querySelector('.show-saved');
 var showRandomPoster = document.querySelector('.show-random');
 var makePoster = document.querySelector('.show-form');
-var posterTitle = document.querySelector('.poster-title')
-var posterQuote = document.querySelector('.poster-quote')
-
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var mainPage = document.querySelector('.main-poster');
+var createOwnPoster = document.querySelector('.poster-form');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -116,8 +117,14 @@ posterTitle.innerText = titles [getRandomIndex (titles)]
 posterQuote.innerText = quotes [getRandomIndex (quotes)]
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
-showRandomPoster.addEventListener('click', changePoster) 
+showRandomPoster.addEventListener('click', changePoster)
+makePoster.addEventListener('click', makeYourOwnPoster)
 
+
+function makeYourOwnPoster() {
+  mainPage.classList.add('hidden');
+  createOwnPoster.classList.remove('hidden')
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -130,7 +137,6 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
-
 
 function changePoster () {
  return image.src = images[getRandomIndex(images)]
