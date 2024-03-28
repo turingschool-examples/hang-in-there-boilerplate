@@ -14,9 +14,6 @@ var savedPostersForm = document.querySelector(".saved-posters");
 var showMainButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 
-var userImage = document.querySelector('#poster-image-url').value;
-var userTitle = document.querySelector('#poster-title').value;
-var userQuote = document.querySelector('#poster-quote').value;
 
 
 // we've provided you with some data to work with 👇
@@ -135,10 +132,17 @@ backToMainButton.addEventListener('click', showMainPage)
 
 
 customPoster.addEventListener('click', function(event){
-  event.preventDefault()
-  createPoster(userImage, userTitle, userQuote);
-  showMainPage()
-  sortCustomPosterItems(userImage, userTitle, userQuote)
+  event.preventDefault();
+var userImage = document.querySelector('#poster-image-url').value;
+var userTitle = document.querySelector('#poster-title').value;
+var userQuote = document.querySelector('#poster-quote').value;
+sortCustomPosterItems(userImage, userTitle, userQuote)
+showMainPage()
+displayUserPoster(userImage, userTitle, userQuote);
+
+document.querySelector('#poster-image-url').value = '';
+document.querySelector('#poster-title').value = '';
+document.querySelector('#poster-quote').value = '';
 });
 
 // functions and event handlers go here 👇
@@ -182,11 +186,13 @@ posterForm.classList.add('hidden')
 savedPostersForm.classList.add('hidden')
 }
 
-function createUserPoster(userImage, userTitle, userQuote) {
+function displayUserPoster(imageURL, title, quote) {
   currentPoster.innerHTML = 
-  `<img class="poster-img" src="${userImage}" alt="nothin' to see here">
-  <h1 class="poster-title">"${userTitle}"</h1>
-  <h3 class="poster-quote">"${userQuote}"</h3>`
+  `<img class="poster-img" src="${imageURL}" alt="nothin' to see here">
+  <h1 class="poster-title">"${title}"</h1>
+  <h3 class="poster-quote">"${quote}"</h3>`
+  
+  createPoster(imageURL, title, quote);
 }
 
 
