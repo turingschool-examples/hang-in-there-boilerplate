@@ -147,3 +147,13 @@ randomButton.addEventListener('click', getRandomContent)
   randomButton.classList
 } */
  
+
+
+////////// interation 1 ////////////
+
+var homeButton = document.querySelector(".show-form")
+
+function createPoster() {
+  homeButton.classList.add('hidden')
+  }
+  
