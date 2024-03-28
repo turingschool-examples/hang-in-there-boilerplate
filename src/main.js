@@ -5,15 +5,14 @@ var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote");
 var currentPoster = document.querySelector(".poster");
 var userPoster = document.querySelector(".show-form");
-var posterForm = document.querySelector(".poster-form")
-var mainPoster = document.querySelector(".main-poster")
-var customPoster = document.querySelector(".make-poster")
-var savedPoster = document.querySelector(".show-saved")
-var savePosterButton = document.querySelector(".save-poster")
-var savedPostersForm = document.querySelector(".saved-posters")
-var showMainButton = document.querySelector(".show-main")
-var backToMainButton = document.querySelector(".back-to-main")
 
+var posterForm = document.querySelector(".poster-form");
+var mainPoster = document.querySelector(".main-poster");
+var customPoster = document.querySelector(".make-poster");
+var savedPoster = document.querySelector(".show-saved");
+var savePosterButton = document.querySelector(".save-poster");
+var savedPostersForm = document.querySelector(".saved-posters");
+var showMainButton = document.querySelector(".show-main");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -114,6 +113,8 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
+var newPoster;
+
 
 
 // event listeners go here 👇
@@ -129,7 +130,21 @@ showMainButton.addEventListener('click', showMainPage)
 backToMainButton.addEventListener('click', showMainPage)
 
 
-// customPoster.addEventListener('click', )
+
+customPoster.addEventListener('click', function(event){
+  event.preventDefault();
+var userImage = document.querySelector('#poster-image-url').value;
+var userTitle = document.querySelector('#poster-title').value;
+var userQuote = document.querySelector('#poster-quote').value;
+sortCustomPosterItems(userImage, userTitle, userQuote)
+showMainPage()
+displayUserPoster(userImage, userTitle, userQuote);
+
+document.querySelector('#poster-image-url').value = '';
+document.querySelector('#poster-title').value = '';
+document.querySelector('#poster-quote').value = '';
+});
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -148,7 +163,9 @@ function createPoster(imageURL, title, quote) {
 }
 
 function createRandomPoster(){
-  newPoster = createPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+
+  var newPoster = createPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+
   currentPoster.innerHTML = 
   `<img class="poster-img" src="${newPoster.imageURL}" alt="nothin' to see here">
   <h1 class="poster-title">"${newPoster.title}"</h1>
@@ -170,4 +187,23 @@ function showMainPage() {
 mainPoster.classList.remove('hidden')
 posterForm.classList.add('hidden')
 savedPostersForm.classList.add('hidden')
+
+}
+
+function displayUserPoster(imageURL, title, quote) {
+  currentPoster.innerHTML = 
+  `<img class="poster-img" src="${imageURL}" alt="nothin' to see here">
+  <h1 class="poster-title">"${title}"</h1>
+  <h3 class="poster-quote">"${quote}"</h3>`
+  
+  createPoster(imageURL, title, quote);
+}
+
+
+function sortCustomPosterItems(customImg, customTitle, customQuote){
+
+  images.push(customImg);
+  titles.push(customTitle);
+  quotes.push(customQuote);
+
 }
