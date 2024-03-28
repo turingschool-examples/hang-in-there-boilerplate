@@ -121,3 +121,21 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+function getRandomContent(){
+  var imageIndex = getRandomIndex(images);
+  var randomImage = images[imageIndex];
+  
+  var titleIndex = getRandomIndex(titles);
+  var randomTitle = titles[titleIndex];
+
+  var quoteIndex = getRandomIndex(quotes);
+  var randomQuote = quotes[quoteIndex];
+
+  createPoster(randomImage, randomTitle, randomQuote)
+  posterImage.src = randomImage;
+  posterTitle.innerText = randomTitle;
+  posterQuote.innerText = randomQuote;
+}
+
+getRandomContent()
