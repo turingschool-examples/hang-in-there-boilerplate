@@ -4,6 +4,9 @@ var savePoster = document.querySelector('.save-poster');
 var showSavePoster = document.querySelector('.show-saved');
 var showRandomPoster = document.querySelector('.show-random');
 var makePoster = document.querySelector('.show-form');
+var posterTitle = document.querySelector('.poster-title')
+var posterQuote = document.querySelector('.poster-quote')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -123,3 +126,11 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+// poster title variable
+//var makePoster = document.querySelector('.show-form');
+//var posterTitle = document.querySelector('.poster-title')
+//var posterQuote = document.querySelector('.poster-quote')
+posterTitle.innerText = titles [getRandomIndex (titles)]
+posterQuote.innerText = quotes [getRandomIndex (quotes)]
+
