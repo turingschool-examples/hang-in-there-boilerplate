@@ -7,6 +7,7 @@ var makePoster = document.querySelector('.show-form');
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
 
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -111,8 +112,11 @@ var currentPoster;
 //Every time the user clicks the Show Random Poster button, a new random poster is displayed.
 // event listeners go here 👇
 image.src = images[getRandomIndex(images)]
+posterTitle.innerText = titles [getRandomIndex (titles)]
+posterQuote.innerText = quotes [getRandomIndex (quotes)]
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+showRandomPoster.addEventListener('click', changePoster) 
 
 
 function getRandomIndex(array) {
@@ -127,10 +131,7 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-// poster title variable
-//var makePoster = document.querySelector('.show-form');
-//var posterTitle = document.querySelector('.poster-title')
-//var posterQuote = document.querySelector('.poster-quote')
-posterTitle.innerText = titles [getRandomIndex (titles)]
-posterQuote.innerText = quotes [getRandomIndex (quotes)]
 
+function changePoster () {
+ return image.src = images[getRandomIndex(images)]
+}
