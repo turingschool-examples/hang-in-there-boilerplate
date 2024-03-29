@@ -209,6 +209,6 @@ function returnToMainPage() {
   mainPosterPage.classList.remove('hidden')
   savedPostersPage.classList.add('hidden')
   makeYourOwnPosterPage.classList.add('hidden')
-}
 
 getRandomContent();
+
