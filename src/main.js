@@ -136,6 +136,8 @@ makeOwnPosterButton.addEventListener('click', accessMakeYourOwnPosterPage)
 savedPostersButton.addEventListener('click', accessShowSavedPostersPage)
 nevermindButton.addEventListener('click', returnToMainPage)
 backToMainButton.addEventListener('click', returnToMainPage)
+showMyPosterButton.addEventListener('click', createMyPoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -151,7 +153,6 @@ function createPoster(imageURL, title, quote) {
     quote: quote
   };
 }
-
 
 function createMyPoster(event){
   event.preventDefault()
@@ -175,7 +176,6 @@ function createMyPoster(event){
     savedPosters.push(currentPoster);
   }
 } */
->>>>>>> 16e34d7035401c065f8e317e4617ed60aa98fae8
 
 function getRandomContent(){
   var imageIndex = getRandomIndex(images);
@@ -191,7 +191,6 @@ function getRandomContent(){
   posterImage.src = randomImage;
   posterTitle.innerText = randomTitle;
   posterQuote.innerText = randomQuote;
-
 
 //currentPoster = createPoster(randomImage, randomTitle, randomQuote)
    
@@ -210,34 +209,5 @@ function returnToMainPage() {
   mainPosterPage.classList.remove('hidden')
   savedPostersPage.classList.add('hidden')
   makeYourOwnPosterPage.classList.add('hidden')
-}
-
-function savePoster() {
-  var imageURL = imageInput.value;
-  var title = titleInput.value;
-  var quote = quoteInput.value;
-  var newPoster = createPoster(imageURL, title, quote);
-  
-  savedPosters.push(newPoster);
-  mainPosterPage.add('hidden')
-  makeYourOwnPosterPage.remove('hidden')
-}
-
-function createMyPoster(event){
-  event.preventDefault();
-
-  currentPoster = createPoster (imageInput.value, titleInput.value, quoteInput.value)
-
-  images.push(imageInput.value)
-  titles.push(titleInput.value)
-  quotes.push(quoteInput)
-
-  posterImage.src = imageInput.value
-  posterTitle.innerText = titleInput.value
-  posterQuote.innerText = quoteInput.value
-
-  returnToMainPage();
-}
-
 
 getRandomContent();
