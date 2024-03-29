@@ -129,7 +129,18 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+//iteration 0
+randomButton.addEventListener('click', getRandomContent)
+//iteration 1
+makeOwnPosterButton.addEventListener('click', accessMakeYourOwnPosterPage)
+savedPostersButton.addEventListener('click', accessShowSavedPostersPage)
+nevermindButton.addEventListener('click', returnToMainPage)
+backToMainButton.addEventListener('click', returnToMainPage)
+savePosterButton.addEventListener('Click', createPoster)
+
+
 // functions and event handlers go here 👇
+// (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -171,24 +182,10 @@ function getRandomContent(){
 }
 getRandomContent();
 
-
-var randomButton = document.querySelector(".show-random") 
-randomButton.addEventListener('click', getRandomContent)
- 
-var makeOwnPosterButton = document.querySelector(".show-form")
-makeOwnPosterButton.addEventListener('click', makeOwnPoster)
-
-var savedPostersButton = document.querySelector(".show-saved")
-savedPostersButton.addEventListener('click', showSavedPosters)
-
-var nevermindButton = document.querySelector('.show-main')
-nevermindButton.addEventListener('click', returnToMainPage)
-
-
-function makeOwnPoster() {
+function accessMakeYourOwnPosterPage() {
   mainPosterPage.classList.add('hidden')
   makeYourOwnPosterPage.classList.remove('hidden')
-}
+  }
 
 function accessShowSavedPostersPage(){
   mainPosterPage.classList.add('hidden')
@@ -197,4 +194,6 @@ function accessShowSavedPostersPage(){
 
 function returnToMainPage() {
   mainPosterPage.classList.remove('hidden')
+  savedPostersPage.classList.add('hidden')
+  makeYourOwnPosterPage.classList.add('hidden')
 }
