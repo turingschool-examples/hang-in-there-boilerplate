@@ -1,5 +1,6 @@
-// query selector variables go here 👇
+//Query Selectors
 var randomPosterButton = document.querySelector(".show-random");
+
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
@@ -17,7 +18,8 @@ var miniPoster = document.querySelector('.saved-posters-grid');
 
 
 
-// we've provided you with some data to work with 👇
+
+// Arrays
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -117,10 +119,10 @@ var quotes = [
 ];
 var savedPosters = [];
 var newPoster;
-// var poster = createPoster()
 
 
-// event listeners go here 👇
+
+//Event Listeners
 randomPosterButton.addEventListener('click', createRandomPoster);
 addEventListener("load", createRandomPoster);
 
@@ -137,14 +139,14 @@ showMainButton.addEventListener('click', function(event){
   showMainPage()
 })
 
-
 backToMainButton.addEventListener('click', showMainPage)
 
 savePosterButton.addEventListener('click', function(event){
   event.preventDefault();
-  // savePoster(userPoster.imageURL, userPoster.title, userPoster.quote)
+
   savePoster(newPoster.imageURL, newPoster.title,  newPoster.quote);
 });
+
 
 
 customPoster.addEventListener('click', function(event){
@@ -161,11 +163,11 @@ document.querySelector('#poster-title').value = '';
 document.querySelector('#poster-quote').value = '';
 });
 
-// functions and event handlers go here 👇
-// (we've provided two to get you started)!
+// Functions
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 
 function createPoster(image, title, quote) {
   var poster =  {
@@ -178,12 +180,15 @@ function createPoster(image, title, quote) {
 }
 
 function createRandomPoster(){
+
   newPoster = createPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  
   currentPoster.innerHTML = 
   `<img class="poster-img" src="${newPoster.imageURL}" alt="nothin' to see here">
   <h1 class="poster-title">"${newPoster.title}"</h1>
   <h3 class="poster-quote">"${newPoster.quote}"</h3>`
 }
+
 
 function displayUserPoster(imageURL, title, quote) {
   currentPoster.innerHTML = 
@@ -222,7 +227,9 @@ function showSavedPosters() {
 
   miniPoster.innerHTML = '';
 
+  
 }
+
 
 function showMainPage() {
 mainPoster.classList.remove('hidden')
@@ -230,9 +237,17 @@ posterForm.classList.add('hidden')
 savedPostersForm.classList.add('hidden')
 }
 
+function displayUserPoster(imageURL, title, quote) {
+  currentPoster.innerHTML = 
+  `<img class="poster-img" src="${imageURL}" alt="nothin' to see here">
+  <h1 class="poster-title">"${title}"</h1>
+  <h3 class="poster-quote">"${quote}"</h3>`
+  
+  newPoster = createPoster(imageURL, title, quote);
+}
+
 
 function sortCustomPosterItems(customImg, customTitle, customQuote){
-
   images.push(customImg);
   titles.push(customTitle);
   quotes.push(customQuote);
@@ -256,6 +271,7 @@ function savePoster(image, title, quote) {
   if (!isDuplicate) {
     savedPosters.push(savedPoster);
     displayMiniPoster()
+    }
   }
 }
- 
+
