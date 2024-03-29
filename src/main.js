@@ -113,8 +113,24 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+
+var randomButton = document.querySelector(".show-random") 
+randomButton.addEventListener('click', getRandomContent)
+ 
+var makeOwnPosterButton = document.querySelector(".show-form")
+makeOwnPosterButton.addEventListener('click', makeOwnPoster)
+
+var savedPostersButton = document.querySelector(".show-saved")
+savedPostersButton.addEventListener('click', showSavedPosters)
+
+var nevermindButton = document.querySelector('.show-main')
+nevermindButton.addEventListener('click', returnToMainPage)
+
+var showMyPosterButton = document.querySelector('.make-poster')
+showMyPosterButton.addEventListener('click', createYourOwnPoster)
+
+
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -144,24 +160,10 @@ function getRandomContent(){
 }
 getRandomContent();
 
-
-var randomButton = document.querySelector(".show-random") 
-randomButton.addEventListener('click', getRandomContent)
- 
-var makeOwnPosterButton = document.querySelector(".show-form")
-makeOwnPosterButton.addEventListener('click', makeOwnPoster)
-
-var savedPostersButton = document.querySelector(".show-saved")
-savedPostersButton.addEventListener('click', showSavedPosters)
-
-var nevermindButton = document.querySelector('.show-main')
-nevermindButton.addEventListener('click', returnToMainPage)
-
-
 function makeOwnPoster() {
   mainPosterPage.classList.add('hidden')
   makeYourOwnPosterPage.classList.remove('hidden')
-  }
+}
 
 function showSavedPosters(){
   mainPosterPage.classList.add('hidden')
@@ -170,4 +172,18 @@ function showSavedPosters(){
 
 function returnToMainPage() {
   mainPosterPage.classList.remove('hidden')
+  savedPostersPage.classList.add('hidden')
+  makeYourOwnPosterPage.classList.add('hidden')
+}
+
+////interation 2
+function createYourOwnPoster(){
+  var imageUrl = document.querySelector("#poster-image-url")
+  var motivationalTitle = document.querySelector("#poster-title")
+  var motivationalQuote = document.querySelector("#poster-quote")  
+
+  createPoster(imageUrl, motivationalTitle, motivationalQuote)
+  posterImage.src = imageUrl;
+  posterTitle.innerText = motivationalTitle;
+  posterQuote.innerText = motivationalQuote;
 }
