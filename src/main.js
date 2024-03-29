@@ -7,10 +7,17 @@ var posterQuote = document.querySelector('.poster-quote')
 var randomButton = document.querySelector(".show-random")
 
 //iteration 1
-var makeYourOwnPosterButton = document.querySelector(".show-form")
+  //buttons
+var makeOwnPosterButton = document.querySelector(".show-form")
+var savedPostersButton = document.querySelector(".show-saved")
+var nevermindButton = document.querySelector('.show-main')
+var backToMainButton = document.querySelector('.back-to-main')
+
+  //pages
 var mainPosterPage = document.querySelector(".main-poster")
 var makeYourOwnPosterPage = document.querySelector(".poster-form")
 var savedPostersPage = document.querySelector(".saved-posters")
+var savedPostersButton = document.querySelector(".show-saved")
 
 //iteration 2
 var imageInput = document.querySelector("#poster-image-url");
@@ -121,6 +128,13 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+//iteration 0
+randomButton.addEventListener('click', getRandomContent)
+//iteration 1
+makeOwnPosterButton.addEventListener('click', makeOwnPoster)
+savedPostersButton.addEventListener('click', showSavedPosters)
+nevermindButton.addEventListener('click', returnToMainPage)
+backToMainButton.addEventListener('click', returnToMainPage)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -152,21 +166,6 @@ function getRandomContent(){
   posterQuote.innerText = randomQuote;
 }
 getRandomContent();
-
-var randomButton = document.querySelector(".show-random") 
-randomButton.addEventListener('click', getRandomContent)
- 
-var makeOwnPosterButton = document.querySelector(".show-form")
-makeOwnPosterButton.addEventListener('click', makeOwnPoster)
-
-var savedPostersButton = document.querySelector(".show-saved")
-savedPostersButton.addEventListener('click', showSavedPosters)
-
-var nevermindButton = document.querySelector('.show-main')
-nevermindButton.addEventListener('click', returnToMainPage)
-
-var backToMainButton = document.querySelector('.back-to-main')
-backToMainButton.addEventListener('click', returnToMainPage)
 
 //showMyPosterButton.addEventListener('click', makeOwnPoster)
 
