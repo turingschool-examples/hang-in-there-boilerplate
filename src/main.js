@@ -2,13 +2,21 @@
 var posterImage = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
+
+//iteration 0
+var randomButton = document.querySelector(".show-random")
+
 //iteration 1
 var makeYourOwnPosterButton = document.querySelector(".show-form")
 var mainPosterPage = document.querySelector(".main-poster")
 var makeYourOwnPosterPage = document.querySelector(".poster-form")
 var savedPostersPage = document.querySelector(".saved-posters")
 
-
+//iteration 2
+var imageInput = document.querySelector("#poster-image-url");
+var titleInput = document.querySelector("#poster-title");
+var quoteInput = document.querySelector("#poster-quote");
+var savePosterButton = document.querySelector('.make-poster')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -113,6 +121,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -144,7 +153,6 @@ function getRandomContent(){
 }
 getRandomContent();
 
-
 var randomButton = document.querySelector(".show-random") 
 randomButton.addEventListener('click', getRandomContent)
  
@@ -156,6 +164,11 @@ savedPostersButton.addEventListener('click', showSavedPosters)
 
 var nevermindButton = document.querySelector('.show-main')
 nevermindButton.addEventListener('click', returnToMainPage)
+
+var backToMainButton = document.querySelector('.back-to-main')
+backToMainButton.addEventListener('click', returnToMainPage)
+
+//showMyPosterButton.addEventListener('click', makeOwnPoster)
 
 
 function makeOwnPoster() {
@@ -170,4 +183,6 @@ function showSavedPosters(){
 
 function returnToMainPage() {
   mainPosterPage.classList.remove('hidden')
+  savedPostersPage.classList.add('hidden')
+  makeYourOwnPosterPage.classList.add('hidden')
 }
