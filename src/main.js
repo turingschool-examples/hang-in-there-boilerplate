@@ -23,7 +23,8 @@ var savedPostersButton = document.querySelector(".show-saved")
 var imageInput = document.querySelector("#poster-image-url");
 var titleInput = document.querySelector("#poster-title");
 var quoteInput = document.querySelector("#poster-quote");
-var savePosterButton = document.querySelector('.make-poster')
+var savePosterButton = document.querySelector('.make-poster');
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -135,7 +136,8 @@ makeOwnPosterButton.addEventListener('click', accessMakeYourOwnPosterPage)
 savedPostersButton.addEventListener('click', accessShowSavedPostersPage)
 nevermindButton.addEventListener('click', returnToMainPage)
 backToMainButton.addEventListener('click', returnToMainPage)
-showMyPosterButton.addEventListener('click', makeOwnPoster)
+savePosterButton.addEventListener('Click', createPoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -148,8 +150,20 @@ function createPoster(imageURL, title, quote) {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
+    quote: quote
+  };
 }
+function savePoster() {
+  var imageURL = imageInput.value;
+  var title = titleInput.value;
+  var quote = quoteInput.value;
+  var newPoster = createPoster(imageURL, title, quote);
+  
+  savedPosters.push(newPoster);
+  mainPosterPage.add('hidden')
+  makeYourOwnPosterPage.remove('hidden')
+}
+
 
 function getRandomContent(){
   var imageIndex = getRandomIndex(images);
