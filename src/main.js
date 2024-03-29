@@ -131,10 +131,11 @@ var currentPoster;
 //iteration 0
 randomButton.addEventListener('click', getRandomContent)
 //iteration 1
-makeOwnPosterButton.addEventListener('click', makeOwnPoster)
-savedPostersButton.addEventListener('click', showSavedPosters)
+makeOwnPosterButton.addEventListener('click', accessMakeYourOwnPosterPage)
+savedPostersButton.addEventListener('click', accessShowSavedPostersPage)
 nevermindButton.addEventListener('click', returnToMainPage)
 backToMainButton.addEventListener('click', returnToMainPage)
+showMyPosterButton.addEventListener('click', makeOwnPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -167,15 +168,12 @@ function getRandomContent(){
 }
 getRandomContent();
 
-//showMyPosterButton.addEventListener('click', makeOwnPoster)
-
-
-function makeOwnPoster() {
+function accessMakeYourOwnPosterPage() {
   mainPosterPage.classList.add('hidden')
   makeYourOwnPosterPage.classList.remove('hidden')
   }
 
-function showSavedPosters(){
+function accessShowSavedPostersPage(){
   mainPosterPage.classList.add('hidden')
   savedPostersPage.classList.remove('hidden')
 }
