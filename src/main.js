@@ -27,7 +27,11 @@ var showMyPosterButton = document.querySelector('.make-poster');
 
 //iteration 3
 var saveThisPosterButton = document.querySelector('.save-poster');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
+
+//iteration 4
+var deleteSavedPosters = document.querySelector('.poster')
 
 
 // we've provided you with some data to work with 👇
@@ -146,6 +150,9 @@ showMyPosterButton.addEventListener('click', createMyPoster)
 //iteration3
 saveThisPosterButton.addEventListener('click', saveCurrentPoster)
 
+//iteration 4
+savedPostersGrid.addEventListener('dblclick', deleteSavedPoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -210,7 +217,7 @@ function returnToMainPage() {
   mainPosterPage.classList.remove('hidden')
   savedPostersPage.classList.add('hidden')
   makeYourOwnPosterPage.classList.add('hidden')
-
+}
 
 function savedToMain (){
   savedPostersPage.classList.add('hidden')
@@ -218,26 +225,55 @@ function savedToMain (){
 }
 
 function saveCurrentPoster() {
-  if (!savedPosters.some(poster => poster.id === currentPoster.id)) {
-    savedPosters.push(currentPoster);
-    displaySavedPosters();
+  if (!savedPosters.some(function(poster) { 
+    return poster.id === currentPoster.id; 
+  })) 
+  {
+    savedPosters.push(currentPoster)
+    displaySavedPosters()
   }
 }
 
 function displaySavedPosters() {
-  var savedPostersGrid = document.querySelector('.saved-posters-grid');
-  savedPostersGrid.innerHTML = '';
+  var savedPostersHTML = []
 
-  savedPosters.forEach(poster => {
-    var posterElement = document.createElement('article');
-    posterElement.classList.add('poster');
-    posterElement.innerHTML = `
-      <img class="poster-img" src="${poster.imageURL}" alt="nothin' to see here">
-      <h1 class="poster-title">${poster.title}</h1>
-      <h3 class="poster-quote">${poster.quote}</h3>
-    `;
-    savedPostersGrid.appendChild(posterElement);
+  savedPosters.forEach(function(poster) {
+    savedPostersHTML += 
+  
+    savedPostersGrid.innerHTML =
+      `<article class="poster">
+        <img class="poster-img" src="${poster.imageURL}">
+        <h1 class="poster-title">${poster.title}</h1>
+        <h3 class="poster-quote">${poster.quote}</h3>
+      </article>`
+  })
+  savedPostersGrid.innerHTML = savedPostersHTML;
+}
+
+function deleteSavedPoster(event) {
+  if (event.target.classList.contains('poster-img')) {
+    var posterId = parseInt(event.target.closest('.mini-poster').getAttribute('data-id'))
+
+    savedPosters = savedPosters.filter(function(poster) {
+      return poster.id !== posterId
+    })
+
+    displaySavedPosters()
+  }
+}
+
+function displaySavedPosters() {
+  var savedPostersHTML = '';
+
+  savedPosters.forEach(function(poster) {
+    savedPostersHTML += 
+      `<article class="mini-poster" data-id="${poster.id}">
+        <img class="poster-img" src="${poster.imageURL}">
+        <h2>${poster.title}</h2>
+        <h4>${poster.quote}</h4>
+      </article>`
   });
+  savedPostersGrid.innerHTML = savedPostersHTML;
 }
 
 getRandomContent();
