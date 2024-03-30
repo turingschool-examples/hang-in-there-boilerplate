@@ -210,7 +210,7 @@ function returnToMainPage() {
   mainPosterPage.classList.remove('hidden')
   savedPostersPage.classList.add('hidden')
   makeYourOwnPosterPage.classList.add('hidden')
-}
+
 
 function savedToMain (){
   savedPostersPage.classList.add('hidden')
