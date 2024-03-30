@@ -17,13 +17,17 @@ var backToMainButton = document.querySelector('.back-to-main')
 var mainPosterPage = document.querySelector(".main-poster")
 var makeYourOwnPosterPage = document.querySelector(".poster-form")
 var savedPostersPage = document.querySelector(".saved-posters")
-var savedPostersButton = document.querySelector(".show-saved")
+
 
 //iteration 2
 var imageInput = document.querySelector("#poster-image-url");
 var titleInput = document.querySelector("#poster-title");
 var quoteInput = document.querySelector("#poster-quote");
 var showMyPosterButton = document.querySelector('.make-poster');
+
+//iteration 3
+var saveThisPosterButton = document.querySelector('.save-poster');
+
 
 
 // we've provided you with some data to work with 👇
@@ -137,6 +141,10 @@ savedPostersButton.addEventListener('click', accessShowSavedPostersPage)
 nevermindButton.addEventListener('click', returnToMainPage)
 backToMainButton.addEventListener('click', returnToMainPage)
 showMyPosterButton.addEventListener('click', createMyPoster)
+//iteration 2
+
+//iteration3
+saveThisPosterButton.addEventListener('click', saveCurrentPoster)
 
 
 // functions and event handlers go here 👇
@@ -170,13 +178,6 @@ function createMyPoster(event){
   
   returnToMainPage()
 }
-
-/* function savePoster() {
-  if (!savedPosters.includes(currentPoster)){
-    savedPosters.push(currentPoster);
-  }
-} */
-
 function getRandomContent(){
   var imageIndex = getRandomIndex(images);
   var randomImage = images[imageIndex];
@@ -192,7 +193,7 @@ function getRandomContent(){
   posterTitle.innerText = randomTitle;
   posterQuote.innerText = randomQuote;
 
-//currentPoster = createPoster(randomImage, randomTitle, randomQuote)
+  currentPoster = createPoster(randomImage, randomTitle, randomQuote)
    
 }
 function accessMakeYourOwnPosterPage() {
@@ -210,5 +211,33 @@ function returnToMainPage() {
   savedPostersPage.classList.add('hidden')
   makeYourOwnPosterPage.classList.add('hidden')
 
-getRandomContent();
 
+function savedToMain (){
+  savedPostersPage.classList.add('hidden')
+  mainPosterPage.classList.remove('hidden')
+}
+
+function saveCurrentPoster() {
+  if (!savedPosters.some(poster => poster.id === currentPoster.id)) {
+    savedPosters.push(currentPoster);
+    displaySavedPosters();
+  }
+}
+
+function displaySavedPosters() {
+  var savedPostersGrid = document.querySelector('.saved-posters-grid');
+  savedPostersGrid.innerHTML = '';
+
+  savedPosters.forEach(poster => {
+    var posterElement = document.createElement('article');
+    posterElement.classList.add('poster');
+    posterElement.innerHTML = `
+      <img class="poster-img" src="${poster.imageURL}" alt="nothin' to see here">
+      <h1 class="poster-title">${poster.title}</h1>
+      <h3 class="poster-quote">${poster.quote}</h3>
+    `;
+    savedPostersGrid.appendChild(posterElement);
+  });
+}
+
+getRandomContent();
