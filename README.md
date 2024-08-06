@@ -4,13 +4,13 @@ A boilerplate repo.
 
 ## Set Up
 
-1. One teammate: fork this repository
+1. Fork this repository
 2. Clone down your new, forked repo
-3. cd into the repository
+3. `cd` into the repository
 4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
+5. Add your project manager as a collaborator on the repository
 
-Project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-1/hang-in-there-v2.html)
+Project spec & rubric can be found [here](https://curriculum.turing.edu/module2/projects/hang-in-there/index)
 
 To view your project:
 
@@ -31,13 +31,13 @@ ______________________________________________________
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
+[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to their GitHubs.)
+[//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
 
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
