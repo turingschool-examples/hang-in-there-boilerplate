@@ -102,9 +102,82 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+const posterImage = document.querySelector('.poster-img');
+const posterTitle = document.querySelector('.poster-title');
+const posterQuote = document.querySelector('.poster-quote');
+
+const mainPosterSection = document.querySelector('.main-poster');
+const posterFormSection = document.querySelector('.poster-form');
+const savedPostersSection = document.querySelector('.saved-posters');
+
 // event listeners go here 👇
+document.addEventListener('DOMContentLoaded', () => {
+  setNewPoster();
+  displayCurrentPoster();
+});
+
+document.querySelector('.show-random').addEventListener('click', () =>{
+  setNewPoster();
+  displayCurrentPoster();
+})
+
+document.querySelector('.save-poster').addEventListener('click', () =>{
+  displayNewSection(mainPosterSection, savedPostersSection)
+})
+
+// document.querySelector('.show-form').addEventListener('click', () => {
+//   displayNewSection(mainPosterSection, posterFormSection)
+// })
+
+document.querySelector('.make-poster').addEventListener('click', (event) => {
+  event.preventDefault();
+  setNewPosterFromForm();
+  displayCurrentPoster();
+  displayNewSection(mainPosterSection, posterFormSection);
+})
+
+document.querySelectorAll('.show-main, .show-form').forEach(button => {
+  button.addEventListener('click', () => {
+    displayNewSection(mainPosterSection, posterFormSection);
+  });
+});
 
 // functions and event handlers go here 👇
+function setNewPosterFromForm(){
+  var imageURL = document.querySelector('#poster-image-url').value;
+  var title = document.querySelector('#poster-title').value;
+  var quote = document.querySelector('#poster-quote').value;
+
+  setCurrentPoster(imageURL, title, quote)
+}
+
+function setNewPoster(){
+  var imageURL = images[getRandomIndex(images)];
+  var title = titles[getRandomIndex(titles)];
+  var quote = quotes[getRandomIndex(quotes)];
+
+  setCurrentPoster(imageURL, title, quote)
+}
+
+function displayCurrentPoster(){
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.textContent = currentPoster.title;
+  posterQuote.textContent = currentPoster.quote;
+}
+
+function setCurrentPoster(imageURL, title, quote){
+  currentPoster = {
+    imageURL: imageURL,
+    title: title,
+    quote: quote
+  };
+}
+
+function displayNewSection(section1, section2){
+  section1.classList.toggle('hidden');
+  section2.classList.toggle('hidden');
+}
+
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
