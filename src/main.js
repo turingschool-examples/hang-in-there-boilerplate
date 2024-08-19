@@ -98,7 +98,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 // query selector variables go here 👇
-var posterImage = document.querySelector(".poster-image");
+var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
 var randomPosterButton = document.querySelector(".show-random")
