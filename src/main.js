@@ -1,5 +1,7 @@
 // query selector variables go here 👇
-
+const mainPosterImage = document.querySelector(".poster-img");
+const mainPosterTitle = document.querySelector(".poster-title");
+const mainPosterQuote = document.querySelector(".poster-quote");
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -106,6 +108,8 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+// document.getElementById("myElement").classList.toggle("hidden"); USE THIS FOR TOGGLE OF PAGES
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -117,3 +121,13 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+function setupMainPoster() {
+  let image = getRandomIndex(images);
+  let title = getRandomIndex(titles);
+  let quote = getRandomIndex(quotes);
+  mainPosterImage.setAttribute("src", `${images[image]}`);
+  mainPosterTitle.innerHTML = titles[title];
+  mainPosterQuote.innerHTML = quotes[quote];
+}
+setupMainPoster();
