@@ -8,7 +8,7 @@ A boilerplate repo.
 2. Clone down your new, forked repo
 3. `cd` into the repository
 4. Open it in your text editor
-5. Add your project manager as a collaborator on the repository
+5. Add the instructors as collaborators on the repository
 
 Project spec & rubric can be found [here](https://curriculum.turing.edu/module2/projects/hang-in-there/index)
 
