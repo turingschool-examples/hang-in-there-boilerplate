@@ -2,6 +2,8 @@
 const mainPosterImage = document.querySelector(".poster-img");
 const mainPosterTitle = document.querySelector(".poster-title");
 const mainPosterQuote = document.querySelector(".poster-quote");
+const randomPosterButton = document.querySelector(".show-random");
+const makePosterButton = document.querySelector(".show-form");
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -105,7 +107,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+randomPosterButton.addEventListener("click", setupMainPoster);
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -130,4 +132,6 @@ function setupMainPoster() {
   mainPosterTitle.innerHTML = titles[title];
   mainPosterQuote.innerHTML = quotes[quote];
 }
+
+
 setupMainPoster();
