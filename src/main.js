@@ -117,3 +117,4 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
