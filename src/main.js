@@ -3,7 +3,7 @@ var  image = document.querySelector(".poster-img");
 var  title = document.querySelector(".poster-title");
 var  quote = document.querySelector(".poster-quote");
 
-var showRandomPosterButton = document.querySelector("show-random");
+// var showRandomPosterButton = document.querySelector("show-random");
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -114,7 +114,7 @@ var currentPoster;
 // The robot waits: Now, the robot (event listener) just sits there and waits for you to press the button.
 // You press the button: The robot sees it and does what you told it to do—like showing a message on the screen.
 
-showRandomPosterButton.addEventListener('click', randomPoster())
+// showRandomPosterButton.addEventListener('click', randomPoster())
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -131,8 +131,17 @@ function createPoster(imageURL, title, quote) {
 }
 
 function randomPoster() {
-  var image = images[getRandomIndex(images)];
-  var title = titles[getRandomIndex(titles)];
-  var quote = quotes[getRandomIndex(quotes)];
-  createPoster(image, title, quote);
+  var randomImage = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  var poster = createPoster(randomImage, randomTitle, randomQuote);
+  loadPoster(poster.imageURL, poster.title, poster.quote);
 }
+
+function loadPoster(posterImage, posterTitle, posterQuote) {
+  image.src = posterImage;
+  title.innerText = posterTitle;
+  quote.innerText = posterQuote;
+}
+
+randomPoster();
