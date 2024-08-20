@@ -164,3 +164,8 @@ function showFormView() {
   posterForm.classList.remove("hidden");
 }
 
+function showSavedPosters() {
+  savedPostersPage.classList.remove("hidden");
+  showMainPoster.classList.add("hidden");
+}
+
