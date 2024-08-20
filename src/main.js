@@ -121,13 +121,12 @@ document.querySelector('.show-random').addEventListener('click', () =>{
   displayCurrentPoster();
 })
 
-document.querySelector('.save-poster').addEventListener('click', () =>{
-  displayNewSection(mainPosterSection, savedPostersSection)
-})
+document.querySelectorAll('.show-saved, .back-to-main').forEach(button => {
+  button.addEventListener('click', () =>{
+    displayNewSection(mainPosterSection, savedPostersSection);
+  });
+});
 
-// document.querySelector('.show-form').addEventListener('click', () => {
-//   displayNewSection(mainPosterSection, posterFormSection)
-// })
 
 document.querySelector('.make-poster').addEventListener('click', (event) => {
   event.preventDefault();
