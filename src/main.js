@@ -198,15 +198,17 @@ function posterCreation(image, title, quote) {
 };
 
 function showSavedGrid(){
-  
-  let divOfPoster = document.createElement("div");
-  divOfPoster.className = "poster";
   savedPosters.forEach((poster) =>{
-    divOfPoster.innerHTML += `<img class="poster-img small" src="${poster.imageURL}" alt="nothin' to see here">`;
-    divOfPoster.innerHTML += `<h1 class="poster-title small">${poster.title}</h1>`;
-    divOfPoster.innerHTML += `<h3 class="poster-quote small">${poster.quote}</h3>`;
-    console.log(divOfPoster.classList);
-    savedSection.insertBefore(divOfPoster, backToMain);
+    let divOfPoster = document.createElement("div");
+    divOfPoster.className = "mini-poster";
+    divOfPoster.id = poster.id;
+    divOfPoster.innerHTML += `<img src="${poster.imageURL}" alt="nothin' to see here">`;
+    divOfPoster.innerHTML += `<h2>${poster.title}</h2>`;
+    divOfPoster.innerHTML += `<h4>${poster.quote}</h4>`;
+    
+    if (!savedSection.contains(divOfPoster)){
+      savedSection.insertBefore(divOfPoster, backToMain);
+    }
   })
 };
 
