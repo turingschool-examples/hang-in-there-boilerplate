@@ -118,7 +118,7 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-function populatePoster() {
+let populatePoster = () => {
   var imageInstance = images[getRandomIndex(images)];
   var titleInstance = titles[getRandomIndex(titles)];
   var quoteInstance = quotes[getRandomIndex(quotes)];
@@ -127,7 +127,19 @@ function populatePoster() {
 }
 
 let renderPoster = () => {
+  populatePoster()
   document.getElementsByClassName("poster-img")[0].setAttribute("src", currentPoster.imageURL)
   document.getElementsByClassName("poster-title")[0].innerHTML = currentPoster.title;
   document.getElementsByClassName("poster-quote")[0].innerHTML = currentPoster.quote;
+}
+
+let toggleMainHiddenState = () => {
+  var mainPoster = document.getElementsByClassName("main-poster")[0];
+  mainPoster.classList.toggle("hidden");
+}
+
+let toggleHiddenState = (classOfElementToShow) => {
+  toggleMainHiddenState()
+  var elementToShow = document.getElementsByClassName(`${classOfElementToShow}`)[0];
+  elementToShow.classList.toggle("hidden");
 }
