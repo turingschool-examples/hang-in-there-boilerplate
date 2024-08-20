@@ -2,8 +2,18 @@
 const mainPosterImage = document.querySelector(".poster-img");
 const mainPosterTitle = document.querySelector(".poster-title");
 const mainPosterQuote = document.querySelector(".poster-quote");
+
 const randomPosterButton = document.querySelector(".show-random");
 const makePosterButton = document.querySelector(".show-form");
+const savedPosterButton = document.querySelector(".show-saved");
+const returnToMain = document.querySelector(".show-main");
+const backToMain = document.querySelector(".back-to-main");
+const createPosterButton = document.querySelector(".make-poster");
+
+const mainSection = document.querySelector(".main-poster");
+const formSection = document.querySelector(".poster-form");
+const savedSection = document.querySelector(".saved-posters");
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -108,6 +118,28 @@ var currentPoster;
 
 // event listeners go here 👇
 randomPosterButton.addEventListener("click", setupMainPoster);
+
+makePosterButton.addEventListener("click", function(){
+  hiddenswitch('form');
+});
+
+savedPosterButton.addEventListener("click", function(){
+  hiddenswitch('saved');
+});
+
+returnToMain.addEventListener("click", function(){
+  hiddenswitch('form');
+});
+
+backToMain.addEventListener("click", function(){
+  hiddenswitch('saved');
+});
+
+createPosterButton.addEventListener("click", function(){
+  hiddenswitch('saved');
+});
+
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -133,5 +165,13 @@ function setupMainPoster() {
   mainPosterQuote.innerHTML = quotes[quote];
 }
 
+function hiddenswitch(key) {
+  mainSection.classList.toggle("hidden");
+  if (key === 'form'){
+    formSection.classList.toggle("hidden");
+  } else if (key === 'saved'){
+    savedSection.classList.toggle("hidden");
+  }
+}
 
 setupMainPoster();
