@@ -18,6 +18,7 @@ var form = document.querySelector("form");
 var inputImage = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
+var savedGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -130,6 +131,7 @@ makePosterButton.addEventListener("click", function(){
 
 savedPosterButton.addEventListener("click", function(){
   hiddenswitch('saved');
+  showSavedGrid();
 });
 
 returnToMain.addEventListener("click", function(){
@@ -196,22 +198,16 @@ function posterCreation(image, title, quote) {
 };
 
 function showSavedGrid(){
+  
   let divOfPoster = document.createElement("div");
+  divOfPoster.className = "poster";
   savedPosters.forEach((poster) =>{
-    let imgOfPoster = document.createElement("img");
-    // edit element to contain image source
-    // edit element to have class poster-img & small
-    // add element to div
-    let titleOfPoster = document.createElement("h1");
-    // edit element to contain h1 text
-    // edit element to have class poster-title & small
-    // add element to div
-    let quoteOfPoster = document.createElement("h3");
-    // edit element to contain h3 text
-    // edit element to have class poster-quote & small
-    // add element to div
-  });
-  document.insertBefore(divOfPoster, backToMain);
+    divOfPoster.innerHTML += `<img class="poster-img small" src="${poster.imageURL}" alt="nothin' to see here">`;
+    divOfPoster.innerHTML += `<h1 class="poster-title small">${poster.title}</h1>`;
+    divOfPoster.innerHTML += `<h3 class="poster-quote small">${poster.quote}</h3>`;
+    console.log(divOfPoster.classList);
+    savedSection.insertBefore(divOfPoster, backToMain);
+  })
 };
 
 setupMainPoster();
