@@ -169,3 +169,7 @@ function showSavedPosters() {
   showMainPoster.classList.add("hidden");
 }
 
+function backToMainPage() {
+  posterForm.classList.add("hidden");
+  showMainPoster.classList.remove("hidden");
+}
