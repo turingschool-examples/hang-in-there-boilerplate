@@ -117,3 +117,11 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+function populatePoster() {
+  var imageInstance = images[getRandomIndex(images)];
+  var titleInstance = titles[getRandomIndex(titles)];
+  var quoteInstance = quotes[getRandomIndex(quotes)];
+
+  test = createPoster(imageInstance, titleInstance, quoteInstance);
+}
