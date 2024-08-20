@@ -114,7 +114,8 @@ var currentPoster;
 // The robot waits: Now, the robot (event listener) just sits there and waits for you to press the button.
 // You press the button: The robot sees it and does what you told it to do—like showing a message on the screen.
 
-showRandomPosterButton.addEventListener('click')
+showRandomPosterButton.addEventListener('click', randomPoster())
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -127,4 +128,11 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function randomPoster() {
+  var image = images[getRandomIndex(images)];
+  var title = titles[getRandomIndex(titles)];
+  var quote = quotes[getRandomIndex(quotes)];
+  createPoster(image, title, quote);
 }
