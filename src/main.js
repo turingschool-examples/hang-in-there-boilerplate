@@ -123,5 +123,8 @@ function populatePoster() {
   var titleInstance = titles[getRandomIndex(titles)];
   var quoteInstance = quotes[getRandomIndex(quotes)];
 
-  test = createPoster(imageInstance, titleInstance, quoteInstance);
+  currentPoster = createPoster(imageInstance, titleInstance, quoteInstance);
+  document.getElementsByClassName("poster-img")[0].setAttribute("src", currentPoster.imageURL)
+  document.getElementsByClassName("poster-title")[0].innerHTML = currentPoster.title;
+  document.getElementsByClassName("poster-quote")[0].innerHTML = currentPoster.quote;
 }
