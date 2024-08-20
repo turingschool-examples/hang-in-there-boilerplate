@@ -14,6 +14,11 @@ const mainSection = document.querySelector(".main-poster");
 const formSection = document.querySelector(".poster-form");
 const savedSection = document.querySelector(".saved-posters");
 
+var form = document.querySelector("form");
+var inputImage = document.querySelector("#poster-image-url");
+var inputTitle = document.querySelector("#poster-title");
+var inputQuote = document.querySelector("#poster-quote");
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -135,18 +140,22 @@ backToMain.addEventListener("click", function(){
   hiddenswitch('saved');
 });
 
-createPosterButton.addEventListener("click", function(){
-  hiddenswitch('saved');
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  var image = inputImage.value;
+  var title = inputTitle.value;
+  var quote = inputQuote.value;
+  posterCreation(image, title, quote);
+  printPoster(image, title, quote);
+  hiddenswitch('form');
 });
-
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
-// document.getElementById("myElement").classList.toggle("hidden"); USE THIS FOR TOGGLE OF PAGES
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -154,16 +163,20 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
-}
+};
 
 function setupMainPoster() {
   let image = getRandomIndex(images);
   let title = getRandomIndex(titles);
   let quote = getRandomIndex(quotes);
-  mainPosterImage.setAttribute("src", `${images[image]}`);
-  mainPosterTitle.innerHTML = titles[title];
-  mainPosterQuote.innerHTML = quotes[quote];
-}
+  printPoster(images[image], titles[title], quotes[quote]);
+};
+
+function printPoster(image, title, quote) {
+  mainPosterImage.setAttribute("src", image);
+  mainPosterTitle.innerHTML = title;
+  mainPosterQuote.innerHTML = quote;
+};
 
 function hiddenswitch(key) {
   mainSection.classList.toggle("hidden");
@@ -172,6 +185,14 @@ function hiddenswitch(key) {
   } else if (key === 'saved'){
     savedSection.classList.toggle("hidden");
   }
-}
+};
+
+function posterCreation(image, title, quote) {
+  currentPoster = createPoster(image, title, quote);
+  savedPosters.push(currentPoster);
+  images.push(image);
+  titles.push(title);
+  quotes.push(quote);
+};
 
 setupMainPoster();
