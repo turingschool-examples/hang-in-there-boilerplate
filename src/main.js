@@ -2,6 +2,8 @@
 var  image = document.querySelector(".poster-img");
 var  title = document.querySelector(".poster-title");
 var  quote = document.querySelector(".poster-quote");
+
+var showRandomPosterButton = document.querySelector("show-random");
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -106,6 +108,13 @@ var currentPoster;
 
 // event listeners go here 👇
 
+// button.eventListener('click')
+// First, you find the button: Just like finding the button on your toy, we use code to find the button on the web page.
+// Then, you tell the robot what to do: You say, "Hey robot, when this button is pressed, show a message!"
+// The robot waits: Now, the robot (event listener) just sits there and waits for you to press the button.
+// You press the button: The robot sees it and does what you told it to do—like showing a message on the screen.
+
+showRandomPosterButton.addEventListener('click')
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
