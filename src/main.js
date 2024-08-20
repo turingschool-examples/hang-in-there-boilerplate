@@ -195,4 +195,23 @@ function posterCreation(image, title, quote) {
   quotes.push(quote);
 };
 
+function showSavedGrid(){
+  let divOfPoster = document.createElement("div");
+  savedPosters.forEach((poster) =>{
+    let imgOfPoster = document.createElement("img");
+    // edit element to contain image source
+    // edit element to have class poster-img & small
+    // add element to div
+    let titleOfPoster = document.createElement("h1");
+    // edit element to contain h1 text
+    // edit element to have class poster-title & small
+    // add element to div
+    let quoteOfPoster = document.createElement("h3");
+    // edit element to contain h3 text
+    // edit element to have class poster-quote & small
+    // add element to div
+  });
+  document.insertBefore(divOfPoster, backToMain);
+};
+
 setupMainPoster();
