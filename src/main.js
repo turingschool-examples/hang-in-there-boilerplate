@@ -101,13 +101,31 @@ var quotes = [
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
-var randomPosterButton = document.querySelector(".show-random")
+var randomPosterButton = document.querySelector(".show-random");
+var saveButton = document.querySelector(".save-poster");
+var showSavedPosterButton = document.querySelector(".show-saved");
+var showFormButton = document.querySelector(".show-form");
+var makePosterButton = document.querySelector(".make-poster");
+var showMainButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
+var posterForm = document.querySelector(".poster-form");
+var showMainPoster = document.querySelector(".main-poster");
+var savedPostersPage = document.querySelector(".saved-posters");
 
 var savedPosters = [];
 var currentPoster;
 
 addEventListener("load", showRandomPoster);
-randomPosterButton.addEventListener("click", showRandomPoster)
+randomPosterButton.addEventListener("click", showRandomPoster);
+showFormButton.addEventListener("click", showFormView);
+showSavedPosterButton.addEventListener("click", showSavedPosters);
+showMainButton.addEventListener("click", backToMainPage);
+backToMainButton.addEventListener("click", backToMainPage)
+// saveButton.addEventListener("click", );
+
+// makePosterButton.addEventListener("click",);
+
+
 
 // event listeners go here 👇
 
@@ -140,3 +158,9 @@ function showRandomPoster() {
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   posterImage.src = images[getRandomIndex(images)];
 }
+
+function showFormView() {
+  showMainPoster.classList.add("hidden");
+  posterForm.classList.remove("hidden");
+}
+
