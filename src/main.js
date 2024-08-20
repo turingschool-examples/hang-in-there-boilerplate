@@ -104,6 +104,7 @@ var currentPoster;
 
 // event listeners go here 👇
 document.querySelector(".show-random").addEventListener("click", updatePoster)
+document.querySelector('.show-form').addEventListener('click', showForm);
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -130,4 +131,9 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function showForm() {
+  document.querySelector('.poster-form').classList.remove('hidden');
+  document.querySelector('.main-poster').classList.add('hidden');
 }
