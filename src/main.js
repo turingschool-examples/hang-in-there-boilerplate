@@ -140,10 +140,6 @@ backToMain.addEventListener("click", function(){
   hiddenswitch('saved');
 });
 
-createPosterButton.addEventListener("click", function(){
-  hiddenswitch('saved');
-});
-
 form.addEventListener("submit", function(event) {
   event.preventDefault();
   var image = inputImage.value;
@@ -151,7 +147,7 @@ form.addEventListener("submit", function(event) {
   var quote = inputQuote.value;
   posterCreation(image, title, quote);
   printPoster(image, title, quote);
-  hiddenswitch("form");
+  hiddenswitch('form');
 });
 
 // functions and event handlers go here 👇
@@ -159,7 +155,7 @@ form.addEventListener("submit", function(event) {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -167,20 +163,20 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
-}
+};
 
 function setupMainPoster() {
   let image = getRandomIndex(images);
   let title = getRandomIndex(titles);
   let quote = getRandomIndex(quotes);
   printPoster(images[image], titles[title], quotes[quote]);
-}
+};
 
 function printPoster(image, title, quote) {
   mainPosterImage.setAttribute("src", image);
   mainPosterTitle.innerHTML = title;
   mainPosterQuote.innerHTML = quote;
-}
+};
 
 function hiddenswitch(key) {
   mainSection.classList.toggle("hidden");
@@ -189,7 +185,7 @@ function hiddenswitch(key) {
   } else if (key === 'saved'){
     savedSection.classList.toggle("hidden");
   }
-}
+};
 
 function posterCreation(image, title, quote) {
   currentPoster = createPoster(image, title, quote);
@@ -197,6 +193,6 @@ function posterCreation(image, title, quote) {
   images.push(image);
   titles.push(title);
   quotes.push(quote);
-}
+};
 
 setupMainPoster();
