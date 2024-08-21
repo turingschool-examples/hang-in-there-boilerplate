@@ -111,12 +111,14 @@ var backToMainButton = document.querySelector(".back-to-main");
 var posterForm = document.querySelector(".poster-form");
 var showMainPoster = document.querySelector(".main-poster");
 var savedPostersPage = document.querySelector(".saved-posters");
+var savedPostersGrid = document.querySelector(".saved-posters-grid")
+
+var userImage = document.querySelector("#poster-image-url");
+var userTitle = document.querySelector("#poster-title");
+var userQuote = document.querySelector("#poster-quote");
 
 //global variables
 var savedPosters = [];
-var userImages = [];
-var userTitles = [];
-var userQuotes = [];
 
 var currentPoster;
 
@@ -124,12 +126,11 @@ var currentPoster;
 addEventListener("load", showRandomPoster);
 randomPosterButton.addEventListener("click", showRandomPoster);
 showFormButton.addEventListener("click", showFormView);
-showSavedPosterButton.addEventListener("click", showSavedPosters);
+showSavedPosterButton.addEventListener("click", showSavedPostersView);
 showMainButton.addEventListener("click", backToMainPage);
 backToMainButton.addEventListener("click", backToMainPage)
-// saveButton.addEventListener("click", );
-
 makePosterButton.addEventListener("click", showUserPoster);
+saveButton.addEventListener("click", saveGeneratedPoster);
 
 // functions and event handlers go here 👇
 
@@ -149,6 +150,13 @@ function showRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   posterImage.src = images[getRandomIndex(images)];
+  
+  currentPoster = (posterImage.src, posterTitle.innerText, posterQuote.innerText)
+  images.push(posterImage.src);
+  quotes.push(posterQuote.innerText);
+  titles.push(posterTitle.innerText);
+  
+  return currentPoster;
 }
 
 function showFormView() {
@@ -156,7 +164,8 @@ function showFormView() {
   posterForm.classList.remove("hidden");
 }
 
-function showSavedPosters() {
+function showSavedPostersView() {
+  showSavedPosters();
   savedPostersPage.classList.remove("hidden");
   showMainPoster.classList.add("hidden");
 }
@@ -166,28 +175,55 @@ function backToMainPage() {
   showMainPoster.classList.remove("hidden");
 }
 
-var userImage = document.querySelector("#poster-image-url");
-var userTitle = document.querySelector("#poster-title");
-var userQuote = document.querySelector("#poster-quote");
-
 function createUserPoster() {
   posterTitle.innerText = userTitle.value;
   posterQuote.innerText = userQuote.value;
   posterImage.src = userImage.value;
-  
   // currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText)
   currentPoster = (posterImage.src, posterTitle.innerText, posterQuote.innerText)
-
-  userImages.push(posterImage.src);
-  userTitles.push(posterTitle.innerText);
-  userQuotes.push(posterQuote.innerText);
-
+  images.push(posterImage.src);
+  quotes.push(posterQuote.innerText);
+  titles.push(posterTitle.innerText);
+  
   return currentPoster;
 }
 
 function showUserPoster(event) {
   event.preventDefault();
   showMainPoster.classList.remove("hidden");
-  createUserPoster();
   posterForm.classList.add("hidden");
+  createUserPoster();
 }
+
+function saveGeneratedPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+}
+
+function showSavedPosters() {
+  savedPostersGrid.innerHTML = "";
+  let newInnerHTML = "";
+  for (let i = 0; i < savedPosters.length; i++) {
+    newInnerHTML += makeHTMLFromPoster(savedPosters[i]);
+  }
+  savedPostersGrid.innerHTML = newInnerHTML;
+}
+
+function makeHTMLFromPoster(poster) {
+  return `
+    <article class="poster">
+      <img class="poster-img" src="${poster.images}" alt="Poster Image">
+      <h1 class="poster-title">${poster.titles}</h1>
+      <h3 class="poster-quote">${poster.quotes}</h3>
+    </article>
+
+    <label for="poster-image-url">${poster.images}</label>
+    <input type="text" name="poster-image-url" id="poster-image-url" placeholder="https://gph.is/2n553Ra">
+    <label for="poster-title">${poster.titles}</label>
+    <input type="text" name="poster-title" id="poster-title" placeholder="Growth Mindset">
+    <label for="poster-quote">${poster.quotes}</label>
+    <input type="text" name="poster-quote" id="poster-quote" placeholder="Hang in there!">
+  `;
+}
+
