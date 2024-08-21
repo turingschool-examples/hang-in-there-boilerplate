@@ -109,6 +109,10 @@ var currentPoster;
 
 // event listeners go here 👇
 
+randomPosterButton.addEventListener('click', getRandomPoster);
+window.onload = function() {
+  getRandomPoster();
+}
 
 
 // functions and event handlers go here 👇
