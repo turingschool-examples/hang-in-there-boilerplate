@@ -111,11 +111,15 @@ var backToMainButton = document.querySelector(".back-to-main");
 var posterForm = document.querySelector(".poster-form");
 var showMainPoster = document.querySelector(".main-poster");
 var savedPostersPage = document.querySelector(".saved-posters");
-var savedPostersGrid = document.querySelector(".saved-posters-grid")
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 var userImage = document.querySelector("#poster-image-url");
 var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
+
+var unmotivationalPostersView = document.querySelector(".unmotivational-posters");
+var unmotivationalPostersGrid = document.querySelector(".unmotivational-posters-grid");
+
 
 //global variables
 var savedPosters = [];
@@ -173,6 +177,7 @@ function showSavedPostersView() {
 function backToMainPage() {
   posterForm.classList.add("hidden");
   showMainPoster.classList.remove("hidden");
+  savedPostersPage.classList.add("hidden");
 }
 
 function createUserPoster() {
@@ -219,3 +224,4 @@ function showSavedPosters() {
   }
   savedPostersGrid.innerHTML = newInnerHTML;
 }
+
