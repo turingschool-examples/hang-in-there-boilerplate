@@ -103,9 +103,9 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-document.getElementsByClassName("show-random")[0].addEventListener('click', renderPoster);
-
-
+document.getElementsByClassName("show-random")[0].addEventListener('click', function() {
+  renderPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+});
 document.getElementsByClassName("show-saved")[0].addEventListener('click', function() {
   toggleHiddenState('saved-posters');
 });
@@ -120,13 +120,12 @@ document.getElementsByClassName("show-main")[0].addEventListener('click', functi
 });
 
 document.getElementsByClassName("make-poster")[0].addEventListener('click', function() {
-  createCustomPoster()
+  createCustomPoster(document.getElementById("poster-image-URL").value, document.getElementById("poster-title").textContent, document.getElementById("poster-quote").textContent);
 });
-
-
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -139,17 +138,12 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-function populatePoster() {
-  var imageInstance = images[getRandomIndex(images)];
-  var titleInstance = titles[getRandomIndex(titles)];
-  var quoteInstance = quotes[getRandomIndex(quotes)];
-
+function populatePoster(imageInstance, titleInstance, quoteInstance) {
   currentPoster = createPoster(imageInstance, titleInstance, quoteInstance);
-  event.preventDefault();
 }
 
-function renderPoster() {
-  populatePoster();
+function renderPoster(imageInstance, titleInstance, quoteInstance) {
+  populatePoster(imageInstance, titleInstance, quoteInstance);
   document.getElementsByClassName("poster-img")[0].setAttribute("src", currentPoster.imageURL);
   document.getElementsByClassName("poster-title")[0].innerHTML = currentPoster.title;
   document.getElementsByClassName("poster-quote")[0].innerHTML = currentPoster.quote;
@@ -166,32 +160,23 @@ function toggleHiddenState(classOfElementToShow) {
   elementToShow.classList.toggle("hidden");
 }
 
-function populateCustomPoster() {
-  var imageInstance = document.getElementById("poster-image-URL");
-  var titleInstance = document.getElementById("poster-title");
-  var quoteInstance = document.getElementById("#poster-quote");
-
-  currentPoster = createPoster(imageInstance, titleInstance, quoteInstance);
-}
-
 function saveCurrentToSavedArray() {
   savedPosters.push(currentPoster);
 }
 
-function renderCustomPoster() {
-  populateCustomPoster();
-  document.getElementsByClassName("poster-img")[0].setAttribute("src", currentPoster.imageURL);
-  document.getElementsByClassName("poster-title")[0].innerHTML = currentPoster.title;
-  document.getElementsByClassName("poster-quote")[0].innerHTML = currentPoster.quote;
-}
 
-function createCustomPoster() {
-  // Make custom poster
-  populateCustomPoster();
+function createCustomPoster(imageInstance, titleInstance, quoteInstance) {
+  // Make custom poster && populate DOM with current poster object
+  renderPoster(imageInstance, titleInstance, quoteInstance);
   // save custom poster to savedPosters array
   saveCurrentToSavedArray();
   //render the main page
   toggleHiddenState('poster-form');
-  // populate DOM with current poster object
-  renderCustomPoster();
 }
+
+window.addEventListener('load', function() {
+  renderPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+});
+
+// // FOR CUSTOM POSTERS
+// document.getElementById("poster-image-URL"), document.getElementById("poster-title"), document.getElementById("poster-quote");
