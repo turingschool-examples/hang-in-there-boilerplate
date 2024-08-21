@@ -1,7 +1,15 @@
 // query selector variables go here 👇
+// var randomPosterButton = document.querySelector('.show-random')
+// var createPosterButton = document.querySelector('.show-form')
+// var showSavedButton = document.querySelector('.show-saved')
+// var savePosterButton = document.querySelector('.save-poster')
+
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+
 
 // we've provided you with some data to work with 👇
-// tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -60,52 +68,58 @@ var titles = [
   "wisdom"
 ];
 var quotes = [
-  "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
-  "You are braver than you believe, stronger than you seem and smarter than you think.",
-  "You are confined only by the walls you build yourself.",
-  "The one who has confidence gains the confidence of others.",
-  "Act as if what you do makes a difference. It does.",
-  "Success is not final, failure is not fatal: it is the courage to continue that counts.",
-  "Never bend your head. Always hold it high. Look the world straight in the eye.",
-  "What you get by achieving your goals is not as important as what you become by achieving your goals.",
-  "Believe you can and you're halfway there.",
-  "When you have a dream, you've got to grab it and never let go.",
-  "I can't change the direction of the wind, but I can adjust my sails to always reach my destination.",
-  "No matter what you're going through, there's a light at the end of the tunnel.",
-  "It is our attitude at the beginning of a difficult task which, more than anything else, will affect its successful outcome.",
-  "Life is like riding a bicycle. To keep your balance, you must keep moving.",
-  "Just don't give up trying to do what you really want to do. Where there is love and inspiration, I don't think you can go wrong.",
-  'Limit your "always" and your "nevers."',
-  "You are never too old to set another goal or to dream a new dream.",
-  "Try to be a rainbow in someone else's cloud.",
-  "You do not find the happy life. You make it.",
-  "Inspiration comes from within yourself. One has to be positive. When you're positive, good things happen.",
-  "Sometimes you will never know the value of a moment, until it becomes a memory.",
-  "The most wasted of days is one without laughter.",
-  "You must do the things you think you cannot do.",
-  "It isn't where you came from. It's where you're going that counts.",
-  "It is never too late to be what you might have been.",
-  "Happiness often sneaks in through a door you didn't know you left open.",
-  "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
-  "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
-  "Be the change that you wish to see in the world.",
-  "Let us make our future now, and let us make our dreams tomorrow's reality.",
-  "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
-  "If I cannot do great things, I can do small things in a great way.",
-  "Don't wait. The time will never be just right.",
-  "With the right kind of coaching and determination you can accomplish anything.",
-  "If you have good thoughts they will shine out of your face like sunbeams and you will always look lovely.",
-  "No matter what people tell you, words and ideas can change the world.",
-  "Each person must live their life as a model for others.",
-  "A champion is defined not by their wins but by how they can recover when they fall."
+  "Don't wait until it's urgent. Just go pee. Minimize your potential for bladder stones.",
+  "Don’t downgrade your ego to fit your reality, upgrade your imagination to match your ego.",
+  "You are braver than you believe, stronger than you seem, and smarter than you think. So, stop acting cowardly, weak, and stupid.",
+  "We forge the chains we wear in life.",
+  "Those confident ones, whose confidence is unwaivering, gain the confidence of others by being so dang confident.",
+  "Act as if what you do makes a difference. Even if it doesn't.",
+  "Success is not success, failure is not failure: everything is relative.",
+  "Never bend your head. Always hold it high. Look the world straight in the eye and headbutt it right in the nose.",
+  "What you get by achieving your goals is not as important as what you become by achieving your goals. - The Unibomber",
+  "Believe you can and you're halfway there. - John Wayne Gacy",
+  "When you have a dream, you've got to grab it by the throat and never let it go. That's how you kill your sleep paralysis demon.",
+  "I can't change the direction of the wind, but I can make my own wind with my butt.",
+  "No matter what you're going through, there's a light at the end of the tunnel. Do not go towards the light.",
+  "It is your appetite at the beginning of a difficult task which, more than anything else, will affect your appetite at the outcome.",
+  "Life is like riding a bicycle. Your butt will hurt and you wil sweat a lot.",
+  "Just don't give up trying to do what you really want to do. Where there is love and inspiration, I don't think you can go wrong.  -Charles Manson",
+  "Limit your intake of saturated fats, sodium, and refined sugars.",
+  "You are never too old to set another goal or to dream a new dream.  - Sam Little ",
+  "Try to be a rainbow in the dark.",
+  "You do not find the happy life. It finds you...",
+  "Inspiration comes from within your imagination. One has to be vigilant in their positivity. When you're aggressively positive, good things might happen sometimes... maybe.",
+  "You will never know the value of a moment, until it becomes a memory. - Hannibal Lecter",
+  "The most wasted of days are those spent without doing crimes.",
+  "You must do the things. You must.",
+  "It isn't when you came from. It's the how and the why.",
+  "It is never too late to try eating an entire ham.",
+  "Happiness often sneaks in through a door you didn't know you left open. Then, Happiness robs your house. Don't forget to close and lock your doors. Happiness needs money to buy drugs.",
+  "We must be willing to let go of the life we planned so as to have space for the life that is waiting for us. Keep your expectations low and you'll rarely be disappointed.",
+  "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination. Imagine all of the imaginations and all of imagining that they could imagine. Just imagine it.",
+  "Be the food that you wish to taste in the world.",
+  "Let us make our future our past, and let us make our dreams tomorrow's nightmare.",
+  "You don't always need to go to the bathroom. Sometimes you just need to breathe, trust, let go, and see what happens.",
+  "If I cannot do things, I can maybe do other things instead.",
+  "Don't wait! Call now to start saving money today!",
+  "With the right kind of coaching, determination, and networking skills you potentially might be able to accomplish something someday.",
+  "If you have good thoughts they will shine out of your eyes like sunbeams and and burn evil to a crispy bacon like texture.",
+  "No matter what people tell you, words and ideas can't change the world as much as money and blackmail.",
+  "Each person must live their life as a model for an art class.",
+  "A champion is defined not by their wins but by their losses."
 ];
 var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+// add code to listen for and react to button clicks instead of doing it in the html
+document.querySelector('.show-random').addEventListener('click', createRandomPoster());
+document.querySelector('.show-form').addEventListener('click', toggleCreateNew());
+document.querySelector('.show-saved').addEventListener('click', toggleShowSaved());
+// document.querySelector('.save-poster').addEventListener('click', );
+
 
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -115,5 +129,40 @@ function createPoster(imageURL, title, quote) {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
+    quote: quote
+  };
 }
+
+function createRandomPoster() {
+  const randomImage = images[getRandomIndex(images)];
+  const randomTitle = titles[getRandomIndex(titles)];
+  const randomQuote = quotes[getRandomIndex(quotes)];
+  
+  return updatePosterContent(randomImage, randomTitle, randomQuote);
+}
+
+function updatePosterContent(imageURL, title, quote) {
+  posterImage.src = imageURL;
+  posterTitle.innerText = title;
+  posterQuote.innerText = quote;
+
+  return createPoster(imageURL, title, quote);
+}
+
+
+function toggleDisplay(elementSelectors) {
+  elementSelectors.forEach(selector => {
+    let element = document.querySelector(selector);
+    element.style.display = window.getComputedStyle(element).display === "none" ? "block" : "none";
+  });
+}
+
+function toggleCreateNew() {
+  toggleDisplay(['.main-poster', '.poster-form']);
+}
+
+function toggleShowSaved() {
+  toggleDisplay(['.main-poster', '.saved-posters']);
+}
+
+window.onload = createRandomPoster
