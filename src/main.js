@@ -1,4 +1,3 @@
-
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -129,8 +128,8 @@ const contentGenerator = () => {
 window.addEventListener('load', contentGenerator);
 randomButton.addEventListener('click', contentGenerator);
 
-const mainPage = document.querySelector('.main-poster')
-const posterFormParent = document.querySelector('.poster-form')
+const mainPage = document.querySelector('.main-poster');
+const posterFormParent = document.querySelector('.poster-form');
 
 const customPosterButton = document.querySelector('.show-form');
 customPosterButton.addEventListener('click', () => {
@@ -141,3 +140,10 @@ const switchHidden = (element1, element2) => {
   element1.classList.toggle('hidden');
   element2.classList.toggle('hidden');
 };
+
+const savedPostersPage = document.querySelector('.saved-posters');
+const savedPostersButton = document.querySelector('.show-saved');
+
+savedPostersButton.addEventListener('click', () => {
+  switchHidden(mainPage, savedPostersPage)
+});
