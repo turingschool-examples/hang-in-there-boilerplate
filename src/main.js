@@ -1,7 +1,7 @@
-var showRandom = document.querySelector('.show-random');
-var posterImg = document.querySelector('.poster-img');
-var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querySelector('.poster-quote');
+var showRandom = document.querySelector(".show-random");
+var posterImg = document.querySelector(".poster-img");
+var posterTitle = document.querySelector(".poster-title");
+var posterQuote = document.querySelector(".poster-quote");
 
 var images = [
     "./assets/bees.jpg",
@@ -104,7 +104,7 @@ var savedPosters = [];
 var currentPoster;
 
 window.addEventListener("load", assemblePoster)
-showRandom.addEventListener('click', assemblePoster)
+showRandom.addEventListener("click", assemblePoster)
 
 function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
