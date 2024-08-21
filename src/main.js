@@ -114,12 +114,13 @@ var savedPostersPage = document.querySelector(".saved-posters");
 
 //global variables
 var savedPosters = [];
-var savedImages = [];
-var savedTitles = [];
-var savedQuotes = [];
+var userImages = [];
+var userTitles = [];
+var userQuotes = [];
 
 var currentPoster;
 
+// event listeners go here 👇
 addEventListener("load", showRandomPoster);
 randomPosterButton.addEventListener("click", showRandomPoster);
 showFormButton.addEventListener("click", showFormView);
@@ -130,12 +131,8 @@ backToMainButton.addEventListener("click", backToMainPage)
 
 makePosterButton.addEventListener("click", showUserPoster);
 
-
-
-// event listeners go here 👇
-
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -147,16 +144,6 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
-
-// function createPoster(imageURL, title, quote) {
-//   var poster = {
-//     id: Date.now(), 
-//     imageURL: imageURL, 
-//     title: title, 
-//     quote: quote
-//   };
-//   return poster;
-// };
 
 function showRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
@@ -183,12 +170,24 @@ var userImage = document.querySelector("#poster-image-url");
 var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
 
+function createUserPoster() {
+  posterTitle.innerText = userTitle.value;
+  posterQuote.innerText = userQuote.value;
+  posterImage.src = userImage.value;
+  
+  // currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText)
+  currentPoster = (posterImage.src, posterTitle.innerText, posterQuote.innerText)
+
+  userImages.push(posterImage.src);
+  userTitles.push(posterTitle.innerText);
+  userQuotes.push(posterQuote.innerText);
+
+  return currentPoster;
+}
+
 function showUserPoster(event) {
-  event.preventDefault()
-
-images.push(userImage)
-titles.push(userTitle)
-quotes.push(userQuote)
-
-backToMainPage()
+  event.preventDefault();
+  showMainPoster.classList.remove("hidden");
+  createUserPoster();
+  posterForm.classList.add("hidden");
 }
