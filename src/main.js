@@ -1,26 +1,27 @@
-var showRandom = document.querySelector(".show-random");
-var showForm = document.querySelector(".show-form");
-var showSaved = document.querySelector(".show-saved");
-var showMain = document.querySelector(".show-main");
-var backToMain = document.querySelector(".back-to-main");
-//********* */
-var showMyPoster = document.querySelector(".make-poster");
+let showRandom = document.querySelector(".show-random");
+let showForm = document.querySelector(".show-form");
+let showSaved = document.querySelector(".show-saved");
+let showMain = document.querySelector(".show-main");
 
-var posterForm = document.querySelector(".poster-form");
-var mainPoster = document.querySelector(".main-poster");
-var showPosters = document.querySelector(".saved-posters");
+let backToMain = document.querySelector(".back-to-main");
 
-var posterImg = document.querySelector(".poster-img");
-var posterTitle = document.querySelector(".poster-title");
-var posterQuote = document.querySelector(".poster-quote");
+let showMyPoster = document.querySelector(".make-poster");
 
-var image = document.querySelector("#poster-image-url");
-var title = document.querySelector("#poster-title");
-var quote = document.querySelector("#poster-quote");
+let posterForm = document.querySelector(".poster-form");
+let mainPoster = document.querySelector(".main-poster");
+let showPosters = document.querySelector(".saved-posters");
 
-var form = document.querySelector('form')
+let posterImg = document.querySelector(".poster-img");
+let posterTitle = document.querySelector(".poster-title");
+let posterQuote = document.querySelector(".poster-quote");
 
-var images = [
+let image = document.querySelector("#poster-image-url");
+let title = document.querySelector("#poster-title");
+let quote = document.querySelector("#poster-quote");
+
+let form = document.querySelector('form')
+
+let images = [
     "./assets/bees.jpg",
     "./assets/bridge.jpg",
     "./assets/butterfly.jpg",
@@ -40,7 +41,7 @@ var images = [
     "./assets/tiger.jpg",
     "./assets/turtle.jpg"
 ];
-var titles = [
+let titles = [
     "determination",
     "success",
     "inspiration",
@@ -77,7 +78,7 @@ var titles = [
     "understanding",
     "wisdom"
 ];
-var quotes = [
+let quotes = [
     "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
     "You are braver than you believe, stronger than you seem and smarter than you think.",
     "You are confined only by the walls you build yourself.",
@@ -117,12 +118,11 @@ var quotes = [
     "Each person must live their life as a model for others.",
     "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
-
+let savedPosters = [];
+let currentPoster;
 
 //*********************************************** */
-// window.addEventListener("load", assemblePoster);
+window.addEventListener("load", assemblePoster);
 showRandom.addEventListener("click", assemblePoster);
 
 showForm.addEventListener("click", function() {
@@ -161,20 +161,15 @@ function createPoster(imageURL, title, quote) {
 }
 
 function assemblePoster() {
-    var randomImage = images[getRandomIndex(images)];
-    var randomTitle = titles[getRandomIndex(titles)];
-    var randomQuote = quotes[getRandomIndex(quotes)];
+    let randomImage = images[getRandomIndex(images)];
+    let randomTitle = titles[getRandomIndex(titles)];
+    let randomQuote = quotes[getRandomIndex(quotes)];
 
     posterImg.src = randomImage;
     posterTitle.innerText = randomTitle;
     posterQuote.innerText = randomQuote;
 
-    newPoster = createPoster(randomImage, randomTitle, randomQuote);
-}
-
-function toggleVisibility(element1, element2) {
-    element1.classList.toggle("hidden");
-    element2.classList.toggle("hidden");
+    currentPoster = createPoster(randomImage, randomTitle, randomQuote);
 }
 
 function assembleOwnPoster() {
@@ -182,7 +177,14 @@ function assembleOwnPoster() {
     posterTitle.innerText = title.value;
     posterQuote.innerText = quote.value;
 
-    newPoster = createPoster(image.value, title.value, quote.value);
-    console.log(image.value)
+    images.push(image.value)
+    titles.push(title.value)
+    quotes.push(quote.value)
+
+    currentPoster = createPoster(image.value, title.value, quote.value);
 }
 
+function toggleVisibility(element1, element2) {
+    element1.classList.toggle("hidden");
+    element2.classList.toggle("hidden");
+}
