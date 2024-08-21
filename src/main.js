@@ -1,4 +1,9 @@
 // query selector variables go here 👇
+var image = document.querySelector('.poster-img')
+var title = document.querySelector('.poster-title')
+var quote = document.querySelector('.poster-quote')
+var randomButton = document.querySelector('.show-random')
+
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -103,6 +108,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+randomButton.addEventListener('click', pageLoad)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -116,4 +122,18 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function pageLoad() {
+  var randomImage = images[getRandomIndex(images)]
+  var randomTitle = titles[getRandomIndex(titles)]
+  var randomQuote = quotes[getRandomIndex(quotes)]
+
+  image.src = randomImage
+  title.innerText = randomTitle
+  quote.innerText = randomQuote
+}
+
+window.onload = function () {
+  pageLoad()
 }
