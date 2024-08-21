@@ -168,13 +168,11 @@ function loadPoster(posterImage, posterTitle, posterQuote) {
 randomPoster();
 
 function makePoster() {
-  // poster-form class has a hidden in the class
   mainPoster.classList.add("hidden");
   posterForm.classList.remove("hidden");
 }
 
 function backToMain() {
-  // hide the poster form or the saved posters and show the main page
   if (mainPoster.classList.contains("hidden") && !posterForm.classList.contains("hidden")) {
     mainPoster.classList.remove("hidden");
     posterForm.classList.add("hidden");
