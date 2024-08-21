@@ -5,10 +5,12 @@ const mainPosterQuote = document.querySelector(".poster-quote");
 
 const randomPosterButton = document.querySelector(".show-random");
 const makePosterButton = document.querySelector(".show-form");
+const saveThisPosterButton = document.querySelector(".save-poster");
 const savedPosterButton = document.querySelector(".show-saved");
 const returnToMain = document.querySelector(".show-main");
 const backToMain = document.querySelector(".back-to-main");
 const createPosterButton = document.querySelector(".make-poster");
+
 
 const mainSection = document.querySelector(".main-poster");
 const formSection = document.querySelector(".poster-form");
@@ -18,6 +20,7 @@ var form = document.querySelector("form");
 var inputImage = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
+var savedGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -130,6 +133,7 @@ makePosterButton.addEventListener("click", function(){
 
 savedPosterButton.addEventListener("click", function(){
   hiddenswitch('saved');
+  showSavedGrid();
 });
 
 returnToMain.addEventListener("click", function(){
@@ -138,6 +142,10 @@ returnToMain.addEventListener("click", function(){
 
 backToMain.addEventListener("click", function(){
   hiddenswitch('saved');
+});
+
+saveThisPosterButton.addEventListener("click", function(){
+  posterCreation(mainPosterImage.src, mainPosterTitle.innerText, mainPosterQuote.innerText);
 });
 
 form.addEventListener("submit", function(event) {
@@ -193,6 +201,22 @@ function posterCreation(image, title, quote) {
   images.push(image);
   titles.push(title);
   quotes.push(quote);
+};
+
+function showSavedGrid(){
+  savedPosters.forEach((poster) =>{
+    let divOfPoster = document.createElement("div");
+    divOfPoster.className = "mini-poster";
+    divOfPoster.id = poster.id;
+    divOfPoster.innerHTML += `<img src="${poster.imageURL}" alt="nothin' to see here">`;
+    divOfPoster.innerHTML += `<h2>${poster.title}</h2>`;
+    divOfPoster.innerHTML += `<h4>${poster.quote}</h4>`;
+    console.log(divOfPoster);
+    idCheck = document.getElementById(poster.id);
+    if (idCheck === null){
+      savedGrid.appendChild(divOfPoster);
+    }
+  })
 };
 
 setupMainPoster();
