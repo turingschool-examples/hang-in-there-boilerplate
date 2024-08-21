@@ -103,6 +103,21 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+document.getElementsByClassName("show-random")[0].addEventListener('click', renderPoster)
+document.getElementsByClassName("show-saved")[0].addEventListener('click', function() {
+  toggleHiddenState('saved-posters');
+});
+document.getElementsByClassName("back-to-main")[0].addEventListener('click', function() {
+  toggleHiddenState('saved-posters');
+});
+document.getElementsByClassName("show-form")[0].addEventListener('click', function() {
+  toggleHiddenState('poster-form');
+});
+document.getElementsByClassName("show-main")[0].addEventListener('click', function() {
+  toggleHiddenState('poster-form');
+});
+
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -118,7 +133,7 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-let populatePoster = () => {
+function populatePoster() {
   var imageInstance = images[getRandomIndex(images)];
   var titleInstance = titles[getRandomIndex(titles)];
   var quoteInstance = quotes[getRandomIndex(quotes)];
@@ -126,20 +141,28 @@ let populatePoster = () => {
   currentPoster = createPoster(imageInstance, titleInstance, quoteInstance);
 }
 
-let renderPoster = () => {
+function renderPoster() {
   populatePoster()
   document.getElementsByClassName("poster-img")[0].setAttribute("src", currentPoster.imageURL)
   document.getElementsByClassName("poster-title")[0].innerHTML = currentPoster.title;
   document.getElementsByClassName("poster-quote")[0].innerHTML = currentPoster.quote;
 }
 
-let toggleMainHiddenState = () => {
+function toggleMainHiddenState() {
   var mainPoster = document.getElementsByClassName("main-poster")[0];
   mainPoster.classList.toggle("hidden");
 }
 
-let toggleHiddenState = (classOfElementToShow) => {
+function toggleHiddenState(classOfElementToShow) {
   toggleMainHiddenState()
   var elementToShow = document.getElementsByClassName(`${classOfElementToShow}`)[0];
   elementToShow.classList.toggle("hidden");
+}
+
+function makeCustomPoster() {
+  var imageInstance = document.querySelector("poster-image-URL")
+  var titleInstance = document.querySelector("poster-image-URL")
+  var quoteInstance = document.querySelector("poster-image-URL")
+
+  currentPoster = createPoster(imageInstance, titleInstance, quoteInstance);
 }
