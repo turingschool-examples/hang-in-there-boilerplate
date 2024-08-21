@@ -1,7 +1,4 @@
-// query selector variables go here 👇
 
-// we've provided you with some data to work with 👇
-// tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -102,10 +99,6 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
-
-// functions and event handlers go here 👇
-// (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -117,3 +110,21 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var randomButton = document.querySelector('.show-random');
+
+const contentGenerator = () => {
+  var imageURL = images[getRandomIndex(images)];
+  var title = titles[getRandomIndex(titles)];
+  var quote = quotes[getRandomIndex(quotes)];
+  posterImage.src = imageURL;
+  posterTitle.innerText = title;
+  posterQuote.innerText = quote;
+  newPoster = createPoster(imageURL, title, quote)
+}
+
+window.addEventListener('load', contentGenerator);
+randomButton.addEventListener('click', contentGenerator);
