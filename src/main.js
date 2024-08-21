@@ -164,18 +164,24 @@ function toggleHiddenState(classOfElementToShow) {
   var elementToShow = document.getElementsByClassName(`${classOfElementToShow}`)[0];
   elementToShow.classList.toggle("hidden");
 }
+
 function populateCustomPoster() {
-  var imageInstance = document.getElementById("poster-image-URL")
-  var titleInstance = document.getElementById("poster-title")
-  var quoteInstance = document.getElementById("#poster-quote")
+  var imageInstance = document.getElementById("poster-image-URL");
+  var titleInstance = document.getElementById("poster-title");
+  var quoteInstance = document.getElementById("#poster-quote");
 
   currentPoster = createPoster(imageInstance, titleInstance, quoteInstance);
 }
 
+function saveCurrentToSavedArray() {
+  savedPosters.push(currentPoster);
+}
 function createCustomPoster() {
   // Make custom poster
   populateCustomPoster();
   // save custom poster to savedPosters array
+  saveCurrentToSavedArray();
   //render the main page
+  toggleHiddenState('poster-form');
   // populate DOM with current poster object 
 }
