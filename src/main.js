@@ -3,6 +3,8 @@ var showForm = document.querySelector(".show-form");
 var showSaved = document.querySelector(".show-saved");
 var showMain = document.querySelector(".show-main");
 var backToMain = document.querySelector(".back-to-main");
+//********* */
+var showMyPoster = document.querySelector(".make-poster");
 
 var posterForm = document.querySelector(".poster-form");
 var mainPoster = document.querySelector(".main-poster");
@@ -11,6 +13,12 @@ var showPosters = document.querySelector(".saved-posters");
 var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+
+var image = document.querySelector("#poster-image-url");
+var title = document.querySelector("#poster-title");
+var quote = document.querySelector("#poster-quote");
+
+var form = document.querySelector('form')
 
 var images = [
     "./assets/bees.jpg",
@@ -114,7 +122,7 @@ var currentPoster;
 
 
 //*********************************************** */
-window.addEventListener("load", assemblePoster);
+// window.addEventListener("load", assemblePoster);
 showRandom.addEventListener("click", assemblePoster);
 
 showForm.addEventListener("click", function() {
@@ -131,6 +139,12 @@ showMain.addEventListener("click", function() {
 
 backToMain.addEventListener("click", function() {
     toggleVisibility(showPosters, mainPoster);
+});
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    assembleOwnPoster();
+    toggleVisibility(posterForm, mainPoster);
 });
 
 //*********************************************** */
@@ -154,6 +168,8 @@ function assemblePoster() {
     posterImg.src = randomImage;
     posterTitle.innerText = randomTitle;
     posterQuote.innerText = randomQuote;
+
+    newPoster = createPoster(randomImage, randomTitle, randomQuote);
 }
 
 function toggleVisibility(element1, element2) {
@@ -161,6 +177,12 @@ function toggleVisibility(element1, element2) {
     element2.classList.toggle("hidden");
 }
 
+function assembleOwnPoster() {
+    posterImg.src = image.value;
+    posterTitle.innerText = title.value;
+    posterQuote.innerText = quote.value;
 
+    newPoster = createPoster(image.value, title.value, quote.value);
+    console.log(image.value)
+}
 
-// newPoster = createPoster(randomImage, randomTitle, randomQuote);
