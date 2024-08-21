@@ -112,9 +112,13 @@ var posterForm = document.querySelector(".poster-form");
 var showMainPoster = document.querySelector(".main-poster");
 var savedPostersPage = document.querySelector(".saved-posters");
 
+var userPosterImage = document.querySelector("#poster-image-url");
+var userPosterTitle = document.querySelector("#poster-title");
+var userPosterQuote = document.querySelector("#poster-quote");
+
 var savedPosters = [];
 var currentPoster;
-
+// event listeners go here 👇
 addEventListener("load", showRandomPoster);
 randomPosterButton.addEventListener("click", showRandomPoster);
 showFormButton.addEventListener("click", showFormView);
@@ -123,11 +127,8 @@ showMainButton.addEventListener("click", backToMainPage);
 backToMainButton.addEventListener("click", backToMainPage)
 // saveButton.addEventListener("click", );
 
-// makePosterButton.addEventListener("click",);
+makePosterButton.addEventListener("click",);
 
-
-
-// event listeners go here 👇
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
