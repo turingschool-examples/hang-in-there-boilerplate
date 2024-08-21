@@ -103,8 +103,12 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-document.querySelector(".show-random").addEventListener("click", updatePoster)
-document.querySelector('.show-form').addEventListener('click', showForm);
+window.onload = updatePoster
+document.querySelector(".show-random").addEventListener("click", updatePoster);
+document.querySelector('.show-form').addEventListener('click',function(){showSection('.poster-form');});
+document.querySelector('.show-saved').addEventListener('click',function(){showSection('.saved-posters');});
+document.querySelector('.show-main').addEventListener('click', function(){hideSection('.poster-form');});
+document.querySelector('.back-to-main').addEventListener('click',function(){hideSection('.saved-posters');});
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -133,7 +137,12 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-function showForm() {
-  document.querySelector('.poster-form').classList.remove('hidden');
+function showSection(sectionClass) {
+  document.querySelector(`${sectionClass}`).classList.remove('hidden');
   document.querySelector('.main-poster').classList.add('hidden');
+}
+
+function hideSection(sectionClass) {
+  document.querySelector(`${sectionClass}`).classList.add('hidden');
+  document.querySelector('.main-poster').classList.remove('hidden');
 }
