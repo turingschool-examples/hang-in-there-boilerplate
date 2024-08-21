@@ -7,14 +7,17 @@ const randomPosterButton = document.querySelector(".show-random");
 const makePosterButton = document.querySelector(".show-form");
 const saveThisPosterButton = document.querySelector(".save-poster");
 const savedPosterButton = document.querySelector(".show-saved");
+const unmotivationalPosterButton = document.querySelector(".unmotivated");
 const returnToMain = document.querySelector(".show-main");
 const backToMain = document.querySelector(".back-to-main");
+const offToMain = document.querySelector(".return-to-main");
 const createPosterButton = document.querySelector(".make-poster");
 
 
 const mainSection = document.querySelector(".main-poster");
 const formSection = document.querySelector(".poster-form");
 const savedSection = document.querySelector(".saved-posters");
+const unmotivatedSection = document.querySelector(".unmotivational-posters");
 
 var form = document.querySelector("form");
 var inputImage = document.querySelector("#poster-image-url");
@@ -132,17 +135,25 @@ makePosterButton.addEventListener("click", function(){
 });
 
 savedPosterButton.addEventListener("click", function(){
-  hiddenswitch('saved');
+  hiddenswitch("saved");
   showSavedGrid();
 });
 
+unmotivationalPosterButton.addEventListener("click", function(){
+  hiddenswitch("unmotivate");
+});
+
 returnToMain.addEventListener("click", function(){
-  hiddenswitch('form');
+  hiddenswitch("form");
 });
 
 backToMain.addEventListener("click", function(){
-  hiddenswitch('saved');
+  hiddenswitch("saved");
 });
+
+offToMain.addEventListener("click", function(){
+  hiddenswitch("unmotivate");
+})
 
 saveThisPosterButton.addEventListener("click", function(){
   posterCreation(mainPosterImage.src, mainPosterTitle.innerText, mainPosterQuote.innerText);
@@ -155,7 +166,7 @@ form.addEventListener("submit", function(event) {
   var quote = inputQuote.value;
   posterCreation(image, title, quote);
   printPoster(image, title, quote);
-  hiddenswitch('form');
+  hiddenswitch("form");
 });
 
 // functions and event handlers go here 👇
@@ -188,10 +199,12 @@ function printPoster(image, title, quote) {
 
 function hiddenswitch(key) {
   mainSection.classList.toggle("hidden");
-  if (key === 'form'){
+  if (key === "form"){
     formSection.classList.toggle("hidden");
-  } else if (key === 'saved'){
+  } else if (key === "saved"){
     savedSection.classList.toggle("hidden");
+  } else if (key === "unmotivate"){
+    unmotivatedSection.classList.toggle("hidden");
   }
 };
 
