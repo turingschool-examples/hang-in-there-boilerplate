@@ -3,7 +3,10 @@ var showForm = document.querySelector(".show-form");
 var showSaved = document.querySelector(".show-saved");
 var showMain = document.querySelector(".show-main");
 var backToMain = document.querySelector(".back-to-main");
-// var savePoster = document.querySelector(".save-poster");
+
+var posterForm = document.querySelector(".poster-form");
+var mainPoster = document.querySelector(".main-poster");
+var showPosters = document.querySelector(".saved-posters");
 
 var posterImg = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
@@ -109,12 +112,12 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-window.addEventListener("load", assemblePoster)
-showRandom.addEventListener("click", assemblePoster)
-//  showForm.addEventListener("click", makeYourPoster)
-//  showSaved.addEventListener("click", showSavedPosters)
-//  showMain.addEventListener("click", showMain)
-//  backToMain.addEventListener("click", backToMain)
+window.addEventListener("load", assemblePoster);
+showRandom.addEventListener("click", assemblePoster);
+showForm.addEventListener("click", makeYourPoster);
+showSaved.addEventListener("click", showSavedPosters);
+showMain.addEventListener("click", showMainFunction)
+backToMain.addEventListener("click", backToMainFunction)
 
 function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
@@ -139,23 +142,23 @@ function assemblePoster() {
 }
 
 function makeYourPoster() {
-// .poster-form is unhidden
-// .main-poster is hidden
+    posterForm.classList.toggle("hidden");
+    mainPoster.classList.toggle("hidden");
 }
 
 function showSavedPosters() {
-// .saved-posters is unhidden
-// .main-poster is hidden
+    showPosters.classList.toggle("hidden");
+    mainPoster.classList.toggle("hidden");
 }
 
-function showMain() {
-// .poster-form is hidden
-// .main-poster is unhidden
+function showMainFunction() {
+    posterForm.classList.toggle("hidden");
+    mainPoster.classList.toggle("hidden");
 }
 
-function backToMain(){
-// .saved-posters is hidden
-// .main-poster is unhidden
+function backToMainFunction(){
+    showPosters.classList.toggle("hidden");
+    mainPoster.classList.toggle("hidden");
 }
 
 
