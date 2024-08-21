@@ -5,10 +5,12 @@ const mainPosterQuote = document.querySelector(".poster-quote");
 
 const randomPosterButton = document.querySelector(".show-random");
 const makePosterButton = document.querySelector(".show-form");
+const saveThisPosterButton = document.querySelector(".save-poster");
 const savedPosterButton = document.querySelector(".show-saved");
 const returnToMain = document.querySelector(".show-main");
 const backToMain = document.querySelector(".back-to-main");
 const createPosterButton = document.querySelector(".make-poster");
+
 
 const mainSection = document.querySelector(".main-poster");
 const formSection = document.querySelector(".poster-form");
@@ -140,6 +142,10 @@ returnToMain.addEventListener("click", function(){
 
 backToMain.addEventListener("click", function(){
   hiddenswitch('saved');
+});
+
+saveThisPosterButton.addEventListener("click", function(){
+  posterCreation(mainPosterImage.src, mainPosterTitle.innerText, mainPosterQuote.innerText);
 });
 
 form.addEventListener("submit", function(event) {
