@@ -134,6 +134,10 @@ const posterFormParent = document.querySelector('.poster-form')
 
 const customPosterButton = document.querySelector('.show-form');
 customPosterButton.addEventListener('click', () => {
-  mainPage.classList.add('hidden')
-  posterFormParent.classList.remove('hidden')
-})
+  switchHidden(mainPage, posterFormParent)
+});
+
+const switchHidden = (element1, element2) => {
+  element1.classList.toggle('hidden');
+  element2.classList.toggle('hidden');
+};
