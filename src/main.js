@@ -120,7 +120,7 @@ document.getElementsByClassName("show-main")[0].addEventListener('click', functi
 });
 
 document.getElementsByClassName("make-poster")[0].addEventListener('click', function() {
-  createCustomPoster();
+  createCustomPoster()
 });
 
 
@@ -145,11 +145,12 @@ function populatePoster() {
   var quoteInstance = quotes[getRandomIndex(quotes)];
 
   currentPoster = createPoster(imageInstance, titleInstance, quoteInstance);
+  event.preventDefault();
 }
 
 function renderPoster() {
-  populatePoster()
-  document.getElementsByClassName("poster-img")[0].setAttribute("src", currentPoster.imageURL)
+  populatePoster();
+  document.getElementsByClassName("poster-img")[0].setAttribute("src", currentPoster.imageURL);
   document.getElementsByClassName("poster-title")[0].innerHTML = currentPoster.title;
   document.getElementsByClassName("poster-quote")[0].innerHTML = currentPoster.quote;
 }
@@ -176,6 +177,14 @@ function populateCustomPoster() {
 function saveCurrentToSavedArray() {
   savedPosters.push(currentPoster);
 }
+
+function renderCustomPoster() {
+  populateCustomPoster();
+  document.getElementsByClassName("poster-img")[0].setAttribute("src", currentPoster.imageURL);
+  document.getElementsByClassName("poster-title")[0].innerHTML = currentPoster.title;
+  document.getElementsByClassName("poster-quote")[0].innerHTML = currentPoster.quote;
+}
+
 function createCustomPoster() {
   // Make custom poster
   populateCustomPoster();
@@ -183,5 +192,6 @@ function createCustomPoster() {
   saveCurrentToSavedArray();
   //render the main page
   toggleHiddenState('poster-form');
-  // populate DOM with current poster object 
+  // populate DOM with current poster object
+  renderCustomPoster();
 }
