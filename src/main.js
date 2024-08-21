@@ -3,13 +3,20 @@ var  image = document.querySelector(".poster-img");
 var  title = document.querySelector(".poster-title");
 var  quote = document.querySelector(".poster-quote");
 
+// main page buttons
 var randomPosterButton = document.querySelector(".show-random");
 var savePosterButton = document.querySelector(".save-poster");
 var makeOwnPosterButton = document.querySelector(".show-form");
 var showSavedButton = document.querySelector(".show-saved");
 
+// pages
 var mainPoster = document.querySelector(".main-poster");
 var posterForm = document.querySelector(".poster-form");
+var listSavedPosters = document.querySelector(".saved-posters");
+// back buttons
+var nevermindButton = document.querySelector(".show-main");
+var backToMainButton = document.querySelector(".back-to-main");
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -123,6 +130,10 @@ var currentPoster;
 
 randomPosterButton.addEventListener('click', randomPoster);
 makeOwnPosterButton.addEventListener('click', makePoster);
+showSavedButton.addEventListener('click', savedPostersPage);
+
+nevermindButton.addEventListener('click', backToMain);
+backToMainButton.addEventListener('click', backToMain);
 // savePosterButton.addEventListener('click', //new function);
 // showSavedButton.addEventListener('click', new function)
 
@@ -158,6 +169,23 @@ randomPoster();
 
 function makePoster() {
   // poster-form class has a hidden in the class
-  mainPoster.classList.add("hidden")
-  posterForm.classList.remove("hidden")
+  mainPoster.classList.add("hidden");
+  posterForm.classList.remove("hidden");
 }
+
+function backToMain() {
+  // hide the poster form or the saved posters and show the main page
+  if (mainPoster.classList.contains("hidden") && !posterForm.classList.contains("hidden")) {
+    mainPoster.classList.remove("hidden");
+    posterForm.classList.add("hidden");
+  } else if (mainPoster.classList.contains("hidden") && !listSavedPosters.classList.contains("hidden")) {
+    mainPoster.classList.remove("hidden");
+    listSavedPosters.classList.add("hidden");
+  }
+}
+
+function savedPostersPage() {
+  mainPoster.classList.add("hidden");
+  listSavedPosters.classList.remove("hidden");
+}
+
