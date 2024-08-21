@@ -112,13 +112,28 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+
+//*********************************************** */
 window.addEventListener("load", assemblePoster);
 showRandom.addEventListener("click", assemblePoster);
-showForm.addEventListener("click", makeYourPoster);
-showSaved.addEventListener("click", showSavedPosters);
-showMain.addEventListener("click", showMainFunction)
-backToMain.addEventListener("click", backToMainFunction)
 
+showForm.addEventListener("click", function() {
+    toggleVisibility(posterForm, mainPoster);
+});
+
+showSaved.addEventListener("click", function() {
+    toggleVisibility(showPosters, mainPoster);
+});
+
+showMain.addEventListener("click", function() {
+    toggleVisibility(posterForm, mainPoster);
+});
+
+backToMain.addEventListener("click", function() {
+    toggleVisibility(showPosters, mainPoster);
+});
+
+//*********************************************** */
 function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
 }
@@ -141,31 +156,10 @@ function assemblePoster() {
     posterQuote.innerText = randomQuote;
 }
 
-function makeYourPoster() {
-    posterForm.classList.toggle("hidden");
-    mainPoster.classList.toggle("hidden");
+function toggleVisibility(element1, element2) {
+    element1.classList.toggle("hidden");
+    element2.classList.toggle("hidden");
 }
-
-function showSavedPosters() {
-    showPosters.classList.toggle("hidden");
-    mainPoster.classList.toggle("hidden");
-}
-
-function showMainFunction() {
-    posterForm.classList.toggle("hidden");
-    mainPoster.classList.toggle("hidden");
-}
-
-function backToMainFunction(){
-    showPosters.classList.toggle("hidden");
-    mainPoster.classList.toggle("hidden");
-}
-
-
-
-
-
-
 
 
 
