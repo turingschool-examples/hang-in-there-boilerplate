@@ -2,7 +2,8 @@
 
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querySelector('.poster-quote')
+var posterQuote = document.querySelector('.poster-quote');
+var randomPosterButton = document.querySelector('.show-random')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -123,3 +124,17 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+function getRandomPoster() {
+  var randomImage = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  
+  posterImage.src = randomImage
+  posterTitle.innerHTML = randomTitle
+  posterQuote.innerHTML = randomQuote
+}
+
+// window.    getRandomPoster()
+
+// console.log(getRandomIndex(titles))
