@@ -205,9 +205,10 @@ function showSavedGrid(){
     divOfPoster.innerHTML += `<img src="${poster.imageURL}" alt="nothin' to see here">`;
     divOfPoster.innerHTML += `<h2>${poster.title}</h2>`;
     divOfPoster.innerHTML += `<h4>${poster.quote}</h4>`;
-    
-    if (!savedSection.contains(divOfPoster)){
-      savedSection.insertBefore(divOfPoster, backToMain);
+    console.log(divOfPoster);
+    idCheck = document.getElementById(poster.id);
+    if (idCheck === null){
+      savedGrid.appendChild(divOfPoster);
     }
   })
 };
