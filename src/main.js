@@ -112,13 +112,14 @@ var posterForm = document.querySelector(".poster-form");
 var showMainPoster = document.querySelector(".main-poster");
 var savedPostersPage = document.querySelector(".saved-posters");
 
-var userPosterImage = document.querySelector("#poster-image-url");
-var userPosterTitle = document.querySelector("#poster-title");
-var userPosterQuote = document.querySelector("#poster-quote");
-
+//global variables
 var savedPosters = [];
+var savedImages = [];
+var savedTitles = [];
+var savedQuotes = [];
+
 var currentPoster;
-// event listeners go here 👇
+
 addEventListener("load", showRandomPoster);
 randomPosterButton.addEventListener("click", showRandomPoster);
 showFormButton.addEventListener("click", showFormView);
@@ -127,8 +128,11 @@ showMainButton.addEventListener("click", backToMainPage);
 backToMainButton.addEventListener("click", backToMainPage)
 // saveButton.addEventListener("click", );
 
-makePosterButton.addEventListener("click",);
+makePosterButton.addEventListener("click", showUserPoster);
 
+
+
+// event listeners go here 👇
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -173,4 +177,18 @@ function showSavedPosters() {
 function backToMainPage() {
   posterForm.classList.add("hidden");
   showMainPoster.classList.remove("hidden");
+}
+
+var userImage = document.querySelector("#poster-image-url");
+var userTitle = document.querySelector("#poster-title");
+var userQuote = document.querySelector("#poster-quote");
+
+function showUserPoster(event) {
+  event.preventDefault()
+
+images.push(userImage)
+titles.push(userTitle)
+quotes.push(userQuote)
+
+backToMainPage()
 }
