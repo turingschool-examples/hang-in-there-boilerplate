@@ -106,7 +106,7 @@ var currentPoster;
 // event listeners go here 👇
 
 window.addEventListener("load", assemblePoster)
-// showRandom.addEventListener('click', createPoster)
+showRandom.addEventListener('click', assemblePoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
