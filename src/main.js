@@ -4,6 +4,10 @@ var title = document.querySelector('.poster-title')
 var quote = document.querySelector('.poster-quote')
 var randomButton = document.querySelector('.show-random')
 
+var showFormButton = document.querySelector('.show-form')
+var makeForm = document.querySelector('.poster-form')
+var mainPoster = document.querySelector('.main-poster')
+
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -109,7 +113,7 @@ var currentPoster;
 
 // event listeners go here 👇
 randomButton.addEventListener('click', pageLoad)
-
+showFormButton.addEventListener('click', showForm)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -136,4 +140,9 @@ function pageLoad() {
 
 window.onload = function () {
   pageLoad()
+}
+
+function showForm() {
+  makeForm.classList.remove('hidden')
+  mainPoster.classList.add('hidden')
 }
