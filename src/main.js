@@ -103,13 +103,9 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
-
 window.addEventListener("load", assemblePoster)
 showRandom.addEventListener('click', assemblePoster)
 
-// functions and event handlers go here 👇
-// (we've provided two to get you started)!
 function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
 }
