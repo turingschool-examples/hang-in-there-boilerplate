@@ -196,34 +196,26 @@ function showUserPoster(event) {
 }
 
 function saveGeneratedPoster() {
-  if (!savedPosters.includes(currentPoster)) {
-    savedPosters.push(currentPoster);
+  var poster = createPoster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
+  if (!savedPosters.find(p => p.imageURL === poster.imageURL && p.title === poster.title && p.quote === poster.quote)) {
+    savedPosters.push(poster);
   }
-}
-
-function showSavedPosters() {
-  savedPostersGrid.innerHTML = "";
-  let newInnerHTML = "";
-  for (let i = 0; i < savedPosters.length; i++) {
-    newInnerHTML += makeHTMLFromPoster(savedPosters[i]);
-  }
-  savedPostersGrid.innerHTML = newInnerHTML;
 }
 
 function makeHTMLFromPoster(poster) {
   return `
     <article class="poster">
-      <img class="poster-img" src="${poster.images}" alt="Poster Image">
-      <h1 class="poster-title">${poster.titles}</h1>
-      <h3 class="poster-quote">${poster.quotes}</h3>
-    </article>
-
-    <label for="poster-image-url">${poster.images}</label>
-    <input type="text" name="poster-image-url" id="poster-image-url" placeholder="https://gph.is/2n553Ra">
-    <label for="poster-title">${poster.titles}</label>
-    <input type="text" name="poster-title" id="poster-title" placeholder="Growth Mindset">
-    <label for="poster-quote">${poster.quotes}</label>
-    <input type="text" name="poster-quote" id="poster-quote" placeholder="Hang in there!">
-  `;
+      <img class="poster-img" src="${poster.imageURL}" alt="Poster image">
+      <h1 class="poster-title">${poster.title}</h1>
+      <h3 class="poster-quote">${poster.quote}</h3>
+    </article>`;
 }
 
+function showSavedPosters() {
+  savedPostersGrid.innerHTML = "";
+  var newInnerHTML = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    newInnerHTML += makeHTMLFromPoster(savedPosters[i]);
+  }
+  savedPostersGrid.innerHTML = newInnerHTML;
+}
