@@ -4,6 +4,12 @@ var  title = document.querySelector(".poster-title");
 var  quote = document.querySelector(".poster-quote");
 
 var randomPosterButton = document.querySelector(".show-random");
+var savePosterButton = document.querySelector(".save-poster");
+var makeOwnPosterButton = document.querySelector(".show-form");
+var showSavedButton = document.querySelector(".show-saved");
+
+var mainPoster = document.querySelector(".main-poster");
+var posterForm = document.querySelector(".poster-form");
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -108,13 +114,17 @@ var currentPoster;
 
 // event listeners go here 👇
 
-// button.eventListener('click')
+// button.addEventListener('click', function);
+
 // First, you find the button: Just like finding the button on your toy, we use code to find the button on the web page.
 // Then, you tell the robot what to do: You say, "Hey robot, when this button is pressed, show a message!"
 // The robot waits: Now, the robot (event listener) just sits there and waits for you to press the button.
 // You press the button: The robot sees it and does what you told it to do—like showing a message on the screen.
 
 randomPosterButton.addEventListener('click', randomPoster);
+makeOwnPosterButton.addEventListener('click', makePoster);
+// savePosterButton.addEventListener('click', //new function);
+// showSavedButton.addEventListener('click', new function)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -145,3 +155,9 @@ function loadPoster(posterImage, posterTitle, posterQuote) {
 }
 
 randomPoster();
+
+function makePoster() {
+  // poster-form class has a hidden in the class
+  mainPoster.classList.add("hidden")
+  posterForm.classList.remove("hidden")
+}
