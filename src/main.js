@@ -17,6 +17,12 @@ var listSavedPosters = document.querySelector(".saved-posters");
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
 
+// make poster section
+var makePosterButton = document.querySelector(".make-poster");
+var urlBox = document.querySelector("#poster-image-url");
+var titleBox = document.querySelector("#poster-title");
+var quoteBox = document.querySelector("#poster-quote");
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -120,25 +126,20 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
 // button.addEventListener('click', function);
 
-// First, you find the button: Just like finding the button on your toy, we use code to find the button on the web page.
-// Then, you tell the robot what to do: You say, "Hey robot, when this button is pressed, show a message!"
-// The robot waits: Now, the robot (event listener) just sits there and waits for you to press the button.
-// You press the button: The robot sees it and does what you told it to do—like showing a message on the screen.
-
 randomPosterButton.addEventListener('click', randomPoster);
-makeOwnPosterButton.addEventListener('click', makePoster);
+makeOwnPosterButton.addEventListener('click', makePosterPage);
 showSavedButton.addEventListener('click', savedPostersPage);
 
+makePosterButton.addEventListener('click', showPoster);
 nevermindButton.addEventListener('click', backToMain);
+
 backToMainButton.addEventListener('click', backToMain);
 // savePosterButton.addEventListener('click', //new function);
 // showSavedButton.addEventListener('click', new function)
 
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -165,21 +166,12 @@ function loadPoster(posterImage, posterTitle, posterQuote) {
   quote.innerText = posterQuote;
 }
 
-randomPoster();
+window.onload = randomPoster();
 
-function makePoster() {
+// navigation
+function makePosterPage() {
   mainPoster.classList.add("hidden");
   posterForm.classList.remove("hidden");
-}
-
-function backToMain() {
-  if (mainPoster.classList.contains("hidden") && !posterForm.classList.contains("hidden")) {
-    mainPoster.classList.remove("hidden");
-    posterForm.classList.add("hidden");
-  } else if (mainPoster.classList.contains("hidden") && !listSavedPosters.classList.contains("hidden")) {
-    mainPoster.classList.remove("hidden");
-    listSavedPosters.classList.add("hidden");
-  }
 }
 
 function savedPostersPage() {
@@ -187,3 +179,16 @@ function savedPostersPage() {
   listSavedPosters.classList.remove("hidden");
 }
 
+function backToMain() {
+    mainPoster.classList.remove("hidden");
+    posterForm.classList.add("hidden");
+    listSavedPosters.classList.add("hidden");
+}
+
+// user input for making a poster
+function showPoster() {
+  // event.preventDefault();
+  backToMain();
+  var createdPoster = createPoster(urlBox.value, titleBox.value, quoteBox.value);
+  loadPoster(createdPoster.imageURL, createdPoster.title, createdPoster.quote);
+}
