@@ -128,3 +128,12 @@ const contentGenerator = () => {
 
 window.addEventListener('load', contentGenerator);
 randomButton.addEventListener('click', contentGenerator);
+
+const mainPage = document.querySelector('.main-poster')
+const posterFormParent = document.querySelector('.poster-form')
+
+const customPosterButton = document.querySelector('.show-form');
+customPosterButton.addEventListener('click', () => {
+  mainPage.classList.add('hidden')
+  posterFormParent.classList.remove('hidden')
+})
