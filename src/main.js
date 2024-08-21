@@ -119,7 +119,7 @@ var userQuote = document.querySelector("#poster-quote");
 
 var unmotivationalPostersView = document.querySelector(".unmotivational-posters");
 var unmotivationalPostersGrid = document.querySelector(".unmotivational-posters-grid");
-
+var unmotivationalPostersButton = document.querySelector(".show-unmotivational")
 
 //global variables
 var savedPosters = [];
@@ -132,9 +132,15 @@ randomPosterButton.addEventListener("click", showRandomPoster);
 showFormButton.addEventListener("click", showFormView);
 showSavedPosterButton.addEventListener("click", showSavedPostersView);
 showMainButton.addEventListener("click", backToMainPage);
-backToMainButton.addEventListener("click", backToMainPage)
+backToMainButton.addEventListener("click", backToMainPage);
 makePosterButton.addEventListener("click", showUserPoster);
 saveButton.addEventListener("click", saveGeneratedPoster);
+unmotivationalPostersButton.addEventListener("click", showUnmotivationalPosters)
+
+// backToMainButton.addEventListener("click", function() {
+//   backToMainPage()
+//   showUnmotivationalPosters()
+// });
 
 // functions and event handlers go here 👇
 
@@ -180,11 +186,16 @@ function backToMainPage() {
   savedPostersPage.classList.add("hidden");
 }
 
+function showUnmotivationalPosters() {
+  showMainPoster.classList.add("hidden");
+  unmotivationalPostersView.classList.remove("hidden")
+  unmotivationalPostersGrid.classList.remove("hidden")
+}
+
 function createUserPoster() {
   posterTitle.innerText = userTitle.value;
   posterQuote.innerText = userQuote.value;
   posterImage.src = userImage.value;
-  // currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText)
   currentPoster = (posterImage.src, posterTitle.innerText, posterQuote.innerText)
   images.push(posterImage.src);
   quotes.push(posterQuote.innerText);
