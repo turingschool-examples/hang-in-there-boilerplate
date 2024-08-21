@@ -16,7 +16,7 @@ To view your project:
 
 1. In your terminal, navigate to your project repo
 2. Run the command `open index.html`
-  
+
 ______________________________________________________  
 # README Template  
 Before turning this project in, erase this line and everything above it and fill in the info below.  
