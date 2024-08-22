@@ -6,6 +6,7 @@ const posterQuote = document.querySelector('.poster-quote');
 const mainPosterSection = document.querySelector('.main-poster');
 const posterFormSection = document.querySelector('.poster-form');
 const savedPostersSection = document.querySelector('.saved-posters');
+const unmotivationalPosterSection = document.querySelector('.unmotivational-poster')
 
 const savedPostersGrid = document.querySelector('.saved-posters-grid')
 const savedUnmotivationalPostersGrid = document.querySelector('.unmotivational-poster-grid')
@@ -284,7 +285,11 @@ document.querySelectorAll('.show-main, .show-form').forEach(button => {
 
 document.querySelector('.save-poster').addEventListener('click', handleSavePoster);
 
-
+document.querySelectorAll('.back-to-main-unmotivational, .show-unmotivational-poster').forEach(button => {
+  button.addEventListener('click', () => {
+    displayNewSection(unmotivationalPosterSection, mainPosterSection)
+  })
+})
 // functions and event handlers go here 👇
 function handleSavePoster(){
   if (savedPosters.includes(currentPoster)) {
@@ -356,9 +361,9 @@ const setUnmotivationalPostersElements = (data) => {
   for (let i = 0; i < data.length; i++){
     savedUnmotivationalPostersGrid.insertAdjacentHTML("beforeend", `
     <article class="mini-poster">
-      <img src=${currentPoster.imageURL}>
-      <h1>${currentPoster.title}</h1>
-      <h3>${currentPoster.quote}</h3>
+      <img src=${data[i].imageURL}>
+      <h1>${data[i].title}</h1>
+      <h3>${data[i].quote}</h3>
     </article>
     `)
   }
