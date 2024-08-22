@@ -265,9 +265,7 @@ savedPosterButton.addEventListener("click", function(){
 
 unmotivationalPosterButton.addEventListener("click", function(){
   hiddenswitch(unmotivatedSection);
-  if (savedUnmotivatedGrid.childNodes.length === 0){
-    showSavedGrid(savedUnmotivationalPosters, savedUnmotivatedGrid, 'unmot');
-  }
+  showSavedGrid(savedUnmotivationalPosters, savedUnmotivatedGrid, 'unmot');
 });
 
 returnToMain.addEventListener("click", function(){
@@ -355,15 +353,24 @@ function makePosterDiv(data, posterType){
 function showSavedGrid(listPosters, location, posterType) {
   listPosters.forEach((poster) =>{
     var idCheck = document.getElementById(poster.id);
-    if (idCheck === null || 
-      (poster.title !== idCheck.children[1].innerText) || 
-      (poster.quote !== idCheck.children[2].innerText) || 
-      (poster.imageURL !== idCheck.children[0].src)){
+    // debugger
+    if (!idCheck || 
+      (poster.title.trim().toLowerCase() !== idCheck.children[1].innerText.trim().toLowerCase()) || 
+      (poster.quote.trim().toLowerCase() !== idCheck.children[2].innerText.trim().toLowerCase()) || 
+      (poster.imageURL.trim().toLowerCase() !== idCheck.children[0].src.trim().toLowerCase())){
       var divOfPoster = makePosterDiv(poster, posterType);
       location.appendChild(divOfPoster);
     }
   })
 };
+
+function posterValidation(poster) {
+  //grab all miniposter elements into an array 
+  //possibly grab each elements part into seperate arrays
+  //check each array for inclusion of data from poster
+  //if it matches poster entirely, return false
+  //if one thing doesn't match return true
+}
 
 function cleanData(dataSet) {
   dataSet.forEach((data) => {
