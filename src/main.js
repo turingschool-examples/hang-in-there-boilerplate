@@ -184,8 +184,15 @@ function saveCurrentToSavedArray() {
   savedPosters.push(currentPoster);
 }
 
+function displaySavedInGrid() {
+
+}
+
 function savePoster() {
   //save current main to saved posters array
+  saveCurrentToSavedArray();
+  //display savedPosters in grid section
+  displaySavedInGrid();
 }
 
 
