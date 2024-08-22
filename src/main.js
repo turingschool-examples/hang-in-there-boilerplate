@@ -128,7 +128,11 @@ document.getElementsByClassName("make-poster")[0].addEventListener('click', func
     document.getElementById("poster-image-url").value, 
     document.getElementById("poster-title").value, 
     document.getElementById("poster-quote").value
-  )});
+)});
+
+document.getElementsByClassName("save-poster")[0].addEventListener('click', function() {
+  savePoster();
+});
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
