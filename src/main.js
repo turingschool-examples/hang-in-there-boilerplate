@@ -349,17 +349,21 @@ function makePosterDiv(data, posterType){
   divOP.innerHTML += `<img src="${data.imageURL}" alt="nothin' to see here">`;
   divOP.innerHTML += `<h2>${data.title}</h2>`;
   divOP.innerHTML += `<h4>${data.quote}</h4>`;
-}
+  return divOP;
+};
 
 function showSavedGrid(listPosters, location, posterType) {
   listPosters.forEach((poster) =>{
     var idCheck = document.getElementById(poster.id);
-    if (idCheck === null || (poster.title !== idCheck.children[1].innerText) || (poster.quote !== idCheck.children[2].innerText) || (poster.imageURL !== idCheck.children[0].src)){
+    if (idCheck === null || 
+      (poster.title !== idCheck.children[1].innerText) || 
+      (poster.quote !== idCheck.children[2].innerText) || 
+      (poster.imageURL !== idCheck.children[0].src)){
       var divOfPoster = makePosterDiv(poster, posterType);
       location.appendChild(divOfPoster);
-    }   
+    }
   })
-}
+};
 
 function cleanData(dataSet) {
   dataSet.forEach((data) => {
