@@ -20,7 +20,7 @@ let image = document.querySelector("#poster-image-url");
 let title = document.querySelector("#poster-title");
 let quote = document.querySelector("#poster-quote");
 
-let form = document.querySelector('form');
+let form = document.querySelector("form");
 
 let posterGrid = document.querySelector(".saved-posters-grid");
 
@@ -202,13 +202,13 @@ function saveThisPoster(){
     posterGrid.innerHTML = '';
 
     savedPosters.forEach(poster =>{
-        let miniPoster = document.createElement('div');
-        miniPoster.classList.add('mini-poster');
-        let img = document.createElement('img');
+        let miniPoster = document.createElement("div");
+        miniPoster.classList.add("mini-poster");
+        let img = document.createElement("img");
         img.src = poster.imageURL;
-        let title = document.createElement('h2');
+        let title = document.createElement("h2");
         title.innerText = poster.title;
-        let quote = document.createElement('h4');
+        let quote = document.createElement("h4");
         quote.innerText = poster.quote;
         
         miniPoster.appendChild(img);
