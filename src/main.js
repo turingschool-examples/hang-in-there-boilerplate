@@ -15,7 +15,6 @@ let mainPoster = document.querySelector(".main-poster");
 let showPosters = document.querySelector(".saved-posters");
 let unmotivationalSection = document.querySelector(".unmotivational-posters");
 
-
 let posterImg = document.querySelector(".poster-img");
 let posterTitle = document.querySelector(".poster-title");
 let posterQuote = document.querySelector(".poster-quote");
@@ -27,6 +26,7 @@ let quote = document.querySelector("#poster-quote");
 let form = document.querySelector("form");
 
 let posterGrid = document.querySelector(".saved-posters-grid");
+let unPosterGrid = document.querySelector(".unmotivational-posters-grid");
 
 let images = [
     "./assets/bees.jpg",
@@ -247,6 +247,8 @@ let unmotivationalPosters = [
         img_url: "./assets/doubt.jpg",
     }
 ];
+let cleanedUnmotivated = [];
+let isDataClean = false
 
 let savedPosters = [];
 let currentPoster;
@@ -260,6 +262,8 @@ showForm.addEventListener("click", function() {
 });
 
 unmotivational.addEventListener("click", function() {
+    cleanData();
+    postUnmotivationalPoster();
     toggleVisibility(unmotivationalSection, mainPoster);
 });
 
@@ -331,7 +335,7 @@ function toggleVisibility(element1, element2) {
     element2.classList.toggle("hidden");
 }
 
-function saveThisPoster(){
+function saveThisPoster() {
     if (!savedPosters.includes(currentPoster)){
         savedPosters.push(currentPoster);
     }
@@ -355,3 +359,39 @@ function saveThisPoster(){
     });
 }
 
+function cleanData() {
+    if(!isDataClean) {
+        unmotivationalPosters.forEach(poster => {
+            let imageURL = poster.img_url;
+            let title = poster.name;
+            let quote = poster.description;
+            let id = poster.year;
+
+            let newPoster = { id: id, imageURL: imageURL, title: title, quote: quote };
+            
+            cleanedUnmotivated.push(newPoster);
+        });
+        isDataClean = true;
+    }
+}
+
+function postUnmotivationalPoster() {
+    unPosterGrid.innerHTML = '';
+    
+    cleanedUnmotivated.forEach(poster =>{
+        let miniPoster = document.createElement("div");
+        miniPoster.classList.add("mini-poster");
+        let img = document.createElement("img");
+        img.src = poster.imageURL;
+        let title = document.createElement("h2");
+        title.innerText = poster.title;
+        let quote = document.createElement("h4");
+        quote.innerText = poster.quote;
+        
+        miniPoster.appendChild(img);
+        miniPoster.appendChild(title);
+        miniPoster.appendChild(quote);
+
+        unPosterGrid.appendChild(miniPoster);
+    });
+}

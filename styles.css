@@ -109,6 +109,7 @@ button:hover {
     padding: 40px;
 }
 
+.unmotivational-posters-grid,
 .saved-posters-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
