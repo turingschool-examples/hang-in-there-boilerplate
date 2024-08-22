@@ -129,6 +129,12 @@ document.querySelectorAll('.show-saved, .back-to-main').forEach(button => {
 
 
 document.querySelector('.make-poster').addEventListener('click', (event) => {
+  const form = document.querySelector('form');
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  
   event.preventDefault();
   setNewPosterFromForm();
   displayCurrentPoster();
@@ -142,40 +148,43 @@ document.querySelectorAll('.show-main, .show-form').forEach(button => {
 });
 
 // functions and event handlers go here 👇
-function setNewPosterFromForm(){
-  var imageURL = document.querySelector('#poster-image-url').value;
-  var title = document.querySelector('#poster-title').value;
-  var quote = document.querySelector('#poster-quote').value;
 
-  setCurrentPoster(imageURL, title, quote)
-}
 
-function setNewPoster(){
-  var imageURL = images[getRandomIndex(images)];
-  var title = titles[getRandomIndex(titles)];
-  var quote = quotes[getRandomIndex(quotes)];
 
-  setCurrentPoster(imageURL, title, quote)
-}
+const setNewPosterFromForm = () => {
+  const imageURL = document.querySelector('#poster-image-url').value;
+  const title = document.querySelector('#poster-title').value;
+  const quote = document.querySelector('#poster-quote').value;
 
-function displayCurrentPoster(){
+  setCurrentPoster(imageURL, title, quote);
+};
+
+const setNewPoster = () => {
+  const imageURL = images[getRandomIndex(images)];
+  const title = titles[getRandomIndex(titles)];
+  const quote = quotes[getRandomIndex(quotes)];
+
+  setCurrentPoster(imageURL, title, quote);
+};
+
+const displayCurrentPoster = () => {
   posterImage.src = currentPoster.imageURL;
   posterTitle.textContent = currentPoster.title;
   posterQuote.textContent = currentPoster.quote;
-}
+};
 
-function setCurrentPoster(imageURL, title, quote){
+const setCurrentPoster = (imageURL, title, quote) => {
   currentPoster = {
-    imageURL: imageURL,
-    title: title,
-    quote: quote
+    imageURL,
+    title,
+    quote,
   };
-}
+};
 
-function displayNewSection(section1, section2){
+const displayNewSection = (section1, section2) => {
   section1.classList.toggle('hidden');
   section2.classList.toggle('hidden');
-}
+};
 
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
