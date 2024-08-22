@@ -173,11 +173,8 @@ function saveCurrentToSavedArray() {
 
 
 function createCustomPoster(imageInstance, titleInstance, quoteInstance) {
-  // Make custom poster && populate DOM with current poster object
   renderPoster(imageInstance, titleInstance, quoteInstance);
-  // save custom poster to savedPosters array
   saveCurrentToSavedArray();
-  //render the main page
   toggleHiddenState('poster-form');
 }
 
