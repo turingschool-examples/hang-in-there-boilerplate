@@ -148,8 +148,8 @@ savedPostersButton.addEventListener('click', () => {
   switchHidden(mainPage, savedPostersPage)
 });
 
-const backToMainButton = document.querySelector('.back-to-main')
-const nevermindButton = document.querySelector('.show-main')
+const backToMainButton = document.querySelector('.back-to-main');
+const nevermindButton = document.querySelector('.show-main');
 
 backToMainButton.addEventListener('click', () => {
   switchHidden(mainPage, savedPostersPage)
@@ -159,7 +159,7 @@ nevermindButton.addEventListener('click', () => {
   switchHidden(mainPage, posterFormParent)
 });
 
-const makePosterButton = document.querySelector('.make-poster')
+const makePosterButton = document.querySelector('.make-poster');
 
 makePosterButton.addEventListener('click', (event) => {
   event.preventDefault()
@@ -167,8 +167,9 @@ makePosterButton.addEventListener('click', (event) => {
   const inputTitle = document.querySelector('#poster-title').value
   const inputQuote = document.querySelector('#poster-quote').value
 
-  console.log(event)
-  console.log(inputURL)
-  console.log(inputTitle)
-  console.log(inputQuote)
-})
+  currentPoster = createPoster(inputURL, inputTitle, inputQuote);
+  console.log(currentPoster)
+  //isolate where poster lives on webpage
+  //isolate show me my poster button
+  //event listener(click show me poster, function that renders current poster)
+});
