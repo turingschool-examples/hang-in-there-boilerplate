@@ -191,6 +191,7 @@ function showPoster() {
   // event.preventDefault();
   backToMain();
   var createdPoster = createPoster(urlBox.value, titleBox.value, quoteBox.value);
+  currentPoster = createdPoster;
   loadPoster(createdPoster.imageURL, createdPoster.title, createdPoster.quote);
 }
 
