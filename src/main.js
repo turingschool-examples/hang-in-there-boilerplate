@@ -190,7 +190,14 @@ function saveCurrentToSavedArray() {
 
 function displaySavedInGrid() {
   var savedPostersGrid = document.getElementsByClassName("saved-posters-grid")[0];
-  savedPostersGrid.insertAdjacentHTML("beforeend", "<p>TEST</p>");
+  savedPostersGrid.insertAdjacentHTML(
+    "beforeend", 
+    `<article class="poster">
+      <img class="poster-img" src="${currentPoster.imageURL}" alt="savedPoster">
+      <h1 class="poster-title">${currentPoster.title}</h1>
+      <h3 class="poster-quote">${currentPoster.quote}</h3>
+    </article>`
+  );
 
   //"<article class='poster'>
   // <img class='poster-img' src=`${currentPoster.imageURL}`>
