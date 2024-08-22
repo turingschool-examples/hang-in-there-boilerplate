@@ -128,7 +128,7 @@ document.querySelectorAll('.show-saved, .back-to-main').forEach(button => {
 });
 
 
-document.querySelector('.make-poster').addEventListener('click', (event) => {
+document.querySelector('.make-poster').addEventListener('click', async(event) => {
   const form = document.querySelector('form');
   if (!form.checkValidity()) {
     form.reportValidity();
@@ -136,9 +136,19 @@ document.querySelector('.make-poster').addEventListener('click', (event) => {
   }
   
   event.preventDefault();
-  setNewPosterFromForm();
-  displayCurrentPoster();
-  displayNewSection(mainPosterSection, posterFormSection);
+  try {
+    const validImage = await isImage(document.querySelector('#poster-image-url').value);
+    
+    if (validImage) {
+      console.log("The URL points to a valid image.");
+      handleMakePoster();
+    } else {
+      alert("The URL does not point to a valid image.");
+    }
+  } catch (error) {
+    alert("An error occurred while validating the image URL:" + error);
+  }
+
 })
 
 document.querySelectorAll('.show-main, .show-form').forEach(button => {
@@ -149,7 +159,28 @@ document.querySelectorAll('.show-main, .show-form').forEach(button => {
 
 // functions and event handlers go here 👇
 
+const handleMakePoster = () => {
+  setNewPosterFromForm();
+  displayCurrentPoster();
+  displayNewSection(mainPosterSection, posterFormSection);
+}
 
+const isImage = (url) => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    
+    img.onload = () => resolve(true); 
+    img.onerror = () => resolve(false);
+
+    try {
+      img.src = url; 
+      console.log(`Attempting to load image from: ${img.src}`);
+    } catch (error) {
+      console.log(`Caught error for URL: ${url}`, error);
+      reject(error);  
+    }
+  });
+};
 
 const setNewPosterFromForm = () => {
   const imageURL = document.querySelector('#poster-image-url').value;
