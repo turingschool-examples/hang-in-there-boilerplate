@@ -141,15 +141,11 @@ document.querySelector('.make-poster').addEventListener('click', async(event) =>
   event.preventDefault();
   try {
     const validImage = await isImage(document.querySelector('#poster-image-url').value);
-    
-    if (validImage) {
-      console.log("The URL points to a valid image.");
-      handleMakePoster();
-    } else {
-      alert("The URL does not point to a valid image.");
-    }
+  
+    console.log("The URL points to a valid image.");
+    handleMakePoster();
   } catch (error) {
-    alert("An error occurred while validating the image URL:" + error);
+    alert(("The URL does not point to a valid image."));
   }
 
 })
@@ -193,16 +189,12 @@ const isImage = (url) => {
   return new Promise((resolve, reject) => {
     const img = new Image();
     
-    img.onload = () => resolve(true); 
-    img.onerror = () => resolve(false);
+    img.onload = () => resolve(); 
+    img.onerror = () => reject();
 
-    try {
-      img.src = url; 
-      console.log(`Attempting to load image from: ${img.src}`);
-    } catch (error) {
-      console.log(`Caught error for URL: ${url}`, error);
-      reject(error);  
-    }
+    img.src = url; 
+    console.log(`Attempting to load image from: ${img.src}`);
+  
   });
 };
 
