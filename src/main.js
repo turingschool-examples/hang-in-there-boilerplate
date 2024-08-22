@@ -104,8 +104,11 @@ var currentPoster;
 
 // event listeners go here 👇
 document.getElementsByClassName("show-random")[0].addEventListener('click', function() {
-  renderPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
-});
+  renderPoster(
+    images[getRandomIndex(images)], 
+    titles[getRandomIndex(titles)], 
+    quotes[getRandomIndex(quotes)]
+  )});
 document.getElementsByClassName("show-saved")[0].addEventListener('click', function() {
   toggleHiddenState('saved-posters');
 });
@@ -119,9 +122,13 @@ document.getElementsByClassName("show-main")[0].addEventListener('click', functi
   toggleHiddenState('poster-form');
 });
 
-document.getElementsByClassName("make-poster")[0].addEventListener('click', function() {
-  createCustomPoster(document.getElementById("poster-image-URL").value, document.getElementById("poster-title").textContent, document.getElementById("poster-quote").textContent);
-});
+document.getElementsByClassName("make-poster")[0].addEventListener('click', function(event) {
+  event.preventDefault();
+  createCustomPoster(
+    document.getElementById("poster-image-url").value, 
+    document.getElementById("poster-title").value, 
+    document.getElementById("poster-quote").value
+  )});
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -177,6 +184,3 @@ function createCustomPoster(imageInstance, titleInstance, quoteInstance) {
 window.addEventListener('load', function() {
   renderPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
 });
-
-// // FOR CUSTOM POSTERS
-// document.getElementById("poster-image-URL"), document.getElementById("poster-title"), document.getElementById("poster-quote");
