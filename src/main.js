@@ -189,11 +189,18 @@ function saveCurrentToSavedArray() {
 }
 
 function displaySavedInGrid() {
+  var savedPostersGrid = document.getElementsByClassName("saved-posters-grid")[0];
+  savedPostersGrid.insertAdjacentHTML("beforeend", "<p>TEST</p>");
 
+  //"<article class='poster'>
+  // <img class='poster-img' src=`${currentPoster.imageURL}`>
+  // <h1 class='poster-title'>`${currentPoster.title}`</h1>
+  // <h3 class='poster-quote'>`${currentPoster.quote}`</h3>
+  // </article>"
 }
 
 function savePoster() {
-  //save current main to saved posters array
+  //if current is not in saved posters array
   saveCurrentToSavedArray();
   //display savedPosters in grid section
   displaySavedInGrid();
