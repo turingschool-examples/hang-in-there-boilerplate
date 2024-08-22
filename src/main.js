@@ -23,6 +23,9 @@ var urlBox = document.querySelector("#poster-image-url");
 var titleBox = document.querySelector("#poster-title");
 var quoteBox = document.querySelector("#poster-quote");
 
+// saved posters page
+var savedPostersGrid = document.querySelector(".saved-posters-grid")
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -200,5 +203,4 @@ function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)
   }
-  console.log(savedPosters);
 }
