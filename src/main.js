@@ -1,5 +1,13 @@
 // query selector variables go here 👇
+const posterImage = document.querySelector('.poster-img');
+const posterTitle = document.querySelector('.poster-title');
+const posterQuote = document.querySelector('.poster-quote');
 
+const mainPosterSection = document.querySelector('.main-poster');
+const posterFormSection = document.querySelector('.poster-form');
+const savedPostersSection = document.querySelector('.saved-posters');
+
+const savedPostersGrid = document.querySelector('.saved-posters-grid')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 const unmotivationalPosters = [
@@ -226,15 +234,7 @@ var savedPosters = [];
 var currentPoster;
 
 // query selectors go here
-const posterImage = document.querySelector('.poster-img');
-const posterTitle = document.querySelector('.poster-title');
-const posterQuote = document.querySelector('.poster-quote');
 
-const mainPosterSection = document.querySelector('.main-poster');
-const posterFormSection = document.querySelector('.poster-form');
-const savedPostersSection = document.querySelector('.saved-posters');
-
-const savedPostersGrid = document.querySelector('.saved-posters-grid')
 
 // event listeners go here 👇
 document.addEventListener('DOMContentLoaded', () => {
@@ -281,7 +281,7 @@ document.querySelectorAll('.show-main, .show-form').forEach(button => {
 
 document.querySelector('.save-poster').addEventListener('click', handleSavePoster);
 
-document.querySelector()
+
 // functions and event handlers go here 👇
 function handleSavePoster(){
   if (savedPosters.includes(currentPoster)) {
@@ -354,10 +354,17 @@ const displayNewSection = (section1, section2) => {
   section2.classList.toggle('hidden');
 };
 
+const cleanData = () => {
+  return unmotivationalPosters.map((data) => {
+    return createPoster(data.img_url, data.name, data.description)
+  })
+}
+
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 
 function createPoster(imageURL, title, quote) {
   return {
