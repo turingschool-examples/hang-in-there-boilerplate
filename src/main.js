@@ -135,10 +135,10 @@ function getRandomIndex(array) {
 }
 
 function updatePoster() {
-  const index = getRandomIndex(images);
-  const imageURL = images[index];
-  const title = titles[index];
-  const quote = quotes[index];
+  var index = getRandomIndex(images);
+  var imageURL = images[index];
+  var title = titles[index];
+  var quote = quotes[index];
 
   document.querySelector('.poster-img').src = imageURL;
   document.querySelector('.poster-title').textContent = title;
