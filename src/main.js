@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setNewPoster();
   displayCurrentPoster();
   // const cleanedData = cleanData()
-  setUnmotivationalPostersElements(cleanData())
+  storeUnmotivationalPostersElements(cleanData())
 });
 
 document.querySelector('.show-random').addEventListener('click', () =>{
@@ -290,7 +290,26 @@ document.querySelectorAll('.back-to-main-unmotivational, .show-unmotivational-po
     displayNewSection(unmotivationalPosterSection, mainPosterSection)
   })
 })
+
+savedUnmotivationalPostersGrid.addEventListener('dblclick', (event) => {
+  handleDeletePosters(event.target)
+})
+
 // functions and event handlers go here 👇
+
+const handleDeletePosters = (target) => {
+  if (target.getAttribute('id')) {
+    console.log("true");
+  }
+  if (target.parentElement.getAttribute('id')) {
+    console.log("daddy true");
+  }
+};
+
+const deleteElement= (element) => {
+  
+}
+
 function handleSavePoster(){
   if (savedPosters.includes(currentPoster)) {
     return
@@ -303,7 +322,7 @@ function handleSavePoster(){
 
 const storeCurrentPosterElement = () => {
   savedPostersGrid.insertAdjacentHTML("beforeend",
-    `<article class="mini-poster">
+    `<article class="mini-poster" id=${currentPoster.id}>
         <img src=${currentPoster.imageURL}>
         <h2>${currentPoster.title}</h2>
         <h4>${currentPoster.quote}</h4>
@@ -353,10 +372,10 @@ const displayCurrentPoster = () => {
   posterQuote.textContent = currentPoster.quote;
 };
 
-const setUnmotivationalPostersElements = (data) => {
+const storeUnmotivationalPostersElements = (data) => {
   for (let i = 0; i < data.length; i++){
     savedUnmotivationalPostersGrid.insertAdjacentHTML("beforeend", `
-    <article class="mini-poster">
+    <article class="mini-poster" id=${data[i].id}>
       <img src=${data[i].imageURL}>
       <h2>${data[i].title}</h2>
       <h4>${data[i].quote}</h>
