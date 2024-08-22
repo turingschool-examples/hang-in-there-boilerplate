@@ -166,10 +166,21 @@ makePosterButton.addEventListener('click', (event) => {
   const inputURL = document.querySelector('#poster-image-url').value
   const inputTitle = document.querySelector('#poster-title').value
   const inputQuote = document.querySelector('#poster-quote').value
+  const posterPosition = document.querySelector('.poster')
 
   currentPoster = createPoster(inputURL, inputTitle, inputQuote);
-  console.log(currentPoster)
-  //isolate where poster lives on webpage
-  //isolate show me my poster button
-  //event listener(click show me poster, function that renders current poster)
+
+  posterPosition.innerHTML =
+    `<img class="poster-img" src=${inputURL} alt="nothin' to see here">
+    <h1 class="poster-title">${inputTitle}</h1>
+    <h3 class="poster-quote">${inputQuote}</h3>`
+
+    switchHidden(posterFormParent, mainPage);
+    console.log(currentPoster);
 });
+//isolate show my poster button
+  //isolate where poster lives on webpage
+  //event listener(click show me poster, function that renders current poster)
+
+
+
