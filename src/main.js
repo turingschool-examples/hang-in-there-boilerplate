@@ -147,3 +147,14 @@ const savedPostersButton = document.querySelector('.show-saved');
 savedPostersButton.addEventListener('click', () => {
   switchHidden(mainPage, savedPostersPage)
 });
+
+const backToMainButton = document.querySelector('.back-to-main')
+const nevermindButton = document.querySelector('.show-main')
+
+backToMainButton.addEventListener('click', () => {
+  switchHidden(mainPage, savedPostersPage)
+});
+
+nevermindButton.addEventListener('click', () => {
+  switchHidden(mainPage, posterFormParent)
+});
