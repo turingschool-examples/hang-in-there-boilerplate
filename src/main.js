@@ -2,6 +2,7 @@ let showRandom = document.querySelector(".show-random");
 let showForm = document.querySelector(".show-form");
 let showSaved = document.querySelector(".show-saved");
 let showMain = document.querySelector(".show-main");
+let savePoster = document.querySelector(".save-poster");
 
 let backToMain = document.querySelector(".back-to-main");
 
@@ -19,7 +20,9 @@ let image = document.querySelector("#poster-image-url");
 let title = document.querySelector("#poster-title");
 let quote = document.querySelector("#poster-quote");
 
-let form = document.querySelector('form')
+let form = document.querySelector('form');
+
+let posterGrid = document.querySelector(".saved-posters-grid");
 
 let images = [
     "./assets/bees.jpg",
@@ -147,6 +150,8 @@ form.addEventListener("submit", function(event) {
     toggleVisibility(posterForm, mainPoster);
 });
 
+savePoster.addEventListener("click", saveThisPoster);
+
 //*********************************************** */
 function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
@@ -188,3 +193,27 @@ function toggleVisibility(element1, element2) {
     element1.classList.toggle("hidden");
     element2.classList.toggle("hidden");
 }
+
+function saveThisPoster(){
+    if (!savedPosters.includes(currentPoster)){
+        savedPosters.push(currentPoster);
+    }
+
+    posterGrid.innerHTML = '';
+
+    savedPosters.forEach(poster =>{
+        let miniPoster = document.createElement('div');
+        miniPoster.classList.add('mini-poster');
+        let img = document.createElement('img');
+        img.src = poster.imageURL;
+        let title = document.createElement('h2');
+        title.innerText = poster.title;
+        let quote = document.createElement('h4');
+        quote.innerText = poster.quote;
+        
+        miniPoster.appendChild(img);
+        miniPoster.appendChild(title);
+        miniPoster.appendChild(quote);
+        posterGrid.appendChild(miniPoster);
+    });
+} 
