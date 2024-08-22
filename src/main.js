@@ -143,20 +143,24 @@ nevermindButton.addEventListener('click', () => {
 
 makePosterButton.addEventListener('click', (event) => {
   event.preventDefault()
-  const inputURL = document.querySelector('#poster-image-url').value
-  const inputTitle = document.querySelector('#poster-title').value
-  const inputQuote = document.querySelector('#poster-quote').value
-  const posterPosition = document.querySelector('.poster')
+  const inputURL = document.querySelector('#poster-image-url').value;
+  const inputTitle = document.querySelector('#poster-title').value;
+  const inputQuote = document.querySelector('#poster-quote').value;
+  const posterPosition = document.querySelector('.poster');
 
   currentPoster = createPoster(inputURL, inputTitle, inputQuote);
 
   posterPosition.innerHTML =
     `<img class="poster-img" src=${inputURL} alt="nothin' to see here">
     <h1 class="poster-title">${inputTitle}</h1>
-    <h3 class="poster-quote">${inputQuote}</h3>`
+    <h3 class="poster-quote">${inputQuote}</h3>`;
 
-    switchHidden(posterFormParent, mainPage);
-    console.log(currentPoster);
+  switchHidden(posterFormParent, mainPage);
+  images.unshift(inputURL);
+  titles.unshift(inputTitle);
+  quotes.unshift(inputQuote);
+  console.log(quotes[0]);
+  console.log(titles[0]);
 });
 
 const switchHidden = (element1, element2) => {
@@ -166,7 +170,7 @@ const switchHidden = (element1, element2) => {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
   
 function createPoster(imageURL, title, quote) {
   return {
@@ -174,5 +178,18 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
-}
+};
 
+const saveAPosterButton = document.querySelector('save-poster')
+saveAPosterButton.addEventListener('click', () => {
+  var imageURL = posterImage.src;
+  var title= posterTitle.innerText;
+  var quote = posterQuote.innerText;
+  currentPoster = createPoster(imageURL, title, quote);
+  savedPosters.unshift(currentPoster);
+  console.log(savedPosters[0])
+});
+// not working, frusterating. Find way to add current poster to array and render 
+
+// make event listener for save his poster
+// make an object with create function
