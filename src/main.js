@@ -283,8 +283,6 @@ backToMain2.addEventListener("click", function() {
     toggleVisibility(unmotivationalSection, mainPoster);
 });
 
-
-
 form.addEventListener("submit", function(event) {
     event.preventDefault();
     assembleOwnPoster();
@@ -362,13 +360,7 @@ function saveThisPoster() {
 function cleanData() {
     if(!isDataClean) {
         unmotivationalPosters.forEach(poster => {
-            let imageURL = poster.img_url;
-            let title = poster.name;
-            let quote = poster.description;
-            let id = poster.year;
-
-            let newPoster = { id: id, imageURL: imageURL, title: title, quote: quote };
-            
+            let newPoster = createPoster(poster.img_url, poster.name, poster.description);
             cleanedUnmotivated.push(newPoster);
         });
         isDataClean = true;
