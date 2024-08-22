@@ -8,6 +8,7 @@ const posterFormSection = document.querySelector('.poster-form');
 const savedPostersSection = document.querySelector('.saved-posters');
 
 const savedPostersGrid = document.querySelector('.saved-posters-grid')
+const savedUnmotivationalPostersGrid = document.querySelector('.unmotivational-poster-grid')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 const unmotivationalPosters = [
@@ -240,6 +241,8 @@ var currentPoster;
 document.addEventListener('DOMContentLoaded', () => {
   setNewPoster();
   displayCurrentPoster();
+  // const cleanedData = cleanData()
+  setUnmotivationalPostersElements(cleanData())
 });
 
 document.querySelector('.show-random').addEventListener('click', () =>{
@@ -348,6 +351,18 @@ const displayCurrentPoster = () => {
   posterTitle.textContent = currentPoster.title;
   posterQuote.textContent = currentPoster.quote;
 };
+
+const setUnmotivationalPostersElements = (data) => {
+  for (let i = 0; i < data.length; i++){
+    savedUnmotivationalPostersGrid.insertAdjacentHTML("beforeend", `
+    <article class="mini-poster">
+      <img src=${currentPoster.imageURL}>
+      <h1>${currentPoster.title}</h1>
+      <h3>${currentPoster.quote}</h3>
+    </article>
+    `)
+  }
+}
 
 const displayNewSection = (section1, section2) => {
   section1.classList.toggle('hidden');
