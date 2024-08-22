@@ -149,12 +149,9 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-function populatePoster(imageInstance, titleInstance, quoteInstance) {
-  currentPoster = createPoster(imageInstance, titleInstance, quoteInstance);
-}
 
 function renderPoster(imageInstance, titleInstance, quoteInstance) {
-  populatePoster(imageInstance, titleInstance, quoteInstance);
+  currentPoster = createPoster(imageInstance, titleInstance, quoteInstance);
   document.getElementsByClassName("poster-img")[0].setAttribute("src", currentPoster.imageURL);
   document.getElementsByClassName("poster-title")[0].innerHTML = currentPoster.title;
   document.getElementsByClassName("poster-quote")[0].innerHTML = currentPoster.quote;
@@ -199,11 +196,6 @@ function displaySavedInGrid() {
     </article>`
   );
 
-  //"<article class='poster'>
-  // <img class='poster-img' src=`${currentPoster.imageURL}`>
-  // <h1 class='poster-title'>`${currentPoster.title}`</h1>
-  // <h3 class='poster-quote'>`${currentPoster.quote}`</h3>
-  // </article>"
 }
 
 function savePoster() {
