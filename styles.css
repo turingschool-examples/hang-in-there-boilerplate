@@ -109,8 +109,7 @@ button:hover {
   padding: 40px;
 }
 
-.saved-posters-grid,
-.saved-unmotivated-grid {
+.saved-posters-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
@@ -144,4 +143,24 @@ button:hover {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+
+/* ~~~~~ SAVED UNMOTIVATIONAL POSTER SECTION ~~~~~ */
+.saved-unmotivated-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  gap: 20px 20px;
+  padding: 20px;
+}
+
+.unmot {
+  border-radius: 15px;
+  background: gray;
+}
+
+.unmot h2 {
+  color: black;
 }

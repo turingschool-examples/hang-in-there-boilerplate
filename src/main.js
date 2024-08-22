@@ -260,13 +260,13 @@ makePosterButton.addEventListener("click", function(){
 
 savedPosterButton.addEventListener("click", function(){
   hiddenswitch("saved");
-  showSavedGrid(savedPosters, savedGrid);
+  showSavedGrid(savedPosters, savedGrid, 'reg');
 });
 
 unmotivationalPosterButton.addEventListener("click", function(){
   hiddenswitch("unmotivate");
   if (savedUnmotivatedGrid.childNodes.length === 0){
-    showSavedGrid(savedUnmotivationalPosters, savedUnmotivatedGrid);
+    showSavedGrid(savedUnmotivationalPosters, savedUnmotivatedGrid, 'unmot');
   }
 });
 
@@ -348,10 +348,10 @@ function posterCreation(image, title, quote) {
   quotes.push(quote);
 };
 
-function showSavedGrid(listPosters, location) {
+function showSavedGrid(listPosters, location, posterType){
   listPosters.forEach((poster) =>{
     let divOfPoster = document.createElement("div");
-    divOfPoster.className = "mini-poster";
+    divOfPoster.className = `mini-poster ${posterType}`;
     divOfPoster.id = poster.id;
     divOfPoster.innerHTML += `<img src="${poster.imageURL}" alt="nothin' to see here">`;
     divOfPoster.innerHTML += `<h2>${poster.title}</h2>`;
