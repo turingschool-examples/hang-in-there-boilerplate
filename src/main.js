@@ -97,23 +97,19 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-function createPoster(imageURL, title, quote) {
-  return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
-}
-
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var randomButton = document.querySelector('.show-random');
+
+const makePosterButton = document.querySelector('.make-poster');
+const mainPage = document.querySelector('.main-poster');
+const posterFormParent = document.querySelector('.poster-form');
+const customPosterButton = document.querySelector('.show-form');
+const savedPostersPage = document.querySelector('.saved-posters');
+const savedPostersButton = document.querySelector('.show-saved');
+const backToMainButton = document.querySelector('.back-to-main');
+const nevermindButton = document.querySelector('.show-main');
 
 const contentGenerator = () => {
   var imageURL = images[getRandomIndex(images)];
@@ -122,34 +118,20 @@ const contentGenerator = () => {
   posterImage.src = imageURL;
   posterTitle.innerText = title;
   posterQuote.innerText = quote;
-  newPoster = createPoster(imageURL, title, quote)
-}
+  currentPoster = createPoster(imageURL, title, quote)
+};
 
 window.addEventListener('load', contentGenerator);
+
 randomButton.addEventListener('click', contentGenerator);
 
-const mainPage = document.querySelector('.main-poster');
-const posterFormParent = document.querySelector('.poster-form');
-
-const customPosterButton = document.querySelector('.show-form');
 customPosterButton.addEventListener('click', () => {
   switchHidden(mainPage, posterFormParent)
 });
 
-const switchHidden = (element1, element2) => {
-  element1.classList.toggle('hidden');
-  element2.classList.toggle('hidden');
-};
-
-const savedPostersPage = document.querySelector('.saved-posters');
-const savedPostersButton = document.querySelector('.show-saved');
-
 savedPostersButton.addEventListener('click', () => {
   switchHidden(mainPage, savedPostersPage)
 });
-
-const backToMainButton = document.querySelector('.back-to-main');
-const nevermindButton = document.querySelector('.show-main');
 
 backToMainButton.addEventListener('click', () => {
   switchHidden(mainPage, savedPostersPage)
@@ -158,8 +140,6 @@ backToMainButton.addEventListener('click', () => {
 nevermindButton.addEventListener('click', () => {
   switchHidden(mainPage, posterFormParent)
 });
-
-const makePosterButton = document.querySelector('.make-poster');
 
 makePosterButton.addEventListener('click', (event) => {
   event.preventDefault()
@@ -178,9 +158,21 @@ makePosterButton.addEventListener('click', (event) => {
     switchHidden(posterFormParent, mainPage);
     console.log(currentPoster);
 });
-//isolate show my poster button
-  //isolate where poster lives on webpage
-  //event listener(click show me poster, function that renders current poster)
 
+const switchHidden = (element1, element2) => {
+  element1.classList.toggle('hidden');
+  element2.classList.toggle('hidden');
+};
 
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+  
+function createPoster(imageURL, title, quote) {
+  return {
+    id: Date.now(), 
+    imageURL: imageURL, 
+    title: title, 
+    quote: quote}
+}
 
