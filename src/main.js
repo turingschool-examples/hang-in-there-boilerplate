@@ -255,16 +255,16 @@ var currentPoster;
 randomPosterButton.addEventListener("click", setupMainPoster);
 
 makePosterButton.addEventListener("click", function(){
-  hiddenswitch('form');
+  hiddenswitch(formSection);
 });
 
 savedPosterButton.addEventListener("click", function(){
-  hiddenswitch("saved");
+  hiddenswitch(savedSection);
   showSavedGrid(savedPosters, savedGrid, 'reg');
 });
 
 unmotivationalPosterButton.addEventListener("click", function(){
-  hiddenswitch("unmotivate");
+  hiddenswitch(unmotivatedSection);
   if (savedUnmotivatedGrid.childNodes.length === 0){
     showSavedGrid(savedUnmotivationalPosters, savedUnmotivatedGrid, 'unmot');
   }
@@ -342,22 +342,24 @@ function posterCreation(image, title, quote) {
   quotes.push(quote);
 };
 
-function showSavedGrid(listPosters, location, posterType){
+function makePosterDiv(data, posterType){
+  let divOP = document.createElement("div");
+  divOP.className = `mini-poster ${posterType}`;
+  divOP.id = data.id;
+  divOP.innerHTML += `<img src="${data.imageURL}" alt="nothin' to see here">`;
+  divOP.innerHTML += `<h2>${data.title}</h2>`;
+  divOP.innerHTML += `<h4>${data.quote}</h4>`;
+}
+
+function showSavedGrid(listPosters, location, posterType) {
   listPosters.forEach((poster) =>{
-    let divOfPoster = document.createElement("div");
-    divOfPoster.className = `mini-poster ${posterType}`;
-    divOfPoster.id = poster.id;
-    divOfPoster.innerHTML += `<img src="${poster.imageURL}" alt="nothin' to see here">`;
-    divOfPoster.innerHTML += `<h2>${poster.title}</h2>`;
-    divOfPoster.innerHTML += `<h4>${poster.quote}</h4>`;
-    idCheck = document.getElementById(poster.id);
-    if (idCheck === null){
+    var idCheck = document.getElementById(poster.id);
+    if (idCheck === null || (poster.title !== idCheck.children[1].innerText) || (poster.quote !== idCheck.children[2].innerText) || (poster.imageURL !== idCheck.children[0].src)){
+      var divOfPoster = makePosterDiv(poster, posterType);
       location.appendChild(divOfPoster);
-    } else if (idCheck.title !== poster.title){
-      location.appendChild(divOfPoster);
-    }
+    }   
   })
-};
+}
 
 function cleanData(dataSet) {
   dataSet.forEach((data) => {
