@@ -13,6 +13,9 @@ var savedPoster = document.querySelector('.saved-posters')
 
 var nevermindButton = document.querySelector('.show-main')
 var backToMainButton = document.querySelector('.back-to-main')
+
+var makePosterButton = document.querySelector('.make-poster')
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -121,6 +124,8 @@ formButton.addEventListener('click', showForm)
 savedButton.addEventListener('click', showSavedPosters)
 nevermindButton.addEventListener('click', showMainPoster)
 backToMainButton.addEventListener('click', showMainPoster)
+makePosterButton.addEventListener('click', createCustomPoster)
+
 
 
 // functions and event handlers go here 👇
@@ -166,4 +171,33 @@ function showMainPoster() {
   mainPoster.classList.remove('hidden');
   makeForm.classList.add('hidden');
   savedPoster.classList.add('hidden');
+}
+
+function createCustomPoster (event) {
+  event.preventDefault()
+  
+  var userImage = document.querySelector('#poster-image-url').value;
+  var userTitle = document.querySelector('#poster-title').value;
+  var userQuote = document.querySelector('#poster-quote').value;
+
+  var newPoster = {
+    id: Date.now(),
+    imageURL: userImage,
+    title: userTitle,
+    quote: userQuote
+  }
+  currentPoster = newPoster;
+
+  images.push(userImage);
+  titles.push(userTitle);
+  quotes.push(userQuote);
+
+  image.src = newPoster.imageURL;
+  title.innerText = newPoster.title;
+  quote.innerText = newPoster.quote;
+
+  savedPosters.push(newPoster)
+
+  makeForm.classList.add('hidden')
+  mainPoster.classList.remove('hidden')
 }
