@@ -277,6 +277,14 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
+function cleanData(name, description, img_url) {
+  return {
+    id: Date.now(), 
+    name: name, 
+    description: description,
+    img_url: img_url}
+}
+
 function showRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
