@@ -1,4 +1,5 @@
 // query selector variables go here 👇
+var savePosterButton = document.querySelector('.save-poster')
 var showPosterButton = document.querySelector('.make-poster');
 var form = document.querySelector('form');
 var posterImageUrlInput = document.querySelector('#poster-image-url');
@@ -7,6 +8,7 @@ var posterQuoteInput = document.querySelector('#poster-quote');
 var mainPosterImage = document.querySelector('.poster-img');
 var mainPosterTitle = document.querySelector('.poster-title');
 var mainPosterQuote = document.querySelector('.poster-quote');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -114,7 +116,10 @@ var currentPoster;
 window.addEventListener('load', updatePoster);
 document.querySelector(".show-random").addEventListener("click", updatePoster);
 document.querySelector('.show-form').addEventListener('click',function(){showSection('.poster-form');});
-document.querySelector('.show-saved').addEventListener('click',function(){showSection('.saved-posters');});
+document.querySelector('.show-saved').addEventListener('click',function(){
+  showSection('.saved-posters');
+  displaySavedPoster();
+});
 document.querySelector('.show-main').addEventListener('click', function(){hideSection('.poster-form');});
 document.querySelector('.back-to-main').addEventListener('click', function(){hideSection('.saved-posters');});
 showPosterButton.addEventListener('click', function(event){
@@ -122,7 +127,7 @@ showPosterButton.addEventListener('click', function(event){
   createCustomPoster();
   displayNewPoster();
 });
-
+savePosterButton.addEventListener('click', createdPoster);
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -172,4 +177,31 @@ function displayNewPoster(){
   mainPosterImage.src = currentPoster.imageURL
   mainPosterTitle.innerText = currentPoster.title
   mainPosterQuote.innerText = currentPoster.quote
+}
+
+function createdPoster() {
+  var duplicatePoster = savedPosters.some(poster => 
+    poster.imageURL === currentPoster.imageURL && 
+    poster.title === currentPoster.title && 
+    poster.quote === currentPoster.quote
+  );
+  if (!duplicatePoster) {
+    savedPosters.push(currentPoster);
+  }
+}
+
+
+function displaySavedPoster() {
+  savedPostersGrid.innerHTML = ''; 
+  savedPosters.forEach(poster => {
+    var posterElement = document.createElement('div');
+    posterElement.classList.add('mini-poster');
+    posterElement.innerHTML = `
+      <img src="${poster.imageURL}" alt="${poster.title}">
+      <h2>${poster.title}</h2>
+      <h4>${poster.quote}</h4>
+    `;
+    savedPostersGrid.appendChild(posterElement);
+  });
+  showSection('.saved-posters');
 }
