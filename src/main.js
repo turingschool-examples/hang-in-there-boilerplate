@@ -102,6 +102,7 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+// query selectors go here
 const posterImage = document.querySelector('.poster-img');
 const posterTitle = document.querySelector('.poster-title');
 const posterQuote = document.querySelector('.poster-quote');
@@ -109,6 +110,8 @@ const posterQuote = document.querySelector('.poster-quote');
 const mainPosterSection = document.querySelector('.main-poster');
 const posterFormSection = document.querySelector('.poster-form');
 const savedPostersSection = document.querySelector('.saved-posters');
+
+const savedPostersGrid = document.querySelector('.saved-posters-grid')
 
 // event listeners go here 👇
 document.addEventListener('DOMContentLoaded', () => {
@@ -157,7 +160,28 @@ document.querySelectorAll('.show-main, .show-form').forEach(button => {
   });
 });
 
+document.querySelector('.save-poster').addEventListener('click', handleSavePoster);
+
+
 // functions and event handlers go here 👇
+function handleSavePoster(){
+  if (savedPosters.includes(currentPoster)) {
+    return
+  }
+  savedPosters.push(currentPoster)
+  storeCurrentPosterElement()
+}
+
+const storeCurrentPosterElement = () => {
+  savedPostersGrid.insertAdjacentHTML("beforeend",
+    `<article class="mini-poster">
+        <img src=${currentPoster.imageURL}>
+        <h1>${currentPoster.title}</h1>
+        <h3>${currentPoster.quote}</h3>
+    </article>
+    `
+  )
+}
 
 const handleMakePoster = () => {
   setNewPosterFromForm();
