@@ -9,7 +9,7 @@ const savedPostersSection = document.querySelector('.saved-posters');
 const unmotivationalPosterSection = document.querySelector('.unmotivational-poster')
 
 const savedPostersGrid = document.querySelector('.saved-posters-grid')
-const savedUnmotivationalPostersGrid = document.querySelector('.unmotivational-poster-grid')
+const savedUnmotivationalPostersGrid = document.querySelector('.unmotivational-poster-flex')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 const unmotivationalPosters = [
@@ -305,8 +305,8 @@ const storeCurrentPosterElement = () => {
   savedPostersGrid.insertAdjacentHTML("beforeend",
     `<article class="mini-poster">
         <img src=${currentPoster.imageURL}>
-        <h1>${currentPoster.title}</h1>
-        <h3>${currentPoster.quote}</h3>
+        <h2>${currentPoster.title}</h2>
+        <h4>${currentPoster.quote}</h4>
     </article>
     `
   )
@@ -330,10 +330,6 @@ const isImage = (url) => {
   
   });
 };
-
-const cleanPoster = () => {
-  
-}
 
 const setNewPosterFromForm = () => {
   const imageURL = document.querySelector('#poster-image-url').value;
@@ -362,8 +358,8 @@ const setUnmotivationalPostersElements = (data) => {
     savedUnmotivationalPostersGrid.insertAdjacentHTML("beforeend", `
     <article class="mini-poster">
       <img src=${data[i].imageURL}>
-      <h1>${data[i].title}</h1>
-      <h3>${data[i].quote}</h3>
+      <h2>${data[i].title}</h2>
+      <h4>${data[i].quote}</h>
     </article>
     `)
   }
