@@ -211,7 +211,7 @@ const setNewPosterFromForm = () => {
   const title = document.querySelector('#poster-title').value;
   const quote = document.querySelector('#poster-quote').value;
 
-  setCurrentPoster(imageURL, title, quote);
+  currentPoster = createPoster(imageURL, title, quote);
 };
 
 const setNewPoster = () => {
@@ -219,21 +219,13 @@ const setNewPoster = () => {
   const title = titles[getRandomIndex(titles)];
   const quote = quotes[getRandomIndex(quotes)];
 
-  setCurrentPoster(imageURL, title, quote);
+  currentPoster = createPoster(imageURL, title, quote);
 };
 
 const displayCurrentPoster = () => {
   posterImage.src = currentPoster.imageURL;
   posterTitle.textContent = currentPoster.title;
   posterQuote.textContent = currentPoster.quote;
-};
-
-const setCurrentPoster = (imageURL, title, quote) => {
-  currentPoster = {
-    imageURL,
-    title,
-    quote,
-  };
 };
 
 const displayNewSection = (section1, section2) => {
