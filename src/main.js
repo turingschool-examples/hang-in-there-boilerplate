@@ -25,6 +25,7 @@ var quoteBox = document.querySelector("#poster-quote");
 
 // saved posters page
 var savedPostersGrid = document.querySelector(".saved-posters-grid")
+// var miniPoster = document.querySelectorAll(".mini-poster")
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -208,16 +209,17 @@ function savePoster() {
 
 // saved posters appearing on page
 function toGrid() {
+  console.log(savedPostersGrid.innerHTML)
+  savedPostersGrid.innerHTML = "";
   for (x = 0; x < savedPosters.length; x++) {
-    console.log(savedPosters[x])
-    var url = savedPosters[x].imageURL
-    var title = savedPosters[x].title
-    var quote = savedPosters[x].quote
+    var url = savedPosters[x].imageURL;
+    var title = savedPosters[x].title;
+    var quote = savedPosters[x].quote;
     var posterHTML = `<div class='mini-poster'>
     <img src='${url}' alt='poster image'>
     <h2>${title}</h2>
     <h4>${quote}</h4>
-    </div>`
-    savedPostersGrid.insertAdjacentHTML('beforeend', posterHTML)
+    </div>`;
+    savedPostersGrid.insertAdjacentHTML('beforeend', posterHTML);
   }
 }
