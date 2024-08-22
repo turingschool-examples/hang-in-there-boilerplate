@@ -271,15 +271,15 @@ unmotivationalPosterButton.addEventListener("click", function(){
 });
 
 returnToMain.addEventListener("click", function(){
-  hiddenswitch("form");
+  hiddenswitch(formSection);
 });
 
 backToMain.addEventListener("click", function(){
-  hiddenswitch("saved");
+  hiddenswitch(savedSection);
 });
 
 offToMain.addEventListener("click", function(){
-  hiddenswitch("unmotivate");
+  hiddenswitch(unmotivatedSection);
 })
 
 saveThisPosterButton.addEventListener("click", function(){
@@ -331,13 +331,7 @@ function printPoster(image, title, quote) {
 
 function hiddenswitch(key) {
   mainSection.classList.toggle("hidden");
-  if (key === "form"){
-    formSection.classList.toggle("hidden");
-  } else if (key === "saved"){
-    savedSection.classList.toggle("hidden");
-  } else if (key === "unmotivate"){
-    unmotivatedSection.classList.toggle("hidden");
-  }
+  key.classList.toggle("hidden");
 };
 
 function posterCreation(image, title, quote) {
