@@ -296,6 +296,11 @@ form.addEventListener("submit", function(event) {
   hiddenswitch("form");
 });
 
+savedUnmotivatedGrid.addEventListener('dblclick', (e) => {
+  var target = e.target;
+  removePoster(target);
+})
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -343,7 +348,7 @@ function posterCreation(image, title, quote) {
   quotes.push(quote);
 };
 
-function showSavedGrid(listPosters, location){
+function showSavedGrid(listPosters, location) {
   listPosters.forEach((poster) =>{
     let divOfPoster = document.createElement("div");
     divOfPoster.className = "mini-poster";
@@ -360,12 +365,26 @@ function showSavedGrid(listPosters, location){
   })
 };
 
-function cleanData(dataSet){
+function cleanData(dataSet) {
   dataSet.forEach((data) => {
     var unPoster = createPoster(data.img_url, data.name, data.description);
     savedUnmotivationalPosters.push(unPoster);
   })
 };
+
+function removePoster(elementChecker) {  
+  if(!elementChecker.parentElement.classList.contains("saved-unmotivated-grid")){
+    removePoster(elementChecker.parentElement);
+  } else {
+    let result = savedUnmotivationalPosters.findIndex((poster) =>{
+      poster.title === elementChecker.children[1].innerText &&
+      poster.quote === elementChecker.children[2].innerText &&
+      poster.imageURL === elementChecker.children[0].src
+    })
+    savedUnmotivationalPosters.splice(result, 1);
+    elementChecker.remove();
+  }
+}
 
 function loadPage() {
   setupMainPoster();
