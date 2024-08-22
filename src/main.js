@@ -197,6 +197,8 @@ function showPoster() {
 
 // saving posters
 function savePoster() {
-  savedPosters.push(currentPoster);
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+  }
   console.log(savedPosters);
 }
