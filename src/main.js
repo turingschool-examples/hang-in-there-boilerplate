@@ -167,16 +167,27 @@ function toggleHiddenState(classOfElementToShow) {
   elementToShow.classList.toggle("hidden");
 }
 
-function saveCurrentToSavedArray() {
-  savedPosters.push(currentPoster);
+function saveDataToRespectiveArrays(imageInstance, titleInstance, quoteInstance) {
+  images.push(imageInstance);
+  titles.push(titleInstance);
+  quotes.push(quoteInstance);
 }
 
 
 function createCustomPoster(imageInstance, titleInstance, quoteInstance) {
   renderPoster(imageInstance, titleInstance, quoteInstance);
-  saveCurrentToSavedArray();
+  saveDataToRespectiveArrays(imageInstance, titleInstance, quoteInstance);
   toggleHiddenState('poster-form');
 }
+
+function saveCurrentToSavedArray() {
+  savedPosters.push(currentPoster);
+}
+
+function savePoster() {
+  //save current main to saved posters array
+}
+
 
 window.addEventListener('load', function() {
   renderPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
