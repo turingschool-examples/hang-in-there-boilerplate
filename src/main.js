@@ -215,8 +215,8 @@ function toGrid() {
     var quote = savedPosters[x].quote
     var posterHTML = `<div class='mini-poster'>
     <img src='${url}' alt='poster image'>
-    <h1>${title}</h1>
-    <h3>${quote}</h3>
+    <h2>${title}</h2>
+    <h4>${quote}</h4>
     </div>`
     savedPostersGrid.insertAdjacentHTML('beforeend', posterHTML)
   }
