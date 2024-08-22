@@ -158,3 +158,17 @@ backToMainButton.addEventListener('click', () => {
 nevermindButton.addEventListener('click', () => {
   switchHidden(mainPage, posterFormParent)
 });
+
+const makePosterButton = document.querySelector('.make-poster')
+
+makePosterButton.addEventListener('click', (event) => {
+  event.preventDefault()
+  const inputURL = document.querySelector('#poster-image-url').value
+  const inputTitle = document.querySelector('#poster-title').value
+  const inputQuote = document.querySelector('#poster-quote').value
+
+  console.log(event)
+  console.log(inputURL)
+  console.log(inputTitle)
+  console.log(inputQuote)
+})
