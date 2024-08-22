@@ -181,6 +181,7 @@ function makePosterPage() {
 function savedPostersPage() {
   mainPoster.classList.add("hidden");
   listSavedPosters.classList.remove("hidden");
+  toGrid();
 }
 
 function backToMain() {
@@ -202,5 +203,21 @@ function showPoster() {
 function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)
+  }
+}
+
+// saved posters appearing on page
+function toGrid() {
+  for (x = 0; x < savedPosters.length; x++) {
+    console.log(savedPosters[x])
+    var url = savedPosters[x].imageURL
+    var title = savedPosters[x].title
+    var quote = savedPosters[x].quote
+    var posterHTML = `<div class='mini-poster'>
+    <img src='${url}' alt='poster image'>
+    <h1>${title}</h1>
+    <h3>${quote}</h3>
+    </div>`
+    savedPostersGrid.insertAdjacentHTML('beforeend', posterHTML)
   }
 }
