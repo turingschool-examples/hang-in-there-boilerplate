@@ -11,7 +11,8 @@ var mainPoster = document.querySelector('.main-poster')
 var savedButton = document.querySelector('.show-saved')
 var savedPoster = document.querySelector('.saved-posters')
 
-
+var nevermindButton = document.querySelector('.show-main')
+var backToMainButton = document.querySelector('.back-to-main')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -118,6 +119,9 @@ var currentPoster;
 randomButton.addEventListener('click', pageLoad)
 formButton.addEventListener('click', showForm)
 savedButton.addEventListener('click', showSavedPosters)
+nevermindButton.addEventListener('click', showMainPoster)
+backToMainButton.addEventListener('click', showMainPoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -153,8 +157,13 @@ function showForm() {
 }
 
 function showSavedPosters() {
-  console.log(Event)
   savedPoster.classList.remove('hidden')
   mainPoster.classList.add('hidden')
   makeForm.classList.add('hidden')
+}
+
+function showMainPoster() {
+  mainPoster.classList.remove('hidden');
+  makeForm.classList.add('hidden');
+  savedPoster.classList.add('hidden');
 }
