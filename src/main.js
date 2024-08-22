@@ -136,7 +136,7 @@ makePosterButton.addEventListener('click', showPoster);
 nevermindButton.addEventListener('click', backToMain);
 
 backToMainButton.addEventListener('click', backToMain);
-// savePosterButton.addEventListener('click', //new function);
+savePosterButton.addEventListener('click', savePoster);
 // showSavedButton.addEventListener('click', new function)
 
 // functions and event handlers go here 👇
@@ -157,6 +157,7 @@ function randomPoster() {
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
   var poster = createPoster(randomImage, randomTitle, randomQuote);
+  currentPoster = poster;
   loadPoster(poster.imageURL, poster.title, poster.quote);
 }
 
@@ -191,4 +192,10 @@ function showPoster() {
   backToMain();
   var createdPoster = createPoster(urlBox.value, titleBox.value, quoteBox.value);
   loadPoster(createdPoster.imageURL, createdPoster.title, createdPoster.quote);
+}
+
+// saving posters
+function savePoster() {
+  savedPosters.push(currentPoster);
+  console.log(savedPosters);
 }
