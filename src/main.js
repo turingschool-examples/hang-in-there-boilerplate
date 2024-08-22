@@ -207,11 +207,12 @@ function displaySavedInGrid() {
 }
 
 function savePoster() {
-  //if current is not in saved posters array
-  saveCurrentToSavedArray();
-  //display savedPosters in grid section
-  displaySavedInGrid();
-}
+  if(!(savedPosters.includes(currentPoster))) {
+    saveCurrentToSavedArray();
+    //display savedPosters in grid section
+    displaySavedInGrid();
+  };
+};
 
 
 window.addEventListener('load', function() {
