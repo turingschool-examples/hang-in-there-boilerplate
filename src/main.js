@@ -26,7 +26,7 @@ let quote = document.querySelector("#poster-quote");
 let form = document.querySelector("form");
 
 let posterGrid = document.querySelector(".saved-posters-grid");
-let unPosterGrid = document.querySelector(".unmotivational-posters-grid");
+let unPosterGrid = document.querySelector(".unmotivational-posters-flex");
 
 let images = [
     "./assets/bees.jpg",
