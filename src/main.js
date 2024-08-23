@@ -1,73 +1,3 @@
-var image = document.querySelector('.poster-img');
-var title = document.querySelector('.poster-title');
-var quote = document.querySelector('.poster-quote');
-var mainPoster = document.querySelector('.main-poster');
-var showForm = document.querySelector('.poster-form');
-var savedPostersSection = document.querySelector('.saved-posters');
-
-// Buttons
-var makeNewPosterButton = document.querySelector('.show-form');
-var showSavedPosterButton = document.querySelector('.show-saved');
-var nevermindButton = document.querySelector('.show-main');
-var backToMainButtom = document.querySelector('.back-to-main');
-var showMyPosterButton = document.querySelector('.make-poster');
-
-// Input Fields
-var userImageUrlInput = document.querySelector('#poster-image-url');
-var userTitleInput = document.querySelector('#poster-title');
-var userQuoteInput = document.querySelector('#poster-quote');
-
-
-// First, use the values from the inputs to create a new, unique poster object and save it as the value of the currentPoster global variable (part of your data model)
-
-showMyPosterButton.addEventListener('click', function(event) {
-  event.preventDefault();
-  currentPoster = createPoster(userImageUrlInput.value, userTitleInput.value, userQuoteInput.value);
-  images.push(currentPoster.imageURL);
-  titles.push(currentPoster.title);
-  quotes.push(currentPoster.quote);
-  image.src = currentPoster.imageURL;
-  title.innerText = currentPoster.title;
-  quote.innerText = currentPoster.quote;
-  mainPoster.classList.toggle('hidden');
-  showForm.classList.toggle('hidden');
-});
-
-
-// Save the submitted data into the respective arrays (image URL into the images array, etc - all part of your data model) so that future random posters can use the user-created data
-
-// Change back to the main poster view (hiding the form view again)
-
-// Use the new, unique poster object (which should be saved in the currentPoster variable - part of your data model) to display the newly created poster image, title, and quote in the main view on the DOM
-
-// Will use createPoster Fx to take user inputs and generate new poster
-// Store user input variables in `currentPoster` variable
-
-window.addEventListener("load", collectPosterParts);
-
-makeNewPosterButton.addEventListener("click", function() {
-  mainPoster.classList.toggle('hidden')
-  showForm.classList.toggle('hidden')
-});
-
-showSavedPosterButton.addEventListener('click', function() {
-  mainPoster.classList.toggle('hidden')
-  savedPostersSection.classList.toggle('hidden')
-});
-
-nevermindButton.addEventListener('click', function() {
-  mainPoster.classList.remove('hidden')
-  showForm.classList.toggle('hidden')
-})
-
-backToMainButtom.addEventListener('click', function() {
-  mainPoster.classList.toggle('hidden')
-  savedPostersSection.classList.toggle('hidden')
-})
-
-//Consider how you might use arguments/parameters to make dynamic reusable functions to control what is shown/hidden.
-
-
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -165,19 +95,133 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
+
 var currentPoster;
+var savedPosters = [];
 
-// event listeners go here 👇
+var image = document.querySelector('.poster-img');
+var title = document.querySelector('.poster-title');
+var quote = document.querySelector('.poster-quote');
+var showForm = document.querySelector('.poster-form');
+var mainPoster = document.querySelector('.main-poster');
+var randomPosterButton = document.querySelector('.show-random');
+var savedPostersSection = document.querySelector('.saved-posters');
 
-const randomPosterButton = document.querySelector('.show-random');
-randomPosterButton.addEventListener("click",  collectPosterParts);
+// Buttons
+var nevermindButton = document.querySelector('.show-main');
+var makeNewPosterButton = document.querySelector('.show-form');
+var backToMainButtom = document.querySelector('.back-to-main');
+var showMyPosterButton = document.querySelector('.make-poster');
+var showSavedPosterButton = document.querySelector('.show-saved');
 
-// functions and event handlers go here 👇
-// (we've provided two to get you started)!
+// User Input Fields
+var userImageUrlInput = document.querySelector('#poster-image-url');
+var userTitleInput = document.querySelector('#poster-title');
+var userQuoteInput = document.querySelector('#poster-quote');
+
+// Consider how you might use arguments/parameters to make dynamic reusable functions to control what is shown/hidden.
+// I think this is what Chat helped me do with refactoring
+  // Adding `event`, `element`, and `poster` as arguments
+  
+
+// Event Listeners
+
+// Before refactoring Event Listeners - (Save for now)
+
+// makeNewPosterButton.addEventListener("click", function() {
+  //   mainPoster.classList.toggle('hidden')
+  //   showForm.classList.toggle('hidden')
+  // });
+
+// showSavedPosterButton.addEventListener('click', function() {
+//   mainPoster.classList.toggle('hidden')
+//   savedPostersSection.classList.toggle('hidden')
+// });
+
+// nevermindButton.addEventListener('click', function() {
+//   mainPoster.classList.remove('hidden')
+//   showForm.classList.toggle('hidden')
+// })
+
+// backToMainButtom.addEventListener('click', function() {
+//   mainPoster.classList.toggle('hidden')
+//   savedPostersSection.classList.toggle('hidden')
+// })
+
+// showMyPosterButton.addEventListener('click', function(event) {
+//   event.preventDefault();
+//   currentPoster = createPoster(userImageUrlInput.value, userTitleInput.value, userQuoteInput.value);
+//   images.push(currentPoster.imageURL);
+//   titles.push(currentPoster.title);
+//   quotes.push(currentPoster.quote);
+//   image.src = currentPoster.imageURL;
+//   title.innerText = currentPoster.title;
+//   quote.innerText = currentPoster.quote;
+//   mainPoster.classList.toggle('hidden');
+//   showForm.classList.toggle('hidden');
+// });
+
+window.addEventListener('load', generateRandomPoster);
+randomPosterButton.addEventListener('click', generateRandomPoster);
+showMyPosterButton.addEventListener('click', handleNewPosterCreation);
+
+makeNewPosterButton.addEventListener('click', function() {
+  toggleVisibility(mainPoster);
+  toggleVisibility(showForm);
+});
+
+showSavedPosterButton.addEventListener('click', function() {
+  toggleVisibility(mainPoster);
+  toggleVisibility(savedPostersSection);
+});
+
+nevermindButton.addEventListener('click', function() {
+  showElement(mainPoster);
+  hideElement(showForm);
+});
+
+backToMainButtom.addEventListener('click', function() {
+  toggleVisibility(mainPoster);
+  toggleVisibility(savedPostersSection);
+});
+
+function toggleVisibility(element) {
+  element.classList.toggle('hidden');
+}
+
+function showElement(element) {
+  element.classList.remove('hidden');
+}
+
+function hideElement(element) {
+  element.classList.add('hidden');
+}
+
+// Updates HTML elements with poster parts
+function updatePosterDisplay(poster) {
+  image.src = poster.imageURL;
+  title.innerText = poster.title;
+  quote.innerText = poster.quote;
+}
+
+function handleNewPosterCreation(event) {
+  event.preventDefault(); // Form submission default is to refresh page (not desired here)
+  currentPoster = createPoster(userImageUrlInput.value, userTitleInput.value, userQuoteInput.value);
+  saveUserPosterData(currentPoster); 
+  updatePosterDisplay(currentPoster);
+  toggleVisibility(mainPoster);
+  toggleVisibility(showForm);
+}
+
+// Saves poster parts in respective arrays for future random poster generation
+function saveUserPosterData(poster) {
+  images.push(currentPoster.imageURL);
+  titles.push(currentPoster.title);
+  quotes.push(currentPoster.quote);
+}
 
 // If the function requires the use of "AND" to describe it => SRP that shit
-function collectPosterParts() {
+function generateRandomPoster() {
   var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
@@ -199,24 +243,3 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
-
-
-
-
-
-// Switching views
-
-// Click "Show Saved Posters" button
-  // Reveal saved posters area
-
-// Click "Nevermind, take me back" OR "Back to Main buttons"
-  // Show only  main poster section
-
-
-// Will use classList to add/remove class of `hidden` to reveal create poster form
-  // Event listener to alternate what is hidden and what is not upon clicking "Make Your Own Poster" button
-// Will save newly created poster in arrays for future recycling with `Random Poster` Button
-
-// Clicking "Nevermind, Take me back" button return to original view of main poster section
-
-
