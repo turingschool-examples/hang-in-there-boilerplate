@@ -353,6 +353,7 @@ function saveThisPoster() {
         miniPoster.appendChild(img);
         miniPoster.appendChild(title);
         miniPoster.appendChild(quote);
+
         posterGrid.appendChild(miniPoster);
     });
 }
@@ -372,7 +373,7 @@ function postUnmotivationalPoster() {
     
     cleanedUnmotivated.forEach(poster =>{
         let miniPoster = document.createElement("div");
-        miniPoster.classList.add("mini-poster");
+        miniPoster.classList.add("unmotivated-mini");
         let img = document.createElement("img");
         img.src = poster.imageURL;
         let title = document.createElement("h2");
