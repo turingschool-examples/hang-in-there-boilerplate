@@ -256,6 +256,14 @@ document.getElementsByClassName("save-poster")[0].addEventListener('click', func
   savePoster();
 });
 
+document.getElementsByClassName("show-unmotivational")[0].addEventListener('click', function() {
+  toggleHiddenState("unmotivational-posters");
+});
+
+document.getElementsByClassName("back-to-main")[1].addEventListener('click', function() {
+  toggleHiddenState("unmotivational-posters");
+});
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
