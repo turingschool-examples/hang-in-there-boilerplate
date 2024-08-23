@@ -295,6 +295,20 @@ savedUnmotivatedGrid.addEventListener('dblclick', (e) => {
   removePoster(target);
 })
 
+mainPosterImage.addEventListener('click', function() {
+  mainPosterImage.setAttribute("src", images[getRandomIndex(images)]);
+})
+
+mainPosterTitle.addEventListener('click', function() {
+  mainPosterTitle.innerHTML = titles[getRandomIndex(titles)];
+})
+
+mainPosterQuote.addEventListener('click', function() {
+  mainPosterQuote.innerHTML = quotes[getRandomIndex(quotes)];
+})
+//create event listeners for title and quote on main page
+//edit directly in page? otherwise, hide an input that is exposed to edit and modify
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
