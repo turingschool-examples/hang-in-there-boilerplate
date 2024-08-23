@@ -336,7 +336,12 @@ function savePoster() {
   };
 };
 
+function generateUnmotivationalPosters() {
+  
+}
+
 
 window.addEventListener('load', function() {
   renderPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  generateUnmotivationalPosters()
 });
