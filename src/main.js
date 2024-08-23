@@ -286,12 +286,7 @@ saveThisPosterButton.addEventListener("click", function(){
 
 form.addEventListener("submit", function(event) {
   event.preventDefault();
-  var image = inputImage.value;
-  var title = inputTitle.value;
-  var quote = inputQuote.value;
-  posterCreation(image, title, quote);
-  printPoster(image, title, quote);
-  hiddenswitch(formSection);
+  formControl();
 });
 
 savedUnmotivatedGrid.addEventListener('dblclick', (e) => {
@@ -340,6 +335,15 @@ function posterCreation(image, title, quote) {
   quotes.push(quote);
 };
 
+function formControl() {
+  var image = inputImage.value;
+  var title = inputTitle.value;
+  var quote = inputQuote.value;
+  posterCreation(image, title, quote);
+  printPoster(image, title, quote);
+  hiddenswitch(formSection);
+};
+
 function makePosterDiv(data, posterType){
   let divOP = document.createElement("div");
   divOP.className = `mini-poster ${posterType}`;
@@ -364,11 +368,21 @@ function posterValidation(posterNode, posterGrid) {
   for (let i =0; i < matches.length; i++){
     if(matches[i].isEqualNode(posterNode)){
       return false;
+    } else if(contentValidation(matches[i], posterNode)) {
+      return false;
     }
   }
   return true;
 }
 
+function contentValidation(posterOne, posterTwo){
+  for(let i = 0; i < posterOne.children.length; i++){
+    if (!posterOne.children[i].isEqualNode(posterTwo.children[i])) {
+      return false;
+    }
+  }
+  return true;
+}
 function cleanData(dataSet) {
   dataSet.forEach((data) => {
     var unPoster = createPoster(data.img_url, data.name, data.description);
