@@ -271,6 +271,7 @@ document.querySelector('.make-poster').addEventListener('click', async(event) =>
   
     console.log("The URL points to a valid image.");
     handleMakePoster();
+    storeCurrentPosterElement();
   } catch (error) {
     alert(("The URL does not point to a valid image."));
   }
