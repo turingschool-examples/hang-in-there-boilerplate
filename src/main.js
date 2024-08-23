@@ -14,6 +14,13 @@ var mainPosterSection = document.querySelector('.main-poster');
 var posterFormSection = document.querySelector('.poster-form');
 var savedPosterSection = document.querySelector('.saved-posters');
 
+var showMyPosterButton = document.querySelector('.make-poster');
+var showMyPosterURL = document.querySelector('#poster-image-url');
+var showMyPosterTitle = document.querySelector('#poster-title');
+var showMyPosterQuote = document.querySelector('#poster-quote');
+
+var savedPosters = [];
+var currentPoster;
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -113,8 +120,6 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
 
 // event listeners go here 👇
 window.onload = function() {
@@ -143,10 +148,22 @@ backToMainButton.addEventListener('click', function(){
   savedPosterSection.classList.toggle('hidden');
 });
 
+showMyPosterButton.addEventListener('click', function(event){
+  event.preventDefault();
 
+  var userImageInput = showMyPosterURL.value;
+  var userTitleInput = showMyPosterTitle.value;
+  var userQuoteInput = showMyPosterQuote.value;
 
+  posterImage.src = userImageInput;
+  posterTitle.innerHTML = userTitleInput;
+  posterQuote.innerHTML = userQuoteInput;
 
-
+  mainPosterSection.classList.toggle('hidden');
+  posterFormSection.classList.toggle('hidden');
+  //take user input and save it when they click 'show my poster'
+  //how do I grab what the user typed in the 3 input fields.
+})
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -170,7 +187,7 @@ function getRandomPoster() {
   posterImage.src = randomImage
   posterTitle.innerHTML = randomTitle
   posterQuote.innerHTML = randomQuote
-}
+};
 
 
 // console.log(getRandomIndex(titles))
