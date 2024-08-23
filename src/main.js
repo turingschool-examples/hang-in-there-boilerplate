@@ -241,7 +241,7 @@ var unmotivationalBackToMainButton = document.querySelector("#unmotivational-bac
 var unmotivationalPostersView = document.querySelector(".unmotivational-posters");
 var unmotivationalPostersGrid = document.querySelector(".unmotivational-posters-grid");
 var unmotivationalPostersButton = document.querySelector(".show-unmotivational");
-
+var unmotivationalPostersGrid = document.getElementById('unmotivational-posters-grid');
 var userImage = document.querySelector("#poster-image-url");
 var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
@@ -252,7 +252,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-addEventListener("load", showRandomPoster);
+window.addEventListener("load", showRandomPoster);
+
 randomPosterButton.addEventListener("click", showRandomPoster);
 showFormButton.addEventListener("click", showFormView);
 showSavedPosterButton.addEventListener("click", showSavedPostersView);
@@ -271,36 +272,48 @@ function getRandomIndex(array) {
 
 function createPoster(imageURL, title, quote) {
   return {
-    id: Date.now(), 
+    id: Math.random(), 
     imageURL: imageURL, 
     title: title, 
     quote: quote}
 }
 
 function cleanData(posters) {
-  return posters.map(poster => {
+  return posters.map(function(poster) {
     return createPoster(poster.img_url, poster.name, poster.description);
   });
 }
 
-function createPoster(imageURL, title, quote) {
-  return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote
-  };
+function generatePosterHTML(poster) {
+  return `
+    <div class="poster">
+      <img src="${poster.imageURL}" alt="${poster.title}">
+      <div class="poster-title">${poster.title}</div>
+      <div class="poster-quote">${poster.quote}</div>
+    </div>
+  `;
 }
 
-const cleanedPosters = cleanData(unmotivationalPosters);
-console.log(cleanedPosters);
+function displayPosters(posters) {
+  unmotivationalPostersGrid.innerHTML = posters.map(function(poster) {
+    return generatePosterHTML(poster);
+  }).join('');
+}
+
+var cleanedPosters = cleanData(unmotivationalPosters);
+displayPosters(cleanedPosters);
 
 function showRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
   posterImage.src = images[getRandomIndex(images)];
-  
-  currentPoster = (posterImage.src, posterTitle.innerText, posterQuote.innerText)
+
+  currentPoster = {
+    imageURL: posterImage.src,
+    title: posterTitle.innerText,
+    quote: posterQuote.innerText
+  };
+
   images.push(posterImage.src);
   quotes.push(posterQuote.innerText);
   titles.push(posterTitle.innerText);
@@ -343,7 +356,13 @@ function createUserPoster() {
   posterTitle.innerText = userTitle.value;
   posterQuote.innerText = userQuote.value;
   posterImage.src = userImage.value;
-  currentPoster = (posterImage.src, posterTitle.innerText, posterQuote.innerText)
+
+  currentPoster = {
+    imageURL: posterImage.src,
+    title: posterTitle.innerText,
+    quote: posterQuote.innerText
+  };
+
   images.push(posterImage.src);
   quotes.push(posterQuote.innerText);
   titles.push(posterTitle.innerText);
