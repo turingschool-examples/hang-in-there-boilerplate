@@ -291,7 +291,7 @@ form.addEventListener("submit", function(event) {
   var quote = inputQuote.value;
   posterCreation(image, title, quote);
   printPoster(image, title, quote);
-  hiddenswitch("form");
+  hiddenswitch(formSection);
 });
 
 savedUnmotivatedGrid.addEventListener('dblclick', (e) => {
@@ -352,24 +352,21 @@ function makePosterDiv(data, posterType){
 
 function showSavedGrid(listPosters, location, posterType) {
   listPosters.forEach((poster) =>{
-    var idCheck = document.getElementById(poster.id);
-    // debugger
-    if (!idCheck || 
-      (poster.title.trim().toLowerCase() !== idCheck.children[1].innerText.trim().toLowerCase()) || 
-      (poster.quote.trim().toLowerCase() !== idCheck.children[2].innerText.trim().toLowerCase()) || 
-      (poster.imageURL.trim().toLowerCase() !== idCheck.children[0].src.trim().toLowerCase())){
-      var divOfPoster = makePosterDiv(poster, posterType);
+    var divOfPoster = makePosterDiv(poster, posterType);
+    if (posterValidation(divOfPoster, location)){
       location.appendChild(divOfPoster);
     }
   })
 };
 
-function posterValidation(poster) {
-  //grab all miniposter elements into an array 
-  //possibly grab each elements part into seperate arrays
-  //check each array for inclusion of data from poster
-  //if it matches poster entirely, return false
-  //if one thing doesn't match return true
+function posterValidation(posterNode, posterGrid) {
+  let matches = posterGrid.childNodes;
+  for (let i =0; i < matches.length; i++){
+    if(matches[i].isEqualNode(posterNode)){
+      return false;
+    }
+  }
+  return true;
 }
 
 function cleanData(dataSet) {
