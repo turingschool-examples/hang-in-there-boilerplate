@@ -104,7 +104,6 @@ var title = document.querySelector('.poster-title');
 var quote = document.querySelector('.poster-quote');
 var showForm = document.querySelector('.poster-form');
 var mainPoster = document.querySelector('.main-poster');
-var randomPosterButton = document.querySelector('.show-random');
 var savedPostersSection = document.querySelector('.saved-posters');
 
 // Buttons
@@ -112,7 +111,9 @@ var nevermindButton = document.querySelector('.show-main');
 var makeNewPosterButton = document.querySelector('.show-form');
 var backToMainButtom = document.querySelector('.back-to-main');
 var showMyPosterButton = document.querySelector('.make-poster');
+var randomPosterButton = document.querySelector('.show-random');
 var showSavedPosterButton = document.querySelector('.show-saved');
+var saveCurrentPosterButton = document.querySelector('.save-poster');
 
 // User Input Fields
 var userImageUrlInput = document.querySelector('#poster-image-url');
@@ -165,15 +166,15 @@ window.addEventListener('load', generateRandomPoster);
 randomPosterButton.addEventListener('click', generateRandomPoster);
 showMyPosterButton.addEventListener('click', handleNewPosterCreation);
 
+// Should this EL both save the current poster to the array & nest the pageview changes?
+saveCurrentPosterButton.addEventListener('click', savePosterHandler);
+
 makeNewPosterButton.addEventListener('click', function() {
   toggleVisibility(mainPoster);
   toggleVisibility(showForm);
 });
 
-showSavedPosterButton.addEventListener('click', function() {
-  toggleVisibility(mainPoster);
-  toggleVisibility(savedPostersSection);
-});
+showSavedPosterButton.addEventListener('click', showSavedPostersHandler);
 
 nevermindButton.addEventListener('click', function() {
   showElement(mainPoster);
@@ -185,6 +186,8 @@ backToMainButtom.addEventListener('click', function() {
   toggleVisibility(savedPostersSection);
 });
 
+
+// Functions
 function toggleVisibility(element) {
   element.classList.toggle('hidden');
 }
@@ -230,6 +233,33 @@ function generateRandomPoster() {
   title.innerText = randomTitle;
   quote.innerText = randomQuote;
   console.log(currentPoster)
+}
+
+// We want saved posters to display 
+
+
+function saveCurrentPoster() {
+  if (savedPosters.includes(currentPoster)) {
+    return;
+  } 
+  savedPosters.push(currentPoster);
+  var posterGrid = document.querySelector('.saved-posters-grid');
+  posterGrid.insertAdjacentHTML('afterbegin', `<article class="poster">
+      <img class="poster-img" src="${currentPoster.imageURL}" alt="new photo">
+      <h1 class="poster-title">${currentPoster.title}</h1>
+      <h3 class="poster-quote">${currentPoster.quote}</h3>
+    </article>`)
+}
+
+function savePosterHandler() {
+  saveCurrentPoster();
+  // Add elements to 
+  showSavedPostersHandler();
+}
+
+function showSavedPostersHandler() {
+  toggleVisibility(mainPoster);
+  toggleVisibility(savedPostersSection);
 }
 
 function getRandomIndex(array) {
