@@ -325,7 +325,6 @@ function displaySavedInGrid() {
       <h3 class="poster-quote">${currentPoster.quote}</h3>
     </article>`
   );
-
 }
 
 function savePoster() {
@@ -336,12 +335,31 @@ function savePoster() {
   };
 };
 
+function displayUnmotivationalInGrid() {
+  var unmotivationalPostersGrid = document.getElementsByClassName("unmotivational-posters-grid")[0];
+  unmotivationalPostersGrid.insertAdjacentHTML(
+    "beforeend", 
+    `<article class="poster">
+      <img class="poster-img" src="${currentPoster.imageURL}" alt="Unmotivational Poster">
+      <h1 class="poster-title">${currentPoster.title}</h1>
+      <h3 class="poster-quote">${currentPoster.quote}</h3>
+    </article>`
+  );
+}
+
 function generateUnmotivationalPosters() {
-  
+  for (var i = 0; i < unmotivationalPosters.length; i ++) {
+    renderPoster(
+      unmotivationalPosters[i].img_url,
+      unmotivationalPosters[i].name,
+      unmotivationalPosters[i].description,
+    );
+    displayUnmotivationalInGrid();
+  }
 }
 
 
 window.addEventListener('load', function() {
-  renderPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
   generateUnmotivationalPosters()
+  renderPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
 });
