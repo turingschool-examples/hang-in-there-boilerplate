@@ -300,6 +300,15 @@ function displayPosters(posters) {
   }).join('');
 }
 
+  // function displayPosters(posters) {
+  //   var newInnerHTML = '';
+  //   for (var i = 0; i < posters.length; i++) {
+  //     newInnerHTML += generatePosterHTML(posters[i]);
+  //   }
+  //   unmotivationalPostersGrid.innerHTML = newInnerHTML;
+  // }
+
+
 var cleanedPosters = cleanData(unmotivationalPosters);
 displayPosters(cleanedPosters);
 
@@ -401,12 +410,21 @@ function makeHTMLFromPoster(poster) {
     </article>`;
 }
 
+// function showSavedPosters() {
+//   savedPostersGrid.innerHTML = "";
+//   var newInnerHTML = "";
+//   for (var i = 0; i < savedPosters.length; i++) {
+//     newInnerHTML += makeHTMLFromPoster(savedPosters[i]);
+//   }
+//   savedPostersGrid.innerHTML = newInnerHTML;
+// }
+
 function showSavedPosters() {
   savedPostersGrid.innerHTML = "";
   var newInnerHTML = "";
-  for (var i = 0; i < savedPosters.length; i++) {
-    newInnerHTML += makeHTMLFromPoster(savedPosters[i]);
-  }
+  savedPosters.forEach(function(poster) {
+    newInnerHTML += makeHTMLFromPoster(poster);
+  });
   savedPostersGrid.innerHTML = newInnerHTML;
 }
 
