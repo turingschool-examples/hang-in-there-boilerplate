@@ -30,7 +30,7 @@ const dialog = document.querySelector("dialog");
 const modalImage = document.querySelector("#pop1");
 const modalTitle = document.querySelector("#pop2");
 const modalQuote = document.querySelector("#pop3");
-// const modalButton = document.querySelector("dialog button");
+const modalButton = document.querySelector("dialog button");
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -319,9 +319,9 @@ savedGrid.addEventListener("click", (e) => {
   dialog.showModal();
 })
 
-// modalButton.addEventListener("click", () => {
-//   dialog.close();
-// })
+modalButton.addEventListener("click", () => {
+  dialog.close();
+})
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
