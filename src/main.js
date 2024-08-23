@@ -287,6 +287,7 @@ saveThisPosterButton.addEventListener("click", function(){
 form.addEventListener("submit", function(event) {
   event.preventDefault();
   formControl();
+  event.target.reset();
 });
 
 savedUnmotivatedGrid.addEventListener('dblclick', (e) => {
