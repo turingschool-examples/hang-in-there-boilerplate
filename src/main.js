@@ -255,31 +255,29 @@ var currentPoster;
 randomPosterButton.addEventListener("click", setupMainPoster);
 
 makePosterButton.addEventListener("click", function(){
-  hiddenswitch('form');
+  hiddenswitch(formSection);
 });
 
 savedPosterButton.addEventListener("click", function(){
-  hiddenswitch("saved");
+  hiddenswitch(savedSection);
   showSavedGrid(savedPosters, savedGrid, 'reg');
 });
 
 unmotivationalPosterButton.addEventListener("click", function(){
-  hiddenswitch("unmotivate");
-  if (savedUnmotivatedGrid.childNodes.length === 0){
-    showSavedGrid(savedUnmotivationalPosters, savedUnmotivatedGrid, 'unmot');
-  }
+  hiddenswitch(unmotivatedSection);
+  showSavedGrid(savedUnmotivationalPosters, savedUnmotivatedGrid, 'unmot');
 });
 
 returnToMain.addEventListener("click", function(){
-  hiddenswitch("form");
+  hiddenswitch(formSection);
 });
 
 backToMain.addEventListener("click", function(){
-  hiddenswitch("saved");
+  hiddenswitch(savedSection);
 });
 
 offToMain.addEventListener("click", function(){
-  hiddenswitch("unmotivate");
+  hiddenswitch(unmotivatedSection);
 })
 
 saveThisPosterButton.addEventListener("click", function(){
@@ -288,12 +286,8 @@ saveThisPosterButton.addEventListener("click", function(){
 
 form.addEventListener("submit", function(event) {
   event.preventDefault();
-  var image = inputImage.value;
-  var title = inputTitle.value;
-  var quote = inputQuote.value;
-  posterCreation(image, title, quote);
-  printPoster(image, title, quote);
-  hiddenswitch("form");
+  formControl();
+  event.target.reset();
 });
 
 savedUnmotivatedGrid.addEventListener('dblclick', (e) => {
@@ -331,13 +325,7 @@ function printPoster(image, title, quote) {
 
 function hiddenswitch(key) {
   mainSection.classList.toggle("hidden");
-  if (key === "form"){
-    formSection.classList.toggle("hidden");
-  } else if (key === "saved"){
-    savedSection.classList.toggle("hidden");
-  } else if (key === "unmotivate"){
-    unmotivatedSection.classList.toggle("hidden");
-  }
+  key.classList.toggle("hidden");
 };
 
 function posterCreation(image, title, quote) {
@@ -348,23 +336,54 @@ function posterCreation(image, title, quote) {
   quotes.push(quote);
 };
 
-function showSavedGrid(listPosters, location, posterType){
+function formControl() {
+  var image = inputImage.value;
+  var title = inputTitle.value;
+  var quote = inputQuote.value;
+  posterCreation(image, title, quote);
+  printPoster(image, title, quote);
+  hiddenswitch(formSection);
+};
+
+function makePosterDiv(data, posterType){
+  let divOP = document.createElement("div");
+  divOP.className = `mini-poster ${posterType}`;
+  divOP.id = data.id;
+  divOP.innerHTML += `<img src="${data.imageURL}" alt="nothin' to see here">`;
+  divOP.innerHTML += `<h2>${data.title}</h2>`;
+  divOP.innerHTML += `<h4>${data.quote}</h4>`;
+  return divOP;
+};
+
+function showSavedGrid(listPosters, location, posterType) {
   listPosters.forEach((poster) =>{
-    let divOfPoster = document.createElement("div");
-    divOfPoster.className = `mini-poster ${posterType}`;
-    divOfPoster.id = poster.id;
-    divOfPoster.innerHTML += `<img src="${poster.imageURL}" alt="nothin' to see here">`;
-    divOfPoster.innerHTML += `<h2>${poster.title}</h2>`;
-    divOfPoster.innerHTML += `<h4>${poster.quote}</h4>`;
-    idCheck = document.getElementById(poster.id);
-    if (idCheck === null){
-      location.appendChild(divOfPoster);
-    } else if (idCheck.title !== poster.title){
+    var divOfPoster = makePosterDiv(poster, posterType);
+    if (posterValidation(divOfPoster, location)){
       location.appendChild(divOfPoster);
     }
   })
 };
 
+function posterValidation(posterNode, posterGrid) {
+  let matches = posterGrid.childNodes;
+  for (let i =0; i < matches.length; i++){
+    if(matches[i].isEqualNode(posterNode)){
+      return false;
+    } else if(contentValidation(matches[i], posterNode)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function contentValidation(posterOne, posterTwo){
+  for(let i = 0; i < posterOne.children.length; i++){
+    if (!posterOne.children[i].isEqualNode(posterTwo.children[i])) {
+      return false;
+    }
+  }
+  return true;
+}
 function cleanData(dataSet) {
   dataSet.forEach((data) => {
     var unPoster = createPoster(data.img_url, data.name, data.description);
