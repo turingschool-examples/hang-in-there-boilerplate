@@ -11,6 +11,7 @@ var mainPosterQuote = document.querySelector('.poster-quote');
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
 var showUnmotivationalPostersButton = document.querySelector('.show-unmotivational')
 var unmotivationalToMainButton = document.querySelector('.back-to-main-unmotivational')
+var unmotivationalPostersFlex = document.querySelector('.unmotivational-posters-flex');
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -254,7 +255,7 @@ showPosterButton.addEventListener('click', function(event){
 savePosterButton.addEventListener('click', createdPoster);
 showUnmotivationalPostersButton.addEventListener('click', function(){
   showSection('.unmotivational-poster')
-  cleanData();
+  displayUnmotivationalPosters();
 });
 unmotivationalToMainButton.addEventListener('click', function(){
   hideSection('.unmotivational-poster')
@@ -284,6 +285,16 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function cleanData() {
+  return unmotivationalPosters.map(poster => {
+    return createPoster(
+      poster.img_url,       
+      poster.name,          
+      poster.description    
+    );
+  });
 }
 
 function showSection(sectionClass) {
@@ -342,6 +353,17 @@ function displaySavedPoster() {
   showSection('.saved-posters');
 }
 
-function cleanData() {
-  
+function displayUnmotivationalPosters() {
+  var cleanedPosters = cleanData();
+  unmotivationalPostersFlex.innerHTML = '';
+  cleanedPosters.forEach(poster => {
+  const posterElement = document.createElement('div');
+  posterElement.classList.add('mini-poster');
+  posterElement.innerHTML = `
+    <img src="${poster.imageURL}" alt="${poster.title}">
+    <h2>${poster.title}</h2>
+    <h4>${poster.quote}</h4>
+  `;
+    unmotivationalPostersFlex.appendChild(posterElement);
+  }); 
 }
