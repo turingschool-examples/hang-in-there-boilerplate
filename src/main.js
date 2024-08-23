@@ -9,6 +9,8 @@ var mainPosterImage = document.querySelector('.poster-img');
 var mainPosterTitle = document.querySelector('.poster-title');
 var mainPosterQuote = document.querySelector('.poster-quote');
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
+var showUnmotivationalPostersButton = document.querySelector('.show-unmotivational')
+var unmotivationalToMainButton = document.querySelector('.back-to-main-unmotivational')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -250,6 +252,13 @@ showPosterButton.addEventListener('click', function(event){
   displayNewPoster();
 });
 savePosterButton.addEventListener('click', createdPoster);
+showUnmotivationalPostersButton.addEventListener('click', function(){
+  showSection('.unmotivational-poster')
+  cleanData();
+});
+unmotivationalToMainButton.addEventListener('click', function(){
+  hideSection('.unmotivational-poster')
+})
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -331,4 +340,8 @@ function displaySavedPoster() {
     savedPostersGrid.appendChild(posterElement);
   });
   showSection('.saved-posters');
+}
+
+function cleanData() {
+  
 }
