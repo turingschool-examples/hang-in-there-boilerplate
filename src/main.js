@@ -330,10 +330,12 @@ function hiddenswitch(key) {
 
 function posterCreation(image, title, quote) {
   currentPoster = createPoster(image, title, quote);
-  savedPosters.push(currentPoster);
-  images.push(image);
-  titles.push(title);
-  quotes.push(quote);
+  if(dataValidation(currentPoster, savedPosters)){
+    savedPosters.push(currentPoster);
+    images.push(image);
+    titles.push(title);
+    quotes.push(quote);
+  }
 };
 
 function formControl() {
@@ -376,10 +378,23 @@ function posterValidation(posterNode, posterGrid) {
   return true;
 }
 
-function contentValidation(posterOne, posterTwo){
+function contentValidation(posterOne, posterTwo) {
   for(let i = 0; i < posterOne.children.length; i++){
     if (!posterOne.children[i].isEqualNode(posterTwo.children[i])) {
       return false;
+    }
+  }
+  return true;
+}
+
+function dataValidation(data1, dataset) {
+  dataArray = Object.entries(data1);
+  for(let i=0; i < dataset.length; i++){
+    dataSetArray = Object.entries(dataset[i])
+    if (dataArray[1][1].trim() === dataSetArray[1][1].trim() &&
+      dataArray[2][1].trim() === dataSetArray[2][1].trim() &&
+      dataArray[3][1].trim() === dataSetArray[3][1].trim()) {
+        return false;
     }
   }
   return true;
