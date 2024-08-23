@@ -144,3 +144,22 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+/* ~~~~~ Unmotivational Posters ~~~~~ */
+.unmotivational-poster-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:1em;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.unmotivational-poster-flex article{
+  background-color: grey;
+  border-radius: 5%;
+}
+
+.unmotivational-poster-flex h2{
+  color: black;
+}
