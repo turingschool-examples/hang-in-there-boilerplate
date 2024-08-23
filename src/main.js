@@ -32,8 +32,7 @@ const modalTitle = document.querySelector("#pop2");
 const modalQuote = document.querySelector("#pop3");
 const modalButton = document.querySelector("dialog button");
 
-// we've provided you with some data to work with 👇
-// tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -372,6 +371,7 @@ function formControl() {
   var quote = inputQuote.value;
   posterCreation(image, title, quote);
   printPoster(image, title, quote);
+  showSavedGrid(savedPosters, savedGrid, "reg");
   hiddenswitch(formSection);
 };
 
@@ -419,9 +419,9 @@ function dataValidation(data1, dataset) {
   dataArray = Object.entries(data1);
   for(let i=0; i < dataset.length; i++){
     dataSetArray = Object.entries(dataset[i])
-    if (dataArray[1][1].trim() === dataSetArray[1][1].trim() &&
-      dataArray[2][1].trim() === dataSetArray[2][1].trim() &&
-      dataArray[3][1].trim() === dataSetArray[3][1].trim()) {
+    if (dataArray[1][1].trim().toLowerCase() === dataSetArray[1][1].trim().toLowerCase() &&
+      dataArray[2][1].trim().toLowerCase() === dataSetArray[2][1].trim().toLowerCase() &&
+      dataArray[3][1].trim().toLowerCase() === dataSetArray[3][1].trim().toLowerCase()) {
         return false;
     }
   }
