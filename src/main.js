@@ -355,7 +355,6 @@ function displaySavedPoster() {
 
 function displayUnmotivationalPosters() {
   var cleanedPosters = cleanData();
-  console.log(cleanedPosters)
   unmotivationalPostersFlex.innerHTML = '';
   cleanedPosters.forEach(poster => {
   const posterElement = document.createElement('div');
@@ -367,4 +366,16 @@ function displayUnmotivationalPosters() {
   `;
     unmotivationalPostersFlex.appendChild(posterElement);
   }); 
+    unmotivationalPostersFlex.addEventListener('dblclick', deleteUnmotivationalPoster);
+}
+
+function deleteUnmotivationalPoster(event) {
+  const clickedElement = event.target.closest('.unmotivational-mini-poster');
+    if (clickedElement) {
+    const posterId = clickedElement.getAttribute('data-id');
+    clickedElement.remove();
+    unmotivationalPosters = unmotivationalPosters.filter(poster => {
+      return poster.id !== posterId;
+    });
+  }
 }
