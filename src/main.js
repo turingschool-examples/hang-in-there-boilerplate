@@ -223,3 +223,5 @@ function toGrid() {
     savedPostersGrid.insertAdjacentHTML('beforeend', posterHTML);
   }
 }
+// clearing the innerHTML at the start of each function prevents the same posters from being added twice
+// 
