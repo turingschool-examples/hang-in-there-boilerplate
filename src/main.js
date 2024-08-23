@@ -8,14 +8,17 @@ var randomPosterButton = document.querySelector(".show-random");
 var savePosterButton = document.querySelector(".save-poster");
 var makeOwnPosterButton = document.querySelector(".show-form");
 var showSavedButton = document.querySelector(".show-saved");
+var unmotivationalPostersButton = document.querySelector(".show-un-motivational")
 
 // pages
 var mainPoster = document.querySelector(".main-poster");
 var posterForm = document.querySelector(".poster-form");
 var listSavedPosters = document.querySelector(".saved-posters");
+var unmotivationalPostersPage = document.querySelector(".un-motivational-posters")
 // back buttons
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
+// var backToMainPageButton =
 
 // make poster section
 var makePosterButton = document.querySelector(".make-poster");
@@ -25,7 +28,7 @@ var quoteBox = document.querySelector("#poster-quote");
 
 // saved posters page
 var savedPostersGrid = document.querySelector(".saved-posters-grid")
-// var miniPoster = document.querySelectorAll(".mini-poster")
+
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -257,6 +260,7 @@ var currentPoster;
 randomPosterButton.addEventListener('click', randomPoster);
 makeOwnPosterButton.addEventListener('click', makePosterPage);
 showSavedButton.addEventListener('click', savedPostersPage);
+unmotivationalPostersButton.addEventListener('click', unMotoPage);
 
 makePosterButton.addEventListener('click', showPoster);
 nevermindButton.addEventListener('click', backToMain);
@@ -311,6 +315,11 @@ function backToMain() {
     mainPoster.classList.remove("hidden");
     posterForm.classList.add("hidden");
     listSavedPosters.classList.add("hidden");
+}
+
+function unMotoPage() {
+  mainPoster.classList.add("hidden");
+  unmotivationalPostersPage.classList.remove("hidden");
 }
 
 // user input for making a poster
