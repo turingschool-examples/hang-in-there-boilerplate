@@ -277,13 +277,23 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-function cleanData(name, description, img_url) {
+function cleanData(posters) {
+  return posters.map(poster => {
+    return createPoster(poster.img_url, poster.name, poster.description);
+  });
+}
+
+function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
-    name: name, 
-    description: description,
-    img_url: img_url}
+    imageURL: imageURL, 
+    title: title, 
+    quote: quote
+  };
 }
+
+const cleanedPosters = cleanData(unmotivationalPosters);
+console.log(cleanedPosters);
 
 function showRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
@@ -348,9 +358,17 @@ function showUserPoster(event) {
   createUserPoster();
 }
 
+
 function saveGeneratedPoster() {
   var poster = createPoster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
-  if (!savedPosters.find(p => p.imageURL === poster.imageURL && p.title === poster.title && p.quote === poster.quote)) {
+
+  var isPosterSaved = savedPosters.some(function(savedPoster) {
+    return savedPoster.imageURL === poster.imageURL &&
+           savedPoster.title === poster.title &&
+           savedPoster.quote === poster.quote;
+  });
+
+  if (!isPosterSaved) {
     savedPosters.push(poster);
   }
 }
