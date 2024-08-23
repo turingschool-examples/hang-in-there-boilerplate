@@ -355,10 +355,11 @@ function displaySavedPoster() {
 
 function displayUnmotivationalPosters() {
   var cleanedPosters = cleanData();
+  console.log(cleanedPosters)
   unmotivationalPostersFlex.innerHTML = '';
   cleanedPosters.forEach(poster => {
   const posterElement = document.createElement('div');
-  posterElement.classList.add('mini-poster');
+  posterElement.classList.add('unmotivational-mini-poster');
   posterElement.innerHTML = `
     <img src="${poster.imageURL}" alt="${poster.title}">
     <h2>${poster.title}</h2>
