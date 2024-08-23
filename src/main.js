@@ -299,16 +299,13 @@ savedUnmotivationalPostersGrid.addEventListener('dblclick', (event) => {
 
 const handleDeletePosters = (target) => {
   if (target.getAttribute('id')) {
-    console.log("true");
+    target.remove()
   }
   if (target.parentElement.getAttribute('id')) {
-    console.log("daddy true");
+    target.parentElement.remove()
   }
 };
 
-const deleteElement= (element) => {
-  
-}
 
 function handleSavePoster(){
   if (savedPosters.includes(currentPoster)) {
