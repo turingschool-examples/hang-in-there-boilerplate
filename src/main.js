@@ -279,14 +279,16 @@ function createPoster(imageURL, title, quote) {
 }
 
 function cleanData(posters) {
-  return posters.map(function(poster) {
-    return createPoster(poster.img_url, poster.name, poster.description);
-  });
+  var cleanedPosters = [];
+  for (var i = 0; i < posters.length; i++) {
+    cleanedPosters.push(createPoster(posters[i].img_url, posters[i].name, posters[i].description));
+  }
+  return cleanedPosters;
 }
 
 function generatePosterHTML(poster) {
   return `
-    <div class="poster">
+    <div class="mini-poster">
       <img src="${poster.imageURL}" alt="${poster.title}">
       <div class="poster-title">${poster.title}</div>
       <div class="poster-quote">${poster.quote}</div>
@@ -294,23 +296,16 @@ function generatePosterHTML(poster) {
   `;
 }
 
-function displayPosters(posters) {
-  unmotivationalPostersGrid.innerHTML = posters.map(function(poster) {
-    return generatePosterHTML(poster);
-  }).join('');
-}
-
-  // function displayPosters(posters) {
-  //   var newInnerHTML = '';
-  //   for (var i = 0; i < posters.length; i++) {
-  //     newInnerHTML += generatePosterHTML(posters[i]);
-  //   }
-  //   unmotivationalPostersGrid.innerHTML = newInnerHTML;
-  // }
-
+  function displayUnmotivationalPosters(posters) {
+    var newInnerHTML = '';
+    for (var i = 0; i < posters.length; i++) {
+      newInnerHTML += generatePosterHTML(posters[i]);
+    }
+    unmotivationalPostersGrid.innerHTML = newInnerHTML;
+  }
 
 var cleanedPosters = cleanData(unmotivationalPosters);
-displayPosters(cleanedPosters);
+displayUnmotivationalPosters(cleanedPosters);
 
 function showRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
@@ -386,45 +381,34 @@ function showUserPoster(event) {
   createUserPoster();
 }
 
-
 function saveGeneratedPoster() {
   var poster = createPoster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
 
-  var isPosterSaved = savedPosters.some(function(savedPoster) {
-    return savedPoster.imageURL === poster.imageURL &&
-           savedPoster.title === poster.title &&
-           savedPoster.quote === poster.quote;
-  });
-
-  if (!isPosterSaved) {
-    savedPosters.push(poster);
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].imageURL === poster.imageURL &&
+        savedPosters[i].title === poster.title &&
+        savedPosters[i].quote === poster.quote) {
+      return;  
+    }
   }
+  savedPosters.push(poster);  
 }
 
 function makeHTMLFromPoster(poster) {
   return `
-    <article class="poster">
+    <article class="mini-poster">
       <img class="poster-img" src="${poster.imageURL}" alt="Poster image">
       <h1 class="poster-title">${poster.title}</h1>
       <h3 class="poster-quote">${poster.quote}</h3>
     </article>`;
 }
 
-// function showSavedPosters() {
-//   savedPostersGrid.innerHTML = "";
-//   var newInnerHTML = "";
-//   for (var i = 0; i < savedPosters.length; i++) {
-//     newInnerHTML += makeHTMLFromPoster(savedPosters[i]);
-//   }
-//   savedPostersGrid.innerHTML = newInnerHTML;
-// }
-
 function showSavedPosters() {
   savedPostersGrid.innerHTML = "";
   var newInnerHTML = "";
-  savedPosters.forEach(function(poster) {
-    newInnerHTML += makeHTMLFromPoster(poster);
-  });
+  for (var i = 0; i < savedPosters.length; i++) {
+    newInnerHTML += makeHTMLFromPoster(savedPosters[i]);
+  }
   savedPostersGrid.innerHTML = newInnerHTML;
 }
 
