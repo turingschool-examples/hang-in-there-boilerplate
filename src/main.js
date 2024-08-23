@@ -23,6 +23,10 @@ var urlBox = document.querySelector("#poster-image-url");
 var titleBox = document.querySelector("#poster-title");
 var quoteBox = document.querySelector("#poster-quote");
 
+// saved posters page
+var savedPostersGrid = document.querySelector(".saved-posters-grid")
+// var miniPoster = document.querySelectorAll(".mini-poster")
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -136,7 +140,7 @@ makePosterButton.addEventListener('click', showPoster);
 nevermindButton.addEventListener('click', backToMain);
 
 backToMainButton.addEventListener('click', backToMain);
-// savePosterButton.addEventListener('click', //new function);
+savePosterButton.addEventListener('click', savePoster);
 // showSavedButton.addEventListener('click', new function)
 
 // functions and event handlers go here 👇
@@ -157,6 +161,7 @@ function randomPoster() {
   var randomTitle = titles[getRandomIndex(titles)];
   var randomQuote = quotes[getRandomIndex(quotes)];
   var poster = createPoster(randomImage, randomTitle, randomQuote);
+  currentPoster = poster;
   loadPoster(poster.imageURL, poster.title, poster.quote);
 }
 
@@ -177,6 +182,7 @@ function makePosterPage() {
 function savedPostersPage() {
   mainPoster.classList.add("hidden");
   listSavedPosters.classList.remove("hidden");
+  toGrid();
 }
 
 function backToMain() {
@@ -190,5 +196,32 @@ function showPoster() {
   // event.preventDefault();
   backToMain();
   var createdPoster = createPoster(urlBox.value, titleBox.value, quoteBox.value);
+  currentPoster = createdPoster;
   loadPoster(createdPoster.imageURL, createdPoster.title, createdPoster.quote);
 }
+
+// saving posters
+function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+  }
+}
+
+// saved posters appearing on page
+function toGrid() {
+  console.log(savedPostersGrid.innerHTML)
+  savedPostersGrid.innerHTML = "";
+  for (x = 0; x < savedPosters.length; x++) {
+    var url = savedPosters[x].imageURL;
+    var title = savedPosters[x].title;
+    var quote = savedPosters[x].quote;
+    var posterHTML = `<div class='mini-poster'>
+    <img src='${url}' alt='poster image'>
+    <h2>${title}</h2>
+    <h4>${quote}</h4>
+    </div>`;
+    savedPostersGrid.insertAdjacentHTML('beforeend', posterHTML);
+  }
+}
+// clearing the innerHTML at the start of each function prevents the same posters from being added twice
+// 
