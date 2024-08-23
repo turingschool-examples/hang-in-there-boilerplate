@@ -64,7 +64,7 @@ button:hover {
 .poster-title {
   font-size: 60px;
   font-weight: normal;
-  letter-spacing: 20px;
+  letter-spacing: .3em;
   margin-bottom: 10px;
   text-transform: uppercase;
 }

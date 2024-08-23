@@ -26,8 +26,13 @@ var inputQuote = document.querySelector("#poster-quote");
 var savedGrid = document.querySelector(".saved-posters-grid");
 var savedUnmotivatedGrid = document.querySelector(".saved-unmotivated-grid");
 
-// we've provided you with some data to work with 👇
-// tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
+const dialog = document.querySelector("dialog");
+const modalImage = document.querySelector("#pop1");
+const modalTitle = document.querySelector("#pop2");
+const modalQuote = document.querySelector("#pop3");
+const modalButton = document.querySelector("dialog button");
+
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -260,12 +265,12 @@ makePosterButton.addEventListener("click", function(){
 
 savedPosterButton.addEventListener("click", function(){
   hiddenswitch(savedSection);
-  showSavedGrid(savedPosters, savedGrid, 'reg');
+  showSavedGrid(savedPosters, savedGrid, "reg");
 });
 
 unmotivationalPosterButton.addEventListener("click", function(){
   hiddenswitch(unmotivatedSection);
-  showSavedGrid(savedUnmotivationalPosters, savedUnmotivatedGrid, 'unmot');
+  showSavedGrid(savedUnmotivationalPosters, savedUnmotivatedGrid, "unmot");
 });
 
 returnToMain.addEventListener("click", function(){
@@ -290,9 +295,31 @@ form.addEventListener("submit", function(event) {
   event.target.reset();
 });
 
-savedUnmotivatedGrid.addEventListener('dblclick', (e) => {
+savedUnmotivatedGrid.addEventListener("dblclick", (e) => {
   var target = e.target;
   removePoster(target);
+})
+
+mainPosterImage.addEventListener("click", function() {
+  mainPosterImage.setAttribute("src", images[getRandomIndex(images)]);
+})
+
+mainPosterTitle.addEventListener("click", function() {
+  mainPosterTitle.innerHTML = titles[getRandomIndex(titles)];
+})
+
+mainPosterQuote.addEventListener("click", function() {
+  mainPosterQuote.innerHTML = quotes[getRandomIndex(quotes)];
+})
+
+savedGrid.addEventListener("click", (e) => {
+  var target = e.target;
+  fillModal(target);
+  dialog.showModal();
+})
+
+modalButton.addEventListener("click", () => {
+  dialog.close();
 })
 
 // functions and event handlers go here 👇
@@ -330,10 +357,12 @@ function hiddenswitch(key) {
 
 function posterCreation(image, title, quote) {
   currentPoster = createPoster(image, title, quote);
-  savedPosters.push(currentPoster);
-  images.push(image);
-  titles.push(title);
-  quotes.push(quote);
+  if(dataValidation(currentPoster, savedPosters)){
+    savedPosters.push(currentPoster);
+    images.push(image);
+    titles.push(title);
+    quotes.push(quote);
+  }
 };
 
 function formControl() {
@@ -342,6 +371,7 @@ function formControl() {
   var quote = inputQuote.value;
   posterCreation(image, title, quote);
   printPoster(image, title, quote);
+  showSavedGrid(savedPosters, savedGrid, "reg");
   hiddenswitch(formSection);
 };
 
@@ -374,16 +404,29 @@ function posterValidation(posterNode, posterGrid) {
     }
   }
   return true;
-}
+};
 
-function contentValidation(posterOne, posterTwo){
+function contentValidation(posterOne, posterTwo) {
   for(let i = 0; i < posterOne.children.length; i++){
     if (!posterOne.children[i].isEqualNode(posterTwo.children[i])) {
       return false;
     }
   }
   return true;
-}
+};
+
+function dataValidation(data1, dataset) {
+  dataArray = Object.entries(data1);
+  for(let i=0; i < dataset.length; i++){
+    dataSetArray = Object.entries(dataset[i])
+    if (dataArray[1][1].trim().toLowerCase() === dataSetArray[1][1].trim().toLowerCase() &&
+      dataArray[2][1].trim().toLowerCase() === dataSetArray[2][1].trim().toLowerCase() &&
+      dataArray[3][1].trim().toLowerCase() === dataSetArray[3][1].trim().toLowerCase()) {
+        return false;
+    }
+  }
+  return true;
+};
 function cleanData(dataSet) {
   dataSet.forEach((data) => {
     var unPoster = createPoster(data.img_url, data.name, data.description);
@@ -403,11 +446,21 @@ function removePoster(elementChecker) {
     savedUnmotivationalPosters.splice(result, 1);
     elementChecker.remove();
   }
-}
+};
+
+function fillModal(target){
+  if(!target.parentElement.classList.contains("saved-posters-grid")){
+    fillModal(target.parentElement);
+  } else {
+    modalImage.setAttribute("src", target.children[0].src);
+    modalTitle.innerHTML = target.children[1].innerText;
+    modalQuote.innerHTML = target.children[2].innerText;
+  }
+};
 
 function loadPage() {
   setupMainPoster();
   cleanData(unmotivationalPosters);
-}
+};
 
 window.onload = loadPage();
