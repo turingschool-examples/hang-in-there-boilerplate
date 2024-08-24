@@ -286,27 +286,6 @@ function cleanData(posters) {
   return cleanedPosters;
 }
 
-function generatePosterHTML(poster) {
-  return `
-    <div class="mini-poster unmotivational-poster-style">
-      <img src="${poster.imageURL}" alt="${poster.title}">
-      <h2 class="mini-poster-title unmotivational-syling">${poster.title}</h2>
-      <h4 class="poster-quote">${poster.quote}</h4>
-    </div>
-  `;
-}
-
-  function displayUnmotivationalPosters(posters) {
-    var newInnerHTML = '';
-    for (var i = 0; i < posters.length; i++) {
-      newInnerHTML += generatePosterHTML(posters[i]);
-    }
-    unmotivationalPostersGrid.innerHTML = newInnerHTML;
-  }
-
-var cleanedPosters = cleanData(unmotivationalPosters);
-displayUnmotivationalPosters(cleanedPosters);
-
 function showRandomPoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
@@ -394,7 +373,7 @@ function saveGeneratedPoster() {
   savedPosters.push(poster);  
 }
 
-function makeHTMLFromPoster(poster) {
+function generatePosterHTML(poster) {
   return `
     <article class="mini-poster">
       <img class="poster-img" src="${poster.imageURL}" alt="Poster image">
@@ -407,8 +386,28 @@ function showSavedPosters() {
   savedPostersGrid.innerHTML = "";
   var newInnerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
-    newInnerHTML += makeHTMLFromPoster(savedPosters[i]);
+    newInnerHTML += generatePosterHTML(savedPosters[i]);
   }
   savedPostersGrid.innerHTML = newInnerHTML;
 }
 
+function generateUnmotivationalPosterHTML(poster) {
+  return `
+    <div class="mini-poster unmotivational-poster-style">
+      <img src="${poster.imageURL}" alt="${poster.title}">
+      <h2 class="mini-poster-title unmotivational-syling">${poster.title}</h2>
+      <h4 class="poster-quote">${poster.quote}</h4>
+    </div>
+  `;
+}
+
+  function displayUnmotivationalPosters(posters) {
+    var newInnerHTML = '';
+    for (var i = 0; i < posters.length; i++) {
+      newInnerHTML += generateUnmotivationalPosterHTML(posters[i]);
+    }
+    unmotivationalPostersGrid.innerHTML = newInnerHTML;
+  }
+
+var cleanedPosters = cleanData(unmotivationalPosters);
+displayUnmotivationalPosters(cleanedPosters);
