@@ -332,8 +332,11 @@ function createdPoster() {
       break; 
     }
   }
-  if (!duplicatePoster) {
+  if (duplicatePoster) {
+    alert('This poster has already been saved.')
+  } else {
     savedPosters.push(currentPoster);
+    alert('Poster has been saved successfully')
   }
 }
 
