@@ -1,6 +1,10 @@
-// query selector variables go here 👇
+var showRandonPoster = document.querySelector('.show-random')
 var savePosterButton = document.querySelector('.save-poster')
 var showPosterButton = document.querySelector('.make-poster');
+var showFormButton = document.querySelector('.show-form')
+var savedPostersButton = document.querySelector('.show-saved')
+var showMainButton = document.querySelector('.show-main')
+var backtToMainButton = document.querySelector('.back-to-main')
 var form = document.querySelector('form');
 var posterImageUrlInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
@@ -12,8 +16,7 @@ var savedPostersGrid = document.querySelector('.saved-posters-grid');
 var showUnmotivationalPostersButton = document.querySelector('.show-unmotivational')
 var unmotivationalToMainButton = document.querySelector('.back-to-main-unmotivational')
 var unmotivationalPostersFlex = document.querySelector('.unmotivational-posters-flex');
-// we've provided you with some data to work with 👇
-// tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -237,16 +240,15 @@ var savedPosters = [];
 var currentPoster;
 
 
-// event listeners go here 👇
 window.addEventListener('load', updatePoster);
-document.querySelector(".show-random").addEventListener("click", updatePoster);
-document.querySelector('.show-form').addEventListener('click',function(){showSection('.poster-form');});
-document.querySelector('.show-saved').addEventListener('click',function(){
+showRandonPoster.addEventListener("click", updatePoster);
+showFormButton.addEventListener('click',function(){showSection('.poster-form');});
+savedPostersButton.addEventListener('click',function(){
   showSection('.saved-posters');
   displaySavedPoster();
 });
-document.querySelector('.show-main').addEventListener('click', function(){hideSection('.poster-form');});
-document.querySelector('.back-to-main').addEventListener('click', function(){hideSection('.saved-posters');});
+showMainButton.addEventListener('click', function(){hideSection('.poster-form');});
+backtToMainButton.addEventListener('click', function(){hideSection('.saved-posters');});
 showPosterButton.addEventListener('click', function(event){
   event.preventDefault();
   createCustomPoster();
@@ -260,8 +262,7 @@ showUnmotivationalPostersButton.addEventListener('click', function(){
 unmotivationalToMainButton.addEventListener('click', function(){
   hideSection('.unmotivational-poster')
 })
-// functions and event handlers go here 👇
-// (we've provided two to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
