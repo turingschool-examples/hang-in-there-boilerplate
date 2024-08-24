@@ -317,7 +317,7 @@ function savedPostersPage() {
 function unMotivationalPage() {
   mainPoster.classList.add("hidden");
   unmotivationalPostersPage.classList.remove("hidden");
-  unmotivationalGrid();
+  createUnmotivationalPosters();
 }
 
 function backToMain() {
@@ -358,20 +358,19 @@ function toGrid() {
     savedPostersGrid.insertAdjacentHTML('beforeend', posterHTML);
   }
 }
-// clearing the innerHTML at the start of each function prevents the same posters from being added twice
 
 // Un-Motivational Posters
-function unmotivationalGrid() {
+function createUnmotivationalPosters() {
   for (x = 0; x < unmotivationalPosters.length; x++) {
     var url = unmotivationalPosters[x].img_url;
     var title = unmotivationalPosters[x].name;
     var quote = unmotivationalPosters[x].description;
     var poster = createPoster(url, title, quote);
-    unmotivationalGridHTML(poster);
+    unmotivationalHTML(poster);
   }
 }
 
-function unmotivationalGridHTML(poster) {
+function unmotivationalHTML(poster) {
   var posterHTML = `<div class='mini-unmotivational-poster'>
   <img src='${poster.imageURL}' alt='unmotivational poster image'>
   <h2>${poster.title}</h2>

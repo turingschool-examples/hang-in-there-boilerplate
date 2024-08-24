@@ -174,20 +174,18 @@ img {
   width: 300px;
 }
 
-.min-unmotivational-poster h2,
+.mini-unmotivational-poster h2,
 .mini-unmotivational-poster h4 {
   color: white;
   line-height: 1;
   width: 90%;
 }
 
-.min-unmotivational-poster h2 {
-  /* color: black; */
+.mini-unmotivational-poster h2 {
+  color: black;
   font-size: 35px;
   font-weight: normal;
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
-
-/* find a way to change spacing of posters so they are closer together. */
