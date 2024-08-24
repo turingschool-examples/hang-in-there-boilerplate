@@ -10,6 +10,8 @@ const unmotivationalPosterSection = document.querySelector('.unmotivational-post
 
 const savedPostersGrid = document.querySelector('.saved-posters-grid')
 const savedUnmotivationalPostersGrid = document.querySelector('.unmotivational-poster-flex')
+
+const modalElement = document.querySelector('dialog')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 const unmotivationalPosters = [
@@ -235,9 +237,6 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// query selectors go here
-
-
 // event listeners go here 👇
 document.addEventListener('DOMContentLoaded', () => {
   setNewPoster();
@@ -295,17 +294,44 @@ savedUnmotivationalPostersGrid.addEventListener('dblclick', (event) => {
   handleDeletePosters(event.target)
 })
 
+document.querySelector('.poster').addEventListener('click', (event) => {
+  handlePosterClick(event.target)
+})
+
+document.querySelector('.saved-posters-grid').addEventListener('click',(event) => {
+  
+})
 // functions and event handlers go here 👇
 
-const handleDeletePosters = (target) => {
-  if (target.getAttribute('id')) {
-    target.remove()
+const handlePosterClick = (target) => {
+  console.log(target.tagName)
+
+  if (target.tagName == "IMG"){
+    target.src = images[getRandomIndex(images)]
+    currentPoster = createPoster(target.src, currentPoster.title, currentPoster.quote)
   }
-  if (target.parentElement.getAttribute('id')) {
-    target.parentElement.remove()
+  if (target.tagName == "H1"){
+    target.innerText = titles[getRandomIndex(titles)]
+    currentPoster = createPoster(currentPoster.imageURL, target.innerText, currentPoster.quote)
+  }
+  if (target.tagName == "H3"){
+    target.innerText = quotes[getRandomIndex(quotes)]
+    currentPoster = createPoster(currentPoster.imageURL, currentPoster.title, target.innerText)
+  }
+
+}
+
+const handleDeletePosters = (target) => {
+  const poster = target.closest('article');
+  console.log(poster)
+  if (poster) {
+    poster.remove()
   }
 };
 
+const hanldeModalSreen = (target) => {
+  const
+}
 
 function handleSavePoster(){
   if (savedPosters.includes(currentPoster)) {
