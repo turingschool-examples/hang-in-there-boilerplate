@@ -330,16 +330,20 @@ const handleDeletePosters = (target) => {
 
 const handleModalSreen = (target) => {
   const poster = target.closest('article');
-  modalElement.insertAdjacentElement('afterbegin', poster)
-  modalElement.showModal()
+  if (!poster){
+    return
+  }
+  const posterClone = poster.cloneNode(true);
+  modalElement.insertAdjacentElement('afterbegin', posterClone);
+  modalElement.showModal();
 }
 
 function handleSavePoster(){
   if (savedPosters.includes(currentPoster)) {
-    return
+    return;
   }
-  savedPosters.push(currentPoster)
-  storeCurrentPosterElement()
+  savedPosters.push(currentPoster);
+  storeCurrentPosterElement();
 }
 
 
