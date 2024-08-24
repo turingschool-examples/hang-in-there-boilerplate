@@ -148,13 +148,14 @@ button:hover {
 /* Un-Motivational Posters Section */
 .un-motivational-posters {
   padding: 40px;
-  /* display: flex; */
+  max-width: 91.5em;
 }
 
 .poster-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  row-gap: 20px;
   padding: 20px;
 }
 
