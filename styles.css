@@ -113,17 +113,11 @@ button:hover {
   padding: 40px;
 }
 
-.saved-posters-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  padding: 20px;
-}
-
-.unmotivational-posters-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+.saved-posters-grid, .unmotivational-posters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   padding: 20px;
 }
 
@@ -132,12 +126,14 @@ button:hover {
   color: white;
   height: 340px;
   padding: 25px;
-  width: 425px;
+  width: 100%;
+  max-width: 500px;
 }
 
 .mini-poster img {
   height:200px;
   width: 300px;
+  max-width: 300px;
 }
 
 .mini-poster h2,
@@ -154,4 +150,14 @@ button:hover {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+
+.unmotivational-syling {
+  color: black !important;
+  padding-top: 20px;
+}
+
+.unmotivational-poster-style {
+  border-radius: 10px;
+  background-color: rgb(98, 94, 94);
 }

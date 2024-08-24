@@ -288,10 +288,10 @@ function cleanData(posters) {
 
 function generatePosterHTML(poster) {
   return `
-    <div class="mini-poster">
+    <div class="mini-poster unmotivational-poster-style">
       <img src="${poster.imageURL}" alt="${poster.title}">
-      <div class="poster-title">${poster.title}</div>
-      <div class="poster-quote">${poster.quote}</div>
+      <h2 class="mini-poster-title unmotivational-syling">${poster.title}</h2>
+      <h4 class="poster-quote">${poster.quote}</h4>
     </div>
   `;
 }
@@ -398,8 +398,8 @@ function makeHTMLFromPoster(poster) {
   return `
     <article class="mini-poster">
       <img class="poster-img" src="${poster.imageURL}" alt="Poster image">
-      <h1 class="poster-title">${poster.title}</h1>
-      <h3 class="poster-quote">${poster.quote}</h3>
+      <h2 class="mini-poster-title">${poster.title}</h2>
+      <h4 class="poster-quote">${poster.quote}</h4>
     </article>`;
 }
 
