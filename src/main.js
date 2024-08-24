@@ -299,7 +299,7 @@ document.querySelector('.poster').addEventListener('click', (event) => {
 })
 
 document.querySelector('.saved-posters-grid').addEventListener('click',(event) => {
-  
+  handleModalSreen(event.target)
 })
 // functions and event handlers go here 👇
 
@@ -323,14 +323,15 @@ const handlePosterClick = (target) => {
 
 const handleDeletePosters = (target) => {
   const poster = target.closest('article');
-  console.log(poster)
   if (poster) {
     poster.remove()
   }
 };
 
-const hanldeModalSreen = (target) => {
-  const
+const handleModalSreen = (target) => {
+  const poster = target.closest('article');
+  modalElement.insertAdjacentElement('afterbegin', poster)
+  modalElement.showModal()
 }
 
 function handleSavePoster(){

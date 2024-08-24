@@ -163,3 +163,67 @@ button:hover {
 .unmotivational-poster-flex h2{
   color: black;
 }
+
+/* Modal Screen */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog#poster-modal .mini-poster{
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px auto;
+  padding: 50px 20px;
+  width: auto;
+  height: auto;
+}
+
+dialog#poster-modal img{
+  background-size: cover;
+  border: 2px solid white;
+  width: auto;
+  height: auto;
+  max-width: 80%;
+}
+
+
+
+dialog#poster-modal h2{
+  font-size: 60px;
+  font-weight: normal;
+  letter-spacing: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+dialog#poster-modal h2,h4 {
+  color: white;
+  line-height: 1;
+  width: 90%;
+}
+#closeModal{
+  position: absolute;
+  top: 5px; 
+  right: 20px; 
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 36px;
+  font-weight: bold; 
+}
+
+dialog {
+  border: none;
+  position: absolute;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  inline-size: auto;
+  block-size: fit-content;
+  max-width: 70%;
+  padding: 0;
+}
+
