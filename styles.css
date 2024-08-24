@@ -122,6 +122,7 @@ button:hover {
   height: 340px;
   padding: 25px;
   width: 425px;
+  cursor: move;
 }
 
 .mini-poster img {
@@ -230,3 +231,8 @@ dialog {
   padding: 0;
 }
 
+/* Dragging */
+
+.mini-poster.dragging {
+  opacity: .5;
+}

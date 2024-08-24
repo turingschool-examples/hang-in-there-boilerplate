@@ -299,11 +299,28 @@ document.querySelector('.poster').addEventListener('click', (event) => {
   handlePosterClick(event.target)
 })
 
-document.querySelector('.saved-posters-grid').addEventListener('click',(event) => {
+savedPostersGrid.addEventListener('click',(event) => {
   handleModalSreen(event.target)
 })
 
 document.querySelector('#closeModal').addEventListener('click', handleCloseModalScreen)
+
+
+savedPostersGrid.addEventListener('dragstart', (event) => {
+  handlePosterDrag(event.target)
+})
+
+savedPostersGrid.addEventListener('dragover', (event) => {
+  event.preventDefault()
+  const afterElement = getDragAfterElement(event.clientX, event.clientY)
+  console.log('drag over')
+  const draggable = document.querySelector('.dragging')
+})
+
+const getDragAfterElement = (x,y) => {
+  const draggableElements = savedPostersGrid.querySelectorAll('.mini-poster:not(.dragging)')
+  console.log(draggableElements)
+}
 // functions and event handlers go here 👇
 
 const handlePosterClick = (target) => {
@@ -339,7 +356,34 @@ const handleModalSreen = (target) => {
   const posterClone = poster.cloneNode(true);
   modalElement.insertAdjacentElement('afterbegin', posterClone);
   modalElement.showModal();
+  modalElement.addEventListener('keydown', handleKeyDownEvent)
 }
+
+function handleKeyDownEvent(event){
+  if (event.key === 'Escape') {
+    handleCloseModalScreen();
+    modalElement.removeEventListener('keydown', handleKeyDownEvent); 
+  }
+}
+
+const handlePosterDrag = (target) => {
+  const poster = target.closest('article');
+  if (!poster) {
+    return
+  }
+  console.log("Drag Start")
+  draggingFunctionality(poster)
+}
+
+const draggingFunctionality = (poster) => {
+  poster.classList.add('dragging')
+  poster.addEventListener('dragend',() => {
+    console.log('Dragging Ended')
+    poster.classList.remove('dragging')
+  })
+}
+
+
 
 function handleCloseModalScreen(){
     document.querySelector('dialog .mini-poster').remove()
