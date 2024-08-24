@@ -110,15 +110,20 @@ const savedPostersPage = document.querySelector('.saved-posters');
 const savedPostersButton = document.querySelector('.show-saved');
 const backToMainButton = document.querySelector('.back-to-main');
 const nevermindButton = document.querySelector('.show-main');
+const saveAPosterButton = document.querySelector('.save-poster')
 
 const contentGenerator = () => {
   var imageURL = images[getRandomIndex(images)];
   var title = titles[getRandomIndex(titles)];
   var quote = quotes[getRandomIndex(quotes)];
-  posterImage.src = imageURL;
-  posterTitle.innerText = title;
-  posterQuote.innerText = quote;
-  currentPoster = createPoster(imageURL, title, quote)
+
+  currentPoster = createPoster(imageURL, title, quote);
+
+  console.log(currentPoster)
+
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
 };
 
 window.addEventListener('load', contentGenerator);
@@ -146,21 +151,18 @@ makePosterButton.addEventListener('click', (event) => {
   const inputURL = document.querySelector('#poster-image-url').value;
   const inputTitle = document.querySelector('#poster-title').value;
   const inputQuote = document.querySelector('#poster-quote').value;
-  const posterPosition = document.querySelector('.poster');
 
   currentPoster = createPoster(inputURL, inputTitle, inputQuote);
 
-  posterPosition.innerHTML =
-    `<img class="poster-img" src=${inputURL} alt="nothin' to see here">
-    <h1 class="poster-title">${inputTitle}</h1>
-    <h3 class="poster-quote">${inputQuote}</h3>`;
-
-  switchHidden(posterFormParent, mainPage);
-  images.unshift(inputURL);
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+  
+  images.unshift(inputURL); 
   titles.unshift(inputTitle);
   quotes.unshift(inputQuote);
-  console.log(quotes[0]);
-  console.log(titles[0]);
+
+  switchHidden(posterFormParent, mainPage);
 });
 
 const switchHidden = (element1, element2) => {
@@ -180,16 +182,17 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 };
 
-const saveAPosterButton = document.querySelector('save-poster')
 saveAPosterButton.addEventListener('click', () => {
   var imageURL = posterImage.src;
   var title= posterTitle.innerText;
   var quote = posterQuote.innerText;
   currentPoster = createPoster(imageURL, title, quote);
-  savedPosters.unshift(currentPoster);
-  console.log(savedPosters[0])
-});
-// not working, frusterating. Find way to add current poster to array and render 
 
-// make event listener for save his poster
-// make an object with create function
+  if (!savedPosters.some(function(poster) {
+    return poster.imageURL === currentPoster.imageURL && 
+      poster.title === currentPoster.title &&
+      poster.quote === currentPoster.quote})) {
+  savedPosters.unshift(currentPoster);
+  };
+  // console.log(savedPosters)
+});
