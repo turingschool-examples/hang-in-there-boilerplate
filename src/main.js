@@ -97,43 +97,72 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-function createPoster(imageURL, title, quote) {
-  return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
-}
-
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 var randomButton = document.querySelector('.show-random');
 
+const makePosterButton = document.querySelector('.make-poster');
+const mainPage = document.querySelector('.main-poster');
+const posterFormParent = document.querySelector('.poster-form');
+const customPosterButton = document.querySelector('.show-form');
+const savedPostersPage = document.querySelector('.saved-posters');
+const savedPostersButton = document.querySelector('.show-saved');
+const backToMainButton = document.querySelector('.back-to-main');
+const nevermindButton = document.querySelector('.show-main');
+const saveAPosterButton = document.querySelector('.save-poster')
+
 const contentGenerator = () => {
   var imageURL = images[getRandomIndex(images)];
   var title = titles[getRandomIndex(titles)];
   var quote = quotes[getRandomIndex(quotes)];
-  posterImage.src = imageURL;
-  posterTitle.innerText = title;
-  posterQuote.innerText = quote;
-  newPoster = createPoster(imageURL, title, quote)
-}
+
+  currentPoster = createPoster(imageURL, title, quote);
+
+  console.log(currentPoster)
+
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+};
 
 window.addEventListener('load', contentGenerator);
+
 randomButton.addEventListener('click', contentGenerator);
 
-const mainPage = document.querySelector('.main-poster');
-const posterFormParent = document.querySelector('.poster-form');
-
-const customPosterButton = document.querySelector('.show-form');
 customPosterButton.addEventListener('click', () => {
   switchHidden(mainPage, posterFormParent)
+});
+
+savedPostersButton.addEventListener('click', () => {
+  switchHidden(mainPage, savedPostersPage)
+});
+
+backToMainButton.addEventListener('click', () => {
+  switchHidden(mainPage, savedPostersPage)
+});
+
+nevermindButton.addEventListener('click', () => {
+  switchHidden(mainPage, posterFormParent)
+});
+
+makePosterButton.addEventListener('click', (event) => {
+  event.preventDefault()
+  const inputURL = document.querySelector('#poster-image-url').value;
+  const inputTitle = document.querySelector('#poster-title').value;
+  const inputQuote = document.querySelector('#poster-quote').value;
+
+  currentPoster = createPoster(inputURL, inputTitle, inputQuote);
+
+  posterImage.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+  
+  images.unshift(inputURL); 
+  titles.unshift(inputTitle);
+  quotes.unshift(inputQuote);
+
+  switchHidden(posterFormParent, mainPage);
 });
 
 const switchHidden = (element1, element2) => {
@@ -141,9 +170,29 @@ const switchHidden = (element1, element2) => {
   element2.classList.toggle('hidden');
 };
 
-const savedPostersPage = document.querySelector('.saved-posters');
-const savedPostersButton = document.querySelector('.show-saved');
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+};
+  
+function createPoster(imageURL, title, quote) {
+  return {
+    id: Date.now(), 
+    imageURL: imageURL, 
+    title: title, 
+    quote: quote}
+};
 
-savedPostersButton.addEventListener('click', () => {
-  switchHidden(mainPage, savedPostersPage)
+saveAPosterButton.addEventListener('click', () => {
+  var imageURL = posterImage.src;
+  var title= posterTitle.innerText;
+  var quote = posterQuote.innerText;
+  currentPoster = createPoster(imageURL, title, quote);
+
+  if (!savedPosters.some(function(poster) {
+    return poster.imageURL === currentPoster.imageURL && 
+      poster.title === currentPoster.title &&
+      poster.quote === currentPoster.quote})) {
+  savedPosters.unshift(currentPoster);
+  };
+  // console.log(savedPosters)
 });
