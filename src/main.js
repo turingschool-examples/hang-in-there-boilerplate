@@ -301,6 +301,8 @@ document.querySelector('.poster').addEventListener('click', (event) => {
 document.querySelector('.saved-posters-grid').addEventListener('click',(event) => {
   handleModalSreen(event.target)
 })
+
+document.querySelector('#closeModal').addEventListener('click', handleCloseModalScreen)
 // functions and event handlers go here 👇
 
 const handlePosterClick = (target) => {
@@ -336,6 +338,11 @@ const handleModalSreen = (target) => {
   const posterClone = poster.cloneNode(true);
   modalElement.insertAdjacentElement('afterbegin', posterClone);
   modalElement.showModal();
+}
+
+function handleCloseModalScreen(){
+    document.querySelector('dialog .mini-poster').remove()
+    modalElement.close();
 }
 
 function handleSavePoster(){
