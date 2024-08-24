@@ -18,7 +18,7 @@ var unmotivationalPostersPage = document.querySelector(".un-motivational-posters
 // back buttons
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
-// var backToMainPageButton =
+var backToMainPageButton = document.querySelector(".back-to-main-page");
 
 // make poster section
 var makePosterButton = document.querySelector(".make-poster");
@@ -29,6 +29,8 @@ var quoteBox = document.querySelector("#poster-quote");
 // saved posters page
 var savedPostersGrid = document.querySelector(".saved-posters-grid")
 
+// un-motivational poster page
+var unmotivationalGridDiv = document.querySelector(".poster-grid");
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -260,14 +262,15 @@ var currentPoster;
 randomPosterButton.addEventListener('click', randomPoster);
 makeOwnPosterButton.addEventListener('click', makePosterPage);
 showSavedButton.addEventListener('click', savedPostersPage);
-unmotivationalPostersButton.addEventListener('click', unMotoPage);
+
+unmotivationalPostersButton.addEventListener('click', unMotivationalPage);
+backToMainPageButton.addEventListener('click', backToMain)
 
 makePosterButton.addEventListener('click', showPoster);
 nevermindButton.addEventListener('click', backToMain);
 
 backToMainButton.addEventListener('click', backToMain);
 savePosterButton.addEventListener('click', savePoster);
-// showSavedButton.addEventListener('click', new function)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -311,15 +314,17 @@ function savedPostersPage() {
   toGrid();
 }
 
-function backToMain() {
-    mainPoster.classList.remove("hidden");
-    posterForm.classList.add("hidden");
-    listSavedPosters.classList.add("hidden");
-}
-
-function unMotoPage() {
+function unMotivationalPage() {
   mainPoster.classList.add("hidden");
   unmotivationalPostersPage.classList.remove("hidden");
+  unmotivationalGrid();
+}
+
+function backToMain() {
+  mainPoster.classList.remove("hidden");
+  posterForm.classList.add("hidden");
+  listSavedPosters.classList.add("hidden");
+  unmotivationalPostersPage.classList.add("hidden");
 }
 
 // user input for making a poster
@@ -340,7 +345,6 @@ function savePoster() {
 
 // saved posters appearing on page
 function toGrid() {
-  console.log(savedPostersGrid.innerHTML)
   savedPostersGrid.innerHTML = "";
   for (x = 0; x < savedPosters.length; x++) {
     var url = savedPosters[x].imageURL;
@@ -355,4 +359,23 @@ function toGrid() {
   }
 }
 // clearing the innerHTML at the start of each function prevents the same posters from being added twice
-// 
+
+// Un-Motivational Posters
+function unmotivationalGrid() {
+  for (x = 0; x < unmotivationalPosters.length; x++) {
+    var url = unmotivationalPosters[x].img_url;
+    var title = unmotivationalPosters[x].name;
+    var quote = unmotivationalPosters[x].description;
+    var poster = createPoster(url, title, quote);
+    unmotivationalGridHTML(poster);
+  }
+}
+
+function unmotivationalGridHTML(poster) {
+  var posterHTML = `<div class='mini-unmotivational-poster'>
+  <img src='${poster.imageURL}' alt='unmotivational poster image'>
+  <h2>${poster.title}</h2>
+  <h4>${poster.quote}</h4>
+  </div>`;
+  unmotivationalGridDiv.insertAdjacentHTML('beforeend', posterHTML);
+}
