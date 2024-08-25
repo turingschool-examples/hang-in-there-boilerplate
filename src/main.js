@@ -425,4 +425,12 @@ function deleteUnmotivationalPoster(event) {
   }
 }
 
+function closest(element, selector) {
+  while (element && element !== document) {
+    if (element.matches(selector)) {
+      return element;  
+    }
+    element = element.parentNode; 
+  }
+}
 
