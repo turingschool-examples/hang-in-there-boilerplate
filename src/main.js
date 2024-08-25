@@ -162,7 +162,7 @@ var userQuoteInput = document.querySelector('#poster-quote');
 //   showForm.classList.toggle('hidden');
 // });
 
-window.addEventListener('load', generateRandomPoster);
+
 randomPosterButton.addEventListener('click', generateRandomPoster);
 showMyPosterButton.addEventListener('click', handleNewPosterCreation);
 
@@ -217,6 +217,7 @@ function handleNewPosterCreation(event) {
 }
 
 // Saves poster parts in respective arrays for future random poster generation
+// For form
 function saveUserPosterData(poster) {
   images.push(currentPoster.imageURL);
   titles.push(currentPoster.title);
@@ -236,7 +237,7 @@ function generateRandomPoster() {
 }
 
 // We want saved posters to display 
-
+var posterGrid = document.querySelector('.saved-posters-grid');
 
 function saveCurrentPoster() {
   if (savedPosters.includes(currentPoster)) {
@@ -244,11 +245,17 @@ function saveCurrentPoster() {
   } 
   savedPosters.push(currentPoster);
   var posterGrid = document.querySelector('.saved-posters-grid');
-  posterGrid.insertAdjacentHTML('afterbegin', `<article class="poster">
-      <img class="poster-img" src="${currentPoster.imageURL}" alt="new photo">
-      <h1 class="poster-title">${currentPoster.title}</h1>
-      <h3 class="poster-quote">${currentPoster.quote}</h3>
+  posterGrid.insertAdjacentHTML('afterbegin', `<article class="mini-poster">
+      <img class="mini-poster" src="${currentPoster.imageURL}" alt="new photo">
+      <h2>${currentPoster.title}</h2>
+      <h4>${currentPoster.quote}</h4>
     </article>`)
+}
+function preventDuplicatePosters() {
+  if (savedPosters.includes(currentPoster)) {
+    return;
+  } 
+  savedPosters.push(currentPoster);
 }
 
 function savePosterHandler() {
@@ -273,3 +280,5 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+window.addEventListener('load', generateRandomPoster);
