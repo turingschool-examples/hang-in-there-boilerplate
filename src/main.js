@@ -366,15 +366,35 @@ function createUnmotivationalPosters() {
     var title = unmotivationalPosters[x].name;
     var quote = unmotivationalPosters[x].description;
     var poster = createPoster(url, title, quote);
+    unmotivationalWithID.push(poster)
     unmotivationalHTML(poster);
   }
 }
 
 function unmotivationalHTML(poster) {
-  var posterHTML = `<div class='mini-unmotivational-poster'>
+  var posterHTML = `<div id='${poster.id}' class='mini-unmotivational-poster'>
   <img src='${poster.imageURL}' alt='unmotivational poster image'>
   <h2>${poster.title}</h2>
   <h4>${poster.quote}</h4>
   </div>`;
   unmotivationalGridDiv.insertAdjacentHTML('beforeend', posterHTML);
+}
+
+var unmotivationalWithID = [];
+
+document.addEventListener('dblclick', deletePoster)
+
+function deletePoster(event) {
+  var target = event.target.closest('div.mini-unmotivational-poster')
+  console.log(unmotivationalWithID)
+  if (!target) {
+    return;
+  }
+  for (x = 0; x < unmotivationalWithID.length; x++) {
+    if (target.id === unmotivationalWithID[x].id.toString()) {
+      unmotivationalWithID.splice(x, 1);
+      target.remove();
+      break;
+    }
+  }
 }
