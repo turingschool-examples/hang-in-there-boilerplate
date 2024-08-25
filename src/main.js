@@ -361,12 +361,22 @@ function toGrid() {
 
 // Un-Motivational Posters
 function createUnmotivationalPosters() {
+  unmotivationalGridDiv.innerHTML = "";
+
   for (x = 0; x < unmotivationalPosters.length; x++) {
     var url = unmotivationalPosters[x].img_url;
     var title = unmotivationalPosters[x].name;
     var quote = unmotivationalPosters[x].description;
     var poster = createPoster(url, title, quote);
-    unmotivationalWithID.push(poster)
+    console.log(poster)
+    if (!unmotivationalWithID.some(function(existingPoster) {
+      existingPoster.title === poster.title
+    })) {
+      console.log("un-motivationalWithID does not include this posters: ", poster)
+      unmotivationalWithID.push(poster);
+    }
+    
+    // unmotivationalWithID.push(poster)
     unmotivationalHTML(poster);
   }
 }
@@ -386,7 +396,7 @@ document.addEventListener('dblclick', deletePoster)
 
 function deletePoster(event) {
   var target = event.target.closest('div.mini-unmotivational-poster')
-  console.log(unmotivationalWithID)
+  // console.log(unmotivationalWithID)
   if (!target) {
     return;
   }
