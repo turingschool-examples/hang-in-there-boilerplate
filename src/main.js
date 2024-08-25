@@ -241,7 +241,6 @@ var currentPoster;
 document.addEventListener('DOMContentLoaded', () => {
   setNewPoster();
   displayCurrentPoster();
-  // const cleanedData = cleanData()
   storeUnmotivationalPostersElements(cleanData())
 });
 
@@ -257,24 +256,8 @@ document.querySelectorAll('.show-saved, .back-to-main').forEach(button => {
 });
 
 
-document.querySelector('.make-poster').addEventListener('click', async(event) => {
-  const form = document.querySelector('form');
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
-  
-  event.preventDefault();
-  try {
-    const validImage = await isImage(document.querySelector('#poster-image-url').value);
-  
-    console.log("The URL points to a valid image.");
-    handleMakePoster();
-    storeCurrentPosterElement();
-  } catch (error) {
-    alert(("The URL does not point to a valid image."));
-  }
-
+document.querySelector('.make-poster').addEventListener('click',(event) => {
+  handleFormSubmission(event)
 })
 
 document.querySelectorAll('.show-main, .show-form').forEach(button => {
@@ -299,7 +282,7 @@ document.querySelector('.poster').addEventListener('click', (event) => {
   handlePosterClick(event.target)
 })
 
-savedPostersGrid.addEventListener('click',(event) => {
+savedPostersGrid.addEventListener('dblclick',(event) => {
   handleModalSreen(event.target)
 })
 
@@ -311,20 +294,16 @@ savedPostersGrid.addEventListener('dragstart', (event) => {
 })
 
 savedPostersGrid.addEventListener('dragover', (event) => {
-  event.preventDefault()
-  const afterElement = getDragAfterElement(event.clientX, event.clientY)
-  console.log('drag over')
-  const draggable = document.querySelector('.dragging')
+  handlePosterDragOver(event)
 })
 
-const getDragAfterElement = (x,y) => {
-  const draggableElements = savedPostersGrid.querySelectorAll('.mini-poster:not(.dragging)')
-  console.log(draggableElements)
-}
+
+
+
 // functions and event handlers go here 👇
 
 const handlePosterClick = (target) => {
-  console.log(target.tagName)
+
 
   if (target.tagName == "IMG"){
     target.src = images[getRandomIndex(images)]
@@ -366,23 +345,88 @@ function handleKeyDownEvent(event){
   }
 }
 
+const handleFormSubmission = async(event) => {
+  const form = document.querySelector('form');
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  
+  event.preventDefault();
+  try {
+    const validImage = await isImage(document.querySelector('#poster-image-url').value);
+  
+    console.log("The URL points to a valid image.");
+    handleMakePoster();
+    storeCurrentPosterElement();
+  } catch (error) {
+    alert(("The URL does not point to a valid image."));
+  }
+
+}
+
+const handlePosterDragOver = (event) => {
+  event.preventDefault()
+  const afterElement = getDragAfterElement(event.target)
+  const draggable = document.querySelector('.dragging')
+  
+  if (afterElement) {
+    afterElement.classList.add('drag-border')
+  }
+
+  savedPostersGrid.querySelectorAll('article').forEach(poster => {
+    if (poster !== afterElement){
+      poster.classList.remove('drag-border')
+    }
+  })
+}
+
 const handlePosterDrag = (target) => {
   const poster = target.closest('article');
   if (!poster) {
     return
   }
-  console.log("Drag Start")
+
   draggingFunctionality(poster)
 }
 
+
 const draggingFunctionality = (poster) => {
   poster.classList.add('dragging')
+
   poster.addEventListener('dragend',() => {
-    console.log('Dragging Ended')
     poster.classList.remove('dragging')
+    dragTarget = savedPostersGrid.querySelector('.drag-border')
+    if (dragTarget){
+      swapElements(poster, dragTarget)
+    }
+    savedPostersGrid.querySelectorAll('article').forEach(poster => {
+      poster.classList.remove('drag-border')
+    })
   })
 }
+const getDragAfterElement = (target) => {
+  const poster = target.closest('article');
+  if (poster){
+    return poster
+  }
+  return null
+}
 
+function mousingOverDrag(event){
+  event.target.classList.add('drag-border')
+}
+
+
+function swapElements(element1, element2) {
+  const grid = savedPostersGrid
+  const placeholder = document.createElement('div')
+
+  grid.insertBefore(placeholder, element1)
+  grid.insertBefore(element1, element2)
+  grid.insertBefore(element2, placeholder)
+  grid.removeChild(placeholder)
+}
 
 
 function handleCloseModalScreen(){
@@ -402,7 +446,7 @@ function handleSavePoster(){
 
 const storeCurrentPosterElement = () => {
   savedPostersGrid.insertAdjacentHTML("beforeend",
-    `<article class="mini-poster" id=${currentPoster.id}>
+    `<article class="mini-poster" id=${currentPoster.id} draggable='true'>
         <img src=${currentPoster.imageURL}>
         <h2>${currentPoster.title}</h2>
         <h4>${currentPoster.quote}</h4>

@@ -136,6 +136,7 @@ button:hover {
   color: white;
   line-height: 1;
   width: 90%;
+  user-select: none;
 }
 
 .mini-poster h2 {
@@ -154,6 +155,9 @@ button:hover {
   gap:1em;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+.unmotivational-poster-flex .mini-poster{
+  cursor: pointer;
 }
 
 .unmotivational-poster-flex article{
@@ -235,4 +239,8 @@ dialog {
 
 .mini-poster.dragging {
   opacity: .5;
+}
+
+.drag-border {
+  border: 5px dotted green;
 }
