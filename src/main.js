@@ -110,7 +110,8 @@ const savedPostersPage = document.querySelector('.saved-posters');
 const savedPostersButton = document.querySelector('.show-saved');
 const backToMainButton = document.querySelector('.back-to-main');
 const nevermindButton = document.querySelector('.show-main');
-const saveAPosterButton = document.querySelector('.save-poster')
+const saveAPosterButton = document.querySelector('.save-poster');
+const posterGrid = document.querySelector('.saved-posters-grid')
 
 const contentGenerator = () => {
   var imageURL = images[getRandomIndex(images)];
@@ -118,8 +119,6 @@ const contentGenerator = () => {
   var quote = quotes[getRandomIndex(quotes)];
 
   currentPoster = createPoster(imageURL, title, quote);
-
-  console.log(currentPoster)
 
   posterImage.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
@@ -132,10 +131,6 @@ randomButton.addEventListener('click', contentGenerator);
 
 customPosterButton.addEventListener('click', () => {
   switchHidden(mainPage, posterFormParent)
-});
-
-savedPostersButton.addEventListener('click', () => {
-  switchHidden(mainPage, savedPostersPage)
 });
 
 backToMainButton.addEventListener('click', () => {
@@ -165,6 +160,26 @@ makePosterButton.addEventListener('click', (event) => {
   switchHidden(posterFormParent, mainPage);
 });
 
+saveAPosterButton.addEventListener('click', () => {
+  var imageURL = posterImage.src;
+  var title= posterTitle.innerText;
+  var quote = posterQuote.innerText;
+  currentPoster = createPoster(imageURL, title, quote);
+
+  if (!savedPosters.some(function(poster) {
+    return poster.imageURL === currentPoster.imageURL && 
+      poster.title === currentPoster.title &&
+      poster.quote === currentPoster.quote})) {
+  savedPosters.unshift(currentPoster);
+  };
+  console.log(savedPosters)
+});
+
+savedPostersButton.addEventListener('click', () => {
+  savedPostersGenerator();
+  switchHidden(mainPage, savedPostersPage);
+});
+
 const switchHidden = (element1, element2) => {
   element1.classList.toggle('hidden');
   element2.classList.toggle('hidden');
@@ -182,17 +197,30 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 };
 
-saveAPosterButton.addEventListener('click', () => {
-  var imageURL = posterImage.src;
-  var title= posterTitle.innerText;
-  var quote = posterQuote.innerText;
-  currentPoster = createPoster(imageURL, title, quote);
+function savedPostersGenerator() {
+  // if logic prevents duplicates.
+  // iterate over savedposters array
+  // every array elemetn to be a mini-poster in a div element
+  // assign miniposter css style to new div elements
+  posterGrid.innerHTML = '';
 
-  if (!savedPosters.some(function(poster) {
-    return poster.imageURL === currentPoster.imageURL && 
-      poster.title === currentPoster.title &&
-      poster.quote === currentPoster.quote})) {
-  savedPosters.unshift(currentPoster);
-  };
-  // console.log(savedPosters)
-});
+  savedPosters.forEach(poster => {
+    // makes nes html div element. adds mini poster class to div element
+    const miniPosterDiv = document.createElement("div");
+    miniPosterDiv.classList.add("mini-poster");
+
+    // making a new html img element. assigning poster object url to image src
+    const miniImg = document.createElement("img");
+    miniImg.src = poster.imageURL;
+    const miniTitle = document.createElement("h2");
+    miniTitle.innerText = poster.title;
+    const miniQuote = document.createElement("h4");
+    miniQuote.innerText = poster.quote;
+
+    // recreating html nesting 11-16
+    posterGrid.appendChild(miniPosterDiv);
+    miniPosterDiv.appendChild(miniImg);
+    miniPosterDiv.appendChild(miniTitle);
+    miniPosterDiv.appendChild(miniQuote);
+  });
+};
