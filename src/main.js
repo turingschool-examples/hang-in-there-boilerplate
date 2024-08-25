@@ -272,10 +272,9 @@ function updatePoster() {
   var imageURL = images[index];
   var title = titles[index];
   var quote = quotes[index];
-
-  document.querySelector('.poster-img').src = imageURL;
-  document.querySelector('.poster-title').textContent = title;
-  document.querySelector('.poster-quote').textContent = quote;
+  mainPosterImage.src = imageURL;
+  mainPosterTitle.textContent = title;
+  mainPosterQuote.textContent = quote;
   currentPoster = createPoster(imageURL, title, quote);
 }
 
