@@ -244,12 +244,10 @@ var unmotivationalPostersGrid = document.getElementById('unmotivational-posters-
 var userImage = document.querySelector("#poster-image-url");
 var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
-var unmotivationalPosterElements = document.querySelector('.unmotivational-posters-grid')
 
 //global variables
 var savedPosters = [];
 var cleanedPosters = [];
-console.log('Cleaned Posters:', cleanedPosters);
 
 var currentPoster;
 
@@ -410,15 +408,21 @@ function displayUnmotivationalPosters(posters) {
   }
   unmotivationalPostersGrid.innerHTML = newInnerHTML;
 }
-
 var cleanedPosters = cleanData(unmotivationalPosters);
 displayUnmotivationalPosters(cleanedPosters);
 
 function deleteUnmotivationalPoster(event) {
-  if (event.target.closest(".mini-poster")) {
-    event.target.closest(".mini-poster").remove();
+  var posterElement = closest(event.target, ".mini-poster");
+  if (posterElement) {
+    var posterTitle = posterElement.querySelector(".mini-poster-title").innerText;
+    posterElement.parentNode.removeChild(posterElement);
+
+    for (var i = 0; i < cleanedPosters.length; i++) {
+      if (cleanedPosters[i].title === posterTitle) {
+        cleanedPosters.splice(i, 1);
+      }
+    }
   }
 }
-
 
 
