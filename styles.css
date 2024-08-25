@@ -147,13 +147,19 @@ button:hover {
 
 /* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
 
-.unmotivational-posters {
-  padding: 40px;
+.unmotivational-posters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: center;
 }
 
-.unmotivational-posters-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  padding: 20px;
+.unmotivational-posters-grid > .mini-poster {
+  background-color: #808080;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.unmotivational-posters-grid > .mini-poster h2 {
+  color: black;
 }
