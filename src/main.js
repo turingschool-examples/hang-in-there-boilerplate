@@ -368,11 +368,17 @@ function createUnmotivationalPosters() {
     var title = unmotivationalPosters[x].name;
     var quote = unmotivationalPosters[x].description;
     var poster = createPoster(url, title, quote);
-    console.log(poster)
-    if (!unmotivationalWithID.some(function(existingPoster) {
-      existingPoster.title === poster.title
-    })) {
-      console.log("un-motivationalWithID does not include this posters: ", poster)
+    // console.log(poster)
+
+    // if (deletedPosters.some(
+    // (deletedPoster) => deletedPoster.id === poster.id
+    // )) {
+    //   continue;
+    // }
+
+    if (!unmotivationalWithID.some(
+      (existingPoster) => existingPoster.title === poster.title
+    )) {
       unmotivationalWithID.push(poster);
     }
     
@@ -391,17 +397,19 @@ function unmotivationalHTML(poster) {
 }
 
 var unmotivationalWithID = [];
+var deletedPosters = [];
 
 document.addEventListener('dblclick', deletePoster)
 
 function deletePoster(event) {
   var target = event.target.closest('div.mini-unmotivational-poster')
-  // console.log(unmotivationalWithID)
   if (!target) {
     return;
   }
   for (x = 0; x < unmotivationalWithID.length; x++) {
     if (target.id === unmotivationalWithID[x].id.toString()) {
+      deletedPosters.push(unmotivationalWithID[x]);
+      console.log("deleted posters: ", deletedPosters)
       unmotivationalWithID.splice(x, 1);
       target.remove();
       break;
