@@ -105,7 +105,8 @@ button:hover {
 }
 
 /* ~~~~~ SAVED POSTER SECTION ~~~~~ */
-.saved-posters {
+.saved-posters,
+.un-motivational-posters {
   padding: 40px;
 }
 
@@ -119,18 +120,27 @@ button:hover {
 .mini-poster {
   background: black;
   color: white;
+  /* height: 340px;
+  padding: 25px;
+  width: 425px; */
+}
+.mini-poster,
+.mini-unmotivational-poster {
   height: 340px;
   padding: 25px;
   width: 425px;
 }
 
-.mini-poster img {
+.mini-poster img,
+.mini-unmotivational-poster img {
   height:200px;
   width: 300px;
 }
 
 .mini-poster h2,
 .mini-poster h4,
+.mini-unmotivational-poster h2,
+.mini-unmotivational-poster h4,
 .delete {
   color: white;
   line-height: 1;
@@ -139,15 +149,21 @@ button:hover {
 
 .mini-poster h2 {
   font-size: 30px;
+  /* font-weight: normal;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+  text-transform: uppercase; */
+}
+.mini-poster h2,
+.mini-unmotivational-poster h2 {
   font-weight: normal;
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
-
 /* Un-Motivational Posters Section */
 .un-motivational-posters {
-  padding: 40px;
+  /* padding: 40px; */
   max-width: 91.5em;
 }
 
@@ -162,32 +178,30 @@ button:hover {
 .mini-unmotivational-poster {
   background: gray;
   color: black;
-  height: 340px;
+  /* height: 340px;
   padding: 25px;
-  width: 425px;
+  width: 425px; */
   border-radius: 10px;
 }
 
-.mini-unmotivational-poster
+/* .mini-unmotivational-poster
 img {
   height:200px;
   width: 300px;
-}
+} */
 
-.min-unmotivational-poster h2,
+/* .mini-unmotivational-poster h2,
 .mini-unmotivational-poster h4 {
   color: white;
   line-height: 1;
   width: 90%;
-}
+} */
 
-.min-unmotivational-poster h2 {
-  /* color: black; */
+.mini-unmotivational-poster h2 {
+  color: black;
   font-size: 35px;
-  font-weight: normal;
+  /* font-weight: normal;
   letter-spacing: 5px;
   margin-bottom: 10px;
-  text-transform: uppercase;
+  text-transform: uppercase; */
 }
-
-/* find a way to change spacing of posters so they are closer together. */
