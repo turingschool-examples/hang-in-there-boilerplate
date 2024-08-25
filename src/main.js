@@ -109,9 +109,17 @@ const customPosterButton = document.querySelector('.show-form');
 const savedPostersPage = document.querySelector('.saved-posters');
 const savedPostersButton = document.querySelector('.show-saved');
 const backToMainButton = document.querySelector('.back-to-main');
+const returnToMainButton = document.querySelector('.return-to-main');
 const nevermindButton = document.querySelector('.show-main');
 const saveAPosterButton = document.querySelector('.save-poster');
-const posterGrid = document.querySelector('.saved-posters-grid')
+const posterGrid = document.querySelector('.saved-posters-grid');
+const unmotivationalPostersButton = document.querySelector('.show-unmotivationals');
+const unmotivationalPostersPage = document.querySelector('.unmotivationals');
+
+const switchHidden = (element1, element2) => {
+  element1.classList.toggle('hidden');
+  element2.classList.toggle('hidden');
+};
 
 const contentGenerator = () => {
   var imageURL = images[getRandomIndex(images)];
@@ -134,11 +142,18 @@ customPosterButton.addEventListener('click', () => {
 });
 
 backToMainButton.addEventListener('click', () => {
-  switchHidden(mainPage, savedPostersPage)
+  console.log('clicked')
+  switchHidden(savedPostersPage, mainPage)
+});
+
+returnToMainButton.addEventListener('click', () => {
+  console.log('clicked')
+  switchHidden(unmotivationalPostersPage, mainPage)
 });
 
 nevermindButton.addEventListener('click', () => {
-  switchHidden(mainPage, posterFormParent)
+  console.log('clicked')
+  switchHidden(posterFormParent, mainPage)
 });
 
 makePosterButton.addEventListener('click', (event) => {
@@ -180,10 +195,9 @@ savedPostersButton.addEventListener('click', () => {
   switchHidden(mainPage, savedPostersPage);
 });
 
-const switchHidden = (element1, element2) => {
-  element1.classList.toggle('hidden');
-  element2.classList.toggle('hidden');
-};
+unmotivationalPostersButton.addEventListener('click', () => {
+  switchHidden(mainPage, unmotivationalPostersPage)
+});
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -198,14 +212,13 @@ function createPoster(imageURL, title, quote) {
 };
 
 function savedPostersGenerator() {
-  // if logic prevents duplicates.
   // iterate over savedposters array
   // every array elemetn to be a mini-poster in a div element
   // assign miniposter css style to new div elements
   posterGrid.innerHTML = '';
 
   savedPosters.forEach(poster => {
-    // makes nes html div element. adds mini poster class to div element
+    // makes new html div element. adds mini poster class to div element
     const miniPosterDiv = document.createElement("div");
     miniPosterDiv.classList.add("mini-poster");
 
