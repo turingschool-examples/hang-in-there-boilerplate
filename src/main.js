@@ -95,6 +95,129 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+const unmotivationalPosters = [
+  {
+    name: "FAILURE",
+    description: "Why bother trying? It's probably not worth it.",
+    price: 68.00,
+    year: 2019,
+    vintage: true,
+    img_url: "./assets/failure.jpg",
+  },
+  {
+    name: "MEDIOCRITY",
+    description: "Dreams are just that—dreams.",
+    price: 127.00,
+    year: 2021,
+    vintage: false,
+    img_url: "./assets/mediocrity.jpg",
+  },
+  {
+    name: "REGRET",
+    description: "Hard work rarely pays off.",
+    price: 89.00,
+    year: 2018,
+    vintage: true,
+    img_url:  "./assets/regret.jpg",
+  },
+  {
+    name: "FUTILITY",
+    description: "You're not good enough.",
+    price: 150.00,
+    year: 2016,
+    vintage: false,
+    img_url:  "./assets/futility.jpg",
+  },
+  {
+    name: "DEFEAT",
+    description: "It's too late to start now.",
+    price: 35.00,
+    year: 2023,
+    vintage: false,
+    img_url:  "./assets/defeat.jpg",
+  },
+  {
+    name: "HOPELESSNESS",
+    description: "Stay in your comfort zone; it's safer.",
+    price: 112.00,
+    year: 2020,
+    vintage: true,
+    img_url: "./assets/hopelessness.jpg",
+  },
+  {
+    name: "LAZINESS",
+    description: "You can't change anything.",
+    price: 25.00,
+    year: 2022,
+    vintage: false,
+    img_url: "./assets/laziness.jpg",
+  },
+  {
+    name: "PROCRASTINATION",
+    description: "Better to avoid failure by not trying at all.",
+    price: 48.00,
+    year: 2017,
+    vintage: true,
+    img_url: "./assets/procrastination.jpg",
+  },
+  {
+    name: "DESPAIR",
+    description: "Let someone else do it; you’ll just mess it up.",
+    price: 73.00,
+    year: 2015,
+    vintage: false,
+    img_url: "./assets/despair.jpg",
+  },
+  {
+    name: "NEGLECT",
+    description: "Happiness is overrated.",
+    price: 160.00,
+    year: 2019,
+    vintage: true,
+    img_url: "./assets/neglect.jpg",
+  },
+  {
+    name: "FEAR",
+    description: "Giving up is always an option.",
+    price: 91.00,
+    year: 2014,
+    vintage: false,
+    img_url: "./assets/fear.jpg",
+  },
+  {
+    name: "APATHY",
+    description: "No one cares about your effort.",
+    price: 110.00,
+    year: 2016,
+    vintage: true,
+    img_url: "./assets/apathy.jpg",
+  },
+  {
+    name: "MISERY",
+    description: "Why take risks when you can stay stagnant?",
+    price: 55.00,
+    year: 2021,
+    vintage: false,
+    img_url: "./assets/misery.jpg",
+  },
+  {
+    name: "BLAME",
+    description: "Expect disappointment and you'll never be disappointed.",
+    price: 39.00,
+    year: 2017,
+    vintage: true,
+    img_url: "./assets/blame.jpg",
+  },
+  {
+    name: "DOUBT",
+    description: "Success is for other people, not you.",
+    price: 140.00,
+    year: 2020,
+    vintage: false,
+    img_url: "./assets/doubt.jpg",
+  }
+];
+
 var savedPosters = [];
 var currentPoster;
 var posterImage = document.querySelector('.poster-img');
@@ -115,11 +238,6 @@ const saveAPosterButton = document.querySelector('.save-poster');
 const posterGrid = document.querySelector('.saved-posters-grid');
 const unmotivationalPostersButton = document.querySelector('.show-unmotivationals');
 const unmotivationalPostersPage = document.querySelector('.unmotivationals');
-
-const switchHidden = (element1, element2) => {
-  element1.classList.toggle('hidden');
-  element2.classList.toggle('hidden');
-};
 
 const contentGenerator = () => {
   var imageURL = images[getRandomIndex(images)];
@@ -142,17 +260,14 @@ customPosterButton.addEventListener('click', () => {
 });
 
 backToMainButton.addEventListener('click', () => {
-  console.log('clicked')
   switchHidden(savedPostersPage, mainPage)
 });
 
 returnToMainButton.addEventListener('click', () => {
-  console.log('clicked')
   switchHidden(unmotivationalPostersPage, mainPage)
 });
 
 nevermindButton.addEventListener('click', () => {
-  console.log('clicked')
   switchHidden(posterFormParent, mainPage)
 });
 
@@ -196,8 +311,16 @@ savedPostersButton.addEventListener('click', () => {
 });
 
 unmotivationalPostersButton.addEventListener('click', () => {
-  switchHidden(mainPage, unmotivationalPostersPage)
+  console.log(unmotivationalPosters)
+  var cleanedPosters = cleanData(unmotivationalPosters);
+  console.log(cleanedPosters)
+  switchHidden(mainPage, unmotivationalPostersPage);
 });
+
+const switchHidden = (element1, element2) => {
+  element1.classList.toggle('hidden');
+  element2.classList.toggle('hidden');
+};
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -236,4 +359,14 @@ function savedPostersGenerator() {
     miniPosterDiv.appendChild(miniTitle);
     miniPosterDiv.appendChild(miniQuote);
   });
+};
+
+function cleanData(unmotivationalPosters) {
+  var cleanedUnMotivatedPosters = unmotivationalPosters.map(poster => {
+    var imageURL = poster.img_url;
+    var title = poster.name;
+    var quote = poster.description;
+    return createPoster(imageURL, title, quote);
+  });
+  return cleanedUnMotivatedPosters;
 };
