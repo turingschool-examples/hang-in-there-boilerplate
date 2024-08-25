@@ -239,15 +239,17 @@ var savedPostersPage = document.querySelector(".saved-posters");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var unmotivationalBackToMainButton = document.querySelector("#unmotivational-back-to-main")
 var unmotivationalPostersView = document.querySelector(".unmotivational-posters");
-var unmotivationalPostersGrid = document.querySelector(".unmotivational-posters-grid");
 var unmotivationalPostersButton = document.querySelector(".show-unmotivational");
 var unmotivationalPostersGrid = document.getElementById('unmotivational-posters-grid');
 var userImage = document.querySelector("#poster-image-url");
 var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
+var unmotivationalPosterElements = document.querySelector('.unmotivational-posters-grid')
 
 //global variables
 var savedPosters = [];
+var cleanedPosters = [];
+console.log('Cleaned Posters:', cleanedPosters);
 
 var currentPoster;
 
@@ -263,6 +265,7 @@ makePosterButton.addEventListener("click", showUserPoster);
 saveButton.addEventListener("click", saveGeneratedPoster);
 unmotivationalPostersButton.addEventListener("click", showUnmotivationalPosters);
 unmotivationalBackToMainButton.addEventListener("click", backToMainFromUnmotivational);
+unmotivationalPostersGrid.addEventListener("dblclick", deleteUnmotivationalPoster);
 
 // functions and event handlers go here 👇
 
@@ -272,14 +275,13 @@ function getRandomIndex(array) {
 
 function createPoster(imageURL, title, quote) {
   return {
-    id: Math.random(), 
+    id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
     quote: quote}
 }
 
 function cleanData(posters) {
-  var cleanedPosters = [];
   for (var i = 0; i < posters.length; i++) {
     cleanedPosters.push(createPoster(posters[i].img_url, posters[i].name, posters[i].description));
   }
@@ -401,13 +403,17 @@ function generateUnmotivationalPosterHTML(poster) {
   `;
 }
 
-  function displayUnmotivationalPosters(posters) {
-    var newInnerHTML = '';
-    for (var i = 0; i < posters.length; i++) {
-      newInnerHTML += generateUnmotivationalPosterHTML(posters[i]);
-    }
-    unmotivationalPostersGrid.innerHTML = newInnerHTML;
+function displayUnmotivationalPosters(posters) {
+  var newInnerHTML = '';
+  for (var i = 0; i < posters.length; i++) {
+    newInnerHTML += generateUnmotivationalPosterHTML(posters[i]);
   }
+  unmotivationalPostersGrid.innerHTML = newInnerHTML;
+}
 
 var cleanedPosters = cleanData(unmotivationalPosters);
 displayUnmotivationalPosters(cleanedPosters);
+
+
+
+
