@@ -319,9 +319,9 @@ function displaySavedInGrid() {
   var savedPostersGrid = document.getElementsByClassName("saved-posters-grid")[0];
   savedPostersGrid.insertAdjacentHTML(
     "beforeend", 
-    `<article class="poster">
+    `<article class="mini-poster">
       <img class="poster-img" src="${currentPoster.imageURL}" alt="savedPoster">
-      <h1 class="poster-title">${currentPoster.title}</h1>
+      <h2 class="poster-title">${currentPoster.title}</h1>
       <h3 class="poster-quote">${currentPoster.quote}</h3>
     </article>`
   );
@@ -339,9 +339,9 @@ function displayUnmotivationalInGrid() {
   var unmotivationalPostersGrid = document.getElementsByClassName("unmotivational-posters-grid")[0];
   unmotivationalPostersGrid.insertAdjacentHTML(
     "beforeend", 
-    `<article class="poster">
+    `<article class="mini-poster">
       <img class="poster-img" src="${currentPoster.imageURL}" alt="Unmotivational Poster">
-      <h1 class="poster-title">${currentPoster.title}</h1>
+      <h2 class="poster-title">${currentPoster.title}</h1>
       <h3 class="poster-quote">${currentPoster.quote}</h3>
     </article>`
   );
