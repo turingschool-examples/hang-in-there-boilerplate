@@ -414,6 +414,11 @@ function displayUnmotivationalPosters(posters) {
 var cleanedPosters = cleanData(unmotivationalPosters);
 displayUnmotivationalPosters(cleanedPosters);
 
+function deleteUnmotivationalPoster(event) {
+  if (event.target.closest(".mini-poster")) {
+    event.target.closest(".mini-poster").remove();
+  }
+}
 
 
 
