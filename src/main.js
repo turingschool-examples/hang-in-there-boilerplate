@@ -1,5 +1,3 @@
-// we've provided you with some data to work with 👇
-// tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -98,7 +96,6 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-// un-motivational poster data
 const unmotivationalPosters = [
   {
     name: "FAILURE",
@@ -222,7 +219,6 @@ const unmotivationalPosters = [
   }
 ];
 
-// query selector variables go here 👇
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
@@ -245,15 +241,11 @@ var userImage = document.querySelector("#poster-image-url");
 var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
 
-//global variables
 var savedPosters = [];
 var cleanedPosters = [];
-
 var currentPoster;
 
-// event listeners go here 👇
 window.addEventListener("load", showRandomPoster);
-
 randomPosterButton.addEventListener("click", showRandomPoster);
 showFormButton.addEventListener("click", showFormView);
 showSavedPosterButton.addEventListener("click", showSavedPostersView);
@@ -264,8 +256,6 @@ saveButton.addEventListener("click", saveGeneratedPoster);
 unmotivationalPostersButton.addEventListener("click", showUnmotivationalPosters);
 unmotivationalBackToMainButton.addEventListener("click", backToMainFromUnmotivational);
 unmotivationalPostersGrid.addEventListener("dblclick", deleteUnmotivationalPoster);
-
-// functions and event handlers go here 👇
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -433,4 +423,3 @@ function closest(element, selector) {
     element = element.parentNode; 
   }
 }
-
