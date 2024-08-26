@@ -362,15 +362,18 @@ function generateUnmotivationalPosters() {
   }
 };
 
-function removeFromDataSet() {
-
+function removeFromDataSet(dataSet, value) {
+  arrayElementToRemove = dataSet.findIndex
+    (obj => Object.values(obj).includes(value));
+  dataSet.splice(arrayElementToRemove, 1);
 };
 
 function deleteSavedPoster(event) {
   // alert("test");
   if (event.target.classList.contains("mini-poster"))
-    event.target.classList.add("hidden");
-  removeFromDataSet();
+    event.target.remove();
+    alert(`${event.target.innerText}`);
+    removeFromDataSet(unmotivationalPosters, event.target.innerText);
 };
 
 
