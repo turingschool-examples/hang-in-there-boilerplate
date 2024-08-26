@@ -259,34 +259,36 @@ var currentPoster;
 // event listeners go here 👇
 randomPosterButton.addEventListener("click", setupMainPoster);
 
-makePosterButton.addEventListener("click", function(){
+makePosterButton.addEventListener("click", function() {
   hiddenswitch(formSection);
 });
 
-savedPosterButton.addEventListener("click", function(){
+savedPosterButton.addEventListener("click", function() {
   hiddenswitch(savedSection);
   showSavedGrid(savedPosters, savedGrid, "reg");
 });
 
-unmotivationalPosterButton.addEventListener("click", function(){
+unmotivationalPosterButton.addEventListener("click", function() {
   hiddenswitch(unmotivatedSection);
   showSavedGrid(savedUnmotivationalPosters, savedUnmotivatedGrid, "unmot");
 });
 
-returnToMain.addEventListener("click", function(){
+returnToMain.addEventListener("click", function() {
   hiddenswitch(formSection);
 });
 
-backToMain.addEventListener("click", function(){
+backToMain.addEventListener("click", function() {
   hiddenswitch(savedSection);
 });
 
-offToMain.addEventListener("click", function(){
+offToMain.addEventListener("click", function() {
   hiddenswitch(unmotivatedSection);
 })
 
-saveThisPosterButton.addEventListener("click", function(){
+saveThisPosterButton.addEventListener("click", function() {
   posterCreation(mainPosterImage.src, mainPosterTitle.innerText, mainPosterQuote.innerText);
+  showSavedGrid(savedPosters, savedGrid, "reg");
+  hiddenswitch(savedSection);
 });
 
 form.addEventListener("submit", function(event) {
@@ -357,7 +359,7 @@ function hiddenswitch(key) {
 
 function posterCreation(image, title, quote) {
   currentPoster = createPoster(image, title, quote);
-  if(dataValidation(currentPoster, savedPosters)){
+  if (dataValidation(currentPoster, savedPosters)) {
     savedPosters.push(currentPoster);
     images.push(image);
     titles.push(title);
@@ -375,7 +377,7 @@ function formControl() {
   hiddenswitch(formSection);
 };
 
-function makePosterDiv(data, posterType){
+function makePosterDiv(data, posterType) {
   let divOP = document.createElement("div");
   divOP.className = `mini-poster ${posterType}`;
   divOP.id = data.id;
@@ -388,7 +390,7 @@ function makePosterDiv(data, posterType){
 function showSavedGrid(listPosters, location, posterType) {
   listPosters.forEach((poster) =>{
     var divOfPoster = makePosterDiv(poster, posterType);
-    if (posterValidation(divOfPoster, location)){
+    if (posterValidation(divOfPoster, location)) {
       location.appendChild(divOfPoster);
     }
   })
@@ -397,9 +399,9 @@ function showSavedGrid(listPosters, location, posterType) {
 function posterValidation(posterNode, posterGrid) {
   let matches = posterGrid.childNodes;
   for (let i =0; i < matches.length; i++){
-    if(matches[i].isEqualNode(posterNode)){
+    if (matches[i].isEqualNode(posterNode)) {
       return false;
-    } else if(contentValidation(matches[i], posterNode)) {
+    } else if (contentValidation(matches[i], posterNode)) {
       return false;
     }
   }
@@ -427,6 +429,7 @@ function dataValidation(data1, dataset) {
   }
   return true;
 };
+
 function cleanData(dataSet) {
   dataSet.forEach((data) => {
     var unPoster = createPoster(data.img_url, data.name, data.description);
@@ -435,7 +438,7 @@ function cleanData(dataSet) {
 };
 
 function removePoster(elementChecker) {  
-  if(!elementChecker.parentElement.classList.contains("saved-unmotivated-grid")){
+  if (!elementChecker.parentElement.classList.contains("saved-unmotivated-grid")) {
     removePoster(elementChecker.parentElement);
   } else {
     let result = savedUnmotivationalPosters.findIndex((poster) =>{
@@ -448,8 +451,8 @@ function removePoster(elementChecker) {
   }
 };
 
-function fillModal(target){
-  if(!target.parentElement.classList.contains("saved-posters-grid")){
+function fillModal(target) {
+  if (!target.parentElement.classList.contains("saved-posters-grid")) {
     fillModal(target.parentElement);
   } else {
     modalImage.setAttribute("src", target.children[0].src);
