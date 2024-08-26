@@ -255,6 +255,8 @@ const unmotivationalPosters = [
 ];
 var savedPosters = [];
 var currentPoster;
+var createdUnmotivationalPosters = [];
+var deletedPosters = [];
 
 // event listeners go here 👇
 // button.addEventListener('click', function);
@@ -271,6 +273,8 @@ nevermindButton.addEventListener('click', backToMain);
 
 backToMainButton.addEventListener('click', backToMain);
 savePosterButton.addEventListener('click', savePoster);
+
+document.addEventListener('dblclick', deletePoster)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -380,7 +384,7 @@ function createUnmotivationalPosters() {
     )) {
       createdUnmotivationalPosters.push(poster);
     }
-    // createdUnmotivationalPosters.push(poster);
+   
     unmotivationalHTML(poster);
   }
 }
@@ -393,12 +397,6 @@ function unmotivationalHTML(poster) {
   </div>`;
   unmotivationalGridDiv.insertAdjacentHTML('beforeend', posterHTML);
 }
-
-var posterID = [];
-var createdUnmotivationalPosters = [];
-var deletedPosters = [];
-
-document.addEventListener('dblclick', deletePoster)
 
 function deletePoster(event) {
   var target = event.target.closest('div.mini-unmotivational-poster')
