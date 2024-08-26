@@ -9,6 +9,7 @@ var makeOwnPosterButton = document.querySelector('.show-form');
 var showSavedPosterButton = document.querySelector('.show-saved');
 var nvmTakeMeBackButton = document.querySelector('.show-main');
 var backToMainButton = document.querySelector('.back-to-main');
+var savePosterButton = document.querySelector('.save-poster');
 
 var mainPosterSection = document.querySelector('.main-poster');
 var posterFormSection = document.querySelector('.poster-form');
@@ -18,9 +19,11 @@ var showMyPosterButton = document.querySelector('.make-poster');
 var showMyPosterURL = document.querySelector('#poster-image-url');
 var showMyPosterTitle = document.querySelector('#poster-title');
 var showMyPosterQuote = document.querySelector('#poster-quote');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 var savedPosters = [];
 var currentPoster;
+var miniPoster;
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -136,6 +139,8 @@ makeOwnPosterButton.addEventListener('click', function(){
 showSavedPosterButton.addEventListener('click', function(){
   mainPosterSection.classList.toggle('hidden');
   savedPosterSection.classList.toggle('hidden');
+
+  displaySavedPosters();
 });
 
 nvmTakeMeBackButton.addEventListener('click', function(){
@@ -159,17 +164,25 @@ showMyPosterButton.addEventListener('click', function(event){
   posterTitle.innerHTML = userTitleInput;
   posterQuote.innerHTML = userQuoteInput;
 
+  currentPoster = createPoster(userImageInput, userTitleInput, userQuoteInput);
+
   mainPosterSection.classList.toggle('hidden');
   posterFormSection.classList.toggle('hidden');
   //take user input and save it when they click 'show my poster'
   //how do I grab what the user typed in the 3 input fields.
-})
+});
+
+savePosterButton.addEventListener('click', function(){
+  if (!savedPosters.some(poster => poster.id === currentPoster.id)){
+    savedPosters.push(currentPoster);
+  }
+});
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -177,7 +190,7 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
-}
+};
 
 function getRandomPoster() {
   var randomImage = images[getRandomIndex(images)];
@@ -187,7 +200,26 @@ function getRandomPoster() {
   posterImage.src = randomImage
   posterTitle.innerHTML = randomTitle
   posterQuote.innerHTML = randomQuote
+
+  currentPoster = createPoster(randomImage, randomTitle, randomQuote);
 };
+
+function displaySavedPosters() {
+  savedPostersGrid.innerHTML = '';
+
+  savedPosters.forEach(function(poster){
+    miniPoster = document.createElement('div');
+    miniPoster.classList.add('mini-poster');
+
+    miniPoster.innerHTML = `
+    <img src="${poster.imageURL}" alt="Poster Image">
+    <h2>${poster.title}</h2>
+    <h4>${poster.quote}</h4>
+    `;
+
+    savedPostersGrid.appendChild(miniPoster);
+  });
+}
 
 
 // console.log(getRandomIndex(titles))
