@@ -221,6 +221,7 @@ const unmotivationalPosters = [
     img_url: "./assets/doubt.jpg",
   }
 ];
+var cleanedUnmotivationalPosters = [];
 var savedPosters = [];
 var currentPoster;
 
@@ -351,29 +352,40 @@ function displayUnmotivationalInGrid() {
   );
 }
 
+function cleanData() {
+  unmotivationalPosters.forEach((el) => 
+    cleanedUnmotivationalPosters.push({
+      name: el.name,
+      description: el.description,
+      img_url: el.img_url
+    })
+  )
+};
+
 function generateUnmotivationalPosters() {
-  for (var i = 0; i < unmotivationalPosters.length; i ++) {
+  cleanData();
+  cleanedUnmotivationalPosters.forEach((poster) => {
     renderPoster(
-      unmotivationalPosters[i].img_url,
-      unmotivationalPosters[i].name,
-      unmotivationalPosters[i].description,
+      poster.img_url,
+      poster.name,
+      poster.description
     );
     displayUnmotivationalInGrid();
   }
-};
+)};
+
+
 
 function removeFromDataSet(dataSet, value) {
-  arrayElementToRemove = dataSet.findIndex
-    (obj => Object.values(obj).includes(value));
+  arrayElementToRemove = dataSet.findIndex( (el) => (Object.values(el)).includes(value));
   dataSet.splice(arrayElementToRemove, 1);
 };
 
+
 function deleteSavedPoster(event) {
-  // alert("test");
   if (event.target.classList.contains("mini-poster"))
     event.target.remove();
-    alert(`${event.target.innerText}`);
-    removeFromDataSet(unmotivationalPosters, event.target.innerText);
+    removeFromDataSet(cleanedUnmotivationalPosters, event.target.innerhtml);
 };
 
 
