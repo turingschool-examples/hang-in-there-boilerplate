@@ -387,11 +387,11 @@ function displayUnmotivationalPosters(posters) {
   }
   unmotivationalPostersGrid.innerHTML = newInnerHTML;
 }
-var cleanedPosters = cleanData(unmotivationalPosters);
+cleanedPosters = cleanData(unmotivationalPosters);
 displayUnmotivationalPosters(cleanedPosters);
 
 function deleteUnmotivationalPoster(event) {
-  var posterElement = closest(event.target, ".mini-poster");
+  var posterElement = event.target.closest(".mini-poster");
   if (posterElement) {
     var posterTitle = posterElement.querySelector(".mini-poster-title").innerText;
     posterElement.parentNode.removeChild(posterElement);
@@ -401,14 +401,5 @@ function deleteUnmotivationalPoster(event) {
         cleanedPosters.splice(i, 1);
       }
     }
-  }
-}
-
-function closest(element, selector) {
-  while (element && element !== document) {
-    if (element.matches(selector)) {
-      return element;  
-    }
-    element = element.parentNode; 
   }
 }
