@@ -145,12 +145,21 @@ button:hover {
   text-transform: uppercase;
 }
 
+.bad-posters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
 .sad-mini-poster {
   background: rgb(88, 87, 87);
   color: white;
   height: 340px;
   padding: 25px;
   width: 425px;
+  margin: 10px;
+  justify-content: space-around;
 }
 
 .sad-mini-poster img {
