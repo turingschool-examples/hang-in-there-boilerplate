@@ -362,11 +362,15 @@ function generateUnmotivationalPosters() {
   }
 };
 
+function removeFromDataSet() {
+
+};
 
 function deleteSavedPoster(event) {
   // alert("test");
   if (event.target.classList.contains("mini-poster"))
     event.target.classList.add("hidden");
+  removeFromDataSet();
 };
 
 
