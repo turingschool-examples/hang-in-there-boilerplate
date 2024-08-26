@@ -255,6 +255,8 @@ const unmotivationalPosters = [
 ];
 var savedPosters = [];
 var currentPoster;
+var createdUnmotivationalPosters = [];
+var deletedPosters = [];
 
 // event listeners go here 👇
 // button.addEventListener('click', function);
@@ -271,6 +273,8 @@ nevermindButton.addEventListener('click', backToMain);
 
 backToMainButton.addEventListener('click', backToMain);
 savePosterButton.addEventListener('click', savePoster);
+
+document.addEventListener('dblclick', deletePoster)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -361,20 +365,55 @@ function toGrid() {
 
 // Un-Motivational Posters
 function createUnmotivationalPosters() {
+  unmotivationalGridDiv.innerHTML = "";
+
   for (x = 0; x < unmotivationalPosters.length; x++) {
     var url = unmotivationalPosters[x].img_url;
     var title = unmotivationalPosters[x].name;
     var quote = unmotivationalPosters[x].description;
     var poster = createPoster(url, title, quote);
+    
+    if (deletedPosters.some(
+      (indexPoster) => indexPoster.title === poster.title
+    )) {
+      continue;
+    }
+
+    if (!createdUnmotivationalPosters.some(
+      (indexPoster) => indexPoster.title === poster.title
+    )) {
+      createdUnmotivationalPosters.push(poster);
+    }
+   
     unmotivationalHTML(poster);
   }
 }
 
 function unmotivationalHTML(poster) {
-  var posterHTML = `<div class='mini-unmotivational-poster'>
+  var posterHTML = `<div id='${poster.title.toLowerCase()}' class='mini-unmotivational-poster'>
   <img src='${poster.imageURL}' alt='unmotivational poster image'>
   <h2>${poster.title}</h2>
   <h4>${poster.quote}</h4>
   </div>`;
   unmotivationalGridDiv.insertAdjacentHTML('beforeend', posterHTML);
+}
+
+function deletePoster(event) {
+  var target = event.target.closest('div.mini-unmotivational-poster')
+  console.log('target.id: ', target.id)
+  console.log('createdUnmotivationalPosters[1].title: ', createdUnmotivationalPosters[1].title.toLowerCase())
+
+  if (!target) {
+    return;
+  }
+
+  for (x = 0; x < createdUnmotivationalPosters.length; x++) {
+    if (target.id === createdUnmotivationalPosters[x].title.toLowerCase()) {
+      deletedPosters.push(createdUnmotivationalPosters[x]);
+      createdUnmotivationalPosters.splice(x, 1);
+      target.remove();
+      break;
+    }
+  }  
+
 }

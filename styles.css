@@ -200,6 +200,8 @@ img {
 .mini-unmotivational-poster h2 {
   color: black;
   font-size: 35px;
+  display: flex;
+  justify-content: center;
   /* font-weight: normal;
   letter-spacing: 5px;
   margin-bottom: 10px;
