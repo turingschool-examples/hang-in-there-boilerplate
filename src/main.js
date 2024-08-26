@@ -381,8 +381,7 @@ function createUnmotivationalPosters() {
     )) {
       unmotivationalWithID.push(poster);
     }
-    
-    // unmotivationalWithID.push(poster)
+
     unmotivationalHTML(poster);
   }
 }
@@ -396,6 +395,7 @@ function unmotivationalHTML(poster) {
   unmotivationalGridDiv.insertAdjacentHTML('beforeend', posterHTML);
 }
 
+var posterID = [];
 var unmotivationalWithID = [];
 var deletedPosters = [];
 
@@ -409,7 +409,6 @@ function deletePoster(event) {
   for (x = 0; x < unmotivationalWithID.length; x++) {
     if (target.id === unmotivationalWithID[x].id.toString()) {
       deletedPosters.push(unmotivationalWithID[x]);
-      console.log("deleted posters: ", deletedPosters)
       unmotivationalWithID.splice(x, 1);
       target.remove();
       break;
