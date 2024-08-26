@@ -238,6 +238,7 @@ const saveAPosterButton = document.querySelector('.save-poster');
 const posterGrid = document.querySelector('.saved-posters-grid');
 const unmotivationalPostersButton = document.querySelector('.show-unmotivationals');
 const unmotivationalPostersPage = document.querySelector('.unmotivationals');
+const unmotivationalPosterGrid = document.querySelector('.bad-poster-grid');
 
 const contentGenerator = () => {
   var imageURL = images[getRandomIndex(images)];
@@ -314,6 +315,7 @@ unmotivationalPostersButton.addEventListener('click', () => {
   console.log(unmotivationalPosters)
   var cleanedPosters = cleanData(unmotivationalPosters);
   console.log(cleanedPosters)
+  unmotivationalPosterGenerator();
   switchHidden(mainPage, unmotivationalPostersPage);
 });
 
@@ -342,15 +344,15 @@ function savedPostersGenerator() {
 
   savedPosters.forEach(poster => {
     // makes new html div element. adds mini poster class to div element
-    const miniPosterDiv = document.createElement("div");
+    var miniPosterDiv = document.createElement("div");
     miniPosterDiv.classList.add("mini-poster");
 
     // making a new html img element. assigning poster object url to image src
-    const miniImg = document.createElement("img");
+    var miniImg = document.createElement("img");
     miniImg.src = poster.imageURL;
-    const miniTitle = document.createElement("h2");
+    var miniTitle = document.createElement("h2");
     miniTitle.innerText = poster.title;
-    const miniQuote = document.createElement("h4");
+    var miniQuote = document.createElement("h4");
     miniQuote.innerText = poster.quote;
 
     // recreating html nesting 11-16
@@ -369,4 +371,29 @@ function cleanData(unmotivationalPosters) {
     return createPoster(imageURL, title, quote);
   });
   return cleanedUnMotivatedPosters;
+};
+
+function unmotivationalPosterGenerator() {
+  unmotivationalPosterGrid.innerHTML = "";
+
+  var cleanedUnMotivatedPosters = cleanData(unmotivationalPosters);
+  console.log(cleanedUnMotivatedPosters);
+
+  cleanedUnMotivatedPosters.forEach(poster => {
+   
+    var miniPosterDiv = document.createElement("div");
+    miniPosterDiv.classList.add("sad-mini-poster");
+
+    var miniImg = document.createElement("img");
+    miniImg.src = poster.imageURL;
+    var miniTitle = document.createElement("h2");
+    miniTitle.innerText = poster.title;
+    var miniQuote = document.createElement("h4");
+    miniQuote.innerText = poster.quote;
+
+    unmotivationalPosterGrid.appendChild(miniPosterDiv);
+    miniPosterDiv.appendChild(miniImg);
+    miniPosterDiv.appendChild(miniTitle);
+    miniPosterDiv.appendChild(miniQuote);
+  });
 };

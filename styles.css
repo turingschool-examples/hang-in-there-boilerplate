@@ -144,3 +144,16 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+.sad-mini-poster {
+  background: rgb(88, 87, 87);
+  color: white;
+  height: 340px;
+  padding: 25px;
+  width: 425px;
+}
+
+.sad-mini-poster img {
+  height:200px;
+  width: 300px;
+}
