@@ -287,9 +287,9 @@ function showRandomPoster() {
     quote: posterQuote.innerText
   };
 
-  images.push(posterImage.src);
-  quotes.push(posterQuote.innerText);
-  titles.push(posterTitle.innerText);
+  // images.push(posterImage.src);
+  // quotes.push(posterQuote.innerText);
+  // titles.push(posterTitle.innerText);
   
   return currentPoster;
 }
