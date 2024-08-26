@@ -368,26 +368,25 @@ function createUnmotivationalPosters() {
     var title = unmotivationalPosters[x].name;
     var quote = unmotivationalPosters[x].description;
     var poster = createPoster(url, title, quote);
-    // console.log(poster)
-
-    // if (deletedPosters.some(
-    // (deletedPoster) => deletedPoster.id === poster.id
-    // )) {
-    //   continue;
-    // }
-
-    if (!unmotivationalWithID.some(
-      (existingPoster) => existingPoster.title === poster.title
+    
+    if (deletedPosters.some(
+      (indexPoster) => indexPoster.title === poster.title
     )) {
-      unmotivationalWithID.push(poster);
+      continue;
     }
 
+    if (!createdUnmotivationalPosters.some(
+      (indexPoster) => indexPoster.title === poster.title
+    )) {
+      createdUnmotivationalPosters.push(poster);
+    }
+    // createdUnmotivationalPosters.push(poster);
     unmotivationalHTML(poster);
   }
 }
 
 function unmotivationalHTML(poster) {
-  var posterHTML = `<div id='${poster.id}' class='mini-unmotivational-poster'>
+  var posterHTML = `<div id='${poster.title.toLowerCase()}' class='mini-unmotivational-poster'>
   <img src='${poster.imageURL}' alt='unmotivational poster image'>
   <h2>${poster.title}</h2>
   <h4>${poster.quote}</h4>
@@ -396,22 +395,27 @@ function unmotivationalHTML(poster) {
 }
 
 var posterID = [];
-var unmotivationalWithID = [];
+var createdUnmotivationalPosters = [];
 var deletedPosters = [];
 
 document.addEventListener('dblclick', deletePoster)
 
 function deletePoster(event) {
   var target = event.target.closest('div.mini-unmotivational-poster')
+  console.log('target.id: ', target.id)
+  console.log('createdUnmotivationalPosters[1].title: ', createdUnmotivationalPosters[1].title.toLowerCase())
+
   if (!target) {
     return;
   }
-  for (x = 0; x < unmotivationalWithID.length; x++) {
-    if (target.id === unmotivationalWithID[x].id.toString()) {
-      deletedPosters.push(unmotivationalWithID[x]);
-      unmotivationalWithID.splice(x, 1);
+
+  for (x = 0; x < createdUnmotivationalPosters.length; x++) {
+    if (target.id === createdUnmotivationalPosters[x].title.toLowerCase()) {
+      deletedPosters.push(createdUnmotivationalPosters[x]);
+      createdUnmotivationalPosters.splice(x, 1);
       target.remove();
       break;
     }
-  }
+  }  
+
 }
