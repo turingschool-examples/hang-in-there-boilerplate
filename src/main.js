@@ -264,6 +264,10 @@ document.getElementsByClassName("back-to-main")[1].addEventListener('click', fun
   toggleHiddenState("unmotivational-posters");
 });
 
+document.getElementsByClassName("unmotivational-posters-grid")[0].addEventListener('dblclick', function(){
+  deleteSavedPoster(event);
+});
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -356,7 +360,14 @@ function generateUnmotivationalPosters() {
     );
     displayUnmotivationalInGrid();
   }
-}
+};
+
+
+function deleteSavedPoster(event) {
+  // alert("test");
+  if (event.target.classList.contains("mini-poster"))
+    event.target.classList.add("hidden");
+};
 
 
 window.addEventListener('load', function() {
