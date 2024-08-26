@@ -377,8 +377,10 @@ function generateUnmotivationalPosters() {
 
 
 function removeFromDataSet(dataSet, value) {
-  arrayElementToRemove = dataSet.findIndex( (el) => (Object.values(el)).includes(value));
-  dataSet.splice(arrayElementToRemove, 1);
+  arrayElementToRemove = dataSet.findIndex( (el) => el.key === value);
+  if (arrayElementToRemove !== -1){
+    dataSet.splice(arrayElementToRemove, 1);
+  }  
 };
 
 
