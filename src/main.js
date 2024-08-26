@@ -254,7 +254,7 @@ backToMainButton.addEventListener("click", backToMainPage);
 makePosterButton.addEventListener("click", showUserPoster);
 saveButton.addEventListener("click", saveGeneratedPoster);
 unmotivationalPostersButton.addEventListener("click", showUnmotivationalPosters);
-unmotivationalBackToMainButton.addEventListener("click", backToMainFromUnmotivational);
+unmotivationalBackToMainButton.addEventListener("click", backToMainPage);
 unmotivationalPostersGrid.addEventListener("dblclick", deleteUnmotivationalPoster);
 
 function getRandomIndex(array) {
@@ -287,10 +287,6 @@ function showRandomPoster() {
     quote: posterQuote.innerText
   };
 
-  // images.push(posterImage.src);
-  // quotes.push(posterQuote.innerText);
-  // titles.push(posterTitle.innerText);
-  
   return currentPoster;
 }
 
@@ -306,13 +302,6 @@ function showSavedPostersView() {
 }
 
 function backToMainPage() {
-  posterForm.classList.add("hidden");
-  savedPostersPage.classList.add("hidden");
-  unmotivationalPostersView.classList.add("hidden");
-  showMainPoster.classList.remove("hidden");
-}
-
-function backToMainFromUnmotivational() {
   posterForm.classList.add("hidden");
   savedPostersPage.classList.add("hidden");
   unmotivationalPostersView.classList.add("hidden");
