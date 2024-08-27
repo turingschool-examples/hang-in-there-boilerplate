@@ -96,98 +96,202 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-var currentPoster;
-var savedPosters = [];
+const unmotivationalPostersData = [
+  {
+    name: "FAILURE",
+    description: "Why bother trying? It's probably not worth it.",
+    price: 68.00,
+    year: 2019,
+    vintage: true,
+    img_url: "./assets/failure.jpg",
+  },
+  {
+    name: "MEDIOCRITY",
+    description: "Dreams are just that—dreams.",
+    price: 127.00,
+    year: 2021,
+    vintage: false,
+    img_url: "./assets/mediocrity.jpg",
+  },
+  {
+    name: "REGRET",
+    description: "Hard work rarely pays off.",
+    price: 89.00,
+    year: 2018,
+    vintage: true,
+    img_url:  "./assets/regret.jpg",
+  },
+  {
+    name: "FUTILITY",
+    description: "You're not good enough.",
+    price: 150.00,
+    year: 2016,
+    vintage: false,
+    img_url:  "./assets/futility.jpg",
+  },
+  {
+    name: "DEFEAT",
+    description: "It's too late to start now.",
+    price: 35.00,
+    year: 2023,
+    vintage: false,
+    img_url:  "./assets/defeat.jpg",
+  },
+  {
+    name: "HOPELESSNESS",
+    description: "Stay in your comfort zone; it's safer.",
+    price: 112.00,
+    year: 2020,
+    vintage: true,
+    img_url: "./assets/hopelessness.jpg",
+  },
+  {
+    name: "LAZINESS",
+    description: "You can't change anything.",
+    price: 25.00,
+    year: 2022,
+    vintage: false,
+    img_url: "./assets/laziness.jpg",
+  },
+  {
+    name: "PROCRASTINATION",
+    description: "Better to avoid failure by not trying at all.",
+    price: 48.00,
+    year: 2017,
+    vintage: true,
+    img_url: "./assets/procrastination.jpg",
+  },
+  {
+    name: "DESPAIR",
+    description: "Let someone else do it; you’ll just mess it up.",
+    price: 73.00,
+    year: 2015,
+    vintage: false,
+    img_url: "./assets/despair.jpg",
+  },
+  {
+    name: "NEGLECT",
+    description: "Happiness is overrated.",
+    price: 160.00,
+    year: 2019,
+    vintage: true,
+    img_url: "./assets/neglect.jpg",
+  },
+  {
+    name: "FEAR",
+    description: "Giving up is always an option.",
+    price: 91.00,
+    year: 2014,
+    vintage: false,
+    img_url: "./assets/fear.jpg",
+  },
+  {
+    name: "APATHY",
+    description: "No one cares about your effort.",
+    price: 110.00,
+    year: 2016,
+    vintage: true,
+    img_url: "./assets/apathy.jpg",
+  },
+  {
+    name: "MISERY",
+    description: "Why take risks when you can stay stagnant?",
+    price: 55.00,
+    year: 2021,
+    vintage: false,
+    img_url: "./assets/misery.jpg",
+  },
+  {
+    name: "BLAME",
+    description: "Expect disappointment and you'll never be disappointed.",
+    price: 39.00,
+    year: 2017,
+    vintage: true,
+    img_url: "./assets/blame.jpg",
+  },
+  {
+    name: "DOUBT",
+    description: "Success is for other people, not you.",
+    price: 140.00,
+    year: 2020,
+    vintage: false,
+    img_url: "./assets/doubt.jpg",
+  }
+];
 
-var image = document.querySelector('.poster-img');
-var title = document.querySelector('.poster-title');
-var quote = document.querySelector('.poster-quote');
-var showForm = document.querySelector('.poster-form');
-var mainPoster = document.querySelector('.main-poster');
-var savedPostersSection = document.querySelector('.saved-posters');
+var currentPoster;
+const savedPosters = [];
+const cleanedData = cleanData()
+console.log(cleanedData);
+
+const image = document.querySelector('.poster-img');
+const title = document.querySelector('.poster-title');
+const quote = document.querySelector('.poster-quote');
+const showForm = document.querySelector('.poster-form');
+const mainPoster = document.querySelector('.main-poster');
+const posterGrid = document.querySelector('.saved-posters-grid');
+const savedPostersSection = document.querySelector('.saved-posters');
+const unmotivationalPostersSection = document.querySelector('.unmotivational-posters');
 
 // Buttons
-var nevermindButton = document.querySelector('.show-main');
-var makeNewPosterButton = document.querySelector('.show-form');
-var backToMainButtom = document.querySelector('.back-to-main');
-var showMyPosterButton = document.querySelector('.make-poster');
-var randomPosterButton = document.querySelector('.show-random');
-var showSavedPosterButton = document.querySelector('.show-saved');
-var saveCurrentPosterButton = document.querySelector('.save-poster');
+const nevermindButton = document.querySelector('.show-main');
+const makeNewPosterButton = document.querySelector('.show-form');
+const backToMainButton = document.querySelector('.back-to-main');
+const showMyPosterButton = document.querySelector('.make-poster');
+const randomPosterButton = document.querySelector('.show-random');
+const showSavedPosterButton = document.querySelector('.show-saved');
+const saveCurrentPosterButton = document.querySelector('.save-poster');
+const unmotivationalPosterButton = document.querySelector('.show-unmotivational');
+const backToMainFromUnmotivationalButton = document.querySelector('.unmotivational-posters .back-to-main');
 
 // User Input Fields
-var userImageUrlInput = document.querySelector('#poster-image-url');
-var userTitleInput = document.querySelector('#poster-title');
-var userQuoteInput = document.querySelector('#poster-quote');
-
-// Consider how you might use arguments/parameters to make dynamic reusable functions to control what is shown/hidden.
-// I think this is what Chat helped me do with refactoring
-  // Adding `event`, `element`, and `poster` as arguments
-  
-
-// Event Listeners
-
-// Before refactoring Event Listeners - (Save for now)
-
-// makeNewPosterButton.addEventListener("click", function() {
-  //   mainPoster.classList.toggle('hidden')
-  //   showForm.classList.toggle('hidden')
-  // });
-
-// showSavedPosterButton.addEventListener('click', function() {
-//   mainPoster.classList.toggle('hidden')
-//   savedPostersSection.classList.toggle('hidden')
-// });
-
-// nevermindButton.addEventListener('click', function() {
-//   mainPoster.classList.remove('hidden')
-//   showForm.classList.toggle('hidden')
-// })
-
-// backToMainButtom.addEventListener('click', function() {
-//   mainPoster.classList.toggle('hidden')
-//   savedPostersSection.classList.toggle('hidden')
-// })
-
-// showMyPosterButton.addEventListener('click', function(event) {
-//   event.preventDefault();
-//   currentPoster = createPoster(userImageUrlInput.value, userTitleInput.value, userQuoteInput.value);
-//   images.push(currentPoster.imageURL);
-//   titles.push(currentPoster.title);
-//   quotes.push(currentPoster.quote);
-//   image.src = currentPoster.imageURL;
-//   title.innerText = currentPoster.title;
-//   quote.innerText = currentPoster.quote;
-//   mainPoster.classList.toggle('hidden');
-//   showForm.classList.toggle('hidden');
-// });
-
+const userImageUrlInput = document.querySelector('#poster-image-url');
+const userTitleInput = document.querySelector('#poster-title');
+const userQuoteInput = document.querySelector('#poster-quote');
 
 randomPosterButton.addEventListener('click', generateRandomPoster);
-showMyPosterButton.addEventListener('click', handleNewPosterCreation);
-
-// Should this EL both save the current poster to the array & nest the pageview changes?
 saveCurrentPosterButton.addEventListener('click', savePosterHandler);
+showMyPosterButton.addEventListener('click', handleNewPosterCreation);
+showSavedPosterButton.addEventListener('click', showSavedPostersHandler);
+// unmotivationalPosterButton.addEventListener('click', showUnmotivationalPosters)
 
 makeNewPosterButton.addEventListener('click', function() {
   toggleVisibility(mainPoster);
   toggleVisibility(showForm);
 });
 
-showSavedPosterButton.addEventListener('click', showSavedPostersHandler);
-
 nevermindButton.addEventListener('click', function() {
   showElement(mainPoster);
   hideElement(showForm);
 });
 
-backToMainButtom.addEventListener('click', function() {
+backToMainButton.addEventListener('click', function() {
   toggleVisibility(mainPoster);
   toggleVisibility(savedPostersSection);
 });
 
+unmotivationalPosterButton.addEventListener('click', function() {
+  toggleVisibility(mainPoster);
+  toggleVisibility(unmotivationalPostersSection);
+  displayUnmotivationalPosters();
+});
 
-// Functions
+function displayUnmotivationalPosters() {
+  const renderUmotivationalPosters = document.querySelector('.unmotivational-layout');
+  renderUmotivationalPosters.innerHTML = '';
+  cleanedData.forEach(poster => {
+    const posterInfo = document.createElement('article');
+    posterInfo.classList.add('mini-poster');
+    posterInfo.innerHTML = `
+        <img src="${poster.imageURL}" alt="new photo">
+        <h2>${poster.title}</h2>
+        <h4>${poster.quote}</h4>
+        </article>`;
+        renderUmotivationalPosters.appendChild(posterInfo)
+  });
+}
+
+// Hide/Reveal Page Sections Functions
 function toggleVisibility(element) {
   element.classList.toggle('hidden');
 }
@@ -198,6 +302,11 @@ function showElement(element) {
 
 function hideElement(element) {
   element.classList.add('hidden');
+}
+
+function showUnmotivationalPosters() {
+  toggleVisibility(mainPoster);
+  toggleVisibility(unmotivationalPostersSection);
 }
 
 // Updates HTML elements with poster parts
@@ -217,14 +326,13 @@ function handleNewPosterCreation(event) {
 }
 
 // Saves poster parts in respective arrays for future random poster generation
-// For form
+// For User Input Form
 function saveUserPosterData(poster) {
   images.push(currentPoster.imageURL);
   titles.push(currentPoster.title);
   quotes.push(currentPoster.quote);
 }
 
-// If the function requires the use of "AND" to describe it => SRP that shit
 function generateRandomPoster() {
   var randomImage = images[getRandomIndex(images)];
   var randomTitle = titles[getRandomIndex(titles)];
@@ -236,31 +344,32 @@ function generateRandomPoster() {
   console.log(currentPoster)
 }
 
-// We want saved posters to display 
-var posterGrid = document.querySelector('.saved-posters-grid');
+function cleanData() {
+  return unmotivationalPostersData.map(sanitizeData);
+}
+
+function sanitizeData(data) {
+  return createPoster(data.img_url, data.name, data.description);
+}
 
 function saveCurrentPoster() {
   if (savedPosters.includes(currentPoster)) {
     return;
   } 
   savedPosters.push(currentPoster);
-  var posterGrid = document.querySelector('.saved-posters-grid');
-  posterGrid.insertAdjacentHTML('afterbegin', `<article class="mini-poster">
+  // This is how we're inserting mini saved posters into the grid
+    // on the Saved Posters Page.
+  posterGrid.insertAdjacentHTML('afterbegin', 
+    `<article class="mini-poster">
       <img class="mini-poster" src="${currentPoster.imageURL}" alt="new photo">
       <h2>${currentPoster.title}</h2>
       <h4>${currentPoster.quote}</h4>
-    </article>`)
-}
-function preventDuplicatePosters() {
-  if (savedPosters.includes(currentPoster)) {
-    return;
-  } 
-  savedPosters.push(currentPoster);
+    </article>`
+  );
 }
 
 function savePosterHandler() {
   saveCurrentPoster();
-  // Add elements to 
   showSavedPostersHandler();
 }
 
@@ -282,3 +391,38 @@ function createPoster(imageURL, title, quote) {
 }
 
 window.addEventListener('load', generateRandomPoster);
+
+// Before refactoring Event Listeners - (Save for now)
+
+// makeNewPosterButton.addEventListener("click", function() {
+  //   mainPoster.classList.toggle('hidden')
+  //   showForm.classList.toggle('hidden')
+  // });
+
+// showSavedPosterButton.addEventListener('click', function() {
+//   mainPoster.classList.toggle('hidden')
+//   savedPostersSection.classList.toggle('hidden')
+// });
+
+// nevermindButton.addEventListener('click', function() {
+//   mainPoster.classList.remove('hidden')
+//   showForm.classList.toggle('hidden')
+// })
+
+// backToMainButton.addEventListener('click', function() {
+//   mainPoster.classList.toggle('hidden')
+//   savedPostersSection.classList.toggle('hidden')
+// })
+
+// showMyPosterButton.addEventListener('click', function(event) {
+//   event.preventDefault();
+//   currentPoster = createPoster(userImageUrlInput.value, userTitleInput.value, userQuoteInput.value);
+//   images.push(currentPoster.imageURL);
+//   titles.push(currentPoster.title);
+//   quotes.push(currentPoster.quote);
+//   image.src = currentPoster.imageURL;
+//   title.innerText = currentPoster.title;
+//   quote.innerText = currentPoster.quote;
+//   mainPoster.classList.toggle('hidden');
+//   showForm.classList.toggle('hidden');
+// });
