@@ -1,6 +1,6 @@
 // query selector variables go here 👇
 
-// we've provided you with some data to work with 👇
+// we"ve provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
   "./assets/bees.jpg",
@@ -75,7 +75,7 @@ var quotes = [
   "It is our attitude at the beginning of a difficult task which, more than anything else, will affect its successful outcome.",
   "Life is like riding a bicycle. To keep your balance, you must keep moving.",
   "Just don't give up trying to do what you really want to do. Where there is love and inspiration, I don't think you can go wrong.",
-  'Limit your "always" and your "nevers."',
+  "Limit your 'always' and your 'nevers.'",
   "You are never too old to set another goal or to dream a new dream.",
   "Try to be a rainbow in someone else's cloud.",
   "You do not find the happy life. You make it.",
@@ -87,7 +87,7 @@ var quotes = [
   "It is never too late to be what you might have been.",
   "Happiness often sneaks in through a door you didn't know you left open.",
   "We must be willing to let go of the life we planned so as to have the life that is waiting for us.",
-  "Never limit yourself because of others’ limited imagination; never limit others because of your own limited imagination.",
+  "Never limit yourself because of others' limited imagination; never limit others because of your own limited imagination.",
   "Be the change that you wish to see in the world.",
   "Let us make our future now, and let us make our dreams tomorrow's reality.",
   "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
@@ -226,26 +226,26 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-document.getElementsByClassName("show-random")[0].addEventListener('click', function() {
+document.getElementsByClassName("show-random")[0].addEventListener("click", function() {
   renderPoster(
     images[getRandomIndex(images)], 
     titles[getRandomIndex(titles)], 
     quotes[getRandomIndex(quotes)]
   )});
-document.getElementsByClassName("show-saved")[0].addEventListener('click', function() {
-  toggleHiddenState('saved-posters');
+document.getElementsByClassName("show-saved")[0].addEventListener("click", function() {
+  toggleHiddenState("saved-posters");
 });
-document.getElementsByClassName("back-to-main")[0].addEventListener('click', function() {
-  toggleHiddenState('saved-posters');
+document.getElementsByClassName("back-to-main")[0].addEventListener("click", function() {
+  toggleHiddenState("saved-posters");
 });
-document.getElementsByClassName("show-form")[0].addEventListener('click', function() {
-  toggleHiddenState('poster-form');
+document.getElementsByClassName("show-form")[0].addEventListener("click", function() {
+  toggleHiddenState("poster-form");
 });
-document.getElementsByClassName("show-main")[0].addEventListener('click', function() {
-  toggleHiddenState('poster-form');
+document.getElementsByClassName("show-main")[0].addEventListener("click", function() {
+  toggleHiddenState("poster-form");
 });
 
-document.getElementsByClassName("make-poster")[0].addEventListener('click', function(event) {
+document.getElementsByClassName("make-poster")[0].addEventListener("click", function(event) {
   event.preventDefault();
   createCustomPoster(
     document.getElementById("poster-image-url").value, 
@@ -253,24 +253,24 @@ document.getElementsByClassName("make-poster")[0].addEventListener('click', func
     document.getElementById("poster-quote").value
 )});
 
-document.getElementsByClassName("save-poster")[0].addEventListener('click', function() {
+document.getElementsByClassName("save-poster")[0].addEventListener("click", function() {
   savePoster();
 });
 
-document.getElementsByClassName("show-unmotivational")[0].addEventListener('click', function() {
+document.getElementsByClassName("show-unmotivational")[0].addEventListener("click", function() {
   toggleHiddenState("unmotivational-posters");
 });
 
-document.getElementsByClassName("back-to-main")[1].addEventListener('click', function() {
+document.getElementsByClassName("back-to-main")[1].addEventListener("click", function() {
   toggleHiddenState("unmotivational-posters");
 });
 
-document.getElementsByClassName("unmotivational-posters-grid")[0].addEventListener('dblclick', function(){
+document.getElementsByClassName("unmotivational-posters-grid")[0].addEventListener("dblclick", function(){
   deleteSavedPoster(event);
 });
 
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
+// (we"ve provided two to get you started)!
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -313,7 +313,7 @@ function saveDataToRespectiveArrays(imageInstance, titleInstance, quoteInstance)
 function createCustomPoster(imageInstance, titleInstance, quoteInstance) {
   renderPoster(imageInstance, titleInstance, quoteInstance);
   saveDataToRespectiveArrays(imageInstance, titleInstance, quoteInstance);
-  toggleHiddenState('poster-form');
+  toggleHiddenState("poster-form");
 }
 
 function saveCurrentToSavedArray() {
@@ -374,8 +374,6 @@ function generateUnmotivationalPosters() {
   }
 )};
 
-
-
 function removeFromDataSet(dataSet, value) {
   arrayElementToRemove = dataSet.findIndex( (el) => el.key === value);
   if (arrayElementToRemove !== -1){
@@ -391,7 +389,7 @@ function deleteSavedPoster(event) {
 };
 
 
-window.addEventListener('load', function() {
+window.addEventListener("load", function() {
   generateUnmotivationalPosters()
   renderPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
 });
