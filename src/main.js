@@ -381,7 +381,7 @@ function unmotivationalPosterGenerator() {
 
   cleanedUnMotivatedPosters.forEach(poster => {
 
-    unmotivationalPosterGrid.classList.add('bad-posters-grid')
+    unmotivationalPosterGrid.classList.add('bad-posters-grid');
    
     var miniPosterDiv = document.createElement("div");
     miniPosterDiv.classList.add("sad-mini-poster");
