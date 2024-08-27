@@ -146,7 +146,6 @@ button:hover {
 }
 
 .unmotivational-layout {
-  border: 3px solid blue;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -158,8 +157,14 @@ button:hover {
 .unmotivational-layout .mini-poster {
   background: gray;
   border-radius: 3%;
-  /* padding: ; */
-
 }
-/* Need grid layout that changes with page size (wrap?)
-/* Target background color or poster -> gray
+
+.mini-poster h2 {
+  color: black;
+  padding-top:6%;
+  font-weight: 100
+}
+
+.mini-poster h4 {
+  font-weight: 100;
+}
