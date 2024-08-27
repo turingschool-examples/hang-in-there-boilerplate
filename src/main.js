@@ -253,7 +253,12 @@ randomPosterButton.addEventListener('click', generateRandomPoster);
 saveCurrentPosterButton.addEventListener('click', savePosterHandler);
 showMyPosterButton.addEventListener('click', handleNewPosterCreation);
 showSavedPosterButton.addEventListener('click', showSavedPostersHandler);
-// unmotivationalPosterButton.addEventListener('click', showUnmotivationalPosters)
+
+// Potentially refactor more (mainPoster) shows up consistently
+backToMainFromUnmotivationalButton.addEventListener('click', function() {
+  toggleVisibility(unmotivationalPostersSection);
+  toggleVisibility(mainPoster);
+})
 
 makeNewPosterButton.addEventListener('click', function() {
   toggleVisibility(mainPoster);
@@ -276,21 +281,6 @@ unmotivationalPosterButton.addEventListener('click', function() {
   displayUnmotivationalPosters();
 });
 
-function displayUnmotivationalPosters() {
-  const renderUmotivationalPosters = document.querySelector('.unmotivational-layout');
-  renderUmotivationalPosters.innerHTML = '';
-  cleanedData.forEach(poster => {
-    const posterInfo = document.createElement('article');
-    posterInfo.classList.add('mini-poster');
-    posterInfo.innerHTML = `
-        <img src="${poster.imageURL}" alt="new photo">
-        <h2>${poster.title}</h2>
-        <h4>${poster.quote}</h4>
-        </article>`;
-        renderUmotivationalPosters.appendChild(posterInfo)
-  });
-}
-
 // Hide/Reveal Page Sections Functions
 function toggleVisibility(element) {
   element.classList.toggle('hidden');
@@ -307,6 +297,22 @@ function hideElement(element) {
 function showUnmotivationalPosters() {
   toggleVisibility(mainPoster);
   toggleVisibility(unmotivationalPostersSection);
+}
+
+// Functions
+function displayUnmotivationalPosters() {
+  const renderUmotivationalPosters = document.querySelector('.unmotivational-layout');
+  renderUmotivationalPosters.innerHTML = '';
+  cleanedData.forEach(poster => {
+    const posterInfo = document.createElement('article');
+    posterInfo.classList.add('mini-poster');
+    posterInfo.innerHTML = `
+        <img src="${poster.imageURL}" alt="new photo">
+        <h2>${poster.title}</h2>
+        <h4>${poster.quote}</h4>
+        </article>`;
+        renderUmotivationalPosters.appendChild(posterInfo)
+  });
 }
 
 // Updates HTML elements with poster parts
