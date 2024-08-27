@@ -1,15 +1,16 @@
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
-______________________________________________________  
-
 # Hang in There  
 
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
-I used existing data sets to randomly generate motivational posters at the click of a button. Users have the option to save these posters and view them in a list on a seperate page. <br>
+The application is designed to provide a platform for generating, saving, and interacting with motivational and un-motivational posters.
+The functionally includes randomly generating a motivational poster, which can be saved and viewed on a seperate page. In addition, users have the ability to create their own poster on a seperate page, which can be saved for later viewing as well.
+The application also features a seperate page where users can view a list of un-motivational posters, which they can remove, and keep removed, by double clicking.<br>
+
+This provides the user with a bit motivation and humor to get them through everyday life.
+
+<!-- I used existing data sets to randomly generate motivational posters at the click of a button. Users have the option to save these posters and view them in a list on a separate page. <br>
 Additionally, there is a function where users can create their own posters by linking an image and typing in the desired title and quote. <br>
-Finally, an Un-Motivational Posters page was added. This generates a list of unmotivational posters, and users have the option to delete a poster by double clicking.
+An Un-Motivational Posters page was added. This generates a list of unmotivational posters, and users have the option to delete a poster by double clicking. -->
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
