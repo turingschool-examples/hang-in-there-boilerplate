@@ -254,7 +254,7 @@ document.getElementsByClassName("make-poster")[0].addEventListener("click", func
 )});
 
 document.getElementsByClassName("save-poster")[0].addEventListener("click", function() {
-  savePoster();
+  savePoster("saved-posters-grid");
 });
 
 document.getElementsByClassName("show-unmotivational")[0].addEventListener("click", function() {
@@ -320,37 +320,25 @@ function saveCurrentToSavedArray() {
   savedPosters.push(currentPoster);
 }
 
-function displaySavedInGrid() {
-  var savedPostersGrid = document.getElementsByClassName("saved-posters-grid")[0];
-  savedPostersGrid.insertAdjacentHTML(
+function displayInGrid(gridClassName) {
+  gridClassName = document.getElementsByClassName(`${gridClassName}`)[0];
+  gridClassName.insertAdjacentHTML(
     "beforeend", 
     `<article class="mini-poster">
-      <img class="poster-img" src="${currentPoster.imageURL}" alt="savedPoster">
+      <img class="poster-img" src="${currentPoster.imageURL}" alt="Poster">
       <h2 class="poster-title">${currentPoster.title}</h1>
       <h3 class="poster-quote">${currentPoster.quote}</h3>
     </article>`
   );
 }
 
-function savePoster() {
+function savePoster(gridClassName) {
   if(!(savedPosters.includes(currentPoster))) {
     saveCurrentToSavedArray();
     //display savedPosters in grid section
-    displaySavedInGrid();
+    displayInGrid(gridClassName);
   };
 };
-
-function displayUnmotivationalInGrid() {
-  var unmotivationalPostersGrid = document.getElementsByClassName("unmotivational-posters-grid")[0];
-  unmotivationalPostersGrid.insertAdjacentHTML(
-    "beforeend", 
-    `<article class="mini-poster">
-      <img class="poster-img" src="${currentPoster.imageURL}" alt="Unmotivational Poster">
-      <h2 class="poster-title">${currentPoster.title}</h1>
-      <h3 class="poster-quote">${currentPoster.quote}</h3>
-    </article>`
-  );
-}
 
 function cleanData() {
   unmotivationalPosters.forEach((el) => 
@@ -362,7 +350,7 @@ function cleanData() {
   )
 };
 
-function generateUnmotivationalPosters() {
+function generateUnmotivationalPosters(gridClassName) {
   cleanData();
   cleanedUnmotivationalPosters.forEach((poster) => {
     renderPoster(
@@ -370,7 +358,7 @@ function generateUnmotivationalPosters() {
       poster.name,
       poster.description
     );
-    displayUnmotivationalInGrid();
+    displayInGrid(gridClassName);
   }
 )};
 
@@ -381,7 +369,6 @@ function removeFromDataSet(dataSet, value) {
   }  
 };
 
-
 function deleteSavedPoster(event) {
   if (event.target.classList.contains("mini-poster"))
     event.target.remove();
@@ -390,6 +377,6 @@ function deleteSavedPoster(event) {
 
 
 window.addEventListener("load", function() {
-  generateUnmotivationalPosters()
+  generateUnmotivationalPosters("unmotivational-posters-grid")
   renderPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
 });
