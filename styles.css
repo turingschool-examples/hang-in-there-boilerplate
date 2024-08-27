@@ -144,3 +144,38 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+/* ~~~~~ Unmotivational POSTER SECTION ~~~~~ */
+
+.bad-posters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+  /* display: flex , flexwrap: wrap*/
+}
+
+.sad-mini-poster {
+  background: rgb(88, 87, 87);
+  color: rgb(0, 0, 0);
+  height: 340px;
+  padding: 20px;
+  width: 425px;
+  margin: 10px;
+  justify-content: space-around;
+  border-radius: 25px;
+}
+
+.sad-mini-poster h4 {
+  color: rgb(255, 255, 255);
+}
+
+.sad-mini-poster h2{
+  padding: 15px;
+}
+
+.sad-mini-poster img {
+  height:200px;
+  width: 300px;
+}
