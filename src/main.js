@@ -239,6 +239,12 @@ const posterGrid = document.querySelector('.saved-posters-grid');
 const unmotivationalPostersButton = document.querySelector('.show-unmotivationals');
 const unmotivationalPostersPage = document.querySelector('.unmotivationals');
 const unmotivationalPosterGrid = document.querySelector('.bad-poster-grid');
+let cleanedUnMotivatedPosters = [];
+
+const switchHidden = (element1, element2) => {
+  element1.classList.toggle('hidden');
+  element2.classList.toggle('hidden');
+};
 
 const contentGenerator = () => {
   var imageURL = images[getRandomIndex(images)];
@@ -253,6 +259,7 @@ const contentGenerator = () => {
 };
 
 window.addEventListener('load', contentGenerator);
+// window.addEventListener('load', unmotivationalPosterGenerator);
 
 randomButton.addEventListener('click', contentGenerator);
 
@@ -312,17 +319,42 @@ savedPostersButton.addEventListener('click', () => {
 });
 
 unmotivationalPostersButton.addEventListener('click', () => {
-  console.log(unmotivationalPosters)
+  // console.log(unmotivationalPosters)
   var cleanedPosters = cleanData(unmotivationalPosters);
-  console.log(cleanedPosters)
+  // console.log(cleanedPosters)
   unmotivationalPosterGenerator();
+
   switchHidden(mainPage, unmotivationalPostersPage);
+  // const unMoPosterObjects = document.querySelectorAll('.sad-mini-poster');
+  const unMoPosterObjects = document.querySelectorAll('.bad-poster-grid');
+  unMoPosterObjects.forEach((poster) => {
+    poster.addEventListener('dblclick', (event) => {
+      targetedPoster = event.target;
+      
+      console.log(targetedPoster);
+      
+      let deleted = cleanedUnMotivatedPosters.filter((poster) => {
+        poster == targetedPoster
+      });
+      return deleted
+    });
+  });
 });
 
-const switchHidden = (element1, element2) => {
-  element1.classList.toggle('hidden');
-  element2.classList.toggle('hidden');
-};
+// unMoPosterObject.addEventListener('dblclick', (event) => {
+//   targetedPoster = event.target;
+
+//   console.log(unMoPosterObject);
+
+//   cleanedUnMotivatedPosters.delete(targetedPoster);
+// });
+
+// helper function tbd
+// function deletePoster(poster) {
+//   cleanedUnMotivatedPosters.delete(poster)
+// }
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -364,7 +396,7 @@ function savedPostersGenerator() {
 };
 
 function cleanData(unmotivationalPosters) {
-  var cleanedUnMotivatedPosters = unmotivationalPosters.map(poster => {
+    cleanedUnMotivatedPosters = unmotivationalPosters.map(poster => {
     var imageURL = poster.img_url;
     var title = poster.name;
     var quote = poster.description;
@@ -399,3 +431,4 @@ function unmotivationalPosterGenerator() {
     miniPosterDiv.appendChild(miniQuote);
   });
 };
+
