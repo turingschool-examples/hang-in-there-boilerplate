@@ -1,15 +1,7 @@
-// query selector variables go here 👇
-// var randomPosterButton = document.querySelector('.show-random')
-// var createPosterButton = document.querySelector('.show-form')
-// var showSavedButton = document.querySelector('.show-saved')
-// var savePosterButton = document.querySelector('.save-poster')
-
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
 
-
-// we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -108,22 +100,158 @@ var quotes = [
   "Each person must live their life as a model for an art class.",
   "A champion is defined not by their wins but by their losses."
 ];
+const unmotivationalPosters = [
+  {
+    name: "FAILURE",
+    description: "Why bother trying? It's probably not worth it.",
+    price: 68.00,
+    year: 2019,
+    vintage: true,
+    img_url: "./assets/failure.jpg",
+  },
+  {
+    name: "MEDIOCRITY",
+    description: "Dreams are just that—dreams.",
+    price: 127.00,
+    year: 2021,
+    vintage: false,
+    img_url: "./assets/mediocrity.jpg",
+  },
+  {
+    name: "REGRET",
+    description: "Hard work rarely pays off.",
+    price: 89.00,
+    year: 2018,
+    vintage: true,
+    img_url:  "./assets/regret.jpg",
+  },
+  {
+    name: "FUTILITY",
+    description: "You're not good enough.",
+    price: 150.00,
+    year: 2016,
+    vintage: false,
+    img_url:  "./assets/futility.jpg",
+  },
+  {
+    name: "DEFEAT",
+    description: "It's too late to start now.",
+    price: 35.00,
+    year: 2023,
+    vintage: false,
+    img_url:  "./assets/defeat.jpg",
+  },
+  {
+    name: "HOPELESSNESS",
+    description: "Stay in your comfort zone; it's safer.",
+    price: 112.00,
+    year: 2020,
+    vintage: true,
+    img_url: "./assets/hopelessness.jpg",
+  },
+  {
+    name: "LAZINESS",
+    description: "You can't change anything.",
+    price: 25.00,
+    year: 2022,
+    vintage: false,
+    img_url: "./assets/laziness.jpg",
+  },
+  {
+    name: "PROCRASTINATION",
+    description: "Better to avoid failure by not trying at all.",
+    price: 48.00,
+    year: 2017,
+    vintage: true,
+    img_url: "./assets/procrastination.jpg",
+  },
+  {
+    name: "DESPAIR",
+    description: "Let someone else do it; you’ll just mess it up.",
+    price: 73.00,
+    year: 2015,
+    vintage: false,
+    img_url: "./assets/despair.jpg",
+  },
+  {
+    name: "NEGLECT",
+    description: "Happiness is overrated.",
+    price: 160.00,
+    year: 2019,
+    vintage: true,
+    img_url: "./assets/neglect.jpg",
+  },
+  {
+    name: "FEAR",
+    description: "Giving up is always an option.",
+    price: 91.00,
+    year: 2014,
+    vintage: false,
+    img_url: "./assets/fear.jpg",
+  },
+  {
+    name: "APATHY",
+    description: "No one cares about your effort.",
+    price: 110.00,
+    year: 2016,
+    vintage: true,
+    img_url: "./assets/apathy.jpg",
+  },
+  {
+    name: "MISERY",
+    description: "Why take risks when you can stay stagnant?",
+    price: 55.00,
+    year: 2021,
+    vintage: false,
+    img_url: "./assets/misery.jpg",
+  },
+  {
+    name: "BLAME",
+    description: "Expect disappointment and you'll never be disappointed.",
+    price: 39.00,
+    year: 2017,
+    vintage: true,
+    img_url: "./assets/blame.jpg",
+  },
+  {
+    name: "DOUBT",
+    description: "Success is for other people, not you.",
+    price: 140.00,
+    year: 2020,
+    vintage: false,
+    img_url: "./assets/doubt.jpg",
+  }
+];
+
 var savedPosters = [];
-var currentPoster;
+var currentPoster = null;
+var currentUnmotivationalPosters = [...unmotivationalPosters];
 
-// event listeners go here 👇
-// add code to listen for and react to button clicks instead of doing it in the html
-document.querySelector('.show-random').addEventListener('click', createRandomPoster());
-document.querySelector('.show-form').addEventListener('click', toggleCreateNew());
-document.querySelector('.show-saved').addEventListener('click', toggleShowSaved());
-// document.querySelector('.save-poster').addEventListener('click', );
+document.querySelector('.show-random').addEventListener('click', createRandomPoster);
+document.querySelector('.show-form').addEventListener('click', toggleCreateNew);
+document.querySelector('.show-main').addEventListener('click', toggleCreateNew);
+document.querySelector('.show-saved').addEventListener('click', toggleShowSaved);
+document.querySelector('.back-to-main').addEventListener('click', toggleShowSaved);
+document.querySelector('.save-poster').addEventListener('click', savePoster);
+document.querySelector('.make-poster').addEventListener('click', function(event) {
+  createCustomPoster(event);
+  toggleCreateNew();
+});
+document.querySelector('.show-unmotivational').addEventListener('click', toggleShowUnmotivational);
+document.querySelector('.hide-unmotivational').addEventListener('click', toggleShowUnmotivational);
+document.querySelector('.unmotivational-posters-grid').addEventListener('dblclick', function(event) {
+  let target = event.target;
+  while (target && !target.classList.contains('unmotivational-poster')) {
+    target = target.parentElement;
+  }
+  if (target) {
+    deletePoster(target);
+  }
+});
 
-
-// functions and event handlers go here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
@@ -138,10 +266,29 @@ function createRandomPoster() {
   const randomTitle = titles[getRandomIndex(titles)];
   const randomQuote = quotes[getRandomIndex(quotes)];
   
-  return updatePosterContent(randomImage, randomTitle, randomQuote);
+  currentPoster = updatePosterContent(randomImage, randomTitle, randomQuote);
+}
+
+function createCustomPoster (event) {
+  event.preventDefault();
+
+  const newImage = document.querySelector('#poster-image-url').value;
+  const newTitle = document.querySelector('#poster-title').value;
+  const newQuote = document.querySelector('#poster-quote').value;
+
+  saveInputData(newImage, newTitle, newQuote);
+
+  currentPoster = updatePosterContent(newImage, newTitle, newQuote);
+}
+
+function saveInputData(imageURL, title, quote){
+  images.push(imageURL);
+  titles.push(title);
+  quotes.push(quote);
 }
 
 function updatePosterContent(imageURL, title, quote) {
+
   posterImage.src = imageURL;
   posterTitle.innerText = title;
   posterQuote.innerText = quote;
@@ -149,20 +296,126 @@ function updatePosterContent(imageURL, title, quote) {
   return createPoster(imageURL, title, quote);
 }
 
+function savePoster() {
+  if (currentPoster && !savedPosters.some(poster => poster.id === currentPoster.id)) {
+    savedPosters.push(currentPoster);
+  }
+}
 
-function toggleDisplay(elementSelectors) {
-  elementSelectors.forEach(selector => {
-    let element = document.querySelector(selector);
-    element.style.display = window.getComputedStyle(element).display === "none" ? "block" : "none";
+function displaySavedPosters() {
+  const savedPostersGrid = document.querySelector('.saved-posters-grid');
+  savedPostersGrid.innerHTML = ''; 
+
+  savedPosters.forEach(poster => {
+    let miniaturePoster = document.createElement('div');
+    miniaturePoster.classList.add('mini-poster');
+
+    let miniImage = document.createElement('img');
+    miniImage.src = poster.imageURL;
+    miniImage.alt = 'Miniature Poster Image'
+    miniaturePoster.appendChild(miniImage);
+
+    let miniTitle = document.createElement('h2');
+    miniTitle.innerText = poster.title;
+    miniaturePoster.appendChild(miniTitle);
+
+    let miniQuote = document.createElement('h4');
+    miniQuote.innerText = poster.quote;
+    miniaturePoster.appendChild(miniQuote);
+
+    savedPostersGrid.appendChild(miniaturePoster);
   });
 }
 
+function cleanData() {
+  const cleanedPosters = unmotivationalPosters.map(poster => {
+    return {
+      name: poster.name,
+      description: poster.description,
+      img_url: poster.img_url
+    };
+  });
+  unmotivationalPosters.length = 0;
+  unmotivationalPosters.push(...cleanedPosters); 
+}
+
+function loadUnmotivationalPosters() {
+  const unmotivationalPostersGrid = document.querySelector('.unmotivational-posters-grid');
+  unmotivationalPostersGrid.innerHTML = '';
+
+  cleanData();
+
+  currentUnmotivationalPosters.forEach(poster => {
+    const posterElements = createUnmotivationalPosterElements(poster);
+    unmotivationalPostersGrid.appendChild(posterElements);
+  });
+}
+
+function createUnmotivationalPosterElements(poster) {
+  let unmotivationalPoster = document.createElement('div');
+  unmotivationalPoster.classList.add('unmotivational-poster');
+
+  let unmotivationalImage = document.createElement('img');
+  unmotivationalImage.src = poster.img_url;
+  unmotivationalImage.alt = 'Anti-Motivational Poster Image'
+  unmotivationalPoster.appendChild(unmotivationalImage);
+
+  let unmotivationalTitle = document.createElement('h2');
+  unmotivationalTitle.innerText = poster.name;
+  unmotivationalPoster.appendChild(unmotivationalTitle);
+
+  let unmotivationalQuote = document.createElement('h4');
+  unmotivationalQuote.innerText = poster.description;
+  unmotivationalPoster.appendChild(unmotivationalQuote);
+
+  return unmotivationalPoster;
+}
+
+function deletePoster(poster){
+  poster.classList.add('zoom-out');
+  poster.addEventListener('animationend', function() {
+    const posterIndex = Array.from(poster.parentNode.children).indexOf(poster);
+    poster.remove();
+    currentUnmotivationalPosters.splice(posterIndex, 1);
+  }, { once: true }); 
+}
+
 function toggleCreateNew() {
-  toggleDisplay(['.main-poster', '.poster-form']);
+  document.querySelector('.main-poster').classList.toggle('hidden');
+  document.querySelector('.poster-form').classList.toggle('hidden');
 }
 
 function toggleShowSaved() {
-  toggleDisplay(['.main-poster', '.saved-posters']);
+  displaySavedPosters();
+  document.querySelector('.main-poster').classList.toggle('hidden');
+  document.querySelector('.saved-posters').classList.toggle('hidden');
 }
 
-window.onload = createRandomPoster
+function toggleShowUnmotivational() {
+  loadUnmotivationalPosters();
+  document.querySelector('.main-poster').classList.toggle('hidden');
+  document.querySelector('.unmotivational-posters').classList.toggle('hidden');
+}
+
+// function toggleDisplay(selectors) {
+//   selectors.forEach(selector => {
+//     let element = document.querySelector(selector);
+//     element.style.display = window.getComputedStyle(element).display === "none" ? "block" : "none";
+//   });
+// }
+
+// function toggleCreateNew() {
+//   toggleDisplay(['.main-poster', '.poster-form']);
+// }
+
+// function toggleShowSaved() {
+//   displaySavedPosters();
+//   toggleDisplay(['.main-poster', '.saved-posters']);
+// }
+
+// function toggleShowUnmotivational() {
+//   loadUnmotivationalPosters();
+//   toggleDisplay(['.main-poster', '.unmotivational-posters']);
+//}
+
+window.onload = createRandomPoster;

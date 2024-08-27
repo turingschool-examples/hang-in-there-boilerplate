@@ -56,14 +56,14 @@ button:hover {
 
 .poster-title,
 .poster-quote {
-  font-size: 25px;
+  font-size: 20px;
   color: white;
   line-height: 1;
   width: 90%;
 }
 
 .poster-title {
-  font-size: 60px;
+  font-size: 40px;
   font-weight: normal;
   letter-spacing: 20px;
   margin-bottom: 10px;
@@ -144,4 +144,73 @@ button:hover {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+
+/* ~~~~~ ANTI-MOTIVATIONAL POSTER SECTION ~~~~~ */
+.unmotivational-posters hidden{
+  padding: 40px;
+}
+
+.unmotivational-posters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.unmotivational-poster {
+  display: block;
+  cursor: pointer;
+  background: rgb(135, 135, 135);
+  flex: 0 1 calc(33.33% - 20px);
+  margin: 5px;
+  box-sizing: border-box;
+  color: white;
+  border-radius: 2%;
+  text-align: center;
+  padding: 25px;
+  height: 340px;
+  width: 425px;
+}
+
+.unmotivational-poster.zoom {
+  animation: zoom forwards 0.7s ease-out 1;
+}
+
+.unmotivational-poster img {
+  height:200px;
+  width: 300px;
+}
+
+.unmotivational-poster h2,
+.unmotivational-poster h4,
+.delete {
+  color: white;
+  line-height: 1;
+  width: 90%;
+}
+
+.unmotivational-poster h2 {
+  color: black;
+  font-size: 30px;
+  font-weight: normal;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.zoom-out {
+  animation: zoomOut 0.33s ease-out forwards;
 }
