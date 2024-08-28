@@ -1,32 +1,30 @@
 var  image = document.querySelector(".poster-img");
 var  title = document.querySelector(".poster-title");
 var  quote = document.querySelector(".poster-quote");
+var mainPoster = document.querySelector(".main-poster");
 
+var allButtons = document.querySelectorAll("button")
 var randomPosterButton = document.querySelector(".show-random");
 var savePosterButton = document.querySelector(".save-poster");
 var makeOwnPosterButton = document.querySelector(".show-form");
-var showSavedButton = document.querySelector(".show-saved");
 var unmotivationalPostersButton = document.querySelector(".show-un-motivational")
-
-var mainPoster = document.querySelector(".main-poster");
-var posterForm = document.querySelector(".poster-form");
-var listSavedPosters = document.querySelector(".saved-posters");
-var unmotivationalPostersPage = document.querySelector(".un-motivational-posters")
-
+var makePosterButton = document.querySelector(".make-poster");
+var showSavedButton = document.querySelector(".show-saved");
 var nevermindButton = document.querySelector(".show-main");
 var backToMainButton = document.querySelector(".back-to-main");
-var backToMainPageButton = document.querySelector(".back-to-main-page");
+var backToMainPageButton = document.querySelector(".back-to-main-page")
 
-var makePosterButton = document.querySelector(".make-poster");
+var posterForm = document.querySelector(".poster-form");
 var urlBox = document.querySelector("#poster-image-url");
 var titleBox = document.querySelector("#poster-title");
 var quoteBox = document.querySelector("#poster-quote");
 
+var listSavedPosters = document.querySelector(".saved-posters");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
+var unmotivationalPostersPage = document.querySelector(".un-motivational-posters")
 var unmotivationalGridDiv = document.querySelector(".poster-grid");
 
-var allButtons = document.querySelectorAll("button")
 
 var images = [
   "./assets/bees.jpg",
