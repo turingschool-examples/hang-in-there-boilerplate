@@ -25,7 +25,8 @@ This project was given to me on the first day of the second inning. I was given 
 
 ### Contributors:
 [//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
-Part of the application was prebuilt by Turing and the rest I completed.
+Part of the application was prebuilt by Turing, datasets were created along with the HTML and CSS structure.<br>
+The functionality of the page was created by myself, as well as the CSS styling for the un-motivational posters.
 
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
