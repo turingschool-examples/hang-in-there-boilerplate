@@ -12,6 +12,7 @@ Sometimes we all need a little inspiration. This webpage contains a small intera
 
 ### Preview of App:
 
+
 <img src="MP-screenshot.PNG">
 
 An example of a custom Motivational Poster that a user could make.
