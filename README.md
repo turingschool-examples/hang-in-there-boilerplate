@@ -21,4 +21,4 @@ Me, myself, and I worked on this project. (https://github.com/bwillett2003)
 Introduction to HTML, CSS, and Javascript. The tech I used revolved around Slack, Google, fellow cohortmates, and ChatGPT to ask questions and debugging.
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?) Styling the CSS to cooperate the way I wanted it to. The project actually working. My little twist I added was `cursor: pointer;` It is the small things that matter.
+Styling the CSS to cooperate the way I wanted it to. The project actually working. My little twist I added was `cursor: pointer;` It is the small things that matter.
