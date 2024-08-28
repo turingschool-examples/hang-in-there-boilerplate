@@ -310,7 +310,6 @@ saveAPosterButton.addEventListener('click', () => {
       poster.quote === currentPoster.quote})) {
   savedPosters.unshift(currentPoster);
   };
-  console.log(savedPosters)
 });
 
 savedPostersButton.addEventListener('click', () => {
@@ -337,10 +336,6 @@ unmotivationalPostersButton.addEventListener('click', () => {
       cleanedUnMotivatedPosters = cleanedUnMotivatedPosters.filter(poster => poster !== posterToDelete);
 
       targetedPoster.remove();
-
-      console.log('Deleted Poster:', posterToDelete);
-      console.log('Updated Posters Array:', cleanedUnMotivatedPosters);
-
     });
   });
 });
@@ -392,7 +387,6 @@ function unmotivationalPosterGenerator() {
   unmotivationalPosterGrid.innerHTML = "";
 
   var cleanedUnMotivatedPosters = cleanData(unmotivationalPosters);
-  console.log(cleanedUnMotivatedPosters);
 
   cleanedUnMotivatedPosters.forEach(poster => {
 
@@ -414,4 +408,3 @@ function unmotivationalPosterGenerator() {
     miniPosterDiv.appendChild(miniQuote);
   });
 };
-
