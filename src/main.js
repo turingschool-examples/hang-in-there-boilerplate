@@ -259,7 +259,7 @@ const contentGenerator = () => {
 };
 
 window.addEventListener('load', contentGenerator);
-// window.addEventListener('load', unmotivationalPosterGenerator);
+window.addEventListener('load', unmotivationalPosterGenerator);
 
 randomButton.addEventListener('click', contentGenerator);
 
@@ -320,7 +320,7 @@ savedPostersButton.addEventListener('click', () => {
 
 unmotivationalPostersButton.addEventListener('click', () => {
 
-  var cleanedPosters = cleanData(unmotivationalPosters);
+  cleanedUnMotivatedPosters = cleanData(unmotivationalPosters);
 
   unmotivationalPosterGenerator();
 
@@ -329,31 +329,18 @@ unmotivationalPostersButton.addEventListener('click', () => {
   const unMoPosterObjects = document.querySelectorAll('.sad-mini-poster');
   unMoPosterObjects.forEach((posterObject, indexPosition) => {
     posterObject.addEventListener('dblclick', (event) => {
-      // console.log(unMoPosterObjects.length);
+     
       let targetedPoster = event.currentTarget;
 
       let posterToDelete = cleanedUnMotivatedPosters[indexPosition];
 
+      cleanedUnMotivatedPosters = cleanedUnMotivatedPosters.filter(poster => poster !== posterToDelete);
+
       targetedPoster.remove();
 
-      //remove eleement from html and array
-      
-      // console.log(posterToDelete);
-      // console.log(targetedPoster);
-      
-      cleanedUnMotivatedPosters = cleanedUnMotivatedPosters.filter((posterObject) => {
-        //i want every poster that hasnt been targeted
-        //remove element with title of targeted poster title
-        console.log(posterObject.title )
-        console.log(targetedPoster )
+      console.log('Deleted Poster:', posterToDelete);
+      console.log('Updated Posters Array:', cleanedUnMotivatedPosters);
 
-
-
-        // posterObject.title === targetedPoster.title
-        // !cleanedUnMotivatedPosters.includes(targetedPoster.title)
-        // !cleanedUnMotivatedPosters.some(poster => poster.title === targetedPoster.title)
-      });
-      return cleanedUnMotivatedPosters
     });
   });
 });
@@ -390,21 +377,6 @@ unmotivationalPostersButton.addEventListener('click', () => {
 //   });
 // });
 // -------
-
-// unMoPosterObject.addEventListener('dblclick', (event) => {
-//   targetedPoster = event.target;
-
-//   console.log(unMoPosterObject);
-
-//   cleanedUnMotivatedPosters.delete(targetedPoster);
-// });
-
-// helper function tbd
-// function deletePoster(poster) {
-//   cleanedUnMotivatedPosters.delete(poster)
-// }
-
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);

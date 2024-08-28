@@ -17,6 +17,7 @@ This webpage contains a small interactive platform where motivational posters (M
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
 ![alt text](<Screenshot 2024-08-27 at 10.29.29 PM.png>)
+
 An example of a custom Motivational Poster that a user could make.
 ### Context:
 This project was completed from a template in 9 days time. I've been enrolled in Turing for about 2 months and have been learning HTML, Javascript, and CSS for 10 days.
@@ -48,7 +49,7 @@ Whenever I hit a wall that no ammount of googling or reading notes/MDN Docs coul
 
 Some personal wins for this project include:
 - Reusing logic to efficiently overcome technical challenges.
-- Be able to parse a large data set, extract desired information, and generate new data structures with said desired info.
+- Be able to parse a large data set, extract desired information, and generate new data structures with said desired info (a topic I struggled with in the past).
 - Having a full comprehension of all written code.
 
 [//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
