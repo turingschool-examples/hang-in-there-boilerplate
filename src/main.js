@@ -25,7 +25,6 @@ var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var unmotivationalPostersPage = document.querySelector(".un-motivational-posters")
 var unmotivationalGridDiv = document.querySelector(".poster-grid");
 
-
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
