@@ -8,7 +8,7 @@ Here we have a wonderful application devoted to providing its users with a rando
 To access this application, please clone down a copy from this [GitHub repository](https://github.com/SmilodonP/hanging-in-there). Once that is complete, from your terminal, cd into the project file and enter "code ." into your terminal. This will open the project in your VSCode. From here simply right click on the "index.html" file and select "Open With Live Server". This should open the application in a new browser window where you can interact with it to your heart's content. If you do not have the Live Server VSCode extension installed, you can use the alternative method of navigating to the "Run" column at the top of the page and clicking "Run Without Debugging".
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
-![Karl's app gif](https://imgflip.com/gif/91pb0f)
+![Karl's app gif](./assets/app.gif)
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
 This was our first project in the second module of The Turing School of Software & Design's fullstack software engineering program, and the first front end project that we have been assigned. We were given 10 days to complete the project.
