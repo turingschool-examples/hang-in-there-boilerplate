@@ -12,18 +12,15 @@ Sometimes we all need a little inspiration. This webpage contains a small intera
 
 ### Preview of App:
 
-
 <img src="MP-screenshot.PNG">
 
 An example of a custom Motivational Poster that a user could make.
 ### Context:
 This project was completed from a template in 9 days time. I've been enrolled in Turing for about 2 months and have been learning HTML, Javascript, and CSS for 10 days.
 
-
 ### Contributors:
 
 Joe Chirchirillo, [Github](https://github.com/jchirch) & [LinkedIn](https://www.linkedin.com/in/joechirchirillo/).
-
 
 ### Learning Goals:
 The primary objective of this project was to have a lightspeed crash course on web development through trial and error. There were several sub- objectives for this project:
