@@ -26,6 +26,17 @@ var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 var unmotivationalGridDiv = document.querySelector(".poster-grid");
 
+var allButtons = document.querySelectorAll("button")
+
+// allButtons.forEach( (button) => {
+//   button.addEventListener('mousedown', playButtonAudio)
+// })
+
+// function playButtonAudio() {
+//   var audio = new Audio("https://uploads.sitepoint.com/wp-content/uploads/2023/06/1687569402mixkit-fast-double-click-on-mouse-275.wav");
+//   audio.play();
+// }
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -264,6 +275,15 @@ backToMainButton.addEventListener('click', backToMain);
 savePosterButton.addEventListener('click', savePoster);
 
 document.addEventListener('dblclick', deletePoster)
+
+allButtons.forEach( (button) => {
+  button.addEventListener('mousedown', playButtonAudio)
+})
+
+function playButtonAudio() {
+  var audio = new Audio("https://uploads.sitepoint.com/wp-content/uploads/2023/06/1687569402mixkit-fast-double-click-on-mouse-275.wav");
+  audio.play();
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
