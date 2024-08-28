@@ -9,7 +9,7 @@ Motivational Posters! Differnt pictures, Titles, and Quotes to help motivate. Sa
 Fork the repo, Clone the repo, then use git clone `Github clone link` on their terminal.
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
+ProjectScreenShot.PNG
 
 ### Context:
 I had a little over a week to work on this project. We were given this project day 1 starting Mod 2.
