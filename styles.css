@@ -28,6 +28,10 @@ button:hover {
   background: darkslateblue;
 }
 
+button:active {
+  transform: scale(0.95);
+}
+
 .hidden {
   display: none!important;
 }
