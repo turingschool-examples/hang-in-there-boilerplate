@@ -249,11 +249,13 @@ const userImageUrlInput = document.querySelector('#poster-image-url');
 const userTitleInput = document.querySelector('#poster-title');
 const userQuoteInput = document.querySelector('#poster-quote');
 
+// EL for Buttons
 randomPosterButton.addEventListener('click', generateRandomPoster);
 saveCurrentPosterButton.addEventListener('click', savePosterHandler);
 showMyPosterButton.addEventListener('click', handleNewPosterCreation);
 showSavedPosterButton.addEventListener('click', showSavedPostersHandler);
 
+// Page Visibility Helper Functions
 // Potentially refactor more (mainPoster) shows up consistently
 backToMainFromUnmotivationalButton.addEventListener('click', function() {
   toggleVisibility(unmotivationalPostersSection);
@@ -311,8 +313,35 @@ function displayUnmotivationalPosters() {
         <h2>${poster.title}</h2>
         <h4>${poster.quote}</h4>
         </article>`;
-        renderUmotivationalPosters.appendChild(posterInfo)
+        posterInfo.addEventListener('dblclick', deleteUnmotivationalPoster);
+        console.log(targetUnmotivationalPoster);
+        renderUmotivationalPosters.appendChild(posterInfo);
   });
+}
+
+// If either the image, quote, title, or background is clicked --> I want the poster to get deleted
+// If I click on the image, I can compare that to the objects in the cleanedData array and remove that entire objects
+// If I click on the poster itself, I still have access to the constituent parts 
+  // And I can compare one of those to the cleanedData array and delete the entire object
+
+
+function targetUnmotivationalPoster(event) {
+  console.log(event);
+  console.log(event.target);
+  console.log(event.currentTarget);
+}
+
+// I was not able to generate the deleteUnmotivationalPoster function on my own.
+// I have been having a couple of crummy days and I just wanted to be able to get this functionality in,
+  // but by no means am I taking credit for it.  I just wanted something that worked so I could see it.
+// Because this project is not graded, I 
+// I shamelessly used ChatGPT to generate this function and I'm going to spend a lot of time dissecting it.
+function deleteUnmotivationalPoster(event) {
+  const posterElement = event.currentTarget;
+  const posterIndex = posterElement.dataset.index;
+  cleanedData.splice(posterIndex, 1);
+  posterElement.remove();
+  displayUnmotivationalPosters();
 }
 
 // Updates HTML elements with poster parts
@@ -397,6 +426,21 @@ function createPoster(imageURL, title, quote) {
 }
 
 window.addEventListener('load', generateRandomPoster);
+
+// Create console.log to verify click occurs where desired
+
+
+// How to target one unmoti poster?
+// Double click on poster deletes unmoti poster from cleanedData
+  // Therefore it will not display on page
+  // Utilize `.remove`
+// EL for double click anywhere on unmoti poster
+  // Utilize currentTarget
+    // Every poster will require EL (forEach)
+
+
+
+
 
 // Before refactoring Event Listeners - (Save for now)
 

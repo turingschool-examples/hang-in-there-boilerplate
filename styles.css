@@ -159,12 +159,12 @@ button:hover {
   border-radius: 3%;
 }
 
-.mini-poster h2 {
+.unmotivational-layout .mini-poster h2 {
   color: black;
-  padding-top:6%;
+  padding-top: 6%;
   font-weight: 100
 }
 
-.mini-poster h4 {
+.unmotivational-layout .mini-poster h4 {
   font-weight: 100;
 }
