@@ -1,17 +1,17 @@
 // query selector variables go here 👇
-const posterImage = document.querySelector('.poster-img');
-const posterTitle = document.querySelector('.poster-title');
-const posterQuote = document.querySelector('.poster-quote');
+const posterImage = document.querySelector('.poster-img') as HTMLElement;
+const posterTitle = document.querySelector('.poster-title') as HTMLElement;
+const posterQuote = document.querySelector('.poster-quote') as HTMLElement;
 
-const mainPosterSection = document.querySelector('.main-poster');
-const posterFormSection = document.querySelector('.poster-form');
-const savedPostersSection = document.querySelector('.saved-posters');
-const unmotivationalPosterSection = document.querySelector('.unmotivational-poster')
+const mainPosterSection = document.querySelector('.main-poster') as HTMLElement;
+const posterFormSection = document.querySelector('.poster-form') as HTMLElement;
+const savedPostersSection = document.querySelector('.saved-posters') as HTMLElement;
+const unmotivationalPosterSection = document.querySelector('.unmotivational-poster')as HTMLElement;
 
-const savedPostersGrid = document.querySelector('.saved-posters-grid')
-const savedUnmotivationalPostersGrid = document.querySelector('.unmotivational-poster-flex')
+const savedPostersGrid = document.querySelector('.saved-posters-grid')as HTMLElement;
+const savedUnmotivationalPostersGrid = document.querySelector('.unmotivational-poster-flex')as HTMLElement;
 
-const modalElement = document.querySelector('dialog')
+const modalElement = document.querySelector('dialog')as HTMLDialogElement;
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 const unmotivationalPosters = [
@@ -234,8 +234,17 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
+
+interface Poster{
+  id: number;
+  imageURL: string;
+  title: string;
+  quote: string;
+  
+}
+
+var savedPosters: Poster[] = [];
+var currentPoster: Poster;
 
 // event listeners go here 👇
 document.addEventListener('DOMContentLoaded', () => {
