@@ -315,7 +315,15 @@ showUnmotivationalButton.addEventListener('click', function() {
 btmUnmotivationalButton.addEventListener('click', function(){
   mainPosterSection.classList.remove('hidden');
   unmotivationalPostersSection.classList.add('hidden');
-})
+});
+
+unmotivationalPostersGrid.addEventListener('dblclick', function(event) {
+  var posterElement = event.target.closest('.mini-poster');
+  if (posterElement) {
+    var posterIndex = posterElement.dataset.index;
+    deleteUnmotivationalPoster(posterIndex);
+  }
+});
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -332,9 +340,19 @@ function createPoster(imageURL, title, quote) {
 };
 
 function getRandomPoster() {
-  var randomImage = images[getRandomIndex(images)];
-  var randomTitle = titles[getRandomIndex(titles)];
-  var randomQuote = quotes[getRandomIndex(quotes)];
+  var randomImage, randomTitle, randomQuote;
+
+  do {
+    randomImage = images[getRandomIndex(images)];
+  } while (randomImage === posterImage.src);
+
+  do {
+    randomTitle = titles[getRandomIndex(titles)];
+  } while (randomTitle === posterTitle.innerHTML);
+
+  do {
+    randomQuote = quotes[getRandomIndex(quotes)];
+  } while (randomQuote === posterQuote.innerHTML);
   
   posterImage.src = randomImage
   posterTitle.innerHTML = randomTitle
@@ -374,9 +392,11 @@ function cleanData(unmotivationalPostersData) {
 function displayUnmotivationalPosters() {
   unmotivationalPostersGrid.innerHTML = '';
   
-  cleanedUnmotivationalPosters.forEach(function(poster){
+  cleanedUnmotivationalPosters.forEach(function(poster, index){
     miniPoster = document.createElement('div');
     miniPoster.classList.add('mini-poster');
+
+    miniPoster.dataset.index = index;
     
     miniPoster.innerHTML = `
     <img src="${poster.imageURL}" alt="Poster Image">
@@ -389,5 +409,10 @@ function displayUnmotivationalPosters() {
 };
 
 var cleanedUnmotivationalPosters = cleanData(unmotivationalPosters);
+
+function deleteUnmotivationalPoster(posterIndex) {
+    cleanedUnmotivationalPosters = cleanedUnmotivationalPosters.filter( (poster, index) => index != posterIndex)
+    displayUnmotivationalPosters();
+}
 
 // console.log(getRandomIndex(titles))

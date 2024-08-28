@@ -63,11 +63,17 @@ button:hover {
 }
 
 .poster-title {
-  font-size: 60px;
+  font-size: 5vw;
   font-weight: normal;
-  letter-spacing: 20px;
+  letter-spacing: 0.2em;
   margin-bottom: 10px;
   text-transform: uppercase;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .main-poster button {
@@ -179,4 +185,5 @@ button:hover {
 
 .unmotivational-posters-grid img {
   border: none;
+  max-width: 100%;
 }
