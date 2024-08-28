@@ -16,7 +16,8 @@ This webpage contains a small interactive platform where motivational posters (M
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
-![alt text](<Screenshot 2024-08-27 at 10.29.29 PM.png>)
+
+<img src="MP-screenshot.PNG">
 
 An example of a custom Motivational Poster that a user could make.
 ### Context:
