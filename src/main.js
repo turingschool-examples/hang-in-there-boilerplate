@@ -275,7 +275,7 @@ document.getElementsByClassName("unmotivational-posters-grid")[0].addEventListen
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -283,41 +283,41 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
-}
+};
 
 function renderPoster(imageInstance, titleInstance, quoteInstance) {
   currentPoster = createPoster(imageInstance, titleInstance, quoteInstance);
   document.getElementsByClassName("poster-img")[0].setAttribute("src", currentPoster.imageURL);
   document.getElementsByClassName("poster-title")[0].innerHTML = currentPoster.title;
   document.getElementsByClassName("poster-quote")[0].innerHTML = currentPoster.quote;
-}
+};
 
 function toggleMainHiddenState() {
   var mainPoster = document.getElementsByClassName("main-poster")[0];
   mainPoster.classList.toggle("hidden");
-}
+};
 
 function toggleHiddenState(classOfElementToShow) {
   toggleMainHiddenState()
   var elementToShow = document.getElementsByClassName(`${classOfElementToShow}`)[0];
   elementToShow.classList.toggle("hidden");
-}
+};
 
 function saveDataToRespectiveArrays(imageInstance, titleInstance, quoteInstance) {
   images.push(imageInstance);
   titles.push(titleInstance);
   quotes.push(quoteInstance);
-}
+};
 
 function createCustomPoster(imageInstance, titleInstance, quoteInstance) {
   renderPoster(imageInstance, titleInstance, quoteInstance);
   saveDataToRespectiveArrays(imageInstance, titleInstance, quoteInstance);
   toggleHiddenState("poster-form");
-}
+};
 
 function saveCurrentToSavedArray() {
   savedPosters.push(currentPoster);
-}
+};
 
 function displayInGrid(gridClassName) {
   gridClassName = document.getElementsByClassName(`${gridClassName}`)[0];
@@ -329,7 +329,7 @@ function displayInGrid(gridClassName) {
       <h3 class="poster-quote">${currentPoster.quote}</h3>
     </article>`
   );
-}
+};
 
 function savePoster(gridClassName) {
   if(!(savedPosters.includes(currentPoster))) {
@@ -362,16 +362,17 @@ function generateUnmotivationalPosters(gridClassName) {
 };
 
 function removeFromDataSet(dataSet, value) {
-  arrayElementToRemove = dataSet.findIndex( (el) => el.key === value);
+  arrayElementToRemove = dataSet.findIndex( (el) => value.includes(el.name));
   if (arrayElementToRemove !== -1){
     dataSet.splice(arrayElementToRemove, 1);
   }  
 };
 
 function deleteSavedPoster(event) {
-  if (event.target.classList.contains("mini-poster"))
+  if (event.target.classList.contains("mini-poster")) {
     event.target.remove();
-    removeFromDataSet(cleanedUnmotivationalPosters, event.target.innerhtml);
+    removeFromDataSet(cleanedUnmotivationalPosters, event.target.innerHTML);
+  }
 };
 
 
