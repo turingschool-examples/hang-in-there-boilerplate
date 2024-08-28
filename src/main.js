@@ -221,9 +221,10 @@ const unmotivationalPosters = [
     img_url: "./assets/doubt.jpg",
   }
 ];
-var cleanedUnmotivationalPosters = [];
+
 var savedPosters = [];
 var currentPoster;
+var cleanedUnmotivationalPosters = [];
 
 // event listeners go here 👇
 document.getElementsByClassName("show-random")[0].addEventListener("click", function() {
@@ -284,7 +285,6 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-
 function renderPoster(imageInstance, titleInstance, quoteInstance) {
   currentPoster = createPoster(imageInstance, titleInstance, quoteInstance);
   document.getElementsByClassName("poster-img")[0].setAttribute("src", currentPoster.imageURL);
@@ -308,7 +308,6 @@ function saveDataToRespectiveArrays(imageInstance, titleInstance, quoteInstance)
   titles.push(titleInstance);
   quotes.push(quoteInstance);
 }
-
 
 function createCustomPoster(imageInstance, titleInstance, quoteInstance) {
   renderPoster(imageInstance, titleInstance, quoteInstance);
@@ -341,13 +340,13 @@ function savePoster(gridClassName) {
 };
 
 function cleanData() {
-  unmotivationalPosters.forEach((el) => 
-    cleanedUnmotivationalPosters.push({
-      name: el.name,
-      description: el.description,
-      img_url: el.img_url
-    })
-  )
+  cleanedUnmotivationalPosters = unmotivationalPosters.map((el) => 
+      el = {
+        name: el.name,
+        description: el.description,
+        img_url: el.img_url
+      }
+  );
 };
 
 function generateUnmotivationalPosters(gridClassName) {
@@ -359,8 +358,8 @@ function generateUnmotivationalPosters(gridClassName) {
       poster.description
     );
     displayInGrid(gridClassName);
-  }
-)};
+  })
+};
 
 function removeFromDataSet(dataSet, value) {
   arrayElementToRemove = dataSet.findIndex( (el) => el.key === value);
@@ -377,6 +376,10 @@ function deleteSavedPoster(event) {
 
 
 window.addEventListener("load", function() {
-  generateUnmotivationalPosters("unmotivational-posters-grid")
-  renderPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  generateUnmotivationalPosters("unmotivational-posters-grid");
+  renderPoster(
+    images[getRandomIndex(images)],
+     titles[getRandomIndex(titles)], 
+     quotes[getRandomIndex(quotes)]
+    );
 });
