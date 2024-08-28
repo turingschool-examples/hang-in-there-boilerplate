@@ -122,6 +122,7 @@ button:hover {
   height: 340px;
   padding: 25px;
   width: 425px;
+  cursor: move;
 }
 
 .mini-poster img {
@@ -135,6 +136,7 @@ button:hover {
   color: white;
   line-height: 1;
   width: 90%;
+  user-select: none;
 }
 
 .mini-poster h2 {
@@ -143,4 +145,102 @@ button:hover {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+
+/* ~~~~~ Unmotivational Posters ~~~~~ */
+.unmotivational-poster-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:1em;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.unmotivational-poster-flex .mini-poster{
+  cursor: pointer;
+}
+
+.unmotivational-poster-flex article{
+  background-color: grey;
+  border-radius: 5%;
+}
+
+.unmotivational-poster-flex h2{
+  color: black;
+}
+
+/* Modal Screen */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog#poster-modal .mini-poster{
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px auto;
+  padding: 50px 20px;
+  width: auto;
+  height: auto;
+}
+
+dialog#poster-modal img{
+  background-size: cover;
+  border: 2px solid white;
+  width: auto;
+  height: auto;
+  max-width: 80%;
+}
+
+
+
+dialog#poster-modal h2{
+  font-size: 60px;
+  font-weight: normal;
+  letter-spacing: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+dialog#poster-modal h2,h4 {
+  color: white;
+  line-height: 1;
+  width: 90%;
+}
+#closeModal{
+  position: absolute;
+  top: 5px; 
+  right: 20px; 
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 36px;
+  font-weight: bold; 
+}
+#closeModal:hover {
+  color: gray; 
+}
+
+dialog {
+  border: none;
+  position: absolute;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  inline-size: auto;
+  block-size: fit-content;
+  max-width: 70%;
+  padding: 0;
+}
+
+/* Dragging */
+
+.mini-poster.dragging {
+  opacity: .5;
+}
+
+.drag-border {
+  border: 5px dotted green;
 }

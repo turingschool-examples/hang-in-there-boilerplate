@@ -18,17 +18,18 @@
     <button class="show-saved">Show Saved Posters</button>
     <button class="show-random">Show Another Random Poster</button>
     <button class="show-form">Make Your Own Poster</button>
+    <button class="show-unmotivational-poster">Unmotivational Posters</button>
   </section>
   <section class="poster-form hidden">
     <form>
       <h2>Create your own motivational poster</h2>
       <label for="poster-image-url">Image url</label>
-      <input type="text" name="poster-image-url" id="poster-image-url" placeholder="https://gph.is/2n553Ra">
+      <input type="url" name="poster-image-url" id="poster-image-url" placeholder="https://gph.is/2n553Ra" required/>
       <label for="poster-title">Motivational title</label>
-      <input type="text" name="poster-title" id="poster-title" placeholder="Growth Mindset">
+      <input type="text" name="poster-title" id="poster-title" placeholder="Growth Mindset" maxlength="10" required>
       <label for="poster-quote">Motivational quote</label>
-        <input type="text" name="poster-quote" id="poster-quote" placeholder="Hang in there!">
-      <button class="make-poster">Show my poster</button>
+        <input type="text" name="poster-quote" id="poster-quote" placeholder="Hang in there!" maxlength="20" required>
+      <button type="submit" class="make-poster">Show my poster</button>
     </form>
     <div class="divider"></div>
     <button class="show-main">Nevermind, take me back!</button>
@@ -38,6 +39,16 @@
     <div class="saved-posters-grid"></div>
     <button class="back-to-main">Back to Main</button>
   </section>
+  <section class="unmotivational-poster hidden">
+    <h2>Unmotivational Posters</h2>
+    <div class="unmotivational-poster-flex">
+
+    </div>
+    <button class="back-to-main-unmotivational">Back to Main</button>
+  </section>
+  <dialog id="poster-modal">
+    <button id="closeModal">&times;</button>
+  </dialog>
   <script src="./src/main.js"></script>
 </body>
 </html>
