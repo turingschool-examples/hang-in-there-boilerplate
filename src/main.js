@@ -345,39 +345,6 @@ unmotivationalPostersButton.addEventListener('click', () => {
   });
 });
 
-// ---------
-// unmotivationalPostersButton.addEventListener('click', () => {
-//   // Clean the unmotivational posters data
-//   cleanedUnMotivatedPosters = cleanData(unmotivationalPosters);
-  
-//   // Generate and display the posters
-//   unmotivationalPosterGenerator();
-  
-//   switchHidden(mainPage, unmotivationalPostersPage);
-
-//   // Add double-click event listeners to each poster
-//   const unMoPosterObjects = document.querySelectorAll('.sad-mini-poster');
-//   unMoPosterObjects.forEach((posterElement, index) => {
-//     posterElement.addEventListener('dblclick', (event) => {
-//       // Get the targeted poster element
-//       const targetedPosterElement = event.currentTarget;
-
-//       // Find the index of the poster object in the cleanedUnMotivatedPosters array
-//       const posterToDelete = cleanedUnMotivatedPosters[index];
-
-//       // Remove the poster from the array
-//       cleanedUnMotivatedPosters = cleanedUnMotivatedPosters.filter(poster => poster !== posterToDelete);
-
-//       // Remove the poster's HTML element from the DOM
-//       targetedPosterElement.remove();
-
-//       console.log('Deleted Poster:', posterToDelete);
-//       console.log('Updated Posters Array:', cleanedUnMotivatedPosters);
-//     });
-//   });
-// });
-// -------
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
@@ -391,17 +358,12 @@ function createPoster(imageURL, title, quote) {
 };
 
 function savedPostersGenerator() {
-  // iterate over savedposters array
-  // every array elemetn to be a mini-poster in a div element
-  // assign miniposter css style to new div elements
   posterGrid.innerHTML = '';
 
   savedPosters.forEach(poster => {
-    // makes new html div element. adds mini poster class to div element
+
     var miniPosterDiv = document.createElement("div");
     miniPosterDiv.classList.add("mini-poster");
-
-    // making a new html img element. assigning poster object url to image src
     var miniImg = document.createElement("img");
     miniImg.src = poster.imageURL;
     var miniTitle = document.createElement("h2");
@@ -409,7 +371,6 @@ function savedPostersGenerator() {
     var miniQuote = document.createElement("h4");
     miniQuote.innerText = poster.quote;
 
-    // recreating html nesting 11-16
     posterGrid.appendChild(miniPosterDiv);
     miniPosterDiv.appendChild(miniImg);
     miniPosterDiv.appendChild(miniTitle);
