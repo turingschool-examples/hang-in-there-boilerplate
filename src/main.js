@@ -319,27 +319,77 @@ savedPostersButton.addEventListener('click', () => {
 });
 
 unmotivationalPostersButton.addEventListener('click', () => {
-  // console.log(unmotivationalPosters)
+
   var cleanedPosters = cleanData(unmotivationalPosters);
-  // console.log(cleanedPosters)
+
   unmotivationalPosterGenerator();
 
   switchHidden(mainPage, unmotivationalPostersPage);
-  // const unMoPosterObjects = document.querySelectorAll('.sad-mini-poster');
-  const unMoPosterObjects = document.querySelectorAll('.bad-poster-grid');
-  unMoPosterObjects.forEach((poster) => {
-    poster.addEventListener('dblclick', (event) => {
-      targetedPoster = event.target;
+
+  const unMoPosterObjects = document.querySelectorAll('.sad-mini-poster');
+  unMoPosterObjects.forEach((posterObject, indexPosition) => {
+    posterObject.addEventListener('dblclick', (event) => {
+      // console.log(unMoPosterObjects.length);
+      let targetedPoster = event.currentTarget;
+
+      let posterToDelete = cleanedUnMotivatedPosters[indexPosition];
+
+      targetedPoster.remove();
+
+      //remove eleement from html and array
       
-      console.log(targetedPoster);
+      // console.log(posterToDelete);
+      // console.log(targetedPoster);
       
-      let deleted = cleanedUnMotivatedPosters.filter((poster) => {
-        poster == targetedPoster
+      cleanedUnMotivatedPosters = cleanedUnMotivatedPosters.filter((posterObject) => {
+        //i want every poster that hasnt been targeted
+        //remove element with title of targeted poster title
+        console.log(posterObject.title )
+        console.log(targetedPoster )
+
+
+
+        // posterObject.title === targetedPoster.title
+        // !cleanedUnMotivatedPosters.includes(targetedPoster.title)
+        // !cleanedUnMotivatedPosters.some(poster => poster.title === targetedPoster.title)
       });
-      return deleted
+      return cleanedUnMotivatedPosters
     });
   });
 });
+
+// ---------
+// unmotivationalPostersButton.addEventListener('click', () => {
+//   // Clean the unmotivational posters data
+//   cleanedUnMotivatedPosters = cleanData(unmotivationalPosters);
+  
+//   // Generate and display the posters
+//   unmotivationalPosterGenerator();
+  
+//   switchHidden(mainPage, unmotivationalPostersPage);
+
+//   // Add double-click event listeners to each poster
+//   const unMoPosterObjects = document.querySelectorAll('.sad-mini-poster');
+//   unMoPosterObjects.forEach((posterElement, index) => {
+//     posterElement.addEventListener('dblclick', (event) => {
+//       // Get the targeted poster element
+//       const targetedPosterElement = event.currentTarget;
+
+//       // Find the index of the poster object in the cleanedUnMotivatedPosters array
+//       const posterToDelete = cleanedUnMotivatedPosters[index];
+
+//       // Remove the poster from the array
+//       cleanedUnMotivatedPosters = cleanedUnMotivatedPosters.filter(poster => poster !== posterToDelete);
+
+//       // Remove the poster's HTML element from the DOM
+//       targetedPosterElement.remove();
+
+//       console.log('Deleted Poster:', posterToDelete);
+//       console.log('Updated Posters Array:', cleanedUnMotivatedPosters);
+//     });
+//   });
+// });
+// -------
 
 // unMoPosterObject.addEventListener('dblclick', (event) => {
 //   targetedPoster = event.target;
