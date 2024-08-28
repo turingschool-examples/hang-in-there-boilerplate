@@ -14,6 +14,7 @@ var makePosterButton = document.querySelector('.make-poster')
 var savePosterButton = document.querySelector('.save-poster')
 var unmotivationalButton = document.querySelector('.show-unmotivational')
 var unmotivational = document.querySelector('.unmotivational-posters')
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -328,13 +329,13 @@ function createCustomPoster (event) {
 }
 
 function savePoster() {
-  console.log('working so far')
+
   console.log('working part 2', currentPoster)
   if (currentPoster) {
     if (checkIfPosterExists() === false) {
         savedPosters.push(currentPoster)
-        console.log('yes it saved', savedPosters)
-    } else {
+
+      } else {
     }
   }
 }
@@ -349,7 +350,7 @@ function checkIfPosterExists() {
 }
 
 function showSavedPosters() {
-  console.log('yes the button works')
+  
   savedPoster.classList.remove('hidden')
   mainPoster.classList.add('hidden')
   makeForm.classList.add('hidden')
@@ -370,11 +371,33 @@ function showSavedPosters() {
         <h4>${poster.quote}</h4>
       </div>`
   }
-  console.log('insert some stuff:', postersHTML)
   savedGrid.innerHTML = postersHTML
 }
 
 function showUnmotivationalPoster() {
+  var cleanedUnmotivationalPosters = cleanData()
+  var unmotivationalGrid = document.querySelector('.unmotivational-posters-grid')
+  
+  unmotivationalGrid.innerHTML = ''
+
+  cleanedUnmotivationalPosters.forEach(poster => {
+
+      var postersHTML = `
+        <div class="mini-poster">
+          <img src= "${poster.imageURL}">
+          <h2>${poster.title}</h2>
+          <h4>${poster.quote}</h4>
+        </div>`
+  
+      unmotivationalGrid.innerHTML += postersHTML
+  })
   unmotivational.classList.remove('hidden')
   mainPoster.classList.add('hidden')
+}
+
+function cleanData() {
+  var cleanedData = unmotivationalPosters.map(poster => {
+    return createPoster(poster.img_url, poster.name, poster.description)
+  })
+  return cleanedData
 }
