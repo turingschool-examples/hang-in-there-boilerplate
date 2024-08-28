@@ -8,9 +8,6 @@ The application also features a seperate page where users can view a list of un-
 
 This provides the user with a bit motivation and humor to get them through everyday life.
 
-<!-- I used existing data sets to randomly generate motivational posters at the click of a button. Users have the option to save these posters and view them in a list on a separate page. <br>
-Additionally, there is a function where users can create their own posters by linking an image and typing in the desired title and quote. <br>
-An Un-Motivational Posters page was added. This generates a list of unmotivational posters, and users have the option to delete a poster by double clicking. -->
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
@@ -20,7 +17,7 @@ An Un-Motivational Posters page was added. This generates a list of unmotivation
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
-
+![gif](./readme-imgs/example-gif.gif)
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
