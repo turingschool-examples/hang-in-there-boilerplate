@@ -13,7 +13,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font-size: 20px;
   padding: 10px 20px;
 }
@@ -23,6 +24,10 @@ button {
   border: none;
   border-radius: 10px;
   color: white;
+}
+
+select {
+  margin-bottom: 10px;
 }
 
 button:hover {
