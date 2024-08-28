@@ -252,6 +252,7 @@ document.querySelector('.unmotivational-posters-grid').addEventListener('dblclic
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
@@ -298,14 +299,17 @@ function updatePosterContent(imageURL, title, quote) {
 
 function savePoster() {
   if (currentPoster && !savedPosters.some(poster => poster.id === currentPoster.id)) {
+    alert("Your Poster Has Successfully Been Saved")
     savedPosters.push(currentPoster);
   }
+  else
+    alert("Duplicate Posters WILL NOT Be Saved")
 }
 
 function displaySavedPosters() {
   const savedPostersGrid = document.querySelector('.saved-posters-grid');
   savedPostersGrid.innerHTML = ''; 
-
+// look into how I would refactor this method using string interpolation
   savedPosters.forEach(poster => {
     let miniaturePoster = document.createElement('div');
     miniaturePoster.classList.add('mini-poster');
@@ -327,31 +331,17 @@ function displaySavedPosters() {
   });
 }
 
-function cleanData() {
-  const cleanedPosters = unmotivationalPosters.map(poster => {
-    return {
-      name: poster.name,
-      description: poster.description,
-      img_url: poster.img_url
-    };
-  });
-  unmotivationalPosters.length = 0;
-  unmotivationalPosters.push(...cleanedPosters); 
-}
-
 function loadUnmotivationalPosters() {
   const unmotivationalPostersGrid = document.querySelector('.unmotivational-posters-grid');
   unmotivationalPostersGrid.innerHTML = '';
 
-  cleanData();
-
   currentUnmotivationalPosters.forEach(poster => {
-    const posterElements = createUnmotivationalPosterElements(poster);
+    const posterElements = cleanData(poster);
     unmotivationalPostersGrid.appendChild(posterElements);
   });
 }
 
-function createUnmotivationalPosterElements(poster) {
+function cleanData(poster) {
   let unmotivationalPoster = document.createElement('div');
   unmotivationalPoster.classList.add('unmotivational-poster');
 
@@ -372,15 +362,19 @@ function createUnmotivationalPosterElements(poster) {
 }
 
 function deletePoster(poster){
-  poster.classList.add('zoom-out');
-  poster.addEventListener('animationend', function() {
-    const posterIndex = Array.from(poster.parentNode.children).indexOf(poster);
-    poster.remove();
-    currentUnmotivationalPosters.splice(posterIndex, 1);
-  }, { once: true }); 
+  if (confirm("Confirm Delete Poster") == true) {
+    poster.classList.add('zoom-out');
+    poster.addEventListener('animationend', function() {
+      const posterIndex = Array.from(poster.parentNode.children).indexOf(poster);
+      poster.remove(true);
+      currentUnmotivationalPosters.splice(posterIndex, 1);
+    }
+    ,{ once: true }); 
+  }
 }
 
 function toggleCreateNew() {
+  // add clear all input fields and repopulate placeholders functionality
   document.querySelector('.main-poster').classList.toggle('hidden');
   document.querySelector('.poster-form').classList.toggle('hidden');
 }
@@ -396,6 +390,8 @@ function toggleShowUnmotivational() {
   document.querySelector('.main-poster').classList.toggle('hidden');
   document.querySelector('.unmotivational-posters').classList.toggle('hidden');
 }
+
+// This is how I first handled the various view changing button functionalities:
 
 // function toggleDisplay(selectors) {
 //   selectors.forEach(selector => {
