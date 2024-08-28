@@ -1,31 +1,12 @@
-# Hang In There
-
-A boilerplate repo. 
-
-## Set Up
-
-1. Fork this repository
-2. Clone down your new, forked repo
-3. `cd` into the repository
-4. Open it in your text editor
-5. Add your project manager as a collaborator on the repository
-
-Project spec & rubric can be found [here](https://curriculum.turing.edu/module2/projects/hang-in-there/index)
-
-To view your project:
-
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
-  
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
-______________________________________________________  
-
 # Hang in There  
 
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+This project is a one stop spot for building, saving, and viewing company posters to lift the spirits of employees. Select from an assortment of provided images, titles and quotes to customize your own poster before saving it and if you can't find something you like import your own with the make your own poster feature.
+
+Once saved, those posters that you made are saved into their own page where they'll be presented into a grid. If you want to see them larger, give the poster a click to see it expand.
+
+If motivation isn't what you are looking for, there is also a section of predefined unmotivational posters. However, if you don't like any of the specific posters, double click to remove it from those that are being displayed.
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
