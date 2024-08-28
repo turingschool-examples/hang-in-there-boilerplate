@@ -390,6 +390,7 @@ function displayUnmotivationalPosters(posters) {
 cleanedPosters = cleanData(unmotivationalPosters);
 displayUnmotivationalPosters(cleanedPosters);
 
+
 function deleteUnmotivationalPoster(event) {
   var posterElement = event.target.closest(".mini-poster");
   if (posterElement) {
