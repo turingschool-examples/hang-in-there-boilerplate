@@ -1,7 +1,3 @@
-// query selector variables go here 👇
-
-// we"ve provided you with some data to work with 👇
-// tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -226,7 +222,8 @@ var savedPosters = [];
 var currentPoster;
 var cleanedUnmotivationalPosters = [];
 
-// event listeners go here 👇
+
+
 document.getElementsByClassName("show-random")[0].addEventListener("click", function() {
   renderPoster(
     images[getRandomIndex(images)], 
@@ -270,8 +267,8 @@ document.getElementsByClassName("unmotivational-posters-grid")[0].addEventListen
   deleteSavedPoster(event);
 });
 
-// functions and event handlers go here 👇
-// (we"ve provided two to get you started)!
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -334,7 +331,6 @@ function displayInGrid(gridClassName) {
 function savePoster(gridClassName) {
   if(!(savedPosters.includes(currentPoster))) {
     saveCurrentToSavedArray();
-    //display savedPosters in grid section
     displayInGrid(gridClassName);
   };
 };
