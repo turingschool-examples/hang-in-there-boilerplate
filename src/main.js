@@ -295,8 +295,6 @@ showMyPosterButton.addEventListener('click', function(event){
 
   mainPosterSection.classList.toggle('hidden');
   posterFormSection.classList.toggle('hidden');
-  //take user input and save it when they click 'show my poster'
-  //how do I grab what the user typed in the 3 input fields.
 });
 
 savePosterButton.addEventListener('click', function(){
@@ -414,5 +412,3 @@ function deleteUnmotivationalPoster(posterIndex) {
     cleanedUnmotivationalPosters = cleanedUnmotivationalPosters.filter( (poster, index) => index != posterIndex)
     displayUnmotivationalPosters();
 }
-
-// console.log(getRandomIndex(titles))
