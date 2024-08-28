@@ -111,7 +111,8 @@ button:hover {
 }
 
 .saved-posters-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   padding: 20px;
@@ -128,6 +129,7 @@ button:hover {
 .mini-poster img {
   height:200px;
   width: 300px;
+  border: 2px solid white;
 }
 
 .mini-poster h2,
@@ -144,4 +146,37 @@ button:hover {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+
+/* ~~~~~ UNMOTIVATIONAL POSTERS SECTION ~~~~~ */
+.unmotivational-posters {
+  padding: 40px;
+}
+
+.unmotivational-posters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0px;
+  padding: 20px;
+}
+
+.unmotivational-posters-grid .mini-poster {
+  background: black;
+  color: white;
+  background-size: cover;
+  max-width: 80%;
+  margin: 5px;
+  box-sizing: border-box;
+  background-color: gray;
+  border-radius: 3%;
+}
+
+.unmotivational-posters-grid h2 {
+  color: black;
+  padding-top: 6%;
+}
+
+.unmotivational-posters-grid img {
+  border: none;
 }
