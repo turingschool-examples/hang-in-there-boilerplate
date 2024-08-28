@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-const posterImage = document.querySelector('.poster-img') as HTMLElement;
+const posterImage = document.querySelector('.poster-img') as HTMLImageElement;
 const posterTitle = document.querySelector('.poster-title') as HTMLElement;
 const posterQuote = document.querySelector('.poster-quote') as HTMLElement;
 
@@ -12,6 +12,12 @@ const savedPostersGrid = document.querySelector('.saved-posters-grid')as HTMLEle
 const savedUnmotivationalPostersGrid = document.querySelector('.unmotivational-poster-flex')as HTMLElement;
 
 const modalElement = document.querySelector('dialog')as HTMLDialogElement;
+
+const showRandomButton = document.querySelector('.show-random') as HTMLElement;
+const showMakePosterButton = document.querySelector('.make-poster') as HTMLElement;
+const savePosterButton = document.querySelector('.save-poster') as HTMLElement;
+const posterElement =  document.querySelector('.poster') as HTMLElement;
+const closeModalButton = document.querySelector('#closeModal') as HTMLElement
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 const unmotivationalPosters = [
@@ -253,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
   storeUnmotivationalPostersElements(cleanData())
 });
 
-document.querySelector('.show-random').addEventListener('click', () =>{
+showRandomButton.addEventListener('click', () =>{
   setNewPoster();
   displayCurrentPoster();
 })
@@ -265,7 +271,7 @@ document.querySelectorAll('.show-saved, .back-to-main').forEach(button => {
 });
 
 
-document.querySelector('.make-poster').addEventListener('click',(event) => {
+showMakePosterButton.addEventListener('click',(event) => {
   handleFormSubmission(event)
 })
 
@@ -275,7 +281,7 @@ document.querySelectorAll('.show-main, .show-form').forEach(button => {
   });
 });
 
-document.querySelector('.save-poster').addEventListener('click', handleSavePoster);
+savePosterButton.addEventListener('click', handleSavePoster);
 
 document.querySelectorAll('.back-to-main-unmotivational, .show-unmotivational-poster').forEach(button => {
   button.addEventListener('click', () => {
@@ -284,22 +290,22 @@ document.querySelectorAll('.back-to-main-unmotivational, .show-unmotivational-po
 })
 
 savedUnmotivationalPostersGrid.addEventListener('dblclick', (event) => {
-  handleDeletePosters(event.target)
+  handleDeletePosters(event)
 })
 
-document.querySelector('.poster').addEventListener('click', (event) => {
-  handlePosterClick(event.target)
+posterElement.addEventListener('click', (event) => {
+  handlePosterClick(event)
 })
 
 savedPostersGrid.addEventListener('dblclick',(event) => {
-  handleModalSreen(event.target)
+  handleModalSreen(event)
 })
 
-document.querySelector('#closeModal').addEventListener('click', handleCloseModalScreen)
+closeModalButton.addEventListener('click', handleCloseModalScreen)
 
 
 savedPostersGrid.addEventListener('dragstart', (event) => {
-  handlePosterDrag(event.target)
+  handlePosterDrag(event)
 })
 
 savedPostersGrid.addEventListener('dragover', (event) => {
@@ -311,12 +317,13 @@ savedPostersGrid.addEventListener('dragover', (event) => {
 
 // functions and event handlers go here 👇
 
-const handlePosterClick = (target) => {
-
+const handlePosterClick = (event: MouseEvent) => {
+  const target = event.target as HTMLElement;
 
   if (target.tagName == "IMG"){
-    target.src = images[getRandomIndex(images)]
-    currentPoster = createPoster(target.src, currentPoster.title, currentPoster.quote)
+    const imgElement = target as HTMLImageElement;
+    imgElement.src = images[getRandomIndex(images)]
+    currentPoster = createPoster(imgElement.src, currentPoster.title, currentPoster.quote)
   }
   if (target.tagName == "H1"){
     target.innerText = titles[getRandomIndex(titles)]
@@ -329,33 +336,36 @@ const handlePosterClick = (target) => {
 
 }
 
-const handleDeletePosters = (target) => {
+const handleDeletePosters = (event: MouseEvent) => {
+  const target = event.target as HTMLElement;
+
   const poster = target.closest('article');
   if (poster) {
     poster.remove()
   }
 };
 
-const handleModalSreen = (target) => {
+const handleModalSreen = (event: MouseEvent) => {
+  const target = event.target as HTMLElement;
   const poster = target.closest('article');
   if (!poster){
     return
   }
-  const posterClone = poster.cloneNode(true);
+  const posterClone = poster.cloneNode(true) as HTMLElement;
   modalElement.insertAdjacentElement('afterbegin', posterClone);
   modalElement.showModal();
   modalElement.addEventListener('keydown', handleKeyDownEvent)
 }
 
-function handleKeyDownEvent(event){
+function handleKeyDownEvent(event: KeyboardEvent){
   if (event.key === 'Escape') {
     handleCloseModalScreen();
     modalElement.removeEventListener('keydown', handleKeyDownEvent); 
   }
 }
 
-const handleFormSubmission = async(event) => {
-  const form = document.querySelector('form');
+const handleFormSubmission = async(event: MouseEvent) => {
+  const form = document.querySelector('form') as HTMLFormElement;
   if (!form.checkValidity()) {
     form.reportValidity();
     return;
@@ -363,7 +373,8 @@ const handleFormSubmission = async(event) => {
   
   event.preventDefault();
   try {
-    const validImage = await isImage(document.querySelector('#poster-image-url').value);
+    const imageUrl = document.querySelector('#poster-image-url') as HTMLInputElement
+    await isImage(imageUrl.value);
   
     console.log("The URL points to a valid image.");
     handleMakePoster();
@@ -374,10 +385,10 @@ const handleFormSubmission = async(event) => {
 
 }
 
-const handlePosterDragOver = (event) => {
+const handlePosterDragOver = (event: DragEvent) => {
   event.preventDefault()
-  const afterElement = getDragAfterElement(event.target)
-  const draggable = document.querySelector('.dragging')
+  const afterElement = getDragAfterElement(event)
+  // const draggable = document.querySelector('.dragging')
   
   if (afterElement) {
     afterElement.classList.add('drag-border')
@@ -390,8 +401,14 @@ const handlePosterDragOver = (event) => {
   })
 }
 
-const handlePosterDrag = (target) => {
-  const poster = target.closest('article');
+const handlePosterDrag = (event: DragEvent) => {
+  const targetElement = event.target as HTMLElement | null;
+
+  if (!targetElement){
+    return
+  }
+
+  const poster = targetElement.closest('article');
   if (!poster) {
     return
   }
@@ -400,12 +417,12 @@ const handlePosterDrag = (target) => {
 }
 
 
-const draggingFunctionality = (poster) => {
-  poster.classList.add('dragging')
+const draggingFunctionality = (poster: HTMLElement) => {
+  poster.classList.add('dragging');
 
   poster.addEventListener('dragend',() => {
-    poster.classList.remove('dragging')
-    dragTarget = savedPostersGrid.querySelector('.drag-border')
+    poster.classList.remove('dragging');
+    const dragTarget = savedPostersGrid.querySelector('.drag-border') as HTMLElement;
     if (dragTarget){
       swapElements(poster, dragTarget)
     }
@@ -414,7 +431,8 @@ const draggingFunctionality = (poster) => {
     })
   })
 }
-const getDragAfterElement = (target) => {
+const getDragAfterElement = (event: MouseEvent) => {
+  const target = event.target as HTMLElement;
   const poster = target.closest('article');
   if (poster){
     return poster
@@ -422,12 +440,8 @@ const getDragAfterElement = (target) => {
   return null
 }
 
-function mousingOverDrag(event){
-  event.target.classList.add('drag-border')
-}
 
-
-function swapElements(element1, element2) {
+function swapElements(element1: HTMLElement, element2: HTMLElement) {
   const grid = savedPostersGrid
   const placeholder = document.createElement('div')
 
@@ -439,7 +453,10 @@ function swapElements(element1, element2) {
 
 
 function handleCloseModalScreen(){
-    document.querySelector('dialog .mini-poster').remove()
+    const modalPoster = document.querySelector('dialog .mini-poster')
+    if (modalPoster){
+      modalPoster.remove()
+    }
     modalElement.close();
 }
 
@@ -470,7 +487,7 @@ const handleMakePoster = () => {
   displayNewSection(mainPosterSection, posterFormSection);
 }
 
-const isImage = (url) => {
+const isImage = (url:string): Promise<void> => {
   return new Promise((resolve, reject) => {
     const img = new Image();
     
@@ -484,9 +501,9 @@ const isImage = (url) => {
 };
 
 const setNewPosterFromForm = () => {
-  const imageURL = document.querySelector('#poster-image-url').value;
-  const title = document.querySelector('#poster-title').value;
-  const quote = document.querySelector('#poster-quote').value;
+  const imageURL = (document.querySelector('#poster-image-url') as HTMLInputElement).value;
+  const title = (document.querySelector('#poster-title') as HTMLInputElement).value;
+  const quote = (document.querySelector('#poster-quote') as HTMLInputElement).value;
 
   currentPoster = createPoster(imageURL, title, quote);
 };
@@ -505,7 +522,7 @@ const displayCurrentPoster = () => {
   posterQuote.textContent = currentPoster.quote;
 };
 
-const storeUnmotivationalPostersElements = (data) => {
+const storeUnmotivationalPostersElements = (data: Poster[]) => {
   for (let i = 0; i < data.length; i++){
     savedUnmotivationalPostersGrid.insertAdjacentHTML("beforeend", `
     <article class="mini-poster" id=${data[i].id}>
@@ -517,7 +534,7 @@ const storeUnmotivationalPostersElements = (data) => {
   }
 }
 
-const displayNewSection = (section1, section2) => {
+const displayNewSection = (section1: HTMLElement, section2: HTMLElement) => {
   section1.classList.toggle('hidden');
   section2.classList.toggle('hidden');
 };
@@ -529,12 +546,12 @@ const cleanData = () => {
 }
 
 // (we've provided two to get you started)!
-function getRandomIndex(array) {
+function getRandomIndex(array: any[]):number{
   return Math.floor(Math.random() * array.length);
 }
 
 
-function createPoster(imageURL, title, quote) {
+function createPoster(imageURL: string, title: string, quote:string ) {
   return {
     id: Date.now(), 
     imageURL: imageURL, 

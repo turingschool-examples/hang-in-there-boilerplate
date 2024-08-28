@@ -1,54 +1,23 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var _this = this;
+"use strict";
 // query selector variables go here 👇
-var posterImage = document.querySelector('.poster-img');
-var posterTitle = document.querySelector('.poster-title');
-var posterQuote = document.querySelector('.poster-quote');
-var mainPosterSection = document.querySelector('.main-poster');
-var posterFormSection = document.querySelector('.poster-form');
-var savedPostersSection = document.querySelector('.saved-posters');
-var unmotivationalPosterSection = document.querySelector('.unmotivational-poster');
-var savedPostersGrid = document.querySelector('.saved-posters-grid');
-var savedUnmotivationalPostersGrid = document.querySelector('.unmotivational-poster-flex');
-var modalElement = document.querySelector('dialog');
+const posterImage = document.querySelector('.poster-img');
+const posterTitle = document.querySelector('.poster-title');
+const posterQuote = document.querySelector('.poster-quote');
+const mainPosterSection = document.querySelector('.main-poster');
+const posterFormSection = document.querySelector('.poster-form');
+const savedPostersSection = document.querySelector('.saved-posters');
+const unmotivationalPosterSection = document.querySelector('.unmotivational-poster');
+const savedPostersGrid = document.querySelector('.saved-posters-grid');
+const savedUnmotivationalPostersGrid = document.querySelector('.unmotivational-poster-flex');
+const modalElement = document.querySelector('dialog');
+const showRandomButton = document.querySelector('.show-random');
+const showMakePosterButton = document.querySelector('.make-poster');
+const savePosterButton = document.querySelector('.save-poster');
+const posterElement = document.querySelector('.poster');
+const closeModalButton = document.querySelector('#closeModal');
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
-var unmotivationalPosters = [
+const unmotivationalPosters = [
     {
         name: "FAILURE",
         description: "Why bother trying? It's probably not worth it.",
@@ -270,55 +239,57 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     setNewPoster();
     displayCurrentPoster();
     storeUnmotivationalPostersElements(cleanData());
 });
-document.querySelector('.show-random').addEventListener('click', function () {
+showRandomButton.addEventListener('click', () => {
     setNewPoster();
     displayCurrentPoster();
 });
-document.querySelectorAll('.show-saved, .back-to-main').forEach(function (button) {
-    button.addEventListener('click', function () {
+document.querySelectorAll('.show-saved, .back-to-main').forEach(button => {
+    button.addEventListener('click', () => {
         displayNewSection(mainPosterSection, savedPostersSection);
     });
 });
-document.querySelector('.make-poster').addEventListener('click', function (event) {
+showMakePosterButton.addEventListener('click', (event) => {
     handleFormSubmission(event);
 });
-document.querySelectorAll('.show-main, .show-form').forEach(function (button) {
-    button.addEventListener('click', function () {
+document.querySelectorAll('.show-main, .show-form').forEach(button => {
+    button.addEventListener('click', () => {
         displayNewSection(mainPosterSection, posterFormSection);
     });
 });
-document.querySelector('.save-poster').addEventListener('click', handleSavePoster);
-document.querySelectorAll('.back-to-main-unmotivational, .show-unmotivational-poster').forEach(function (button) {
-    button.addEventListener('click', function () {
+savePosterButton.addEventListener('click', handleSavePoster);
+document.querySelectorAll('.back-to-main-unmotivational, .show-unmotivational-poster').forEach(button => {
+    button.addEventListener('click', () => {
         displayNewSection(unmotivationalPosterSection, mainPosterSection);
     });
 });
-savedUnmotivationalPostersGrid.addEventListener('dblclick', function (event) {
-    handleDeletePosters(event.target);
+savedUnmotivationalPostersGrid.addEventListener('dblclick', (event) => {
+    handleDeletePosters(event);
 });
-document.querySelector('.poster').addEventListener('click', function (event) {
-    handlePosterClick(event.target);
+posterElement.addEventListener('click', (event) => {
+    handlePosterClick(event);
 });
-savedPostersGrid.addEventListener('dblclick', function (event) {
-    handleModalSreen(event.target);
+savedPostersGrid.addEventListener('dblclick', (event) => {
+    handleModalSreen(event);
 });
-document.querySelector('#closeModal').addEventListener('click', handleCloseModalScreen);
-savedPostersGrid.addEventListener('dragstart', function (event) {
-    handlePosterDrag(event.target);
+closeModalButton.addEventListener('click', handleCloseModalScreen);
+savedPostersGrid.addEventListener('dragstart', (event) => {
+    handlePosterDrag(event);
 });
-savedPostersGrid.addEventListener('dragover', function (event) {
+savedPostersGrid.addEventListener('dragover', (event) => {
     handlePosterDragOver(event);
 });
 // functions and event handlers go here 👇
-var handlePosterClick = function (target) {
+const handlePosterClick = (event) => {
+    const target = event.target;
     if (target.tagName == "IMG") {
-        target.src = images[getRandomIndex(images)];
-        currentPoster = createPoster(target.src, currentPoster.title, currentPoster.quote);
+        const imgElement = target;
+        imgElement.src = images[getRandomIndex(images)];
+        currentPoster = createPoster(imgElement.src, currentPoster.title, currentPoster.quote);
     }
     if (target.tagName == "H1") {
         target.innerText = titles[getRandomIndex(titles)];
@@ -329,18 +300,20 @@ var handlePosterClick = function (target) {
         currentPoster = createPoster(currentPoster.imageURL, currentPoster.title, target.innerText);
     }
 };
-var handleDeletePosters = function (target) {
-    var poster = target.closest('article');
+const handleDeletePosters = (event) => {
+    const target = event.target;
+    const poster = target.closest('article');
     if (poster) {
         poster.remove();
     }
 };
-var handleModalSreen = function (target) {
-    var poster = target.closest('article');
+const handleModalSreen = (event) => {
+    const target = event.target;
+    const poster = target.closest('article');
     if (!poster) {
         return;
     }
-    var posterClone = poster.cloneNode(true);
+    const posterClone = poster.cloneNode(true);
     modalElement.insertAdjacentElement('afterbegin', posterClone);
     modalElement.showModal();
     modalElement.addEventListener('keydown', handleKeyDownEvent);
@@ -351,88 +324,82 @@ function handleKeyDownEvent(event) {
         modalElement.removeEventListener('keydown', handleKeyDownEvent);
     }
 }
-var handleFormSubmission = function (event) { return __awaiter(_this, void 0, void 0, function () {
-    var form, validImage, error_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                form = document.querySelector('form');
-                if (!form.checkValidity()) {
-                    form.reportValidity();
-                    return [2 /*return*/];
-                }
-                event.preventDefault();
-                _a.label = 1;
-            case 1:
-                _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, isImage(document.querySelector('#poster-image-url').value)];
-            case 2:
-                validImage = _a.sent();
-                console.log("The URL points to a valid image.");
-                handleMakePoster();
-                storeCurrentPosterElement();
-                return [3 /*break*/, 4];
-            case 3:
-                error_1 = _a.sent();
-                alert(("The URL does not point to a valid image."));
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
-        }
-    });
-}); };
-var handlePosterDragOver = function (event) {
+const handleFormSubmission = async (event) => {
+    const form = document.querySelector('form');
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
     event.preventDefault();
-    var afterElement = getDragAfterElement(event.target);
-    var draggable = document.querySelector('.dragging');
+    try {
+        const imageUrl = document.querySelector('#poster-image-url');
+        await isImage(imageUrl.value);
+        console.log("The URL points to a valid image.");
+        handleMakePoster();
+        storeCurrentPosterElement();
+    }
+    catch (error) {
+        alert(("The URL does not point to a valid image."));
+    }
+};
+const handlePosterDragOver = (event) => {
+    event.preventDefault();
+    const afterElement = getDragAfterElement(event);
+    // const draggable = document.querySelector('.dragging')
     if (afterElement) {
         afterElement.classList.add('drag-border');
     }
-    savedPostersGrid.querySelectorAll('article').forEach(function (poster) {
+    savedPostersGrid.querySelectorAll('article').forEach(poster => {
         if (poster !== afterElement) {
             poster.classList.remove('drag-border');
         }
     });
 };
-var handlePosterDrag = function (target) {
-    var poster = target.closest('article');
+const handlePosterDrag = (event) => {
+    const targetElement = event.target;
+    if (!targetElement) {
+        return;
+    }
+    const poster = targetElement.closest('article');
     if (!poster) {
         return;
     }
     draggingFunctionality(poster);
 };
-var draggingFunctionality = function (poster) {
+const draggingFunctionality = (poster) => {
     poster.classList.add('dragging');
-    poster.addEventListener('dragend', function () {
+    poster.addEventListener('dragend', () => {
         poster.classList.remove('dragging');
-        dragTarget = savedPostersGrid.querySelector('.drag-border');
+        const dragTarget = savedPostersGrid.querySelector('.drag-border');
         if (dragTarget) {
             swapElements(poster, dragTarget);
         }
-        savedPostersGrid.querySelectorAll('article').forEach(function (poster) {
+        savedPostersGrid.querySelectorAll('article').forEach(poster => {
             poster.classList.remove('drag-border');
         });
     });
 };
-var getDragAfterElement = function (target) {
-    var poster = target.closest('article');
+const getDragAfterElement = (event) => {
+    const target = event.target;
+    const poster = target.closest('article');
     if (poster) {
         return poster;
     }
     return null;
 };
-function mousingOverDrag(event) {
-    event.target.classList.add('drag-border');
-}
 function swapElements(element1, element2) {
-    var grid = savedPostersGrid;
-    var placeholder = document.createElement('div');
+    const grid = savedPostersGrid;
+    const placeholder = document.createElement('div');
     grid.insertBefore(placeholder, element1);
     grid.insertBefore(element1, element2);
     grid.insertBefore(element2, placeholder);
     grid.removeChild(placeholder);
 }
 function handleCloseModalScreen() {
-    document.querySelector('dialog .mini-poster').remove();
+    const modalPoster = document.querySelector('dialog .mini-poster');
+    if (modalPoster) {
+        modalPoster.remove();
+    }
     modalElement.close();
 }
 function handleSavePoster() {
@@ -442,51 +409,62 @@ function handleSavePoster() {
     savedPosters.push(currentPoster);
     storeCurrentPosterElement();
 }
-var storeCurrentPosterElement = function () {
-    savedPostersGrid.insertAdjacentHTML("beforeend", "<article class=\"mini-poster\" id=".concat(currentPoster.id, " draggable='true'>\n        <img src=").concat(currentPoster.imageURL, ">\n        <h2>").concat(currentPoster.title, "</h2>\n        <h4>").concat(currentPoster.quote, "</h4>\n    </article>\n    "));
+const storeCurrentPosterElement = () => {
+    savedPostersGrid.insertAdjacentHTML("beforeend", `<article class="mini-poster" id=${currentPoster.id} draggable='true'>
+        <img src=${currentPoster.imageURL}>
+        <h2>${currentPoster.title}</h2>
+        <h4>${currentPoster.quote}</h4>
+    </article>
+    `);
 };
-var handleMakePoster = function () {
+const handleMakePoster = () => {
     setNewPosterFromForm();
     displayCurrentPoster();
     displayNewSection(mainPosterSection, posterFormSection);
 };
-var isImage = function (url) {
-    return new Promise(function (resolve, reject) {
-        var img = new Image();
-        img.onload = function () { return resolve(); };
-        img.onerror = function () { return reject(); };
+const isImage = (url) => {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve();
+        img.onerror = () => reject();
         img.src = url;
-        console.log("Attempting to load image from: ".concat(img.src));
+        console.log(`Attempting to load image from: ${img.src}`);
     });
 };
-var setNewPosterFromForm = function () {
-    var imageURL = document.querySelector('#poster-image-url').value;
-    var title = document.querySelector('#poster-title').value;
-    var quote = document.querySelector('#poster-quote').value;
+const setNewPosterFromForm = () => {
+    const imageURL = document.querySelector('#poster-image-url').value;
+    const title = document.querySelector('#poster-title').value;
+    const quote = document.querySelector('#poster-quote').value;
     currentPoster = createPoster(imageURL, title, quote);
 };
-var setNewPoster = function () {
-    var imageURL = images[getRandomIndex(images)];
-    var title = titles[getRandomIndex(titles)];
-    var quote = quotes[getRandomIndex(quotes)];
+const setNewPoster = () => {
+    const imageURL = images[getRandomIndex(images)];
+    const title = titles[getRandomIndex(titles)];
+    const quote = quotes[getRandomIndex(quotes)];
     currentPoster = createPoster(imageURL, title, quote);
 };
-var displayCurrentPoster = function () {
+const displayCurrentPoster = () => {
     posterImage.src = currentPoster.imageURL;
     posterTitle.textContent = currentPoster.title;
     posterQuote.textContent = currentPoster.quote;
 };
-var storeUnmotivationalPostersElements = function (data) {
-    for (var i = 0; i < data.length; i++) {
-        savedUnmotivationalPostersGrid.insertAdjacentHTML("beforeend", "\n    <article class=\"mini-poster\" id=".concat(data[i].id, ">\n      <img src=").concat(data[i].imageURL, ">\n      <h2>").concat(data[i].title, "</h2>\n      <h4>").concat(data[i].quote, "</h>\n    </article>\n    "));
+const storeUnmotivationalPostersElements = (data) => {
+    for (let i = 0; i < data.length; i++) {
+        savedUnmotivationalPostersGrid.insertAdjacentHTML("beforeend", `
+    <article class="mini-poster" id=${data[i].id}>
+      <img src=${data[i].imageURL}>
+      <h2>${data[i].title}</h2>
+      <h4>${data[i].quote}</h>
+    </article>
+    `);
     }
 };
-var displayNewSection = function (section1, section2) {
+const displayNewSection = (section1, section2) => {
     section1.classList.toggle('hidden');
     section2.classList.toggle('hidden');
 };
-var cleanData = function () {
-    return unmotivationalPosters.map(function (data) {
+const cleanData = () => {
+    return unmotivationalPosters.map((data) => {
         return createPoster(data.img_url, data.name, data.description);
     });
 };
