@@ -104,6 +104,7 @@ button:hover {
 .saved-posters,
 .un-motivational-posters {
   padding: 40px;
+  max-width: 91.5em;
 }
 
 .saved-posters-grid {
@@ -151,10 +152,6 @@ button:hover {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
-}
-
-.un-motivational-posters {
-  max-width: 91.5em;
 }
 
 .poster-grid {
