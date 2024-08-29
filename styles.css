@@ -144,3 +144,15 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+/* Unmotivational Posters */
+
+.unmotivational-posters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px;
+}
+
+
