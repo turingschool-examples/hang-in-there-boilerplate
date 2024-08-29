@@ -14,6 +14,7 @@ var makePosterButton = document.querySelector('.make-poster')
 var savePosterButton = document.querySelector('.save-poster')
 var unmotivationalButton = document.querySelector('.show-unmotivational')
 var unmotivational = document.querySelector('.unmotivational-posters')
+var unmotivationalPosterParent = document.querySelector('.unmotivational-posters-grid')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -250,11 +251,10 @@ backToMainButtons.forEach(button => {
 makePosterButton.addEventListener('click', createCustomPoster)
 savePosterButton.addEventListener('click', savePoster)
 unmotivationalButton.addEventListener('click', showUnmotivationalPoster)
+unmotivationalPosterParent.addEventListener('dblclick', deleteUnmotivationalPoster, event)
 
+window.onload = pageLoad()
 
-window.onload = function () {
-  pageLoad()
-}
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -312,8 +312,8 @@ function createCustomPoster (event) {
     title: userTitle,
     quote: userQuote
   }
+  
   currentPoster = newPoster;
-  console.log('im here:', currentPoster)
   images.push(userImage)
   titles.push(userTitle)
   quotes.push(userQuote)
@@ -329,12 +329,9 @@ function createCustomPoster (event) {
 }
 
 function savePoster() {
-
-  console.log('working part 2', currentPoster)
   if (currentPoster) {
     if (checkIfPosterExists() === false) {
         savedPosters.push(currentPoster)
-
       } else {
     }
   }
@@ -380,10 +377,11 @@ function showUnmotivationalPoster() {
   
   unmotivationalGrid.innerHTML = ''
 
-  cleanedUnmotivationalPosters.forEach(poster => {
+  cleanedUnmotivationalPosters.forEach((poster, i) => {
+     console.log('what index: ', i)
 
       var postersHTML = `
-        <div class="mini-poster">
+        <div class="mini-poster" id="poster_${i}">
           <img src= "${poster.imageURL}">
           <h2>${poster.title}</h2>
           <h4>${poster.quote}</h4>
@@ -401,3 +399,16 @@ function cleanData() {
   })
   return cleanedData
 }
+
+ 
+function deleteUnmotivationalPoster(event) {
+ 
+  var miniPoster = Array.from(event.target.classList).includes('mini-poster')
+  var actualPoster = event.target
+  if (!miniPoster){
+    actualPoster = event.target.closest('.mini-poster')
+  }
+  console.log(actualPoster.id)
+  actualPoster.remove()
+}
+

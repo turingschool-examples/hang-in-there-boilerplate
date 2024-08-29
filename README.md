@@ -14,9 +14,14 @@ A boilerplate repo.
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
+    Clone the repo from [https://github.com/James-Cochran/Motivational].
+    Once you have it cloned you can cd into it, and open it in your text editor.
+    Left click on the index.html and open a live server to view in your browser.
+
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
+  ![Awesome Poster](image.png)
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
