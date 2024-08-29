@@ -25,22 +25,24 @@ ______________________________________________________
 # Hang in There  
 
 ### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+[//]: <> (This web application allows users to save both randomly and user generated motivational posters as well as view and delete unmotivational posters already provided. The app solves the problem of offering both motivation and unmotivation by providing aesthetic combinations of inspirational/disparaging images, titles, and quotes. Users create their own posters via forms where they input their own image, title, and quote and save those posters alongside any others generated randomly through the app's code. The app solves this problem by assembling the posters' constituent parts from data sets via JS functions and rendering them to the webpage by manipulating HTML elements. All of this gets applied styling via CSS code.)
 
 ### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
+[//]: <> (Navigate to https://github.com/litobot/hang-in-there-boilerplate, click the button to fork the repository. Clone it down to your local device by creating a local directory, cd into it and use `git clone git@github.com:litobot/hang-in-there-boilerplate.git`. )
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
+[//]: <> ([url=https://postimg.cc/64xHJq6y][img]https://i.postimg.cc/64xHJq6y/Saved-Posters.png[/img][/url]
+
+[url=https://postimg.cc/NyVJDbW8][img]https://i.postimg.cc/NyVJDbW8/Unmotivational-Posters.png[/img][/url])
 
 ### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+[//]: <> (Give some context for the project here. I worked on the project ~3 hours/day over the span of the allotted time (including the weekend) We were given 11 days to work on it I think? I am a Mod 2 student who has repeated both Mod 1 and Mod 2.)
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
+[//]: <> (I worked on this application with plenty of assistance from instructors, peers, student support, and my mentors. https://github.com/litobot - https://www.linkedin.com/in/litocroy ) 
 
 ### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
+[//]: <> (The learning goals were: 1. Practice reading, understanding, and using existing code. 2. Write clean, DRY JavaScript. 3. Use CSS and HTML to match styling and layout of provided comps. Tech I used - Class Lessons/Recordings, MDN docs, Stack Exchange, ChatGPT.)
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+[//]: <> (Some wins for the project: 1. I didn't work myself into the ground like I have in the past. (Maybe I went a little too far in that direction, because I wasn't able to finish without some big help from ChatGPT.) 2. I used lots of resources and got help ahead of time before getting too far down rabbit holes I couldn't dig myself out of. 3. I think I kept my code pretty organized and DRY. Challenges I faced: I'm still having a really hard time with JS syntax in general. I can't just glance at a function and understand even my own code. I have to walk through it pretty slowly. I also don't have a strong grapst of callback functions and I think it was just a lot more code than we wrote in Ruby so scrolling up and down was a pain and I'd get lost often.)

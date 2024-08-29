@@ -144,3 +144,27 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+.unmotivational-layout {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  column-gap: 10px;
+  padding: 2% 16%;
+}
+
+.unmotivational-layout .mini-poster {
+  background: gray;
+  border-radius: 3%;
+}
+
+.unmotivational-layout .mini-poster h2 {
+  color: black;
+  padding-top: 6%;
+  font-weight: 100
+}
+
+.unmotivational-layout .mini-poster h4 {
+  font-weight: 100;
+}
