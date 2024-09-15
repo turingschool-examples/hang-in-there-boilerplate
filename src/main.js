@@ -1,4 +1,19 @@
 // query selector variables go here 👇
+var randomPosterButton = document.querySelector(".show-random");
+var image = document.querySelector(".poster-img");
+var title = document.querySelector(".poster-title");
+var quote = document.querySelector(".poster-quote");
+var currentPoster = document.querySelector(".poster");
+var userPoster = document.querySelector(".show-form");
+var posterForm = document.querySelector(".poster-form")
+var mainPoster = document.querySelector(".main-poster")
+var customPoster = document.querySelector(".make-poster")
+var savedPoster = document.querySelector(".show-saved")
+var savePosterButton = document.querySelector(".save-poster")
+var savedPostersForm = document.querySelector(".saved-posters")
+var showMainButton = document.querySelector(".show-main")
+var backToMainButton = document.querySelector(".back-to-main")
+
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -100,9 +115,22 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+
 
 // event listeners go here 👇
+randomPosterButton.addEventListener('click', createRandomPoster);
+addEventListener("load", createRandomPoster);
+
+userPoster.addEventListener('click', changeView)
+
+savedPoster.addEventListener('click', showSavedPosters)
+
+showMainButton.addEventListener('click', showMainPage)
+
+backToMainButton.addEventListener('click', showMainPage)
+
+
+// customPoster.addEventListener('click', )
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -111,9 +139,36 @@ function getRandomIndex(array) {
 }
 
 function createPoster(imageURL, title, quote) {
-  return {
+  var poster =  {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
+    quote: quote
+  }
+  return poster
+}
+
+function createRandomPoster(){
+  newPoster = createPoster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)]);
+  currentPoster.innerHTML = 
+  `<img class="poster-img" src="${newPoster.imageURL}" alt="nothin' to see here">
+  <h1 class="poster-title">"${newPoster.title}"</h1>
+  <h3 class="poster-quote">"${newPoster.quote}"</h3>`
+}
+
+function changeView() {
+  posterForm.classList.remove('hidden')
+  mainPoster.classList.add('hidden')
+}
+
+function showSavedPosters() {
+  savedPostersForm.classList.remove('hidden')
+  posterForm.classList.add('hidden')
+  mainPoster.classList.add('hidden')
+ }
+
+function showMainPage() {
+mainPoster.classList.remove('hidden')
+posterForm.classList.add('hidden')
+savedPostersForm.classList.add('hidden')
 }
