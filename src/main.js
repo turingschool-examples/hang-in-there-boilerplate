@@ -1,4 +1,21 @@
 // query selector variables go here 👇
+var imageOnPoster = document.querySelector('.poster-img');
+var titleOnPoster = document.querySelector('.poster-title');
+var quoteOnPoster = document.querySelector('.poster-quote');
+var randomPosterButton = document.querySelector('.show-random');
+var makeYourOwnPosterButton = document.querySelector('.show-form');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var nvmTakeMeBackButton = document.querySelector('.show-main');
+var backToMainButton = document.querySelector('.back-to-main');
+var posterFormSection = document.querySelector('.poster-form');
+var mainPosterSection = document.querySelector('.main-poster');
+var savedPostersSection = document.querySelector('.saved-posters');
+var showMyPosterButton = document.querySelector('.make-poster');
+var imageUrlInput = document.querySelector('#poster-image-url');
+var motivationalTitleInput = document.querySelector('#poster-title');
+var motivationalQuoteInput = document.querySelector('#poster-quote');
+var saveThisPosterButton = document.querySelector('.save-poster');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -103,17 +120,108 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener('load', changePoster);
+randomPosterButton.addEventListener('click', changePoster);
+makeYourOwnPosterButton.addEventListener('click', makeYourOwnPosterView);
+showSavedPostersButton.addEventListener('click', showSavedPostersView);
+nvmTakeMeBackButton.addEventListener('click', showMainPosterView);
+backToMainButton.addEventListener('click', showMainPosterView);
+showMyPosterButton.addEventListener('click', createYourOwnPoster);
+saveThisPosterButton.addEventListener('click', saveThisPoster);
+savedPostersGrid.addEventListener('dblclick', deleteSavedPoster);
 
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
+
+// Outputs a randomized index in the given array
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+};
+
+// Create a poster using randomized images, titles, and quotes, then return a poster in the currentPoster variable
+function createPoster(imageURL, title, quote) {
+  var imagesIndex = getRandomIndex(imageURL);
+  var newImage = imageURL[imagesIndex];
+  var titleIndex = getRandomIndex(title);
+  var newTitle = title[titleIndex];
+  var quoteIndex = getRandomIndex(quote);
+  var newQuote = quote[quoteIndex];
+  currentPoster = {
+      id: Date.now(), 
+      imageURL: newImage, 
+      title: newTitle, 
+      quote: newQuote 
+    }
+  return currentPoster;
+};
+
+// Change poster to another random poster
+function changePoster() {
+  createPoster(images, titles, quotes);
+  imageOnPoster.src = currentPoster.imageURL;
+  titleOnPoster.innerText = currentPoster.title;
+  quoteOnPoster.innerText = currentPoster.quote;
+};
+
+// Switch user to 'Make Your Own Poster' view
+function makeYourOwnPosterView() {
+  posterFormSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden');
+  savedPostersSection.classList.add('hidden');
+};
+
+// Switch user to 'Show Saved Posters' view
+function showSavedPostersView() {
+  savedPostersSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden');
+  posterFormSection.classList.add('hidden');
+
+  savedPostersGrid.innerHTML = '';
+
+  for (var i = 0; i < savedPosters.length; i++) {
+    var poster = savedPosters[i];
+    var posterElement = document.createElement('div');
+    posterElement.classList.add('mini-poster');
+    posterElement.innerHTML = `<img src="${poster.imageURL}" alt="Saved Poster"><h2>${poster.title}</h2><h4>${poster.quote}</h4>`;
+    savedPostersGrid.appendChild(posterElement);
+  }
+};
+
+// Switch user to main view
+function showMainPosterView() {
+  mainPosterSection.classList.remove('hidden');
+  savedPostersSection.classList.add('hidden');
+  posterFormSection.classList.add('hidden');
+};
+
+// Allow a user to create their own poster
+function createYourOwnPoster(event) { 
+  images.push(imageUrlInput.value);
+  titles.push(motivationalTitleInput.value);
+  quotes.push(motivationalQuoteInput.value);
+  var userCurrentPoster = {
+    id: Date.now(), 
+    imageURL: imageOnPoster.src = imageUrlInput.value,
+    title: titleOnPoster.innerText = motivationalTitleInput.value,
+    quote: quoteOnPoster.innerText = motivationalQuoteInput.value
+  };
+  currentPoster = userCurrentPoster; 
+  event.preventDefault();
+  showMainPosterView();
+  return currentPoster;
+};
+
+// Save posters to saved poster view
+function saveThisPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+  return savedPosters;
 }
 
-function createPoster(imageURL, title, quote) {
-  return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
+// Delete a saved poster when double clicked
+function deleteSavedPoster(event) {
+  if (event.target.tagName === 'DIV') {
+    event.target.remove();
+  }
 }
+
