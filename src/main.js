@@ -1,4 +1,22 @@
 // query selector variables go here 👇
+var showRandPoster = document.querySelector(".show-random")
+var makePoster = document.querySelector(".show-form")
+var posterImg = document.querySelector(".poster-img")
+var title = document.querySelector(".poster-title")
+var quote = document.querySelector(".poster-quote")
+var mainPoster = document.querySelector(".main-poster")
+var makePosterView = document.querySelector(".poster-form")
+var mySavedPosters = document.querySelector(".saved-posters")
+var showSavedPostersButton = document.querySelector(".show-saved")
+var neverMindButton = document.querySelector(".show-main")
+var backToMainButton = document.querySelector(".back-to-main")
+var showMyPosterButton = document.querySelector(".make-poster")
+var userPosterImgUrl = document.querySelector("#poster-image-url")
+var userPosterTitle = document.querySelector("#poster-title")
+var userPosterQuote = document.querySelector("#poster-quote")
+var saveMyPosterButton = document.querySelector(".save-poster")
+
+
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -104,8 +122,82 @@ var currentPoster;
 
 // event listeners go here 👇
 
+
+window.addEventListener("load", randomPoster)
+showRandPoster.addEventListener("click", randomPoster)
+makePoster.addEventListener("click", makePosterForm)
+showSavedPostersButton.addEventListener("click", showSaved)
+neverMindButton.addEventListener("click", backFromMake)
+backToMainButton.addEventListener("click", backFromSaved)
+showMyPosterButton.addEventListener("click", uniquePoster)
+saveMyPosterButton.addEventListener("click", saveFavoritesPoster)
+
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+function randomPoster() {
+  var getRandoImageIndex = getRandomIndex(images)
+  var getRandoTitleIndex = getRandomIndex(titles)
+  var getRandoQuoteIndex = getRandomIndex(quotes)
+  var randoPoster = images[getRandoImageIndex]
+  var randoTitle = titles[getRandoTitleIndex]
+  var randoQuote = quotes[getRandoQuoteIndex]
+    posterImg.src = randoPoster
+    title.innerText = randoTitle
+    quote.innerText = randoQuote
+  currentPoster = createPoster(randoPoster, randoTitle, randoQuote)
+}
+
+function makePosterForm() {
+  mainPoster.classList.add("hidden")
+  makePoster.classList.remove("hidden")
+  makePosterView.classList.remove("hidden")
+}
+
+function showSaved() {
+  mySavedPosters.classList.remove("hidden")
+  mainPoster.classList.add("hidden")
+}
+
+function backFromMake() {
+  mainPoster.classList.remove("hidden")
+  makePosterView.classList.add("hidden")
+}
+
+function backFromSaved() {
+  mainPoster.classList.remove("hidden")
+  mySavedPosters.classList.add("hidden")
+}
+
+function uniquePoster() {
+  event.preventDefault();
+  var inputUrl = userPosterImgUrl.value
+  var inputMotivationalTitle = userPosterTitle.value
+  var inputMotivationalQuote = userPosterQuote.value
+  posterImg.src=inputUrl
+  title.innerText=inputMotivationalTitle
+  quote.innerText=inputMotivationalQuote
+  backFromMake();
+  var imgValue = document.getElementById("poster-image-url").value
+  images.push(imgValue);
+  var titleValue = document.getElementById("poster-title").value
+  titles.push(titleValue);
+  var quoteValue = document.getElementById("poster-quote").value
+  quotes.push(quoteValue);
+
+  currentPoster = createPoster(imgValue, titleValue, quoteValue)
+}
+
+function saveFavoritesPoster() {
+  for (i =0; i < savedPosters.length; i++){
+    if (currentPoster.id === savedPosters[i].id) {
+      return
+    }
+  } 
+  savedPosters.push(currentPoster)
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -117,3 +209,9 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+// Extra Tips
+/* access event objects in event listener and pass events as a parameter. event.target to get specific ID's
+event something in the event object called preventDefault - overrides functionality of
+whatever it things the event should do. Target is separate from preventDefault
+// */
