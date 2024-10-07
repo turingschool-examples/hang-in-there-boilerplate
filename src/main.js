@@ -1,5 +1,3 @@
-// query selector variables go here 👇
-
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -102,8 +100,13 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
+// query selector variables go here 👇
+var posterImages = document.querySelector(".poster-img")
+var posterTitles = document.querySelector(".poster-title")
+var posterQuotes = document.querySelector(".poster-quote")
 
+// event listeners go here 👇
+window.addEventListener("load", showRandomHomepagePoster)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -116,4 +119,10 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function showRandomHomepagePoster() {
+  posterImages.src = images[getRandomIndex(images)];
+  posterQuotes.innerText = quotes[getRandomIndex(quotes)];
+  posterTitles.innerText = titles[getRandomIndex(titles)];
 }
