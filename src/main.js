@@ -126,3 +126,36 @@ function showRandomHomepagePoster() {
   posterQuotes.innerText = quotes[getRandomIndex(quotes)];
   posterTitles.innerText = titles[getRandomIndex(titles)];
 }
+//In this function above I am using the getRandomIndex function to generate a random poster.
+//This function is triggered by the event listener above, when the window is loaded. 
+
+function mainPageView() {
+
+}
+//This is the default view in the html file. 
+//write event listeners for the function
+//write query selectors for the buttons: "nevermind take me back" button and "Back to main" buttons
+//show the .main-poster (remove hidden)
+//hide the .poster-form view (add hidden)
+//hide the .saved-posters view (add hidden)
+
+function formView() {
+
+}
+//write event listeners for the function
+//write query selectors for the button: "Make your own poster" button
+//show the .poster-form view (remove hidden)
+//hide the .saved-posters view (add hidden)
+//hide the .main-poster view (add hidden)
+
+function savedPostersView() {
+
+}
+//write event listeners for the function
+//write query selectors for the button: for "show saved posters" button
+//show the .saved-posters view (remove hidden)
+//hide the .poster-form view (add hidden)
+//hide the .main-poster view (add hidden)
+
+
+console.log(savedPosters)
