@@ -101,9 +101,12 @@ var savedPosters = [];
 var currentPoster;
 
 // query selector variables go here 👇
-var posterImages = document.querySelector(".poster-img")
-var posterTitles = document.querySelector(".poster-title")
-var posterQuotes = document.querySelector(".poster-quote")
+var posterImage = document.querySelector(".poster-img")
+var posterTitle = document.querySelector(".poster-title")
+var posterQuote = document.querySelector(".poster-quote")
+var userPosterImage = document.querySelector("#poster-image-url")
+var userPosterTitle = document.querySelector("#poster-title")
+var userPosterQuote = document.querySelector("#poster-quote")
 var makeOwnPosterButton = document.querySelector(".show-form")
 var showSavedPostersButton = document.querySelector(".show-saved")
 var showMainPageButton = document.querySelector(".show-main")
@@ -113,6 +116,7 @@ var mainPosterViewSection = document.querySelector(".main-poster")
 var OwnPosterFormSection = document.querySelector(".poster-form")
 var savedPostersSection = document.querySelector(".saved-posters")
 var showRandomPosterButton = document.querySelector(".show-random")
+var showUserPosterButton = document.querySelector(".make-poster")
 
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
@@ -120,7 +124,10 @@ makeOwnPosterButton.addEventListener("click", function() {handleView('form')})
 showSavedPostersButton.addEventListener("click", function() {handleView('saved')})
 showMainPageButton.addEventListener("click", function() {handleView('main')})
 backToMainButton.addEventListener("click", function() {handleView('main')})
+showUserPosterButton.addEventListener("click", function() {handleView('main')})
+showUserPosterButton.addEventListener("click", showUserCreatedPoster)
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
+
 
 //the anonymous callback function () used above is for deferring its execution
 //until the button is acutually clicked. 
@@ -140,14 +147,14 @@ function createPoster(imageURL, title, quote) {
 }
 
 function showRandomHomepagePoster() {
-  posterImages.src = images[getRandomIndex(images)];
-  posterTitles.innerText = titles[getRandomIndex(titles)];
-  posterQuotes.innerText = quotes[getRandomIndex(quotes)];
+  posterImage.src = images[getRandomIndex(images)];
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
 
   currentPoster = {
-    imageURL: posterImages.src,
-    title: posterTitles.innerText,
-    quote: posterQuotes.innerText
+    imageURL: posterImage.src,
+    title: posterTitle.innerText,
+    quote: posterQuote.innerText
   };
   return currentPoster
 }
@@ -163,15 +170,34 @@ function handleView(view) {
   
   Object.values(views).forEach((section) => {
     section.classList.add("hidden")
-    console.log(Object.values(views))
+    // console.log(Object.values(views))
   })
   //above we start by removing all of the view sections
   //Object.values() takes my views object above it and returns an array 
   //containing all of the values of that object’s properties, ignoring the keys.
 
   views[view].classList.remove("hidden")
-  console.log(views[view])
+  // console.log(views[view])
 }
 //based on whatever argument was passed in (ie: 'form'), we will make that section visible
 
-console.log(savedPosters)
+function showUserCreatedPoster(event) {
+  event.preventDefault();
+
+  posterImage.src = userPosterImage.value;
+  posterTitle.innerText = userPosterTitle.value;
+  posterQuote.innerText = userPosterQuote.value;
+
+  currentPoster = {
+    imageURL: posterImage.src,
+    title: posterTitle.innerText,
+    quote: posterQuote.innerText
+  }
+  return currentPoster
+}
+
+// console.log(savedPosters)
+// console.log(images)
+console.log(titles)
+// // console.log(quotes)
+
