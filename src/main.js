@@ -104,9 +104,24 @@ var currentPoster;
 var posterImages = document.querySelector(".poster-img")
 var posterTitles = document.querySelector(".poster-title")
 var posterQuotes = document.querySelector(".poster-quote")
+var makeOwnPosterButton = document.querySelector(".show-form")
+var showSavedPostersButton = document.querySelector(".show-saved")
+var showMainPageButton = document.querySelector(".show-main")
+var backToMainButton = document.querySelector(".back-to-main")
+var showRandomPosterButton = document.querySelector(".show-random")
+var mainPosterViewSection = document.querySelector(".main-poster")
+var OwnPosterFormSection = document.querySelector(".poster-form")
+var savedPostersSection = document.querySelector(".saved-posters")
+var showRandomPosterButton = document.querySelector(".show-random")
 
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
+makeOwnPosterButton.addEventListener("click", formView)
+showSavedPostersButton.addEventListener("click", savedPostersView)
+showMainPageButton.addEventListener("click", mainPageView)
+backToMainButton.addEventListener("click", mainPageView)
+showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -123,14 +138,23 @@ function createPoster(imageURL, title, quote) {
 
 function showRandomHomepagePoster() {
   posterImages.src = images[getRandomIndex(images)];
-  posterQuotes.innerText = quotes[getRandomIndex(quotes)];
   posterTitles.innerText = titles[getRandomIndex(titles)];
+  posterQuotes.innerText = quotes[getRandomIndex(quotes)];
+
+  currentPoster = {
+    imageURL: posterImages.src,
+    title: posterTitles.innerText,
+    quote: posterQuotes.innerText
+  };
+  return currentPoster
 }
 //In this function above I am using the getRandomIndex function to generate a random poster.
 //This function is triggered by the event listener above, when the window is loaded. 
 
 function mainPageView() {
-
+  mainPosterViewSection.classList.remove("hidden")
+  savedPostersSection.classList.add("hidden")
+  OwnPosterFormSection.classList.add("hidden")
 }
 //This is the default view in the html file. 
 //write event listeners for the function
@@ -140,7 +164,8 @@ function mainPageView() {
 //hide the .saved-posters view (add hidden)
 
 function formView() {
-
+  OwnPosterFormSection.classList.remove("hidden")
+  mainPosterViewSection.classList.add("hidden")
 }
 //write event listeners for the function
 //write query selectors for the button: "Make your own poster" button
@@ -149,7 +174,9 @@ function formView() {
 //hide the .main-poster view (add hidden)
 
 function savedPostersView() {
-
+  savedPostersSection.classList.remove("hidden")
+  OwnPosterFormSection.classList.add("hidden")
+  mainPosterViewSection.classList.add("hidden")
 }
 //write event listeners for the function
 //write query selectors for the button: for "show saved posters" button
