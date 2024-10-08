@@ -122,6 +122,10 @@ showMainPageButton.addEventListener("click", function() {handleView('main')})
 backToMainButton.addEventListener("click", function() {handleView('main')})
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 
+//the anonymous callback function () used above is for deferring its execution
+//until the button is acutually clicked. 
+
+
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -154,10 +158,20 @@ function handleView(view) {
     form: OwnPosterFormSection,
     saved: savedPostersSection
   }
+  //this object above links the keys to the dom elements (via the query selectors)
+
+  
   Object.values(views).forEach((section) => {
     section.classList.add("hidden")
+    console.log(Object.values(views))
   })
+  //above we start by removing all of the view sections
+  //Object.values() takes my views object above it and returns an array 
+  //containing all of the values of that object’s properties, ignoring the keys.
+
   views[view].classList.remove("hidden")
+  console.log(views[view])
 }
+//based on whatever argument was passed in (ie: 'form'), we will make that section visible
 
 console.log(savedPosters)
