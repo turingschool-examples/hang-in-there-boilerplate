@@ -116,14 +116,13 @@ var showRandomPosterButton = document.querySelector(".show-random")
 
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
-makeOwnPosterButton.addEventListener("click", function() {viewHandler('form')})
-showSavedPostersButton.addEventListener("click", function() {viewHandler('saved')})
-showMainPageButton.addEventListener("click", function() {viewHandler('main')})
-backToMainButton.addEventListener("click", function() {viewHandler('main')})
+makeOwnPosterButton.addEventListener("click", function() {handleView('form')})
+showSavedPostersButton.addEventListener("click", function() {handleView('saved')})
+showMainPageButton.addEventListener("click", function() {handleView('main')})
+backToMainButton.addEventListener("click", function() {handleView('main')})
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -149,7 +148,7 @@ function showRandomHomepagePoster() {
   return currentPoster
 }
 
-function viewHandler(view) {
+function handleView(view) {
   const views = {
     main: mainPosterViewSection,
     form: OwnPosterFormSection,
