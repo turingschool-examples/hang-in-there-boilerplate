@@ -184,5 +184,10 @@ function savedPostersView() {
 //hide the .poster-form view (add hidden)
 //hide the .main-poster view (add hidden)
 
+//REFACTOR FOR PAGE VIEWS
+
+function togglePageView(element) {
+  element.classList.toggle("hidden")
+}
 
 console.log(savedPosters)
