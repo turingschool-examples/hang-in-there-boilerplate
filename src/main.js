@@ -1,5 +1,8 @@
 // query selector variables go here 👇
-
+let savePosterButton = document.querySelector('.save-poster'),
+    showSavedButton = document.querySelector('.show-saved'),
+    showRandomButton = document.querySelector('.show-random')
+    makePosterButton = document.querySelector('.show-form')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -103,7 +106,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+ Window.onload = buildPoster();
+showRandomButton.addEventListener('click', buildPoster);
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -116,4 +120,14 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function buildPoster() {
+  var imageIndex = getRandomIndex(images);
+  var titleIndex = getRandomIndex(titles);
+  var quoteIndex = getRandomIndex(quotes);
+
+  document.querySelector('.poster-img').src = images[imageIndex];
+  document.querySelector('.poster-title').innerHTML = titles[titleIndex];
+  document.querySelector('.poster-quote').innerHTML = quotes[quoteIndex];
 }
