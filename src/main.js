@@ -1,4 +1,5 @@
 // query selector variables go here
+let poster = document.querySelector('main-poster')
 let title = document.querySelector('poster-title');
 let imageURL = document.querySelector('poster-image')
 let quote = document.querySelector('poster-quote')
@@ -110,7 +111,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+randomPosterBtn.addEventListener("click", createPoster)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
