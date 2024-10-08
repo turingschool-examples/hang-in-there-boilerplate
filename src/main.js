@@ -101,9 +101,12 @@ var savedPosters = [];
 var currentPoster;
 
 // query selector variables go here 👇
-var posterImages = document.querySelector(".poster-img")
-var posterTitles = document.querySelector(".poster-title")
-var posterQuotes = document.querySelector(".poster-quote")
+var posterImage = document.querySelector(".poster-img")
+var posterTitle = document.querySelector(".poster-title")
+var posterQuote = document.querySelector(".poster-quote")
+var userPosterImage = document.querySelector("#poster-image-url")
+var userPosterTitle = document.querySelector("#poster-title")
+var userPosterQuote = document.querySelector("#poster-quote")
 var makeOwnPosterButton = document.querySelector(".show-form")
 var showSavedPostersButton = document.querySelector(".show-saved")
 var showMainPageButton = document.querySelector(".show-main")
@@ -113,17 +116,24 @@ var mainPosterViewSection = document.querySelector(".main-poster")
 var OwnPosterFormSection = document.querySelector(".poster-form")
 var savedPostersSection = document.querySelector(".saved-posters")
 var showRandomPosterButton = document.querySelector(".show-random")
+var showUserPosterButton = document.querySelector(".make-poster")
 
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
-makeOwnPosterButton.addEventListener("click", formView)
-showSavedPostersButton.addEventListener("click", savedPostersView)
-showMainPageButton.addEventListener("click", mainPageView)
-backToMainButton.addEventListener("click", mainPageView)
+makeOwnPosterButton.addEventListener("click", function() {handleView('form')})
+showSavedPostersButton.addEventListener("click", function() {handleView('saved')})
+showMainPageButton.addEventListener("click", function() {handleView('main')})
+backToMainButton.addEventListener("click", function() {handleView('main')})
+showUserPosterButton.addEventListener("click", function() {handleView('main')})
+showUserPosterButton.addEventListener("click", showUserCreatedPoster)
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 
+
+//the anonymous callback function () used above is for deferring its execution
+//until the button is acutually clicked. 
+
+
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -137,57 +147,71 @@ function createPoster(imageURL, title, quote) {
 }
 
 function showRandomHomepagePoster() {
-  posterImages.src = images[getRandomIndex(images)];
-  posterTitles.innerText = titles[getRandomIndex(titles)];
-  posterQuotes.innerText = quotes[getRandomIndex(quotes)];
+  posterImage.src = images[getRandomIndex(images)];
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
 
-  currentPoster = {
-    imageURL: posterImages.src,
-    title: posterTitles.innerText,
-    quote: posterQuotes.innerText
+  return currentPoster = {
+    imageURL: posterImage.src,
+    title: posterTitle.innerText,
+    quote: posterQuote.innerText
   };
-  return currentPoster
-}
-//In this function above I am using the getRandomIndex function to generate a random poster.
-//This function is triggered by the event listener above, when the window is loaded. 
-
-function mainPageView() {
-  mainPosterViewSection.classList.remove("hidden")
-  savedPostersSection.classList.add("hidden")
-  OwnPosterFormSection.classList.add("hidden")
-}
-//This is the default view in the html file. 
-//write event listeners for the function
-//write query selectors for the buttons: "nevermind take me back" button and "Back to main" buttons
-//show the .main-poster (remove hidden)
-//hide the .poster-form view (add hidden)
-//hide the .saved-posters view (add hidden)
-
-function formView() {
-  OwnPosterFormSection.classList.remove("hidden")
-  mainPosterViewSection.classList.add("hidden")
-}
-//write event listeners for the function
-//write query selectors for the button: "Make your own poster" button
-//show the .poster-form view (remove hidden)
-//hide the .saved-posters view (add hidden)
-//hide the .main-poster view (add hidden)
-
-function savedPostersView() {
-  savedPostersSection.classList.remove("hidden")
-  OwnPosterFormSection.classList.add("hidden")
-  mainPosterViewSection.classList.add("hidden")
-}
-//write event listeners for the function
-//write query selectors for the button: for "show saved posters" button
-//show the .saved-posters view (remove hidden)
-//hide the .poster-form view (add hidden)
-//hide the .main-poster view (add hidden)
-
-//REFACTOR FOR PAGE VIEWS
-
-function togglePageView(element) {
-  element.classList.toggle("hidden")
 }
 
-console.log(savedPosters)
+function handleView(view) {
+  const views = {
+    main: mainPosterViewSection,
+    form: OwnPosterFormSection,
+    saved: savedPostersSection
+  }
+  //this object above links the keys to the dom elements (via the query selectors)
+
+  
+  Object.values(views).forEach((section) => {
+    section.classList.add("hidden")
+    // console.log(Object.values(views))
+  })
+  //above we start by removing all of the view sections
+  //Object.values() takes my views object above it and returns an array 
+  //containing all of the values of that object’s properties, ignoring the keys.
+
+  views[view].classList.remove("hidden")
+  // console.log(views[view])
+}
+
+function showUserCreatedPoster(event) {
+  event.preventDefault();
+
+  let userImage = userPosterImage.value,
+      userTitle = userPosterTitle.value,
+      userQuote = userPosterQuote.value;
+
+  console.log("User Image:", userImage);
+  console.log("User Title:", userTitle);
+  console.log("User Quote:", userQuote);
+
+  posterImage.src = userImage;
+  posterTitle.innerText = userTitle;
+  posterQuote.innerText = userQuote;
+
+  addUserPoster(userImage, userTitle, userQuote);
+
+  console.log("Images array:", images);
+  console.log("Titles array:", titles);
+  console.log("Quotes array:", quotes);
+
+  return currentPoster = { 
+    imageURL: userImage, 
+    title: userTitle, 
+    quote: userQuote 
+  };
+}
+
+function addUserPoster(image, title, quote) {
+  images.push(image)
+  titles.push(title)
+  quotes.push(quote)
+}
+
+
+
