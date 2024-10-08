@@ -151,12 +151,11 @@ function showRandomHomepagePoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 
-  currentPoster = {
+  return currentPoster = {
     imageURL: posterImage.src,
     title: posterTitle.innerText,
     quote: posterQuote.innerText
   };
-  return currentPoster
 }
 
 function handleView(view) {
@@ -179,25 +178,40 @@ function handleView(view) {
   views[view].classList.remove("hidden")
   // console.log(views[view])
 }
-//based on whatever argument was passed in (ie: 'form'), we will make that section visible
 
 function showUserCreatedPoster(event) {
   event.preventDefault();
 
-  posterImage.src = userPosterImage.value;
-  posterTitle.innerText = userPosterTitle.value;
-  posterQuote.innerText = userPosterQuote.value;
+  let userImage = userPosterImage.value,
+      userTitle = userPosterTitle.value,
+      userQuote = userPosterQuote.value;
 
-  currentPoster = {
-    imageURL: posterImage.src,
-    title: posterTitle.innerText,
-    quote: posterQuote.innerText
-  }
-  return currentPoster
+  console.log("User Image:", userImage);
+  console.log("User Title:", userTitle);
+  console.log("User Quote:", userQuote);
+
+  posterImage.src = userImage;
+  posterTitle.innerText = userTitle;
+  posterQuote.innerText = userQuote;
+
+  addUserPoster(userImage, userTitle, userQuote);
+
+  console.log("Images array:", images);
+  console.log("Titles array:", titles);
+  console.log("Quotes array:", quotes);
+
+  return currentPoster = { 
+    imageURL: userImage, 
+    title: userTitle, 
+    quote: userQuote 
+  };
 }
 
-// console.log(savedPosters)
-// console.log(images)
-console.log(titles)
-// // console.log(quotes)
+function addUserPoster(image, title, quote) {
+  images.push(image)
+  titles.push(title)
+  quotes.push(quote)
+}
+
+
 
