@@ -1,7 +1,11 @@
 // query selector variables go here
 let title = document.querySelector('poster-title');
-let imageURL = document.querySelector('poster-title')
-
+let imageURL = document.querySelector('poster-image')
+let quote = document.querySelector('poster-quote')
+let savePosterBtn = document.querySelector('save-poster')
+let randomPosterBtn = document.querySelector('show-random')
+let showSavedBtn = document.querySelector('show-saved')
+let makeYourOwnBtn = document.querySelector('show-form')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -109,6 +113,8 @@ var currentPoster;
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
