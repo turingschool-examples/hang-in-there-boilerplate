@@ -1,8 +1,15 @@
 // query selector variables go here 👇
 let savePosterButton = document.querySelector('.save-poster'),
     showSavedButton = document.querySelector('.show-saved'),
-    showRandomButton = document.querySelector('.show-random')
-    makePosterButton = document.querySelector('.show-form')
+    showRandomButton = document.querySelector('.show-random'),
+    makePosterButton = document.querySelector('.show-form'),
+    showMainButton = document.querySelector('.show-main'),
+    backToMainButton = document.querySelector('.back-to-main')
+
+let togglePosterForm = document.querySelector('.poster-form'),
+    toggleMainPage = document.querySelector('.main-poster'),
+    toggleSavedPosters = document.querySelector('.saved-posters')
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -111,6 +118,8 @@ var currentPoster;
  showSavedButton.addEventListener('click', showSaved);
  showRandomButton.addEventListener('click', buildPoster);
  makePosterButton.addEventListener('click', makePoster);
+ showMainButton.addEventListener('click', showMain);
+ backToMainButton.addEventListener('click', backToMain);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -145,9 +154,11 @@ function savePoster() {
 }
 
 function showSaved() {
-
+  toggleSavedPosters.classList.toggle('hidden')
+  toggleMainPage.classList.toggle('hidden')
 }
 
 function makePoster() {
-  
+  togglePosterForm.classList.toggle('hidden')
+  toggleMainPage.classList.toggle('hidden')
 }
