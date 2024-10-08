@@ -116,10 +116,10 @@ var showRandomPosterButton = document.querySelector(".show-random")
 
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
-makeOwnPosterButton.addEventListener("click", formView)
-showSavedPostersButton.addEventListener("click", savedPostersView)
-showMainPageButton.addEventListener("click", mainPageView)
-backToMainButton.addEventListener("click", mainPageView)
+makeOwnPosterButton.addEventListener("click", function() {viewHandler('form')})
+showSavedPostersButton.addEventListener("click", function() {viewHandler('saved')})
+showMainPageButton.addEventListener("click", function() {viewHandler('main')})
+backToMainButton.addEventListener("click", function() {viewHandler('main')})
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 
 // functions and event handlers go here 👇
@@ -148,46 +148,17 @@ function showRandomHomepagePoster() {
   };
   return currentPoster
 }
-//In this function above I am using the getRandomIndex function to generate a random poster.
-//This function is triggered by the event listener above, when the window is loaded. 
 
-function mainPageView() {
-  mainPosterViewSection.classList.remove("hidden")
-  savedPostersSection.classList.add("hidden")
-  OwnPosterFormSection.classList.add("hidden")
-}
-//This is the default view in the html file. 
-//write event listeners for the function
-//write query selectors for the buttons: "nevermind take me back" button and "Back to main" buttons
-//show the .main-poster (remove hidden)
-//hide the .poster-form view (add hidden)
-//hide the .saved-posters view (add hidden)
-
-function formView() {
-  OwnPosterFormSection.classList.remove("hidden")
-  mainPosterViewSection.classList.add("hidden")
-}
-//write event listeners for the function
-//write query selectors for the button: "Make your own poster" button
-//show the .poster-form view (remove hidden)
-//hide the .saved-posters view (add hidden)
-//hide the .main-poster view (add hidden)
-
-function savedPostersView() {
-  savedPostersSection.classList.remove("hidden")
-  OwnPosterFormSection.classList.add("hidden")
-  mainPosterViewSection.classList.add("hidden")
-}
-//write event listeners for the function
-//write query selectors for the button: for "show saved posters" button
-//show the .saved-posters view (remove hidden)
-//hide the .poster-form view (add hidden)
-//hide the .main-poster view (add hidden)
-
-//REFACTOR FOR PAGE VIEWS
-
-function togglePageView(element) {
-  element.classList.toggle("hidden")
+function viewHandler(view) {
+  const views = {
+    main: mainPosterViewSection,
+    form: OwnPosterFormSection,
+    saved: savedPostersSection
+  }
+  Object.values(views).forEach((section) => {
+    section.classList.add("hidden")
+  })
+  views[view].classList.remove("hidden")
 }
 
 console.log(savedPosters)
