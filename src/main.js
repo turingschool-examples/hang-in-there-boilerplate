@@ -186,9 +186,6 @@ function showCreatedPoster() {
   titles.push(posterTitle);
   quotes.push(posterQuote);
 
-  console.log('posterURL:', images)
-  console.log('posterTitle:', titles)
-  console.log('posterQuote:', quotes)
   currentPoster = {
     imageURL: posterURL,
     title: posterTitle,
