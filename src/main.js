@@ -3,6 +3,7 @@ let savePosterButton = document.querySelector('.save-poster'),
     showSavedButton = document.querySelector('.show-saved'),
     showRandomButton = document.querySelector('.show-random'),
     makePosterButton = document.querySelector('.show-form'),
+    showMyPosterButton = document.querySelector('.make-poster')
     showMainButton = document.querySelector('.show-main'),
     backToMainButton = document.querySelector('.back-to-main')
 
@@ -115,12 +116,17 @@ var currentPoster;
 // event listeners go here 👇
  Window.onload = buildPoster();
 
- savePosterButton.addEventListener('click', savePoster);
- showSavedButton.addEventListener('click', showSaved);
  showRandomButton.addEventListener('click', buildPoster);
- makePosterButton.addEventListener('click', makePoster);
- showMainButton.addEventListener('click', showMain);
- backToMainButton.addEventListener('click', backToMain);
+ savePosterButton.addEventListener('click', savePoster);
+ showMyPosterButton.addEventListener('click', showCreatedPoster);
+ showSavedButton.addEventListener('click', function() {
+  toggle(toggleSavedPosters, toggleMainPage) });
+ makePosterButton.addEventListener('click', function() {
+  toggle(togglePosterForm, toggleMainPage)});
+ showMainButton.addEventListener('click', function() {
+  toggle(togglePosterForm, toggleMainPage)});
+ backToMainButton.addEventListener('click', function() {
+  toggle(toggleSavedPosters, toggleMainPage)});
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -144,32 +150,20 @@ function buildPoster() {
   currentPoster = (document.querySelector('.poster-img').src = images[imageIndex], document.querySelector('.poster-title').innerHTML = titles[titleIndex], document.querySelector('.poster-quote').innerHTML = quotes[quoteIndex]);
 
   createPoster(currentPoster);
-
   // document.querySelector('.poster-img').src = images[imageIndex];
   // document.querySelector('.poster-title').innerHTML = titles[titleIndex];
   // document.querySelector('.poster-quote').innerHTML = quotes[quoteIndex];
+}
+
+function toggle(show, hide) {
+  show.classList.toggle('hidden')
+  hide.classList.toggle('hidden')
 }
 
 function savePoster() {
   savedPosters << currentPoster;
 }
 
-function showSaved() {
-  toggleSavedPosters.classList.toggle('hidden')
-  toggleMainPage.classList.toggle('hidden')
-}
-
-function makePoster() {
-  togglePosterForm.classList.toggle('hidden')
-  toggleMainPage.classList.toggle('hidden')
-}
-
-function showMain() {
-  togglePosterForm.classList.toggle('hidden')
-  toggleMainPage.classList.toggle('hidden')
-}
-
-function backToMain() {
-  toggleSavedPosters.classList.toggle('hidden')
-  toggleMainPage.classList.toggle('hidden')
+function showCreatedPoster() {
+  
 }
