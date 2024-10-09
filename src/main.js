@@ -119,7 +119,7 @@ randomPosterBtn.addEventListener("click", createPoster)
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-let imageURL = getRandomIndex(images)
+
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
