@@ -1,4 +1,6 @@
 // query selector variables go here 👇
+
+// buttons
 let savePosterButton = document.querySelector('.save-poster'),
     showSavedButton = document.querySelector('.show-saved'),
     showRandomButton = document.querySelector('.show-random'),
@@ -7,9 +9,15 @@ let savePosterButton = document.querySelector('.save-poster'),
     showMainButton = document.querySelector('.show-main'),
     backToMainButton = document.querySelector('.back-to-main')
 
+// pages
 let togglePosterForm = document.querySelector('.poster-form'),
     toggleMainPage = document.querySelector('.main-poster'),
     toggleSavedPosters = document.querySelector('.saved-posters')
+
+// user inputs
+let newPosterURL = document.querySelector('#poster-image-url'),
+    newPosterTitle = document.querySelector('#poster-title'),
+    newPosterQuote = document.querySelector('#poster-quote')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -147,12 +155,16 @@ function buildPoster() {
   var titleIndex = getRandomIndex(titles);
   var quoteIndex = getRandomIndex(quotes);
 
-  currentPoster = (document.querySelector('.poster-img').src = images[imageIndex], document.querySelector('.poster-title').innerHTML = titles[titleIndex], document.querySelector('.poster-quote').innerHTML = quotes[quoteIndex]);
+  let posterImage = document.querySelector('.poster-img').src = images[imageIndex];
+  let posterTitle = document.querySelector('.poster-title').innerHTML = titles[titleIndex];
+  let posterQuote = document.querySelector('.poster-quote').innerHTML = quotes[quoteIndex];
 
-  createPoster(currentPoster);
-  // document.querySelector('.poster-img').src = images[imageIndex];
-  // document.querySelector('.poster-title').innerHTML = titles[titleIndex];
-  // document.querySelector('.poster-quote').innerHTML = quotes[quoteIndex];
+  currentPoster = {
+    imageURL: posterImage,
+    title: posterTitle,
+    quote: posterQuote};
+
+  createPoster(posterImage, posterTitle, posterQuote);
 }
 
 function toggle(show, hide) {
@@ -165,5 +177,21 @@ function savePoster() {
 }
 
 function showCreatedPoster() {
-  
+  event.preventDefault()
+  let posterURL = newPosterURL.value
+  let posterTitle = newPosterTitle.value
+  let posterQuote = newPosterQuote.value
+
+  images.push(posterURL);
+  titles.push(posterTitle);
+  quotes.push(posterQuote);
+
+  console.log('posterURL:', images)
+  console.log('posterTitle:', titles)
+  console.log('posterQuote:', quotes)
+  currentPoster = {
+    imageURL: posterURL,
+    title: posterTitle,
+    quote: posterQuote};
+  debugger
 }
