@@ -5,9 +5,9 @@ var mainPosterQuote = document.querySelector('.poster-quote')
 var randomPosterButton = document.querySelector('.show-random')
 var makeYourOwnPosterButton = document.querySelector('.show-form')
 var makeYourOwnForm = document.querySelector('.poster-form')
-// var mainPoster = document.querySelector('.main-poster')
-// var savedPostersButton = querySelector('.show-saved')
-// var savedPostersSection = querySelector('.saved-posters')
+var mainPoster = document.querySelector('.main-poster')
+var savedPostersButton = document.querySelector('.show-saved')
+var savedPostersSection = document.querySelector('.saved-posters')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -114,7 +114,7 @@ var currentPoster;
 document.addEventListener("DOMContentLoaded", generateRandomPoster)
 randomPosterButton.addEventListener("click", generateRandomPoster)
 makeYourOwnPosterButton.addEventListener("click",showPosterForm)
-//savedPostersButton.addEventListener("click", showSavedPosters)
+savedPostersButton.addEventListener("click", showSavedPosters)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -142,11 +142,11 @@ function generateRandomPoster() {
 function showPosterForm() {
   makeYourOwnForm.classList.remove('hidden')
   mainPoster.classList.add('hidden')
-  savedPostersSection.add('hidden')
+  savedPostersSection.classList.add('hidden')
 }
 
 function showSavedPosters() {
-  makeYourOwnForm.classList.remove('hidden')
+  makeYourOwnForm.classList.add('hidden')
   mainPoster.classList.add('hidden')
-  savedPostersSection.remove('hidden')
+  savedPostersSection.classList.remove('hidden')
 }
