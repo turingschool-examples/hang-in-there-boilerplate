@@ -181,16 +181,13 @@ function showPoster(imageURL, title, quote) {
 }
 
 function showRandomHomepagePoster() {
-  posterImage.src = images[getRandomIndex(images)];
-  posterTitle.innerText = titles[getRandomIndex(titles)];
-  posterQuote.innerText = quotes[getRandomIndex(quotes)];
+  let randomImage = images[getRandomIndex(images)];
+  let randomTitle = titles[getRandomIndex(titles)];
+  let randomQuote = quotes[getRandomIndex(quotes)];
 
-  return currentPoster = {
-    imageURL: posterImage.src,
-    title: posterTitle.innerText,
-    quote: posterQuote.innerText
+  showPoster(randomImage, randomTitle, randomQuote)
   };
-}
+
 
 function showUserCreatedPoster(event) {
   event.preventDefault();
