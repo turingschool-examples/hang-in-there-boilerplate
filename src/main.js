@@ -232,7 +232,7 @@ function displaySavedPosters() {
 
   savedPostersGrid.innerHTML = savedPosters.map((poster) => {
     return `
-       <div class="poster-container">
+       <div class="mini-poster">
         <img src="${poster.imageURL}" class="poster-img">
         <h2 class="poster-title">${poster.title}</h2>
         <p class="poster-quote">${poster.quote}</p>
