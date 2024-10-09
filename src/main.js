@@ -192,29 +192,16 @@ function showRandomHomepagePoster() {
 function showUserCreatedPoster(event) {
   event.preventDefault();
 
-  let userImage = userPosterImage.value,
-      userTitle = userPosterTitle.value,
-      userQuote = userPosterQuote.value;
+  let userImage = userPosterImage.value
+  let userTitle = userPosterTitle.value
+  let userQuote = userPosterQuote.value
 
   // console.log("User Image:", userImage);
   // console.log("User Title:", userTitle);
   // console.log("User Quote:", userQuote);
 
-  posterImage.src = userImage;
-  posterTitle.innerText = userTitle;
-  posterQuote.innerText = userQuote;
-
-  addUserPoster(userImage, userTitle, userQuote);
-
-  // console.log("Images array:", images);
-  // console.log("Titles array:", titles);
-  // console.log("Quotes array:", quotes);
-
-  return currentPoster = { 
-    imageURL: userImage, 
-    title: userTitle, 
-    quote: userQuote 
-  };
+  showPoster(userImage, userTitle, userQuote)
+  addUserPoster(userImage, userTitle, userQuote)
 }
 
 function addUserPoster(image, title, quote) {
