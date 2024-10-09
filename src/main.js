@@ -104,11 +104,30 @@ var currentPoster;
 
 // event listeners go here 👇
 
+window.addEventListener('load', () => {
+  randomImage = getRandomIndex(images)
+})
+
+window.addEventListener('load', () => {
+  randomTitle = getRandomIndex(titles)
+})
+
+window.addEventListener('load', () => {
+  randomQuote = getRandomIndex(quotes)
+})
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+//this function identifies a random index position from the array that is entered as an argument
+//can use this index position to assign the image, title, and quote
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+/*need to take each of the random index numbers and identify the url, title, or quote at that index to use in the createPoster function. createPoster function takes the url, title, and quote as arguments. 
+Create a funtion that takes the index number in as an argument and returns the element at that value
+*/
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -117,3 +136,6 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+console.log(createPoster("./assets/bees.jpg", "believe", "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny."))
+
