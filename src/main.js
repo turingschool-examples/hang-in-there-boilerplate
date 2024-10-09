@@ -230,6 +230,10 @@ var posterQuote = document.querySelector(".poster-quote")
 var userPosterImage = document.querySelector("#poster-image-url")
 var userPosterTitle = document.querySelector("#poster-title")
 var userPosterQuote = document.querySelector("#poster-quote")
+var mainPosterViewSection = document.querySelector(".main-poster")
+var OwnPosterFormSection = document.querySelector(".poster-form")
+var savedPostersSection = document.querySelector(".saved-posters")
+var savedPostersGrid = document.querySelector(".saved-posters-grid")
 var makeOwnPosterButton = document.querySelector(".show-form")
 var showSavedPostersButton = document.querySelector(".show-saved")
 var showMainPageButton = document.querySelector(".show-main")
@@ -238,10 +242,9 @@ var showRandomPosterButton = document.querySelector(".show-random")
 var savePosterButton = document.querySelector('.save-poster')
 var showRandomPosterButton = document.querySelector(".show-random")
 var showUserPosterButton = document.querySelector(".make-poster")
-var mainPosterViewSection = document.querySelector(".main-poster")
-var OwnPosterFormSection = document.querySelector(".poster-form")
-var savedPostersSection = document.querySelector(".saved-posters")
-var savedPostersGrid = document.querySelector(".saved-posters-grid")
+var showUnmotivationalPostersButton = document.querySelector(".show-unmotivational")
+var unmotivationalPostersSection = document.querySelector(".unmotivational-section")
+
 
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
@@ -250,9 +253,11 @@ showSavedPostersButton.addEventListener("click", function() {handleView('saved')
 showMainPageButton.addEventListener("click", function() {handleView('main')})
 backToMainButton.addEventListener("click", function() {handleView('main'); showRandomHomepagePoster()})
 showUserPosterButton.addEventListener("click", function() {handleView('main')})
+showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational')})//need to add a section to handleView function
 showUserPosterButton.addEventListener("click", showUserCreatedPoster)
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 savePosterButton.addEventListener("click", saveCurrentPoster)
+
 // showSavedPostersButton.addEventListener("click", saveCurrentPoster)
 
 //the anonymous callback function () used above is for deferring its execution
@@ -276,7 +281,8 @@ function handleView(view) {
   const views = {
     main: mainPosterViewSection,
     form: OwnPosterFormSection,
-    saved: savedPostersSection
+    saved: savedPostersSection,
+    unmotivational: unmotivationalPostersSection
   }
   //this object above links the keys to the dom elements (via the query selectors)
 
