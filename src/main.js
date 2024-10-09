@@ -114,6 +114,7 @@ var currentPoster;
 
 // event listeners go here 👇
  Window.onload = buildPoster();
+
  savePosterButton.addEventListener('click', savePoster);
  showSavedButton.addEventListener('click', showSaved);
  showRandomButton.addEventListener('click', buildPoster);
@@ -160,5 +161,15 @@ function showSaved() {
 
 function makePoster() {
   togglePosterForm.classList.toggle('hidden')
+  toggleMainPage.classList.toggle('hidden')
+}
+
+function showMain() {
+  togglePosterForm.classList.toggle('hidden')
+  toggleMainPage.classList.toggle('hidden')
+}
+
+function backToMain() {
+  toggleSavedPosters.classList.toggle('hidden')
   toggleMainPage.classList.toggle('hidden')
 }
