@@ -238,6 +238,7 @@ var makeOwnPosterButton = document.querySelector(".show-form")
 var showSavedPostersButton = document.querySelector(".show-saved")
 var showMainPageButton = document.querySelector(".show-main")
 var backToMainButton = document.querySelector(".back-to-main")
+var backToMainFromUnmotivationalButton = document.querySelector(".back-to-main-from-unmotivational")
 var showRandomPosterButton = document.querySelector(".show-random")
 var savePosterButton = document.querySelector('.save-poster')
 var showRandomPosterButton = document.querySelector(".show-random")
@@ -253,10 +254,12 @@ showSavedPostersButton.addEventListener("click", function() {handleView('saved')
 showMainPageButton.addEventListener("click", function() {handleView('main')})
 backToMainButton.addEventListener("click", function() {handleView('main'); showRandomHomepagePoster()})
 showUserPosterButton.addEventListener("click", function() {handleView('main')})
+backToMainFromUnmotivationalButton.addEventListener("click", function() {handleView('main')})//possible refactor. all back to main buttons linked
 showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational')})//need to add a section to handleView function
 showUserPosterButton.addEventListener("click", showUserCreatedPoster)
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 savePosterButton.addEventListener("click", saveCurrentPoster)
+
 
 // showSavedPostersButton.addEventListener("click", saveCurrentPoster)
 
