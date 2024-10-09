@@ -100,9 +100,16 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {
+  image: document.querySelector('.poster-img'),
+  title: document.querySelector('.poster-title'),
+  quote: document.querySelector('.poster-quote')
+};
 
+var randomButton = document.querySelector('.show-random')
 // event listeners go here 👇
+
+randomButton.addEventListener('click', createRandomPoster())
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -116,4 +123,15 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function createRandomPoster() {
+  const randomPoster = createPoster(
+    images[getRandomIndex(images)], 
+    titles[getRandomIndex(titles)], 
+    quotes[getRandomIndex(quotes)]
+  );
+  currentPoster.image.src = randomPoster.imageURL
+  currentPoster.title.innerText = randomPoster.title
+  currentPoster.quote.innerText = randomPoster.quote
 }
