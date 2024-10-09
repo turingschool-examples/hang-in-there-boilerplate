@@ -112,22 +112,25 @@ var showSavedPostersButton = document.querySelector(".show-saved")
 var showMainPageButton = document.querySelector(".show-main")
 var backToMainButton = document.querySelector(".back-to-main")
 var showRandomPosterButton = document.querySelector(".show-random")
+var savePosterButton = document.querySelector('.save-poster')
+var showRandomPosterButton = document.querySelector(".show-random")
+var showUserPosterButton = document.querySelector(".make-poster")
 var mainPosterViewSection = document.querySelector(".main-poster")
 var OwnPosterFormSection = document.querySelector(".poster-form")
 var savedPostersSection = document.querySelector(".saved-posters")
-var showRandomPosterButton = document.querySelector(".show-random")
-var showUserPosterButton = document.querySelector(".make-poster")
+var savedPostersGrid = document.querySelector(".saved-posters-grid")
 
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
 makeOwnPosterButton.addEventListener("click", function() {handleView('form')})
-showSavedPostersButton.addEventListener("click", function() {handleView('saved')})
+showSavedPostersButton.addEventListener("click", function() {handleView('saved'); displaySavedPosters()})
 showMainPageButton.addEventListener("click", function() {handleView('main')})
 backToMainButton.addEventListener("click", function() {handleView('main')})
 showUserPosterButton.addEventListener("click", function() {handleView('main')})
 showUserPosterButton.addEventListener("click", showUserCreatedPoster)
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
-
+savePosterButton.addEventListener("click", saveCurrentPoster)
+// showSavedPostersButton.addEventListener("click", saveCurrentPoster)
 
 //the anonymous callback function () used above is for deferring its execution
 //until the button is acutually clicked. 
@@ -145,8 +148,6 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
-
-
 
 function handleView(view) {
   const views = {
@@ -201,14 +202,41 @@ function showUserCreatedPoster(event) {
   // console.log("User Quote:", userQuote);
 
   showPoster(userImage, userTitle, userQuote)
-  addUserPoster(userImage, userTitle, userQuote)
+  addUserPosterInput(userImage, userTitle, userQuote)
 }
 
-function addUserPoster(image, title, quote) {
+function addUserPosterInput(image, title, quote) {
   images.push(image)
   titles.push(title)
   quotes.push(quote)
 }
 
+function saveCurrentPoster() {
+  let generatedPoster = savedPosters.find((poster) =>{
+    return  poster.imageURL === currentPoster.imageURL &&
+            poster.title === currentPoster.title &&
+            poster.quote === currentPoster.quote
+  })
+  if(!generatedPoster) {
+    savedPosters.push(currentPoster)
+    console.log("Poster saved:", currentPoster);
+    console.log("Saved Posters Array:", savedPosters); // Log the array here
+  } else {
+    console.log("Poster is already saved");
+  }
+}
 
+function displaySavedPosters() {
+  savedPostersGrid.innerHTML = '' //This clears out the savedPostersSection before adding the new ones
 
+  savedPostersGrid.innerHTML = savedPosters.map((poster) => {
+    return `
+       <div class="poster-container">
+        <img src="${poster.imageURL}" class="poster-img">
+        <h2 class="poster-title">${poster.title}</h2>
+        <p class="poster-quote">${poster.quote}</p>
+      </div>`;
+  }).join('') //need to use .join b/c map returns an array of strings. An array cant be put into innerHTML. Join turns the array into a string.
+}
+
+console.log(savedPosters)
