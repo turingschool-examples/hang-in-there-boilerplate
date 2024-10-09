@@ -146,17 +146,7 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-function showRandomHomepagePoster() {
-  posterImage.src = images[getRandomIndex(images)];
-  posterTitle.innerText = titles[getRandomIndex(titles)];
-  posterQuote.innerText = quotes[getRandomIndex(quotes)];
 
-  return currentPoster = {
-    imageURL: posterImage.src,
-    title: posterTitle.innerText,
-    quote: posterQuote.innerText
-  };
-}
 
 function handleView(view) {
   const views = {
@@ -166,7 +156,6 @@ function handleView(view) {
   }
   //this object above links the keys to the dom elements (via the query selectors)
 
-  
   Object.values(views).forEach((section) => {
     section.classList.add("hidden")
     // console.log(Object.values(views))
@@ -179,6 +168,30 @@ function handleView(view) {
   // console.log(views[view])
 }
 
+function showPoster(imageURL, title, quote) {
+  posterImage.src = imageURL
+  posterTitle.innerText = title
+  posterQuote.innerText = quote
+
+  currentPoster = {
+    imageURL: imageURL,
+    title: title,
+    quote: quote
+  }
+}
+
+function showRandomHomepagePoster() {
+  posterImage.src = images[getRandomIndex(images)];
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
+
+  return currentPoster = {
+    imageURL: posterImage.src,
+    title: posterTitle.innerText,
+    quote: posterQuote.innerText
+  };
+}
+
 function showUserCreatedPoster(event) {
   event.preventDefault();
 
@@ -186,9 +199,9 @@ function showUserCreatedPoster(event) {
       userTitle = userPosterTitle.value,
       userQuote = userPosterQuote.value;
 
-  console.log("User Image:", userImage);
-  console.log("User Title:", userTitle);
-  console.log("User Quote:", userQuote);
+  // console.log("User Image:", userImage);
+  // console.log("User Title:", userTitle);
+  // console.log("User Quote:", userQuote);
 
   posterImage.src = userImage;
   posterTitle.innerText = userTitle;
@@ -196,9 +209,9 @@ function showUserCreatedPoster(event) {
 
   addUserPoster(userImage, userTitle, userQuote);
 
-  console.log("Images array:", images);
-  console.log("Titles array:", titles);
-  console.log("Quotes array:", quotes);
+  // console.log("Images array:", images);
+  // console.log("Titles array:", titles);
+  // console.log("Quotes array:", quotes);
 
   return currentPoster = { 
     imageURL: userImage, 
