@@ -202,6 +202,7 @@ function showUserCreatedPoster(event) {
   // console.log("User Quote:", userQuote);
 
   showPoster(userImage, userTitle, userQuote)
+  // saveCurrentPoster()
   addUserPosterInput(userImage, userTitle, userQuote)
 }
 
