@@ -1,4 +1,21 @@
 // query selector variables go here 👇
+var currentPoster = {
+  id: 0,
+  image: document.querySelector('.poster-img'),
+  title: document.querySelector('.poster-title'),
+  quote: document.querySelector('.poster-quote')
+};
+
+var randomButton = document.querySelector('.show-random')
+var customButton = document.querySelector('.show-form')
+var returnButton = document.querySelector('.show-main')
+var savedButton = document.querySelector('.show-saved')
+var otherReturnButton = document.querySelector('.back-to-main')
+var savePosterButton = document.querySelector('.save-poster')
+let main = document.querySelector('.main-poster')
+let custom = document.querySelector('.poster-form')
+let saved = document.querySelector('.saved-posters')
+let showButton = document.querySelector('.make-poster')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -100,28 +117,16 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster = {
-  id: 0,
-  image: document.querySelector('.poster-img'),
-  title: document.querySelector('.poster-title'),
-  quote: document.querySelector('.poster-quote')
-};
-
-var randomButton = document.querySelector('.show-random')
-var customButton = document.querySelector('.show-form')
-var returnButton = document.querySelector('.show-main')
-var savedButton = document.querySelector('.show-saved')
-var otherReturnButton = document.querySelector('.back-to-main')
-var savePosterButton = document.querySelector('.save-poster')
 
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster)
 randomButton.addEventListener('click', createRandomPoster)
-customButton.addEventListener('click', customPosterForm)
-returnButton.addEventListener('click', customPosterForm)
+customButton.addEventListener('click', showCustomPosterForm)
+returnButton.addEventListener('click', showCustomPosterForm)
 savedButton.addEventListener('click', savedPosterForm)
 otherReturnButton.addEventListener('click', savedPosterForm)
 savePosterButton.addEventListener('click', savePoster)
+showButton.addEventListener('click', showCustomPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -149,16 +154,35 @@ function createRandomPoster() {
   currentPoster.quote.innerText = randomPosterData.quote
 }
 
-function customPosterForm() {
-  let main = document.querySelector('.main-poster')
-  let custom = document.querySelector('.poster-form')
+function showCustomPoster () {
+  event.preventDefault();
+  let customPosterImage = document.querySelector('#poster-image-url')
+  let customPosterTitle = document.querySelector('#poster-title')
+  let customPosterQuote = document.querySelector('#poster-quote')
+
+  const tempPoster = createPoster(customPosterImage.value, customPosterTitle.value, customPosterQuote.value)
+
+  images.push(tempPoster.imageURL)
+  titles.push(tempPoster.title)
+  quotes.push(tempPoster.quote)
+
+  currentPoster.id = tempPoster.id
+  currentPoster.image.src = tempPoster.imageURL
+  currentPoster.title.innerText = tempPoster.title
+  currentPoster.quote.innerText = tempPoster.quote
+  custom.classList.toggle('hidden')
+  main.classList.toggle('hidden')
+  customPosterImage.value = ''
+  customPosterTitle.value = ''
+  customPosterQuote.value = ''
+}
+
+function showCustomPosterForm() {
   custom.classList.toggle('hidden')
   main.classList.toggle('hidden')
 }
 
 function savedPosterForm() {
-  let main = document.querySelector('.main-poster')
-  let saved = document.querySelector('.saved-posters')
   saved.classList.toggle('hidden')
   main.classList.toggle('hidden')
 }
@@ -170,5 +194,9 @@ function savePoster() {
     title: currentPoster.title.innerText,
     quote: currentPoster.quote.innerText
   }
-  savedPosters.push(posterCopy)
+
+  if (!savedPosters.some(poster => poster.id === posterCopy.id)) {
+    savedPosters.push(posterCopy)
+  }
+  
 }
