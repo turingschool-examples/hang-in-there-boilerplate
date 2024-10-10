@@ -117,7 +117,10 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', displayRandomPoster)
 showRandomBtn.addEventListener('click', displayRandomPoster)
-
+makePosterBtn.addEventListener('click', showForm)
+showSavedBtn.addEventListener('click', showSavedPosters)
+backToMainBtn.addEventListener('click', showMainPoster)
+nevermindBtn.addEventListener('click', showMainPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -134,6 +137,8 @@ function displayRandomPoster() {
     posterTitle.innerText = randomTitle
     posterQuote.innerText = randomQuote
 }
+
+
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
