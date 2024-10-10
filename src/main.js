@@ -141,3 +141,4 @@ function createRandom() {
   quote.innerText = randomQuote;
   currentPoster = createPoster(randomImage, randomTitle, randomQuote);
 }
+
