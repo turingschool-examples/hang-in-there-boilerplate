@@ -2,8 +2,15 @@
 var posterImage = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
+var mainPosterSection = document.querySelector('.main-poster')
+var formSection = document.querySelector('.poster-form')
+var savedPostersSection = document.querySelector('.saved-posters')
 
 var showRandomBtn = document.querySelector('.show-random')
+var makePosterBtn = document.querySelector('.show-form')
+var showSavedBtn = document.querySelector('.show-saved')
+var nevermindBtn = document.querySelector('.show-main')
+var backToMainBtn = document.querySelector('.back-to-main')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
