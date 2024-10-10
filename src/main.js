@@ -12,6 +12,10 @@ var nvmButton = document.querySelector('.show-main')
 var backToMainButton = document.querySelector('.back-to-main')
 var savePosterButton = document.querySelector('.save-poster')
 var savedPostersGrid = document.querySelector('.saved-posters-grid')
+var posterImageURL = document.querySelector('#poster-image-url')
+var posterTitle = document.querySelector('#poster-title')
+var posterQuote = document.querySelector('#poster-quote')
+var showMyPosterButton = document.querySelector('.make-poster')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -122,6 +126,10 @@ savedPostersButton.addEventListener("click", showSavedPosters)
 nvmButton.addEventListener("click",showMain)
 backToMainButton.addEventListener("click",showMain)
 savePosterButton.addEventListener("click",savePoster)
+showMyPosterButton.addEventListener("click", function(event) { makeNewPoster(event)
+  
+})
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -187,3 +195,15 @@ for (i = 0; i < savedPosters.length; i++) {
     </div>`
   console.log(miniPosterHTML)
 }}
+
+function makeNewPoster(event) {
+  event.preventDefault()
+  showMain()
+  var url = posterImageURL.value
+  var title = posterTitle.value
+  var quote = posterQuote.value
+  mainPosterImage.src=url
+  mainPosterTitle.innerText = title
+  mainPosterQuote.innerText = quote
+  
+}
