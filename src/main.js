@@ -246,7 +246,6 @@ var showUserPosterButton = document.querySelector(".make-poster")
 var showUnmotivationalPostersButton = document.querySelector(".show-unmotivational")
 var unmotivationalPostersSection = document.querySelector(".unmotivational-section")
 
-
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
 makeOwnPosterButton.addEventListener("click", function() {handleView('form')})
@@ -260,12 +259,10 @@ showUserPosterButton.addEventListener("click", showUserCreatedPoster)
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 savePosterButton.addEventListener("click", saveCurrentPoster)
 
-
 // showSavedPostersButton.addEventListener("click", saveCurrentPoster)
 
 //the anonymous callback function () used above is for deferring its execution
 //until the button is acutually clicked. 
-
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -321,7 +318,6 @@ function showRandomHomepagePoster() {
   showPoster(randomImage, randomTitle, randomQuote)
   };
 
-
 function showUserCreatedPoster(event) {
   event.preventDefault();
 
@@ -373,3 +369,16 @@ function displaySavedPosters() {
 }
 
 console.log(savedPosters)
+
+function cleanData(posters) {
+  const newData = posters.map((poster) => {
+    return {
+      imageURL:poster.img_url,
+      title: poster.name,
+      quote: poster.description, 
+    }
+  })
+  return newData
+}
+// console.log(cleanData(unmotivationalPosters))
+
