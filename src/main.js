@@ -114,6 +114,7 @@ var currentPoster;
 window.addEventListener('DOMContentLoaded' , function() {
   createRandom()
 })
+randomPosterBtn.addEventListener('click', createRandom)
 // functions and event handlers go here 
 // (we've provided two to get you started)!
 
