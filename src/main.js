@@ -9,13 +9,13 @@ let savePosterButton = document.querySelector('.save-poster'),                  
     showMyPosterButton = document.querySelector('.make-poster')                         // loads the main page and displays the poster you created
     showMainButton = document.querySelector('.show-main'),                              // loads the main page from the make a poster form page
     backToMainButton = document.querySelector('.back-to-main'),                         // loads the main page from the saved posters page
-    returnToMainButton = document.querySelector('.back-to-main')                        // loads the main page from the unmotivational posters page
+    returnToMainButton = document.querySelector('.return-to-main')                        // loads the main page from the unmotivational posters page
 
 // pages
 let togglePosterForm = document.querySelector('.poster-form'),
     toggleMainPage = document.querySelector('.main-poster'),
     toggleSavedPosters = document.querySelector('.saved-posters')
-    toggleUnmotivationalPosters = document.querySelector('.unmotivational-posters')
+    toggleUnmotivationalPosters = document.querySelector('.unmotivational-posters-page')
 
 // user inputs
 let newPosterURL = document.querySelector('#poster-image-url'),
@@ -253,10 +253,9 @@ var currentPoster;
  showRandomButton.addEventListener('click', buildPoster);
  savePosterButton.addEventListener('click', savePoster);
  showMyPosterButton.addEventListener('click', showCreatedPoster);
+ showSavedButton.addEventListener('click', showSavedPosters);
  showUnmotivationalPostersButton.addEventListener('click', function() {
-  toggle(toggleMainPage, toggleUnmotivationalPosters) })
- showSavedButton.addEventListener('click', function() {
-  toggle(toggleSavedPosters, toggleMainPage) });
+  toggle(toggleUnmotivationalPosters, toggleMainPage) })
  makePosterButton.addEventListener('click', function() {
   toggle(togglePosterForm, toggleMainPage) });
  showMainButton.addEventListener('click', function() {
@@ -264,7 +263,7 @@ var currentPoster;
  backToMainButton.addEventListener('click', function() {
   toggle(toggleSavedPosters, toggleMainPage) });
 returnToMainButton.addEventListener('click', function() {
-  toggle(toggleSavedPosters, toggleMainPage) });
+  toggle(toggleUnmotivationalPosters, toggleMainPage) });
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -285,16 +284,11 @@ function buildPoster() {
   var titleIndex = getRandomIndex(titles);
   var quoteIndex = getRandomIndex(quotes);
 
-  let posterImage = document.querySelector('.poster-img').src = images[imageIndex];
-  let posterTitle = document.querySelector('.poster-title').innerHTML = titles[titleIndex];
-  let posterQuote = document.querySelector('.poster-quote').innerHTML = quotes[quoteIndex];
+  currentPoster = createPoster(images[imageIndex], titles[titleIndex], quotes[quoteIndex]);
 
-  currentPoster = {
-    imageURL: posterImage,
-    title: posterTitle,
-    quote: posterQuote};
-
-  createPoster(posterImage, posterTitle, posterQuote);
+  document.querySelector('.poster-img').src = currentPoster.imageURL;
+  document.querySelector('.poster-title').innerHTML = currentPoster.title
+  document.querySelector('.poster-quote').innerHTML = currentPoster.quote;
 }
 
 function toggle(show, hide) {
@@ -308,21 +302,47 @@ function savePoster() {
   }
 }
 
+function showSavedPosters() {
+  toggle(toggleSavedPosters, toggleMainPage)
+  
+  let savedPostersGrid = document.querySelector('.saved-posters-grid');
+
+  savedPosters.forEach(poster => {
+    let posterContainer = document.createElement('article');
+      
+    let posterImage = document.createElement('img');
+    posterImage.classList.add('mini-poster')
+    posterImage.src = poster.imageURL;
+    posterContainer.appendChild(posterImage);
+      
+    let posterTitle = document.createElement('h2');
+    posterTitle.classList.add('mini-poster')
+    posterTitle.textContent = poster.title;
+    posterContainer.appendChild(posterTitle);
+
+    let posterQuote = document.createElement('h4');
+    posterQuote.classList.add('mini-poster')
+    posterQuote.textContent = poster.quote;
+    posterContainer.appendChild(posterQuote);
+    savedPostersGrid.appendChild(posterContainer);
+  })
+}
+
 function showCreatedPoster() {
   event.preventDefault()
   let posterURL = newPosterURL.value
   let posterTitle = newPosterTitle.value
   let posterQuote = newPosterQuote.value
 
+  currentPoster = createPoster(posterURL, posterTitle, posterQuote)
+
   images.push(posterURL);
   titles.push(posterTitle);
   quotes.push(posterQuote);
 
-  currentPoster = {
-    imageURL: posterURL,
-    title: posterTitle,
-    quote: posterQuote};
-  
+  document.querySelector('.poster-img').src = posterURL;
+  document.querySelector('.poster-title').innerHTML = posterTitle;
+  document.querySelector('.poster-quote').innerHTML = posterQuote;
+
   toggle(togglePosterForm, toggleMainPage);
-  createPoster(currentPoster.imageURL, currentPoster.title, currentPoster.quote);
 }
