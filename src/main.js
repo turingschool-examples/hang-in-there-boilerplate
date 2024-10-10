@@ -127,7 +127,7 @@ nvmButton.addEventListener("click",showMain)
 backToMainButton.addEventListener("click",showMain)
 savePosterButton.addEventListener("click",savePoster)
 showMyPosterButton.addEventListener("click", function(event) { makeNewPoster(event)
-  
+
 })
 
 
@@ -205,5 +205,12 @@ function makeNewPoster(event) {
   mainPosterImage.src=url
   mainPosterTitle.innerText = title
   mainPosterQuote.innerText = quote
+  updateArrays(url,title,quote)
   
+}
+
+function updateArrays(url,title,quote) {
+  images.push(url)
+  titles.push(title)
+  quotes.push(quote) 
 }
