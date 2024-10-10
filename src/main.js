@@ -1,7 +1,7 @@
 // query selector variables go here
 let poster = document.querySelector('.main-poster')
-let title = document.querySelector('.poster-title');
-let imageURL = document.querySelector('.poster-image')
+let title = document.querySelector('.poster-title')
+let imageURL = document.querySelector('.poster-img')
 let quote = document.querySelector('.poster-quote')
 let savePosterBtn = document.querySelector('.save-poster')
 let randomPosterBtn = document.querySelector('.show-random')
@@ -111,10 +111,10 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.onload = function {
-  createRandom
-}
-// functions and event handlers go here 👇
+window.addEventListener('DOMContentLoaded' , function() {
+  createRandom()
+})
+// functions and event handlers go here 
 // (we've provided two to get you started)!
 
 
@@ -138,6 +138,5 @@ function createRandom() {
   imageURL.src = randomImage;
   title.innerText = randomTitle;
   quote.innerText = randomQuote;
-  
   currentPoster = createPoster(randomImage, randomTitle, randomQuote);
 }
