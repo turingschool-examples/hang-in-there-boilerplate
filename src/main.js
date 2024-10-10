@@ -173,7 +173,9 @@ function toggle(show, hide) {
 }
 
 function savePoster() {
-  savedPosters << currentPoster;
+  if(!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+  }
 }
 
 function showCreatedPoster() {
@@ -190,5 +192,7 @@ function showCreatedPoster() {
     imageURL: posterURL,
     title: posterTitle,
     quote: posterQuote};
-  debugger
+  
+  toggle(togglePosterForm, toggleMainPage);
+  createPoster(currentPoster.imageURL, currentPoster.title, currentPoster.quote);
 }
