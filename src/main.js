@@ -126,7 +126,7 @@ savePosterButton.addEventListener('click', savePoster)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  return Math.floor(Math.random() * array.length)
 }
 
 function createPoster(imageURL, title, quote) {
@@ -138,15 +138,15 @@ function createPoster(imageURL, title, quote) {
 }
 
 function createRandomPoster() {
-  const randomPoster = createPoster(
+  const randomPosterData = createPoster(
     images[getRandomIndex(images)], 
     titles[getRandomIndex(titles)], 
     quotes[getRandomIndex(quotes)]
   );
-  currentPoster.id = randomPoster.id
-  currentPoster.image.src = randomPoster.imageURL
-  currentPoster.title.innerText = randomPoster.title
-  currentPoster.quote.innerText = randomPoster.quote
+  currentPoster.id = randomPosterData.id
+  currentPoster.image.src = randomPosterData.imageURL
+  currentPoster.title.innerText = randomPosterData.title
+  currentPoster.quote.innerText = randomPosterData.quote
 }
 
 function customPosterForm() {
@@ -164,6 +164,11 @@ function savedPosterForm() {
 }
 
 function savePoster() {
-  const posterCopy = { ...currentPoster }
+  const posterCopy = {
+    id: currentPoster.id,
+    imageURL: currentPoster.image.src,
+    title: currentPoster.title.innerText,
+    quote: currentPoster.quote.innerText
+  }
   savedPosters.push(posterCopy)
 }
