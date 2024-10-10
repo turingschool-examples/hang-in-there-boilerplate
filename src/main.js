@@ -261,7 +261,7 @@ showUnmotivationalPostersButton.addEventListener("click", function() {handleView
 showUserPosterButton.addEventListener("click", showUserCreatedPoster)
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 savePosterButton.addEventListener("click", saveCurrentPoster)
-// unmotivationalGrid.addEventListener("dblclick", deleteUnmotivationalPoster) //the dblclick is attacvhed to the parent container (#unmotivational-grid)
+unmotivationalGrid.addEventListener("dblclick", deleteUnmotivationalPoster) //the dblclick is attacvhed to the parent container (#unmotivational-grid)
 // deleteAPoster.addEventListener("dblclick", deleteUnmotivationalPoster)
 unmotivationalPostersSection.addEventListener("dblclick", deleteUnmotivationalPoster)
 
@@ -389,7 +389,7 @@ function cleanData(posters) {
 console.log(cleanData(unmotivationalPosters))
 
 function displayCleanedPosters(posters) {
-  unmotivationalPostersSection.innerHTML = cleanData(posters).map((poster, index) => { //added the index here
+  unmotivationalGrid.innerHTML = cleanData(posters).map((poster, index) => { //added the index here
     return ` 
       <div class="mini-poster" data-id="${index}"> 
       <img src="${poster.imageURL}" class="poster-img">
