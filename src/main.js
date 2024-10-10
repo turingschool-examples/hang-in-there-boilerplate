@@ -382,7 +382,7 @@ function cleanData(posters) {
 }
 // console.log(cleanData(unmotivationalPosters))
 
-function displayCleanedPosters() {
+function displayCleanedPosters(posters) {
   unmotivationalPostersSection.innerHTML = cleanData(posters).map((poster) => {
     return `
       <div class="mini-poster">
