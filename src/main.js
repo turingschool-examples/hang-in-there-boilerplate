@@ -309,21 +309,20 @@ function showSavedPosters() {
 
   savedPosters.forEach(poster => {
     let posterContainer = document.createElement('article');
+    posterContainer.classList.add('mini-poster')
       
     let posterImage = document.createElement('img');
-    posterImage.classList.add('mini-poster')
     posterImage.src = poster.imageURL;
     posterContainer.appendChild(posterImage);
       
     let posterTitle = document.createElement('h2');
-    posterTitle.classList.add('mini-poster')
     posterTitle.textContent = poster.title;
     posterContainer.appendChild(posterTitle);
 
     let posterQuote = document.createElement('h4');
-    posterQuote.classList.add('mini-poster')
     posterQuote.textContent = poster.quote;
     posterContainer.appendChild(posterQuote);
+    
     savedPostersGrid.appendChild(posterContainer);
   })
 }
