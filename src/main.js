@@ -101,15 +101,27 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster = {
+  id: 0,
   image: document.querySelector('.poster-img'),
   title: document.querySelector('.poster-title'),
   quote: document.querySelector('.poster-quote')
 };
 
 var randomButton = document.querySelector('.show-random')
-// event listeners go here 👇
+var customButton = document.querySelector('.show-form')
+var returnButton = document.querySelector('.show-main')
+var savedButton = document.querySelector('.show-saved')
+var otherReturnButton = document.querySelector('.back-to-main')
+var savePosterButton = document.querySelector('.save-poster')
 
-randomButton.addEventListener('click', createRandomPoster())
+// event listeners go here 👇
+window.addEventListener('load', createRandomPoster)
+randomButton.addEventListener('click', createRandomPoster)
+customButton.addEventListener('click', customPosterForm)
+returnButton.addEventListener('click', customPosterForm)
+savedButton.addEventListener('click', savedPosterForm)
+otherReturnButton.addEventListener('click', savedPosterForm)
+savePosterButton.addEventListener('click', savePoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -131,7 +143,27 @@ function createRandomPoster() {
     titles[getRandomIndex(titles)], 
     quotes[getRandomIndex(quotes)]
   );
+  currentPoster.id = randomPoster.id
   currentPoster.image.src = randomPoster.imageURL
   currentPoster.title.innerText = randomPoster.title
   currentPoster.quote.innerText = randomPoster.quote
+}
+
+function customPosterForm() {
+  let main = document.querySelector('.main-poster')
+  let custom = document.querySelector('.poster-form')
+  custom.classList.toggle('hidden')
+  main.classList.toggle('hidden')
+}
+
+function savedPosterForm() {
+  let main = document.querySelector('.main-poster')
+  let saved = document.querySelector('.saved-posters')
+  saved.classList.toggle('hidden')
+  main.classList.toggle('hidden')
+}
+
+function savePoster() {
+  const posterCopy = { ...currentPoster }
+  savedPosters.push(posterCopy)
 }
