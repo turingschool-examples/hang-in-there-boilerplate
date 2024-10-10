@@ -129,7 +129,13 @@ function createPoster(imageURL, title, quote) {
 }
 
 function createRandom() {
-  imageURL.innerHTML = images[getRandomIndex(images)]
-  title.innerText  = titles[getRandomIndex(titles)]
-  quote = quotes[getRandomIndex(quotes)]
+  let randomImage = images[getRandomIndex(images)];
+  let randomTitle = titles[getRandomIndex(titles)];
+  let randomQuote = quotes[getRandomIndex(quotes)];
+  
+  imageURL.src = randomImage;
+  title.innerText = randomTitle;
+  quote.innerText = randomQuote;
+  
+  currentPoster = createPoster(randomImage, randomTitle, randomQuote);
 }
