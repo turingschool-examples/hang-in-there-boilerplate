@@ -221,6 +221,7 @@ let unmotivationalPosters = [
 ];
 
 var savedPosters = [];
+var cleanedPosters = [];
 var currentPoster;
 
 // query selector variables go here 👇
@@ -371,16 +372,16 @@ function displaySavedPosters() {
 console.log(savedPosters)
 
 function cleanData(posters) {
-  const newData = posters.map((poster) => {
+ cleanedPosters = posters.map((poster) => {
     return {
       imageURL:poster.img_url,
       title: poster.name,
       quote: poster.description, 
     }
   })
-  return newData
+  return cleanedPosters
 }
-// console.log(cleanData(unmotivationalPosters))
+console.log(cleanData(unmotivationalPosters))
 
 function displayCleanedPosters(posters) {
   unmotivationalPostersSection.innerHTML = cleanData(posters).map((poster) => {
@@ -393,3 +394,6 @@ function displayCleanedPosters(posters) {
   }).join('')
 }
 console.log(displayCleanedPosters(unmotivationalPosters))
+
+
+
