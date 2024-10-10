@@ -1,18 +1,21 @@
 // query selector variables go here 👇
 
 // buttons
-let savePosterButton = document.querySelector('.save-poster'),
-    showSavedButton = document.querySelector('.show-saved'),
-    showRandomButton = document.querySelector('.show-random'),
-    makePosterButton = document.querySelector('.show-form'),
-    showMyPosterButton = document.querySelector('.make-poster')
-    showMainButton = document.querySelector('.show-main'),
-    backToMainButton = document.querySelector('.back-to-main')
+let savePosterButton = document.querySelector('.save-poster'),                          // saves the poster to the poster array
+    showSavedButton = document.querySelector('.show-saved'),                            // shows the saved posters page
+    showRandomButton = document.querySelector('.show-random'),                          // shows a new random poster
+    makePosterButton = document.querySelector('.show-form'),                            // loads the form to create a poster
+    showUnmotivationalPostersButton = document.querySelector('.unmotivational-posters') // shows unmotivational posters
+    showMyPosterButton = document.querySelector('.make-poster')                         // loads the main page and displays the poster you created
+    showMainButton = document.querySelector('.show-main'),                              // loads the main page from the make a poster form page
+    backToMainButton = document.querySelector('.back-to-main'),                         // loads the main page from the saved posters page
+    returnToMainButton = document.querySelector('.back-to-main')                        // loads the main page from the unmotivational posters page
 
 // pages
 let togglePosterForm = document.querySelector('.poster-form'),
     toggleMainPage = document.querySelector('.main-poster'),
     toggleSavedPosters = document.querySelector('.saved-posters')
+    toggleUnmotivationalPosters = document.querySelector('.unmotivational-posters')
 
 // user inputs
 let newPosterURL = document.querySelector('#poster-image-url'),
@@ -250,14 +253,18 @@ var currentPoster;
  showRandomButton.addEventListener('click', buildPoster);
  savePosterButton.addEventListener('click', savePoster);
  showMyPosterButton.addEventListener('click', showCreatedPoster);
+ showUnmotivationalPostersButton.addEventListener('click', function() {
+  toggle(toggleMainPage, toggleUnmotivationalPosters) })
  showSavedButton.addEventListener('click', function() {
   toggle(toggleSavedPosters, toggleMainPage) });
  makePosterButton.addEventListener('click', function() {
-  toggle(togglePosterForm, toggleMainPage)});
+  toggle(togglePosterForm, toggleMainPage) });
  showMainButton.addEventListener('click', function() {
-  toggle(togglePosterForm, toggleMainPage)});
+  toggle(togglePosterForm, toggleMainPage) });
  backToMainButton.addEventListener('click', function() {
-  toggle(toggleSavedPosters, toggleMainPage)});
+  toggle(toggleSavedPosters, toggleMainPage) });
+returnToMainButton.addEventListener('click', function() {
+  toggle(toggleSavedPosters, toggleMainPage) });
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
