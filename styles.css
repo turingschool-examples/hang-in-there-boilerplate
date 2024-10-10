@@ -107,14 +107,20 @@ button:hover {
 /* ~~~~~ SAVED POSTER SECTION ~~~~~ */
 .saved-posters {
   padding: 40px;
+  border: red;
 }
 
-.saved-posters-grid {
+.saved-posters-grid .unmotivational-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   padding: 20px;
+  border: red;
 }
+
+/* .unmotivational-section {
+  border: red;
+} */
 
 .mini-poster {
   background: black;
@@ -122,11 +128,13 @@ button:hover {
   height: 340px;
   padding: 25px;
   width: 425px;
+  border: red;
 }
 
 .mini-poster img {
   height:200px;
   width: 300px;
+  border: red;
 }
 
 .mini-poster h2,
