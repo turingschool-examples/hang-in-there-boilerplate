@@ -246,6 +246,8 @@ var showRandomPosterButton = document.querySelector(".show-random")
 var showUserPosterButton = document.querySelector(".make-poster")
 var showUnmotivationalPostersButton = document.querySelector(".show-unmotivational")
 var unmotivationalPostersSection = document.querySelector(".unmotivational-section")
+var unmotivationalGrid = document.querySelector("#unmotivational-grid")
+// var deleteAPoster = document.querySelector(".mini-poster")
 
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
@@ -255,10 +257,13 @@ showMainPageButton.addEventListener("click", function() {handleView('main')})
 backToMainButton.addEventListener("click", function() {handleView('main'); showRandomHomepagePoster()})
 showUserPosterButton.addEventListener("click", function() {handleView('main')})
 backToMainFromUnmotivationalButton.addEventListener("click", function() {handleView('main')})//possible refactor. all back to main buttons linked
-showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational')})//need to add a section to handleView function
+showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational')})
 showUserPosterButton.addEventListener("click", showUserCreatedPoster)
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 savePosterButton.addEventListener("click", saveCurrentPoster)
+// unmotivationalGrid.addEventListener("dblclick", deleteUnmotivationalPoster) //the dblclick is attacvhed to the parent container (#unmotivational-grid)
+// deleteAPoster.addEventListener("dblclick", deleteUnmotivationalPoster)
+unmotivationalPostersSection.addEventListener("dblclick", deleteUnmotivationalPoster)
 
 // showSavedPostersButton.addEventListener("click", saveCurrentPoster)
 
@@ -349,10 +354,10 @@ function saveCurrentPoster() {
   })
   if(!generatedPoster) {
     savedPosters.push(currentPoster)
-    console.log("Poster saved:", currentPoster);
-    console.log("Saved Posters Array:", savedPosters); // Log the array here
+    // console.log("Poster saved:", currentPoster);
+    // console.log("Saved Posters Array:", savedPosters); 
   } else {
-    console.log("Poster is already saved");
+    // console.log("Poster is already saved");
   }
 }
 
@@ -384,16 +389,34 @@ function cleanData(posters) {
 console.log(cleanData(unmotivationalPosters))
 
 function displayCleanedPosters(posters) {
-  unmotivationalPostersSection.innerHTML = cleanData(posters).map((poster) => {
-    return `
-      <div class="mini-poster">
+  unmotivationalPostersSection.innerHTML = cleanData(posters).map((poster, index) => { //added the index here
+    return ` 
+      <div class="mini-poster" data-id="${index}"> 
       <img src="${poster.imageURL}" class="poster-img">
       <h2 class="poster-title">${poster.title}</h2>
       <p class="poster-quote">${poster.quote}</p>
       </div>` 
-  }).join('')
+  }).join('') //ABOVE: the index is identfying each unique poster (by name) so that it can specifically be deleted. 
 }
 console.log(displayCleanedPosters(unmotivationalPosters))
 
+//Delete an unmotivational poster 
+//set up event listener and query selectors globally
+//render the poster
+//
 
+function deleteUnmotivationalPoster(event) {
+  if (event.target.closest(".mini-poster")) {
 
+    const posterToDelete = event.target.closest(".mini-poster")
+    const posterId = posterToDelete.getAttribute("data-id")
+
+    unmotivationalPosters.splice(posterId, 1)
+
+    displayCleanedPosters(unmotivationalPosters)
+  }
+}
+//when a .mini-poster  is double clicked the event handler checks if the target is inside a .mini-poster div
+//event.target.closest is a method used to find the nearest parent .mini-poster of the clicked area
+//when clicked the poster is removed from the array (unmotivational posters) using splice
+//call the displayCleanedPosters function again to refresh the display and auto-update
