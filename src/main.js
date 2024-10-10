@@ -1,12 +1,12 @@
 // query selector variables go here
-let poster = document.querySelector('main-poster')
-let title = document.querySelector('poster-title');
-let imageURL = document.querySelector('poster-image')
-let quote = document.querySelector('poster-quote')
-let savePosterBtn = document.querySelector('save-poster')
-let randomPosterBtn = document.querySelector('show-random')
-let showSavedBtn = document.querySelector('show-saved')
-let makeYourOwnBtn = document.querySelector('show-form')
+let poster = document.querySelector('.main-poster')
+let title = document.querySelector('.poster-title');
+let imageURL = document.querySelector('.poster-image')
+let quote = document.querySelector('.poster-quote')
+let savePosterBtn = document.querySelector('.save-poster')
+let randomPosterBtn = document.querySelector('.show-random')
+let showSavedBtn = document.querySelector('.show-saved')
+let makeYourOwnBtn = document.querySelector('.show-form')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -111,7 +111,7 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomPosterBtn.addEventListener("click", createPoster)
+window.onload(createRandom)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -126,4 +126,10 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function createRandom() {
+  imageURL.innerHTML = images[getRandomIndex(images)]
+  title.innerText  = titles[getRandomIndex(titles)]
+  quote = quotes[getRandomIndex(quotes)]
 }
