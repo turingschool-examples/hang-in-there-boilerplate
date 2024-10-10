@@ -221,7 +221,6 @@ let unmotivationalPosters = [
 ];
 
 var savedPosters = [];
-var cleanedPosters = [];
 var currentPoster;
 
 // query selector variables go here 👇
@@ -257,7 +256,20 @@ showMainPageButton.addEventListener("click", function() {handleView('main')})
 backToMainButton.addEventListener("click", function() {handleView('main'); showRandomHomepagePoster()})
 showUserPosterButton.addEventListener("click", function() {handleView('main')})
 backToMainFromUnmotivationalButton.addEventListener("click", function() {handleView('main')})//possible refactor. all back to main buttons linked
-showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational')})
+// showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational'); 
+//   let cleanedData = cleanData(unmotivationalPosters);
+//   displayCleanedPosters(cleanedData)
+//   console.log("Displaying cleaned posters after button click:", cleanedData)
+// })
+showUnmotivationalPostersButton.addEventListener("click", function() {
+  handleView('unmotivational');
+  
+  let cleanedData = cleanData(unmotivationalPosters); // Clean the data once
+  displayCleanedPosters(cleanedData); // Pass cleaned data directly for rendering
+  
+  console.log("Displaying cleaned posters after button click:", cleanedData); // Log cleaned data for verification
+});
+
 showUserPosterButton.addEventListener("click", showUserCreatedPoster)
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 savePosterButton.addEventListener("click", saveCurrentPoster)
@@ -377,19 +389,21 @@ function displaySavedPosters() {
 console.log(savedPosters)
 
 function cleanData(posters) {
- cleanedPosters = posters.map((poster) => {
+ let cleanedData = posters.map((poster) => {
     return {
       imageURL:poster.img_url,
       title: poster.name,
       quote: poster.description, 
     }
   })
-  return cleanedPosters
+  console.log("Cleaned Data:", cleanedData)
+  return cleanedData
 }
-console.log(cleanData(unmotivationalPosters))
+// console.log(cleanData(unmotivationalPosters))
 
 function displayCleanedPosters(posters) {
-  unmotivationalGrid.innerHTML = cleanData(posters).map((poster, index) => { //added the index here
+  console.log("Rendering the following posters:", posters)
+  unmotivationalGrid.innerHTML = posters.map((poster, index) => { //added the index here
     return ` 
       <div class="mini-poster" data-id="${index}"> 
       <img src="${poster.imageURL}" class="poster-img">
@@ -398,7 +412,7 @@ function displayCleanedPosters(posters) {
       </div>` 
   }).join('') //ABOVE: the index is identfying each unique poster (by name) so that it can specifically be deleted. 
 }
-console.log(displayCleanedPosters(unmotivationalPosters))
+// console.log(displayCleanedPosters(unmotivationalPosters))
 
 //Delete an unmotivational poster 
 //set up event listener and query selectors globally
@@ -406,16 +420,24 @@ console.log(displayCleanedPosters(unmotivationalPosters))
 //
 
 function deleteUnmotivationalPoster(event) {
-  if (event.target.closest(".mini-poster")) {
+  const posterElement = event.target.closest(".mini-poster");
 
-    const posterToDelete = event.target.closest(".mini-poster")
-    const posterId = posterToDelete.getAttribute("data-id")
+  if (posterElement) {
+    const posterId = parseInt(posterElement.getAttribute("data-id")); // Get the data-id from the element
+    console.log("Deleting poster with ID:", posterId);
 
-    unmotivationalPosters.splice(posterId, 1)
+    unmotivationalPosters.splice(posterId, 1);
 
-    displayCleanedPosters(unmotivationalPosters)
+    // Re-render the cleaned posters after deleting the selected one
+    // Clean the updated array
+    let cleanedData = cleanData(unmotivationalPosters); 
+    displayCleanedPosters(cleanedData); 
+// Re-display the posters
+    console.log("Unmotivational posters after deletion:", unmotivationalPosters);
   }
 }
+
+
 //when a .mini-poster  is double clicked the event handler checks if the target is inside a .mini-poster div
 //event.target.closest is a method used to find the nearest parent .mini-poster of the clicked area
 //when clicked the poster is removed from the array (unmotivational posters) using splice
