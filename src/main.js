@@ -14,8 +14,9 @@ let savePosterButton = document.querySelector('.save-poster'),                  
 // pages
 let togglePosterForm = document.querySelector('.poster-form'),
     toggleMainPage = document.querySelector('.main-poster'),
-    toggleSavedPosters = document.querySelector('.saved-posters')
-    toggleUnmotivationalPosters = document.querySelector('.unmotivational-posters-page')
+    toggleSavedPosters = document.querySelector('.saved-posters'),
+    toggleUnmotivationalPosters = document.querySelector('.unmotivational-posters-page'),
+    clickToDelete = document.querySelector('.click-to-delete')
 
 // user inputs
 let newPosterURL = document.querySelector('#poster-image-url'),
@@ -264,6 +265,7 @@ var currentPoster;
   toggle(toggleSavedPosters, toggleMainPage) });
 returnToMainButton.addEventListener('click', function() {
   toggle(toggleUnmotivationalPosters, toggleMainPage) });
+  clickToDelete.addEventListener('click', deletePoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -370,7 +372,7 @@ function showUnmotivationalPosters() {
 
   cleanPosters.forEach(poster => {
     let posterContainer = document.createElement('article');
-    posterContainer.classList.add('mini-poster')
+    posterContainer.classList.add('mini-poster');
       
     let posterImage = document.createElement('img');
     posterImage.src = poster.imageURL;
@@ -386,4 +388,8 @@ function showUnmotivationalPosters() {
 
     unmotivationalPostersGrid.appendChild(posterContainer);
   })
+}
+
+function deletePoster() {
+  console.log(event);
 }
