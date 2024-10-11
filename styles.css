@@ -26,7 +26,10 @@ button {
 }
 
 button:hover {
-  background: darkslateblue;
+  background: rgb(150, 137, 236);
+  transform: scale(1.05);
+  color: black; 
+
 }
 
 .hidden {

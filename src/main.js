@@ -393,7 +393,7 @@ function deleteUnmotivationalPoster(event) {
     const posterId = parseInt(posterElement.getAttribute("data-id")); 
     // Get the data-id from the element
     //parseInt to convert a string to an integer
-    console.log("Deleting poster with ID:", posterId);
+      console.log("Deleting poster with ID:", posterId);
 
     unmotivationalPosters.splice(posterId, 1);
 
