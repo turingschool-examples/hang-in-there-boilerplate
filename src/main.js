@@ -405,10 +405,10 @@ function displayCleanedPosters(posters) {
   console.log("Rendering the following posters:", posters)
   unmotivationalGrid.innerHTML = posters.map((poster, index) => { //added the index here
     return ` 
-      <div class="mini-poster" data-id="${index}"> 
-      <img src="${poster.imageURL}" class="poster-img">
-      <h2 class="poster-title">${poster.title}</h2>
-      <p class="poster-quote">${poster.quote}</p>
+      <div class="mini-poster mini-poster-unmotivational" data-id="${index}"> 
+      <img src="${poster.imageURL}" class="poster-img poster-img-unmotivational">
+      <h2 class="poster-title poster-title-unmotivational">${poster.title}</h2>
+      <p class="poster-quote poster-quote-unmotivational">${poster.quote}</p>
       </div>` 
   }).join('') //ABOVE: the index is identfying each unique poster (by name) so that it can specifically be deleted. 
 }
