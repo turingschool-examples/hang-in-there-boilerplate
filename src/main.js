@@ -12,10 +12,10 @@ var returnButton = document.querySelector('.show-main')
 var savedButton = document.querySelector('.show-saved')
 var otherReturnButton = document.querySelector('.back-to-main')
 var savePosterButton = document.querySelector('.save-poster')
-let main = document.querySelector('.main-poster')
-let custom = document.querySelector('.poster-form')
-let saved = document.querySelector('.saved-posters')
-let showButton = document.querySelector('.make-poster')
+var main = document.querySelector('.main-poster')
+var custom = document.querySelector('.poster-form')
+var saved = document.querySelector('.saved-posters')
+var showButton = document.querySelector('.make-poster')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -123,8 +123,8 @@ window.addEventListener('load', createRandomPoster)
 randomButton.addEventListener('click', createRandomPoster)
 customButton.addEventListener('click', showCustomPosterForm)
 returnButton.addEventListener('click', showCustomPosterForm)
-savedButton.addEventListener('click', savedPosterForm)
-otherReturnButton.addEventListener('click', savedPosterForm)
+savedButton.addEventListener('click', showSavedPosters)
+otherReturnButton.addEventListener('click', showSavedPosters)
 savePosterButton.addEventListener('click', savePoster)
 showButton.addEventListener('click', showCustomPoster)
 
@@ -154,7 +154,7 @@ function createRandomPoster() {
   currentPoster.quote.innerText = randomPosterData.quote
 }
 
-function showCustomPoster () {
+function showCustomPoster() {
   event.preventDefault()
   let customPosterImage = document.querySelector('#poster-image-url')
   let customPosterTitle = document.querySelector('#poster-title')
@@ -186,7 +186,21 @@ function showCustomPosterForm() {
   main.classList.toggle('hidden')
 }
 
-function savedPosterForm() {
+function savePoster() {
+  const posterCopy = {
+    id: currentPoster.id,
+    imageURL: currentPoster.image.src,
+    title: currentPoster.title.innerText,
+    quote: currentPoster.quote.innerText
+  }
+
+  if (!savedPosters.some(poster => poster.id === posterCopy.id)) {
+    savedPosters.push(posterCopy)
+  }
+  
+}
+
+function showSavedPosters() {
   saved.classList.toggle('hidden')
   main.classList.toggle('hidden')
 
@@ -206,16 +220,3 @@ function savedPosterForm() {
   })
 }
 
-function savePoster() {
-  const posterCopy = {
-    id: currentPoster.id,
-    imageURL: currentPoster.image.src,
-    title: currentPoster.title.innerText,
-    quote: currentPoster.quote.innerText
-  }
-
-  if (!savedPosters.some(poster => poster.id === posterCopy.id)) {
-    savedPosters.push(posterCopy)
-  }
-  
-}
