@@ -132,15 +132,6 @@ h2 {
   width: 425px;
 }
 
-.mini-poster-unmotivational {
-  background: rgb(84, 83, 83);
-  border-radius: 10px;
-  color: white;
-  height: 340px;
-  padding: 25px;
-  width: 425px;
-}
-
 .mini-poster img {
   height:200px;
   width: 300px;
@@ -160,4 +151,36 @@ h2 {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+
+/* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
+.unmotivational-section .poster-title-unmotivational {
+  color: black;
+}
+
+.mini-poster-unmotivational:hover .poster-title-unmotivational {
+  color: rgb(146, 55, 55);
+}
+
+.mini-poster-unmotivational:hover {
+  background: rgb(34, 34, 34);
+  box-shadow: 0 0 40px rgb(146, 55, 55);
+  transition: box-shadow 0.3s ease;
+}
+
+.mini-poster-unmotivational {
+  background: rgb(84, 83, 83);
+  border-radius: 10px;
+  color: white;
+  height: 340px;
+  padding: 25px;
+  width: 425px;
+}
+
+.mini-poster-unmotivational .poster-title {
+  margin-top: 20px; /* Adjust this value as needed */
+}
+
+.mini-poster-unmotivational .poster-quote {
+  margin-top: 10px; /* Adjust this value as needed */
 }
