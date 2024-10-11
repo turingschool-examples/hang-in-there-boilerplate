@@ -245,17 +245,17 @@ let unmotivationalPosters = [
 ];
 
 var savedPosters = [];
+var cleanPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
- Window.onload = buildPoster();
+ Window.onload = initialSetup();
 
  showRandomButton.addEventListener('click', buildPoster);
  savePosterButton.addEventListener('click', savePoster);
  showMyPosterButton.addEventListener('click', showCreatedPoster);
  showSavedButton.addEventListener('click', showSavedPosters);
- showUnmotivationalPostersButton.addEventListener('click', function() {
-  toggle(toggleUnmotivationalPosters, toggleMainPage) })
+ showUnmotivationalPostersButton.addEventListener('click', showUnmotivationalPosters)
  makePosterButton.addEventListener('click', function() {
   toggle(togglePosterForm, toggleMainPage) });
  showMainButton.addEventListener('click', function() {
@@ -277,6 +277,23 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function initialSetup() {
+  cleanData()
+  buildPoster()
+}
+
+function cleanData() {
+  unmotivationalPosters.forEach(poster => {
+    cleanPoster = {
+      imageURL: poster.img_url,
+      title: poster.name,
+      quote: poster.description
+    }
+
+    cleanPosters.push(cleanPoster)
+  })
 }
 
 function buildPoster() {
@@ -322,7 +339,7 @@ function showSavedPosters() {
     let posterQuote = document.createElement('h4');
     posterQuote.textContent = poster.quote;
     posterContainer.appendChild(posterQuote);
-    
+
     savedPostersGrid.appendChild(posterContainer);
   })
 }
@@ -344,4 +361,29 @@ function showCreatedPoster() {
   document.querySelector('.poster-quote').innerHTML = posterQuote;
 
   toggle(togglePosterForm, toggleMainPage);
+}
+
+function showUnmotivationalPosters() {
+  toggle(toggleUnmotivationalPosters, toggleMainPage)
+  
+  let unmotivationalPostersGrid = document.querySelector('.unmotivational-posters-grid');
+
+  cleanPosters.forEach(poster => {
+    let posterContainer = document.createElement('article');
+    posterContainer.classList.add('mini-poster')
+      
+    let posterImage = document.createElement('img');
+    posterImage.src = poster.imageURL;
+    posterContainer.appendChild(posterImage);
+      
+    let posterTitle = document.createElement('h2');
+    posterTitle.textContent = poster.title;
+    posterContainer.appendChild(posterTitle);
+
+    let posterQuote = document.createElement('h4');
+    posterQuote.textContent = poster.quote;
+    posterContainer.appendChild(posterQuote);
+
+    unmotivationalPostersGrid.appendChild(posterContainer);
+  })
 }
