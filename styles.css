@@ -84,6 +84,10 @@ button:hover {
   margin-bottom: 30px;
 }
 
+h2 {
+  margin-bottom: 20px;
+}
+
 .poster-form form {
   align-content: center;
   display: flex;
@@ -107,20 +111,18 @@ button:hover {
 /* ~~~~~ SAVED POSTER SECTION ~~~~~ */
 .saved-posters {
   padding: 40px;
-  border: red;
-  
 }
 
 .saved-posters-grid {
   display: flex;
-  flex-wrap: wrap; /* Allows wrapping of mini-posters if needed */
-  justify-content: center; /* Center the mini-posters */
-  gap: 20px; /* Optional: Adjust the gap between posters */
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 8px; 
 }
 
-/* .unmotivational-section {
-  border: red;
-} */
+.back-to-main, .back-to-main-from-unmotivational {
+  margin-top: 20px;
+}
 
 .mini-poster {
   background: black;
@@ -128,13 +130,20 @@ button:hover {
   height: 340px;
   padding: 25px;
   width: 425px;
-  border: red;
+}
+
+.mini-poster-unmotivational {
+  background: rgb(84, 83, 83);
+  border-radius: 10px;
+  color: white;
+  height: 340px;
+  padding: 25px;
+  width: 425px;
 }
 
 .mini-poster img {
   height:200px;
   width: 300px;
-  border: red;
 }
 
 .mini-poster h2,
