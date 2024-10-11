@@ -15,11 +15,7 @@ Project spec & rubric can be found [here](https://curriculum.turing.edu/module2/
 To view your project:
 
 1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
-  
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
+2. Run the command `open index.html` 
 ______________________________________________________  
 
 # Hang in There  
