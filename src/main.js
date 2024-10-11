@@ -259,6 +259,7 @@ showMyPosterButton.addEventListener("click", function(event) {
   makeNewPoster(event)
 })
 unmotivationalButton.addEventListener("click", showUnmotivationalPosters)
+unmotivationalPostersGrid.addEventListener("dblclick", deleteUnmotivationalPoster)
 
 
 // functions and event handlers go here 👇
@@ -383,3 +384,17 @@ function showUnmotivationalMiniPosters() {
         <h4>${quote}</h4>
       </div>`
   }}
+
+  function deleteUnmotivationalPoster() {
+    if(event.target.classList.contains('mini-poster')) {
+      poster = event.target
+      console.log(poster)
+      console.log(event.target.children)
+      console.log(event)
+  
+      test=poster.querySelector('h2').innerText
+      console.log(test)
+      poster.remove()
+
+    }
+  }
