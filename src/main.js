@@ -155,12 +155,16 @@ function createRandomPoster() {
 }
 
 function showCustomPoster () {
-  event.preventDefault();
+  event.preventDefault()
   let customPosterImage = document.querySelector('#poster-image-url')
   let customPosterTitle = document.querySelector('#poster-title')
   let customPosterQuote = document.querySelector('#poster-quote')
 
-  const tempPoster = createPoster(customPosterImage.value, customPosterTitle.value, customPosterQuote.value)
+  const tempPoster = createPoster(
+    customPosterImage.value, 
+    customPosterTitle.value, 
+    customPosterQuote.value
+  )
 
   images.push(tempPoster.imageURL)
   titles.push(tempPoster.title)
@@ -185,6 +189,21 @@ function showCustomPosterForm() {
 function savedPosterForm() {
   saved.classList.toggle('hidden')
   main.classList.toggle('hidden')
+
+  const savedGrid = document.querySelector('.saved-posters-grid')  
+  savedGrid.innerHTML = ''
+
+  savedPosters.forEach(poster => {
+  const smallPoster = document.createElement('div')
+  smallPoster.classList.add('mini-poster')
+
+  smallPoster.innerHTML = `
+    <img src="${poster.imageURL}">,
+    <h2>${poster.title}<h2>
+    <h4>${poster.quote}<h4>
+  `
+  savedGrid.appendChild(smallPoster)
+  })
 }
 
 function savePoster() {
