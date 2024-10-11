@@ -1,6 +1,6 @@
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
-var images = [
+const images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
   "./assets/butterfly.jpg",
@@ -20,7 +20,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
-var titles = [
+const titles = [
   "determination",
   "success",
   "inspiration",
@@ -57,7 +57,7 @@ var titles = [
   "understanding",
   "wisdom"
 ];
-var quotes = [
+const quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
@@ -241,7 +241,6 @@ var backToMainButton = document.querySelector(".back-to-main")
 var backToMainFromUnmotivationalButton = document.querySelector(".back-to-main-from-unmotivational")
 var showRandomPosterButton = document.querySelector(".show-random")
 var savePosterButton = document.querySelector('.save-poster')
-var showRandomPosterButton = document.querySelector(".show-random")
 var showUserPosterButton = document.querySelector(".make-poster")
 var showUnmotivationalPostersButton = document.querySelector(".show-unmotivational")
 var unmotivationalPostersSection = document.querySelector(".unmotivational-section")
@@ -359,12 +358,13 @@ function addUserPosterInput(image, title, quote) {
 }
 
 function saveCurrentPoster() {
-  let generatedPoster = savedPosters.find((poster) =>{
+
+if (!savedPosters.some((poster) => {
     return  poster.imageURL === currentPoster.imageURL &&
             poster.title === currentPoster.title &&
             poster.quote === currentPoster.quote
-  })
-  if(!generatedPoster) {
+  })) {
+
     savedPosters.push(currentPoster)
     // console.log("Poster saved:", currentPoster);
     // console.log("Saved Posters Array:", savedPosters); 
@@ -423,7 +423,9 @@ function deleteUnmotivationalPoster(event) {
   const posterElement = event.target.closest(".mini-poster");
 
   if (posterElement) {
-    const posterId = parseInt(posterElement.getAttribute("data-id")); // Get the data-id from the element
+    const posterId = parseInt(posterElement.getAttribute("data-id")); 
+    // Get the data-id from the element
+    //parseInt to convert a string to an integer
     console.log("Deleting poster with ID:", posterId);
 
     unmotivationalPosters.splice(posterId, 1);
