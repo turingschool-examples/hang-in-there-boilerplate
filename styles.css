@@ -158,7 +158,7 @@ h2 {
   color: black;
 }
 
-.mini-poster-unmotivational:hover .poster-title-unmotivational {
+/* .mini-poster-unmotivational:hover .poster-title-unmotivational {
   color: rgb(146, 55, 55);
 }
 
@@ -166,7 +166,7 @@ h2 {
   background: rgb(34, 34, 34);
   box-shadow: 0 0 40px rgb(146, 55, 55);
   transition: box-shadow 0.3s ease;
-}
+} */
 
 .mini-poster-unmotivational {
   background: rgb(84, 83, 83);
