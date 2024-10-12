@@ -145,3 +145,16 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+/* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
+.unmotivatioanal-mini-poster {
+  background: gray;
+  color: white;
+  height: 340px;
+  padding: 25px;
+  width: 425px;
+}
+
+.unmotivatioanal-mini-poster h2 {
+  color: black;
+}
