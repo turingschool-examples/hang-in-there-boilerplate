@@ -255,14 +255,17 @@ showMainPageButton.addEventListener("click", function() {handleView('main')})
 backToMainButton.addEventListener("click", function() {handleView('main'); showRandomHomepagePoster()})
 showUserPosterButton.addEventListener("click", function() {handleView('main'); showUserCreatedPoster(event)})
 backToMainFromUnmotivationalButton.addEventListener("click", function() {handleView('main')})//possible refactor. all back to main buttons linked
-showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational'); displayCleanedPosters (cleanData(unmotivationalPosters))}); // Pass cleaned data to this display function for rendering
+showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational'); displayCleanedPosters (cleanData(unmotivationalPosters))}); 
+//When this button is clicked the following happens: 
+//1. the unmotivational page view is rendered (from the handle view function)
+//2. the cleanData function processes each poster (from the unmotivationalPosters array) with a cleaned version. 
+//3. That cleaned data is passed as an argument to the displayCleanedPosters function 
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 savePosterButton.addEventListener("click", saveCurrentPoster)
 unmotivationalGrid.addEventListener("dblclick", deleteUnmotivationalPoster) //the dblclick is attacvhed to the parent container (#unmotivational-grid)
 unmotivationalPostersSection.addEventListener("dblclick", deleteUnmotivationalPoster)
 
-//the anonymous callback function () used above is for deferring its execution
-//until the button is acutually clicked. 
+//function(): when the button  is clicked, the anonymous callback function() is executed. the anonymous callback function keeps the other functions from being run until the button is acutually clicked. 
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -335,8 +338,8 @@ function addUserPosterInput(image, title, quote) {
   quotes.push(quote)
 }
 
-function saveCurrentPoster() {
-if (!savedPosters.some((poster) => {
+function saveCurrentPoster() {            //.some checks if there is already a poster in the array with the same image, title, and quote as the currentPoster
+if (!savedPosters.some((poster) => {      //If it find a match/evaluates to TRUE, the duplicate poster is not saved. 
     return  poster.imageURL === currentPoster.imageURL &&
             poster.title === currentPoster.title &&
             poster.quote === currentPoster.quote
@@ -375,7 +378,7 @@ function cleanData(posters) {
 
 function displayCleanedPosters(posters) {
   console.log("Rendering the following posters:", posters)
-  unmotivationalGrid.innerHTML = posters.map((poster, index) => { //added the index here
+  unmotivationalGrid.innerHTML = posters.map((poster, index) => { //added the index here. the id is added so that posters can also be identified and deleted. 
     return ` 
       <div class="mini-poster mini-poster-unmotivational" data-id="${index}"> 
       <img src="${poster.imageURL}" class="poster-img poster-img-unmotivational">
