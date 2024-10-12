@@ -157,11 +157,12 @@ h2 {
 }
 
 #save-message {
-  color: red;
+  color: rgb(189, 48, 48);
   font-size: 25px;
   font-weight: bold;
   padding: 10px;
 }
+
 /* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
 .unmotivational-section .poster-title-unmotivational {
   color: black;
