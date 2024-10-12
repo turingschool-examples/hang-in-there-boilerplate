@@ -1,6 +1,6 @@
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
-var images = [
+const images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
   "./assets/butterfly.jpg",
@@ -20,7 +20,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
-var titles = [
+const titles = [
   "determination",
   "success",
   "inspiration",
@@ -57,7 +57,7 @@ var titles = [
   "understanding",
   "wisdom"
 ];
-var quotes = [
+const quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
   "You are confined only by the walls you build yourself.",
@@ -241,11 +241,11 @@ var backToMainButton = document.querySelector(".back-to-main")
 var backToMainFromUnmotivationalButton = document.querySelector(".back-to-main-from-unmotivational")
 var showRandomPosterButton = document.querySelector(".show-random")
 var savePosterButton = document.querySelector('.save-poster')
-var showRandomPosterButton = document.querySelector(".show-random")
 var showUserPosterButton = document.querySelector(".make-poster")
 var showUnmotivationalPostersButton = document.querySelector(".show-unmotivational")
 var unmotivationalPostersSection = document.querySelector(".unmotivational-section")
 var unmotivationalGrid = document.querySelector("#unmotivational-grid")
+var saveMessage = document.querySelector("#save-message")
 // var deleteAPoster = document.querySelector(".mini-poster")
 
 // event listeners go here 👇
@@ -254,33 +254,19 @@ makeOwnPosterButton.addEventListener("click", function() {handleView('form')})
 showSavedPostersButton.addEventListener("click", function() {handleView('saved'); displaySavedPosters()})
 showMainPageButton.addEventListener("click", function() {handleView('main')})
 backToMainButton.addEventListener("click", function() {handleView('main'); showRandomHomepagePoster()})
-showUserPosterButton.addEventListener("click", function() {handleView('main')})
+showUserPosterButton.addEventListener("click", function() {handleView('main'); showUserCreatedPoster(event)})
 backToMainFromUnmotivationalButton.addEventListener("click", function() {handleView('main')})//possible refactor. all back to main buttons linked
-// showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational'); 
-//   let cleanedData = cleanData(unmotivationalPosters);
-//   displayCleanedPosters(cleanedData)
-//   console.log("Displaying cleaned posters after button click:", cleanedData)
-// })
-showUnmotivationalPostersButton.addEventListener("click", function() {
-  handleView('unmotivational');
-  
-  let cleanedData = cleanData(unmotivationalPosters); // Clean the data once
-  displayCleanedPosters(cleanedData); // Pass cleaned data directly for rendering
-  
-  console.log("Displaying cleaned posters after button click:", cleanedData); // Log cleaned data for verification
-});
-
-showUserPosterButton.addEventListener("click", showUserCreatedPoster)
+showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational'); displayCleanedPosters (cleanData(unmotivationalPosters))}); 
+//When this button is clicked the following happens: 
+//1. the unmotivational page view is rendered (from the handle view function)
+//2. the cleanData function processes each poster (from the unmotivationalPosters array) with a cleaned version. 
+//3. That cleaned data is passed as an argument to the displayCleanedPosters function 
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 savePosterButton.addEventListener("click", saveCurrentPoster)
 unmotivationalGrid.addEventListener("dblclick", deleteUnmotivationalPoster) //the dblclick is attacvhed to the parent container (#unmotivational-grid)
-// deleteAPoster.addEventListener("dblclick", deleteUnmotivationalPoster)
 unmotivationalPostersSection.addEventListener("dblclick", deleteUnmotivationalPoster)
 
-// showSavedPostersButton.addEventListener("click", saveCurrentPoster)
-
-//the anonymous callback function () used above is for deferring its execution
-//until the button is acutually clicked. 
+//function(): when the button  is clicked, the anonymous callback function() is executed. the anonymous callback function keeps the other functions from being run until the button is acutually clicked. 
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -329,6 +315,9 @@ function showPoster(imageURL, title, quote) {
 }
 
 function showRandomHomepagePoster() {
+
+  saveMessage.classList.add("hidden")
+
   let randomImage = images[getRandomIndex(images)];
   let randomTitle = titles[getRandomIndex(titles)];
   let randomQuote = quotes[getRandomIndex(quotes)];
@@ -339,16 +328,13 @@ function showRandomHomepagePoster() {
 function showUserCreatedPoster(event) {
   event.preventDefault();
 
+  saveMessage.classList.add("hidden")
+  
   let userImage = userPosterImage.value
   let userTitle = userPosterTitle.value
   let userQuote = userPosterQuote.value
 
-  // console.log("User Image:", userImage);
-  // console.log("User Title:", userTitle);
-  // console.log("User Quote:", userQuote);
-
   showPoster(userImage, userTitle, userQuote)
-  // saveCurrentPoster()
   addUserPosterInput(userImage, userTitle, userQuote)
 }
 
@@ -358,24 +344,24 @@ function addUserPosterInput(image, title, quote) {
   quotes.push(quote)
 }
 
-function saveCurrentPoster() {
-  let generatedPoster = savedPosters.find((poster) =>{
+function saveCurrentPoster() {            //.some checks if there is already a poster in the array with the same image, title, and quote as the currentPoster
+if (!savedPosters.some((poster) => {      //If it find a match/evaluates to TRUE, the duplicate poster is not saved. 
     return  poster.imageURL === currentPoster.imageURL &&
             poster.title === currentPoster.title &&
             poster.quote === currentPoster.quote
-  })
-  if(!generatedPoster) {
+  })) {
     savedPosters.push(currentPoster)
+    saveMessage.classList.add("hidden")
     // console.log("Poster saved:", currentPoster);
     // console.log("Saved Posters Array:", savedPosters); 
   } else {
+    saveMessage.innerText = "Duplicate poster! This poster cannot be saved."
+    saveMessage.classList.remove("hidden")
     // console.log("Poster is already saved");
   }
 }
 
 function displaySavedPosters() {
-  savedPostersGrid.innerHTML = '' //This clears out the savedPostersSection before adding the new ones
-
   savedPostersGrid.innerHTML = savedPosters.map((poster) => {
     return `
        <div class="mini-poster">
@@ -386,8 +372,6 @@ function displaySavedPosters() {
   }).join('') //need to use .join b/c map returns an array of strings. An array cant be put into innerHTML. Join turns the array into a string.
 }
 
-console.log(savedPosters)
-
 function cleanData(posters) {
  let cleanedData = posters.map((poster) => {
     return {
@@ -396,14 +380,14 @@ function cleanData(posters) {
       quote: poster.description, 
     }
   })
-  console.log("Cleaned Data:", cleanedData)
+    // console.log("Cleaned Data:", cleanedData)
   return cleanedData
 }
 // console.log(cleanData(unmotivationalPosters))
 
 function displayCleanedPosters(posters) {
   console.log("Rendering the following posters:", posters)
-  unmotivationalGrid.innerHTML = posters.map((poster, index) => { //added the index here
+  unmotivationalGrid.innerHTML = posters.map((poster, index) => { //added the index here. the id is added so that posters can also be identified and deleted. 
     return ` 
       <div class="mini-poster mini-poster-unmotivational" data-id="${index}"> 
       <img src="${poster.imageURL}" class="poster-img poster-img-unmotivational">
@@ -414,17 +398,14 @@ function displayCleanedPosters(posters) {
 }
 // console.log(displayCleanedPosters(unmotivationalPosters))
 
-//Delete an unmotivational poster 
-//set up event listener and query selectors globally
-//render the poster
-//
-
 function deleteUnmotivationalPoster(event) {
   const posterElement = event.target.closest(".mini-poster");
 
   if (posterElement) {
-    const posterId = parseInt(posterElement.getAttribute("data-id")); // Get the data-id from the element
-    console.log("Deleting poster with ID:", posterId);
+    const posterId = parseInt(posterElement.getAttribute("data-id")); 
+    // Get the data-id from the element
+    //parseInt to convert a string to an integer
+      console.log("Deleting poster with ID:", posterId);
 
     unmotivationalPosters.splice(posterId, 1);
 
@@ -436,7 +417,6 @@ function deleteUnmotivationalPoster(event) {
     console.log("Unmotivational posters after deletion:", unmotivationalPosters);
   }
 }
-
 
 //when a .mini-poster  is double clicked the event handler checks if the target is inside a .mini-poster div
 //event.target.closest is a method used to find the nearest parent .mini-poster of the clicked area

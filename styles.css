@@ -26,7 +26,10 @@ button {
 }
 
 button:hover {
-  background: darkslateblue;
+  background: rgb(150, 137, 236);
+  transform: scale(1.05);
+  color: black; 
+
 }
 
 .hidden {
@@ -153,23 +156,30 @@ h2 {
   text-transform: uppercase;
 }
 
+#save-message {
+  color: rgb(189, 48, 48);
+  font-size: 25px;
+  font-weight: bold;
+  padding: 10px;
+}
+
 /* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
 .unmotivational-section .poster-title-unmotivational {
   color: black;
 }
 
-/* .mini-poster-unmotivational:hover .poster-title-unmotivational {
-  color: rgb(146, 55, 55);
+.mini-poster-unmotivational:hover .poster-title-unmotivational {
+  color: rgb(105, 27, 27);
 }
 
 .mini-poster-unmotivational:hover {
-  background: rgb(34, 34, 34);
-  box-shadow: 0 0 40px rgb(146, 55, 55);
+  background: rgb(104, 102, 102);
+  box-shadow: 0 0 40px rgb(189, 48, 48);
   transition: box-shadow 0.3s ease;
-} */
+}
 
 .mini-poster-unmotivational {
-  background: rgb(84, 83, 83);
+  background: rgb(139, 137, 137);
   border-radius: 10px;
   color: white;
   height: 340px;
