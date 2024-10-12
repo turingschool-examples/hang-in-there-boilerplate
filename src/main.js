@@ -265,7 +265,7 @@ var currentPoster;
   toggle(toggleSavedPosters, toggleMainPage) });
 returnToMainButton.addEventListener('click', function() {
   toggle(toggleUnmotivationalPosters, toggleMainPage) });
-  clickToDelete.addEventListener('click', deletePoster);
+  clickToDelete.addEventListener('dblclick', deletePoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -391,5 +391,13 @@ function showUnmotivationalPosters() {
 }
 
 function deletePoster() {
-  console.log(event);
+  let targetTag = event.target.tagName.toLowerCase();
+  
+  if (targetTag === 'img' || targetTag ==='h2' || targetTag === 'h4') {
+    let parentNode = event.target.parentNode;
+    parentNode.remove();
+
+    // function is deleting posters but they are all being added back on page load
+    // Need to figure out how to get the index and delete from the array
+  }
 }
