@@ -156,6 +156,12 @@ h2 {
   text-transform: uppercase;
 }
 
+#save-message {
+  color: red;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 10px;
+}
 /* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
 .unmotivational-section .poster-title-unmotivational {
   color: black;

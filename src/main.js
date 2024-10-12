@@ -245,6 +245,7 @@ var showUserPosterButton = document.querySelector(".make-poster")
 var showUnmotivationalPostersButton = document.querySelector(".show-unmotivational")
 var unmotivationalPostersSection = document.querySelector(".unmotivational-section")
 var unmotivationalGrid = document.querySelector("#unmotivational-grid")
+var saveMessage = document.querySelector("#save-message")
 // var deleteAPoster = document.querySelector(".mini-poster")
 
 // event listeners go here 👇
@@ -314,6 +315,9 @@ function showPoster(imageURL, title, quote) {
 }
 
 function showRandomHomepagePoster() {
+
+  saveMessage.classList.add("hidden")
+
   let randomImage = images[getRandomIndex(images)];
   let randomTitle = titles[getRandomIndex(titles)];
   let randomQuote = quotes[getRandomIndex(quotes)];
@@ -324,6 +328,8 @@ function showRandomHomepagePoster() {
 function showUserCreatedPoster(event) {
   event.preventDefault();
 
+  saveMessage.classList.add("hidden")
+  
   let userImage = userPosterImage.value
   let userTitle = userPosterTitle.value
   let userQuote = userPosterQuote.value
@@ -345,9 +351,12 @@ if (!savedPosters.some((poster) => {      //If it find a match/evaluates to TRUE
             poster.quote === currentPoster.quote
   })) {
     savedPosters.push(currentPoster)
+    saveMessage.classList.add("hidden")
     // console.log("Poster saved:", currentPoster);
     // console.log("Saved Posters Array:", savedPosters); 
   } else {
+    saveMessage.innerText = "Duplicate poster! This poster cannot be saved."
+    saveMessage.classList.remove("hidden")
     // console.log("Poster is already saved");
   }
 }
