@@ -153,6 +153,7 @@ button:hover {
   height: 340px;
   padding: 25px;
   width: 425px;
+  border-radius: 10px;
 }
 
 .unmotivatioanal-mini-poster h2 {
