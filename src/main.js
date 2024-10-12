@@ -16,7 +16,9 @@ let togglePosterForm = document.querySelector('.poster-form'),
     toggleMainPage = document.querySelector('.main-poster'),
     toggleSavedPosters = document.querySelector('.saved-posters'),
     toggleUnmotivationalPosters = document.querySelector('.unmotivational-posters-page'),
-    clickToDelete = document.querySelector('.click-to-delete')
+    clickToDelete = document.querySelector('.click-to-delete'),
+    savedPostersGrid = document.querySelector('.saved-posters-grid'),
+    unmotivationalPostersGrid = document.querySelector('.unmotivational-posters-grid')
 
 // user inputs
 let newPosterURL = document.querySelector('#poster-image-url'),
@@ -250,22 +252,22 @@ var cleanPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
- Window.onload = initialSetup();
+Window.onload = initialSetup();
 
- showRandomButton.addEventListener('click', buildPoster);
- savePosterButton.addEventListener('click', savePoster);
- showMyPosterButton.addEventListener('click', showCreatedPoster);
- showSavedButton.addEventListener('click', showSavedPosters);
- showUnmotivationalPostersButton.addEventListener('click', showUnmotivationalPosters)
- makePosterButton.addEventListener('click', function() {
+showRandomButton.addEventListener('click', buildPoster);
+savePosterButton.addEventListener('click', savePoster);
+showMyPosterButton.addEventListener('click', showCreatedPoster);
+showSavedButton.addEventListener('click', showSavedPosters);
+showUnmotivationalPostersButton.addEventListener('click', showUnmotivationalPosters)
+makePosterButton.addEventListener('click', function() {
   toggle(togglePosterForm, toggleMainPage) });
- showMainButton.addEventListener('click', function() {
+showMainButton.addEventListener('click', function() {
   toggle(togglePosterForm, toggleMainPage) });
- backToMainButton.addEventListener('click', function() {
+backToMainButton.addEventListener('click', function() {
   toggle(toggleSavedPosters, toggleMainPage) });
 returnToMainButton.addEventListener('click', function() {
   toggle(toggleUnmotivationalPosters, toggleMainPage) });
-  clickToDelete.addEventListener('dblclick', deletePoster);
+clickToDelete.addEventListener('dblclick', deletePoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -298,6 +300,22 @@ function cleanData() {
   })
 }
 
+function toggle(show, hide) {
+  show.classList.toggle('hidden')
+  hide.classList.toggle('hidden')
+  cleanPage()
+}
+
+function cleanPage() {
+  while(savedPostersGrid.hasChildNodes()) {
+    savedPostersGrid.removeChild(savedPostersGrid.firstChild);
+  }
+
+  while(unmotivationalPostersGrid.hasChildNodes() === true) {
+    unmotivationalPostersGrid.removeChild(unmotivationalPostersGrid.firstChild);
+  }
+}
+
 function buildPoster() {
   var imageIndex = getRandomIndex(images);
   var titleIndex = getRandomIndex(titles);
@@ -310,10 +328,6 @@ function buildPoster() {
   document.querySelector('.poster-quote').innerHTML = currentPoster.quote;
 }
 
-function toggle(show, hide) {
-  show.classList.toggle('hidden')
-  hide.classList.toggle('hidden')
-}
 
 function savePoster() {
   if(!savedPosters.includes(currentPoster)) {
@@ -323,8 +337,6 @@ function savePoster() {
 
 function showSavedPosters() {
   toggle(toggleSavedPosters, toggleMainPage)
-  
-  let savedPostersGrid = document.querySelector('.saved-posters-grid');
 
   savedPosters.forEach(poster => {
     let posterContainer = document.createElement('article');
@@ -367,13 +379,15 @@ function showCreatedPoster() {
 
 function showUnmotivationalPosters() {
   toggle(toggleUnmotivationalPosters, toggleMainPage)
-  
-  let unmotivationalPostersGrid = document.querySelector('.unmotivational-posters-grid');
+
+  let arrayIndex = 0;
 
   cleanPosters.forEach(poster => {
     let posterContainer = document.createElement('article');
     posterContainer.classList.add('mini-poster');
     posterContainer.classList.add('unmotivatioanal-mini-poster');
+    posterContainer.id = (`${arrayIndex}`);
+    arrayIndex += 1;
       
     let posterImage = document.createElement('img');
     posterImage.src = poster.imageURL;
@@ -393,12 +407,11 @@ function showUnmotivationalPosters() {
 
 function deletePoster() {
   let targetTag = event.target.tagName.toLowerCase();
-  
   if (targetTag === 'img' || targetTag ==='h2' || targetTag === 'h4') {
     let parentNode = event.target.parentNode;
+    let parentNodeId = parseInt(parentNode.id, 10);
+    debugger;
+    cleanPosters.splice(parentNodeId, 1);
     parentNode.remove();
-
-    // function is deleting posters but they are all being added back on page load
-    // Need to figure out how to get the index and delete from the array
   }
 }
