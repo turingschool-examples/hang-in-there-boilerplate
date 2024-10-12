@@ -373,6 +373,7 @@ function showUnmotivationalPosters() {
   cleanPosters.forEach(poster => {
     let posterContainer = document.createElement('article');
     posterContainer.classList.add('mini-poster');
+    posterContainer.classList.add('unmotivatioanal-mini-poster');
       
     let posterImage = document.createElement('img');
     posterImage.src = poster.imageURL;
