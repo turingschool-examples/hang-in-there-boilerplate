@@ -9,12 +9,15 @@ var randomButton = document.querySelector('.show-random')
 var customButton = document.querySelector('.show-form')
 var returnButton = document.querySelector('.show-main')
 var savedButton = document.querySelector('.show-saved')
+var showButton = document.querySelector('.make-poster')
+var unmotivationalButton = document.querySelector('.show-unmotivational')
 var otherReturnButton = document.querySelector('.back-to-main')
 var savePosterButton = document.querySelector('.save-poster')
+var becomeMotivedButton = document.querySelector('.become-motivated')
 var main = document.querySelector('.main-poster')
 var custom = document.querySelector('.poster-form')
 var saved = document.querySelector('.saved-posters')
-var showButton = document.querySelector('.make-poster')
+var unmotivational = document.querySelector('.unmotivational-posters')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -250,6 +253,8 @@ savedButton.addEventListener('click', showSavedPosters)
 otherReturnButton.addEventListener('click', showSavedPosters)
 savePosterButton.addEventListener('click', savePoster)
 showButton.addEventListener('click', showCustomPoster)
+unmotivationalButton.addEventListener('click', showUnmotivationalPosters)
+becomeMotivedButton.addEventListener('click', showUnmotivationalPosters)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -336,7 +341,7 @@ function showSavedPosters() {
   smallPoster.classList.add('mini-poster')
 
   smallPoster.innerHTML = `
-    <img src="${poster.imageURL}">,
+    <img src="${poster.imageURL}">
     <h2>${poster.title}<h2>
     <h4>${poster.quote}<h4>
   `
@@ -351,5 +356,25 @@ function cleanPosters() {
       poster.name,
       poster.description
     ))
+  })
+}
+
+function showUnmotivationalPosters() {
+  unmotivational.classList.toggle('hidden')
+  main.classList.toggle('hidden')
+
+  const unmotivationalGrid = document.querySelector('.unmotivational-posters-grid')
+
+  cleanedUnmotivationalPosters.forEach(poster => {
+    const unmotivationalPoster = document.createElement('div')
+    unmotivationalPoster.classList.add('mini-poster')
+
+    unmotivationalPoster.innerHTML = `
+    <img src="${poster.imageURL}">
+    <h2>${poster.title}<h2>
+    <h4>${poster.quote}<h4>
+  `
+
+  unmotivationalGrid.appendChild(unmotivationalPoster)
   })
 }
