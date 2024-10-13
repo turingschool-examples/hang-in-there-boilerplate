@@ -24,7 +24,7 @@ let togglePosterForm = document.querySelector('.poster-form'),
 let newPosterURL = document.querySelector('#poster-image-url'),
     newPosterTitle = document.querySelector('#poster-title'),
     newPosterQuote = document.querySelector('#poster-quote')
-
+    
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -374,6 +374,10 @@ function showCreatedPoster() {
   document.querySelector('.poster-title').innerHTML = posterTitle;
   document.querySelector('.poster-quote').innerHTML = posterQuote;
 
+  newPosterURL.value = "";
+  newPosterTitle.value = "";
+  newPosterQuote.value = "";
+  
   toggle(togglePosterForm, toggleMainPage);
 }
 
@@ -410,7 +414,7 @@ function deletePoster() {
   if (targetTag === 'img' || targetTag ==='h2' || targetTag === 'h4') {
     let parentNode = event.target.parentNode;
     let parentNodeId = parseInt(parentNode.id, 10);
-    debugger;
+
     cleanPosters.splice(parentNodeId, 1);
     parentNode.remove();
   }
