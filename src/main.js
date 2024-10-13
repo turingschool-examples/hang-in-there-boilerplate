@@ -37,7 +37,7 @@ var images = [
   "./assets/squirrel.jpg",
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
-];
+]
 var titles = [
   "determination",
   "success",
@@ -74,7 +74,7 @@ var titles = [
   "trust",
   "understanding",
   "wisdom"
-];
+]
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
@@ -114,7 +114,7 @@ var quotes = [
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
-];
+]
 let unmotivationalPosters = [
   {
     name: "FAILURE",
@@ -236,8 +236,9 @@ let unmotivationalPosters = [
     vintage: false,
     img_url: "./assets/doubt.jpg",
   }
-];
-var savedPosters = [];
+]
+var savedPosters = []
+var cleanedUnmotivationalPosters = []
 
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster)
@@ -342,3 +343,12 @@ function showSavedPosters() {
   })
 }
 
+function cleanPosters() {
+  unmotivationalPosters.forEach(poster => {
+    cleanedUnmotivationalPosters.push(createPoster(
+      poster.img_url,
+      poster.name,
+      poster.description
+    ))
+  })
+}
