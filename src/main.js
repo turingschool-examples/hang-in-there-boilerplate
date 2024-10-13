@@ -277,10 +277,9 @@ function createRandomPoster() {
     titles[getRandomIndex(titles)], 
     quotes[getRandomIndex(quotes)]
   );
+
+  updateCurrentPoster(randomPosterData.imageURL, randomPosterData.title, randomPosterData.quote)
   currentPoster.id = randomPosterData.id
-  currentPoster.image.src = randomPosterData.imageURL
-  currentPoster.title.innerText = randomPosterData.title
-  currentPoster.quote.innerText = randomPosterData.quote
 }
 
 function showCustomPosterForm() {
@@ -304,10 +303,8 @@ function showCustomPoster() {
   titles.push(tempPoster.title)
   quotes.push(tempPoster.quote)
 
+  updateCurrentPoster(tempPoster.imageURL, tempPoster.title, tempPoster.quote)
   currentPoster.id = tempPoster.id
-  currentPoster.image.src = tempPoster.imageURL
-  currentPoster.title.innerText = tempPoster.title
-  currentPoster.quote.innerText = tempPoster.quote
 
   custom.classList.toggle('hidden')
   main.classList.toggle('hidden')
@@ -394,4 +391,12 @@ function deletePoster(event) {
     }
     event.target.classList.add('hidden')
   }
+}
+
+/* ~~~~~ added code for drying up functions*/
+
+function updateCurrentPoster(imageURL, title, quote) {
+  currentPoster.image.src = imageURL;
+  currentPoster.title.innerText = title;
+  currentPoster.quote.innerText = quote;
 }
