@@ -241,7 +241,7 @@ var savedPosters = []
 var cleanedUnmotivationalPosters = []
 
 // event listeners go here 👇
-window.addEventListener('load', createRandomPoster)
+window.addEventListener('load', createRandomPoster, cleanPosters)
 randomButton.addEventListener('click', createRandomPoster)
 customButton.addEventListener('click', showCustomPosterForm)
 returnButton.addEventListener('click', showCustomPosterForm)
