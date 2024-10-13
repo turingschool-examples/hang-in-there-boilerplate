@@ -5,7 +5,6 @@ var currentPoster = {
   title: document.querySelector('.poster-title'),
   quote: document.querySelector('.poster-quote')
 };
-
 var randomButton = document.querySelector('.show-random')
 var customButton = document.querySelector('.show-form')
 var returnButton = document.querySelector('.show-main')
@@ -154,6 +153,11 @@ function createRandomPoster() {
   currentPoster.quote.innerText = randomPosterData.quote
 }
 
+function showCustomPosterForm() {
+  custom.classList.toggle('hidden')
+  main.classList.toggle('hidden')
+}
+
 function showCustomPoster() {
   event.preventDefault()
   let customPosterImage = document.querySelector('#poster-image-url')
@@ -174,16 +178,12 @@ function showCustomPoster() {
   currentPoster.image.src = tempPoster.imageURL
   currentPoster.title.innerText = tempPoster.title
   currentPoster.quote.innerText = tempPoster.quote
+
   custom.classList.toggle('hidden')
   main.classList.toggle('hidden')
   customPosterImage.value = ''
   customPosterTitle.value = ''
   customPosterQuote.value = ''
-}
-
-function showCustomPosterForm() {
-  custom.classList.toggle('hidden')
-  main.classList.toggle('hidden')
 }
 
 function savePoster() {
