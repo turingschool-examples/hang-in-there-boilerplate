@@ -18,6 +18,11 @@ var main = document.querySelector('.main-poster')
 var custom = document.querySelector('.poster-form')
 var saved = document.querySelector('.saved-posters')
 var unmotivational = document.querySelector('.unmotivational-posters')
+let customPosterImage = document.querySelector('#poster-image-url')
+let customPosterTitle = document.querySelector('#poster-title')
+let customPosterQuote = document.querySelector('#poster-quote')
+const savedGrid = document.querySelector('.saved-posters-grid')  
+const unmotivationalGrid = document.querySelector('.unmotivational-posters-grid')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -255,7 +260,6 @@ savePosterButton.addEventListener('click', savePoster)
 showButton.addEventListener('click', showCustomPoster)
 unmotivationalButton.addEventListener('click', showUnmotivationalPosters)
 becomeMotivedButton.addEventListener('click', showUnmotivationalPosters)
-window.addEventListener('dblclick', deletePoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -289,9 +293,6 @@ function showCustomPosterForm() {
 
 function showCustomPoster() {
   event.preventDefault()
-  let customPosterImage = document.querySelector('#poster-image-url')
-  let customPosterTitle = document.querySelector('#poster-title')
-  let customPosterQuote = document.querySelector('#poster-quote')
 
   const tempPoster = createPoster(
     customPosterImage.value, 
@@ -331,7 +332,6 @@ function showSavedPosters() {
   saved.classList.toggle('hidden')
   main.classList.toggle('hidden')
 
-  const savedGrid = document.querySelector('.saved-posters-grid')  
   savedGrid.innerHTML = ''
 
   savedPosters.forEach(poster => {
@@ -344,6 +344,8 @@ function showSavedPosters() {
     <h2>${poster.title}<h2>
     <h4>${poster.quote}<h4>
   `
+  smallPoster.addEventListener('dblclick', deletePoster)
+
   savedGrid.appendChild(smallPoster)
   })
 }
@@ -362,7 +364,6 @@ function showUnmotivationalPosters() {
   unmotivational.classList.toggle('hidden')
   main.classList.toggle('hidden')
 
-  const unmotivationalGrid = document.querySelector('.unmotivational-posters-grid')
   unmotivationalGrid.innerHTML = ''
   var counter = 0
   cleanedUnmotivationalPosters.forEach(poster => {
@@ -375,21 +376,24 @@ function showUnmotivationalPosters() {
     <h2>${poster.title}<h2>
     <h4>${poster.quote}<h4>
   `
+
+  unmotivationalPoster.addEventListener('dblclick', deletePoster)
+
   unmotivationalGrid.appendChild(unmotivationalPoster)
   })
 }
 
-function deletePoster(event) {
-  if (event.target.classList.contains('mini-poster')) {
-    const deletedPoster = event.target
-    if(deletedPoster.parentElement.classList.contains('saved-posters-grid')) {
-      const uniquePosterId = deletedPoster.querySelector('p').innerText
+function deletePoster(event) { /* idk how to do a function like this w/o declaring the veriables inside of it with query selectors*/
+
+  const deletedPoster = event.currentTarget
+  const uniquePosterId = deletedPoster.querySelector('p').innerText
+  if (deletedPoster) {
+    if (deletedPoster.parentElement.classList.contains('saved-posters-grid')) {
       savedPosters = savedPosters.filter(poster => String(poster.id) !== String(uniquePosterId))
     } else if (deletedPoster.parentElement.classList.contains('unmotivational-posters-grid')) {
-      const uniquePosterId = deletedPoster.querySelector('p').innerText
       cleanedUnmotivationalPosters = cleanedUnmotivationalPosters.filter(poster => String(poster.id) !== String(uniquePosterId))
     }
-    event.target.classList.add('hidden')
+    deletedPoster.classList.add('hidden')
   }
 }
 
