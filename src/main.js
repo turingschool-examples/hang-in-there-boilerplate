@@ -255,6 +255,7 @@ savePosterButton.addEventListener('click', savePoster)
 showButton.addEventListener('click', showCustomPoster)
 unmotivationalButton.addEventListener('click', showUnmotivationalPosters)
 becomeMotivedButton.addEventListener('click', showUnmotivationalPosters)
+window.addEventListener('dblclick', deletePoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -341,6 +342,7 @@ function showSavedPosters() {
   smallPoster.classList.add('mini-poster')
 
   smallPoster.innerHTML = `
+    <p hidden>${poster.id}</p>
     <img src="${poster.imageURL}">
     <h2>${poster.title}<h2>
     <h4>${poster.quote}<h4>
@@ -364,17 +366,32 @@ function showUnmotivationalPosters() {
   main.classList.toggle('hidden')
 
   const unmotivationalGrid = document.querySelector('.unmotivational-posters-grid')
-
+  unmotivationalGrid.innerHTML = ''
+  var counter = 0
   cleanedUnmotivationalPosters.forEach(poster => {
     const unmotivationalPoster = document.createElement('div')
     unmotivationalPoster.classList.add('mini-poster')
 
     unmotivationalPoster.innerHTML = `
+    <p hidden>${poster.id = counter++}</p>
     <img src="${poster.imageURL}">
     <h2>${poster.title}<h2>
     <h4>${poster.quote}<h4>
   `
-
   unmotivationalGrid.appendChild(unmotivationalPoster)
   })
+}
+
+function deletePoster(event) {
+  if (event.target.classList.contains('mini-poster')) {
+    const deletedPoster = event.target
+    if(deletedPoster.parentElement.classList.contains('saved-posters-grid')) {
+      const uniquePosterId = deletedPoster.querySelector('p').innerText
+      savedPosters = savedPosters.filter(poster => String(poster.id) !== String(uniquePosterId))
+    } else if (deletedPoster.parentElement.classList.contains('unmotivational-posters-grid')) {
+      const uniquePosterId = deletedPoster.querySelector('p').innerText
+      cleanedUnmotivationalPosters = cleanedUnmotivationalPosters.filter(poster => String(poster.id) !== String(uniquePosterId))
+    }
+    event.target.classList.add('hidden')
+  }
 }
