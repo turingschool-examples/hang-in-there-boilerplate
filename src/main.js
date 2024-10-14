@@ -246,7 +246,6 @@ var showUnmotivationalPostersButton = document.querySelector(".show-unmotivation
 var unmotivationalPostersSection = document.querySelector(".unmotivational-section")
 var unmotivationalGrid = document.querySelector("#unmotivational-grid")
 var saveMessage = document.querySelector("#save-message")
-// var deleteAPoster = document.querySelector(".mini-poster")
 
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
@@ -329,7 +328,7 @@ function showUserCreatedPoster(event) {
   event.preventDefault();
 
   saveMessage.classList.add("hidden")
-  
+
   let userImage = userPosterImage.value
   let userTitle = userPosterTitle.value
   let userQuote = userPosterQuote.value
