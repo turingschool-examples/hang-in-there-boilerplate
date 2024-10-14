@@ -263,11 +263,11 @@ becomeMotivedButton.addEventListener('click', showUnmotivationalPosters)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
-function getRandomIndex(array) {
+function getRandomIndex(array) { /* generates a random number for the arrays */
   return Math.floor(Math.random() * array.length)
 }
 
-function createPoster(imageURL, title, quote) {
+function createPoster(imageURL, title, quote) { /* blueprint for creating new posters */
   return {
     id: Date.now(), 
     imageURL: imageURL, 
@@ -275,7 +275,7 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-function createRandomPoster() {
+function createRandomPoster() { /* returns values based on the random numbrs provided by the getRandomIndex function and updates the current poster */
   const randomPosterData = createPoster(
     images[getRandomIndex(images)], 
     titles[getRandomIndex(titles)], 
@@ -286,12 +286,12 @@ function createRandomPoster() {
   currentPoster.id = randomPosterData.id
 }
 
-function showCustomPosterForm() {
+function showCustomPosterForm() { /* toggles vision of the custom poster form */
   custom.classList.toggle('hidden')
   main.classList.toggle('hidden')
 }
 
-function showCustomPoster() {
+function showCustomPoster() { /* creates custom poster based on provided values and displays it */
   event.preventDefault()
 
   const tempPoster = createPoster(
@@ -307,14 +307,14 @@ function showCustomPoster() {
   updateCurrentPoster(tempPoster.imageURL, tempPoster.title, tempPoster.quote)
   currentPoster.id = tempPoster.id
 
-  custom.classList.toggle('hidden')
-  main.classList.toggle('hidden')
+  showCustomPosterForm()
+
   customPosterImage.value = ''
   customPosterTitle.value = ''
   customPosterQuote.value = ''
 }
 
-function savePoster() {
+function savePoster() { /* adds poster to the savedPoster array */
   const posterCopy = {
     id: currentPoster.id,
     imageURL: currentPoster.image.src,
@@ -328,7 +328,7 @@ function savePoster() {
   
 }
 
-function showSavedPosters() {
+function showSavedPosters() { /* toggles view of saved posters */
   saved.classList.toggle('hidden')
   main.classList.toggle('hidden')
 
@@ -350,7 +350,7 @@ function showSavedPosters() {
   })
 }
 
-function cleanPosters() {
+function cleanPosters() { /* unmotivational poster factory (dunno if that is proper term in JS) */
   unmotivationalPosters.forEach(poster => {
     cleanedUnmotivationalPosters.push(createPoster(
       poster.img_url,
@@ -360,7 +360,7 @@ function cleanPosters() {
   })
 }
 
-function showUnmotivationalPosters() {
+function showUnmotivationalPosters() { /* toggles unmotivational view */
   unmotivational.classList.toggle('hidden')
   main.classList.toggle('hidden')
 
@@ -382,8 +382,8 @@ function showUnmotivationalPosters() {
   unmotivationalGrid.appendChild(unmotivationalPoster)
   })
 }
-
-function deletePoster(event) { /* idk how to do a function like this w/o declaring the veriables inside of it with query selectors*/
+/* idk how to do a function like this w/o declaring the variables inside of it with query selectors */
+function deletePoster(event) { /* removes undesired poster from the array and the webpage */
 
   const deletedPoster = event.currentTarget
   const uniquePosterId = deletedPoster.querySelector('p').innerText
@@ -397,7 +397,7 @@ function deletePoster(event) { /* idk how to do a function like this w/o declari
   }
 }
 
-/* ~~~~~ added code for drying up functions*/
+/* ~~~~~ added code for drying up functions ~~~~~ */
 
 function updateCurrentPoster(imageURL, title, quote) {
   currentPoster.image.src = imageURL;
