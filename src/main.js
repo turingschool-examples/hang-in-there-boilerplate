@@ -256,6 +256,7 @@ var cleanedUnmotivationalPosters = []
 // event listeners go here 👇
 window.addEventListener('load', createRandomPoster)
 window.addEventListener('load', cleanPosters)
+window.addEventListener('dblclick', deletePoster)
 randomButton.addEventListener('click', createRandomPoster)
 customButton.addEventListener('click', showCustomPosterForm)
 returnButton.addEventListener('click', showCustomPosterForm)
@@ -349,7 +350,6 @@ function showSavedPosters() { /* toggles view of saved posters */
     <h2>${poster.title}<h2>
     <h4>${poster.quote}<h4>
   `
-  smallPoster.addEventListener('dblclick', deletePoster)
 
   savedGrid.appendChild(smallPoster)
   })
@@ -382,15 +382,12 @@ function showUnmotivationalPosters() { /* toggles unmotivational view */
     <h4>${poster.quote}<h4>
     `
 
-  unmotivationalPoster.addEventListener('dblclick', deletePoster)
-
   unmotivationalGrid.appendChild(unmotivationalPoster)
   })
 }
 /* idk how to do a function like this w/o declaring the variables inside of it with query selectors */
 function deletePoster(event) { /* removes undesired poster from the array and the webpage */
-
-  const deletedPoster = event.currentTarget
+  const deletedPoster = event.target.closest('.mini-poster')
   const uniquePosterId = deletedPoster.querySelector('p').innerText
   if (deletedPoster) {
     if (deletedPoster.parentElement.classList.contains('saved-posters-grid')) {
@@ -398,7 +395,7 @@ function deletePoster(event) { /* removes undesired poster from the array and th
     } else if (deletedPoster.parentElement.classList.contains('unmotivational-posters-grid')) {
       cleanedUnmotivationalPosters = cleanedUnmotivationalPosters.filter(poster => String(poster.id) !== String(uniquePosterId))
     }
-    deletedPoster.classList.add('hidden')
+    deletedPoster.remove()
   }
 }
 
