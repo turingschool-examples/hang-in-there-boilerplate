@@ -5,6 +5,7 @@ var currentPoster = {
   title: document.querySelector('.poster-title'),
   quote: document.querySelector('.poster-quote')
 };
+
 var randomButton = document.querySelector('.show-random')
 var customButton = document.querySelector('.show-form')
 var returnButton = document.querySelector('.show-main')
@@ -14,13 +15,16 @@ var unmotivationalButton = document.querySelector('.show-unmotivational')
 var otherReturnButton = document.querySelector('.back-to-main')
 var savePosterButton = document.querySelector('.save-poster')
 var becomeMotivedButton = document.querySelector('.become-motivated')
+
 var main = document.querySelector('.main-poster')
 var custom = document.querySelector('.poster-form')
 var saved = document.querySelector('.saved-posters')
 var unmotivational = document.querySelector('.unmotivational-posters')
+
 let customPosterImage = document.querySelector('#poster-image-url')
 let customPosterTitle = document.querySelector('#poster-title')
 let customPosterQuote = document.querySelector('#poster-quote')
+
 const savedGrid = document.querySelector('.saved-posters-grid')  
 const unmotivationalGrid = document.querySelector('.unmotivational-posters-grid')
 
@@ -245,6 +249,7 @@ let unmotivationalPosters = [
     img_url: "./assets/doubt.jpg",
   }
 ]
+
 var savedPosters = []
 var cleanedUnmotivationalPosters = []
 
@@ -375,7 +380,7 @@ function showUnmotivationalPosters() { /* toggles unmotivational view */
     <img src="${poster.imageURL}">
     <h2>${poster.title}<h2>
     <h4>${poster.quote}<h4>
-  `
+    `
 
   unmotivationalPoster.addEventListener('dblclick', deletePoster)
 
