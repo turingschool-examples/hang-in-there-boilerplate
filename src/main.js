@@ -9,12 +9,14 @@ var posterImageInput = document.querySelector('#poster-image-url')
 var posterTitleInput = document.querySelector('#poster-title')
 var posterQuoteInput = document.querySelector('#poster-quote')
 
+
 var showRandomBtn = document.querySelector('.show-random')
 var makePosterBtn = document.querySelector('.show-form')
 var showSavedBtn = document.querySelector('.show-saved')
 var nevermindBtn = document.querySelector('.show-main')
 var backToMainBtn = document.querySelector('.back-to-main')
 var showMyPosterBtn = document.querySelector('.make-poster')
+var savePosterBtn = document.querySelector('.save-poster')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -126,6 +128,7 @@ showSavedBtn.addEventListener('click', showSavedSection)
 backToMainBtn.addEventListener('click', showMainSection)
 nevermindBtn.addEventListener('click', showMainSection)
 showMyPosterBtn.addEventListener('click', posterFormSubmit)
+savePosterBtn.addEventListener('click', savePoster)
 
 
 // functions and event handlers go here 👇
