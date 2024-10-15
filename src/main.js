@@ -124,10 +124,13 @@ showRandomBtn.addEventListener('click', displayRandomPoster)
 makePosterBtn.addEventListener('click', showFormSection)
 showSavedBtn.addEventListener('click', showSavedSection)
 backToMainBtn.addEventListener('click', showMainSection)
-nevermindBtn.addEventListener('click', showMainSection)g
+nevermindBtn.addEventListener('click', showMainSection)
+showMyPosterBtn.addEventListener('click', posterFormSubmit)
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -167,4 +170,46 @@ function showSavedSection() {
 
 function showMainSection() {
     switchView(mainPosterSection, [formSection, savedPostersSection])
+}
+
+function posterFormSubmit(event) {
+    event.preventDefault()
+    createAndDisplayNewPoster()
+    showMainSection()
+}
+
+function createAndDisplayNewPoster() {
+    var newImageURL = getPosterImageInput()
+    var newTitle = getPosterTitleInput()
+    var newQuote = getPosterQuoteInput()
+
+    currentPoster = createPoster(newImageURL, newTitle, newQuote)
+
+    savePosterData(newImageURL, newTitle, newQuote)
+    
+    updatePosterDisplay(currentPoster)
+}
+
+function getPosterImageInput() {
+    return posterImageInput.value
+}
+
+function getPosterTitleInput() {
+    return posterTitleInput.value
+}
+
+function getPosterQuoteInput() {
+    return posterQuoteInput.value
+}
+
+function savePosterData(imageURL, title, quote) {
+    images.push(imageURL)
+    titles.push(title)
+    quotes.push(quote)
+}
+
+function updatePosterDisplay(poster) {
+    posterImage.src = poster.imageURL;
+    posterTitle.innerText = poster.title;
+    posterQuote.innerText = poster.quote;
 }
