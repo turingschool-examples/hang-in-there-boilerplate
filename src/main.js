@@ -9,7 +9,7 @@ var posterImageInput = document.querySelector('#poster-image-url')
 var posterTitleInput = document.querySelector('#poster-title')
 var posterQuoteInput = document.querySelector('#poster-quote')
 var savedPostersGrid = document.querySelector('.saved-posters-grid')
-
+var unmotivationalPostersContainer = document.querySelector('#unmotivational-poster-container')
 
 var showRandomBtn = document.querySelector('.show-random')
 var makePosterBtn = document.querySelector('.show-form')
@@ -18,6 +18,8 @@ var nevermindBtn = document.querySelector('.show-main')
 var backToMainBtn = document.querySelector('.back-to-main')
 var showMyPosterBtn = document.querySelector('.make-poster')
 var savePosterBtn = document.querySelector('.save-poster')
+var backToMainBtn = document.querySelector('#back-to-main-button')
+var unmotivationalPostersBtn = document.querySelector('#unmotivational-poster-button')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -243,7 +245,7 @@ let unmotivationalPosters = [
       img_url: "./assets/doubt.jpg",
     }
   ];
-  
+
 // event listeners go here 👇
 window.addEventListener('load', displayRandomPoster)
 showRandomBtn.addEventListener('click', displayRandomPoster)
@@ -376,3 +378,5 @@ function savePoster() {
     })
 
 }
+
+
