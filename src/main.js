@@ -339,7 +339,6 @@ for (i = 0; i < savedPosters.length; i++) {
       <h2>${title}</h2>
       <h4>${quote}</h4>
     </div>`
-  console.log(miniPosterHTML)
 }}
 
 function makeNewPoster(event) {
@@ -388,13 +387,22 @@ function showUnmotivationalMiniPosters() {
   function deleteUnmotivationalPoster() {
     if(event.target.classList.contains('mini-poster')) {
       poster = event.target
-      console.log(poster)
-      console.log(event.target.children)
-      console.log(event)
-  
-      test=poster.querySelector('h2').innerText
-      console.log(test)
       poster.remove()
 
     }
+    removePosterFromArray()
+  }
+
+  function removePosterFromArray() {
+    var indexDelete = findIndexofUnmotivationalPoster()
+    unmotivationalPosters.splice(indexDelete,1)
+    console.log(unmotivationalPosters)
+  }
+
+  function findIndexofUnmotivationalPoster() {
+    deletedTitle = event.target.querySelector('h2').innerText
+    const deletedPosterIndex = unmotivationalPosters.findIndex((poster) => {
+      return poster.name === deletedTitle
+    })
+    return deletedPosterIndex
   }
