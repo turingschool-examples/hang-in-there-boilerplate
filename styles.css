@@ -194,3 +194,37 @@ h2 {
 .mini-poster-unmotivational .poster-quote {
   margin-top: 10px; 
 }
+
+/* ~~~~~ ENLARGE MODEL SECTION ~~~~~ */
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  inset: 0; /* Combines top: 0; left: 0; right: 0; bottom: 0 */
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex; /* Ensures flexbox centering */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: white;
+  text-align: center;
+  position: relative;
+}
+
+.modal-poster-img {
+  width: 100%;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
