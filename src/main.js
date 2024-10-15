@@ -8,6 +8,7 @@ var savedPostersSection = document.querySelector('.saved-posters')
 var posterImageInput = document.querySelector('#poster-image-url')
 var posterTitleInput = document.querySelector('#poster-title')
 var posterQuoteInput = document.querySelector('#poster-quote')
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
 
 
 var showRandomBtn = document.querySelector('.show-random')
@@ -169,6 +170,7 @@ function showFormSection() {
 
 function showSavedSection() {
     switchView(savedPostersSection, [mainPosterSection, formSection])
+    displaySavedPosters()
 }
 
 function showMainSection() {
@@ -215,4 +217,39 @@ function updatePosterDisplay(poster) {
     posterImage.src = poster.imageURL;
     posterTitle.innerText = poster.title;
     posterQuote.innerText = poster.quote;
+}
+
+function savePoster() {
+    var isDuplicate = savedPosters.some(poster => 
+        poster.imageURL === currentPoster.imageURL &&
+        poster.title === currentPoster.title &&
+        poster.quote === currentPoster.quote
+    )
+    if (!isDuplicate) {
+        savedPosters.push(currentPoster)
+    }
+    
+    savedPostersGrid.innerHTML = ''
+
+    savedPosters.forEach(function(poster) {
+        var miniPoster = document.createElement('div');
+        miniPoster.classList.add('mini-poster');
+
+        var miniPosterImg = document.createElement('img')
+        miniPosterImg.src = poster.imageURL
+        miniPosterImg.alt = 'mini poster image'
+
+        var miniPosterTitle = document.createElement('h2')
+        miniPosterTitle.innerText = poster.title
+
+        var miniPosterQuote = document.createElement('h4')
+        miniPosterQuote.innerText = poster.quote
+
+        miniPoster.appendChild(miniPosterImg)
+        miniPoster.appendChild(miniPosterTitle)
+        miniPoster.appendChild(miniPosterQuote)
+
+        savedPostersGrid.appendChild(miniPoster)
+    })
+
 }
