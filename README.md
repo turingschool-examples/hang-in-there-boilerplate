@@ -20,7 +20,12 @@ To view your project:
 2. Run the command `open index.html` 
 
 ### 🔎 Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
+[//]: <> 
+<div>
+  <img src="UnmotivationalScreenshot.png" alt="Unmotivational Posters" width="400" height="600" style="display: block;"></br>
+
+  <img src="mindset.png" alt="Mindset: fish with shark fin" width="400" height="300" style="display: block;"> 
+</div>
 
 ### 🗒️ Context:
 [//]: <> 
