@@ -246,6 +246,12 @@ var showUnmotivationalPostersButton = document.querySelector(".show-unmotivation
 var unmotivationalPostersSection = document.querySelector(".unmotivational-section")
 var unmotivationalGrid = document.querySelector("#unmotivational-grid")
 var saveMessage = document.querySelector("#save-message")
+var posterModal = document.getElementById("posterModal");
+var modalPosterImg = document.getElementById("modalPosterImg");
+var modalPosterTitle = document.getElementById("modalPosterTitle");
+var modalPosterQuote = document.getElementById("modalPosterQuote");
+var closeModalButton = document.querySelector(".close-modal");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
@@ -259,6 +265,7 @@ showUnmotivationalPostersButton.addEventListener("click", function() {handleView
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 savePosterButton.addEventListener("click", saveCurrentPoster)
 unmotivationalGrid.addEventListener("dblclick", deleteUnmotivationalPoster) 
+
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
