@@ -117,10 +117,10 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', displayRandomPoster)
 showRandomBtn.addEventListener('click', displayRandomPoster)
-makePosterBtn.addEventListener('click', showForm)
-showSavedBtn.addEventListener('click', showSavedPosters)
-backToMainBtn.addEventListener('click', showMainPoster)
-nevermindBtn.addEventListener('click', showMainPoster)
+makePosterBtn.addEventListener('click', showFormSection)
+showSavedBtn.addEventListener('click', showSavedSection)
+backToMainBtn.addEventListener('click', showMainSection)
+nevermindBtn.addEventListener('click', showMainSection)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -138,11 +138,29 @@ function displayRandomPoster() {
     posterQuote.innerText = randomQuote
 }
 
-
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function switchView(showSection, hideSections) {
+    showSection.classList.remove('hidden')
+    hideSections.forEach(section => section.classList.add('hidden'))
+}
+
+function showFormSection() {
+    switchView(formSection, [mainPosterSection, savedPostersSection])
+
+}
+
+
+function showSavedSection() {
+    switchView(savedPostersSection, [mainPosterSection, formSection])
+}
+
+function showMainSection() {
+    switchView(mainPosterSection, [formSection, savedPostersSection])
 }
