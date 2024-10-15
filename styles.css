@@ -145,4 +145,17 @@ button:hover {
   text-transform: uppercase;
 }
 
-.unmotivationalPostersGrid
+.unmotivational-posters-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+justify-content: space-evenly;  
+}
+
+.unmotivational {
+  background: grey;
+  border-radius: 5%;
+}
+.unmotivational h2 {
+  color:black;
+}

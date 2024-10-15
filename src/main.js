@@ -377,7 +377,7 @@ function showUnmotivationalMiniPosters() {
     var quote = unmotivationalPostersArray[i].quote
     unmotivationalPostersGrid.innerHTML +=
       miniPosterHTML= 
-      `<div class='mini-poster'>
+      `<div class='mini-poster unmotivational'>
         <img src=${url}>
         <h2>${title}</h2>
         <h4>${quote}</h4>
