@@ -256,16 +256,9 @@ backToMainButton.addEventListener("click", function() {handleView('main'); showR
 showUserPosterButton.addEventListener("click", function() {handleView('main'); showUserCreatedPoster(event)})
 backToMainFromUnmotivationalButton.addEventListener("click", function() {handleView('main')})//possible refactor. all back to main buttons linked
 showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational'); displayCleanedPosters (cleanData(unmotivationalPosters))}); 
-//When this button is clicked the following happens: 
-//1. the unmotivational page view is rendered (from the handle view function)
-//2. the cleanData function processes each poster (from the unmotivationalPosters array) with a cleaned version. 
-//3. That cleaned data is passed as an argument to the displayCleanedPosters function 
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 savePosterButton.addEventListener("click", saveCurrentPoster)
-unmotivationalGrid.addEventListener("dblclick", deleteUnmotivationalPoster) //the dblclick is attacvhed to the parent container (#unmotivational-grid)
-unmotivationalPostersSection.addEventListener("dblclick", deleteUnmotivationalPoster)
-
-//function(): when the button  is clicked, the anonymous callback function() is executed. the anonymous callback function keeps the other functions from being run until the button is acutually clicked. 
+unmotivationalGrid.addEventListener("dblclick", deleteUnmotivationalPoster) 
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -287,16 +280,10 @@ function handleView(view) {
     saved: savedPostersSection,
     unmotivational: unmotivationalPostersSection
   }
-  //this object above links the keys to the dom elements (via the query selectors)
-
   Object.values(views).forEach((section) => {
     section.classList.add("hidden")
     // console.log(Object.values(views))
   })
-  //above we start by removing all of the view sections
-  //Object.values() takes my views object above it and returns an array 
-  //containing all of the values of that object’s properties, ignoring the keys.
-
   views[view].classList.remove("hidden")
   // console.log(views[view])
 }
@@ -333,8 +320,8 @@ function showUserCreatedPoster(event) {
   let userTitle = userPosterTitle.value
   let userQuote = userPosterQuote.value
 
-  showPoster(userImage, userTitle, userQuote)
   addUserPosterInput(userImage, userTitle, userQuote)
+  showPoster(userImage, userTitle, userQuote)
 }
 
 function addUserPosterInput(image, title, quote) {
@@ -343,8 +330,8 @@ function addUserPosterInput(image, title, quote) {
   quotes.push(quote)
 }
 
-function saveCurrentPoster() {            //.some checks if there is already a poster in the array with the same image, title, and quote as the currentPoster
-if (!savedPosters.some((poster) => {      //If it find a match/evaluates to TRUE, the duplicate poster is not saved. 
+function saveCurrentPoster() {            
+if (!savedPosters.some((poster) => {      
     return  poster.imageURL === currentPoster.imageURL &&
             poster.title === currentPoster.title &&
             poster.quote === currentPoster.quote
@@ -368,7 +355,7 @@ function displaySavedPosters() {
         <h2 class="poster-title">${poster.title}</h2>
         <p class="poster-quote">${poster.quote}</p>
       </div>`;
-  }).join('') //need to use .join b/c map returns an array of strings. An array cant be put into innerHTML. Join turns the array into a string.
+  }).join('') 
 }
 
 function cleanData(posters) {
@@ -386,14 +373,14 @@ function cleanData(posters) {
 
 function displayCleanedPosters(posters) {
   console.log("Rendering the following posters:", posters)
-  unmotivationalGrid.innerHTML = posters.map((poster, index) => { //added the index here. the id is added so that posters can also be identified and deleted. 
+  unmotivationalGrid.innerHTML = posters.map((poster, index) => { 
     return ` 
       <div class="mini-poster mini-poster-unmotivational" data-id="${index}"> 
       <img src="${poster.imageURL}" class="poster-img poster-img-unmotivational">
       <h2 class="poster-title poster-title-unmotivational">${poster.title}</h2>
       <p class="poster-quote poster-quote-unmotivational">${poster.quote}</p>
       </div>` 
-  }).join('') //ABOVE: the index is identfying each unique poster (by name) so that it can specifically be deleted. 
+  }).join('')
 }
 // console.log(displayCleanedPosters(unmotivationalPosters))
 
@@ -402,22 +389,15 @@ function deleteUnmotivationalPoster(event) {
 
   if (posterElement) {
     const posterId = parseInt(posterElement.getAttribute("data-id")); 
-    // Get the data-id from the element
-    //parseInt to convert a string to an integer
       console.log("Deleting poster with ID:", posterId);
 
     unmotivationalPosters.splice(posterId, 1);
 
-    // Re-render the cleaned posters after deleting the selected one
-    // Clean the updated array
     let cleanedData = cleanData(unmotivationalPosters); 
     displayCleanedPosters(cleanedData); 
-// Re-display the posters
+
     console.log("Unmotivational posters after deletion:", unmotivationalPosters);
   }
 }
 
-//when a .mini-poster  is double clicked the event handler checks if the target is inside a .mini-poster div
-//event.target.closest is a method used to find the nearest parent .mini-poster of the clicked area
-//when clicked the poster is removed from the array (unmotivational posters) using splice
-//call the displayCleanedPosters function again to refresh the display and auto-update
+
