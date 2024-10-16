@@ -258,7 +258,7 @@ showMyPosterBtn.addEventListener('click', posterFormSubmit)
 savePosterBtn.addEventListener('click', savePoster)
 unmotivationalPostersBtn.addEventListener('click', showUnmotivationalPosters)
 backToMainUnmotivationalBtn.addEventListener('click', showMainPoster)
-posterDiv.addEventListener('dblclick', deleteUnmotivationalPoster)
+// posterDiv.addEventListener('dblclick', deleteUnmotivationalPoster)
 
 
 // functions and event handlers go here 👇
@@ -344,9 +344,9 @@ function savePosterData(imageURL, title, quote) {
 }
 
 function updatePosterDisplay(poster) {
-    posterImage.src = poster.imageURL;
-    posterTitle.innerText = poster.title;
-    posterQuote.innerText = poster.quote;
+    posterImage.src = poster.imageURL
+    posterTitle.innerText = poster.title
+    posterQuote.innerText = poster.quote
 }
 
 function savePoster() {
@@ -362,8 +362,8 @@ function savePoster() {
     savedPostersGrid.innerHTML = ''
 
     savedPosters.forEach(function(poster) {
-        var miniPoster = document.createElement('div');
-        miniPoster.classList.add('mini-poster');
+        var miniPoster = document.createElement('div')
+        miniPoster.classList.add('mini-poster')
 
         var miniPosterImg = document.createElement('img')
         miniPosterImg.src = poster.imageURL
@@ -385,33 +385,41 @@ function savePoster() {
 }
 
 function showUnmotivationalPosters() {
-    switchView(unmotivationalPostersSection, [mainPosterSection, formSection, savedPostersSection]);
+    switchView(unmotivationalPostersSection, [mainPosterSection, formSection, savedPostersSection])
+    unmotivationalPostersDisplay.innerHTML = ''
 
-    unmotivationalPostersDisplay.innerHTML = '';
+    unmotivationalPosters.forEach(function(poster, index) {
+        var posterDiv = document.createElement('div')
+        posterDiv.classList.add('unmotivational-poster')
+        posterDiv.setAttribute('data-index', index)
 
-    unmotivationalPosters.forEach(function(poster) {
-        var posterDiv = document.createElement('div');
-        posterDiv.classList.add('unmotivational-poster');
+        var img = document.createElement('img')
+        img.src = poster.img_url
+        img.alt = poster.name
 
-        var img = document.createElement('img');
-        img.src = poster.img_url;
-        img.alt = poster.name;
+        var title = document.createElement('h2')
+        title.innerText = poster.name
 
-        var title = document.createElement('h2');
-        title.innerText = poster.name;
+        var description = document.createElement('p')
+        description.innerText = poster.description
 
-        var description = document.createElement('p');
-        description.innerText = poster.description;
+        posterDiv.appendChild(img)
+        posterDiv.appendChild(title)
+        posterDiv.appendChild(description)
 
-        posterDiv.appendChild(img);
-        posterDiv.appendChild(title);
-        posterDiv.appendChild(description);
-
-        unmotivationalPostersDisplay.appendChild(posterDiv);
-        poster.Div.addEventListener('dblclick',)
+        unmotivationalPostersDisplay.appendChild(posterDiv)
+        posterDiv.addEventListener('dblclick', deleteUnmotivationalPoster)
     });
 }
 
 function showMainPoster() {
     switchView(mainPosterSection, [unmotivationalPostersSection, formSection, savedPostersSection]);
+}
+
+function deleteUnmotivationalPoster(event) {
+    const index = event.currentTarget.getAttribute('data-index')
+    
+    unmotivationalPosters.splice(index, 1)
+
+    showUnmotivationalPosters()
 }
