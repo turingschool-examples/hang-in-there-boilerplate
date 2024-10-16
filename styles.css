@@ -26,7 +26,10 @@ button {
 }
 
 button:hover {
-  background: darkslateblue;
+  background: rgb(150, 137, 236);
+  transform: scale(1.05);
+  color: black; 
+
 }
 
 .hidden {
@@ -62,12 +65,12 @@ button:hover {
 }
 
 .poster-title {
-  font-size: 60px;
+  font-size: 6vw;
   font-weight: normal;
-  letter-spacing: 20px;
+  letter-spacing: 0.5vw;
   margin-bottom: 10px;
   text-transform: uppercase;
-}
+} 
 
 .main-poster button {
   margin: 10px;
@@ -82,6 +85,10 @@ button:hover {
 
 .poster-form h2 {
   margin-bottom: 30px;
+}
+
+h2 {
+  margin-bottom: 20px;
 }
 
 .poster-form form {
@@ -110,10 +117,14 @@ button:hover {
 }
 
 .saved-posters-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  padding: 20px;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 8px; 
+}
+
+.back-to-main, .back-to-main-from-unmotivational {
+  margin-top: 20px;
 }
 
 .mini-poster {
@@ -143,4 +154,106 @@ button:hover {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+
+#save-message {
+  color: rgb(189, 48, 48);
+  font-size: 25px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+/* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
+.unmotivational-section .poster-title-unmotivational {
+  color: black;
+}
+
+.mini-poster-unmotivational:hover .poster-title-unmotivational {
+  color: rgb(105, 27, 27);
+}
+
+.mini-poster-unmotivational:hover {
+  background: rgb(104, 102, 102);
+  box-shadow: 0 0 40px rgb(189, 48, 48);
+  transition: box-shadow 0.3s ease;
+}
+
+.mini-poster-unmotivational {
+  background: rgb(139, 137, 137);
+  border-radius: 10px;
+  color: white;
+  height: 340px;
+  padding: 25px;
+  width: 425px;
+}
+
+.mini-poster-unmotivational .poster-title {
+  margin-top: 20px; 
+}
+
+.mini-poster-unmotivational .poster-quote {
+  margin-top: 10px; 
+}
+
+/* ~~~~~ ENLARGED MODEL SECTION ~~~~~ */
+.modal {
+  display: none; 
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8); 
+  justify-content: center;
+  align-items: center;
+}
+
+.modal:not(.hidden) {
+  display: flex; 
+} 
+
+.modal-content {
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  padding: 75px 40px;
+  width: 85%; 
+  max-width: 1000px; 
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.modal-poster-img,
+#modalPosterImg {
+  width: 625px; 
+  height: 425px; 
+  object-fit: cover; 
+  border: 2px solid white;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.modal-poster-title {
+  font-size: 50px; 
+  letter-spacing: 7px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.modal-poster-quote {
+  font-size: 30px; 
+  margin-top: 15px;
+  color: white;
+}
+
+.modal-container {
+  width: 85%; 
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: black;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }

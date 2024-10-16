@@ -1,9 +1,11 @@
-# Hang In There
+# Hang in There  
 
-A boilerplate repo. 
+### 🎨 Abstract:
+[//]: <> 
+This "Motivational Posters" project generates a random motivational poster to inspire the user. Other functionality includes creating a unique poster with user input for a title, quote and photo. All of these posters can be saved and viewed in a group. For an added bonus, viewers can go to an "unmotivational poster" page for some dark humor. What better way to motivate people than through comedy! If these unmotivational posters are not to the users taste, they can double-click them to make them disappear from the page.
 
-## Set Up
-
+### 🖥️ Installation Instructions:
+[//]: <> 
 1. Fork this repository
 2. Clone down your new, forked repo
 3. `cd` into the repository
@@ -15,32 +17,34 @@ Project spec & rubric can be found [here](https://curriculum.turing.edu/module2/
 To view your project:
 
 1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
-  
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
-______________________________________________________  
+2. Run the command `open index.html` 
 
-# Hang in There  
+### 🔎 Preview of App:
+[//]: <> 
+<div>
+  <img src="UnmotivationalScreenshot.png" alt="Unmotivational Posters" width="400" height="600" style="display: block;"></br>
 
-### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+  <img src="mindset.png" alt="Mindset: fish with shark fin" width="400" height="300" style="display: block;"> 
+</div>
 
-### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
+### 🗒️ Context:
+[//]: <> 
+This solo GitHub project is from Turing School of Software and Design's start of Mod 2, which is the seventh week of the program. Within an eight day deadline, this assignment challenged us to integrate our skills learned thus far to design, develop and deploy a fully functional GitHub project.
 
-### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
+### 👏🏽 Credits:
+[//]: <> 
+Terra D. Manning</br>
+https://www.linkedin.com/in/terra-manning/</br>
+https://github.com/TDManning</br>
 
-### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+### 🌱 Learning Goals:
+[//]: <> 
+1. Practice reading, understanding, and using existing code
+2. Write clean, DRY JavaScript
+  * Build out funcitonality using functions that6 show trends toward SRP
+  * Manipulate the page after it has loaded by adding, removing, and updating elements on the DOM
+3. Use CSS and HTML to match styling and layout of provided comps
 
-### Contributors:
-[//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
-
-### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
-
-### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+### 🏆 Wins + Challenges:
+[//]: <> 
+Overall, this project was a lot of fun and each creating the javascript code in each iteration was rewarding because of its immediate functionality on the DOM. It was challenging to get the CSS alignment correct using flexbox and javascript, however the use of the Dev Console Tools make the trial and error process much more manageable.
