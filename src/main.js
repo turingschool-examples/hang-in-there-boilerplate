@@ -332,6 +332,15 @@ function showUserCreatedPoster(event) {
   let userQuote = userPosterQuote.value
 
   addUserPosterInput(userImage, userTitle, userQuote)
+
+  const userPosterHTML = `
+    <div class="mini-poster">
+      <img src="${userImage}" class="poster-img">
+      <h2 class="poster-title">${userTitle}</h2>
+      <p class="poster-quote">${userQuote}</p>
+    </div>`
+
+  savedPostersGrid.innerHTML += userPosterHTML
   showPoster(userImage, userTitle, userQuote)
 }
 

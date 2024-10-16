@@ -220,12 +220,14 @@ h2 {
   padding: 50px 20px;
   width: 70%; 
   max-width: 800px;
+  text-align: center;
 }
 
 .modal-poster-img {
   background-size: cover;
   border: 2px solid white;
   max-width: 80%;
+  margin: 0 auto;
 }
 
 .modal-poster-title,
@@ -236,20 +238,15 @@ h2 {
 }
 
 .modal-poster-title {
-  font-size: 6vw;
+  font-size: 4vw;
   font-weight: normal;
-  letter-spacing: 0.5vw;
+  letter-spacing: 0.3vw;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
-.poster-title {
-  font-size: 6vw;
-  font-weight: normal;
-  letter-spacing: 0.5vw;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-} 
+
 .modal-poster-quote {
   font-size: 18px;
   margin-top: 10px;
+  text-align: center;
 }
