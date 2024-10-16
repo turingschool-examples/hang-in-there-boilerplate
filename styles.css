@@ -195,7 +195,7 @@ h2 {
   margin-top: 10px; 
 }
 
-/* ~~~~~ ENLARGE MODEL SECTION ~~~~~ */
+/* ~~~~~ ENLARGED MODEL SECTION ~~~~~ */
 .modal {
   display: none; 
   position: fixed;
@@ -209,44 +209,51 @@ h2 {
 .modal:not(.hidden) {
   display: flex; 
 } 
-/* it has flex on it when its visable */
 
 .modal-content {
   background: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin: 20px auto;
-  padding: 50px 20px;
-  width: 70%; 
-  max-width: 800px;
+  padding: 75px 40px;
+  width: 85%; 
+  max-width: 1000px; 
   text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
-.modal-poster-img {
-  background-size: cover;
+.modal-poster-img,
+#modalPosterImg {
+  width: 625px; 
+  height: 425px; 
+  object-fit: cover; 
   border: 2px solid white;
-  max-width: 80%;
-  margin: 0 auto;
-}
-
-.modal-poster-title,
-.modal-poster-quote {
-  color: white;
-  line-height: 1;
-  width: 90%; 
+  margin-bottom: 20px;
+  border-radius: 10px;
 }
 
 .modal-poster-title {
-  font-size: 4vw;
-  font-weight: normal;
-  letter-spacing: 0.3vw;
-  margin-bottom: 10px;
+  font-size: 50px; 
+  letter-spacing: 7px;
+  margin-bottom: 20px;
   text-transform: uppercase;
+  color: white;
 }
 
 .modal-poster-quote {
-  font-size: 18px;
-  margin-top: 10px;
-  text-align: center;
+  font-size: 30px; 
+  margin-top: 15px;
+  color: white;
+}
+
+.modal-container {
+  width: 85%; 
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: black;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
