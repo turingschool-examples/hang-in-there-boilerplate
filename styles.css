@@ -65,12 +65,12 @@ button:hover {
 }
 
 .poster-title {
-  font-size: 60px;
+  font-size: 6vw;
   font-weight: normal;
-  letter-spacing: 20px;
+  letter-spacing: 0.5vw;
   margin-bottom: 10px;
   text-transform: uppercase;
-}
+} 
 
 .main-poster button {
   margin: 10px;
@@ -196,35 +196,60 @@ h2 {
 }
 
 /* ~~~~~ ENLARGE MODEL SECTION ~~~~~ */
-
 .modal {
-  display: none; /* Hidden by default */
+  display: none; 
   position: fixed;
-  inset: 0; /* Combines top: 0; left: 0; right: 0; bottom: 0 */
+  inset: 0;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex; /* Ensures flexbox centering */
+  background-color: rgba(0, 0, 0, 0.8); 
   justify-content: center;
   align-items: center;
 }
 
+.modal:not(.hidden) {
+  display: flex; 
+} 
+/* it has flex on it when its visable */
+
 .modal-content {
-  width: 80%;
-  max-width: 600px;
-  padding: 20px;
-  background-color: white;
-  text-align: center;
-  position: relative;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 50px 20px;
+  width: 70%; 
+  max-width: 800px;
 }
 
 .modal-poster-img {
-  width: 100%;
+  background-size: cover;
+  border: 2px solid white;
+  max-width: 80%;
 }
 
-.close-modal {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 24px;
-  cursor: pointer;
+.modal-poster-title,
+.modal-poster-quote {
+  color: white;
+  line-height: 1;
+  width: 90%; 
+}
+
+.modal-poster-title {
+  font-size: 6vw;
+  font-weight: normal;
+  letter-spacing: 0.5vw;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.poster-title {
+  font-size: 6vw;
+  font-weight: normal;
+  letter-spacing: 0.5vw;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+} 
+.modal-poster-quote {
+  font-size: 18px;
+  margin-top: 10px;
 }

@@ -246,12 +246,13 @@ var showUnmotivationalPostersButton = document.querySelector(".show-unmotivation
 var unmotivationalPostersSection = document.querySelector(".unmotivational-section")
 var unmotivationalGrid = document.querySelector("#unmotivational-grid")
 var saveMessage = document.querySelector("#save-message")
-var posterModal = document.getElementById("posterModal");
-var modalPosterImg = document.getElementById("modalPosterImg");
-var modalPosterTitle = document.getElementById("modalPosterTitle");
-var modalPosterQuote = document.getElementById("modalPosterQuote");
-var closeModalButton = document.querySelector(".close-modal");
-var savedPostersGrid = document.querySelector(".saved-posters-grid");
+var posterModal = document.getElementById("posterModal")
+var modalPosterImg = document.getElementById("modalPosterImg")
+var modalPosterTitle = document.getElementById("modalPosterTitle")
+var modalPosterQuote = document.getElementById("modalPosterQuote")
+var closeModalButton = document.querySelector(".close-modal")
+var savedPostersGrid = document.querySelector(".saved-posters-grid")
+var modalContent = posterModal.querySelector('.modal-content');
 
 // event listeners go here 👇
 window.addEventListener("load", showRandomHomepagePoster)
@@ -260,12 +261,14 @@ showSavedPostersButton.addEventListener("click", function() {handleView('saved')
 showMainPageButton.addEventListener("click", function() {handleView('main')})
 backToMainButton.addEventListener("click", function() {handleView('main'); showRandomHomepagePoster()})
 showUserPosterButton.addEventListener("click", function() {handleView('main'); showUserCreatedPoster(event)})
-backToMainFromUnmotivationalButton.addEventListener("click", function() {handleView('main')})//possible refactor. all back to main buttons linked
+backToMainFromUnmotivationalButton.addEventListener("click", function() {handleView('main')})
 showUnmotivationalPostersButton.addEventListener("click", function() {handleView('unmotivational'); displayCleanedPosters (cleanData(unmotivationalPosters))}); 
 showRandomPosterButton.addEventListener("click", showRandomHomepagePoster)
 savePosterButton.addEventListener("click", saveCurrentPoster)
 unmotivationalGrid.addEventListener("dblclick", deleteUnmotivationalPoster) 
-
+savedPostersGrid.addEventListener("click", handlePosterClick) 
+closeModalButton.addEventListener("click", closePosterModal) 
+window.addEventListener("click", handleOutsideClick)
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -285,7 +288,8 @@ function handleView(view) {
     main: mainPosterViewSection,
     form: OwnPosterFormSection,
     saved: savedPostersSection,
-    unmotivational: unmotivationalPostersSection
+    unmotivational: unmotivationalPostersSection,
+    modal: posterModal
   }
   Object.values(views).forEach((section) => {
     section.classList.add("hidden")
@@ -407,4 +411,29 @@ function deleteUnmotivationalPoster(event) {
   }
 }
 
+function showPosterModal(poster) {
+  modalPosterImg.src = poster.imageURL;
+  modalPosterTitle.innerText = poster.title;
+  modalPosterQuote.innerText = poster.quote;
+  handleView('modal'); 
+}
 
+function closePosterModal() {
+  handleView('saved'); 
+}
+
+function handlePosterClick(event) {
+  const clickedPoster = event.target.closest(".mini-poster")
+  
+  if (clickedPoster) {
+    const posterIndex = Array.from(savedPostersGrid.children).indexOf(clickedPoster) 
+    const selectedPoster = savedPosters[posterIndex]
+    showPosterModal(selectedPoster); 
+  }
+}
+
+function handleOutsideClick(event) {
+  if (event.target == posterModal) {
+    closePosterModal();
+  }
+}
