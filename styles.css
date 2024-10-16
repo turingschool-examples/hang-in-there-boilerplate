@@ -116,7 +116,7 @@ button:hover {
   padding: 20px;
 }
 
-.mini-poster {
+.mini-poster, .unmotivational-poster {
   background: black;
   color: white;
   height: 340px;
@@ -124,7 +124,7 @@ button:hover {
   width: 425px;
 }
 
-.mini-poster img {
+.mini-poster img, .unmotivational-poster img {
   height:200px;
   width: 300px;
 }
@@ -143,4 +143,15 @@ button:hover {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+/* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
+
+.unmotivational-poster h2 {
+    font-size: 24px;
+    color: darkred
+}
+
+.unmotivational-poster p {
+    font-size: 16px;
+    color: darkgrey
 }

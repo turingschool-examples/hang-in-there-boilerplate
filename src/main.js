@@ -9,7 +9,8 @@ var posterImageInput = document.querySelector('#poster-image-url')
 var posterTitleInput = document.querySelector('#poster-title')
 var posterQuoteInput = document.querySelector('#poster-quote')
 var savedPostersGrid = document.querySelector('.saved-posters-grid')
-var unmotivationalPostersContainer = document.querySelector('#unmotivational-poster-container')
+var unmotivationalPostersSection = document.querySelector('#unmotivational-posters')
+var unmotivationalPostersDisplay = document.querySelector('#unmotivational-poster-display')
 
 var showRandomBtn = document.querySelector('.show-random')
 var makePosterBtn = document.querySelector('.show-form')
@@ -18,8 +19,8 @@ var nevermindBtn = document.querySelector('.show-main')
 var backToMainBtn = document.querySelector('.back-to-main')
 var showMyPosterBtn = document.querySelector('.make-poster')
 var savePosterBtn = document.querySelector('.save-poster')
-var backToMainBtn = document.querySelector('#back-to-main-button')
-var unmotivationalPostersBtn = document.querySelector('#unmotivational-poster-button')
+var unmotivationalPostersBtn = document.querySelector('.unmotivational-poster-button')
+var backToMainUnmotivationalBtn = document.querySelector('#back-to-main-unmotivational')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -255,6 +256,8 @@ backToMainBtn.addEventListener('click', showMainSection)
 nevermindBtn.addEventListener('click', showMainSection)
 showMyPosterBtn.addEventListener('click', posterFormSubmit)
 savePosterBtn.addEventListener('click', savePoster)
+unmotivationalPostersBtn.addEventListener('click', showUnmotivationalPosters)
+backToMainUnmotivationalBtn.addEventListener('click', showMainPoster)
 
 
 // functions and event handlers go here 👇
@@ -299,6 +302,7 @@ function showSavedSection() {
 }
 
 function showMainSection() {
+    console.log("Back to Main button Click")
     switchView(mainPosterSection, [formSection, savedPostersSection])
 }
 
@@ -379,4 +383,33 @@ function savePoster() {
 
 }
 
+function showUnmotivationalPosters() {
+    switchView(unmotivationalPostersSection, [mainPosterSection, formSection, savedPostersSection]);
 
+    unmotivationalPostersDisplay.innerHTML = '';
+
+    unmotivationalPosters.forEach(function(poster) {
+        var posterDiv = document.createElement('div');
+        posterDiv.classList.add('unmotivational-poster');
+
+        var img = document.createElement('img');
+        img.src = poster.img_url;
+        img.alt = poster.name;
+
+        var title = document.createElement('h2');
+        title.innerText = poster.name;
+
+        var description = document.createElement('p');
+        description.innerText = poster.description;
+
+        posterDiv.appendChild(img);
+        posterDiv.appendChild(title);
+        posterDiv.appendChild(description);
+
+        unmotivationalPostersDisplay.appendChild(posterDiv);
+    });
+}
+
+function showMainPoster() {
+    switchView(mainPosterSection, [unmotivationalPostersSection, formSection, savedPostersSection]);
+}
