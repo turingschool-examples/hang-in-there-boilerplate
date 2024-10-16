@@ -258,6 +258,7 @@ showMyPosterBtn.addEventListener('click', posterFormSubmit)
 savePosterBtn.addEventListener('click', savePoster)
 unmotivationalPostersBtn.addEventListener('click', showUnmotivationalPosters)
 backToMainUnmotivationalBtn.addEventListener('click', showMainPoster)
+posterDiv.addEventListener('dblclick', deleteUnmotivationalPoster)
 
 
 // functions and event handlers go here 👇
@@ -407,6 +408,7 @@ function showUnmotivationalPosters() {
         posterDiv.appendChild(description);
 
         unmotivationalPostersDisplay.appendChild(posterDiv);
+        poster.Div.addEventListener('dblclick',)
     });
 }
 
