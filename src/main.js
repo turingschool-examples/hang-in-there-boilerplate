@@ -1,4 +1,22 @@
 // query selector variables go here 👇
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var newRandomPoster = document.querySelector('.show-random');
+var makeYourOwnPosterButton = document.querySelector('.show-form');
+var showSavedPostersButton = document.querySelector('.show-saved');
+var backToMainButton = document.querySelector('.back-to-main');
+var takeMeBackButton = document.querySelector('.show-main');
+var showMyPosterButton = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector('.save-poster');
+var posterFormSection = document.querySelector('.poster-form');
+var mainPosterSection = document.querySelector('.main-poster');
+var savedPostersSection = document.querySelector('.saved-posters');
+var posterImageInput = document.querySelector('#poster-image-url');
+var posterTitleInput = document.querySelector('#poster-title');
+var posterQuoteInput = document.querySelector('#poster-quote');
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
+
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -100,20 +118,158 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = {
+
+};
 
 // event listeners go here 👇
+
+newRandomPoster.addEventListener('click', makeRandomPoster);
+makeYourOwnPosterButton.addEventListener('click', switchToForm);
+showSavedPostersButton.addEventListener('click', switchToSavedPosters);
+backToMainButton.addEventListener('click', switchToMain);
+takeMeBackButton.addEventListener('click', switchToMain);
+showMyPosterButton.addEventListener('click', handleAllEvents);
+saveThisPosterButton.addEventListener('click', savePoster);
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
+  return Math.floor(Math.random() * array.length)
+};
 
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
+    quote: quote
+  }
+};
+
+function newPosterObject() {
+  currentPoster = createPoster (posterImageInput.value, posterTitleInput.value, posterQuoteInput.value);
+};
+
+function makeMyPoster() {
+  var currentImage = posterImageInput.value;
+  var currentTitle = posterTitleInput.value;
+  var currentQuote = posterQuoteInput.value;
+  posterQuote.innerHTML = currentQuote;
+  posterTitle.innerHTML = currentTitle;
+  posterImage.src = currentImage;
+};
+
+function pushToArrays() {
+  images.push(currentPoster.imageURL)
+  titles.push(currentPoster.title)
+  quotes.push(currentPoster.quote)
+};
+
+function handleAllEvents() {
+  newPosterObject();
+  switchToMain();
+  event.preventDefault();
+  makeMyPoster();
+  pushToArrays();
 }
+
+
+// function testThis() {
+//   var currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
+//   console.log(currentPoster);
+//   return currentPoster;
+// }
+// function showMyPosterHandler() {
+//   var currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
+//   console.log('current poster: ', currentPoster);
+//   return currentPoster
+// }
+
+//declare querySElectors variables for each poster element via id names
+//declare show my poster button variable
+//declare variables to store input values
+//pass the input values from the form as arguments in the createPoster function
+//push the input values to their respective arrays
+//store the createPoster return in the current poster variable [invoke as the value of currentPoster]
+//write event listener
+//create variables to 
+
+function makeRandomPoster() {
+  var randomImage = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  posterQuote.innerHTML = randomQuote;
+  posterTitle.innerHTML = randomTitle;
+  posterImage.src = randomImage;
+};
+
+
+makeRandomPoster();
+
+
+function switchToForm() {
+  posterFormSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden');
+};
+
+function switchToSavedPosters() {
+  savedPostersSection.classList.remove('hidden');
+  mainPosterSection.classList.add('hidden');
+};
+
+function switchToMain() {
+  mainPosterSection.classList.remove('hidden');
+  posterFormSection.classList.add('hidden');
+  savedPostersSection.classList.add('hidden');
+};
+
+savedPostersGrid.innerHTML = `
+  <div class="mini-poster saved-posters-grid"> </div>
+  `;
+  
+var miniPosters = document.querySelector('.mini-poster');
+
+//what the hell is happening here?
+
+  function savePoster() {
+    // savedPosters.forEach((object) => if (currentPoster.id !== object.id) {  
+    // savedPosters.push(currentPoster)});
+      // for (var i = -1; i < savedPosters.length; i++) {
+      //  var savedPosterCheck = savedPosters.find((object) => object.id === currentPoster.id)
+      //  if (savedPosterCheck = undefined) { 
+        // if (currentPoster.id !== savedPosters[0].id) {
+        var arrayCheck = savedPosters.find(object => object.id === currentPoster.id);
+        if (arrayCheck === undefined) {
+          console.log('arrayCheck result: ', arrayCheck)
+          savedPosters.push(currentPoster);
+          miniPosters.insertAdjacentHTML('afterbegin', `
+            <div class="mini-poster">
+              <img src="${currentPoster.imageURL}" alt="motivational poster image">
+              <h2>${currentPoster.title}</h2>
+              <h4>${currentPoster.quote}</h4>
+            </div>
+            `)
+        };
+  // }
+};
+  
+      
+
+    // function postCurrentPoster() {
+    //   miniPosters.insertAdjacentHTML('afterbegin', `
+    //   <div class="mini-poster">
+    //   <img src="${currentPoster.imageURL}" alt="motivational poster image">
+    //   <h2>${currentPoster.title}</h2>
+    //   <h4>${currentPoster.quote}</h4>
+    //   </div>
+    //    `
+    // )
+    // };
+  
+    // function handleSaveClick() {
+    //   savePoster();
+    //   postCurrentPoster();
+    // };
+ 
