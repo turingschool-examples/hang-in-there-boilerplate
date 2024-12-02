@@ -10,7 +10,7 @@ A boilerplate repo.
 4. Open it in your text editor
 5. Add the instructors as collaborators on the repository
 
-Project spec & rubric can be found [here](https://curriculum.turing.edu/module2/projects/hang-in-there/index)
+Project spec & rubric can be found [here](https://curriculum.turing.edu/module2/projects/hang_in_there/)
 
 To view your project:
 
