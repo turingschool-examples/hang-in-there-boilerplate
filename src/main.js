@@ -117,3 +117,7 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+console.log("Hi there!")
+console.log("Any dev notes will go here.")
+console.log("Next step: Make <show another random pic> link go to another page.")
