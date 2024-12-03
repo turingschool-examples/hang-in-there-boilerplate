@@ -127,5 +127,11 @@ function getRandomPoster() {
   currentPoster = createPoster(randomImgURL, randomTitle, randomQuote);
 }
 
+function changePosterDisplay() {
+  getRandomPoster();
+  posterImg.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+}
 
 
