@@ -103,6 +103,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+// FROM LESSON TODAY: 
+// button.addEventListener("click", changePageContent)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -121,3 +123,6 @@ function createPoster(imageURL, title, quote) {
 console.log("Hi there!")
 console.log("Any dev notes will go here.")
 console.log("Next step: Make <show another random pic> link go to another page.")
+
+
+
