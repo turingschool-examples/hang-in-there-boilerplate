@@ -105,6 +105,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+document.addEventListener('DOMContentLoaded', changePosterDisplay);
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
