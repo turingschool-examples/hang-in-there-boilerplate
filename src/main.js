@@ -119,5 +119,13 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
+function getRandomPoster() {
+  let randomImgURL = images[getRandomIndex(images)];
+  let randomTitle = titles[getRandomIndex(titles)];
+  let randomQuote = quotes[getRandomIndex(quotes)];
+
+  currentPoster = createPoster(randomImgURL, randomTitle, randomQuote);
+}
+
 
 
