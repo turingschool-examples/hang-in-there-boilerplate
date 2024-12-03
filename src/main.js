@@ -108,7 +108,7 @@ var currentPoster;
 
 // event listeners go here 👇
 document.addEventListener('DOMContentLoaded', changePosterDisplay);
-
+randomPoster.addEventListener('click', changePosterDisplay);
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
