@@ -1,4 +1,7 @@
 // query selector variables go here 👇
+var title = document.querySelector(".poster-title")
+var image = document.querySelector(".poster-img")
+var quote = document.querySelector(".poster-quote")
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
