@@ -3,7 +3,18 @@ const posterImg = document.querySelector('.poster-img');
 const posterTitle = document.querySelector('.poster-title');
 const posterQuote = document.querySelector('.poster-quote');
 
-const randomPoster = document.querySelector('.show-random');
+const savePosterBtn = document.querySelector('.save-poster');
+const showSavedBtn = document.querySelector('.show-saved');
+const randomPosterBtn = document.querySelector('.show-random');
+const showFormBtn = document.querySelector('.show-form');
+
+const showMainBtn = document.querySelector('.show-main');
+const backToMainBtn = document.querySelector('.back-to-main');
+
+const mainSection = document.querySelector('.main-poster');
+const posterFormSection = document.querySelector('.poster-form');
+const savedSection = document.querySelector('.saved-posters');
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -108,7 +119,8 @@ var currentPoster;
 
 // event listeners go here 👇
 document.addEventListener('DOMContentLoaded', posterEventHandler);
-randomPoster.addEventListener('click', posterEventHandler);
+
+randomPosterBtn.addEventListener('click', posterEventHandler);
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
