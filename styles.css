@@ -1,4 +1,5 @@
 /* ~~~~~ GLOBAL RULES ~~~~~ */
+* { border: 1px solid red; }
 *,
 *:before,
 *:after {
