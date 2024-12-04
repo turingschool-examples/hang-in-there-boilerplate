@@ -3,7 +3,9 @@ var title = document.querySelector(".poster-title")
 var image = document.querySelector(".poster-img")
 var quote = document.querySelector(".poster-quote")
 var buttonRandom = document.querySelector(".show-random")
-
+var buttonDIY = document.querySelector(".show-form")
+var posterForm = document.querySelector(".poster-form")
+var buttonReturn = document.querySelector(".show-main")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -108,15 +110,24 @@ var currentPoster;
 
 // event listeners go here 👇
 buttonRandom.addEventListener("click", changePageContent)
-
+buttonDIY.addEventListener("click", unhideForm)
+buttonReturn.addEventListener("click", returnMain)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+function returnMain() {
+  posterForm.classList.add("hidden")
+}
 
 function changePageContent() {
   title.textContent = titles[getRandomIndex(titles)];
   image.src = images[getRandomIndex(images)];
   quote.textContent = quotes[getRandomIndex(quotes)];
 }
+
+function unhideForm() {
+  posterForm.classList.toggle("hidden")
+};
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
