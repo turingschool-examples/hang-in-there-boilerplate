@@ -107,10 +107,16 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-document.addEventListener('DOMContentLoaded', changePosterDisplay);
-randomPoster.addEventListener('click', changePosterDisplay);
+document.addEventListener('DOMContentLoaded', posterEventHandler);
+randomPoster.addEventListener('click', posterEventHandler);
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+function posterEventHandler() {
+  getRandomPoster();
+  changePosterDisplay();
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -132,7 +138,6 @@ function getRandomPoster() {
 }
 
 function changePosterDisplay() {
-  getRandomPoster();
   posterImg.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
