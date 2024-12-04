@@ -118,21 +118,42 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+// Display a random poster on content load
 document.addEventListener('DOMContentLoaded', posterEventHandler);
 
+// Save poster to Saved Posters list
+// document.addEventListener('click', );
+
+// Create and Display a new poster
 randomPosterBtn.addEventListener('click', posterEventHandler);
+
+// Reveal Show Saved Poster view
+// document.addEventListener('click', );
+
+// Reveal Make Your Own Poster view
+// document.addEventListener('click', );
+
+// Show main poster page
+// document.addEventListener('click', );
+
+// Return to main poster page
+// document.addEventListener('click', );
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
+// Handle random poster display
 function posterEventHandler() {
   getRandomPoster();
   changePosterDisplay();
 }
 
+// Select random element from specified array
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// Create new poster object
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
@@ -141,6 +162,7 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
+// Select random poster elements and set them as currentPoster object
 function getRandomPoster() {
   let randomImgURL = images[getRandomIndex(images)];
   let randomTitle = titles[getRandomIndex(titles)];
@@ -149,6 +171,7 @@ function getRandomPoster() {
   currentPoster = createPoster(randomImgURL, randomTitle, randomQuote);
 }
 
+// Change the HTML elements with currentPoster object values
 function changePosterDisplay() {
   posterImg.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
