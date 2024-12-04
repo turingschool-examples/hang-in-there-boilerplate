@@ -2,6 +2,7 @@
 var title = document.querySelector(".poster-title")
 var image = document.querySelector(".poster-img")
 var quote = document.querySelector(".poster-quote")
+var buttonRandom = document.querySelector(".show-random")
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -106,11 +107,17 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-// FROM LESSON TODAY: 
-// button.addEventListener("click", changePageContent)
+buttonRandom.addEventListener("click", changePageContent)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+function changePageContent() {
+  title.textContent = titles[getRandomIndex(titles)];
+  image.src = images[getRandomIndex(images)];
+  quote.textContent = quotes[getRandomIndex(quotes)];
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -122,10 +129,4 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
-
-console.log("Hi there!")
-console.log("Any dev notes will go here.")
-console.log("Next step: Make <show another random pic> link go to another page.")
-
-
 
