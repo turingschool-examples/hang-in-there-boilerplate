@@ -107,8 +107,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-document.addEventListener('DOMContentLoaded', posterHandler);
-randomPoster.addEventListener('click', posterHandler);
+document.addEventListener('DOMContentLoaded', posterEventHandler);
+randomPoster.addEventListener('click', posterEventHandler);
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
