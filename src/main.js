@@ -1,4 +1,8 @@
 // query selector variables go here 👇
+let posterImage = document.querySelector(".poster-img");
+let randomTitle = document.querySelector(".poster-title");
+let randomQuote = document.querySelector(".poster-quote");
+let randomPosterButton = document.querySelector(".show-random");
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -22,6 +26,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+
 var titles = [
   "determination",
   "success",
@@ -103,12 +108,47 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+document.addEventListener('DOMContentLoaded', applyRandomPoster);
+document.addEventListener('DOMContentLoaded', applyRandomTitle);
+document.addEventListener('DOMContentLoaded', applyRandomQuote);
+randomPosterButton.addEventListener("click", loadRandomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
-}
+};
+
+function getRandomPoster() {
+  return images[getRandomIndex(images)];
+};
+
+function applyRandomPoster() {
+  posterImage.src = getRandomPoster()
+};
+
+function loadRandomPoster() {
+  applyRandomPoster();
+  applyRandomTitle();
+  applyRandomQuote();
+};
+
+function getRandomTitle() {
+  return titles[getRandomIndex(titles)];
+};
+
+function applyRandomTitle() {
+  randomTitle.innerText = getRandomTitle();
+};
+
+function getRandomQuote() {
+  return quotes[getRandomIndex(quotes)];
+};
+
+function applyRandomQuote() {
+  randomQuote.innerText = getRandomQuote();
+};
+
 
 function createPoster(imageURL, title, quote) {
   return {
