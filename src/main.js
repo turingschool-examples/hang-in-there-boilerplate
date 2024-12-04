@@ -1,8 +1,17 @@
 // query selector variables go here 👇
-var randomButton = document.querySelector('.show-random')
+var generateRandomButton = document.querySelector('.show-random')
+var makePosterButton = document.querySelector('.show-form')
+var toMainFromMakeButton = document.querySelector('.show-main')
+var showSavedButton = document.querySelector('.show-saved')
+var toMainFromSavedButton = document.querySelector('.back-to-main')
+
 var posterImg = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('h1')
 var posterQuote = document.querySelector('h3')
+
+var makePoster = document.querySelector('.poster-form')
+var mainPoster = document.querySelector('.main-poster')
+var savedPoster = document.querySelector('.saved-posters')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -107,7 +116,11 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomButton.addEventListener('click', changePoster)
+generateRandomButton.addEventListener('click', changePoster)
+makePosterButton.addEventListener('click', toggleOwnPoster)
+toMainFromMakeButton.addEventListener('click', toggleOwnPoster)
+showSavedButton.addEventListener('click', toggleSavedPoster)
+toMainFromSavedButton.addEventListener('click', toggleSavedPoster)
 document.addEventListener('DOMContentLoaded', changePoster)
 
 // functions and event handlers go here 👇
@@ -131,4 +144,14 @@ function changePoster() {
   posterImg.src = images[randomImg]
   posterTitle.innerText = titles[randomTitle]
   posterQuote.innerText = quotes[randomQuote]
+}
+
+function toggleOwnPoster() {
+  makePoster.classList.toggle('hidden')
+  mainPoster.classList.toggle('hidden')
+}
+
+function toggleSavedPoster() {
+  savedPoster.classList.toggle('hidden')
+  mainPoster.classList.toggle('hidden')
 }
