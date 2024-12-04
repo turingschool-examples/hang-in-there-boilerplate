@@ -1,8 +1,19 @@
 // query selector variables go here 👇
+
 let posterImage = document.querySelector(".poster-img");
 let randomTitle = document.querySelector(".poster-title");
 let randomQuote = document.querySelector(".poster-quote");
+
+let mainPosterSection = document.querySelector(".main-poster");
 let randomPosterButton = document.querySelector(".show-random");
+
+let createPosterSection = document.querySelector(".poster-form");
+let makePosterButton = document.querySelector(".show-form");
+let NevermindButton = document.querySelector(".show-main");
+
+let savedPosterSection = document.querySelector(".saved-posters");
+let savedPosterButton = document.querySelector(".show-saved");
+let BackToMain = document.querySelector(".back-to-main");
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -108,47 +119,90 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-document.addEventListener('DOMContentLoaded', applyRandomPoster);
-document.addEventListener('DOMContentLoaded', applyRandomTitle);
-document.addEventListener('DOMContentLoaded', applyRandomQuote);
-randomPosterButton.addEventListener("click", loadRandomPoster);
+document.addEventListener('DOMContentLoaded', loadRandomPoster);
+
+randomPosterButton.addEventListener('click', loadRandomPoster);
+
+makePosterButton.addEventListener('click', loadMakePoster);
+NevermindButton.addEventListener('click', loadMainPoster);
+
+savedPosterButton.addEventListener('click', loadSavedPosters);
+BackToMain.addEventListener('click', loadMainPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+// getRandomIndex takes a single argument which should be a variable of an array.  It then generates a random number based on the amount of elements in the array.
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
+//getRandomPoster takes the random number generated from the getRandomIndex function and pulls the element from the images array.
 function getRandomPoster() {
   return images[getRandomIndex(images)];
 };
 
+// applyRandomPoster assigns the element returned from the getRandomPoster function to the .src attribute of the posterImage variable.
 function applyRandomPoster() {
-  posterImage.src = getRandomPoster()
+  posterImage.src = getRandomPoster();
 };
 
+//getRandomTitle takes the random number generated from the getRandomIndex function and pulls the element from the titles array.
+function getRandomTitle() {
+  return titles[getRandomIndex(titles)];
+};
+
+// applyRandomTitle assigns the element returned from the getRandomTitle function to the .innerText attribute of the randomTitle variable.
+function applyRandomTitle() {
+  randomTitle.innerText = getRandomTitle();
+};
+
+//getRandomQuote takes the random number generated from the getRandomIndex function and pulls the element from the quotes array.
+function getRandomQuote() {
+  return quotes[getRandomIndex(quotes)];
+};
+
+// applyRandomQuote assigns the element returned from the getRandomQuote function to the .innerText attribute of the randomQuote variable.
+function applyRandomQuote() {
+  randomQuote.innerText = getRandomQuote();
+};
+
+// loadRandomPoster calls three helper methods applyRandomPoster, applyRandomTitle, applyRandomQuote, and is used when the page loads and when the "Show Another Random Poster" button is clicked to randomly generate a new poster.
 function loadRandomPoster() {
   applyRandomPoster();
   applyRandomTitle();
   applyRandomQuote();
 };
 
-function getRandomTitle() {
-  return titles[getRandomIndex(titles)];
+function toggleMainPoster() {
+  mainPosterSection.classList.toggle("hidden");
 };
 
-function applyRandomTitle() {
-  randomTitle.innerText = getRandomTitle();
+function toggleCreatePoster() {
+  createPosterSection.classList.toggle("hidden");
+}
+
+function toggleSavedPosters() {
+  savedPosterSection.classList.toggle("hidden");
+}
+
+function loadMakePoster() {
+  toggleMainPoster();
+  toggleCreatePoster();
 };
 
-function getRandomQuote() {
-  return quotes[getRandomIndex(quotes)];
+function loadSavedPosters() {
+  toggleMainPoster();
+  toggleSavedPosters();
 };
 
-function applyRandomQuote() {
-  randomQuote.innerText = getRandomQuote();
+function loadMainPoster() {
+  if (mainPosterSection.classList.contains("hidden")) {
+    toggleMainPoster()
+    savedPosterSection.classList.add("hidden");
+    createPosterSection.classList.add("hidden");
+  };
 };
-
 
 function createPoster(imageURL, title, quote) {
   return {
