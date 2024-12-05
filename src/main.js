@@ -161,7 +161,7 @@ backToMainBtn.addEventListener('click', () => {
 });
 
 // Make new poster and display
-makePosterBtn.addEventListener('click', customPoster);
+makePosterBtn.addEventListener('click', userPosterEventHandler);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -173,8 +173,10 @@ function randomPosterEventHandler() {
 }
 
 // Handle user poster creation and display
-function userPosterEvenHandler() {
+function userPosterEventHandler() {
+  event.preventDefault();
   getUserPoster();
+  changeView(posterFormView, mainView);
   changePosterDisplay();
 }
 
@@ -209,6 +211,7 @@ function getUserPoster() {
   // console.log(`${posterImgURL} | ${posterTitle} | ${posterQuote}`);
   
   currentPoster = createPoster(posterImgURL, posterTitle, posterQuote);
+  // console.log(currentPoster);
 }
 
 // Change the HTML elements with currentPoster object values
@@ -223,4 +226,3 @@ function changeView(currentSection, clickedSection) {
   clickedSection.classList.remove('hidden');
   currentSection.classList.add('hidden');
 }
-
