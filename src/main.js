@@ -32,6 +32,8 @@ const inputPosterQuote = document.querySelector('#poster-quote');
 // Submit custom poster button
 const makePosterBtn = document.querySelector('.make-poster');
 
+const savedPostersDisplay = doucment.querySelector('.saved-posters-grid');
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -185,6 +187,8 @@ function userPosterEventHandler() {
   changePosterDisplay();
 }
 
+
+
 // Select random poster elements and set them as currentPoster object
 function getRandomPoster() {
   let randomImgURL = images[getRandomIndex(images)];
@@ -239,5 +243,7 @@ function addNewPosterElements(newImgURL, newTitle, newQuote) {
 }
 
 function addToSaved() {
-  
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 }
