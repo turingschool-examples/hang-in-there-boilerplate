@@ -1,18 +1,21 @@
 // query selector variables go here 👇
+let mainPosterSection = document.querySelector(".main-poster");
+let createPosterSection = document.querySelector(".poster-form");
+let savedPosterSection = document.querySelector(".saved-posters");
 let posterImage = document.querySelector(".poster-img");
 let randomTitle = document.querySelector(".poster-title");
 let randomQuote = document.querySelector(".poster-quote");
-
-let mainPosterSection = document.querySelector(".main-poster");
 let randomPosterButton = document.querySelector(".show-random");
-
-let createPosterSection = document.querySelector(".poster-form");
 let makePosterButton = document.querySelector(".show-form");
-let NevermindButton = document.querySelector(".show-main");
-
-let savedPosterSection = document.querySelector(".saved-posters");
 let savedPosterButton = document.querySelector(".show-saved");
-let BackToMain = document.querySelector(".back-to-main");
+let nevermindButton = document.querySelector(".show-main");
+let backToMainButton = document.querySelector(".back-to-main");
+let showMyPosterButton = document.querySelector(".make-poster");
+let saveNewPosterButton = document.querySelector(".save-poster");
+let customImageURL = document.querySelector("#poster-image-url");
+let customTitle = document.querySelector("#poster-title");
+let customQuote = document.querySelector("#poster-quote");
+
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -123,10 +126,14 @@ document.addEventListener('DOMContentLoaded', loadRandomPoster);
 randomPosterButton.addEventListener('click', loadRandomPoster);
 
 makePosterButton.addEventListener('click', () => {loadSection(createPosterSection)}) ;
-NevermindButton.addEventListener('click', () => {loadSection(mainPosterSection)});
+nevermindButton.addEventListener('click', () => {loadSection(mainPosterSection)});
 
 savedPosterButton.addEventListener('click', () => {loadSection(savedPosterSection)});
-BackToMain.addEventListener('click', () => {loadSection(mainPosterSection)});
+backToMainButton.addEventListener('click', () => {loadSection(mainPosterSection)});
+
+showMyPosterButton.addEventListener('click', createNewPosterData);
+
+saveNewPosterButton.addEventListener('click', savePoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -195,4 +202,36 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+};
+
+function createPosterImage() {
+  imageURL = customImageURL.value;
+  images.push(imageURL);
+};
+
+function createPosterTitle() {
+  title = customTitle.value;
+  titles.push(title);
+};
+
+function createPosterQuote() {
+  quote = customQuote.value;
+  quotes.push(quote);
+};
+
+function createNewPosterData() {
+  event.preventDefault();
+  createPosterImage();
+  createPosterTitle();
+  createPosterQuote();
+  currentPoster = createPoster(imageURL, title, quote);
+  loadSection(mainPosterSection);
+  posterImage.src = currentPoster.imageURL;
+  randomTitle.innerText = currentPoster.title;
+  randomQuote.innerText = currentPoster.quote;
+};
+
+function savePoster() {
+  event.preventDefault();
+  savedPosters.push(currentPoster)
 }
