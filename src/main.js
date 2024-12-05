@@ -10,6 +10,8 @@ var toMainFromSavedButton = document.querySelector('.back-to-main')
 
 var showMyPosterButton = document.querySelector('.make-poster')
 
+var savePosterButton = document.querySelector('.save-poster')
+
 var mainPosterImg = document.querySelector('.poster-img')
 var mainPosterTitle = document.querySelector('h1')
 var mainPosterQuote = document.querySelector('h3')
@@ -125,8 +127,6 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.onload = changeMainPoster
-
 document.addEventListener('DOMContentLoaded', changeMainPoster)
 
 showRandomPosterButton.addEventListener('click', changeMainPoster)
@@ -137,7 +137,9 @@ toMainFromMakeButton.addEventListener('click', toggleOwnPoster)
 showSavedPostersButton.addEventListener('click', toggleSavedPoster)
 toMainFromSavedButton.addEventListener('click', toggleSavedPoster)
 
-showMyPosterButton.addEventListener('click', userCreatePoster)
+showMyPosterButton.addEventListener('click', userPosterCreation)
+
+savePosterButton.addEventListener('click', savePoster)
 
 
 // functions and event handlers go here 👇
@@ -182,11 +184,35 @@ function toggleSavedPoster() {
   mainPage.classList.toggle('hidden')
 }
 
-function userCreatePoster(event) {
-  event.preventDefault()
-   makePosterPage.classList.toggle('hidden')
-  mainPage.classList.toggle('hidden')
-  mainPosterImg.src = userInputImg.value
-  mainPosterTitle.innerHTML = userInputTitle.value
-  mainPosterQuote.innerHTML = userInputQuote.value
+function userPosterImg() {
+  imageURL = userInputImg.value
+  images.push(imageURL)
 }
+
+function userPosterTitle() {
+  title = userInputTitle.value
+  titles.push(title)
+}
+
+function userPosterQuote() {
+  quote = userInputQuote.value
+  quotes.push(quote)
+}
+
+function userPosterCreation() {
+  event.preventDefault()
+  userPosterImg()
+  userPosterTitle()
+  userPosterQuote()
+  currentPoster = createPoster(imageURL, title, quote)
+  makePosterPage.classList.toggle('hidden')
+  mainPage.classList.toggle('hidden')
+  mainPosterImg.src = currentPoster.imageURL
+  mainPosterTitle.innerHTML = currentPoster.title
+  mainPosterQuote.innerHTML = currentPoster.quote
+}
+
+// function savePoster() {
+//   event.preventDefault()
+//   savedPosters.push(currentPoster)
+// }
