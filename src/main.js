@@ -210,5 +210,10 @@ function changeView(currentSection, clickedSection) {
 
 // Create a new custom poster based on user input
 function customPoster() {
-
+  let posterImgURL = inputPosterImgURL.value;
+  let posterTitle = inputPosterTitle.value;
+  let posterQuote = inputPosterQuote.value;
+  // console.log(`${posterImgURL} | ${posterTitle} | ${posterQuote}`);
+  
+  currentPoster = createPoster(posterImgURL, posterTitle, posterQuote);
 }
