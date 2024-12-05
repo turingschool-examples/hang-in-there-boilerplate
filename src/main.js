@@ -166,9 +166,15 @@ makePosterBtn.addEventListener('click', customPoster);
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
-// Handle random poster display
+// Handle random poster creation and display
 function randomPosterEventHandler() {
   getRandomPoster();
+  changePosterDisplay();
+}
+
+// Handle user poster creation and display
+function userPosterEvenHandler() {
+  getUserPoster();
   changePosterDisplay();
 }
 
@@ -195,6 +201,16 @@ function getRandomPoster() {
   currentPoster = createPoster(randomImgURL, randomTitle, randomQuote);
 }
 
+// Create a new custom poster based on user input
+function getUserPoster() {
+  let posterImgURL = inputPosterImgURL.value;
+  let posterTitle = inputPosterTitle.value;
+  let posterQuote = inputPosterQuote.value;
+  // console.log(`${posterImgURL} | ${posterTitle} | ${posterQuote}`);
+  
+  currentPoster = createPoster(posterImgURL, posterTitle, posterQuote);
+}
+
 // Change the HTML elements with currentPoster object values
 function changePosterDisplay() {
   posterImg.src = currentPoster.imageURL;
@@ -208,12 +224,3 @@ function changeView(currentSection, clickedSection) {
   currentSection.classList.add('hidden');
 }
 
-// Create a new custom poster based on user input
-function customPoster() {
-  let posterImgURL = inputPosterImgURL.value;
-  let posterTitle = inputPosterTitle.value;
-  let posterQuote = inputPosterQuote.value;
-  // console.log(`${posterImgURL} | ${posterTitle} | ${posterQuote}`);
-  
-  currentPoster = createPoster(posterImgURL, posterTitle, posterQuote);
-}
