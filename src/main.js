@@ -11,9 +11,6 @@ const showSavedBtn = document.querySelector('.show-saved');
 const randomPosterBtn = document.querySelector('.show-random');
 const showFormBtn = document.querySelector('.show-form');
 
-// Submit custom poster button
-const makePosterBtn = document.querySelector('.make-poster');
-
 // Secondary navigation buttons (return to main view)
 const showMainBtn = document.querySelector('.show-main');
 const backToMainBtn = document.querySelector('.back-to-main');
@@ -27,6 +24,9 @@ const savedView = document.querySelector('.saved-posters');
 const inputPosterImgURL = document.querySelector('#poster-image-url');
 const inputPosterTitle = document.querySelector('#poster-title');
 const inputPosterQuote = document.querySelector('#poster-quote');
+
+// Submit custom poster button
+const makePosterBtn = document.querySelector('.make-poster');
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -150,9 +150,6 @@ showFormBtn.addEventListener('click', () => {
   changeView(mainView, posterFormView);
 });
 
-// Make new poster and display
-// makePosterBtn.addEventListener('click', );
-
 // Show main poster page without creating new poster
 showMainBtn.addEventListener('click', () => {
   changeView(posterFormView, mainView);
@@ -162,6 +159,9 @@ showMainBtn.addEventListener('click', () => {
 backToMainBtn.addEventListener('click', () => {
   changeView(savedView, mainView);
 });
+
+// Make new poster and display
+makePosterBtn.addEventListener('click', customPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
