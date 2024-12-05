@@ -24,6 +24,8 @@ var userInputImg = document.querySelector('#poster-image-url')
 var userInputTitle = document.querySelector('#poster-title')
 var userInputQuote = document.querySelector('#poster-quote')
 
+var savedPostersSection = document.querySelector('.saved-posters-grid')
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -180,6 +182,7 @@ function toggleOwnPoster() {
 }
 
 function toggleSavedPoster() {
+  addToSavedPosters()
   savedPostersPage.classList.toggle('hidden')
   mainPage.classList.toggle('hidden')
 }
@@ -201,6 +204,7 @@ function userPosterQuote() {
 
 function userPosterCreation() {
   event.preventDefault()
+  console.log('is the click working')
   userPosterImg()
   userPosterTitle()
   userPosterQuote()
@@ -218,7 +222,22 @@ function savePoster() {
     title: mainPosterTitle.innerText,
     quote: mainPosterQuote.innerText
   }
-  if (!savedPosters.includes(currentPoster)) {
+  if (!savedPosters.some(poster =>
+    poster.imageURL === currentPoster.imageURL &&
+    poster.title === currentPoster.title &&
+    poster.quote === currentPoster.quote
+  )) {
     savedPosters.push(currentPoster)
   }
 }
+
+function addToSavedPosters() {
+  savedPosters.forEach((poster) => {
+  savedPostersSection.innerHTML += 
+      `<article class="mini-poster">
+      <img src="${poster.imageURL}" alt="nothin' to see here">
+      <h2> ${poster.title}</h2>
+      <h4> ${poster.quote}</h4>
+      </article>`
+  }
+)}
