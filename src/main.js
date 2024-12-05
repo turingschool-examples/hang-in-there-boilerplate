@@ -176,22 +176,9 @@ function randomPosterEventHandler() {
 function userPosterEventHandler() {
   event.preventDefault();
   getUserPoster();
+  addNewPosterElements(currentPoster.imageURL, currentPoster.title, currentPoster.quote);
   changeView(posterFormView, mainView);
   changePosterDisplay();
-}
-
-// Select random element from specified array
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-// Create new poster object
-function createPoster(imageURL, title, quote) {
-  return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
 }
 
 // Select random poster elements and set them as currentPoster object
@@ -211,7 +198,20 @@ function getUserPoster() {
   // console.log(`${posterImgURL} | ${posterTitle} | ${posterQuote}`);
   
   currentPoster = createPoster(posterImgURL, posterTitle, posterQuote);
-  // console.log(currentPoster);
+}
+
+// Select random element from specified array
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+// Create new poster object
+function createPoster(imageURL, title, quote) {
+  return {
+    id: Date.now(), 
+    imageURL: imageURL, 
+    title: title, 
+    quote: quote}
 }
 
 // Change the HTML elements with currentPoster object values
@@ -225,4 +225,11 @@ function changePosterDisplay() {
 function changeView(currentSection, clickedSection) {
   clickedSection.classList.remove('hidden');
   currentSection.classList.add('hidden');
+}
+
+// Save new poster elements to arrays
+function addNewPosterElements(newImgURL, newTitle, newQuote) {
+  images.push(newImgURL);
+  titles.push(newTitle);
+  quotes.push(newQuote);
 }
