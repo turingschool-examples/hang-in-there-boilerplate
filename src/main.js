@@ -6,10 +6,8 @@ var posterQuote = document.querySelector(".poster-quote")
 var anotherRandomPosterButton = document.querySelector(".show-random")
 var makeYourOwnPosterButton = document.querySelector(".show-form")
 var makeYourOwnPosterForm = document.querySelector(".poster-form")
-// var posterImageInput = document.querySelector("")
-// var posterTitleInput = document.querySelector("")
-// var posterQuoteInput = document.querySelector("")
-
+var showSavedPostersButton = document.querySelector(".show-saved")
+var savedPosters = document.querySelector(".saved-posters")
 
 
 // we've provided you with some data to work with 👇
@@ -118,6 +116,7 @@ var currentPoster;
 document.addEventListener("DOMContentLoaded", randomPosterDetails);
 anotherRandomPosterButton.addEventListener("click", randomPosterDetails);
 makeYourOwnPosterButton.addEventListener("click", makeYourOwnPosterClick);
+showSavedPostersButton.addEventListener("click", showSavedPostersButtonClick);
 
 
 // functions and event handlers go here 👇
@@ -172,6 +171,19 @@ function revealForm (element) {
   element.classList.remove("hidden")
 }
 
+
+function showSavedPostersButtonClick () {
+  //when this method is invoked by a click, the original poster disappears
+  hidePoster (allPosterElements) 
+  //and the form APPEARS in its place
+  
+}
+
+function showSavedPosters (element) {
+  console.log('the show saved posters method has been invoked')
+  //shows poster grid
+  element.classList.remove("hidden")
+}
 
 //   if (makeYourOwnPosterForm.classList.contains("hidden")) {
 //     makeYourOwnPosterForm.classList.remove("hidden"); // Show the form
