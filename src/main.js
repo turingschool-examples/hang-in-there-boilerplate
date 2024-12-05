@@ -192,26 +192,30 @@ console.log("Saved Posters Section:", savedPostersSection);
 
 function nevermindTakeMeBackButtonClick () {
   console.log('the nevermind method has been invoked')
-  //return to main with poster
+  //return to main with poster, no form
   revealPoster (allPosterElements);
-  hideForm (savedPostersSection)
+  hideForm (makeYourOwnPosterForm)
 }
 
 function BackToMainButtonClick () {
-  console.log('the nevermind method has been invoked')
-  //return to main with poster
+  console.log('the back to main method has been invoked')
+  //return to main with poster, no grid
   revealPoster (allPosterElements);
-  hideForm (savedPostersSection)
+  hideSavedPosters (savedPostersSection)
 }
 
 function revealPoster (element) {
-  //poster disappears to make space for form 
-  console.log('the hide poster method has been invoked')
+  console.log('the reveal poster method has been invoked')
   element.classList.remove("hidden")
 }
 
 function hideForm (element) {
-  //form's inputs appear
-  console.log('the reveal form method has been invoked')
+  console.log('the hide form method has been invoked')
   element.classList.add("hidden")
 }
+
+function hideSavedPosters (element) {
+  console.log('the hide form method has been invoked')
+  element.classList.add("hidden")
+}
+
