@@ -1,8 +1,15 @@
 // query selector variables go here 👇
+var allPosterElements = document.querySelector(".main-poster")
 var posterImage = document.querySelector(".poster-img")
 var posterTitle = document.querySelector(".poster-title")
 var posterQuote = document.querySelector(".poster-quote")
 var anotherRandomPosterButton = document.querySelector(".show-random")
+var makeYourOwnPosterButton = document.querySelector(".show-form")
+var makeYourOwnPosterForm = document.querySelector(".poster-form")
+// var posterImageInput = document.querySelector("")
+// var posterTitleInput = document.querySelector("")
+// var posterQuoteInput = document.querySelector("")
+
 
 
 // we've provided you with some data to work with 👇
@@ -108,16 +115,18 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-document.addEventListener("DOMContentLoaded", randomPosterDetails)
-anotherRandomPosterButton.addEventListener("click", randomPosterDetails)
+document.addEventListener("DOMContentLoaded", randomPosterDetails);
+anotherRandomPosterButton.addEventListener("click", randomPosterDetails);
+makeYourOwnPosterButton.addEventListener("click", makeYourOwnPosterClick);
 
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -141,6 +150,66 @@ function randomPosterDetails () {
   posterTitle.innerText = randomPoster.title
   posterQuote.innerText = randomPoster.quote 
 }
+
+
+
+function makeYourOwnPosterClick () {
+  //when this method is invoked by a click, the original poster disappears
+  hidePoster (allPosterElements) 
+  //and the form APPEARS in its place
+  revealForm (makeYourOwnPosterForm)
+}
+
+function hidePoster (element) {
+  //poster disappears to make space for form 
+  console.log('the hide poster method has been invoked')
+  element.classList.add("hidden")
+}
+
+function revealForm (element) {
+  //form's inputs appear
+  console.log('the reveal form method has been invoked')
+  element.classList.remove("hidden")
+}
+
+
+//   if (makeYourOwnPosterForm.classList.contains("hidden")) {
+//     makeYourOwnPosterForm.classList.remove("hidden"); // Show the form
+//   } else {
+//     makeYourOwnPosterForm.classList.add("hidden"); // Hide the form
+//   }
+// })---------------------
+
+  // if (makeYourOwnPosterForm.target.classList.hidden.display === "none") {
+  //   makeYourOwnPosterForm.target.classList.hidden.display = "block"
+  // } else {
+  //   makeYourOwnPosterForm.target.classList.hidden.display = "none"
+  // }
+  // revealImageInput ()
+  // revealTitleInput ()
+  // revealQuoteInput ()
+
+
+// function revealImageInput () {
+//   //adds input box for user's poster image url
+//   console.log('revealing the image input')
+
+// }
+
+// function revealTitleInput () {
+//   //adds input box for user's poster title
+// }
+
+// function revealQuoteInput () {
+//   //adds input box for user's motivational quote 
+// }
+
+
+// function addPinkBox () { 
+//   // <div class="box"></div> <<this is the box
+//   // put another gray box (div) into the blue section/container
+//   boxContainer.innerHTML += '<div class="box"></div>'
+// }
 
 
 // function loadPoster() {
