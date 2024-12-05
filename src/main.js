@@ -1,20 +1,32 @@
 // query selector variables go here 👇
+
+// Poster elements
 const posterImg = document.querySelector('.poster-img');
 const posterTitle = document.querySelector('.poster-title');
 const posterQuote = document.querySelector('.poster-quote');
 
+// Main navigation buttons
 const savePosterBtn = document.querySelector('.save-poster');
 const showSavedBtn = document.querySelector('.show-saved');
 const randomPosterBtn = document.querySelector('.show-random');
 const showFormBtn = document.querySelector('.show-form');
 
+// Submit custom poster button
 const makePosterBtn = document.querySelector('.make-poster');
+
+// Secondary navigation buttons (return to main view)
 const showMainBtn = document.querySelector('.show-main');
 const backToMainBtn = document.querySelector('.back-to-main');
 
+// Page views
 const mainView = document.querySelector('.main-poster');
 const posterFormView = document.querySelector('.poster-form');
 const savedView = document.querySelector('.saved-posters');
+
+// Custom poster user input elements
+const inputPosterImgURL = document.querySelector('#poster-image-url');
+const inputPosterTitle = document.querySelector('#poster-title');
+const inputPosterQuote = document.querySelector('#poster-quote');
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -194,4 +206,9 @@ function changePosterDisplay() {
 function changeView(currentSection, clickedSection) {
   clickedSection.classList.remove('hidden');
   currentSection.classList.add('hidden');
+}
+
+// Create a new custom poster based on user input
+function customPoster() {
+
 }
