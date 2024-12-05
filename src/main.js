@@ -5,10 +5,14 @@ const posterImg = document.querySelector('.poster-img');
 const posterTitle = document.querySelector('.poster-title');
 const posterQuote = document.querySelector('.poster-quote');
 
-// Main navigation buttons
+// Add current poster to saved posters
 const savePosterBtn = document.querySelector('.save-poster');
-const showSavedBtn = document.querySelector('.show-saved');
+
+// Generate a new random poster
 const randomPosterBtn = document.querySelector('.show-random');
+
+// Main navigation buttons
+const showSavedBtn = document.querySelector('.show-saved');
 const showFormBtn = document.querySelector('.show-form');
 
 // Secondary navigation buttons (return to main view)
@@ -135,15 +139,15 @@ var currentPoster;
 document.addEventListener('DOMContentLoaded', randomPosterEventHandler);
 
 // Save poster to Saved Posters list
-// savePosterBtn.addEventListener('click', );
+savePosterBtn.addEventListener('click', addToSaved);
+
+// Create and Display a new poster
+randomPosterBtn.addEventListener('click', randomPosterEventHandler);
 
 // Reveal Show Saved Poster view
 showSavedBtn.addEventListener('click', () => {
   changeView(mainView, savedView)
 });
-
-// Create and Display a new poster
-randomPosterBtn.addEventListener('click', randomPosterEventHandler);
 
 // Reveal Make Your Own Poster view
 showFormBtn.addEventListener('click', () => {
@@ -232,4 +236,8 @@ function addNewPosterElements(newImgURL, newTitle, newQuote) {
   images.push(newImgURL);
   titles.push(newTitle);
   quotes.push(newQuote);
+}
+
+function addToSaved() {
+  
 }
