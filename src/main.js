@@ -169,9 +169,9 @@ function changeMainPosterQuote() {
 }
 
 function changeMainPoster() {
-  changeMainPosterImage()
-  changeMainPosterTitle()
-  changeMainPosterQuote()
+ changeMainPosterImage()
+ changeMainPosterTitle()
+ changeMainPosterQuote()
 }
 
 function toggleOwnPoster() {
@@ -212,7 +212,11 @@ function userPosterCreation() {
   mainPosterQuote.innerHTML = currentPoster.quote
 }
 
-// function savePoster() {
-//   event.preventDefault()
-//   savedPosters.push(currentPoster)
-// }
+function savePoster() {
+  currentPoster = {
+    imageURL: mainPosterImg.src,
+    title: mainPosterTitle.innerText,
+    quote: mainPosterQuote.innerText
+  }
+  savedPosters.push(currentPoster)
+}
