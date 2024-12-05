@@ -3,7 +3,19 @@ const posterImg = document.querySelector('.poster-img');
 const posterTitle = document.querySelector('.poster-title');
 const posterQuote = document.querySelector('.poster-quote');
 
-const randomPoster = document.querySelector('.show-random');
+const savePosterBtn = document.querySelector('.save-poster');
+const showSavedBtn = document.querySelector('.show-saved');
+const randomPosterBtn = document.querySelector('.show-random');
+const showFormBtn = document.querySelector('.show-form');
+
+const makePosterBtn = document.querySelector('.make-poster');
+const showMainBtn = document.querySelector('.show-main');
+const backToMainBtn = document.querySelector('.back-to-main');
+
+const mainView = document.querySelector('.main-poster');
+const posterFormView = document.querySelector('.poster-form');
+const savedView = document.querySelector('.saved-posters');
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -107,20 +119,53 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-document.addEventListener('DOMContentLoaded', posterEventHandler);
-randomPoster.addEventListener('click', posterEventHandler);
+// Display a random poster on content load
+document.addEventListener('DOMContentLoaded', randomPosterEventHandler);
+
+// Save poster to Saved Posters list
+// savePosterBtn.addEventListener('click', );
+
+// Reveal Show Saved Poster view
+showSavedBtn.addEventListener('click', () => {
+  changeView(mainView, savedView)
+});
+
+// Create and Display a new poster
+randomPosterBtn.addEventListener('click', randomPosterEventHandler);
+
+// Reveal Make Your Own Poster view
+showFormBtn.addEventListener('click', () => {
+  changeView(mainView, posterFormView);
+});
+
+// Make new poster and display
+// makePosterBtn.addEventListener('click', );
+
+// Show main poster page without creating new poster
+showMainBtn.addEventListener('click', () => {
+  changeView(posterFormView, mainView);
+});
+
+// Return to main poster page
+backToMainBtn.addEventListener('click', () => {
+  changeView(savedView, mainView);
+});
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
-function posterEventHandler() {
+// Handle random poster display
+function randomPosterEventHandler() {
   getRandomPoster();
   changePosterDisplay();
 }
 
+// Select random element from specified array
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// Create new poster object
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
@@ -129,6 +174,7 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
+// Select random poster elements and set them as currentPoster object
 function getRandomPoster() {
   let randomImgURL = images[getRandomIndex(images)];
   let randomTitle = titles[getRandomIndex(titles)];
@@ -137,10 +183,15 @@ function getRandomPoster() {
   currentPoster = createPoster(randomImgURL, randomTitle, randomQuote);
 }
 
+// Change the HTML elements with currentPoster object values
 function changePosterDisplay() {
   posterImg.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
 }
 
-
+// Change sections hidden status
+function changeView(currentSection, clickedSection) {
+  clickedSection.classList.remove('hidden');
+  currentSection.classList.add('hidden');
+}
