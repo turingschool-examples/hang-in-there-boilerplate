@@ -9,9 +9,11 @@ var makeYourOwnPosterForm = document.querySelector(".poster-form");
 var nevermindTakeMeBackButton = document.querySelector(".show-main");
 var showSavedPostersButton = document.querySelector(".show-saved");
 var savedPostersSection = document.querySelector(".saved-posters");
-var BackToMainButton = document.querySelector(".back-to-main");
-
-
+var backToMainButton = document.querySelector(".back-to-main");
+var showMyPosterButton = document.querySelector(".make-poster");
+var imageInput = document.querySelector("#poster-image-url");
+var titleInput = document.querySelector("#poster-title");
+var quoteInput = document.querySelector("#poster-quote");
 
 
 // we've provided you with some data to work with 👇
@@ -122,7 +124,8 @@ anotherRandomPosterButton.addEventListener("click", randomPosterDetails);
 makeYourOwnPosterButton.addEventListener("click", makeYourOwnPosterClick);
 showSavedPostersButton.addEventListener("click", showSavedPostersButtonClick);
 nevermindTakeMeBackButton.addEventListener("click", nevermindTakeMeBackButtonClick);
-BackToMainButton.addEventListener("click", BackToMainButtonClick);
+backToMainButton.addEventListener("click", backToMainButtonClick);
+showMyPosterButton.addEventListener("click", showMyPosterClick);
 
 
 // functions and event handlers go here 👇
@@ -197,7 +200,7 @@ function nevermindTakeMeBackButtonClick () {
   hideForm (makeYourOwnPosterForm)
 }
 
-function BackToMainButtonClick () {
+function backToMainButtonClick () {
   console.log('the back to main method has been invoked')
   //return to main with poster, no grid
   revealPoster (allPosterElements);
@@ -219,3 +222,34 @@ function hideSavedPosters (element) {
   element.classList.add("hidden")
 }
 
+function showMyPosterClick(event) {
+  console.log('the Show My Poster Click method has been invoked')
+  // console.log('image input: ', imageInput)
+ 
+  event.preventDefault();
+
+  //user poster deets
+  var imageInputValue = imageInput.value;
+  var titleInputValue = titleInput.value;
+  var quoteInputValue = quoteInput.value;
+  console.log('title input: ', titleInputValue)
+  console.log('quote input: ', quoteInputValue)
+   //create user's poster
+  var currentUserPoster = createPoster(imageInputValue, titleInputValue, quoteInputValue);
+  console.log('image url: ', currentUserPoster.imageURL)
+   //update the DOM
+   posterImage.src = currentUserPoster.imageURL;
+   posterTitle.innerText = currentUserPoster.title;
+   posterQuote.innerText = currentUserPoster.quote;
+
+  nevermindTakeMeBackButtonClick (); 
+}
+//In the new poster form view, users should be able to fill out 
+//the three input fields and then hit the Show My Poster button
+
+
+// function displayDogName(event) {
+//   event.preventDefault(); // Prevents the default form behavior
+//   var dogName = input.value; // Get the value from the input
+//   headerText.innerText = dogName; // Update the header with the input value
+// }
