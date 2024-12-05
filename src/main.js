@@ -125,6 +125,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.onload = changeMainPoster
+
 document.addEventListener('DOMContentLoaded', changeMainPoster)
 
 showRandomPosterButton.addEventListener('click', changeMainPoster)
@@ -135,7 +137,7 @@ toMainFromMakeButton.addEventListener('click', toggleOwnPoster)
 showSavedPostersButton.addEventListener('click', toggleSavedPoster)
 toMainFromSavedButton.addEventListener('click', toggleSavedPoster)
 
-showMyPosterButton.addEventListener('submit', userCreatePoster)
+showMyPosterButton.addEventListener('click', userCreatePoster)
 
 
 // functions and event handlers go here 👇
@@ -182,6 +184,8 @@ function toggleSavedPoster() {
 
 function userCreatePoster(event) {
   event.preventDefault()
+   makePosterPage.classList.toggle('hidden')
+  mainPage.classList.toggle('hidden')
   mainPosterImg.src = userInputImg.value
   mainPosterTitle.innerHTML = userInputTitle.value
   mainPosterQuote.innerHTML = userInputQuote.value
