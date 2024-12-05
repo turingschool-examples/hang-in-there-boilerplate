@@ -1,17 +1,26 @@
 // query selector variables go here 👇
-var generateRandomButton = document.querySelector('.show-random')
-var makePosterButton = document.querySelector('.show-form')
+var makeOwnPosterButton = document.querySelector('.show-form')
+
+var showRandomPosterButton = document.querySelector('.show-random')
+
+var showSavedPostersButton = document.querySelector('.show-saved')
+
 var toMainFromMakeButton = document.querySelector('.show-main')
-var showSavedButton = document.querySelector('.show-saved')
 var toMainFromSavedButton = document.querySelector('.back-to-main')
 
-var posterImg = document.querySelector('.poster-img')
-var posterTitle = document.querySelector('h1')
-var posterQuote = document.querySelector('h3')
+var showMyPosterButton = document.querySelector('.make-poster')
 
-var makePoster = document.querySelector('.poster-form')
-var mainPoster = document.querySelector('.main-poster')
-var savedPoster = document.querySelector('.saved-posters')
+var mainPosterImg = document.querySelector('.poster-img')
+var mainPosterTitle = document.querySelector('h1')
+var mainPosterQuote = document.querySelector('h3')
+
+var mainPage = document.querySelector('.main-poster')
+var makePosterPage = document.querySelector('.poster-form')
+var savedPostersPage = document.querySelector('.saved-posters')
+
+var userInputImg = document.querySelector('#poster-image-url')
+var userInputTitle = document.querySelector('#poster-title')
+var userInputQuote = document.querySelector('#poster-quote')
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -116,12 +125,18 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-generateRandomButton.addEventListener('click', changePoster)
-makePosterButton.addEventListener('click', toggleOwnPoster)
+document.addEventListener('DOMContentLoaded', changeMainPoster)
+
+showRandomPosterButton.addEventListener('click', changeMainPoster)
+
+makeOwnPosterButton.addEventListener('click', toggleOwnPoster)
 toMainFromMakeButton.addEventListener('click', toggleOwnPoster)
-showSavedButton.addEventListener('click', toggleSavedPoster)
+
+showSavedPostersButton.addEventListener('click', toggleSavedPoster)
 toMainFromSavedButton.addEventListener('click', toggleSavedPoster)
-document.addEventListener('DOMContentLoaded', changePoster)
+
+showMyPosterButton.addEventListener('submit', userCreatePoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -137,21 +152,37 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-function changePoster() {
-  var randomImg = getRandomIndex(images)
-  var randomTitle = getRandomIndex(titles)
-  var randomQuote = getRandomIndex(quotes)
-  posterImg.src = images[randomImg]
-  posterTitle.innerText = titles[randomTitle]
-  posterQuote.innerText = quotes[randomQuote]
+function changeMainPosterImage() {
+  mainPosterImg.src = images[getRandomIndex(images)]
+}
+
+function changeMainPosterTitle() {
+  mainPosterTitle.innerText = titles[getRandomIndex(titles)]
+}
+
+function changeMainPosterQuote() {
+  mainPosterQuote.innerText = quotes[getRandomIndex(quotes)]
+}
+
+function changeMainPoster() {
+  changeMainPosterImage()
+  changeMainPosterTitle()
+  changeMainPosterQuote()
 }
 
 function toggleOwnPoster() {
-  makePoster.classList.toggle('hidden')
-  mainPoster.classList.toggle('hidden')
+  makePosterPage.classList.toggle('hidden')
+  mainPage.classList.toggle('hidden')
 }
 
 function toggleSavedPoster() {
-  savedPoster.classList.toggle('hidden')
-  mainPoster.classList.toggle('hidden')
+  savedPostersPage.classList.toggle('hidden')
+  mainPage.classList.toggle('hidden')
+}
+
+function userCreatePoster(event) {
+  event.preventDefault()
+  mainPosterImg.src = userInputImg.value
+  mainPosterTitle.innerHTML = userInputTitle.value
+  mainPosterQuote.innerHTML = userInputQuote.value
 }
