@@ -2,6 +2,7 @@
 let mainPosterSection = document.querySelector(".main-poster");
 let createPosterSection = document.querySelector(".poster-form");
 let savedPosterSection = document.querySelector(".saved-posters");
+let unmotivationalPosterSection = document.querySelector(".unmotivational-posters");
 let savedPostersGrid = document.querySelector(".saved-posters-grid");
 let posterImage = document.querySelector(".poster-img");
 let randomTitle = document.querySelector(".poster-title");
@@ -13,6 +14,8 @@ let nevermindButton = document.querySelector(".show-main");
 let backToMainButton = document.querySelector(".back-to-main");
 let showMyPosterButton = document.querySelector(".make-poster");
 let saveNewPosterButton = document.querySelector(".save-poster");
+let unmotivationalPosterButton = document.querySelector(".show-unmotivational");
+let backToMainButton2 = document.querySelector(".back-to-main2");
 let customImageURL = document.querySelector("#poster-image-url");
 let customTitle = document.querySelector("#poster-title");
 let customQuote = document.querySelector("#poster-quote");
@@ -136,6 +139,9 @@ showMyPosterButton.addEventListener('click', createNewPosterData);
 
 saveNewPosterButton.addEventListener('click', savePoster);
 
+unmotivationalPosterButton.addEventListener('click', () => {loadSection(unmotivationalPosterSection)});
+backToMainButton2.addEventListener('click', () => {loadSection(mainPosterSection)});
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -193,6 +199,11 @@ function loadSection(sectionName) {
     mainPosterSection.classList.add("hidden");
     createPosterSection.classList.add("hidden");
     displaySavedPosters();
+  } else if (sectionName === unmotivationalPosterSection) {
+    unmotivationalPosterSection.classList.remove("hidden");
+    savedPosterSection.classList.add("hidden");
+    mainPosterSection.classList.add("hidden");
+    createPosterSection.classList.add("hidden");
   };
 };
 
