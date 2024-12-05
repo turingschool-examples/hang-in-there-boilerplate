@@ -1,5 +1,4 @@
 // query selector variables go here 👇
-
 let posterImage = document.querySelector(".poster-img");
 let randomTitle = document.querySelector(".poster-title");
 let randomQuote = document.querySelector(".poster-quote");
@@ -123,11 +122,11 @@ document.addEventListener('DOMContentLoaded', loadRandomPoster);
 
 randomPosterButton.addEventListener('click', loadRandomPoster);
 
-makePosterButton.addEventListener('click', loadMakePoster);
-NevermindButton.addEventListener('click', loadMainPoster);
+makePosterButton.addEventListener('click', () => {loadSection(createPosterSection)}) ;
+NevermindButton.addEventListener('click', () => {loadSection(mainPosterSection)});
 
-savedPosterButton.addEventListener('click', loadSavedPosters);
-BackToMain.addEventListener('click', loadMainPoster);
+savedPosterButton.addEventListener('click', () => {loadSection(savedPosterSection)});
+BackToMain.addEventListener('click', () => {loadSection(mainPosterSection)});
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -174,32 +173,18 @@ function loadRandomPoster() {
   applyRandomQuote();
 };
 
-function toggleMainPoster() {
-  mainPosterSection.classList.toggle("hidden");
-};
-
-function toggleCreatePoster() {
-  createPosterSection.classList.toggle("hidden");
-}
-
-function toggleSavedPosters() {
-  savedPosterSection.classList.toggle("hidden");
-}
-
-function loadMakePoster() {
-  toggleMainPoster();
-  toggleCreatePoster();
-};
-
-function loadSavedPosters() {
-  toggleMainPoster();
-  toggleSavedPosters();
-};
-
-function loadMainPoster() {
-  if (mainPosterSection.classList.contains("hidden")) {
-    toggleMainPoster()
+function loadSection(sectionName) {
+  if (sectionName === mainPosterSection) {
+    mainPosterSection.classList.remove("hidden");
+    createPosterSection.classList.add("hidden");
     savedPosterSection.classList.add("hidden");
+  } else if (sectionName === createPosterSection) {
+    createPosterSection.classList.remove("hidden");
+    mainPosterSection.classList.add("hidden");
+    savedPosterSection.classList.add("hidden");
+  } else if (sectionName === savedPosterSection) {
+    savedPosterSection.classList.remove("hidden");
+    mainPosterSection.classList.add("hidden");
     createPosterSection.classList.add("hidden");
   };
 };
