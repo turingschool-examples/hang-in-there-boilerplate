@@ -1,20 +1,32 @@
 // query selector variables go here 👇
+
+// Poster elements
 const posterImg = document.querySelector('.poster-img');
 const posterTitle = document.querySelector('.poster-title');
 const posterQuote = document.querySelector('.poster-quote');
 
+// Main navigation buttons
 const savePosterBtn = document.querySelector('.save-poster');
 const showSavedBtn = document.querySelector('.show-saved');
 const randomPosterBtn = document.querySelector('.show-random');
 const showFormBtn = document.querySelector('.show-form');
 
-const makePosterBtn = document.querySelector('.make-poster');
+// Secondary navigation buttons (return to main view)
 const showMainBtn = document.querySelector('.show-main');
 const backToMainBtn = document.querySelector('.back-to-main');
 
+// Page views
 const mainView = document.querySelector('.main-poster');
 const posterFormView = document.querySelector('.poster-form');
 const savedView = document.querySelector('.saved-posters');
+
+// Custom poster user input elements
+const inputPosterImgURL = document.querySelector('#poster-image-url');
+const inputPosterTitle = document.querySelector('#poster-title');
+const inputPosterQuote = document.querySelector('#poster-quote');
+
+// Submit custom poster button
+const makePosterBtn = document.querySelector('.make-poster');
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -138,9 +150,6 @@ showFormBtn.addEventListener('click', () => {
   changeView(mainView, posterFormView);
 });
 
-// Make new poster and display
-// makePosterBtn.addEventListener('click', );
-
 // Show main poster page without creating new poster
 showMainBtn.addEventListener('click', () => {
   changeView(posterFormView, mainView);
@@ -151,13 +160,44 @@ backToMainBtn.addEventListener('click', () => {
   changeView(savedView, mainView);
 });
 
+// Make new poster and display
+makePosterBtn.addEventListener('click', userPosterEventHandler);
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
-// Handle random poster display
+// Handle random poster creation and display
 function randomPosterEventHandler() {
   getRandomPoster();
   changePosterDisplay();
+}
+
+// Handle user poster creation and display
+function userPosterEventHandler() {
+  event.preventDefault();
+  getUserPoster();
+  addNewPosterElements(currentPoster.imageURL, currentPoster.title, currentPoster.quote);
+  changeView(posterFormView, mainView);
+  changePosterDisplay();
+}
+
+// Select random poster elements and set them as currentPoster object
+function getRandomPoster() {
+  let randomImgURL = images[getRandomIndex(images)];
+  let randomTitle = titles[getRandomIndex(titles)];
+  let randomQuote = quotes[getRandomIndex(quotes)];
+
+  currentPoster = createPoster(randomImgURL, randomTitle, randomQuote);
+}
+
+// Create a new custom poster based on user input
+function getUserPoster() {
+  let posterImgURL = inputPosterImgURL.value;
+  let posterTitle = inputPosterTitle.value;
+  let posterQuote = inputPosterQuote.value;
+  // console.log(`${posterImgURL} | ${posterTitle} | ${posterQuote}`);
+  
+  currentPoster = createPoster(posterImgURL, posterTitle, posterQuote);
 }
 
 // Select random element from specified array
@@ -174,15 +214,6 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-// Select random poster elements and set them as currentPoster object
-function getRandomPoster() {
-  let randomImgURL = images[getRandomIndex(images)];
-  let randomTitle = titles[getRandomIndex(titles)];
-  let randomQuote = quotes[getRandomIndex(quotes)];
-
-  currentPoster = createPoster(randomImgURL, randomTitle, randomQuote);
-}
-
 // Change the HTML elements with currentPoster object values
 function changePosterDisplay() {
   posterImg.src = currentPoster.imageURL;
@@ -194,4 +225,11 @@ function changePosterDisplay() {
 function changeView(currentSection, clickedSection) {
   clickedSection.classList.remove('hidden');
   currentSection.classList.add('hidden');
+}
+
+// Save new poster elements to arrays
+function addNewPosterElements(newImgURL, newTitle, newQuote) {
+  images.push(newImgURL);
+  titles.push(newTitle);
+  quotes.push(newQuote);
 }
