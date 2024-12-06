@@ -14,7 +14,7 @@ var showMyPosterButton = document.querySelector(".make-poster");
 var imageInput = document.querySelector("#poster-image-url");
 var titleInput = document.querySelector("#poster-title");
 var quoteInput = document.querySelector("#poster-quote");
-
+var saveThisPosterButton = document.querySelector(".save-poster");
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -126,7 +126,7 @@ showSavedPostersButton.addEventListener("click", showSavedPostersButtonClick);
 nevermindTakeMeBackButton.addEventListener("click", nevermindTakeMeBackButtonClick);
 backToMainButton.addEventListener("click", backToMainButtonClick);
 showMyPosterButton.addEventListener("click", showMyPosterClick);
-
+saveThisPosterButton.addEventListener("click", saveThisPosterClick);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -150,14 +150,19 @@ function randomPosterDetails () {
   var title = titles[getRandomIndex(titles)];
   var quote = quotes[getRandomIndex(quotes)];
 
-  //create a random poster
-  var randomPoster = createPoster(imageURL, title, quote);
+  //create a random poster and assignt it to current poster
+  currentPoster = createPoster(imageURL, title, quote);
 
   //update the DOM
-  posterImage.src = randomPoster.imageURL
-  posterTitle.innerText = randomPoster.title
-  posterQuote.innerText = randomPoster.quote 
+  posterImage.src = currentPoster.imageURL
+  posterTitle.innerText = currentPoster.title
+  posterQuote.innerText = currentPoster.quote 
 }
+  // var randomPoster = createPoster(imageURL, title, quote);
+
+  // //update the DOM
+  // posterImage.src = randomPoster.imageURL
+  // posterTitle.innerText = randomPoster.title
 
 
 function makeYourOwnPosterClick () {
@@ -233,7 +238,7 @@ function showMyPosterClick(event) {
   console.log('title input: ', titleInputValue)
   console.log('quote input: ', quoteInputValue)
    //create user's poster
-  var currentPoster = createPoster(imageInputValue, titleInputValue, quoteInputValue);
+  currentPoster = createPoster(imageInputValue, titleInputValue, quoteInputValue);
   console.log('image url: ', currentPoster.imageURL)
    //update the DOM
    posterImage.src = currentPoster.imageURL;
@@ -249,6 +254,36 @@ function showMyPosterClick(event) {
 
   nevermindTakeMeBackButtonClick (); 
 }
+
+function saveThisPosterClick () {
+  console.log('saved poster array: ', savedPosters)
+  //add current poster to saved poster array
+  savedPosters.push(currentPoster)
+
+  //make sure not duplicates are included in the array
+  savedPosters = [...new Set(savedPosters)]
+  console.log('updated saved poster array: ', savedPosters)
+}
+
+
+
+
+ //Show Saved Posters button 
+ //we should see the saved posters section where 
+ //all posters in the savedPosters array 
+ //should be displayed as little mini posters 
+ //in the saved posters grid section (again, no duplicates)
+
+
+
+
+
+
+
+
+
+
+
 
 // function saveInputData () {
 //   //save image input
