@@ -110,7 +110,8 @@ button:hover {
   padding: 40px;
 }
 
-.saved-posters-grid {
+.saved-posters-grid,
+.unmotivational-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
