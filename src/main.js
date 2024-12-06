@@ -32,7 +32,8 @@ const inputPosterQuote = document.querySelector('#poster-quote');
 // Submit custom poster button
 const makePosterBtn = document.querySelector('.make-poster');
 
-const savedPostersDisplay = doucment.querySelector('.saved-posters-grid');
+// Grid display for saved posters
+const savedPostersDisplay = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -141,7 +142,7 @@ var currentPoster;
 document.addEventListener('DOMContentLoaded', randomPosterEventHandler);
 
 // Save poster to Saved Posters list
-savePosterBtn.addEventListener('click', addToSaved);
+savePosterBtn.addEventListener('click', savePosterEventHandler);
 
 // Create and Display a new poster
 randomPosterBtn.addEventListener('click', randomPosterEventHandler);
@@ -187,7 +188,11 @@ function userPosterEventHandler() {
   changePosterDisplay();
 }
 
-
+function savePosterEventHandler() {
+  addToSaved();
+  populateSavedPosters();
+  changeView(mainView, savedView);
+}
 
 // Select random poster elements and set them as currentPoster object
 function getRandomPoster() {
@@ -203,7 +208,6 @@ function getUserPoster() {
   let posterImgURL = inputPosterImgURL.value;
   let posterTitle = inputPosterTitle.value;
   let posterQuote = inputPosterQuote.value;
-  // console.log(`${posterImgURL} | ${posterTitle} | ${posterQuote}`);
   
   currentPoster = createPoster(posterImgURL, posterTitle, posterQuote);
 }
@@ -245,5 +249,25 @@ function addNewPosterElements(newImgURL, newTitle, newQuote) {
 function addToSaved() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
+  }
+}
+
+// For each savedPoster, create mini poster object innerHTML
+function createMiniPoster(poster) {
+  return `<div class="mini-poster">
+      <img src=${poster.imageURL} alt="Mini Image" />
+      <h2>${poster.title}</h2>
+      <h4>${poster.quote}</h4>
+    </div>`;
+}
+
+// Add each mini to saved view 
+function populateSavedPosters() {
+  // Refresh display before repopulating
+  savedPostersDisplay.innerHTML = '';
+
+  for (let i = 0; i < savedPosters.length; i++) {
+    let miniPoster = createMiniPoster(savedPosters[i]);
+    savedPostersDisplay.innerHTML += miniPoster;
   }
 }
