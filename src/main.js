@@ -31,6 +31,8 @@ var savedPostersSection = document.querySelector('.saved-posters-grid')
 
 var unmotivationalSection = document.querySelector('.unmotivational-posters')
 var unmotivationalGrid = document.querySelector('.unmotivational-grid')
+
+var unmotivationalObject = document.querySelector('.mini-poster')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -276,6 +278,7 @@ unmotivationalButton.addEventListener('click', toggleUnmotivational)
 
 toMainFromUnmotivational.addEventListener('click', toggleMainFromUnmotivational)
 
+removeUnmotivationalPoster.addEventListener('dblclick', deleteUnmotivationalPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -376,7 +379,7 @@ function savePoster() {
 }
 
 function addToSavedPosters() {
-  savedPostersSection.innerHTML = ``
+  savedPostersSection.replaceChildren()
   savedPosters.forEach((poster) => {
   savedPostersSection.innerHTML += 
       `<article class="mini-poster">
@@ -389,13 +392,12 @@ function addToSavedPosters() {
 
 function cleanData() {
   unmotivationalPosters.forEach((poster) => {
-    console.log("Processing poster:", poster.img_url, poster.name, poster.description);
     createPoster(poster.img_url, poster.name, poster.description)
   })
 }
 
 function displayUnmotivationalPosters() {
-  unmotivationalGrid.innerHTML = ``
+  unmotivationalGrid.replaceChildren()
   unmotivationalPosters.forEach((poster) => {
     cleanData()
     unmotivationalGrid.innerHTML += 
@@ -406,3 +408,12 @@ function displayUnmotivationalPosters() {
         </article>`
     }
 )}
+
+function deleteUnmotivationalPoster() {
+  // Access my unmotivationalPosters array
+  // Delete an object that is double clicked by the user(it should be removed from the array)
+    // The user should be able to dobule click any element invovling the object
+    // (look into event.target)
+  // It should remain deleted when the user goes back to UMP
+    // (on refresh they will all be shown again)
+}
