@@ -2,11 +2,12 @@
 var title = document.querySelector(".poster-title")
 var image = document.querySelector(".poster-img")
 var quote = document.querySelector(".poster-quote")
-var id = document.querySelector(".poster").classList.add(Date.now())
 
 var posterFormSection = document.querySelector(".poster-form")
 var savedPostersSection = document.querySelector(".saved-posters")
 var mainPosterSection = document.querySelector(".main-poster")
+var returnHome = document.querySelector(".back-to-main")
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -105,7 +106,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = []
-let currentPoster = {}
+var currentPoster = {}
 
 // USER INPUT
 var inputURL = document.querySelector("#poster-image-url")
@@ -133,14 +134,9 @@ buttonCreate.addEventListener("click", createPoster)
 // functions and event handlers go here 👇
 function createPoster() {
   event.preventDefault();  
-  
-    let currentPoster = { 
-      id: Date.now(),
-      title: inputTitle.value,
-      image: inputURL.value,
-      quote: inputQuote.value,
-    };
-
+  var title = inputTitle.value;
+  var image = inputURL.value;
+  var quote = inputQuote.value; 
   if (!images.includes(inputURL.value)) {
       images.push(inputURL.value)
     };
@@ -148,28 +144,34 @@ function createPoster() {
       titles.push(inputTitle.value)
     };
   if (!quotes.includes(inputQuote.value)) {
-      quotes.push(inputQuote)
+      quotes.push(inputQuote.value)
     };
 
-  mainPosterSection.classList.remove("hidden");
+  // mainPosterSection.classList.add("hidden");
   posterFormSection.classList.add("hidden");
-
+  returnHome.classList.remove("hidden");
   console.log(currentPoster);
 }
-  // return {
-  //   id: Date.now(), 
-  //   inputURL.innerText = , 
-  //   title: title, 
-  //   quote: quote}
+
+// displayPoster(currentPoster);
+// function displayPoster(currentPoster) {
+//   var title = inputTitle.value;
+//   var image = inputURL.value;
+//   var quote = inputQuote.value;
+// }
+
+
 function showSaved() {
   savedPostersSection.classList.remove("hidden");
   mainPosterSection.classList.add("hidden");
+  returnHome.classList.remove("hidden");
   posterFormSection.classList.add("hidden");
 }
 function returnMain() {
   mainPosterSection.classList.remove("hidden");
   posterFormSection.classList.add("hidden");
   savedPostersSection.classList.add("hidden");
+  returnHome.classList.add("hidden");
 }
 function createRandomPoster() {
   title.textContent = titles[getRandomIndex(titles)];
@@ -180,6 +182,7 @@ function unhideForm() {
   posterFormSection.classList.remove("hidden");
   mainPosterSection.classList.add("hidden");
   savedPostersSection.classList.add("hidden");
+  returnHome.classList.remove("hidden");
 }
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
