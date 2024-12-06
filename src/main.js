@@ -321,6 +321,7 @@ function toggleSavedPoster() {
 }
 
 function toggleUnmotivational() {
+  displayUnmotivationalPosters()
   unmotivationalSection.classList.toggle('hidden')
   mainPage.classList.toggle('hidden')
 }
@@ -394,11 +395,12 @@ function cleanData() {
 }
 
 function displayUnmotivationalPosters() {
+  unmotivationalGrid.innerHTML = ``
   unmotivationalPosters.forEach((poster) => {
-    cleanData
+    cleanData()
     unmotivationalGrid.innerHTML += 
         `<article class="mini-poster">
-        <img src="${poster.image_url}" alt="nothin' to see here">
+        <img src="${poster.img_url}" alt="nothin' to see here">
         <h2> ${poster.name}</h2>
         <h4> ${poster.description}</h4>
         </article>`
