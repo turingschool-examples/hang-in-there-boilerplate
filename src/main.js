@@ -225,9 +225,7 @@ function hideSavedPosters (element) {
 function showMyPosterClick(event) {
   console.log('the Show My Poster Click method has been invoked')
   // console.log('image input: ', imageInput)
- 
   event.preventDefault();
-
   //user poster deets
   var imageInputValue = imageInput.value;
   var titleInputValue = titleInput.value;
@@ -235,15 +233,38 @@ function showMyPosterClick(event) {
   console.log('title input: ', titleInputValue)
   console.log('quote input: ', quoteInputValue)
    //create user's poster
-  var currentUserPoster = createPoster(imageInputValue, titleInputValue, quoteInputValue);
-  console.log('image url: ', currentUserPoster.imageURL)
+  var currentPoster = createPoster(imageInputValue, titleInputValue, quoteInputValue);
+  console.log('image url: ', currentPoster.imageURL)
    //update the DOM
-   posterImage.src = currentUserPoster.imageURL;
-   posterTitle.innerText = currentUserPoster.title;
-   posterQuote.innerText = currentUserPoster.quote;
+   posterImage.src = currentPoster.imageURL;
+   posterTitle.innerText = currentPoster.title;
+   posterQuote.innerText = currentPoster.quote;
+
+  //save image input  
+  console.log('current poster title: ', currentPoster.title)
+  titles.push(currentPoster.title)
+  images.push(currentPoster.imageURL)
+  quotes.push(currentPoster.quote)
+  console.log('updated quote array: ', quotes)
 
   nevermindTakeMeBackButtonClick (); 
 }
+
+// function saveInputData () {
+//   //save image input
+//   // images.push(currentPoster.imageURL)
+//   // console.log('updated image url array: ', images)
+  
+//   //save title input
+//   console.log('updated title array: ', titles)
+//   console.log('current poster title: ', currentPoster.title)
+//   titles.push(currentPoster.title)
+  
+
+//   //save quote input
+//   quotes.push(currentPoster.quote)
+//   console.log('updated quote array: ', quotes)
+// }
 //In the new poster form view, users should be able to fill out 
 //the three input fields and then hit the Show My Poster button
 
