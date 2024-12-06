@@ -2,12 +2,7 @@
 var title = document.querySelector(".poster-title")
 var image = document.querySelector(".poster-img")
 var quote = document.querySelector(".poster-quote")
-// BUTTON VARIABLES
-var buttonRandom = document.querySelector(".show-random")
-var buttonDIY = document.querySelector(".show-form")
-var buttonShowMain = document.querySelector(".show-main")
-var buttonShowSaved = document.querySelector(".show-saved")
-var buttonBackToMain = document.querySelector(".back-to-main")
+var id = document.querySelector(".poster").classList.add(Date.now())
 
 var posterFormSection = document.querySelector(".poster-form")
 var savedPostersSection = document.querySelector(".saved-posters")
@@ -109,24 +104,74 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
+var savedPosters = []
+let currentPoster = {}
+
+// USER INPUT
+var inputURL = document.querySelector("#poster-image-url")
+var inputTitle = document.querySelector("#poster-title")
+var inputQuote = document.querySelector("#poster-quote")
+// BUTTON VARIABLES
+// on home page
+var buttonSaveMain = document.querySelector(".save-poster")
+var buttonShowSaved = document.querySelector(".show-saved")
+var buttonRandom = document.querySelector(".show-random")
+var buttonDIY = document.querySelector(".show-form")
+
+var buttonShowMain = document.querySelector(".show-main")
+var buttonBackToMain = document.querySelector(".back-to-main")
+var buttonCreate = document.querySelector(".make-poster")
+
 // event listeners go here 👇
-buttonRandom.addEventListener("click", changePageContent)
+buttonRandom.addEventListener("click", createRandomPoster)
 buttonDIY.addEventListener("click", unhideForm)
 buttonShowMain.addEventListener("click", returnMain)
 buttonShowSaved.addEventListener("click", showSaved)
 buttonBackToMain.addEventListener("click", returnMain)
+buttonCreate.addEventListener("click", createPoster)
+
 // functions and event handlers go here 👇
+function createPoster() {
+  event.preventDefault();  
+  
+    let currentPoster = { 
+      id: Date.now(),
+      title: inputTitle.value,
+      image: inputURL.value,
+      quote: inputQuote.value,
+    };
+
+  if (!images.includes(inputURL.value)) {
+      images.push(inputURL.value)
+    };
+  if (!titles.includes(inputTitle.value)) {
+      titles.push(inputTitle.value)
+    };
+  if (!quotes.includes(inputQuote.value)) {
+      quotes.push(inputQuote)
+    };
+
+  mainPosterSection.classList.remove("hidden");
+  posterFormSection.classList.add("hidden");
+
+  console.log(currentPoster);
+}
+  // return {
+  //   id: Date.now(), 
+  //   inputURL.innerText = , 
+  //   title: title, 
+  //   quote: quote}
 function showSaved() {
   savedPostersSection.classList.remove("hidden");
   mainPosterSection.classList.add("hidden");
+  posterFormSection.classList.add("hidden");
 }
 function returnMain() {
-  posterFormSection.classList.add("hidden");
   mainPosterSection.classList.remove("hidden");
+  posterFormSection.classList.add("hidden");
+  savedPostersSection.classList.add("hidden");
 }
-function changePageContent() {
+function createRandomPoster() {
   title.textContent = titles[getRandomIndex(titles)];
   image.src = images[getRandomIndex(images)];
   quote.textContent = quotes[getRandomIndex(quotes)];
@@ -134,14 +179,10 @@ function changePageContent() {
 function unhideForm() {
   posterFormSection.classList.remove("hidden");
   mainPosterSection.classList.add("hidden");
+  savedPostersSection.classList.add("hidden");
 }
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-function createPoster(imageURL, title, quote) {
-  return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
-}
+
+window.onload = createRandomPoster;
