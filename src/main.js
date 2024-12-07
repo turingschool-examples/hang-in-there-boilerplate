@@ -5,11 +5,6 @@ const posterImg = document.querySelector('.poster-img');
 const posterTitle = document.querySelector('.poster-title');
 const posterQuote = document.querySelector('.poster-quote');
 
-// Unmotivational poster elements
-const unmotivationalImg = document.querySelector('.unmotivational-img');
-const unmotivationalTitle = document.querySelector('.unmotivational-title');
-const unmotivationalQuote = document.querySelector('.unmotivational-quote');
-
 // Add current poster to saved posters
 const savePosterBtn = document.querySelector('.save-poster');
 
@@ -42,6 +37,9 @@ const makePosterBtn = document.querySelector('.make-poster');
 
 // Grid display for saved posters
 const savedPostersDisplay = document.querySelector('.saved-posters-grid');
+
+// Display for unmotivational posters
+const unmotivationalPosterDisplay = document.querySelector('.unmotivational-posters-grid');
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
@@ -306,7 +304,8 @@ backToMainBtn.addEventListener('click', () => {
 
 // Return to motivational view from unmotivational view
 unmotivationalBackToMainBtn.addEventListener('click', () => {
-  changeView(unmotivationalView, mainView)
+  changeView(unmotivationalView, mainView);
+  randomPosterEventHandler();
 });  
 
 // Make new poster and display
@@ -332,14 +331,15 @@ function userPosterEventHandler() {
 
 function savePosterEventHandler() {
   addToSaved();
-  populateSavedPosters();
+  populatePosters(savedPostersDisplay, savedPosters);
   changeView(mainView, savedView);
 }
 
 function unmotivationalPosterEventHandler() {
   changeView(mainView, unmotivationalView);
-  getRandomUnmotivationalPoster();
-  changePosterDisplay(unmotivationalImg, unmotivationalTitle, unmotivationalQuote);
+  let cleanedUnmotivationalData = cleanData(unmotivationalPosters);
+  // console.log(cleanedUnmotivationalData);
+  populatePosters(unmotivationalPosterDisplay, cleanedUnmotivationalData);
 }
 
 // Select random poster elements and set them as currentPoster object
@@ -350,13 +350,6 @@ function getRandomPoster(imgsArray, titlesArray, quotesArray) {
 
   currentPoster = createPoster(randomImgURL, randomTitle, randomQuote);
 }
-
-// Select a random unmotivational poster and assign elements to currentPoster values
-function getRandomUnmotivationalPoster() {
-  let randomPosterInfo = unmotivationalPosters[getRandomIndex(unmotivationalPosters)];
-
-  currentPoster = createPoster(randomPosterInfo.img_url, randomPosterInfo.name, randomPosterInfo.description);
-};
 
 // Create a new custom poster based on user input
 function getUserPoster() {
@@ -417,12 +410,22 @@ function createMiniPoster(poster) {
 }
 
 // Add each mini to saved view 
-function populateSavedPosters() {
+function populatePosters(parentElement, posterArray) {
   // Refresh display before repopulating
-  savedPostersDisplay.innerHTML = '';
+  parentElement.innerHTML = '';
 
-  for (let i = 0; i < savedPosters.length; i++) {
-    let miniPoster = createMiniPoster(savedPosters[i]);
-    savedPostersDisplay.innerHTML += miniPoster;
+  for (let i = 0; i < posterArray.length; i++) {
+    let miniPoster = createMiniPoster(posterArray[i]);
+    parentElement.innerHTML += miniPoster;
   }
+}
+
+function cleanData(array) {
+  let cleanedArray = [];
+
+  for (let i = 0; i < array.length; i++) {
+    cleanedArray.push(createPoster(array[i].img_url, array[i].name, array[i].description));
+  }
+  console.log(cleanedArray);
+  return cleanedArray;
 }
