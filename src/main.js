@@ -173,6 +173,11 @@ backToMainBtn.addEventListener('click', () => {
   changeView(savedView, mainView);
 });
 
+// Return to motivational view from unmotivational view
+unmotivationalBackToMainBtn.addEventListener('click', () => {
+  changeView(unmotivationalView, mainView)
+});  
+
 // Make new poster and display
 makePosterBtn.addEventListener('click', userPosterEventHandler);
 
