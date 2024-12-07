@@ -1,7 +1,7 @@
 // query selector variables go here 👇
-var title = document.querySelector(".poster-title")
-var image = document.querySelector(".poster-img")
-var quote = document.querySelector(".poster-quote")
+let title = document.querySelector(".poster-title")
+let image = document.querySelector(".poster-img")
+let quote = document.querySelector(".poster-quote")
 
 var posterFormSection = document.querySelector(".poster-form")
 var savedPostersSection = document.querySelector(".saved-posters")
@@ -106,7 +106,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = []
-var currentPoster = {}
+let currentPoster = {title, image, quote}
 
 // USER INPUT
 var inputURL = document.querySelector("#poster-image-url")
@@ -116,27 +116,34 @@ var inputQuote = document.querySelector("#poster-quote")
 // on home page
 var buttonSaveMain = document.querySelector(".save-poster")
 var buttonShowSaved = document.querySelector(".show-saved")
-var buttonRandom = document.querySelector(".show-random")
+var buttonShowRandom = document.querySelector(".show-random")
 var buttonDIY = document.querySelector(".show-form")
 
 var buttonShowMain = document.querySelector(".show-main")
 var buttonBackToMain = document.querySelector(".back-to-main")
-var buttonCreate = document.querySelector(".make-poster")
+var buttonShowMyPoster = document.querySelector(".make-poster")
 
 // event listeners go here 👇
-buttonRandom.addEventListener("click", createRandomPoster)
+buttonShowRandom.addEventListener("click", createRandomPoster)
 buttonDIY.addEventListener("click", unhideForm)
 buttonShowMain.addEventListener("click", returnMain)
 buttonShowSaved.addEventListener("click", showSaved)
 buttonBackToMain.addEventListener("click", returnMain)
-buttonCreate.addEventListener("click", createPoster)
+buttonShowMyPoster.addEventListener("click", createPoster)
 
 // functions and event handlers go here 👇
-function createPoster() {
+function createPoster(currentPoster) {
   event.preventDefault();  
-  var title = inputTitle.value;
-  var image = inputURL.value;
-  var quote = inputQuote.value; 
+  let title = inputTitle.value;
+  let image = inputURL.value;
+  let quote = inputQuote.value; 
+
+  currentPoster = {
+    title: title,
+    image: image,
+    quote: quote
+  };
+// refactor to make own function?
   if (!images.includes(inputURL.value)) {
       images.push(inputURL.value)
     };
@@ -147,19 +154,18 @@ function createPoster() {
       quotes.push(inputQuote.value)
     };
 
-  // mainPosterSection.classList.add("hidden");
+  mainPosterSection.classList.remove("hidden");
   posterFormSection.classList.add("hidden");
-  returnHome.classList.remove("hidden");
-  console.log(currentPoster);
+  returnHome.classList.add("hidden");
+  
+  updateMainPosterDisplay(currentPoster);
 }
 
-// displayPoster(currentPoster);
-// function displayPoster(currentPoster) {
-//   var title = inputTitle.value;
-//   var image = inputURL.value;
-//   var quote = inputQuote.value;
-// }
-
+function updateMainPosterDisplay(poster) {
+  title.textContent = poster.title;
+  image.src = poster.image;
+  quote.textContent = poster.quote;
+}
 
 function showSaved() {
   savedPostersSection.classList.remove("hidden");
