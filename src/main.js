@@ -106,14 +106,11 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-let currentPoster = {title, image, quote};
-
 // USER INPUT
 var inputURL = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
 // BUTTON VARIABLES
-// on home page
 var buttonSaveThisPoster = document.querySelector(".save-poster");
 var buttonShowSaved = document.querySelector(".show-saved");
 var buttonShowRandom = document.querySelector(".show-random");
@@ -134,41 +131,55 @@ buttonSaveThisPoster.addEventListener("click", savePoster);
 
 // functions and event handlers go here 👇
 function savePoster() {
-  if (!savedPosters.includes(currentPoster)) {
-    savedPosters.push(currentPoster)
-    alert("Poster saved!")
-  }
-  else {
-    alert("Poster has already been saved.")
-  }
-}
-
-function createPoster(currentPoster) {
-  event.preventDefault();  
-  let title = inputTitle.value;
-  let image = inputURL.value;
-  let quote = inputQuote.value; 
-
-  currentPoster = {
-    title: title,
-    image: image,
-    quote: quote
+  // Create the current poster object with actual values from the inputs
+  let currentPoster = {
+    title: title.textContent,
+    image: image.src,
+    quote: quote.textContent
   };
-// refactor to make own function?
-  if (!images.includes(inputURL.value)) {
-      images.push(inputURL.value)
-    };
-  if (!titles.includes(inputTitle.value)) {
-      titles.push(inputTitle.value)
-    };
-  if (!quotes.includes(inputQuote.value)) {
-      quotes.push(inputQuote.value)
-    };
 
+  // Check if the poster already exists in savedPosters
+  const exists = savedPosters.some(savedPoster => 
+    savedPoster.title === currentPoster.title &&
+    savedPoster.image === currentPoster.image &&
+    savedPoster.quote === currentPoster.quote
+  );
+
+  if (!exists) {
+    // Save the poster
+    savedPosters.push(currentPoster);
+    alert("Poster saved!");
+  } else {
+    alert("Poster has already been saved.");
+  }
+
+  console.log(savedPosters); // For debugging
+}
+function createPoster() {
+  event.preventDefault();  
+
+  // Get the user input values
+  let titleValue = inputTitle.value;
+  let imageValue = inputURL.value;
+  let quoteValue = inputQuote.value; 
+
+  // Create the poster
+  let currentPoster = {
+    title: titleValue,
+    image: imageValue,
+    quote: quoteValue
+  };
+
+  // Add to arrays (if not already present)
+  if (!images.includes(imageValue)) images.push(imageValue);
+  if (!titles.includes(titleValue)) titles.push(titleValue);
+  if (!quotes.includes(quoteValue)) quotes.push(quoteValue);
+
+  // Update the main poster display
   mainPosterSection.classList.remove("hidden");
   posterFormSection.classList.add("hidden");
   returnHome.classList.add("hidden");
-  
+
   updateMainPosterDisplay(currentPoster);
 }
 function updateMainPosterDisplay(poster) {
