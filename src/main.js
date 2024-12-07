@@ -318,7 +318,7 @@ makePosterBtn.addEventListener('click', userPosterEventHandler);
 // Handle random poster creation and display
 function randomPosterEventHandler() {
   getRandomPoster(images, titles, quotes);
-  changePosterDisplay();
+  changePosterDisplay(posterImg, posterTitle, posterQuote);
 }
 
 // Handle user poster creation and display
@@ -327,7 +327,7 @@ function userPosterEventHandler() {
   getUserPoster();
   addNewPosterElements(currentPoster.imageURL, currentPoster.title, currentPoster.quote);
   changeView(posterFormView, mainView);
-  changePosterDisplay();
+  changePosterDisplay(posterImg, posterTitle, posterQuote);
 }
 
 function savePosterEventHandler() {
@@ -339,7 +339,7 @@ function savePosterEventHandler() {
 function unmotivationalPosterEventHandler() {
   changeView(mainView, unmotivationalView);
   getRandomUnmotivationalPoster();
-  changePosterDisplay();
+  changePosterDisplay(unmotivationalImg, unmotivationalTitle, unmotivationalQuote);
 }
 
 // Select random poster elements and set them as currentPoster object
@@ -382,10 +382,10 @@ function createPoster(imageURL, title, quote) {
 }
 
 // Change the HTML elements with currentPoster object values
-function changePosterDisplay() {
-  posterImg.src = currentPoster.imageURL;
-  posterTitle.innerText = currentPoster.title;
-  posterQuote.innerText = currentPoster.quote;
+function changePosterDisplay(image, title, quote) {
+  image.src = currentPoster.imageURL;
+  title.innerText = currentPoster.title;
+  quote.innerText = currentPoster.quote;
 }
 
 // Change sections hidden status
