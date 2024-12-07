@@ -32,7 +32,7 @@ var savedPostersSection = document.querySelector('.saved-posters-grid')
 var unmotivationalSection = document.querySelector('.unmotivational-posters')
 var unmotivationalGrid = document.querySelector('.unmotivational-grid')
 
-var unmotivationalObject = document.querySelector('.mini-poster')
+// var removeUnmotivationalPoster = document.querySelector('.unmotivational-posters')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -260,7 +260,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-document.addEventListener('DOMContentLoaded', changeMainPoster)
+window.addEventListener('load', changeMainPoster)
+window.addEventListener('load', cleanData)
 
 showRandomPosterButton.addEventListener('click', changeMainPoster)
 
@@ -278,7 +279,7 @@ unmotivationalButton.addEventListener('click', toggleUnmotivational)
 
 toMainFromUnmotivational.addEventListener('click', toggleMainFromUnmotivational)
 
-removeUnmotivationalPoster.addEventListener('dblclick', deleteUnmotivationalPoster)
+// removeUnmotivationalPoster.addEventListener('dblclick', deleteUnmotivationalPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -286,7 +287,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function createPoster(imageURL, title, quote) {
+function createPoster(imageURL, title, quote, _id) {
   return {
     id: Date.now(), 
     imageURL: imageURL, 
@@ -391,29 +392,36 @@ function addToSavedPosters() {
 )}
 
 function cleanData() {
-  unmotivationalPosters.forEach((poster) => {
-    createPoster(poster.img_url, poster.name, poster.description)
+  unmotivationalPosters = unmotivationalPosters.map((poster) => {
+    return createPoster(poster.img_url, poster.name, poster.description, poster._id)
   })
 }
 
 function displayUnmotivationalPosters() {
   unmotivationalGrid.replaceChildren()
   unmotivationalPosters.forEach((poster) => {
-    cleanData()
     unmotivationalGrid.innerHTML += 
-        `<article class="mini-poster">
-        <img src="${poster.img_url}" alt="nothin' to see here">
-        <h2> ${poster.name}</h2>
-        <h4> ${poster.description}</h4>
+        `<article class="mini-poster" id=${poster._id}>
+        <img src="${poster.imageURL}" alt="nothin' to see here">
+        <h2> ${poster.title}</h2>
+        <h4> ${poster.quote}</h4>
         </article>`
-    }
-)}
+    })
+}
 
 function deleteUnmotivationalPoster() {
-  // Access my unmotivationalPosters array
-  // Delete an object that is double clicked by the user(it should be removed from the array)
-    // The user should be able to dobule click any element invovling the object
-    // (look into event.target)
-  // It should remain deleted when the user goes back to UMP
-    // (on refresh they will all be shown again)
+  if (event.target.classList.contains()) {
+    event.target.classList.delete()
+  }
+  // End goal: delete unmotivational poster when any part of it is double clicked.
+  // Unmotivational Poster location: Unmotivational Posters array
+  // Unmotivational Poster:  
+        // `<article class="mini-poster">
+        // <img src="${poster.img_url}" alt="nothin' to see here">
+        // <h2> ${poster.name}</h2>
+        // <h4> ${poster.description}</h4>
+        // </img></article>`
+  // What I need: querySlector that represents the poster elements
+        // eventListener that responds to a double click and deletes the poster
+        // function that removes the selected poster from the array based on its id
 }
