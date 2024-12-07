@@ -14,15 +14,18 @@ const randomPosterBtn = document.querySelector('.show-random');
 // Main navigation buttons
 const showSavedBtn = document.querySelector('.show-saved');
 const showFormBtn = document.querySelector('.show-form');
+const showUnmotivationalBtn = document.querySelector('.show-unmotivational');
 
 // Secondary navigation buttons (return to main view)
 const showMainBtn = document.querySelector('.show-main');
 const backToMainBtn = document.querySelector('.back-to-main');
+const unmotivationalBackToMainBtn = document.querySelector('.unmotivational-back-to-main');
 
 // Page views
 const mainView = document.querySelector('.main-poster');
 const posterFormView = document.querySelector('.poster-form');
 const savedView = document.querySelector('.saved-posters');
+const unmotivationalView = document.querySelector('.unmotivational-posters');
 
 // Custom poster user input elements
 const inputPosterImgURL = document.querySelector('#poster-image-url');
@@ -156,6 +159,9 @@ showSavedBtn.addEventListener('click', () => {
 showFormBtn.addEventListener('click', () => {
   changeView(mainView, posterFormView);
 });
+
+// Show unmotivational poster view
+
 
 // Show main poster page without creating new poster
 showMainBtn.addEventListener('click', () => {
