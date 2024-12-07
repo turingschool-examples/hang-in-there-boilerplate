@@ -192,7 +192,13 @@ function showSaved() {
   mainPosterSection.classList.add("hidden");
   returnHome.classList.remove("hidden");
   posterFormSection.classList.add("hidden");
+
+  // savedPosters is an array containing all elements
+  
+  // add html: mini-poster(for css) class within saved posters grid 
+  // .mini-poster h2, mini-poster img, mini-poster h4?
 }
+
 function returnMain() {
   mainPosterSection.classList.remove("hidden");
   posterFormSection.classList.add("hidden");
