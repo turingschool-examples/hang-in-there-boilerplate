@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-var allPosterElements = document.querySelector(".main-poster");
+var mainPosterContainer = document.querySelector(".main-poster");
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
@@ -15,9 +15,10 @@ var imageInput = document.querySelector("#poster-image-url");
 var titleInput = document.querySelector("#poster-title");
 var quoteInput = document.querySelector("#poster-quote");
 var saveThisPosterButton = document.querySelector(".save-poster");
-
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
 // we've provided you with some data to work with 👇
-// tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
+// tip: you can tuck this data out of view with the dropdown found near 
+// the line number where the variable is declared 
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -127,7 +128,6 @@ nevermindTakeMeBackButton.addEventListener("click", nevermindTakeMeBackButtonCli
 backToMainButton.addEventListener("click", backToMainButtonClick);
 showMyPosterButton.addEventListener("click", showMyPosterClick);
 saveThisPosterButton.addEventListener("click", saveThisPosterClick);
-
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -167,7 +167,7 @@ function randomPosterDetails () {
 
 function makeYourOwnPosterClick () {
   //when this method is invoked by a click, the original poster disappears
-  hidePoster (allPosterElements) 
+  hidePoster (mainPosterContainer) 
   //and the form APPEARS in its place
   revealForm (makeYourOwnPosterForm)
 }
@@ -184,9 +184,8 @@ function revealForm (element) {
   element.classList.remove("hidden")
 }
 
-
 function showSavedPostersButtonClick () {
-  hidePoster (allPosterElements);
+  hidePoster (mainPosterContainer);
   showSavedPostersSection (savedPostersSection);
 }
 
@@ -196,19 +195,17 @@ function showSavedPostersSection (element) {
   element.classList.remove("hidden")
 }
 
-console.log("Saved Posters Section:", savedPostersSection);
-
 function nevermindTakeMeBackButtonClick () {
   console.log('the nevermind method has been invoked')
   //return to main with poster, no form
-  revealPoster (allPosterElements);
+  revealPoster (mainPosterContainer);
   hideForm (makeYourOwnPosterForm)
 }
 
 function backToMainButtonClick () {
   console.log('the back to main method has been invoked')
   //return to main with poster, no grid
-  revealPoster (allPosterElements);
+  revealPoster (mainPosterContainer);
   hideSavedPosters (savedPostersSection)
 }
 
@@ -245,13 +242,15 @@ function showMyPosterClick(event) {
    posterTitle.innerText = currentPoster.title;
    posterQuote.innerText = currentPoster.quote;
 
-  //save image input  
+  //save title input  
   console.log('current poster title: ', currentPoster.title)
   titles.push(currentPoster.title)
+  //save image input  
   images.push(currentPoster.imageURL)
-  quotes.push(currentPoster.quote)
+  //save quote input 
   console.log('updated quote array: ', quotes)
-
+  quotes.push(currentPoster.quote)
+  
   nevermindTakeMeBackButtonClick (); 
 }
 
@@ -260,10 +259,59 @@ function saveThisPosterClick () {
   //add current poster to saved poster array
   savedPosters.push(currentPoster)
 
-  //make sure not duplicates are included in the array
+  //make sure no duplicates are included in the array
   savedPosters = [...new Set(savedPosters)]
   console.log('updated saved poster array: ', savedPosters)
+
+  //make poster mini (should this be a helper method?
+  //need help with global variables (does latest assignment overwrites previous ones?)
+  createMiniPoster (currentPoster)
+
+  //put the mini-poster into the miniposter grid
+
+  savedPostersGrid.appendChild(miniPoster)
 }
+
+function createMiniPoster (currentPoster) {
+  //1. create a new html article element for the mini poster
+  var miniPoster = document.createElement('article');
+  console.log('a mini poster element has been created')
+  //2. set mini poster's attributes
+  miniPoster.classList.add('mini-poster')
+  //3.add poster html content based on currentPoster
+  miniPoster.innerHTML = `
+  <img class="poster-img" src="${currentPoster.imageURL}" alt="nothin' to see here">
+  <h2 class="poster-title">${currentPoster.title}</h1>
+  <h3 class="poster-quote">${currentPoster.quote}</h3>
+  `;
+  
+}
+   
+
+
+// // function createMiniPoster () {
+//   var miniCurrent = currentPoster.classList.add(mini-poster)
+//     //1. create a  miniposter container
+//     const miniPosterContainer = document.createElement('div');
+//     miniPosterContainer.classList.add('mini-poster');
+
+//     //2. create mini poster elements from current poster elements 
+//     //mini title elements
+//     var miniPosterTitleText = currentPoster.title;
+//     var miniPosterTitle = document.createElement('h1')
+//     miniPosterTitle.classList.add()
+//     //mini image elements
+//     var miniPosterImage = currentPoster.imageURL.classList.add('mini-poster img')
+//     //mini quote elements
+//     var miniPosterQuote = currentPoster.quote.classList.add('mini-poster h2')
+// }
+
+function addPosterToGrid () {
+  //add saved posters to the grid
+  console.log('current poster: ', currentPoster)
+  savedPostersGrid.innerHTML += currentPoster  
+}
+
 
 
 
@@ -308,4 +356,3 @@ function saveThisPosterClick () {
 //   event.preventDefault(); // Prevents the default form behavior
 //   var dogName = input.value; // Get the value from the input
 //   headerText.innerText = dogName; // Update the header with the input value
-// }
