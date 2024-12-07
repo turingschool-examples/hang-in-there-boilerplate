@@ -143,6 +143,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
+// Uncleaned motivational poster data
 let unmotivationalPosters = [
   {
     name: "FAILURE",
@@ -266,6 +267,7 @@ let unmotivationalPosters = [
   }
 ];
 
+var savedUnmotivationalPosters = [];
 var savedPosters = [];
 var currentPoster;
 
@@ -337,9 +339,8 @@ function savePosterEventHandler() {
 
 function unmotivationalPosterEventHandler() {
   changeView(mainView, unmotivationalView);
-  let cleanedUnmotivationalData = cleanData(unmotivationalPosters);
-  // console.log(cleanedUnmotivationalData);
-  populatePosters(unmotivationalPosterDisplay, cleanedUnmotivationalData);
+  savedUnmotivationalPosters = cleanData(unmotivationalPosters);
+  populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters);
 }
 
 // Select random poster elements and set them as currentPoster object
