@@ -114,7 +114,7 @@ var inputTitle = document.querySelector("#poster-title")
 var inputQuote = document.querySelector("#poster-quote")
 // BUTTON VARIABLES
 // on home page
-var buttonSaveMain = document.querySelector(".save-poster")
+var buttonSaveThisPoster = document.querySelector(".save-poster")
 var buttonShowSaved = document.querySelector(".show-saved")
 var buttonShowRandom = document.querySelector(".show-random")
 var buttonDIY = document.querySelector(".show-form")
@@ -130,8 +130,19 @@ buttonShowMain.addEventListener("click", returnMain)
 buttonShowSaved.addEventListener("click", showSaved)
 buttonBackToMain.addEventListener("click", returnMain)
 buttonShowMyPoster.addEventListener("click", createPoster)
+buttonSaveThisPoster.addEventListener("click", savePoster)
 
 // functions and event handlers go here 👇
+function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+    alert("Poster saved!")
+  }
+  else {
+    alert("Poster has already been saved.")
+  }
+}
+
 function createPoster(currentPoster) {
   event.preventDefault();  
   let title = inputTitle.value;
@@ -160,13 +171,11 @@ function createPoster(currentPoster) {
   
   updateMainPosterDisplay(currentPoster);
 }
-
 function updateMainPosterDisplay(poster) {
   title.textContent = poster.title;
   image.src = poster.image;
   quote.textContent = poster.quote;
 }
-
 function showSaved() {
   savedPostersSection.classList.remove("hidden");
   mainPosterSection.classList.add("hidden");
@@ -193,5 +202,4 @@ function unhideForm() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
 window.onload = createRandomPoster;
