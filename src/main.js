@@ -161,7 +161,7 @@ showFormBtn.addEventListener('click', () => {
 });
 
 // Show unmotivational poster view
-
+showUnmotivationalBtn.addEventListener('click', unmotivationalPosterEventHandler);
 
 // Show main poster page without creating new poster
 showMainBtn.addEventListener('click', () => {
@@ -199,6 +199,7 @@ function savePosterEventHandler() {
   populateSavedPosters();
   changeView(mainView, savedView);
 }
+
 
 // Select random poster elements and set them as currentPoster object
 function getRandomPoster() {
