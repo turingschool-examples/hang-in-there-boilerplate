@@ -186,7 +186,7 @@ makePosterBtn.addEventListener('click', userPosterEventHandler);
 
 // Handle random poster creation and display
 function randomPosterEventHandler() {
-  getRandomPoster();
+  getRandomPoster(images, titles, quotes);
   changePosterDisplay();
 }
 
@@ -205,12 +205,17 @@ function savePosterEventHandler() {
   changeView(mainView, savedView);
 }
 
+function unmotivationalPosterEventHandler() {
+  changeView(mainView, unmotivationalView);
+  getRandomPoster(unmotivationalImages, unmotivationalTitles, unmotivationalQuotes);
+  changePosterDisplay();
+}
 
 // Select random poster elements and set them as currentPoster object
-function getRandomPoster() {
-  let randomImgURL = images[getRandomIndex(images)];
-  let randomTitle = titles[getRandomIndex(titles)];
-  let randomQuote = quotes[getRandomIndex(quotes)];
+function getRandomPoster(imgsArray, titlesArray, quotesArray) {
+  let randomImgURL = images[getRandomIndex(imgsArray)];
+  let randomTitle = titles[getRandomIndex(titlesArray)];
+  let randomQuote = quotes[getRandomIndex(quotesArray)];
 
   currentPoster = createPoster(randomImgURL, randomTitle, randomQuote);
 }
