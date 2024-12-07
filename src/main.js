@@ -5,6 +5,11 @@ const posterImg = document.querySelector('.poster-img');
 const posterTitle = document.querySelector('.poster-title');
 const posterQuote = document.querySelector('.poster-quote');
 
+// Unmotivational poster elements
+const unmotivationalImg = document.querySelector('.unmotivational-img');
+const unmotivationalTitle = document.querySelector('.unmotivational-title');
+const unmotivationalQuote = document.querySelector('.unmotivational-quote');
+
 // Add current poster to saved posters
 const savePosterBtn = document.querySelector('.save-poster');
 
