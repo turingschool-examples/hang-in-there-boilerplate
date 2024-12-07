@@ -287,7 +287,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function createPoster(imageURL, title, quote, _id) {
+function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
     imageURL: imageURL, 
@@ -393,7 +393,7 @@ function addToSavedPosters() {
 
 function cleanData() {
   unmotivationalPosters = unmotivationalPosters.map((poster) => {
-    return createPoster(poster.img_url, poster.name, poster.description, poster._id)
+    return createPoster(poster.img_url, poster.name, poster.description, poster.id)
   })
 }
 
@@ -401,7 +401,7 @@ function displayUnmotivationalPosters() {
   unmotivationalGrid.replaceChildren()
   unmotivationalPosters.forEach((poster) => {
     unmotivationalGrid.innerHTML += 
-        `<article class="mini-poster" id=${poster._id}>
+        `<article class="mini-poster" id=${poster.id}>
         <img src="${poster.imageURL}" alt="nothin' to see here">
         <h2> ${poster.title}</h2>
         <h4> ${poster.quote}</h4>
@@ -410,9 +410,14 @@ function displayUnmotivationalPosters() {
 }
 
 function deleteUnmotivationalPoster() {
-  if (event.target.classList.contains()) {
-    event.target.classList.delete()
+  unmotivationalPosters = unmotivationalPosters.map((poster) => {
+    if (event.target.classList.contains('img', 'quote', 'title', 'image')) {
+      event.target.classList.delete(poster)
+    }
+    poster.remove
   }
+  )
+  displayUnmotivationalPosters()
   // End goal: delete unmotivational poster when any part of it is double clicked.
   // Unmotivational Poster location: Unmotivational Posters array
   // Unmotivational Poster:  
