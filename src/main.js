@@ -99,10 +99,14 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
+const posterImage = document.querySelector('.poster-img');
+const posterTitle = document.querySelector('.poster-title');
+const posterQuote = document.querySelector('.poster-quote');
+const showRandomButton = document.querySelector('.show-random');
 
 // event listeners go here 👇
+window.addEventListener('load', displayRandomPoster);
+showRandomButton.addEventListener('click', displayRandomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -116,4 +120,19 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
+}
+
+function displayRandomPoster() {
+  // Get random index for image, title, and quote
+  const randomImageIndex = getRandomIndex(images);
+  const randomTitleIndex = getRandomIndex(titles);
+  const randomQuoteIndex = getRandomIndex(quotes);
+
+  // Create a random poster using the random data
+  const randomPoster = createPoster(images[randomImageIndex], titles[randomTitleIndex], quotes[randomQuoteIndex]);
+
+  // Update the DOM with the random poster's data
+  posterImage.src = randomPoster.imageURL;  // Set the image source
+  posterTitle.textContent = randomPoster.title;  // Set the title text
+  posterQuote.textContent = randomPoster.quote;  // Set the quote text
 }
