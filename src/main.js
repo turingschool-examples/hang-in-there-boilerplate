@@ -1,12 +1,12 @@
 // query selector variables go here 👇
-let title = document.querySelector(".poster-title")
-let image = document.querySelector(".poster-img")
-let quote = document.querySelector(".poster-quote")
+let title = document.querySelector(".poster-title");
+let image = document.querySelector(".poster-img");
+let quote = document.querySelector(".poster-quote");
 
-var posterFormSection = document.querySelector(".poster-form")
-var savedPostersSection = document.querySelector(".saved-posters")
-var mainPosterSection = document.querySelector(".main-poster")
-var returnHome = document.querySelector(".back-to-main")
+var posterFormSection = document.querySelector(".poster-form");
+var savedPostersSection = document.querySelector(".saved-posters");
+var mainPosterSection = document.querySelector(".main-poster");
+var returnHome = document.querySelector(".back-to-main");
 
 var images = [
   "./assets/bees.jpg",
@@ -105,32 +105,32 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = []
-let currentPoster = {title, image, quote}
+var savedPosters = [];
+let currentPoster = {title, image, quote};
 
 // USER INPUT
-var inputURL = document.querySelector("#poster-image-url")
-var inputTitle = document.querySelector("#poster-title")
-var inputQuote = document.querySelector("#poster-quote")
+var inputURL = document.querySelector("#poster-image-url");
+var inputTitle = document.querySelector("#poster-title");
+var inputQuote = document.querySelector("#poster-quote");
 // BUTTON VARIABLES
 // on home page
-var buttonSaveThisPoster = document.querySelector(".save-poster")
-var buttonShowSaved = document.querySelector(".show-saved")
-var buttonShowRandom = document.querySelector(".show-random")
-var buttonDIY = document.querySelector(".show-form")
+var buttonSaveThisPoster = document.querySelector(".save-poster");
+var buttonShowSaved = document.querySelector(".show-saved");
+var buttonShowRandom = document.querySelector(".show-random");
+var buttonDIY = document.querySelector(".show-form");
 
-var buttonShowMain = document.querySelector(".show-main")
-var buttonBackToMain = document.querySelector(".back-to-main")
-var buttonShowMyPoster = document.querySelector(".make-poster")
+var buttonShowMain = document.querySelector(".show-main");
+var buttonBackToMain = document.querySelector(".back-to-main");
+var buttonShowMyPoster = document.querySelector(".make-poster");
 
 // event listeners go here 👇
-buttonShowRandom.addEventListener("click", createRandomPoster)
-buttonDIY.addEventListener("click", unhideForm)
-buttonShowMain.addEventListener("click", returnMain)
-buttonShowSaved.addEventListener("click", showSaved)
-buttonBackToMain.addEventListener("click", returnMain)
-buttonShowMyPoster.addEventListener("click", createPoster)
-buttonSaveThisPoster.addEventListener("click", savePoster)
+buttonShowRandom.addEventListener("click", createRandomPoster);
+buttonDIY.addEventListener("click", unhideForm);
+buttonShowMain.addEventListener("click", returnMain);
+buttonShowSaved.addEventListener("click", showSaved);
+buttonBackToMain.addEventListener("click", returnMain);
+buttonShowMyPoster.addEventListener("click", createPoster);
+buttonSaveThisPoster.addEventListener("click", savePoster);
 
 // functions and event handlers go here 👇
 function savePoster() {
