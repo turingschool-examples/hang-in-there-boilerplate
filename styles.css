@@ -80,7 +80,7 @@ button:hover {
   height: 100vh;
 }
 
-.poster-form h2 {
+.poster-form h2, .unmotivational-posters h2 {
   margin-bottom: 30px;
 }
 

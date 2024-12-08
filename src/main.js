@@ -8,6 +8,7 @@ var savedPostersSection = document.querySelector(".saved-posters");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var mainPosterSection = document.querySelector(".main-poster");
 var returnHome = document.querySelector(".back-to-main");
+var unmotivationalPostersSection = document.querySelector(".unmotivational-posters");
 
 var images = [
   "./assets/bees.jpg",
@@ -116,10 +117,12 @@ var buttonSaveThisPoster = document.querySelector(".save-poster");
 var buttonShowSaved = document.querySelector(".show-saved");
 var buttonShowRandom = document.querySelector(".show-random");
 var buttonDIY = document.querySelector(".show-form");
+var buttonShowUnmo= document.querySelector(".show-unmotivational");
 
 var buttonShowMain = document.querySelector(".show-main");
 var buttonBackToMain = document.querySelector(".back-to-main");
 var buttonShowMyPoster = document.querySelector(".make-poster");
+var buttonBackToMain2 = document.querySelector(".back-to-main-2");
 
 // event listeners go here 👇
 buttonShowRandom.addEventListener("click", createRandomPoster);
@@ -129,8 +132,17 @@ buttonShowSaved.addEventListener("click", showSaved);
 buttonBackToMain.addEventListener("click", returnMain);
 buttonShowMyPoster.addEventListener("click", createPoster);
 buttonSaveThisPoster.addEventListener("click", savePoster);
+buttonShowUnmo.addEventListener("click", showUnmotivPosters);
+buttonBackToMain2.addEventListener("click", returnMain);
 
 // functions and event handlers go here 👇
+function showUnmotivPosters() {
+  unmotivationalPostersSection.classList.remove("hidden");
+  savedPostersSection.classList.add("hidden");
+  mainPosterSection.classList.add("hidden");
+  returnHome.classList.remove("hidden");
+  posterFormSection.classList.add("hidden");
+}
 function savePoster() {
   // Create the current poster object with actual values from the inputs
   let currentPoster = {
@@ -204,12 +216,11 @@ function showSaved() {
       </div>`;
   });
 }
-
 function returnMain() {
   mainPosterSection.classList.remove("hidden");
   posterFormSection.classList.add("hidden");
   savedPostersSection.classList.add("hidden");
-  returnHome.classList.add("hidden");
+  unmotivationalPostersSection.classList.add("hidden");
 }
 function createRandomPoster() {
   title.textContent = titles[getRandomIndex(titles)];
