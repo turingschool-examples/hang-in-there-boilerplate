@@ -31,8 +31,6 @@ var savedPostersSection = document.querySelector('.saved-posters-grid')
 
 var unmotivationalSection = document.querySelector('.unmotivational-posters')
 var unmotivationalGrid = document.querySelector('.unmotivational-grid')
-
-// var removeUnmotivationalPoster = document.querySelector('.unmotivational-posters')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -279,7 +277,7 @@ unmotivationalButton.addEventListener('click', toggleUnmotivational)
 
 toMainFromUnmotivational.addEventListener('click', toggleMainFromUnmotivational)
 
-// removeUnmotivationalPoster.addEventListener('dblclick', deleteUnmotivationalPoster)
+unmotivationalGrid.addEventListener('dblclick', deleteUnmotivationalPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -409,24 +407,14 @@ function displayUnmotivationalPosters() {
     })
 }
 
-function deleteUnmotivationalPoster() {
+function deleteUnmotivationalPoster(event) {
   unmotivationalPosters = unmotivationalPosters.map((poster) => {
-    if (event.target.classList.contains('img', 'quote', 'title', 'image')) {
-      event.target.classList.delete(poster)
+    if (event.target.src.includes(poster.imageURL)) {
+      event.target.classList.delete('mini-poster'),
+      event.target.classList.add('delete')
+      unmotivationalPosters.splice(poster, 1)
     }
-    poster.remove
-  }
-  )
+    return unmotivationalPosters
+  })
   displayUnmotivationalPosters()
-  // End goal: delete unmotivational poster when any part of it is double clicked.
-  // Unmotivational Poster location: Unmotivational Posters array
-  // Unmotivational Poster:  
-        // `<article class="mini-poster">
-        // <img src="${poster.img_url}" alt="nothin' to see here">
-        // <h2> ${poster.name}</h2>
-        // <h4> ${poster.description}</h4>
-        // </img></article>`
-  // What I need: querySlector that represents the poster elements
-        // eventListener that responds to a double click and deletes the poster
-        // function that removes the selected poster from the array based on its id
 }
