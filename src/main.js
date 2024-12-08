@@ -223,13 +223,13 @@ var savedPosters = [];
 let title = document.querySelector(".poster-title");
 let image = document.querySelector(".poster-img");
 let quote = document.querySelector(".poster-quote");
-
 var posterFormSection = document.querySelector(".poster-form");
 var savedPostersSection = document.querySelector(".saved-posters");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var mainPosterSection = document.querySelector(".main-poster");
 var returnHome = document.querySelector(".back-to-main");
 var unmotivationalPostersSection = document.querySelector(".unmotivational-posters");
+var unmotivationalPostersGrid = document.querySelector(".unmotivational-posters-grid");
 // USER INPUT
 var inputURL = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
@@ -264,6 +264,7 @@ function showUnmotivPosters() {
   mainPosterSection.classList.add("hidden");
   returnHome.classList.remove("hidden");
   posterFormSection.classList.add("hidden");
+  cleanData(unmotivationalPosters);
 }
 function savePoster() {
   // Create the current poster object with actual values from the inputs
@@ -293,7 +294,6 @@ function savePoster() {
 function createPoster() {
   event.preventDefault();  
 
-  // Get the user input values
   let titleValue = inputTitle.value;
   let imageValue = inputURL.value;
   let quoteValue = inputQuote.value; 
@@ -305,12 +305,10 @@ function createPoster() {
     quote: quoteValue
   };
 
-  // Add to arrays (if not already present)
   if (!images.includes(imageValue)) images.push(imageValue);
   if (!titles.includes(titleValue)) titles.push(titleValue);
   if (!quotes.includes(quoteValue)) quotes.push(quoteValue);
 
-  // Update the main poster display
   mainPosterSection.classList.remove("hidden");
   posterFormSection.classList.add("hidden");
   returnHome.classList.add("hidden");
@@ -357,6 +355,17 @@ function unhideForm() {
 }
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function cleanData() {
+  unmotivationalPosters.forEach(poster => {
+    unmotivationalPostersGrid.innerHTML +=
+    `<article class="mini-poster">
+      <img class="mini-poster img" src="${poster.img_url}">
+      <h2 class="mini-poster">${poster.name}</h2>
+      <h4 class="mini-poster">${poster.description}</h4>
+    </div>`
+  });
 }
 
 window.onload = createRandomPoster

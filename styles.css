@@ -105,11 +105,13 @@ button:hover {
 }
 
 /* ~~~~~ SAVED POSTER SECTION ~~~~~ */
-.saved-posters {
+.saved-posters, 
+.unmotivational-posters {
   padding: 40px;
 }
 
-.saved-posters-grid {
+.saved-posters-grid, 
+.unmotivational-posters-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
