@@ -230,6 +230,7 @@ var mainPosterSection = document.querySelector(".main-poster");
 var returnHome = document.querySelector(".back-to-main");
 var unmotivationalPostersSection = document.querySelector(".unmotivational-posters");
 var unmotivationalPostersGrid = document.querySelector(".unmotivational-posters-grid");
+var miniPoster = document.querySelector(".mini-poster")
 // USER INPUT
 var inputURL = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
@@ -240,7 +241,6 @@ var buttonShowSaved = document.querySelector(".show-saved");
 var buttonShowRandom = document.querySelector(".show-random");
 var buttonDIY = document.querySelector(".show-form");
 var buttonShowUnmo= document.querySelector(".show-unmotivational");
-
 var buttonShowMain = document.querySelector(".show-main");
 var buttonBackToMain = document.querySelector(".back-to-main");
 var buttonShowMyPoster = document.querySelector(".make-poster");
@@ -256,6 +256,8 @@ buttonShowMyPoster.addEventListener("click", createPoster);
 buttonSaveThisPoster.addEventListener("click", savePoster);
 buttonShowUnmo.addEventListener("click", showUnmotivPosters);
 buttonBackToMain2.addEventListener("click", returnMain);
+
+miniPoster.addEventListener("dblclick", deletePoster)
 
 // functions and event handlers go here 👇
 function showUnmotivPosters() {
@@ -356,7 +358,6 @@ function unhideForm() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
 function cleanData() {
   unmotivationalPosters.forEach(poster => {
     unmotivationalPostersGrid.innerHTML +=
@@ -366,6 +367,9 @@ function cleanData() {
       <h4 class="mini-poster">${poster.description}</h4>
     </div>`
   });
+}
+function deletePoster {
+
 }
 
 window.onload = createRandomPoster
