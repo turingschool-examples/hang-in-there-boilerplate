@@ -277,7 +277,7 @@ unmotivationalButton.addEventListener('click', toggleUnmotivational)
 
 toMainFromUnmotivational.addEventListener('click', toggleMainFromUnmotivational)
 
-unmotivationalGrid.addEventListener('dblclick', deleteUnmotivationalPoster)
+unmotivationalSection.addEventListener('dblclick', deleteUnmotivationalPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -348,7 +348,7 @@ function userPosterQuote() {
   quotes.push(quote)
 }
 
-function userPosterCreation() {
+function userPosterCreation(event) {
   event.preventDefault()
   console.log('is the click working')
   userPosterImg()
@@ -408,13 +408,24 @@ function displayUnmotivationalPosters() {
 }
 
 function deleteUnmotivationalPoster(event) {
-  unmotivationalPosters = unmotivationalPosters.map((poster) => {
+  unmotivationalPosters = unmotivationalPosters.map((poster, index) => {
     if (event.target.src.includes(poster.imageURL)) {
       event.target.classList.delete('mini-poster'),
       event.target.classList.add('delete')
-      unmotivationalPosters.splice(poster, 1)
+      unmotivationalPosters.splice(index, 1)
     }
     return unmotivationalPosters
   })
   displayUnmotivationalPosters()
 }
+
+
+  // end goal: remove poster that is double clicked from array, and apply .delete css styling
+  // what is a poster: each poster is:
+        // `<article class="mini-poster" id=${poster.id}>
+        // <img src="${poster.imageURL}" alt="nothin' to see here">
+        // <h2> ${poster.title}</h2>
+        // <h4> ${poster.quote}</h4>
+        // </article>`
+  // unique attribute of a poster: poster.imageURL
+  // 
