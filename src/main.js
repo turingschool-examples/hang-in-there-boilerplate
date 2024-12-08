@@ -5,6 +5,7 @@ let quote = document.querySelector(".poster-quote");
 
 var posterFormSection = document.querySelector(".poster-form");
 var savedPostersSection = document.querySelector(".saved-posters");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var mainPosterSection = document.querySelector(".main-poster");
 var returnHome = document.querySelector(".back-to-main");
 
@@ -193,10 +194,16 @@ function showSaved() {
   returnHome.classList.remove("hidden");
   posterFormSection.classList.add("hidden");
 
-  // savedPosters is an array containing all elements
-  
-  // add html: mini-poster(for css) class within saved posters grid 
-  // .mini-poster h2, mini-poster img, mini-poster h4?
+  // savedPosters is an array containing all elements; loop through all
+  savedPosters.forEach(poster => {
+    savedPostersGrid.innerHTML += `
+      <article class="mini-poster">
+        <img class="mini-poster img" src="${poster.image}">
+        <h2 class="mini-poster">${poster.title}</h2>
+        <h4 class="mini-poster">${poster.quote}</h4>
+      </div>
+    `;
+  });
 }
 
 function returnMain() {
@@ -219,4 +226,5 @@ function unhideForm() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-window.onload = createRandomPoster;
+
+window.onload = createRandomPoster
