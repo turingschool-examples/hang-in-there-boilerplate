@@ -258,7 +258,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-document.addEventListener('DOMContentLoaded', changeMainPoster)
+window.addEventListener('load', changeMainPoster)
+window.addEventListener('load', cleanData)
 
 showRandomPosterButton.addEventListener('click', changeMainPoster)
 
@@ -276,6 +277,7 @@ unmotivationalButton.addEventListener('click', toggleUnmotivational)
 
 toMainFromUnmotivational.addEventListener('click', toggleMainFromUnmotivational)
 
+unmotivationalGrid.addEventListener('dblclick', deleteUnmotivationalPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -285,7 +287,7 @@ function getRandomIndex(array) {
 
 function createPoster(imageURL, title, quote) {
   return {
-    id: Date.now(), 
+    id: Date.now() + performance.now() + Math.floor(Math.random() * 100), 
     imageURL: imageURL, 
     title: title, 
     quote: quote}
@@ -346,7 +348,7 @@ function userPosterQuote() {
   quotes.push(quote)
 }
 
-function userPosterCreation() {
+function userPosterCreation(event) {
   event.preventDefault()
   console.log('is the click working')
   userPosterImg()
@@ -376,7 +378,7 @@ function savePoster() {
 }
 
 function addToSavedPosters() {
-  savedPostersSection.innerHTML = ``
+  savedPostersSection.replaceChildren()
   savedPosters.forEach((poster) => {
   savedPostersSection.innerHTML += 
       `<article class="mini-poster">
@@ -388,21 +390,25 @@ function addToSavedPosters() {
 )}
 
 function cleanData() {
-  unmotivationalPosters.forEach((poster) => {
-    console.log("Processing poster:", poster.img_url, poster.name, poster.description);
-    createPoster(poster.img_url, poster.name, poster.description)
+  unmotivationalPosters = unmotivationalPosters.map((poster) => {
+    return createPoster(poster.img_url, poster.name, poster.description, poster.id)
   })
 }
 
 function displayUnmotivationalPosters() {
-  unmotivationalGrid.innerHTML = ``
+  unmotivationalGrid.replaceChildren()
   unmotivationalPosters.forEach((poster) => {
-    cleanData()
     unmotivationalGrid.innerHTML += 
-        `<article class="mini-poster">
-        <img src="${poster.img_url}" alt="nothin' to see here">
-        <h2> ${poster.name}</h2>
-        <h4> ${poster.description}</h4>
+        `<article class="mini-poster" id=${poster.id}>
+        <img src="${poster.imageURL}" alt="nothin' to see here">
+        <h2> ${poster.title}</h2>
+        <h4> ${poster.quote}</h4>
         </article>`
-    }
-)}
+    })
+}
+
+function deleteUnmotivationalPoster(event) {
+  event.target.id
+  unmotivationalPosters.splice(event.target.id, 1)
+  displayUnmotivationalPosters()
+}
