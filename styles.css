@@ -127,20 +127,27 @@ button:hover {
 .mini-poster img {
   height:200px;
   width: 300px;
+  padding: 0px;
 }
 
-.mini-poster h2,
-.mini-poster h4,
-.delete {
+.mini-poster h4 {
+  align-items: center;
   color: white;
   line-height: 1;
   width: 90%;
+  max-height: fit-content;
+  padding: 0px;
 }
 
 .mini-poster h2 {
+  align-items: top;
+  width: 90%;
   font-size: 30px;
   font-weight: normal;
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+  line-height: 1;
+  max-height: fit-content;
+  padding: 0px;
 }

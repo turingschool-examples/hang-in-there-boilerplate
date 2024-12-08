@@ -196,13 +196,12 @@ function showSaved() {
 
   // savedPosters is an array containing all elements; loop through all
   savedPosters.forEach(poster => {
-    savedPostersGrid.innerHTML += `
-      <article class="mini-poster">
+    savedPostersGrid.innerHTML += 
+    `<article class="mini-poster">
         <img class="mini-poster img" src="${poster.image}">
         <h2 class="mini-poster">${poster.title}</h2>
         <h4 class="mini-poster">${poster.quote}</h4>
-      </div>
-    `;
+      </div>`;
   });
 }
 
