@@ -118,7 +118,8 @@ button:hover {
   padding: 20px;
 }
 
-.mini-poster {
+.mini-poster,
+.unmotivational-mini-poster {
   background: black;
   color: white;
   height: 340px;
@@ -126,13 +127,15 @@ button:hover {
   width: 425px;
 }
 
-.mini-poster img {
+.mini-poster img, 
+.unmotivational-mini-poster img {
   height:200px;
   width: 300px;
   padding: 0px;
 }
 
-.mini-poster h4 {
+.mini-poster h4, 
+.unmotivational-mini-poster h4 {
   align-items: center;
   color: white;
   line-height: 1;
@@ -141,7 +144,8 @@ button:hover {
   padding: 0px;
 }
 
-.mini-poster h2 {
+.mini-poster h2, 
+.unmotivational-mini-poster h2 {
   align-items: top;
   width: 90%;
   font-size: 30px;

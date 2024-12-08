@@ -230,7 +230,7 @@ var mainPosterSection = document.querySelector(".main-poster");
 var returnHome = document.querySelector(".back-to-main");
 var unmotivationalPostersSection = document.querySelector(".unmotivational-posters");
 var unmotivationalPostersGrid = document.querySelector(".unmotivational-posters-grid");
-var miniPoster = document.querySelector(".mini-poster")
+var unmotivationalMiniPoster = document.querySelector(".unmotivational-mini-poster");
 // USER INPUT
 var inputURL = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
@@ -245,7 +245,6 @@ var buttonShowMain = document.querySelector(".show-main");
 var buttonBackToMain = document.querySelector(".back-to-main");
 var buttonShowMyPoster = document.querySelector(".make-poster");
 var buttonBackToMain2 = document.querySelector(".back-to-main-2");
-
 // event listeners go here 👇
 buttonShowRandom.addEventListener("click", createRandomPoster);
 buttonDIY.addEventListener("click", unhideForm);
@@ -257,7 +256,7 @@ buttonSaveThisPoster.addEventListener("click", savePoster);
 buttonShowUnmo.addEventListener("click", showUnmotivPosters);
 buttonBackToMain2.addEventListener("click", returnMain);
 
-miniPoster.addEventListener("dblclick", deletePoster)
+unmotivationalMiniPoster.addEventListener("dblclick", deletePoster);
 
 // functions and event handlers go here 👇
 function showUnmotivPosters() {
@@ -361,15 +360,15 @@ function getRandomIndex(array) {
 function cleanData() {
   unmotivationalPosters.forEach(poster => {
     unmotivationalPostersGrid.innerHTML +=
-    `<article class="mini-poster">
-      <img class="mini-poster img" src="${poster.img_url}">
-      <h2 class="mini-poster">${poster.name}</h2>
-      <h4 class="mini-poster">${poster.description}</h4>
+    `<article class="unmotivational-mini-poster">
+      <img class="unmotivational-mini-poster img" src="${poster.img_url}">
+      <h2 class="unmotivational-mini-poster">${poster.name}</h2>
+      <h4 class="unmotivational-mini-poster">${poster.description}</h4>
     </div>`
   });
 }
-function deletePoster {
-
-}
+function deletePoster() { 
+  unmotivationalMiniPoster.delete() 
+};
 
 window.onload = createRandomPoster
