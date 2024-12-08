@@ -287,7 +287,7 @@ function getRandomIndex(array) {
 
 function createPoster(imageURL, title, quote) {
   return {
-    id: Date.now(), 
+    id: Date.now() + performance.now() + Math.floor(Math.random() * 100), 
     imageURL: imageURL, 
     title: title, 
     quote: quote}
@@ -397,38 +397,18 @@ function cleanData() {
 
 function displayUnmotivationalPosters() {
   unmotivationalGrid.replaceChildren()
-  var i = 0
   unmotivationalPosters.forEach((poster) => {
     unmotivationalGrid.innerHTML += 
-        `<article class="mini-poster ${i}" id=${poster.id}>
-        <img class="${i}" src="${poster.imageURL}" alt="nothin' to see here">
-        <h2 class="${i}"> ${poster.title}</h2>
-        <h4 class="${i}"> ${poster.quote}</h4>
+        `<article class="mini-poster" id=${poster.id}>
+        <img src="${poster.imageURL}" alt="nothin' to see here">
+        <h2> ${poster.title}</h2>
+        <h4> ${poster.quote}</h4>
         </article>`
-        i += 1
     })
 }
 
 function deleteUnmotivationalPoster(event) {
-
-
-
-
-
-  
-//   if (event.target.classList) {
-//     unmotivationalPosters.splice(event.target.classList, 1)
-//   }
-//   displayUnmotivationalPosters()
+  event.target.id
+  unmotivationalPosters.splice(event.target.id, 1)
+  displayUnmotivationalPosters()
 }
-
-
-  // end goal: remove poster that is double clicked from array, and apply .delete css styling
-  // what is a poster: each poster is:
-        // `<article class="mini-poster" id=${poster.id}>
-        // <img src="${poster.imageURL}" alt="nothin' to see here">
-        // <h2> ${poster.title}</h2>
-        // <h4> ${poster.quote}</h4>
-        // </article>`
-  // unique attribute of a poster: poster.imageURL
-  // 
