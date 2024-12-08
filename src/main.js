@@ -277,7 +277,7 @@ unmotivationalButton.addEventListener('click', toggleUnmotivational)
 
 toMainFromUnmotivational.addEventListener('click', toggleMainFromUnmotivational)
 
-unmotivationalSection.addEventListener('dblclick', deleteUnmotivationalPoster)
+unmotivationalGrid.addEventListener('dblclick', deleteUnmotivationalPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -397,26 +397,29 @@ function cleanData() {
 
 function displayUnmotivationalPosters() {
   unmotivationalGrid.replaceChildren()
+  var i = 0
   unmotivationalPosters.forEach((poster) => {
     unmotivationalGrid.innerHTML += 
-        `<article class="mini-poster" id=${poster.id}>
-        <img src="${poster.imageURL}" alt="nothin' to see here">
-        <h2> ${poster.title}</h2>
-        <h4> ${poster.quote}</h4>
+        `<article class="mini-poster ${i}" id=${poster.id}>
+        <img class="${i}" src="${poster.imageURL}" alt="nothin' to see here">
+        <h2 class="${i}"> ${poster.title}</h2>
+        <h4 class="${i}"> ${poster.quote}</h4>
         </article>`
+        i += 1
     })
 }
 
 function deleteUnmotivationalPoster(event) {
-  unmotivationalPosters = unmotivationalPosters.map((poster, index) => {
-    if (event.target.src.includes(poster.imageURL)) {
-      event.target.classList.delete('mini-poster'),
-      event.target.classList.add('delete')
-      unmotivationalPosters.splice(index, 1)
-    }
-    return unmotivationalPosters
-  })
-  displayUnmotivationalPosters()
+
+
+
+
+
+  
+//   if (event.target.classList) {
+//     unmotivationalPosters.splice(event.target.classList, 1)
+//   }
+//   displayUnmotivationalPosters()
 }
 
 
