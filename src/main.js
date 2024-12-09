@@ -256,8 +256,7 @@ buttonSaveThisPoster.addEventListener("click", savePoster);
 buttonShowUnmo.addEventListener("click", showUnmotivPosters);
 buttonBackToMain2.addEventListener("click", returnMain);
 
-unmotivationalMiniPoster.addEventListener("dblclick", deletePoster);
-
+unmotivationalPostersGrid.addEventListener("dblclick", deletePoster)
 // functions and event handlers go here 👇
 function showUnmotivPosters() {
   unmotivationalPostersSection.classList.remove("hidden");
@@ -359,16 +358,39 @@ function getRandomIndex(array) {
 }
 function cleanData() {
   unmotivationalPosters.forEach(poster => {
-    unmotivationalPostersGrid.innerHTML +=
-    `<article class="unmotivational-mini-poster">
+    let miniPosterCleanHTML =
+    `<article class="unmotivational-mini-poster" id=${poster.name}>
       <img class="unmotivational-mini-poster img" src="${poster.img_url}">
       <h2 class="unmotivational-mini-poster">${poster.name}</h2>
       <h4 class="unmotivational-mini-poster">${poster.description}</h4>
-    </div>`
-  });
+    </article>`
+    unmotivationalPostersGrid.innerHTML += miniPosterCleanHTML;
+  })
 }
-function deletePoster() { 
-  unmotivationalMiniPoster.delete() 
-};
 
+function deletePoster(event) { 
+  // NOT QUITE WORKING-- WILL REMOVE POSTER IF CHILDREN ARE CLICKED BUT NOT PARENT
+  // REVISIT AFTER LESSON REVIEW
+  // WHAT DOES EVENT.TARGET.CLOSEST DO? NEED TO REVIEW MORE IN DEPTH
+  let posterToRemove = event.target.parentElement;
+  if (posterToRemove && posterToRemove.classList.contains("unmotivational-mini-poster")) {
+    posterToRemove.remove();
+    console.log(unmotivationalPostersGrid.childElementCount);
+  }
+}
+  // unmotivationalPostersGrid.removeChild(unmotivationalMiniPoster)
+  //dblclick anywhere on poster to delete-- image, text, background
+
+// USING THIS MAKES EACH CHILD DELETE INSTEAD OF THE WHOLE POSTER
+  // function deletePoster(event) {
+  //   // Use closest() to find the nearest .unmotivational-mini-poster container
+  //   const posterToRemove = event.target.closest(".unmotivational-mini-poster");
+  
+  //   // If the poster exists, remove it (along with its children)
+  //   if (posterToRemove) {
+  //     posterToRemove.remove();
+  //     console.log(unmotivationalPostersGrid.childElementCount);  // Log the remaining posters
+  //   }
+  // }
+  
 window.onload = createRandomPoster
