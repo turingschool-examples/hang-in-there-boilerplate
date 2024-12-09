@@ -156,11 +156,13 @@ savePosterButton.addEventListener('click', () => {
 
   // Add saved poster to the grid (this is a simple way to show saved posters)
   const savedPosterElement = document.createElement('div');
-  savedPosterElement.classList.add('saved-poster-item');
+  savedPosterElement.classList.add('saved-poster-item');  // Apply the saved-poster-item class
   savedPosterElement.innerHTML = `
-    <img src="${poster.imageURL}" alt="Saved Poster">
-    <h3>${poster.title}</h3>
-    <p>${poster.quote}</p>
+    <div class="mini-poster">
+      <img src="${poster.imageURL}" alt="Saved Poster">
+      <h3>${poster.title}</h3>
+      <p>${poster.quote}</p>
+    </div>
   `;
   savedPostersGrid.appendChild(savedPosterElement);
 });
