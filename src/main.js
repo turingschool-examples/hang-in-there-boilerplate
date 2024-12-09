@@ -16,6 +16,7 @@ var titleInput = document.querySelector("#poster-title");
 var quoteInput = document.querySelector("#poster-quote");
 var saveThisPosterButton = document.querySelector(".save-poster");
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near 
 // the line number where the variable is declared 
@@ -128,8 +129,9 @@ nevermindTakeMeBackButton.addEventListener("click", nevermindTakeMeBackButtonCli
 backToMainButton.addEventListener("click", backToMainButtonClick);
 showMyPosterButton.addEventListener("click", showMyPosterClick);
 saveThisPosterButton.addEventListener("click", saveThisPosterClick);
+
+
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
 
 
 function getRandomIndex(array) {
@@ -145,7 +147,7 @@ function createPoster(imageURL, title, quote) {
 }
 
 function randomPosterDetails () {
-  //create random deets
+  //create random deets 
   var imageURL = images[getRandomIndex(images)];
   var title = titles[getRandomIndex(titles)];
   var quote = quotes[getRandomIndex(quotes)];
@@ -158,11 +160,6 @@ function randomPosterDetails () {
   posterTitle.innerText = currentPoster.title
   posterQuote.innerText = currentPoster.quote 
 }
-  // var randomPoster = createPoster(imageURL, title, quote);
-
-  // //update the DOM
-  // posterImage.src = randomPoster.imageURL
-  // posterTitle.innerText = randomPoster.title
 
 
 function makeYourOwnPosterClick () {
@@ -257,102 +254,95 @@ function showMyPosterClick(event) {
 function saveThisPosterClick () {
   console.log('saved poster array: ', savedPosters)
   //add current poster to saved poster array
-  savedPosters.push(currentPoster)
+  if (!savedPosters.some(poster => poster.id === currentPoster.id)) {
+    savedPosters.push(currentPoster);
+    console.log('updated saved poster array: ', savedPosters);
+    updateGrid();
+  } else {
+    console.log('Poster already exists in the saved Posters array.');
+  }
 
   //make sure no duplicates are included in the array
-  savedPosters = [...new Set(savedPosters)]
-  console.log('updated saved poster array: ', savedPosters)
+  // savedPosters = [...new Set(savedPosters)]
+  
 
-  //make poster mini (should this be a helper method?
-  //need help with global variables (does latest assignment overwrites previous ones?)
-  createMiniPoster (currentPoster)
-
-  //put the mini-poster into the miniposter grid
-
-  savedPostersGrid.appendChild(miniPoster)
+  // updateGrid () 
 }
 
-function createMiniPoster (currentPoster) {
+
+// function saveThisPosterClick() {
+//   console.log('saved poster array: ', savedPosters);
+
+//   // Add current poster to saved poster array
+//   savedPosters.push(currentPoster);
+
+//   // Remove duplicates
+//   savedPosters = [...new Set(savedPosters)];
+//   console.log('updated saved poster array: ', savedPosters);
+
+//   // Pass savedPosters to updateGrid
+//   updateGrid(savedPosters);
+// }
+
+
+function createMiniPoster(poster) {
   //1. create a new html article element for the mini poster
   var miniPoster = document.createElement('article');
   console.log('a mini poster element has been created')
   //2. set mini poster's attributes
   miniPoster.classList.add('mini-poster')
   //3.add poster html content based on currentPoster
+  console.log('poster test: ', poster)
+  miniPoster.id = poster.id  
   miniPoster.innerHTML = `
-  <img class="poster-img" src="${currentPoster.imageURL}" alt="nothin' to see here">
-  <h2 class="poster-title">${currentPoster.title}</h1>
-  <h3 class="poster-quote">${currentPoster.quote}</h3>
+  <img class="poster-img" src="${poster.imageURL}" alt="mini poster image">
+  <h2 class="poster-title">${poster.title}</h1>
+  <h3 class="poster-quote">${poster.quote}</h3>
   `;
-  
-}
-   
-
-
-// // function createMiniPoster () {
-//   var miniCurrent = currentPoster.classList.add(mini-poster)
-//     //1. create a  miniposter container
-//     const miniPosterContainer = document.createElement('div');
-//     miniPosterContainer.classList.add('mini-poster');
-
-//     //2. create mini poster elements from current poster elements 
-//     //mini title elements
-//     var miniPosterTitleText = currentPoster.title;
-//     var miniPosterTitle = document.createElement('h1')
-//     miniPosterTitle.classList.add()
-//     //mini image elements
-//     var miniPosterImage = currentPoster.imageURL.classList.add('mini-poster img')
-//     //mini quote elements
-//     var miniPosterQuote = currentPoster.quote.classList.add('mini-poster h2')
-// }
-
-function addPosterToGrid () {
-  //add saved posters to the grid
-  console.log('current poster: ', currentPoster)
-  savedPostersGrid.innerHTML += currentPoster  
+  return miniPoster;
 }
 
-
-
-
-
- //Show Saved Posters button 
- //we should see the saved posters section where 
- //all posters in the savedPosters array 
- //should be displayed as little mini posters 
- //in the saved posters grid section (again, no duplicates)
-
-
-
-
-
-
-
-
-
-
-
-
-// function saveInputData () {
-//   //save image input
-//   // images.push(currentPoster.imageURL)
-//   // console.log('updated image url array: ', images)
-  
-//   //save title input
-//   console.log('updated title array: ', titles)
-//   console.log('current poster title: ', currentPoster.title)
-//   titles.push(currentPoster.title)
-  
-
-//   //save quote input
-//   quotes.push(currentPoster.quote)
-//   console.log('updated quote array: ', quotes)
+// updateGrid () {
+//   for (let i = 0; i < savedPosters.length; i++) {
+//     miniPoster = createMiniPoster(savedPosters[i])
+//     console.log('miniPoster: ', miniPoster)
+//     console.log('saved Posters array: ', savedPosters)
+//   }
+//   savedPostersGrid.appendChild(miniPoster)
+//   console.log('savedPosters array: ', savedPosters)
+//   console.log('Grid updated!')
+//   console.log('miniPoster ID: ', miniPoster.id)
 // }
-//In the new poster form view, users should be able to fill out 
-//the three input fields and then hit the Show My Poster button
+
+function updateGrid() {
+  console.log('the updateGrid method has been invoked')
+  const lastPoster = savedPosters[savedPosters.length - 1]
+  let miniPoster = createMiniPoster(lastPoster)
+  // savedPosters.push(miniPoster)
+  console.log('mini poster: ', miniPoster)
+  savedPostersGrid.appendChild(miniPoster)
+  // if (savedPosters.some(poster => poster.id === lastPoster.id)) {
+  //   console.log('this mini poster is a duplicate')
+  // } else {
+  //   savedPostersGrid.appendChild(miniPoster)
+  //   console.log('saved posters array: ', savedPosters)
+  // }
+  // for (let i = 0; i < savedPosters.length; i++) {
+  //   var aMiniPoster = createMiniPoster(savedPosters[i])
+  //   console.log('aMiniPoster: ', aMiniPoster)
+  //   savedPostersGrid.appendChild(aMiniPoster)
+  //   console.log('saved Posters array: ', savedPosters)
+  // }
+
+  // console.log('miniPoster: ', aMiniPoster)
+  // console.log('miniPoster ID: ', aMiniPoster.id)
+}
 
 
-// function displayDogName(event) {
-//   event.preventDefault(); // Prevents the default form behavior
-//   var dogName = input.value; // Get the value from the input
-//   headerText.innerText = dogName; // Update the header with the input value
+
+// function addPosterToGrid () {
+//   //add saved posters to the grid
+//   console.log('current poster: ', currentPoster)
+//   savedPostersGrid.innerHTML += currentPoster  
+// }
+
