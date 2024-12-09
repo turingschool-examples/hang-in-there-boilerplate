@@ -117,17 +117,28 @@ button:hover {
   padding: 20px;
 }
 .unmotivational-posters-grid {
-  display: flexbox
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
 }
 
-
-.mini-poster,
-.unmotivational-mini-poster {
+.mini-poster {
   background: black;
   color: white;
   height: 340px;
   padding: 25px;
   width: 425px;
+}
+
+.unmotivational-mini-poster {
+  background: gray;
+  color: black;
+  height: 340px;
+  padding: 25px;
+  width: 425px;
+  border-radius: 12px;
 }
 
 .mini-poster img, 
