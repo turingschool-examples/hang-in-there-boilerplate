@@ -287,7 +287,7 @@ function getRandomIndex(array) {
 
 function createPoster(imageURL, title, quote) {
   return {
-    id: Date.now() + performance.now() + Math.floor(Math.random() * 100), 
+    id: Date.now() + performance.now() + Math.floor(Math.random() * 10000), 
     imageURL: imageURL, 
     title: title, 
     quote: quote}
@@ -408,7 +408,9 @@ function displayUnmotivationalPosters() {
 }
 
 function deleteUnmotivationalPoster(event) {
-  event.target.id
-  unmotivationalPosters.splice(event.target.id, 1)
+  index = unmotivationalPosters.findIndex((poster) => {
+    return poster.index === event.target
+  })
+  unmotivationalPosters.splice(index, 1)
   displayUnmotivationalPosters()
 }

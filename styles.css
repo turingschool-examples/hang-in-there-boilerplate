@@ -146,3 +146,9 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+/* .unmotivational-grid {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+} */
