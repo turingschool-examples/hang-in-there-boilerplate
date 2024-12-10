@@ -13,6 +13,7 @@ const mainPosterSection = document.querySelector('.main-poster');
 const formSection = document.querySelector('.poster-form');
 const savedPostersSection = document.querySelector('.saved-posters');
 const savedPostersGrid = document.querySelector('.saved-posters-grid');
+const posterForm = document.querySelector('.poster-form form'); 
 
 // Arrays of image URLs, titles, and quotes
 var images = [
@@ -144,7 +145,8 @@ showMainButton.addEventListener('click', () => {
   switchView(mainPosterSection);  
 });
 
-// Save poster functionality
+let savedPosters = [];
+
 savePosterButton.addEventListener('click', () => {
   const poster = {
     imageURL: posterImage.src,
@@ -152,7 +154,15 @@ savePosterButton.addEventListener('click', () => {
     quote: posterQuote.textContent
   };
 
-  console.log('Poster saved:', poster);
+  const posterAlreadySaved = savedPosters.some(savedPoster => 
+    savedPoster.imageURL === poster.imageURL &&
+    savedPoster.title === poster.title &&
+    savedPoster.quote === poster.quote
+  );
+
+  if (!posterAlreadySaved) {
+    // Add poster to savedPosters array
+    savedPosters.push(poster);
 
   // Add saved poster to the grid (this is a simple way to show saved posters)
   const savedPosterElement = document.createElement('div');
@@ -165,14 +175,39 @@ savePosterButton.addEventListener('click', () => {
     </div>
   `;
   savedPostersGrid.appendChild(savedPosterElement);
+  } else {
+    console.log('Poster already saved, no duplicates allowed');
+  }
 });
 
 makeOwnPosterButton.addEventListener('click', () => {
-  console.log('Make Your Own Poster button clicked');
   switchView(formSection);  
 });
 showSavedPostersButton.addEventListener('click', () => {
-  console.log('Show Saved Posters button clicked');
   switchView(savedPostersSection);  
+});
+
+
+let currentPoster = null;  
+
+
+
+
+posterForm.addEventListener('submit', (event) => {
+  event.preventDefault();  
+
+  const imageURL = document.querySelector('#poster-image-url').value;
+  const title = document.querySelector('#poster-title').value;
+  const quote = document.querySelector('#poster-quote').value;
+
+  currentPoster = createPoster(imageURL, title, quote);
+
+  images.push(imageURL);  
+  titles.push(title);  
+  quotes.push(quote);  
+
+  displayPoster(currentPoster);
+
+  switchView(mainPosterSection);
 });
 
