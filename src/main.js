@@ -24,6 +24,7 @@ var unMoBackToMainButton = document.querySelector(".unmo-back-to-main");
 var unMoPostersGrid = document.querySelector(".unmo-posters-grid");
 
 // UnMo Posters query selectors  
+var unMoPoster_0 = document.querySelector("#poster_0");
 
 
 // we've provided you with some data to work with 👇
@@ -264,7 +265,6 @@ saveThisPosterButton.addEventListener("click", saveThisPosterClick);
 showUnMoPostersButton.addEventListener("click", showUnMoPostersClick)
 unMoBackToMainButton.addEventListener("click", unMoBackToMainButtonClick);
 
-
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -393,11 +393,8 @@ function saveThisPosterClick () {
   } else {
     console.log('Poster already exists in the saved Posters array.');
   }
-
   //make sure no duplicates are included in the array
   // savedPosters = [...new Set(savedPosters)]
-  
-
   // updateGrid () 
 }
 
@@ -453,25 +450,13 @@ function updateGrid() {
   // savedPosters.push(miniPoster)
   console.log('mini poster: ', miniPoster)
   savedPostersGrid.appendChild(miniPoster)
-  // if (savedPosters.some(poster => poster.id === lastPoster.id)) {
-  //   console.log('this mini poster is a duplicate')
-  // } else {
-  //   savedPostersGrid.appendChild(miniPoster)
-  //   console.log('saved posters array: ', savedPosters)
-  // }
-  // for (let i = 0; i < savedPosters.length; i++) {
-  //   var aMiniPoster = createMiniPoster(savedPosters[i])
-  //   console.log('aMiniPoster: ', aMiniPoster)
-  //   savedPostersGrid.appendChild(aMiniPoster)
-  //   console.log('saved Posters array: ', savedPosters)
-  // }
-
-  // console.log('miniPoster: ', aMiniPoster)
-  // console.log('miniPoster ID: ', aMiniPoster.id)
 }
+
+let showUnMoPostersClickCounter = 0; 
 
 function showUnMoPostersClick () {
   console.log('the showUnMoPostersClick function has been invoked')
+  showUnMoPostersClickCounter++; // Increment the counter on each click
   hidePoster (mainPosterContainer);
   showUnMoPosters (unMoPostersSection);
 
@@ -480,7 +465,9 @@ function showUnMoPostersClick () {
   console.log(cleaUnMotivationalPosters)
 
   //add posters
+  if (showUnMoPostersClickCounter < 2) {
   addUnMoPoster(cleaUnMotivationalPosters, unMoPostersGrid)
+  }
 }
 
 function showUnMoPosters (element) {
@@ -522,8 +509,6 @@ function unMoBackToMainButtonClick () {
 //   //invoke an updateUnMoGrid where all the items in the array are added to the UnMo grid
 
 // }
-
-
 
 function cleanData (posterData) {
   console.log('the cleanData method has been invoked')
@@ -567,7 +552,7 @@ function addUnMoPoster(postersArray, containerElement) {
     const posterElement = document.createElement('div');
     posterElement.classList.add('mini-poster');
     // Add id (for queryselector)  
-    posterElement.id = (`poster-${index}`); 
+    posterElement.id = (`poster_${index}`); 
 
     // Add an image
     const img = document.createElement('img');
@@ -587,9 +572,31 @@ function addUnMoPoster(postersArray, containerElement) {
 
     // Append the poster element to the container
     containerElement.appendChild(posterElement);
-  });
-}
 
+    // Attach the event listener for deletion
+    posterElement.addEventListener("dblclick", () => deleteUnMoPoster(posterElement));
+  });
+  }
+
+// unmo event listeners  
+// unMoPoster_0.addEventListener("dblclick", () => deleteUnMoPoster(unMoPoster_0))
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const unMoPoster_0 = document.querySelector("#poster_0");
+//   if (unMoPoster_0) {
+//     unMoPoster_0.addEventListener("click", () => deleteUnMoPoster(unMoPoster_0));
+//   } else {
+//     console.error("#poster_0 not found");
+//   }
+// });
+
+function deleteUnMoPoster(unMoPoster) {
+  console.log('the deleteUnMoPoster has been invoked')
+  console.log(unMoPoster)
+  //remove unMoPoster from DOM
+  unMoPostersGrid.removeChild(unMoPoster)
+  //remove same poster from unmo posters array with filter()
+}
 
 // function addUnMoPoster2 () {
 //   //create random deets for each unmo poster
