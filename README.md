@@ -45,10 +45,11 @@ Want to add to this or see how it works?
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
-![Just a sneak peak](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcG54bXVhdTdsNG1rbGdleXZrYXl3Z3YwZWlyd2V0dDNrM2gycDM1dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/y6SMp8c47Wguh5sGHk/giphy.gif)
+[Just a sneak peak](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcG54bXVhdTdsNG1rbGdleXZrYXl3Z3YwZWlyd2V0dDNrM2gycDM1dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/y6SMp8c47Wguh5sGHk/giphy.gif)
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+As a student in mod2 at Turing, I felt this was one of the easier projects, only taking me around 4 days to complete. I do find more success and fulfillment after completing a project when I can visually see it working. I have discovered a new love for FE work and look forward to pursuing more knowledge in Javascript and FE languages.
 
 ### Contributors:
 [//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
