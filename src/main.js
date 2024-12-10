@@ -143,6 +143,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
+// Uncleaned motivational poster data
 let unmotivationalPosters = [
   {
     name: "FAILURE",
@@ -266,12 +267,13 @@ let unmotivationalPosters = [
   }
 ];
 
+var savedUnmotivationalPosters = [];
 var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
 // Display a random poster on content load
-document.addEventListener('DOMContentLoaded', randomPosterEventHandler);
+document.addEventListener('DOMContentLoaded', loadContentEventHandler);
 
 // Save poster to Saved Posters list
 savePosterBtn.addEventListener('click', savePosterEventHandler);
@@ -311,8 +313,17 @@ unmotivationalBackToMainBtn.addEventListener('click', () => {
 // Make new poster and display
 makePosterBtn.addEventListener('click', userPosterEventHandler);
 
+// Delete unmotivational poster
+unmotivationalPosterDisplay.addEventListener('dblclick', deleteUnmotivPosterEventHandler);
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
+
+// Handle on content load event
+function loadContentEventHandler() {
+  randomPosterEventHandler();
+  savedUnmotivationalPosters = cleanData(unmotivationalPosters);
+}
 
 // Handle random poster creation and display
 function randomPosterEventHandler() {
@@ -332,14 +343,22 @@ function userPosterEventHandler() {
 function savePosterEventHandler() {
   addToSaved();
   populatePosters(savedPostersDisplay, savedPosters);
-  changeView(mainView, savedView);
 }
 
+// Need to cleandata and populate savedUnmotivationalPosters in another place initially
+// Maybe on loadcontent
 function unmotivationalPosterEventHandler() {
   changeView(mainView, unmotivationalView);
-  let cleanedUnmotivationalData = cleanData(unmotivationalPosters);
-  // console.log(cleanedUnmotivationalData);
-  populatePosters(unmotivationalPosterDisplay, cleanedUnmotivationalData);
+  populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters);
+}
+
+// deleteUnmotivationalPoster Event Handler
+// need to remove element from array
+// Repopulate unmotivational page
+function deleteUnmotivPosterEventHandler(event) {
+  var targetPoster = event.target.parentElement;
+  deletePoster(targetPoster, savedUnmotivationalPosters);
+  populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters);
 }
 
 // Select random poster elements and set them as currentPoster object
@@ -402,7 +421,7 @@ function addToSaved() {
 
 // For each savedPoster, create mini poster object innerHTML
 function createMiniPoster(poster) {
-  return `<div class="mini-poster">
+  return `<div class="mini-poster" id=${poster.title}>
       <img src=${poster.imageURL} alt="Mini Image" />
       <h2>${poster.title}</h2>
       <h4>${poster.quote}</h4>
@@ -424,8 +443,16 @@ function cleanData(array) {
   let cleanedArray = [];
 
   for (let i = 0; i < array.length; i++) {
-    cleanedArray.push(createPoster(array[i].img_url, array[i].name, array[i].description));
+    cleanedArray.push(createPoster(array[i].img_url, array[i].name, array[i].description, i));
   }
-  console.log(cleanedArray);
+  // console.log(cleanedArray);
   return cleanedArray;
+}
+
+// delete from array function
+// Take in parameters of array and element to be deleted
+function deletePoster(targetPoster, array) {
+  savedUnmotivationalPosters = array.filter((poster) => {
+    return poster.title !== targetPoster.id;
+  });
 }
