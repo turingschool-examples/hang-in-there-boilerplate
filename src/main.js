@@ -356,9 +356,8 @@ function unmotivationalPosterEventHandler() {
 // need to remove element from array
 // Repopulate unmotivational page
 function deleteUnmotivPosterEventHandler(event) {
-  var targetPoster = event.target;
-  console.log(targetPoster.classList);
-  savedUnmotivationalPosters = deletePoster(targetPoster, savedUnmotivationalPosters);
+  var targetPoster = event.target.parentElement;
+  deletePoster(targetPoster, savedUnmotivationalPosters);
   populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters);
 }
 
@@ -422,7 +421,7 @@ function addToSaved() {
 
 // For each savedPoster, create mini poster object innerHTML
 function createMiniPoster(poster) {
-  return `<div class="mini-poster">
+  return `<div class="mini-poster" id=${poster.title}>
       <img src=${poster.imageURL} alt="Mini Image" />
       <h2>${poster.title}</h2>
       <h4>${poster.quote}</h4>
@@ -444,7 +443,7 @@ function cleanData(array) {
   let cleanedArray = [];
 
   for (let i = 0; i < array.length; i++) {
-    cleanedArray.push(createPoster(array[i].img_url, array[i].name, array[i].description));
+    cleanedArray.push(createPoster(array[i].img_url, array[i].name, array[i].description, i));
   }
   // console.log(cleanedArray);
   return cleanedArray;
@@ -453,9 +452,7 @@ function cleanData(array) {
 // delete from array function
 // Take in parameters of array and element to be deleted
 function deletePoster(targetPoster, array) {
-  var updatedArray = array.filter((poster) => {
-    return poster.id !== targetPoster.id
+  savedUnmotivationalPosters = array.filter((poster) => {
+    return poster.title !== targetPoster.id;
   });
-
-  return updatedArray;
 }
