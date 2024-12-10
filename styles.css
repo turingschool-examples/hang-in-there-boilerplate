@@ -144,3 +144,20 @@ button:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+/* ~~~~~ UNMO POSTER SECTION ~~~~~ */
+
+/* .unmo-posters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.mini-unmo-poster {
+  background: black;
+  color: white;
+  height: 340px;
+  padding: 25px;
+  width: 425px;
+} */

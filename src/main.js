@@ -17,6 +17,15 @@ var quoteInput = document.querySelector("#poster-quote");
 var saveThisPosterButton = document.querySelector(".save-poster");
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
+// UnMo Section query selectors 
+var showUnMoPostersButton = document.querySelector('.show-unmo-posters');
+var unMoPostersSection = document.querySelector(".unmo-posters");
+var unMoBackToMainButton = document.querySelector(".unmo-back-to-main");
+var unMoPostersGrid = document.querySelector(".unmo-posters-grid");
+
+// UnMo Posters query selectors  
+
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near 
 // the line number where the variable is declared 
@@ -117,6 +126,129 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+let unmotivationalPosters = [
+  {
+    name: "FAILURE",
+    description: "Why bother trying? It's probably not worth it.",
+    price: 68.00,
+    year: 2019,
+    vintage: true,
+    img_url: "./assets/failure.jpg",
+  },
+  {
+    name: "MEDIOCRITY",
+    description: "Dreams are just that—dreams.",
+    price: 127.00,
+    year: 2021,
+    vintage: false,
+    img_url: "./assets/mediocrity.jpg",
+  },
+  {
+    name: "REGRET",
+    description: "Hard work rarely pays off.",
+    price: 89.00,
+    year: 2018,
+    vintage: true,
+    img_url:  "./assets/regret.jpg",
+  },
+  {
+    name: "FUTILITY",
+    description: "You're not good enough.",
+    price: 150.00,
+    year: 2016,
+    vintage: false,
+    img_url:  "./assets/futility.jpg",
+  },
+  {
+    name: "DEFEAT",
+    description: "It's too late to start now.",
+    price: 35.00,
+    year: 2023,
+    vintage: false,
+    img_url:  "./assets/defeat.jpg",
+  },
+  {
+    name: "HOPELESSNESS",
+    description: "Stay in your comfort zone; it's safer.",
+    price: 112.00,
+    year: 2020,
+    vintage: true,
+    img_url: "./assets/hopelessness.jpg",
+  },
+  {
+    name: "LAZINESS",
+    description: "You can't change anything.",
+    price: 25.00,
+    year: 2022,
+    vintage: false,
+    img_url: "./assets/laziness.jpg",
+  },
+  {
+    name: "PROCRASTINATION",
+    description: "Better to avoid failure by not trying at all.",
+    price: 48.00,
+    year: 2017,
+    vintage: true,
+    img_url: "./assets/procrastination.jpg",
+  },
+  {
+    name: "DESPAIR",
+    description: "Let someone else do it; you’ll just mess it up.",
+    price: 73.00,
+    year: 2015,
+    vintage: false,
+    img_url: "./assets/despair.jpg",
+  },
+  {
+    name: "NEGLECT",
+    description: "Happiness is overrated.",
+    price: 160.00,
+    year: 2019,
+    vintage: true,
+    img_url: "./assets/neglect.jpg",
+  },
+  {
+    name: "FEAR",
+    description: "Giving up is always an option.",
+    price: 91.00,
+    year: 2014,
+    vintage: false,
+    img_url: "./assets/fear.jpg",
+  },
+  {
+    name: "APATHY",
+    description: "No one cares about your effort.",
+    price: 110.00,
+    year: 2016,
+    vintage: true,
+    img_url: "./assets/apathy.jpg",
+  },
+  {
+    name: "MISERY",
+    description: "Why take risks when you can stay stagnant?",
+    price: 55.00,
+    year: 2021,
+    vintage: false,
+    img_url: "./assets/misery.jpg",
+  },
+  {
+    name: "BLAME",
+    description: "Expect disappointment and you'll never be disappointed.",
+    price: 39.00,
+    year: 2017,
+    vintage: true,
+    img_url: "./assets/blame.jpg",
+  },
+  {
+    name: "DOUBT",
+    description: "Success is for other people, not you.",
+    price: 140.00,
+    year: 2020,
+    vintage: false,
+    img_url: "./assets/doubt.jpg",
+  }
+];
+
 var savedPosters = [];
 var currentPoster;
 
@@ -129,11 +261,11 @@ nevermindTakeMeBackButton.addEventListener("click", nevermindTakeMeBackButtonCli
 backToMainButton.addEventListener("click", backToMainButtonClick);
 showMyPosterButton.addEventListener("click", showMyPosterClick);
 saveThisPosterButton.addEventListener("click", saveThisPosterClick);
+showUnMoPostersButton.addEventListener("click", showUnMoPostersClick)
+unMoBackToMainButton.addEventListener("click", unMoBackToMainButtonClick);
 
 
 // functions and event handlers go here 👇
-
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -338,6 +470,178 @@ function updateGrid() {
   // console.log('miniPoster ID: ', aMiniPoster.id)
 }
 
+function showUnMoPostersClick () {
+  console.log('the showUnMoPostersClick function has been invoked')
+  hidePoster (mainPosterContainer);
+  showUnMoPosters (unMoPostersSection);
+
+  //get cleaned data
+  var cleaUnMotivationalPosters = cleanData (unmotivationalPosters);
+  console.log(cleaUnMotivationalPosters)
+
+  //add posters
+  addUnMoPoster(cleaUnMotivationalPosters, unMoPostersGrid)
+}
+
+function showUnMoPosters (element) {
+  console.log('the showUnMoPosters method has been invoked')
+  //shows UnMo poster grid
+  element.classList.remove("hidden")
+}
+
+function unMoBackToMainButtonClick () {
+  console.log('the UnMo back to main method has been invoked')
+  //return to main with poster, no grid
+  revealPoster (mainPosterContainer);
+  hideSavedPosters (unMoPostersSection)
+}
+
+
+// function cleanData () {
+//   console.log('the cleanData method has been invoked')
+//   //iterate though the array, unmotivationalPosters to 
+//   //clean the data to match poster, 
+
+//   console.log(unmotivationalPosters)
+//   const cleanedUnMoPosters = unmotivationalPosters.map((unMoPoster, index) => {
+//     console.log('date now: ', Date.now() + index);
+//     console.log('image url: ', unMoPoster.img_url);
+//     console.log('title: ', unMoPoster.name);
+//     console.log('quote: ', unMoPoster.description);
+
+//     //return the cleaned unmo poster object  
+//     return {
+//       id: Date.now() + index,
+//       imageURL: unMoPoster.img_url,
+//       title: unMoPoster.name,
+//       quote: unMoPoster.description,
+//     };
+//   })
+//   console.log(cleanedUnMoPosters)
+  
+//   //invoke an updateUnMoGrid where all the items in the array are added to the UnMo grid
+
+// }
+
+
+
+function cleanData (posterData) {
+  console.log('the cleanData method has been invoked')
+  //iterate though the array, unmotivationalPosters to 
+  //clean the data to match poster, 
+
+  console.log(posterData)
+  var cleanedUnMoPosters = posterData.map((poster, index) => {
+    console.log('date now: ', Date.now() + index);
+    console.log('image url: ', poster.img_url);
+    console.log('title: ', poster.name);
+    console.log('quote: ', poster.description);
+
+    //return the cleaned unmo poster object data  
+    return {
+      imageURL: poster.img_url,
+      title: poster.name,
+      quote: poster.description,
+    };
+    
+  })
+  console.log(cleanedUnMoPosters)
+  return cleanedUnMoPosters
+}
+
+// function createUnMoPoster(posterDataArray) {
+//   return posterDataArray.map(poster => {
+//     return {
+//       id: Date.now(), 
+//       imageURL: poster.imageURL, 
+//       title: poster.title, 
+//       quote: poster.quote
+//     }
+//   })
+// }
+
+
+function addUnMoPoster(postersArray, containerElement) {
+  postersArray.forEach((poster, index) => {
+    // Create a new DOM element for the poster
+    const posterElement = document.createElement('div');
+    posterElement.classList.add('mini-poster');
+    // Add id (for queryselector)  
+    posterElement.id = (`poster-${index}`); 
+
+    // Add an image
+    const img = document.createElement('img');
+    img.src = poster.imageURL;
+    img.alt = poster.title;
+    posterElement.appendChild(img);
+
+    // Add a title
+    const title = document.createElement('h2');
+    title.textContent = poster.title;
+    posterElement.appendChild(title);
+
+    // Add a quote
+    const quote = document.createElement('p');
+    quote.textContent = poster.quote;
+    posterElement.appendChild(quote);
+
+    // Append the poster element to the container
+    containerElement.appendChild(posterElement);
+  });
+}
+
+
+// function addUnMoPoster2 () {
+//   //create random deets for each unmo poster
+  
+//   var imageURL = images[getRandomIndex(images)];
+//   var title = titles[getRandomIndex(titles)];
+//   var quote = quotes[getRandomIndex(quotes)];
+
+//   //create a random poster and assignt it to current poster
+//   currentPoster = createPoster(imageURL, title, quote);
+
+//   //update the DOM
+//   posterImage.src = currentPoster.imageURL
+//   posterTitle.innerText = currentPoster.title
+//   posterQuote.innerText = currentPoster.quote 
+// }
+
+  
+
+// function seeUnMoPosterGrid(cleanedPosterData) {
+//   console.log('the seeUnMoPosterGrid method has been invoked')
+//   console.log('')
+//   cleanedPosterData.forEach(posterData => {
+//     unMoPostersGrid.appendChild(posterData)
+//   });
+// }
+
+
+
+//   return {
+//         id: Date.now(), 
+//         imageURL: imageURL, 
+//         title: title, 
+//         quote: quote}
+// }
+
+// name: "title",
+// description: "quote.",
+// price: 160.00,
+// year: 2019,
+// vintage: true,
+// img_url: "./assets/neglect.jpg",
+// },
+// {
+
+// function createPoster(imageURL, title, quote) {
+//   return {
+//     id: Date.now(), 
+//     imageURL: imageURL, 
+//     title: title, 
+//     quote: quote}
+// }
 
 
 // function addPosterToGrid () {
