@@ -13,9 +13,9 @@ Want to add to this or see how it works?
     - Shortcut: Ctrl + Shift + I
 2.  Copy the Repository URL
 	1.	Go to the GitHub website.
-	2.	Navigate to the repository 'git@github.com:shadeauchristensen/hang-in-there-boilerplate.git'
-	3.	Click the green Code button.
-	4.	Choose one of the following methods:
+	2.	Navigate to the repository
+	4.	Click the green Code button.
+	5.	Choose one of the following methods:
         - HTTPS: Copy the URL (recommended for beginners).
         - SSH: Use this if you’ve set up SSH keys.
         - GitHub CLI: Use this if you prefer CLI commands.
