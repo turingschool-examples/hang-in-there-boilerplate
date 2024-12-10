@@ -358,7 +358,8 @@ function displaySavedPosters() {
   var posterElement = document.createElement('div'); // creates a new <div> element in memory 
     // (not visible on the page yet)
     posterElement.classList.add('mini-poster'); // Use the correct class
-    posterElement.innerHTML = ` // vvv Using innerHTML to add poster content (image,title,quote) vvv 
+  /* vvv Using innerHTML to add poster content (image,title,quote) vvv */
+    posterElement.innerHTML = `
       <img src="${poster.imageURL}" alt="Saved poster image">
             <h2>${poster.title}</h2>
             <h4>${poster.quote}</h4>
@@ -369,9 +370,8 @@ function displaySavedPosters() {
 
 function displayUnmotivationalPosters() {
   unmotivationalPostersGrid.innerHTML = ``; //Should clear grid before adding new posters
-  // Loop through posters to place into grid
   unmotivationalPosters.forEach(function (poster, index) { // Needs to define index to work with the .splice method below
-  
+  // Loop through posters to place into grid
   var posterElement = document.createElement('div'); // Creates a new <div> element 
     posterElement.classList.add('unmotivational-poster'); // Use the correct class
                   

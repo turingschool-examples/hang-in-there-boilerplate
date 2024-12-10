@@ -26,9 +26,22 @@ ______________________________________________________
 
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+Here, I have created a webpage that will display a random poster with a random inspirational title and quote. I have also branched off this idea an provided an "Un-motivational" posters list. I don't think anyone had a problem before, but if you need to come up or get put down, this is the page for you!!!
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
+Want to add to this or see how it works? 
+1.	Google Chrome / Firefox / Edge:
+        •	Shortcut: Cmd + Option + I
+        •	Shortcut: Ctrl + Shift + I
+2.  Copy the Repository URL
+	1.	Go to the GitHub website.
+	2.	Navigate to the repository you want to clone.
+	3.	Click the green Code button.
+	4.	Choose one of the following methods:
+        •	HTTPS: Copy the URL (recommended for beginners).
+        •	SSH: Use this if you’ve set up SSH keys.
+        •	GitHub CLI: Use this if you prefer CLI commands.
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
