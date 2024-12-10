@@ -16,9 +16,15 @@ var titleInput = document.querySelector("#poster-title");
 var quoteInput = document.querySelector("#poster-quote");
 var saveThisPosterButton = document.querySelector(".save-poster");
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
+
+// UnMo Section query selectors 
 var showUnMoPostersButton = document.querySelector('.show-unmo-posters');
 var unMoPostersSection = document.querySelector(".unmo-posters");
 var unMoBackToMainButton = document.querySelector(".unmo-back-to-main");
+var unMoPostersGrid = document.querySelector(".unmo-posters-grid");
+
+// UnMo Posters query selectors  
+
 
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near 
@@ -468,8 +474,14 @@ function showUnMoPostersClick () {
   console.log('the showUnMoPostersClick function has been invoked')
   hidePoster (mainPosterContainer);
   showUnMoPosters (unMoPostersSection);
-}
 
+  //get cleaned data
+  var cleaUnMotivationalPosters = cleanData (unmotivationalPosters);
+  console.log(cleaUnMotivationalPosters)
+
+  //add posters
+  addUnMoPoster(cleaUnMotivationalPosters, unMoPostersGrid)
+}
 
 function showUnMoPosters (element) {
   console.log('the showUnMoPosters method has been invoked')
@@ -485,9 +497,152 @@ function unMoBackToMainButtonClick () {
 }
 
 
-function cleanData () {
+// function cleanData () {
+//   console.log('the cleanData method has been invoked')
+//   //iterate though the array, unmotivationalPosters to 
+//   //clean the data to match poster, 
+
+//   console.log(unmotivationalPosters)
+//   const cleanedUnMoPosters = unmotivationalPosters.map((unMoPoster, index) => {
+//     console.log('date now: ', Date.now() + index);
+//     console.log('image url: ', unMoPoster.img_url);
+//     console.log('title: ', unMoPoster.name);
+//     console.log('quote: ', unMoPoster.description);
+
+//     //return the cleaned unmo poster object  
+//     return {
+//       id: Date.now() + index,
+//       imageURL: unMoPoster.img_url,
+//       title: unMoPoster.name,
+//       quote: unMoPoster.description,
+//     };
+//   })
+//   console.log(cleanedUnMoPosters)
+  
+//   //invoke an updateUnMoGrid where all the items in the array are added to the UnMo grid
+
+// }
+
+
+
+function cleanData (posterData) {
   console.log('the cleanData method has been invoked')
+  //iterate though the array, unmotivationalPosters to 
+  //clean the data to match poster, 
+
+  console.log(posterData)
+  var cleanedUnMoPosters = posterData.map((poster, index) => {
+    console.log('date now: ', Date.now() + index);
+    console.log('image url: ', poster.img_url);
+    console.log('title: ', poster.name);
+    console.log('quote: ', poster.description);
+
+    //return the cleaned unmo poster object data  
+    return {
+      imageURL: poster.img_url,
+      title: poster.name,
+      quote: poster.description,
+    };
+    
+  })
+  console.log(cleanedUnMoPosters)
+  return cleanedUnMoPosters
 }
+
+// function createUnMoPoster(posterDataArray) {
+//   return posterDataArray.map(poster => {
+//     return {
+//       id: Date.now(), 
+//       imageURL: poster.imageURL, 
+//       title: poster.title, 
+//       quote: poster.quote
+//     }
+//   })
+// }
+
+
+function addUnMoPoster(postersArray, containerElement) {
+  postersArray.forEach((poster, index) => {
+    // Create a new DOM element for the poster
+    const posterElement = document.createElement('div');
+    posterElement.classList.add('mini-poster');
+    // Add id (for queryselector)  
+    posterElement.id = (`poster-${index}`); 
+
+    // Add an image
+    const img = document.createElement('img');
+    img.src = poster.imageURL;
+    img.alt = poster.title;
+    posterElement.appendChild(img);
+
+    // Add a title
+    const title = document.createElement('h2');
+    title.textContent = poster.title;
+    posterElement.appendChild(title);
+
+    // Add a quote
+    const quote = document.createElement('p');
+    quote.textContent = poster.quote;
+    posterElement.appendChild(quote);
+
+    // Append the poster element to the container
+    containerElement.appendChild(posterElement);
+  });
+}
+
+
+// function addUnMoPoster2 () {
+//   //create random deets for each unmo poster
+  
+//   var imageURL = images[getRandomIndex(images)];
+//   var title = titles[getRandomIndex(titles)];
+//   var quote = quotes[getRandomIndex(quotes)];
+
+//   //create a random poster and assignt it to current poster
+//   currentPoster = createPoster(imageURL, title, quote);
+
+//   //update the DOM
+//   posterImage.src = currentPoster.imageURL
+//   posterTitle.innerText = currentPoster.title
+//   posterQuote.innerText = currentPoster.quote 
+// }
+
+  
+
+// function seeUnMoPosterGrid(cleanedPosterData) {
+//   console.log('the seeUnMoPosterGrid method has been invoked')
+//   console.log('')
+//   cleanedPosterData.forEach(posterData => {
+//     unMoPostersGrid.appendChild(posterData)
+//   });
+// }
+
+
+
+//   return {
+//         id: Date.now(), 
+//         imageURL: imageURL, 
+//         title: title, 
+//         quote: quote}
+// }
+
+// name: "title",
+// description: "quote.",
+// price: 160.00,
+// year: 2019,
+// vintage: true,
+// img_url: "./assets/neglect.jpg",
+// },
+// {
+
+// function createPoster(imageURL, title, quote) {
+//   return {
+//     id: Date.now(), 
+//     imageURL: imageURL, 
+//     title: title, 
+//     quote: quote}
+// }
+
 
 // function addPosterToGrid () {
 //   //add saved posters to the grid
