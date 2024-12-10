@@ -45,17 +45,21 @@ Want to add to this or see how it works?
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
-[Just a sneak peak](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcG54bXVhdTdsNG1rbGdleXZrYXl3Z3YwZWlyd2V0dDNrM2gycDM1dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/y6SMp8c47Wguh5sGHk/giphy.gif)
+![Just a sneak peak](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcG54bXVhdTdsNG1rbGdleXZrYXl3Z3YwZWlyd2V0dDNrM2gycDM1dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/y6SMp8c47Wguh5sGHk/giphy.gif)
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
-As a student in mod2 at Turing, I felt this was one of the easier projects, only taking me around 4 days to complete. I do find more success and fulfillment after completing a project when I can visually see it working. I have discovered a new love for FE work and look forward to pursuing more knowledge in Javascript and FE languages.
+- As a student in mod2 at Turing, I felt this was one of the easier projects, only taking me around 4 days to complete. I do find more success and fulfillment after completing a project when I can visually see it working. I have discovered a new love for FE work and look forward to pursuing more knowledge in Javascript and FE languages.
 
 ### Contributors:
 [//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
+[Check out my Github!](https://github.com/shadeauchristensen)
+[An my Linkedin!](www.linkedin.com/in/shadeau-christensen)
 
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
+- Honestly, I am very new to this game called the tech industry. Ever moment has been a learning moment. I found a lot of useful methods and was able to use those to create functions for my webpage. In those moments I find a lot of growth. So those are the moments I seek.
 
 ### Wins + Challenges:
 [//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+- Wins are definitely that the webpage works, and that i was able to get it done relatively fast, at least with enough time to refactor and fix any redundant code. Challenges were around every corner. I found the hardest moments were those were we had to match the displays to the prompts with the existing code. The back and forth to find what was called what was a hurdle in a lot of moments.
