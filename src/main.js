@@ -273,7 +273,7 @@ var currentPoster;
 
 // event listeners go here 👇
 // Display a random poster on content load
-document.addEventListener('DOMContentLoaded', randomPosterEventHandler);
+document.addEventListener('DOMContentLoaded', loadContentEventHandler);
 
 // Save poster to Saved Posters list
 savePosterBtn.addEventListener('click', savePosterEventHandler);
@@ -319,6 +319,12 @@ unmotivationalPosterDisplay.addEventListener('dblclick', deleteUnmotivPosterEven
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
+// Handle on content load event
+function loadContentEventHandler() {
+  randomPosterEventHandler();
+  savedUnmotivationalPosters = cleanData(unmotivationalPosters);
+}
+
 // Handle random poster creation and display
 function randomPosterEventHandler() {
   getRandomPoster(images, titles, quotes);
@@ -343,15 +349,17 @@ function savePosterEventHandler() {
 // Maybe on loadcontent
 function unmotivationalPosterEventHandler() {
   changeView(mainView, unmotivationalView);
-  savedUnmotivationalPosters = cleanData(unmotivationalPosters);
   populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters);
 }
 
 // deleteUnmotivationalPoster Event Handler
 // need to remove element from array
 // Repopulate unmotivational page
-function deleteUnmotivPosterEventHandler() {
-
+function deleteUnmotivPosterEventHandler(event) {
+  var targetPoster = event.target;
+  console.log(targetPoster.classList);
+  savedUnmotivationalPosters = deletePoster(targetPoster, savedUnmotivationalPosters);
+  populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters);
 }
 
 // Select random poster elements and set them as currentPoster object
@@ -438,7 +446,7 @@ function cleanData(array) {
   for (let i = 0; i < array.length; i++) {
     cleanedArray.push(createPoster(array[i].img_url, array[i].name, array[i].description));
   }
-  console.log(cleanedArray);
+  // console.log(cleanedArray);
   return cleanedArray;
 }
 
@@ -448,6 +456,6 @@ function deletePoster(targetPoster, array) {
   var updatedArray = array.filter((poster) => {
     return poster.id !== targetPoster.id
   });
-  
+
   return updatedArray;
 }
