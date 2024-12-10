@@ -245,6 +245,7 @@ var unmotivationalPosters = [
     img_url: "./assets/doubt.jpg",
   }
 ];
+
 var savedPosters = [];
 var currentPoster;
 
@@ -277,13 +278,13 @@ backToMainBtn.addEventListener('click', function () {
 makePosterBtn.addEventListener('click', function (event) {
   event.preventDefault(); 
   // Prevent the form from submitting and will be a stepping stone to gathering values for image,title,and quote
-  var imageUrl = posterImgInput.value;
-  var title = posterTitleInput.value;
-  var quote = posterQuoteInput.value; 
+    var imageUrl = posterImgInput.value;
+    var title = posterTitleInput.value;
+    var quote = posterQuoteInput.value; 
   // Update the main poster section
-  posterImg.src = imageUrl;
-  posterTitle.innerText = title;
-  posterQuote.innerText = quote;
+    posterImg.src = imageUrl;
+    posterTitle.innerText = title;
+    posterQuote.innerText = quote;
   // This doesn't work under these conditions unless its inside this code block
   formSection.classList.add('hidden'); // Hide the created form
   mainPosterSection.classList.remove('hidden'); // Show the main poster
@@ -308,18 +309,18 @@ backToMainUnmotivationalBtn.addEventListener('click', function () {
   mainPosterSection.classList.remove('hidden');  // Show the Main Poster Section
 });
 
+
 // functions and event handlers go here 👇 // (we've provided two to get you started)!
 
 
 function getRandomIndex(array) { 
-// Purpose: Returns a random index from a given array. This function is used for when  
-// needing to randomly select an element from an array
   return Math.floor(Math.random() * array.length);
-};
+};  // Purpose: Returns a random index from a given array. This function is used for when  
+      // needing to randomly select an element from an array
 
-function createPoster(imageURL, title, quote) {
+function createPoster(imageURL, title, quote) { // Pretty obvious
   return {
-    id: Date.now(), 
+    id: Date.now(), // Creates a unique identifier for this ID
     imageURL: imageURL, 
     title: title, 
     quote: quote
@@ -335,13 +336,12 @@ function generateRandomPoster() { // Purpose: Generates a completely random post
   posterTitle.innerText = randomTitle;
   posterQuote.innerText = randomQuote;
 };
-
-window.onload = generateRandomPoster;
+  window.onload = generateRandomPoster;
 //  Will generate random poster every time page loads ^^^
 
 function savePoster() {
   var newPoster = createPoster(posterImg.src, posterTitle.innerText, posterQuote.innerText); // Creates a new poster object
-  /*If no matching poster is found (false), */          // Avoiding duplicates
+  /*  If no matching poster is found (false)  */          // Avoiding duplicates
   if (!savedPosters.some(poster => poster.imageURL === newPoster.imageURL &&
                                    poster.title === newPoster.title &&
                                    poster.quote === newPoster.quote)) {
@@ -352,40 +352,40 @@ function savePoster() {
 function displaySavedPosters() {
   var savedGrid = document.querySelector('.saved-posters-grid'); // Find grid
     savedGrid.innerHTML = ''; // Clears the grid to avoid duplicates
-  // It removes all old content, ensuring the grid only contains newly 
-    // saved posters when displaySavedPosters() runs
+                                // It removes all old content, ensuring the grid only contains newly 
+                                  // saved posters when displaySavedPosters() runs
     savedPosters.forEach(function (poster) { // Loops through each saved poster
   var posterElement = document.createElement('div'); // creates a new <div> element in memory 
     // (not visible on the page yet)
-  posterElement.classList.add('mini-poster'); // Use the correct class
-// vvv Using innerHTML to add poster content (image,title,quote) vvv 
-  posterElement.innerHTML = ` 
-    <img src="${poster.imageURL}" alt="Saved poster image">
-    <h2>${poster.title}</h2>
-    <h4>${poster.quote}</h4>
-  `; // *remember the back ticks!!!! (`)
-  savedGrid.appendChild(posterElement); // Add the saved mini poster to the grid 
-  // .appendChild moves an item from one list to another. Can also remove item from list in some cases
-  });
+    posterElement.classList.add('mini-poster'); // Use the correct class
+    posterElement.innerHTML = ` // vvv Using innerHTML to add poster content (image,title,quote) vvv 
+      <img src="${poster.imageURL}" alt="Saved poster image">
+            <h2>${poster.title}</h2>
+            <h4>${poster.quote}</h4>
+    `; // *remember the back ticks!!!! (`)
+    savedGrid.appendChild(posterElement); // Add the saved mini poster to the grid 
+  }); // .appendChild moves an item from one list to another. Can also remove item from list in some cases
 };
 
 function displayUnmotivationalPosters() {
   unmotivationalPostersGrid.innerHTML = ``; //Should clear grid before adding new posters
   // Loop through posters to place into grid
   unmotivationalPosters.forEach(function (poster, index) { // Needs to define index to work with the .splice method below
-    var posterElement = document.createElement('div'); // Creates a new <div> element 
-  posterElement.classList.add('unmotivational-poster'); // Use the correct class
-  // vvv Using innerHTML for Un-Poster content vvv 
-  posterElement.innerHTML = ` 
-    <img src="${poster.img_url}" alt="${poster.name}">
-    <h2>${poster.name}</h2>
-    <h4>${poster.description}</h4>
-    `;  // Add the posters to the grid  // *remember the back ticks!!!! (`)
-  // Add double-click delete functionality
-  posterElement.addEventListener('dblclick', function() {
-    unmotivationalPosters.splice(index, 1);  // Removes element in array at index position
-    posterElement.remove(); // Remove from the DOM
+  
+  var posterElement = document.createElement('div'); // Creates a new <div> element 
+    posterElement.classList.add('unmotivational-poster'); // Use the correct class
+                  
+    posterElement.innerHTML = `    
+    // Un-Poster content vvv 
+      <img src="${poster.img_url}" alt="${poster.name}">
+            <h2>${poster.name}</h2>
+            <h4>${poster.description}</h4>
+      `;  // Add the posters to the grid  // *remember the back ticks!!!! (`)
+
+    posterElement.addEventListener('dblclick', function() {  // Add double-click delete functionality
+      unmotivationalPosters.splice(index, 1);  // Removes element in array at index position
+      posterElement.remove(); // Remove from the DOM
     });
-    unmotivationalPostersGrid.appendChild(posterElement);// Append the poster to the grid
+  unmotivationalPostersGrid.appendChild(posterElement); // Append the poster to the grid
   });
 };
