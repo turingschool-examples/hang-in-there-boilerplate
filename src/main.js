@@ -31,6 +31,7 @@ var savedPostersSection = document.querySelector('.saved-posters-grid')
 
 var unmotivationalSection = document.querySelector('.unmotivational-posters')
 var unmotivationalGrid = document.querySelector('.unmotivational-grid')
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -399,7 +400,7 @@ function displayUnmotivationalPosters() {
   unmotivationalGrid.replaceChildren()
   unmotivationalPosters.forEach((poster) => {
     unmotivationalGrid.innerHTML += 
-        `<article class="mini-poster" id=${poster.id}>
+        `<article class="mini-poster" id="${poster.id}">
         <img src="${poster.imageURL}" alt="nothin' to see here">
         <h2> ${poster.title}</h2>
         <h4> ${poster.quote}</h4>
