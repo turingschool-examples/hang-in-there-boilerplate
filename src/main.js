@@ -313,6 +313,9 @@ unmotivationalBackToMainBtn.addEventListener('click', () => {
 // Make new poster and display
 makePosterBtn.addEventListener('click', userPosterEventHandler);
 
+// Delete unmotivational poster
+unmotivationalPosterDisplay.addEventListener('dblclick', deleteUnmotivPosterEventHandler);
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 
@@ -337,11 +340,21 @@ function savePosterEventHandler() {
   changeView(mainView, savedView);
 }
 
+// Need to cleandata and populate savedUnmotivationalPosters in another place initially
+// Maybe on loadcontent
 function unmotivationalPosterEventHandler() {
   changeView(mainView, unmotivationalView);
   savedUnmotivationalPosters = cleanData(unmotivationalPosters);
   populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters);
 }
+
+// deleteUnmotivationalPoster Event Handler
+// need to remove element from array
+// Repopulate unmotivational page
+function deleteUnmotivPosterEventHandler() {
+  
+}
+
 
 // Select random poster elements and set them as currentPoster object
 function getRandomPoster(imgsArray, titlesArray, quotesArray) {
@@ -430,3 +443,6 @@ function cleanData(array) {
   console.log(cleanedArray);
   return cleanedArray;
 }
+
+// delete from array function
+// Take in parameters of array and element to be deleted
