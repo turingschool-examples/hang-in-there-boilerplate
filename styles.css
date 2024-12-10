@@ -58,13 +58,13 @@ button:hover {
 .poster-quote {
   color: white;
   line-height: 1;
-  width: 90%;
+  width: 80%;
 }
 
 .poster-title {
-  font-size: 60px;
+  font-size: 50px;
   font-weight: normal;
-  letter-spacing: 20px;
+  letter-spacing: 10px;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
