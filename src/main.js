@@ -591,11 +591,19 @@ function addUnMoPoster(postersArray, containerElement) {
 // });
 
 function deleteUnMoPoster(unMoPoster) {
-  console.log('the deleteUnMoPoster has been invoked')
-  console.log(unMoPoster)
+  console.log('the deleteUnMoPoster has been invoked');
+  console.log('unMoPoster: ', unMoPoster);
+  console.log('unMoPoster id: ', unMoPoster.id);
+  console.log('og unmo posters: ', unmotivationalPosters)
   //remove unMoPoster from DOM
-  unMoPostersGrid.removeChild(unMoPoster)
+  unMoPostersGrid.removeChild(unMoPoster);
   //remove same poster from unmo posters array with filter()
+  const posterTitle = unMoPoster.querySelector('h2').textContent 
+  unmotivationalPosters = unmotivationalPosters.filter(
+    poster => poster.title !== posterTitle
+  );
+
+  console.log("Updated unmo posters:", unmotivationalPosters);
 }
 
 // function addUnMoPoster2 () {
