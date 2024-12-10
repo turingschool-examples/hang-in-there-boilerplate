@@ -31,20 +31,21 @@ Here, I have created a webpage that will display a random poster with a random i
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
 Want to add to this or see how it works? 
-1.	Google Chrome / Firefox / Edge:
-        •	Shortcut: Cmd + Option + I
-        •	Shortcut: Ctrl + Shift + I
+1.	Google Chrome / Firefox / Edge: Dev tools
+    - Shortcut: Cmd + Option + I
+    - Shortcut: Ctrl + Shift + I
 2.  Copy the Repository URL
 	1.	Go to the GitHub website.
-	2.	Navigate to the repository you want to clone.
+	2.	Navigate to the repository 'git@github.com:shadeauchristensen/hang-in-there-boilerplate.git'
 	3.	Click the green Code button.
 	4.	Choose one of the following methods:
-        •	HTTPS: Copy the URL (recommended for beginners).
-        •	SSH: Use this if you’ve set up SSH keys.
-        •	GitHub CLI: Use this if you prefer CLI commands.
+        - HTTPS: Copy the URL (recommended for beginners).
+        - SSH: Use this if you’ve set up SSH keys.
+        - GitHub CLI: Use this if you prefer CLI commands.
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
+![Just a sneak peak](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcG54bXVhdTdsNG1rbGdleXZrYXl3Z3YwZWlyd2V0dDNrM2gycDM1dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/y6SMp8c47Wguh5sGHk/giphy.gif)
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
