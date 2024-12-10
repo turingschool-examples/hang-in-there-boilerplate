@@ -337,7 +337,6 @@ function userPosterEventHandler() {
 function savePosterEventHandler() {
   addToSaved();
   populatePosters(savedPostersDisplay, savedPosters);
-  changeView(mainView, savedView);
 }
 
 // Need to cleandata and populate savedUnmotivationalPosters in another place initially
@@ -352,9 +351,8 @@ function unmotivationalPosterEventHandler() {
 // need to remove element from array
 // Repopulate unmotivational page
 function deleteUnmotivPosterEventHandler() {
-  
-}
 
+}
 
 // Select random poster elements and set them as currentPoster object
 function getRandomPoster(imgsArray, titlesArray, quotesArray) {
@@ -446,3 +444,10 @@ function cleanData(array) {
 
 // delete from array function
 // Take in parameters of array and element to be deleted
+function deletePoster(targetPoster, array) {
+  var updatedArray = array.filter((poster) => {
+    return poster.id !== targetPoster.id
+  });
+  
+  return updatedArray;
+}
