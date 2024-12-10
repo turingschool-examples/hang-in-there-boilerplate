@@ -65,7 +65,7 @@ button:hover {
   font-size: 60px;
   font-weight: normal;
   letter-spacing: 20px;
-  margin-bottom: 10px;
+  margin: auto;
   text-transform: uppercase;
 }
 
@@ -143,4 +143,41 @@ button:hover {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+
+.unmotivational-posters {
+  padding: 10px;
+  margin: 10px;
+}
+
+.unmotivational-poster img {
+  height: 250px;
+  width: 395px;
+  margin: 8px;
+}
+
+.unmotivational-poster {
+  background: rgb(134, 133, 133);
+  color: white;
+  border-radius: 15px;
+  padding: 35px;
+}
+
+.unmotivational-posters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 12px;
+  grid-gap: 10px;
+}
+
+button.back-to-main-unmotivational {
+  margin: 10px;
+}
+
+.unmotivational-poster h2 {
+  color: black;
+  font-size: 34px;
+  font-weight: 100;
+  letter-spacing: 4px;
+  padding: 10px;
 }
