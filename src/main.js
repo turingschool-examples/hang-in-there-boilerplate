@@ -408,9 +408,7 @@ function displayUnmotivationalPosters() {
 }
 
 function deleteUnmotivationalPoster(event) {
-  index = unmotivationalPosters.findIndex((poster) => {
-    return poster.index === event.target
-  })
-  unmotivationalPosters.splice(index, 1)
+  event.target.id
+  unmotivationalPosters.splice(event.target.id, 1)
   displayUnmotivationalPosters()
 }
