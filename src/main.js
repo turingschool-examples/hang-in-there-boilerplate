@@ -382,13 +382,25 @@ function getRandomIndex(array) {
 }
 function cleanData() {
   unmotivationalPosters.forEach(poster => {
+    let title = poster.name;
+    let quote = poster.description;
+    let image = poster.img_url;
+
+    // unmotivationalPostersCleaned.push{title: (quote, image)}
+
+    unmotivationalPostersCleaned.push({
+      title: title,
+      quote: quote,
+      image: image,
+    });
+
     let miniPosterCleanHTML =
     `<article class="unmotivational-mini-poster" id=${Date.now()}>
       <img class="unmotivational-mini-poster img" src="${poster.img_url}">
       <h2 class="unmotivational-mini-poster">${poster.name}</h2>
       <h4 class="unmotivational-mini-poster">${poster.description}</h4>
     </article>`;
-    
+
     unmotivationalMiniPosterShell.innerHTML += miniPosterCleanHTML;
   })
 }
