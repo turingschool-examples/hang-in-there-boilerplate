@@ -343,6 +343,7 @@ function userPosterEventHandler() {
 function savePosterEventHandler() {
   addToSaved();
   populatePosters(savedPostersDisplay, savedPosters);
+  changeView(mainView, savedView);
 }
 
 // Need to cleandata and populate savedUnmotivationalPosters in another place initially
