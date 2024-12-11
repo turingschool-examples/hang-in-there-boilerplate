@@ -1,46 +1,32 @@
-# Hang In There
-
-A boilerplate repo. 
-
-## Set Up
-
-1. Fork this repository
-2. Clone down your new, forked repo
-3. `cd` into the repository
-4. Open it in your text editor
-5. Add the instructors as collaborators on the repository
-
-Project spec & rubric can be found [here](https://curriculum.turing.edu/module2/projects/hang-in-there/index)
-
-To view your project:
-
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
-  
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
-______________________________________________________  
-
 # Hang in There  
 
 ### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+This project randomizes classic motivational posters for those in need of a pick-me-up... and offers an "un"-motivational poster section for their cynical friends! Features include a "create your own" page, where users can provide the link to a photo online and enter their own title and quote to display their own motivational (or unmotivational) posters. Users can also save favorite posters to revisit later. 
 
 ### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
+*For installation on Apple products only.*
+1.  To download this program onto your computer, copy and paste `git@github.com:jbleggi/hang-in-there.git` into your computer's terminal. 
+2.  Navigate into the `hang-in-there` folder on the terminal. 
+3.  Copy and paste `open index.html` to interact with the program on your internet browser.
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
+![View of Saved Posters section showing user-created poster](./readme-imgs/saved-posters-view.png)
 
 ### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+This project was created in 6 days (between December 4 and 10, 2024) as a solo project assigned during Module 2 (of 4) at the [Turing School of Development and Design](https://turing.edu/). 
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
+**Jillian Bleggi**  
+[See my other projects on GitHub](https://github.com/jbleggi)  
+[Find me on LinkedIn](https://www.linkedin.com/in/jillianbleggi/)
 
 ### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
+-   Practice reading, understanding, and using existing code
+-   Write clean, DRY JavaScript
+-   Build out functionality using functions that show trends toward SRP
+    -   Manipulate the page after it has loaded by adding, removing, and updating elements on the DOM
+    -   Use array prototype iterator methods to reformat data and display it on the DOM
+-   Use CSS and HTML to match styling and layout of provided comps
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+As my first project using Javascript, CSS, and HTML, I am proud of the progress and functionality I was able to create in a few days. Challenges included creating the double-click delete feature in the unmotivational posters section and refactoring to make the Javascript code readable. I enjoyed being able to design and manipulate the styles on the page by using an external style sheet, and was pleased how quickly I was able to pick up CSS styling with this project. 
