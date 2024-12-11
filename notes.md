@@ -23,3 +23,15 @@ Breaking it Down:
     3. Manipulating the Target: Since event.target is an object representing that element, you can use it to access and manipulate the element. For example, you can change its text, color, or remove it from the page.
 
 In Summary: It tells you which element on the webpage triggered an event, like a click, a key press, or a hover.This is helpful when you don’t know ahead of time which element will be clicked. So, by accessing event.target, you can manipulate the element’s properties (like its text, styles, or classes), and these changes happen right in the DOM, which is how they appear on the page.
+
+line 391 = event.target.closest(".unmotivational-mini")
+
+    - .closest(): Finds the closest container (parent, grandparent, etc.) element that shares a class with the element that was targeted (the one that was clicked or triggered the event).
+
+    - It will then return the first container element that matches the selectors argument.
+
+    - If no match, it moves up to the parent element, then to the grandparent, and continues upwards through the DOM tree until it finds a match, and it will return that element.
+
+    - If not match is found throughout the DOM tree then it will return null.
+
+
