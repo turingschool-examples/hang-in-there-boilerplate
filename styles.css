@@ -116,6 +116,11 @@ button:hover {
   padding: 20px;
 }
 
+.unmotivational-posters-grid {
+display: flex;
+flex-wrap: wrap;
+}
+
 .mini-poster {
   background: black;
   color: white;
