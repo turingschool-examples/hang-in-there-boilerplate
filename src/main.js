@@ -350,7 +350,7 @@ function savePosterEventHandler() {
 // Maybe on loadcontent
 function unmotivationalPosterEventHandler() {
   changeView(mainView, unmotivationalView);
-  populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters);
+  populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters, 'unmotivational');
 }
 
 // deleteUnmotivationalPoster Event Handler
@@ -360,7 +360,7 @@ function deleteUnmotivPosterEventHandler(event) {
   var targetedPoster = targetPoster(event);
   
   deletePoster(targetedPoster, savedUnmotivationalPosters);
-  populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters);
+  populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters, 'unmotivational');
 }
 
 // Select random poster elements and set them as currentPoster object
@@ -431,12 +431,12 @@ function createMiniPoster(poster, extraClass = '') {
 }
 
 // Add each mini to saved view 
-function populatePosters(parentElement, posterArray) {
+function populatePosters(parentElement, posterArray, extraClass = '') {
   // Refresh display before repopulating
   parentElement.innerHTML = '';
 
   for (let i = 0; i < posterArray.length; i++) {
-    let miniPoster = createMiniPoster(posterArray[i]);
+    let miniPoster = createMiniPoster(posterArray[i], extraClass);
     parentElement.innerHTML += miniPoster;
   }
 }
