@@ -357,17 +357,9 @@ function unmotivationalPosterEventHandler() {
 // need to remove element from array
 // Repopulate unmotivational page
 function deleteUnmotivPosterEventHandler(event) {
-  var targetPoster;
+  var targetedPoster = targetPoster(event);
   
-  if (event.target.classList.contains('mini-poster')) {
-    targetPoster = event.target;
-  } else if (event.target.parentElement.classList.contains('mini-poster')) {
-    targetPoster = event.target.parentElement;
-  } else {
-    displayMessage('Error: Double click a poster to delete it!');
-  }
-
-  deletePoster(targetPoster, savedUnmotivationalPosters);
+  deletePoster(targetedPoster, savedUnmotivationalPosters);
   populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters);
 }
 
@@ -467,7 +459,16 @@ function deletePoster(targetPoster, array) {
   });
 }
 
-
+// Determine target poster
+function targetPoster(event) {
+  if (event.target.classList.contains('mini-poster')) {
+    return event.target;
+  } else if (event.target.parentElement.classList.contains('mini-poster')) {
+    return event.target.parentElement;
+  } else {
+    displayMessage('Error: Double click a poster to delete it!');
+  }
+}
 
 // Display messages to user
 function displayMessage(message) {
