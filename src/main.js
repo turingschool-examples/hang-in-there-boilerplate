@@ -389,7 +389,7 @@ function displayUnmotivationalPosters() {
 
 function deleteUnmotivationalPoster(event) {
   unmotivationalPosters = unmotivationalPosters.filter((poster) => {
-    return poster.id.toString() !== event.target.closest(".unmotivational-mini").id
+    return poster.id.toString() !== event.target.closest(".unmotivational-mini").id.toString()
   })
   displayUnmotivationalPosters()
 }
