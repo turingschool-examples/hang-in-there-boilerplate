@@ -150,14 +150,48 @@ button:hover {
  .unmo-posters-grid {
   display: flex;
   flex-wrap: wrap;
-  grid-gap: 20px;
+  grid-gap: 10px;
   padding: 20px;
+  
 }
 
-/* .mini-unmo-poster {
-  background: black;
+.mini-unmo-poster {
+  background: #7c7c7c;
   color: white;
   height: 340px;
   padding: 25px;
   width: 425px;
-} */
+  border-radius: 15px;
+}
+
+.mini-unmo-poster img {
+  height:200px;
+  width: 300px;
+}
+
+.mini-unmo-poster h2,
+.delete {
+  color: rgb(4, 4, 4);
+  line-height: 1;
+  font-weight: 900;
+  width: 90%;
+  letter-spacing: 5px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.mini-unmo-poster p,
+.delete {
+  color: white;
+  line-height: 1;
+  width: 90%;
+  margin-top: 15px;
+} 
+
+/* .mini-unmo-poster h2 {
+  font-size: 30px;
+  font-weight: normal;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+} */ */ */ */

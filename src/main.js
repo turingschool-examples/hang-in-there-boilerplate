@@ -518,7 +518,7 @@ function renderUnMoPoster(postersArray, containerElement) {
   postersArray.forEach((poster, index) => {
     // Create a new DOM element for the poster
     const posterElement = document.createElement('article');
-    posterElement.classList.add('mini-poster');
+    posterElement.classList.add('mini-unmo-poster');
     // Add id (for queryselector)  
     posterElement.id = (poster.id); 
 
