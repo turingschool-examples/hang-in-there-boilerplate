@@ -1,35 +1,41 @@
-// query selector variables go here 👇
+// Query Selector Variables  
+
+  //Main poster
 var mainPosterContainer = document.querySelector(".main-poster");
 var posterImage = document.querySelector(".poster-img");
 var posterTitle = document.querySelector(".poster-title");
 var posterQuote = document.querySelector(".poster-quote");
+
+  //Random posters
 var anotherRandomPosterButton = document.querySelector(".show-random");
+
+  //Make your own posters
 var makeYourOwnPosterButton = document.querySelector(".show-form");
 var makeYourOwnPosterForm = document.querySelector(".poster-form");
 var nevermindTakeMeBackButton = document.querySelector(".show-main");
-var showSavedPostersButton = document.querySelector(".show-saved");
-var savedPostersSection = document.querySelector(".saved-posters");
-var backToMainButton = document.querySelector(".back-to-main");
-var showMyPosterButton = document.querySelector(".make-poster");
 var imageInput = document.querySelector("#poster-image-url");
 var titleInput = document.querySelector("#poster-title");
 var quoteInput = document.querySelector("#poster-quote");
+var showMyPosterButton = document.querySelector(".make-poster");
+
+  //Saved posters
+var showSavedPostersButton = document.querySelector(".show-saved");
+var savedPostersSection = document.querySelector(".saved-posters");
+var backToMainButton = document.querySelector(".back-to-main");
 var saveThisPosterButton = document.querySelector(".save-poster");
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
-// UnMo Section query selectors 
+  // UnMo Section query selectors 
 var showUnMoPostersButton = document.querySelector('.show-unmo-posters');
 var unMoPostersSection = document.querySelector(".unmo-posters");
 var unMoBackToMainButton = document.querySelector(".unmo-back-to-main");
 var unMoPostersGrid = document.querySelector(".unmo-posters-grid");
 
-// UnMo Posters query selectors  
+  // UnMo Posters query selectors  
 var unMoPoster_0 = document.querySelector("#poster_0");
 
 
-// we've provided you with some data to work with 👇
-// tip: you can tuck this data out of view with the dropdown found near 
-// the line number where the variable is declared 
+// Raw Data Sets
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -250,12 +256,15 @@ let unmotivationalPosters = [
   }
 ];
 
+// Global Variables 
 var savedPosters = [];
 var currentPoster;
+var cleanedUnMoPosters = cleanData(unmotivationalPosters)
 
-// event listeners go here 👇
-document.addEventListener("DOMContentLoaded", randomPosterDetails);
-anotherRandomPosterButton.addEventListener("click", randomPosterDetails);
+
+// Event Listeners  
+document.addEventListener("DOMContentLoaded", generateRandomPoster);
+anotherRandomPosterButton.addEventListener("click", generateRandomPoster);
 makeYourOwnPosterButton.addEventListener("click", makeYourOwnPosterClick);
 showSavedPostersButton.addEventListener("click", showSavedPostersButtonClick);
 nevermindTakeMeBackButton.addEventListener("click", nevermindTakeMeBackButtonClick);
@@ -264,6 +273,7 @@ showMyPosterButton.addEventListener("click", showMyPosterClick);
 saveThisPosterButton.addEventListener("click", saveThisPosterClick);
 showUnMoPostersButton.addEventListener("click", showUnMoPostersClick)
 unMoBackToMainButton.addEventListener("click", unMoBackToMainButtonClick);
+unMoPostersGrid.addEventListener('dblclick', function(e) {deleteUnMoPoster(e)})
 
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
@@ -278,13 +288,13 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-function randomPosterDetails () {
-  //create random deets 
+function generateRandomPoster () {
+  //create randomized poster deets 
   var imageURL = images[getRandomIndex(images)];
   var title = titles[getRandomIndex(titles)];
   var quote = quotes[getRandomIndex(quotes)];
 
-  //create a random poster and assignt it to current poster
+  //create a random poster and assignt it to current poster based on the above random details
   currentPoster = createPoster(imageURL, title, quote);
 
   //update the DOM
@@ -297,17 +307,19 @@ function randomPosterDetails () {
 function makeYourOwnPosterClick () {
   //when this method is invoked by a click, the original poster disappears
   hidePoster (mainPosterContainer) 
-  //and the form APPEARS in its place
+  //and the make your own poster form APPEARS 
   revealForm (makeYourOwnPosterForm)
 }
 
 function hidePoster (element) {
-  //poster disappears to make space for form 
+  //helper method 
+  //makes main poster disappear in order to make space for the make your own poster form 
   console.log('the hide poster method has been invoked')
   element.classList.add("hidden")
 }
 
 function revealForm (element) {
+  //helper method 
   //form's inputs appear
   console.log('the reveal form method has been invoked')
   element.classList.remove("hidden")
@@ -316,7 +328,7 @@ function revealForm (element) {
 function showSavedPostersButtonClick () {
   hidePoster (mainPosterContainer);
   showSavedPostersSection (savedPostersSection);
-}
+} 
 
 function showSavedPostersSection (element) {
   console.log('the show saved posters method has been invoked')
@@ -357,34 +369,35 @@ function showMyPosterClick(event) {
   console.log('the Show My Poster Click method has been invoked')
   // console.log('image input: ', imageInput)
   event.preventDefault();
-  //user poster deets
+
+  //save user poster deets
   var imageInputValue = imageInput.value;
   var titleInputValue = titleInput.value;
   var quoteInputValue = quoteInput.value;
-  console.log('title input: ', titleInputValue)
-  console.log('quote input: ', quoteInputValue)
-   //create user's poster
+  
+  //create user's poster
   currentPoster = createPoster(imageInputValue, titleInputValue, quoteInputValue);
-  console.log('image url: ', currentPoster.imageURL)
-   //update the DOM
+  
+  //save data
+     //save title input to data model
+   titles.push(currentPoster.title)
+     //save image input  
+   images.push(currentPoster.imageURL)
+     //save quote input 
+   quotes.push(currentPoster.quote)
+   
+  //update the DOM
    posterImage.src = currentPoster.imageURL;
    posterTitle.innerText = currentPoster.title;
    posterQuote.innerText = currentPoster.quote;
 
-  //save title input  
-  console.log('current poster title: ', currentPoster.title)
-  titles.push(currentPoster.title)
-  //save image input  
-  images.push(currentPoster.imageURL)
-  //save quote input 
-  console.log('updated quote array: ', quotes)
-  quotes.push(currentPoster.quote)
-  
   nevermindTakeMeBackButtonClick (); 
 }
 
 function saveThisPosterClick () {
+
   console.log('saved poster array: ', savedPosters)
+  console.log('current Poster: ', currentPoster)
   //add current poster to saved poster array
   if (!savedPosters.some(poster => poster.id === currentPoster.id)) {
     savedPosters.push(currentPoster);
@@ -455,26 +468,21 @@ function updateGrid() {
 let showUnMoPostersClickCounter = 0; 
 
 function showUnMoPostersClick () {
-  console.log('the showUnMoPostersClick function has been invoked')
   showUnMoPostersClickCounter++; // Increment the counter on each click
   hidePoster (mainPosterContainer);
-  showUnMoPosters (unMoPostersSection);
+  // showUnMoPosters (unMoPostersSection);
+  unMoPostersSection.classList.remove("hidden")
 
-  //get cleaned data
-  var cleaUnMotivationalPosters = cleanData (unmotivationalPosters);
-  console.log(cleaUnMotivationalPosters)
+  //retrieve cleaned data 
+  cleanedUnMoPosters
+  // var cleanUnMotivationalPosters = cleanData (unmotivationalPosters);
 
-  //add posters
+  //add posters ONCE
   if (showUnMoPostersClickCounter < 2) {
-  addUnMoPoster(cleaUnMotivationalPosters, unMoPostersGrid)
+  renderUnMoPoster(cleanedUnMoPosters, unMoPostersGrid)
   }
 }
 
-function showUnMoPosters (element) {
-  console.log('the showUnMoPosters method has been invoked')
-  //shows UnMo poster grid
-  element.classList.remove("hidden")
-}
 
 function unMoBackToMainButtonClick () {
   console.log('the UnMo back to main method has been invoked')
@@ -484,75 +492,35 @@ function unMoBackToMainButtonClick () {
 }
 
 
-// function cleanData () {
-//   console.log('the cleanData method has been invoked')
-//   //iterate though the array, unmotivationalPosters to 
-//   //clean the data to match poster, 
-
-//   console.log(unmotivationalPosters)
-//   const cleanedUnMoPosters = unmotivationalPosters.map((unMoPoster, index) => {
-//     console.log('date now: ', Date.now() + index);
-//     console.log('image url: ', unMoPoster.img_url);
-//     console.log('title: ', unMoPoster.name);
-//     console.log('quote: ', unMoPoster.description);
-
-//     //return the cleaned unmo poster object  
-//     return {
-//       id: Date.now() + index,
-//       imageURL: unMoPoster.img_url,
-//       title: unMoPoster.name,
-//       quote: unMoPoster.description,
-//     };
-//   })
-//   console.log(cleanedUnMoPosters)
-  
-//   //invoke an updateUnMoGrid where all the items in the array are added to the UnMo grid
-
-// }
-
 function cleanData (posterData) {
   console.log('the cleanData method has been invoked')
   //iterate though the array, unmotivationalPosters to 
   //clean the data to match poster, 
+  //try unmotivationalPosters.map
 
   console.log(posterData)
-  var cleanedUnMoPosters = posterData.map((poster, index) => {
-    console.log('date now: ', Date.now() + index);
-    console.log('image url: ', poster.img_url);
-    console.log('title: ', poster.name);
-    console.log('quote: ', poster.description);
+  var cleanedPosters = posterData.map((poster, index) => {
 
-    //return the cleaned unmo poster object data  
+    //return the cleaned poster object data  
     return {
+      id: Math.random(),
       imageURL: poster.img_url,
       title: poster.name,
       quote: poster.description,
     };
     
   })
-  console.log(cleanedUnMoPosters)
-  return cleanedUnMoPosters
+  // console.log(cleanedUnMoPosters)
+  return cleanedPosters
 }
 
-// function createUnMoPoster(posterDataArray) {
-//   return posterDataArray.map(poster => {
-//     return {
-//       id: Date.now(), 
-//       imageURL: poster.imageURL, 
-//       title: poster.title, 
-//       quote: poster.quote
-//     }
-//   })
-// }
-
-
-function addUnMoPoster(postersArray, containerElement) {
+function renderUnMoPoster(postersArray, containerElement) {
   postersArray.forEach((poster, index) => {
     // Create a new DOM element for the poster
-    const posterElement = document.createElement('div');
+    const posterElement = document.createElement('article');
     posterElement.classList.add('mini-poster');
     // Add id (for queryselector)  
-    posterElement.id = (`poster_${index}`); 
+    posterElement.id = (poster.id); 
 
     // Add an image
     const img = document.createElement('img');
@@ -578,6 +546,8 @@ function addUnMoPoster(postersArray, containerElement) {
   });
   }
 
+  
+
 // unmo event listeners  
 // unMoPoster_0.addEventListener("dblclick", () => deleteUnMoPoster(unMoPoster_0))
 
@@ -587,24 +557,52 @@ function addUnMoPoster(postersArray, containerElement) {
 //     unMoPoster_0.addEventListener("click", () => deleteUnMoPoster(unMoPoster_0));
 //   } else {
 //     console.error("#poster_0 not found");
-//   }
+//   } 
 // });
 
-function deleteUnMoPoster(unMoPoster) {
-  console.log('the deleteUnMoPoster has been invoked');
-  console.log('unMoPoster: ', unMoPoster);
-  console.log('unMoPoster id: ', unMoPoster.id);
-  console.log('og unmo posters: ', unmotivationalPosters)
-  //remove unMoPoster from DOM
-  unMoPostersGrid.removeChild(unMoPoster);
-  //remove same poster from unmo posters array with filter()
-  const posterTitle = unMoPoster.querySelector('h2').textContent 
-  unmotivationalPosters = unmotivationalPosters.filter(
-    poster => poster.title !== posterTitle
-  );
-
-  console.log("Updated unmo posters:", unmotivationalPosters);
+function deleteUnMoPoster(e) {
+  var targetPoster = e.target.closest('article')
+  console.log('targetPoster: ', targetPoster)
+  e.target.closest('article').remove()
+  //try a for each where you try to match up the id of the poster with the id in the array
+  //and then splice it out
+  for (var i=0; i<cleanedUnMoPosters.length; i++) {
+    console.log('targetPoster id: ', targetPoster.id)
+    console.log('cleanedUnMoPosters[i].id: ', cleanedUnMoPosters[i].id)
+    if (cleanedUnMoPosters[i].id == targetPoster.id) {
+      cleanedUnMoPosters.splice(i, 1)
+    } 
+  } 
+  console.log('cleaned UnMoPosters: ', cleanedUnMoPosters)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function deleteUnMoPoster(unMoPoster) {
+//   //remove same poster from unmo posters array with filter()
+//   const posterTitle = unMoPoster.querySelector('h2').textContent 
+//   unmotivationalPosters = unmotivationalPosters.filter(
+//     poster => poster.title !== posterTitle
+//   );
+
+//  //remove unMoPoster from DOM
+//   unMoPostersGrid.removeChild(unMoPoster);
+
+//   console.log("Updated unmo posters array:", unmotivationalPosters);
+// }
 
 // function addUnMoPoster2 () {
 //   //create random deets for each unmo poster
