@@ -1,34 +1,23 @@
 // query selector variables go here 👇
 var makeOwnPosterButton = document.querySelector('.show-form')
-
 var showRandomPosterButton = document.querySelector('.show-random')
-
 var showSavedPostersButton = document.querySelector('.show-saved')
-
 var toMainFromMakeButton = document.querySelector('.show-main')
 var toMainFromSavedButton = document.querySelector('.back-to-main')
-
 var showMyPosterButton = document.querySelector('.make-poster')
-
 var savePosterButton = document.querySelector('.save-poster')
-
 var unmotivationalButton = document.querySelector('.show-unmotivational')
 var toMainFromUnmotivational = document.querySelector('.back-to-main-unmotivational')
-
 var mainPosterImg = document.querySelector('.poster-img')
 var mainPosterTitle = document.querySelector('h1')
 var mainPosterQuote = document.querySelector('h3')
-
 var mainPage = document.querySelector('.main-poster')
 var makePosterPage = document.querySelector('.poster-form')
 var savedPostersPage = document.querySelector('.saved-posters')
-
 var userInputImg = document.querySelector('#poster-image-url')
 var userInputTitle = document.querySelector('#poster-title')
 var userInputQuote = document.querySelector('#poster-quote')
-
 var savedPostersSection = document.querySelector('.saved-posters-grid')
-
 var unmotivationalSection = document.querySelector('.unmotivational-posters')
 var unmotivationalGrid = document.querySelector('.unmotivational-grid')
 
@@ -131,7 +120,6 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-
 let unmotivationalPosters = [
   {
     name: "FAILURE",
@@ -261,23 +249,15 @@ var currentPoster;
 // event listeners go here 👇
 window.addEventListener('load', changeMainPoster)
 window.addEventListener('load', cleanData)
-
 showRandomPosterButton.addEventListener('click', changeMainPoster)
-
 makeOwnPosterButton.addEventListener('click', toggleOwnPoster)
 toMainFromMakeButton.addEventListener('click', toggleOwnPoster)
-
 showSavedPostersButton.addEventListener('click', toggleSavedPoster)
 toMainFromSavedButton.addEventListener('click', toggleSavedPoster)
-
 showMyPosterButton.addEventListener('click', userPosterCreation)
-
 savePosterButton.addEventListener('click', savePoster)
-
 unmotivationalButton.addEventListener('click', toggleUnmotivational)
-
 toMainFromUnmotivational.addEventListener('click', toggleMainFromUnmotivational)
-
 unmotivationalGrid.addEventListener('dblclick', deleteUnmotivationalPoster)
 
 // functions and event handlers go here 👇
@@ -351,7 +331,6 @@ function userPosterQuote() {
 
 function userPosterCreation(event) {
   event.preventDefault()
-  console.log('is the click working')
   userPosterImg()
   userPosterTitle()
   userPosterQuote()
@@ -397,19 +376,20 @@ function cleanData() {
 }
 
 function displayUnmotivationalPosters() {
+  var index = 0
   unmotivationalGrid.replaceChildren()
   unmotivationalPosters.forEach((poster) => {
     unmotivationalGrid.innerHTML += 
-        `<article class="mini-poster" id="${poster.id}">
-        <img src="${poster.imageURL}" alt="nothin' to see here">
-        <h2> ${poster.title}</h2>
-        <h4> ${poster.quote}</h4>
+        `<article class="unmotivational-mini ${index}" id="${poster.id}">
+        <img class="${index}" src="${poster.imageURL}" alt="nothin' to see here">
+        <h2 class="${index}" > ${poster.title}</h2>
+        <h4 class="${index}" > ${poster.quote}</h4>
         </article>`
+        index += 1
     })
 }
 
 function deleteUnmotivationalPoster(event) {
-  event.target.id
-  unmotivationalPosters.splice(event.target.id, 1)
+  unmotivationalPosters.splice(event.target.classList, 1)
   displayUnmotivationalPosters()
-}
+} 
