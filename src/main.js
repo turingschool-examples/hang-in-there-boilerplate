@@ -420,8 +420,8 @@ function addToSaved() {
 }
 
 // For each savedPoster, create mini poster object innerHTML
-function createMiniPoster(poster) {
-  return `<div class="mini-poster" id=${poster.title}>
+function createMiniPoster(poster, extraClass = '') {
+  return `<div class="mini-poster ${extraClass}" id=${poster.title}>
       <img src=${poster.imageURL} alt="Mini Image" />
       <h2>${poster.title}</h2>
       <h4>${poster.quote}</h4>
