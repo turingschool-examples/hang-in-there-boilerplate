@@ -374,10 +374,11 @@ function displayUnmotivationalPosters() {
   // Loop through posters to place into grid
   var posterElement = document.createElement('div'); // Creates a new <div> element 
     posterElement.classList.add('unmotivational-poster'); // Use the correct class
-                  
+               
+    // Un-Poster content vvv   
     posterElement.innerHTML = `    
-    // Un-Poster content vvv 
-      <img src="${poster.img_url}" alt="${poster.name}">
+ 
+      <img src="${poster.img_url}" alt="${poster.name}">    
             <h2>${poster.name}</h2>
             <h4>${poster.description}</h4>
       `;  // Add the posters to the grid  // *remember the back ticks!!!! (`)
