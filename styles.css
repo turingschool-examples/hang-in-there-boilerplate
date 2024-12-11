@@ -116,7 +116,7 @@ button:hover {
   grid-gap: 20px;
   padding: 20px;
 }
-.unmotivational-posters-grid {
+.unmotivational-mini-posters {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

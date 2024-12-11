@@ -218,6 +218,8 @@ let unmotivationalPosters = [
     img_url: "./assets/doubt.jpg",
   }
 ];
+let unmotivationalPostersCleaned = [];
+
 var savedPosters = [];
 // query selector variables go here 👇
 let title = document.querySelector(".poster-title");
@@ -231,33 +233,66 @@ var returnHome = document.querySelector(".back-to-main");
 var unmotivationalPostersSection = document.querySelector(".unmotivational-posters");
 var unmotivationalPostersGrid = document.querySelector(".unmotivational-posters-grid");
 var unmotivationalMiniPoster = document.querySelector(".unmotivational-mini-poster");
+var unmotivationalMiniPosterShell = document.querySelector(".unmotivational-mini-posters");
 // USER INPUT
 var inputURL = document.querySelector("#poster-image-url");
 var inputTitle = document.querySelector("#poster-title");
 var inputQuote = document.querySelector("#poster-quote");
 // BUTTON VARIABLES
+var buttonShowRandom = document.querySelector(".show-random");
+var buttonShowForm = document.querySelector(".show-form");
+var buttonMakeYourOwn = document.querySelector(".make-poster");
 var buttonSaveThisPoster = document.querySelector(".save-poster");
 var buttonShowSaved = document.querySelector(".show-saved");
-var buttonShowRandom = document.querySelector(".show-random");
-var buttonDIY = document.querySelector(".show-form");
 var buttonShowUnmo= document.querySelector(".show-unmotivational");
 var buttonShowMain = document.querySelector(".show-main");
 var buttonBackToMain = document.querySelector(".back-to-main");
-var buttonShowMyPoster = document.querySelector(".make-poster");
 var buttonBackToMain2 = document.querySelector(".back-to-main-2");
 // event listeners go here 👇
-buttonShowRandom.addEventListener("click", createRandomPoster);
-buttonDIY.addEventListener("click", unhideForm);
-buttonShowMain.addEventListener("click", returnMain);
+buttonShowRandom.addEventListener("click", displayRandomPoster);
+buttonShowForm.addEventListener("click", unhideForm);
 buttonShowSaved.addEventListener("click", showSaved);
 buttonBackToMain.addEventListener("click", returnMain);
-buttonShowMyPoster.addEventListener("click", createPoster);
+
+buttonMakeYourOwn.addEventListener("click", createPoster);
+buttonShowMain.addEventListener("click", returnMain);
 buttonSaveThisPoster.addEventListener("click", savePoster);
 buttonShowUnmo.addEventListener("click", showUnmotivPosters);
 buttonBackToMain2.addEventListener("click", returnMain);
 
 unmotivationalPostersGrid.addEventListener("dblclick", deletePoster)
+
 // functions and event handlers go here 👇
+function displayRandomPoster() {
+  title.textContent = titles[getRandomIndex(titles)];
+  image.src = images[getRandomIndex(images)];
+  quote.textContent = quotes[getRandomIndex(quotes)];
+}
+function unhideForm() {
+  posterFormSection.classList.remove("hidden");
+  mainPosterSection.classList.add("hidden");
+  savedPostersSection.classList.add("hidden");
+  unmotivationalPostersSection.classList.add("hidden");
+  returnHome.classList.remove("hidden");
+}
+function showSaved() {
+  savedPostersSection.classList.remove("hidden");
+  mainPosterSection.classList.add("hidden");
+  returnHome.classList.remove("hidden");
+  posterFormSection.classList.add("hidden");
+
+  // SEPARATE TO ITS OWN FUNCTION
+  savedPosters.forEach((poster) => {
+    savedPostersGrid.innerHTML += 
+    `<article class="mini-poster">
+        <img class="mini-poster img" src="${poster.image}">
+        <h2 class="mini-poster">${poster.title}</h2>
+        <h4 class="mini-poster">${poster.quote}</h4>
+      </div>`;
+  });
+}
+
+
 function showUnmotivPosters() {
   unmotivationalPostersSection.classList.remove("hidden");
   savedPostersSection.classList.add("hidden");
@@ -342,55 +377,39 @@ function returnMain() {
   savedPostersSection.classList.add("hidden");
   unmotivationalPostersSection.classList.add("hidden");
 }
-function createRandomPoster() {
-  title.textContent = titles[getRandomIndex(titles)];
-  image.src = images[getRandomIndex(images)];
-  quote.textContent = quotes[getRandomIndex(quotes)];
-}
-function unhideForm() {
-  posterFormSection.classList.remove("hidden");
-  mainPosterSection.classList.add("hidden");
-  savedPostersSection.classList.add("hidden");
-  returnHome.classList.remove("hidden");
-}
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 function cleanData() {
   unmotivationalPosters.forEach(poster => {
     let miniPosterCleanHTML =
-    `<article class="unmotivational-mini-poster" id=${poster.name}>
+    `<article class="unmotivational-mini-poster" id=${Date.now()}>
       <img class="unmotivational-mini-poster img" src="${poster.img_url}">
       <h2 class="unmotivational-mini-poster">${poster.name}</h2>
       <h4 class="unmotivational-mini-poster">${poster.description}</h4>
-    </article>`
-    unmotivationalPostersGrid.innerHTML += miniPosterCleanHTML;
+    </article>`;
+    
+    unmotivationalMiniPosterShell.innerHTML += miniPosterCleanHTML;
   })
 }
 
-function deletePoster(event) { 
-  // NOT QUITE WORKING-- WILL REMOVE POSTER IF CHILDREN ARE CLICKED BUT NOT PARENT
-  // REVISIT AFTER LESSON REVIEW
-  // WHAT DOES EVENT.TARGET.CLOSEST DO? NEED TO REVIEW MORE IN DEPTH
-  let posterToRemove = event.target.parentElement;
-  if (posterToRemove && posterToRemove.classList.contains("unmotivational-mini-poster")) {
-    posterToRemove.remove();
-    console.log(unmotivationalPostersGrid.childElementCount);
-  }
-}
-  // unmotivationalPostersGrid.removeChild(unmotivationalMiniPoster)
-  //dblclick anywhere on poster to delete-- image, text, background
+function deletePoster(event) {
+  console.log(event.target.closest)
 
-// USING THIS MAKES EACH CHILD DELETE INSTEAD OF THE WHOLE POSTER
-  // function deletePoster(event) {
-  //   // Use closest() to find the nearest .unmotivational-mini-poster container
-  //   const posterToRemove = event.target.closest(".unmotivational-mini-poster");
-  
-  //   // If the poster exists, remove it (along with its children)
-  //   if (posterToRemove) {
-  //     posterToRemove.remove();
-  //     console.log(unmotivationalPostersGrid.childElementCount);  // Log the remaining posters
-  //   }
+  // console.log(`target: `, event.target)
+  // let parent = event.target.parentNode
+  // let children = event.target.childNodes
+  // console.log('children:', children)
+  // console.log('parent: ', parent)
+  // console.log('parent id: ', parent.id)
+  // console.log('class name includes? ', event.target.className.includes('unmotivational-mini'))
+
+  // // if (parent) {
+  //   event.target.parentNode.remove();
+  // } else if (event.target.className.includes('unmotivational-mini')) {
+  //   children.remove();
   // }
-  
-window.onload = createRandomPoster
+
+}
+
+window.onload = displayRandomPoster
