@@ -252,13 +252,13 @@ var buttonBackToMain2 = document.querySelector(".back-to-main-2");
 buttonShowRandom.addEventListener("click", displayRandomPoster);
 buttonShowForm.addEventListener("click", unhideForm);
 buttonShowSaved.addEventListener("click", showSaved);
-buttonBackToMain.addEventListener("click", returnMain);
-
 buttonMakeYourOwn.addEventListener("click", createPoster);
-buttonShowMain.addEventListener("click", returnMain);
 buttonSaveThisPoster.addEventListener("click", savePoster);
 buttonShowUnmo.addEventListener("click", showUnmotivPosters);
+// back to main buttons
+buttonShowMain.addEventListener("click", returnMain);
 buttonBackToMain2.addEventListener("click", returnMain);
+buttonBackToMain.addEventListener("click", returnMain);
 
 unmotivationalPostersGrid.addEventListener("dblclick", deletePoster)
 
