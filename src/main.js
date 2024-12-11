@@ -376,20 +376,20 @@ function cleanData() {
 }
 
 function displayUnmotivationalPosters() {
-  var index = 0
   unmotivationalGrid.replaceChildren()
   unmotivationalPosters.forEach((poster) => {
     unmotivationalGrid.innerHTML += 
-        `<article class="unmotivational-mini ${index}" id="${poster.id}">
-        <img class="${index}" src="${poster.imageURL}" alt="nothin' to see here">
-        <h2 class="${index}" > ${poster.title}</h2>
-        <h4 class="${index}" > ${poster.quote}</h4>
+        `<article class="unmotivational-mini" id="${poster.id}">
+        <img src="${poster.imageURL}" alt="nothin' to see here">
+        <h2> ${poster.title}</h2>
+        <h4> ${poster.quote}</h4>
         </article>`
-        index += 1
     })
 }
 
 function deleteUnmotivationalPoster(event) {
-  unmotivationalPosters.splice(event.target.classList, 1)
+  unmotivationalPosters = unmotivationalPosters.filter((poster) => {
+    return poster.id.toString() !== event.target.closest(".unmotivational-mini").id
+  })
   displayUnmotivationalPosters()
-} 
+}
