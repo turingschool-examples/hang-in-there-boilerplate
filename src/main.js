@@ -343,6 +343,7 @@ function userPosterEventHandler() {
 function savePosterEventHandler() {
   addToSaved();
   populatePosters(savedPostersDisplay, savedPosters);
+  changeView(mainView, savedView);
 }
 
 // Need to cleandata and populate savedUnmotivationalPosters in another place initially
@@ -356,8 +357,9 @@ function unmotivationalPosterEventHandler() {
 // need to remove element from array
 // Repopulate unmotivational page
 function deleteUnmotivPosterEventHandler(event) {
-  var targetPoster = event.target.parentElement;
-  deletePoster(targetPoster, savedUnmotivationalPosters);
+  var targetedPoster = targetPoster(event);
+  
+  deletePoster(targetedPoster, savedUnmotivationalPosters);
   populatePosters(unmotivationalPosterDisplay, savedUnmotivationalPosters);
 }
 
@@ -455,4 +457,20 @@ function deletePoster(targetPoster, array) {
   savedUnmotivationalPosters = array.filter((poster) => {
     return poster.title !== targetPoster.id;
   });
+}
+
+// Determine target poster
+function targetPoster(event) {
+  if (event.target.classList.contains('mini-poster')) {
+    return event.target;
+  } else if (event.target.parentElement.classList.contains('mini-poster')) {
+    return event.target.parentElement;
+  } else {
+    displayMessage('Error: Double click a poster to delete it!');
+  }
+}
+
+// Display messages to user
+function displayMessage(message) {
+  alert(message);
 }
