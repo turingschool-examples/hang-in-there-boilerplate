@@ -380,7 +380,6 @@ function showUnmotivPosters() {
   posterFormSection.classList.add("hidden");
 }
 
-
 function cleanData() {
   unmotivationalPosters.forEach(poster => {
     let title = poster.name;
@@ -388,16 +387,7 @@ function cleanData() {
     let image = poster.img_url;
     let id = Math.floor(Math.random() * 100000);
 
- // Check if the poster already exists 
-//  const exists = unmotivationalPostersCleaned.some(poster => poster.title === title);
-//  if !exists, push ... 
-
-    unmotivationalPostersCleaned.push({
-      title: title,
-      quote: quote,
-      image: image,
-      id: id,
-    });
+    unmotivationalPostersCleaned.push({id, title, quote, image})
 
   /// write into separate function where cleaned data set information is used
     let miniPosterCleanHTML =
@@ -420,6 +410,6 @@ function deletePoster(event){
   if (parentId > 0) {
     parent.remove()
   }
-  console.log(unmotivationalMiniPosterShell.childElementCount)}
+}
 
 window.onload = displayRandomPoster, cleanData(unmotivationalPosters)
