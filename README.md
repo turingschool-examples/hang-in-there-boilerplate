@@ -3,15 +3,17 @@
 
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
-Here, I have created a webpage that will display a random poster with a random inspirational title and quote. I have also branched off this idea an provided an "Un-motivational" posters list. I don't think anyone had a problem before, but if you need to come up or get put down, this is the page for you!!!
+Here, I have created a webpage that will display a random poster with a random inspirational title and quote. I have also branched off this idea and provided an "Un-motivational" posters list. I don't think anyone had a problem I was trying to solve, but if you need words of encouragement, get brought down a peg, or even just make a poster of your own, this is the page for you!!!
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
 Want to add to this or see how it works? 
+
 1.	Google Chrome / Firefox / Edge: Dev tools
-    - Shortcut: Cmd + Option + I
-    - Shortcut: Ctrl + Shift + I
-2.  Copy the Repository URL
+    	- Shortcut: Cmd + Option + I
+    	- Shortcut: Ctrl + Shift + I
+  	
+2.	Copy the Repository URL
 	1.	Go to the GitHub website.
 	2.	Navigate to the repository
 	4.	Click the green Code button.
@@ -26,12 +28,7 @@ Want to add to this or see how it works?
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
-- As a student in mod2 at Turing, I felt this was one of the easier projects, only taking me around 4 full days of work (roughly 5-7 hours a day) to complete. I do find more success and fulfillment after completing a project when I can visually see it working. I have discovered a new love for FE work and look forward to pursuing more knowledge in Javascript and FE languages.
-
-### Contributors:
-[//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
-- [Check out my Github!](https://github.com/shadeauchristensen)
-- [And my Linkedin!](www.linkedin.com/in/shadeau-christensen)
+- As a student in mod2 at Turing (2410), I felt this was one of the easier projects, only taking me around 4 full days of work (roughly 5-7 hours a day) to complete. I do find more success and fulfillment after completing a project when I can visually see it working. I have discovered a new love for FE work and look forward to pursuing more knowledge in Javascript and FE languages.
 
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
@@ -41,3 +38,9 @@ Want to add to this or see how it works?
 [//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
 - Wins are definitely that the webpage works, and that I was able to get it done relatively fast. At least with enough time to refactor and fix any redundant code. 
 - Challenges were around every corner. I found the hardest moments were those were we had to match the displays to the prompts with the existing code. The back and forth to find what was called what was a hurdle in a lot of moments.
+  
+### Contributors:
+[//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
+- Github: [Shadeau Christensen](https://github.com/shadeauchristensen)
+  
+- Linkedin: [Shadeau Christensen](www.linkedin.com/in/shadeauchristensen)
