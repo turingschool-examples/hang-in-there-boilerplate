@@ -41,6 +41,6 @@ Want to add to this or see how it works?
   
 ### Contributors:
 [//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
-- Github: [Shadeau Christensen](https://github.com/shadeauchristensen)
-  
-- Linkedin: [Shadeau Christensen](www.linkedin.com/in/shadeauchristensen)
+[![Linkedin](https://i.sstatic.net/gVE0j.png) LinkedIn](https://www.linkedin.com/in/shadeauchristensen)
+&nbsp;
+[![GitHub](https://i.sstatic.net/tskMh.png) GitHub](https://github.com/shadeauchristensen)
