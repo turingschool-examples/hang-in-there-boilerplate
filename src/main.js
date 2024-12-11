@@ -219,8 +219,10 @@ let unmotivationalPosters = [
   }
 ];
 let unmotivationalPostersCleaned = [];
-
 var savedPosters = [];
+
+let firstClick = true;
+
 // query selector variables go here 👇
 let title = document.querySelector(".poster-title");
 let image = document.querySelector(".poster-img");
@@ -291,16 +293,6 @@ function showSaved() {
       </div>`;
   });
 }
-
-
-function showUnmotivPosters() {
-  unmotivationalPostersSection.classList.remove("hidden");
-  savedPostersSection.classList.add("hidden");
-  mainPosterSection.classList.add("hidden");
-  returnHome.classList.remove("hidden");
-  posterFormSection.classList.add("hidden");
-  cleanData(unmotivationalPosters);
-}
 function savePoster() {
   // Create the current poster object with actual values from the inputs
   let currentPoster = {
@@ -317,8 +309,7 @@ function savePoster() {
   );
 
   if (!exists) {
-    // Save the poster
-    savedPosters.push(currentPoster);
+     savedPosters.push(currentPoster);
     alert("Poster saved!");
   } else {
     alert("Poster has already been saved.");
@@ -380,48 +371,55 @@ function returnMain() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+function showUnmotivPosters() {
+  unmotivationalPostersSection.classList.remove("hidden");
+  savedPostersSection.classList.add("hidden");
+  mainPosterSection.classList.add("hidden");
+  returnHome.classList.remove("hidden");
+  posterFormSection.classList.add("hidden");
+}
+
+
 function cleanData() {
   unmotivationalPosters.forEach(poster => {
     let title = poster.name;
     let quote = poster.description;
     let image = poster.img_url;
+    let id = Math.floor(Math.random() * 100000);
 
-    // unmotivationalPostersCleaned.push{title: (quote, image)}
+ // Check if the poster already exists 
+//  const exists = unmotivationalPostersCleaned.some(poster => poster.title === title);
+//  if !exists, push ... 
 
     unmotivationalPostersCleaned.push({
       title: title,
       quote: quote,
       image: image,
+      id: id,
     });
 
+  /// write into separate function where cleaned data set information is used
     let miniPosterCleanHTML =
-    `<article class="unmotivational-mini-poster" id=${Date.now()}>
-      <img class="unmotivational-mini-poster img" src="${poster.img_url}">
-      <h2 class="unmotivational-mini-poster">${poster.name}</h2>
-      <h4 class="unmotivational-mini-poster">${poster.description}</h4>
+    `<article class="unmotivational-mini-poster-container" id="${id}">
+        <img class="unmotivational-mini-poster-container  img" src="${poster.img_url}">
+        <h2 class="unmotivational-mini-poster-container">${poster.name}</h2>
+        <h4 class="unmotivational-mini-poster-container">${poster.description}</h4>
     </article>`;
 
     unmotivationalMiniPosterShell.innerHTML += miniPosterCleanHTML;
   })
 }
 
-function deletePoster(event) {
-  console.log(event.target.closest)
+function deletePoster(event){
+  let target = event.target
+  let parent = document.getElementById(target.parentNode.id)
+  let parentId = target.parentNode.id
 
-  // console.log(`target: `, event.target)
-  // let parent = event.target.parentNode
-  // let children = event.target.childNodes
-  // console.log('children:', children)
-  // console.log('parent: ', parent)
-  // console.log('parent id: ', parent.id)
-  // console.log('class name includes? ', event.target.className.includes('unmotivational-mini'))
+  target.remove()
+  if (parentId > 0) {
+    parent.remove()
+  }
+  console.log(unmotivationalMiniPosterShell.childElementCount)}
 
-  // // if (parent) {
-  //   event.target.parentNode.remove();
-  // } else if (event.target.className.includes('unmotivational-mini')) {
-  //   children.remove();
-  // }
-
-}
-
-window.onload = displayRandomPoster
+window.onload = displayRandomPoster, cleanData(unmotivationalPosters)
