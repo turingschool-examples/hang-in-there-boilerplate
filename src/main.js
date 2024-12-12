@@ -380,9 +380,9 @@ function displayUnmotivationalPosters() {
   unmotivationalPosters.forEach((poster) => {
     unmotivationalGrid.innerHTML += 
         `<article class="unmotivational-mini" id="${poster.id}">
-        <img src="${poster.imageURL}" alt="nothin' to see here">
-        <h2> ${poster.title}</h2>
-        <h4> ${poster.quote}</h4>
+          <img src="${poster.imageURL}" alt="nothin' to see here">
+          <h2> ${poster.title}</h2>
+          <h4> ${poster.quote}</h4>
         </article>`
     })
 }
