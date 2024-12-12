@@ -1,46 +1,71 @@
-# Hang In There
-
-A boilerplate repo. 
-
-## Set Up
-
-1. Fork this repository
-2. Clone down your new, forked repo
-3. `cd` into the repository
-4. Open it in your text editor
-5. Add the instructors as collaborators on the repository
-
-Project spec & rubric can be found [here](https://curriculum.turing.edu/module2/projects/hang-in-there/index)
-
-To view your project:
-
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
-  
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
-______________________________________________________  
-
 # Hang in There  
 
 ### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+This *Hang In There* Motivational Posters Project is an interactive web application where users can generate random motivational posters, create their own, and save their favorites.  For the snarky among us, there is also a feature that allows users to manage (view and delete) a collection of  unmotivational posters. 
+
+This project demonstrates DOM manipulation, event handling, and dynamic content creation in JavaScript.  
 
 ### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
+1. Clone the repository:
+
+```git clone <repository-url>```
+
+2. Navigate to the project directory:
+
+```cd posters-project```
+
+3. Open the `index.html` file in your browser to run the application locally.
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+This project was created as part of a FE module in a coding bootcamp to practice core CSS, HTML, and Javascript fundamentals. I was given about a week to work on it, and it was assigned during week one of the FE module (about 5-6 weeks into the program). The proejct focuses on:
+
+* DOM manipulation
+
+* Array iteration methods (forEach, filter, etc.)
+
+* Event handling
+
+* Dynamic data updates
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
+K Weiland
+GitHub: @KMPWeiland
+
 
 ### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
+Some of the learning goals for this project include:
+
+* Understand how to manipulate the DOM to dynamically render content.
+
+* Use event listeners to create interactive user experiences.
+
+* Practice managing state in JavaScript applications.
+
+* Implement array methods like forEach, filter, and map effectively.
+
+* Debug and resolve issues related to scope, event handling, and asynchronous updates.
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+**Wins**
+
+* Implemented a dynamic rendering of posters using JavaScript
+
+* Allowed for custom user input to create personalized posters
+
+* Solved hiccups with adding duplicate posters in the saved posters grid AND removing deleted posters from the data model
+
+* The addition of target.closest allowed a refactoring of the deleteUnMoPosters function
+
+* Learned how to include a method within an even listener
+
+**Challenges**
+* Handling currentPoster and ensuring updates reflected correctly in the DOM, or more generally, discerning between data model and DOM updates was a frequent tripping point
+
+* Struggled with dynamic DOM element insertion using .innerHTML +=, which led to a convoluted workaround for rendering motivational posters 
+
+* Struggled with invoking deleteUnMoPoster with a faulty event listener, prompting me to wrap it in an inline function
+
