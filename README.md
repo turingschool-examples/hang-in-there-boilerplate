@@ -17,10 +17,12 @@ This project demonstrates DOM manipulation, event handling, and dynamic content 
 3. Open the `index.html` file in your browser to run the application locally.
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
+The 'Make Your Own Poster' feature has been a fan favorite! 
+
+![Application Demo](./assets/seal_poster.gif)
 
 ### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+ 
 This project was created as part of a FE module in a coding bootcamp to practice core CSS, HTML, and Javascript fundamentals. I was given about a week to work on it, and it was assigned during week one of the FE module (about 5-6 weeks into the program). The proejct focuses on:
 
 * DOM manipulation
