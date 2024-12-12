@@ -71,3 +71,6 @@ Some of the learning goals for this project include:
 
 * Struggled with invoking deleteUnMoPoster with a faulty event listener, prompting me to wrap it in an inline function
 
+**Refactor Opportunities**
+* I detect several pieces of redundant code, including in the functions that hide and reveal various sections. I would combine those in adheracne to DRY principles if given more time.
+* Simplify the renderUnMoPosters function utilizing using .innerHTML += logic
